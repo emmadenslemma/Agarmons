@@ -1,7 +1,7 @@
 local cosmog_in_pool = function(self)
   local suits_found = false
   for _, v in pairs(G.playing_cards) do
-    if v:is_suit("Hearts") or v:is_suit("Clubs") then
+    if v:is_suit("Hearts", true) or v:is_suit("Clubs", true) then
       suits_found = true
       break
     end
@@ -13,7 +13,7 @@ local get_suit_percent = function(suit, changed_cards, to_be_removed)
   local suit_count = 0
   local total_deck = #G.playing_cards
   for _, v in pairs(G.playing_cards) do
-    if v:is_suit(suit) then
+    if v:is_suit(suit, true) then
       suit_count = suit_count + 1
     end
   end
@@ -22,7 +22,7 @@ local get_suit_percent = function(suit, changed_cards, to_be_removed)
     for _, v in pairs(changed_cards) do
       deck_mod = to_be_removed and -1 or 1
       total_deck = total_deck + deck_mod
-      if v:is_suit(suit) then
+      if v:is_suit(suit, true) then
         suit_count = suit_count + deck_mod
       end
     end
