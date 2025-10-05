@@ -44,21 +44,23 @@ local sandygast = {
 -- Palossand 770
 local palossand = {
   name = "palossand",
-  config = { extra = { chips = 0, chip_mod = 2 } },
+  config = { extra = { chips = 0, chip_mod = 3, h_size_mod = 1, d_size_mod = 1 } },
   loc_txt = {
     name = "Palossand",
     text = {
-      "Gain {C:chips}+#1#{} Chips per discarded",
-      "{V:1}#2#{} Card, doubled if you have",
-      "an {X:earth,C:white}Earth{} or {X:water,C:white}Water{} card",
+      "When {C:attention}Blind{} is selected,",
+      "gain {C:attention}+#1#{} hand size for every {X:water,C:white}Water{} card you have",
+      "and {C:red}+#2#{} discard for every {X:earth,C:white}Earth{} card you have",
+      "{br:2}ERROR - CONTACT STEAK",
+      "Gain {C:chips}+#3#{} Chips per discarded {V:1}#4#{} Card",
       "suit changes every round",
-      "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
+      "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
-    return { vars = { center.ability.extra.chip_mod, localize(suit, "suits_singular"), center.ability.extra.chips, colours = { G.C.SUITS[suit] } } }
+    return { vars = { center.ability.extra.h_size_mod, center.ability.extra.d_size_mod, center.ability.extra.chip_mod, localize(suit, "suits_singular"), center.ability.extra.chips, colours = { G.C.SUITS[suit] } } }
   end,
   rarity = "poke_safari",
   cost = 10,
@@ -70,25 +72,43 @@ local palossand = {
   calculate = function(self, card, context)
     if context.discard and not context.blueprint and not context.other_card.debuff
         and context.other_card:is_suit(G.GAME.current_round.sandygast_suit) then
-      if find_other_poke_or_energy_type(card, "Water") > 0
-          or find_other_poke_or_energy_type(card, "Earth") > 0 then
-        card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod * 2
-        return {
-          message = localize('agar_shore_up_ex'),
-          colour = G.C.CHIPS
-        }
-      else
-        card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.CHIPS
-        }
-      end
+      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+      return {
+        message = localize('agar_shore_up_ex'),
+        colour = G.C.CHIPS
+      }
     end
     if context.joker_main then
       return {
         chips = card.ability.extra.chips,
       }
+    end
+    -- Handle Hand Size/Discards
+    if context.setting_blind then
+      local extra_hand_size = find_other_poke_or_energy_type(card, "Water", true) * card.ability.extra.h_size_mod
+      local extra_discards = find_other_poke_or_energy_type(card, "Earth", true) * card.ability.extra.d_size_mod
+      if extra_hand_size > 0 then
+        -- Stolen from Dodrio
+        G.hand:change_size(extra_hand_size)
+        G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + extra_hand_size
+        SMODS.calculate_effect(
+          { message = localize { type = 'variable', key = 'a_handsize', vars = { extra_hand_size } } },
+          context.blueprint_card or card)
+      end
+      if extra_discards > 0 then
+        -- Stolen from Vanilla Remade Burglar
+        -- I still don't know why this needs to be an event but we trust the process
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            ease_discard(extra_discards, nil, true)
+            SMODS.calculate_effect(
+              { message = localize { type = 'variable', key = 'a_discards', vars = { extra_discards } } },
+              context.blueprint_card or card)
+            return true
+          end
+        }))
+      end
+      return nil, true -- This is for Joker retrigger purposes
     end
   end,
 }

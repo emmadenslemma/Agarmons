@@ -113,5 +113,8 @@ return {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
             ch_c_nebby = { "Nebby must survive" },
         },
+        v_dictionary={
+            a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
+        },
     },
 }

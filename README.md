@@ -27,15 +27,15 @@ Adds new Jokers for some of my favourite Pokémon
 These are all fully coded, functional jokers that, for one reason or another feel lackluster or unsatisfying design-wise
 All of these will be either reworked or removed eventually
 
-| Joker      | Rarity   | Effect                                                                                                                                             |
-| ---------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Spheal     | Uncommon | Gain +2 Mult per reroll in the shop (Evolves at +12 Mult)                                                                                          |
-| Sealeo     | Safari   | Gain +3 Mult per reroll in the shop (Evolves at +30 Mult)                                                                                          |
-| Walrein    | Safari   | Gain +3 Mult per reroll in the shop. 1 in 4 chance to gain X0.15 instead                                                                           |
-| Dewpider   | Common   | +4 Hazards, +45 Chips, doubled if played hand contains a Hazard card (Evolves after 4 rounds)                                                      |
-| Araquanid  | Uncommon | +4 Hazards, +60 Chips, tripled if played hand contains a Hazard card                                                                               |
-| Sandygast  | Uncommon | Gain +2 Chips per discarded Suit Card, suit changes every round (Evolves at +60 Chips)                                                             |
-| Palossand  | Safari   | Gain +2 Chips per discarded Suit Card, doubled if you have an Earth or Water card, suit changes every round                                        |
-| Frigibax   | Uncommon | If played hand is a Five of a Kind, all played cards give X1.1 Mult when scored. (Evolves after playing 5 Five of a Kinds)                         |
-| Arctibax   | Safari   | If played hand is a Five of a Kind, all played cards give X1.3 Mult when scored. (Evolves after playing 5 Five of a Kinds)                         |
-| Baxcalibur | Safari   | If played hand is a Five of a Kind, all played cards give X1.5 Mult when scored, also retrigger every card once per 1000 of that cards total chips |
+| Joker      | Rarity   | Effect                                                                                                                                                                                  |
+| ---------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Spheal     | Uncommon | Gain +2 Mult per reroll in the shop (Evolves at +12 Mult)                                                                                                                               |
+| Sealeo     | Safari   | Gain +3 Mult per reroll in the shop (Evolves at +30 Mult)                                                                                                                               |
+| Walrein    | Safari   | Gain +3 Mult per reroll in the shop. 1 in 4 chance to gain X0.15 instead                                                                                                                |
+| Dewpider   | Common   | +4 Hazards, +45 Chips, doubled if played hand contains a Hazard card (Evolves after 4 rounds)                                                                                           |
+| Araquanid  | Uncommon | +4 Hazards, +60 Chips, tripled if played hand contains a Hazard card                                                                                                                    |
+| Sandygast  | Uncommon | Gain +2 Chips per discarded Suit Card, suit changes every round (Evolves at +60 Chips)                                                                                                  |
+| Palossand  | Safari   | When blind is selected, gain +1 hand size for every Water card you have, and +1 discards for every Earth card you have. Gain +3 Chips per discarded Suit Card, suit changes every round |
+| Frigibax   | Uncommon | If played hand is a Five of a Kind, all played cards give X1.1 Mult when scored. (Evolves after playing 5 Five of a Kinds)                                                              |
+| Arctibax   | Safari   | If played hand is a Five of a Kind, all played cards give X1.3 Mult when scored. (Evolves after playing 5 Five of a Kinds)                                                              |
+| Baxcalibur | Safari   | If played hand is a Five of a Kind, all played cards give X1.5 Mult when scored, also retrigger every card once per 1000 of that cards total chips                                      |
