@@ -58,7 +58,7 @@ local primal_groudon = {
   name = "primal_groudon",
   pos = { x = 2, y = 7 },
   soul_pos = { x = 3, y = 7 },
-  config = { extra = { Xmult_multi = 3 } },
+  config = { extra = { Xmult_multi = 3, retriggers = 1 } },
   loc_txt = {
     name = "Primal Groudon",
     text = {
@@ -66,6 +66,9 @@ local primal_groudon = {
       "{br:2}ERROR - CONTACT STEAK",
       "Played {C:attention}Mult{} cards give",
       "{X:mult,C:white}X#1#{} Mult when scored",
+      "{br:2}ERROR - CONTACT STEAK",
+      "Retrigger other",
+      "{X:fire,C:white}Fire{} type Jokers"
     }
   },
   loc_vars = function(self, info_queue, center)
@@ -108,6 +111,13 @@ local primal_groudon = {
         and SMODS.has_enhancement(context.other_card, "m_mult") then
       return {
         Xmult = card.ability.extra.Xmult_multi
+      }
+    end
+    -- Retrigger Fire type Jokers
+    if context.retrigger_joker_check
+        and is_type(context.other_card, "Fire") then
+      return {
+        repetitions = card.ability.extra.retriggers
       }
     end
   end,

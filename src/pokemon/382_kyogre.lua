@@ -58,7 +58,7 @@ local primal_kyogre = {
   name = "primal_kyogre",
   pos = { x = 4, y = 7 },
   soul_pos = { x = 5, y = 7 },
-  config = { extra = { Xchips_multi = 3 } },
+  config = { extra = { Xchips_multi = 3, retriggers = 1 } },
   loc_txt = {
     name = "Primal Kyogre",
     text = {
@@ -66,6 +66,9 @@ local primal_kyogre = {
       "{br:2}ERROR - CONTACT STEAK",
       "Played {C:attention}Bonus{} cards give",
       "{X:chips,C:white}X#1#{} Chips when scored",
+      "{br:2}ERROR - CONTACT STEAK",
+      "Retrigger other",
+      "{X:water,C:white}Water{} type Jokers"
     }
   },
   loc_vars = function(self, info_queue, center)
@@ -108,6 +111,13 @@ local primal_kyogre = {
         and SMODS.has_enhancement(context.other_card, "m_bonus") then
       return {
         x_chips = card.ability.extra.Xchips_multi
+      }
+    end
+    -- Retrigger Water type Jokers
+    if context.retrigger_joker_check
+        and is_type(context.other_card, "Water") then
+      return {
+        repetitions = card.ability.extra.retriggers
       }
     end
   end,
