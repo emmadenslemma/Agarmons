@@ -115,7 +115,7 @@ local primal_groudon = {
     end
     -- Retrigger Fire type Jokers
     if context.retrigger_joker_check
-        and is_type(context.other_card, "Fire") then
+        and context.other_card ~= card and is_type(context.other_card, "Fire") then
       return {
         repetitions = card.ability.extra.retriggers
       }

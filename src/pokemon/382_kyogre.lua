@@ -115,7 +115,7 @@ local primal_kyogre = {
     end
     -- Retrigger Water type Jokers
     if context.retrigger_joker_check
-        and is_type(context.other_card, "Water") then
+        and context.other_card ~= card and is_type(context.other_card, "Water") then
       return {
         repetitions = card.ability.extra.retriggers
       }
