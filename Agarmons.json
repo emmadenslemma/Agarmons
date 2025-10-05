@@ -8,6 +8,7 @@
 	"prefix": "agar",
 	"main_file": "main.lua",
 	"priority": 24,
+	"badge_colour": "F792BC",
 	"display_name": "Agarmons",
 	"version": "0.1",
 	"dependencies": [

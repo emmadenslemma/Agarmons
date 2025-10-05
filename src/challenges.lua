@@ -7,6 +7,7 @@ for _, file in ipairs(files) do
   if challenge.enabled then
     if challenge.list and #challenge.list > 0 then
       for _, item in ipairs(challenge.list) do
+        item.button_colour = HEX("F792BC")
         SMODS.Challenge(item)
       end
     end
