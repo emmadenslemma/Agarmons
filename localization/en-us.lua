@@ -93,6 +93,21 @@ return {
             agar_lunadon_6 = "What if we ran something else instead? Introducing the LunaDon core",
             agar_lunadon_end_1 = "Guys I've figured it out!",
             agar_lunadon_end_2 = "This is my LunaLunaDonDon team",
+
+            -- Settings
+            agar_enable_torkoal = "Enable Torkoal",
+            agar_enable_spheal = "Enable Spheal Line",
+            agar_enable_bagon = "Enable Bagon Line",
+            agar_enable_sandygast = "Enable Sandygast Line",
+            agar_enable_dewpider = "Enable Dewpider Line",
+            agar_enable_pyukumuku = "Enable Pyukumuku",
+            agar_enable_hatenna = "Enable Hatenna Line",
+            agar_enable_frigibax = "Enable Frigibax Line",
+            agar_enable_kyogre = "Enable Kyogre",
+            agar_enable_groudon = "Enable Groudon",
+            agar_enable_rayquaza = "Enable Rayquaza",
+            agar_enable_cosmog = "Enable Cosmog",
+            agar_enable_gmax = "Enable Gigantamax",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
