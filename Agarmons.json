@@ -1,0 +1,16 @@
+{
+	"id": "Agarmons",
+	"name": "Agarmons",
+	"author": [
+		"Agarpain"
+	],
+	"description": "Pokermon addon by Agarpain",
+	"prefix": "agar",
+	"main_file": "main.lua",
+	"priority": 24,
+	"display_name": "Agarmons",
+	"version": "0.1",
+	"dependencies": [
+		"Pokermon (>=3.2.0-911a)"
+	]
+}

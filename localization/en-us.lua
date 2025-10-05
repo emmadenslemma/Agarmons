@@ -1,0 +1,102 @@
+return {
+    descriptions = {
+        Joker = {
+            j_agar_nebby = {
+                name = '"Nebby"',
+                text = {
+                    "Applies {C:attention}Splash",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_nebby_cosmoem = {
+                name = "..Nebby?",
+                text = {
+                    "{C:inactive}Evolves when deck is",
+                    "{C:attention}>50% {C:hearts}#1#{C:inactive} or {C:clubs}#2#",
+                }
+            },
+            j_agar_nebby_solgaleo = {
+                name = "Nebby",
+                text = {
+                    "If first played hand is all {C:hearts}#1#{},",
+                    "turn 3 cards held in hand to {C:hearts}#1#{}",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:hearts,s:0.8}#1#",
+                    "{V:1}Played {V:2}#2#{V:1} cards give {C:white,B:3}X#3#{V:1} Mult when scored",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:hearts,s:0.8}#1#",
+                    "{V:4}???",
+                }
+            },
+            j_agar_nebby_lunala = {
+                name = "Nebby",
+                text = {
+                    "If first played hand is all {C:clubs}#1#{},",
+                    "turn 3 cards held in hand to {C:clubs}#1#{}",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:clubs,s:0.8}#1#",
+                    "{V:1}Each {V:2}#2#{V:1} Card held in hand gives {C:white,B:3}X#3#{V:1} Mult",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:clubs,s:0.8}#1#",
+                    "{V:4}+#4# Foresight",
+                    "{V:5}Foreseen{V:6} cards trigger held",
+                    "{V:6}in hand effects",
+                }
+            },
+        },
+        Spectral = {
+            c_agar_redorb_active = {
+                name = "Red Orb",
+                text = {
+                    "Returns {C:attention}Primal Groudon{}",
+                    "to its base form",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Also happens if sold",
+                    "{C:inactive}(Useable once per round)",
+                },
+            },
+            c_agar_blueorb_active = {
+                name = "Blue Orb",
+                text = {
+                    "Returns {C:attention}Primal Kyogre{} to",
+                    "to its base form",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Also happens if sold",
+                    "{C:inactive}(Useable once per round)",
+                },
+            },
+        },
+    },
+    misc = {
+        challenge_names = {
+            c_agar_lunadon = "LunaDon",
+            c_agar_nebby = "Nebby's Journey"
+        },
+        dictionary = {
+            -- Rarities
+            k_agar_primal = "Primal",
+            k_agar_gmax = "Gigantamax",
+
+            -- Messages
+            agar_ice_ball_ex = "Ice Ball!",
+            agar_avalanche_ex = "Avalanche!",
+            agar_outrage_ex = "Outrage!",
+            agar_desolate_land_ex = "Desolate Land!",
+            agar_primordial_sea_ex = "Primordial Sea!",
+            agar_water_bubble_ex = "Water Bubble!",
+            agar_shore_up_ex = "Shore Up!",
+            agar_innards_out_ex = "Innards Out!",
+
+            -- LunaDon Challenge Messages
+            agar_lunadon_start = "Let's look at the classic: LunaDon",
+            agar_lunadon_1 = "Let's instead try a LunaDon core",
+            agar_lunadon_2 = "What if, instead of LunaDon, we run LunaDon",
+            agar_lunadon_3 = "Introducing LunaDon",
+            agar_lunadon_4 = "I think we should run the LunaDon core",
+            agar_lunadon_5 = "You know what core could work really well? LunaDon!",
+            agar_lunadon_6 = "What if we ran something else instead? Introducing the LunaDon core",
+            agar_lunadon_end_1 = "Guys I've figured it out!",
+            agar_lunadon_end_2 = "This is my LunaLunaDonDon team",
+        },
+        v_text = {
+            ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
+            ch_c_nebby = { "Nebby must survive" },
+        },
+    },
+}

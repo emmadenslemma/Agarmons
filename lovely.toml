@@ -1,0 +1,77 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Pyukumuku
+# [Card:get_chip_mult] Get Lucky Mult procs
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+position = "after"
+match_indent = true
+pattern = '''self.lucky_trigger = true
+ret = ret + self.ability.mult'''
+payload = '''
+self.lucky_mult_trigger = true'''
+
+# [Card:get_p_dollars] Get Lucky Money procs
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+position = "after"
+match_indent = true
+pattern = '''self.lucky_trigger = true
+ret = ret +  self.ability.p_dollars'''
+payload = '''
+self.lucky_money_trigger = true'''
+
+# Lunala
+# [SMODS.calculate_main_scoring] Add scry_view to held in hand scoring effects
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+position = "at"
+match_indent = true
+pattern = '''function SMODS.calculate_main_scoring(context, scoring_hand)
+    for _, card in ipairs(context.cardarea.cards) do'''
+payload = '''function SMODS.calculate_main_scoring(context, scoring_hand)
+    local cards = {}
+    for _, card in ipairs(context.cardarea.cards) do
+        cards[#cards+1] = card
+    end
+    if context.cardarea == G.hand and G.scry_hand_effects and G.scry_view then
+        for _, scry_card in pairs(G.scry_view.cards) do
+            cards[#cards+1] = scry_card
+        end
+    end
+    for _, card in ipairs(cards) do'''
+
+# [SMODS.calculate_end_of_round_effects] Add scry_view to held in hand end of round effects
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+position = "at"
+match_indent = true
+pattern = '''function SMODS.calculate_end_of_round_effects(context)
+    for i, card in ipairs(context.cardarea.cards) do'''
+payload = '''function SMODS.calculate_end_of_round_effects(context)
+    local cards = {}
+    for _, card in ipairs(context.cardarea.cards) do
+        cards[#cards+1] = card
+    end
+    if context.cardarea == G.hand and G.scry_hand_effects and G.scry_view then
+        for _, scry_card in pairs(G.scry_view.cards) do
+            cards[#cards+1] = scry_card
+        end
+    end
+    for i, card in ipairs(cards) do'''
+
+# Allow Red and Blue Orbs to be saved from Spectral packs
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokeui.lua"]'
+position = "at"
+match_indent = true
+pattern = '''if (G.STATE == G.STATES.SMODS_BOOSTER_OPENED and SMODS.OPENED_BOOSTER.label:find("Pocket")) or (G.GAME.poke_save_all and not SMODS.OPENED_BOOSTER.label:find("Wish")) or (card.ability.name == 'megastone') then'''
+payload = '''if (G.STATE == G.STATES.SMODS_BOOSTER_OPENED and SMODS.OPENED_BOOSTER.label:find("Pocket")) or (G.GAME.poke_save_all and not SMODS.OPENED_BOOSTER.label:find("Wish")) or (card.ability.name == 'megastone') or (card.ability.name == 'redorb') or (card.ability.name == 'blueorb') then'''
