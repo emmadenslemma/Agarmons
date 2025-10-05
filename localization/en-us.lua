@@ -23,7 +23,7 @@ return {
                     "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:hearts,s:0.8}#1#",
                     "{V:1}Played {V:2}#2#{V:1} cards give {C:white,B:3}X#3#{V:1} Mult when scored",
                     "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:hearts,s:0.8}#1#",
-                    "{V:4}???",
+                    "{V:4}Disables effect of every {V:5}Boss Blind",
                 }
             },
             j_agar_nebby_lunala = {
