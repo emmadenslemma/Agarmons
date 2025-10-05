@@ -1,0 +1,34 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+## There has to be a better way of doing this
+## Like, even just a list of all the GMax forms and their respective keys would be better
+## Maybe that's what we do.
+# Add Gigantamax form to Machamp
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokemon/pokejokers_03.lua"]'
+position = "after"
+match_indent = true
+pattern = '''name = "machamp",'''
+payload = '''gmax_key = "j_agar_gmax_machamp",'''
+
+# Add Gigantamax form to Pikachu
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokemon/pokejokers_01.lua"]'
+position = "after"
+match_indent = true
+pattern = '''name = "pikachu",'''
+payload = '''gmax_key = "j_agar_gmax_pikachu",'''
+
+# Add Gigantamax form to Butterfree
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokemon/pokejokers_01.lua"]'
+position = "after"
+match_indent = true
+pattern = '''name = "butterfree",'''
+payload = '''gmax_key = "j_agar_gmax_butterfree",'''

@@ -11,6 +11,10 @@ for _, file in ipairs(files) do
 
     if poke.list and #poke.list > 0 then
       for _, item in ipairs(poke.list) do
+        if item.rarity == "agar_gmax" then
+          GMAX.preload(item)
+        end
+
         local custom_atlas = item.atlas and string.find(item.atlas, "agar")
 
         if not custom_atlas then

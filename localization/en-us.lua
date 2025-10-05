@@ -62,6 +62,14 @@ return {
                 },
             },
         },
+        Other = {
+            gmax_poke = {
+                name = "Gigantamax",
+                text = {
+                    "Can {C:attention}Dynamax{} with", "a {C:attention}Dynamax Band{}"
+                }
+            },
+        },
     },
     misc = {
         challenge_names = {
@@ -71,9 +79,9 @@ return {
         dictionary = {
             -- Rarities
             k_agar_primal = "Primal",
-            k_agar_gmax = "Gigantamax",
+            k_agar_gmax = "G-Max",
 
-            -- Messages
+            -- Joker/Item popups
             agar_ice_ball_ex = "Ice Ball!",
             agar_avalanche_ex = "Avalanche!",
             agar_outrage_ex = "Outrage!",
@@ -82,6 +90,14 @@ return {
             agar_water_bubble_ex = "Water Bubble!",
             agar_shore_up_ex = "Shore Up!",
             agar_innards_out_ex = "Innards Out!",
+            agar_dynamax_ex = "Dynamax!",
+
+            -- G-Max Messages
+            agar_gmax_wildfire_ex = "G-Max Wildfire!",
+            agar_gmax_befuddle_ex = "G-Max Befuddle!",
+            agar_gmax_volt_crash_ex = "G-Max Volt Crash!",
+            agar_gmax_gold_rush_ex = "G-Max Gold Rush!",
+            agar_gmax_chi_strike_ex = "G-Max Chi Strike!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",
@@ -113,8 +129,14 @@ return {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
             ch_c_nebby = { "Nebby must survive" },
         },
-        v_dictionary={
+        v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
+
+            agar_gmax_turns_left_plural = "{C:agar_gmax}#1#{} turns left",
+            agar_gmax_turns_left_singular = "{C:agar_gmax}#1#{} turn left",
+
+            agar_turns_left_plural_ex = "#1# turns left!",
+            agar_turns_left_singular_ex = "#1# turn left!",
         },
     },
 }
