@@ -167,6 +167,7 @@ local mega_salamence = {
   cost = 12,
   stage = "Mega",
   ptype = "Dragon",
+  atlas = "AtlasJokersBasicGen03",
   gen = 3,
   blueprint_compat = true,
   perishable_compat = false,
