@@ -66,7 +66,7 @@ local cosmog = {
     return level_evo(self, card, context, "j_agar_cosmoem")
   end,
   in_pool = cosmog_in_pool,
-  add_to_deck = function (self, card, from_debuff)
+  add_to_deck = function(self, card, from_debuff)
     if G.GAME.modifiers.nebby then
       card.ability.extra.rounds = 12
     end
@@ -134,7 +134,7 @@ local solgaleo = {
       "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:hearts,s:0.8}#1#",
       "{V:1}Played {V:2}#2#{V:1} cards give {C:white,B:3}X#3#{V:1} Mult when scored",
       "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:hearts,s:0.8}#1#",
-      "{V:4}???",
+      "{V:4}Disables effect of every {V:5}Boss Blind",
     }
   },
   loc_vars = function(self, info_queue, center)
@@ -149,6 +149,7 @@ local solgaleo = {
           center.ability.extra.half_active and G.C.SUITS.Hearts or G.C.UI.TEXT_INACTIVE,
           center.ability.extra.half_active and G.C.MULT or G.C.UI.TEXT_INACTIVE,
           center.ability.extra.full_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
+          center.ability.extra.full_active and G.C.FILTER or G.C.UI.TEXT_INACTIVE,
         }
       }
     }
@@ -187,19 +188,24 @@ local solgaleo = {
       end
     end
     -- Update Suit counts
-    local suit_percent
-    if context.before then
-      suit_percent = get_suit_percent(suit)
-    end
-    if context.remove_playing_cards then
-      suit_percent = get_suit_percent(suit, context.removed, true)
-    end
-    if context.playing_card_added then
-      suit_percent = get_suit_percent(suit, context.cards, false)
-    end
-    if suit_percent then
-      card.ability.extra.half_active = suit_percent >= 0.5
-      card.ability.extra.full_active = suit_percent == 1
+    if not context.blueprint then
+      local suit_percent
+      if context.setting_blind then
+        suit_percent = get_suit_percent(suit)
+      end
+      if context.before then
+        suit_percent = get_suit_percent(suit)
+      end
+      if context.remove_playing_cards then
+        suit_percent = get_suit_percent(suit, context.removed, true)
+      end
+      if context.playing_card_added then
+        suit_percent = get_suit_percent(suit, context.cards, false)
+      end
+      if suit_percent then
+        card.ability.extra.half_active = suit_percent >= 0.5
+        card.ability.extra.full_active = suit_percent == 1
+      end
     end
     -- Apply reliable Bloodstone effect at 50% Hearts
     if context.individual and context.cardarea == G.play
@@ -210,7 +216,24 @@ local solgaleo = {
     end
     -- Do something at 100% Hearts
     if card.ability.extra.full_active then
-
+      -- Stolen from Vanilla Remade (and Mega Gyarados)
+      if context.setting_blind and not context.blueprint and context.blind.boss and not card.getting_sliced then -- I don't know what getting sliced is and I'm too scared to ask
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            G.E_MANAGER:add_event(Event({
+              func = function()
+                G.GAME.blind:disable()
+                play_sound('timpani')
+                delay(0.4)
+                return true
+              end
+            }))
+            SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
+            return true
+          end
+        }))
+        return nil, true -- This is for Joker retrigger purposes
+      end
     end
   end,
   add_to_deck = function(self, card, from_debuff)
@@ -307,20 +330,22 @@ local lunala = {
       end
     end
     -- Update Suit counts
-    local suit_percent
     local was_full_active = card.ability.extra.full_active
-    if context.before then
-      suit_percent = get_suit_percent(suit)
-    end
-    if context.remove_playing_cards then
-      suit_percent = get_suit_percent(suit, context.removed, true)
-    end
-    if context.playing_card_added then
-      suit_percent = get_suit_percent(suit, context.cards, false)
-    end
-    if suit_percent then
-      card.ability.extra.half_active = suit_percent >= 0.5
-      card.ability.extra.full_active = suit_percent == 1
+    if not context.blueprint then
+      local suit_percent
+      if context.before then
+        suit_percent = get_suit_percent(suit)
+      end
+      if context.remove_playing_cards then
+        suit_percent = get_suit_percent(suit, context.removed, true)
+      end
+      if context.playing_card_added then
+        suit_percent = get_suit_percent(suit, context.cards, false)
+      end
+      if suit_percent then
+        card.ability.extra.half_active = suit_percent >= 0.5
+        card.ability.extra.full_active = suit_percent == 1
+      end
     end
     -- Apply Baron effect at 50% Clubs
     if context.individual and context.cardarea == G.hand and not context.end_of_round
