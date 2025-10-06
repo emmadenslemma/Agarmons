@@ -2,8 +2,8 @@ local redorb = {
   name = "redorb",
   key = "redorb",
   set = "Spectral",
-  pos = { x = 0, y = 1 },
-  soul_pos = { x = 1, y = 1 },
+  pos = { x = 0, y = 2 },
+  soul_pos = { x = 1, y = 2 },
   helditem = true,
   config = { extra = { usable = true, active = false } },
   loc_txt = {
