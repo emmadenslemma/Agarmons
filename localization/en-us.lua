@@ -92,8 +92,8 @@ return {
             agar_innards_out_ex = "Innards Out!",
             agar_dynamax_ex = "Dynamax!",
 
-            agar_turns_left_plural = "turns left",
-            agar_turns_left_singular = "turn left",
+            agar_turns_left_plural = "hands left",
+            agar_turns_left_singular = "hand left",
 
             -- G-Max Messages
             agar_gmax_wildfire_ex = "G-Max Wildfire!",
@@ -127,7 +127,7 @@ return {
             agar_enable_groudon = "Enable Groudon",
             agar_enable_rayquaza = "Enable Rayquaza",
             agar_enable_cosmog = "Enable Cosmog",
-            agar_enable_gmax = "Enable Gigantamax",
+            agar_enable_gmax = "Enable Gigantamax [BETA]",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
@@ -136,7 +136,7 @@ return {
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
 
-            agar_x_turns_left_plural_ex = "#1# turns left!",
+            agar_x_turns_left_plural_ex = "#1# hands left!",
             agar_x_turns_left_singular_ex = "#1# turn left!",
         },
     },

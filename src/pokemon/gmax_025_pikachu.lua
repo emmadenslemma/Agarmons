@@ -3,16 +3,19 @@ local gmax_pikachu = {
   name = "gmax_pikachu",
   pos = { x = 4, y = 7 },
   soul_pos = { x = 5, y = 7 },
-  config = { extra = {} },
+  config = { extra = { money = 1 } },
   loc_txt = {
     name = "Gigantamax Pikachu",
     text = {
-      "{C:inactive}Wait, it doesn't do anything?"
+      "Every hand gives {C:money}$#3#{} for",
+      "every {C:money}$1{} you are from",
+      "the interest cap {C:inactive}[$#4#]",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = {} }
+    local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
+    return { vars = { center.ability.extra.money, interest_gap } }
   end,
   rarity = "agar_gmax",
   cost = 10,
@@ -23,9 +26,13 @@ local gmax_pikachu = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
-      return {
-        message = localize("agar_gmax_volt_crash_ex"),
-      }
+      local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
+      if interest_gap > 0 then
+        return {
+          dollars = interest_gap * card.ability.extra.money,
+          message = localize("agar_gmax_volt_crash_ex"),
+        }
+      end
     end
   end,
 }

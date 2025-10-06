@@ -7,7 +7,7 @@ local gmax_machamp = {
   loc_txt = {
     name = "Gigantamax Machamp",
     text = {
-      "{C:white,X:mult}X#3#{} per hand left",
+      "{C:white,X:mult}X#3#{} for each remaining hand",
       "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
     }
   },
