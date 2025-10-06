@@ -10,5 +10,5 @@ return {
   pyukumuku = true,
   cosmog = true,
   frigibax = false,
-  gmax = true,
+  gmax = false,
 }
