@@ -18,7 +18,7 @@ GMAX = {
     -- Add "x turns left" to loc_txt.text
     if item.loc_txt and item.loc_txt.text then -- we still have to manually define it if we use localization files
       table.insert(item.loc_txt.text, 1, "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#")
-      table.insert(item.loc_txt.text, 2, "{br:2.5}ERROR - CONTACT STEAK") -- Consider leaving this up to the individual jokers
+      table.insert(item.loc_txt.text, 2, "{br:2.5}ERROR - CONTACT STEAK")
     end
     -- Add `revert` to the end of `calculate`
     if item.calculate then
@@ -42,15 +42,21 @@ GMAX = {
       item.loc_vars = GMAX.loc_vars
     end
   end,
-  get_gmax_key = function (base_card)
-    return GMAX.evos[base_card.config.center_key]
+  get_gmax_key = function(base_card)
+    return base_card
+        and base_card.config
+        and GMAX.evos[base_card.config.center_key]
+        or nil
   end,
   get_base_key = function(gmax_card)
-    for base, gmax in pairs(GMAX.evos) do
-      if gmax == gmax_card.config.center_key then
-        return base
+    if gmax_card and gmax_card.config then
+      for base, gmax in pairs(GMAX.evos) do
+        if gmax == gmax_card.config.center_key then
+          return base
+        end
       end
     end
+    return nil
   end,
   revert = function(self, card, context)
     if context.end_of_round and context.cardarea == G.jokers then
