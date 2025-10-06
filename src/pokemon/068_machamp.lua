@@ -8,10 +8,8 @@ local gmax_machamp = {
   loc_txt = {
     name = "Gigantamax Machamp",
     text = {
-      "#1#",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:white,X:mult}X#2#{} per hand left",
-      "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)"
+      "{C:white,X:mult}X#3#{} per hand left",
+      "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
     }
   },
   loc_vars = function(self, info_queue, center)

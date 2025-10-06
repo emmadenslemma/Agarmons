@@ -4,17 +4,14 @@ local gmax_charizard = {
   base_key = "j_poke_charizard",
   pos = { x = 0, y = 7 },
   soul_pos = { x = 1, y = 7 },
-  config = { extra = {  } },
+  config = { extra = {} },
   loc_txt = {
     name = "Gigantamax Charizard",
-    text = {
-      "#1#",
-      "{br:2}ERROR - CONTACT STEAK",
-    }
+    text = {}
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = {  } }
+    return { vars = {} }
   end,
   rarity = "agar_gmax",
   cost = 12,

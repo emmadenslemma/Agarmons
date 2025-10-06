@@ -4,12 +4,10 @@ local gmax_pikachu = {
   base_key = "j_poke_pikachu",
   pos = { x = 4, y = 7 },
   soul_pos = { x = 5, y = 7 },
-  -- config = { extra = { turns_left = 3 } },
+  config = { extra = {} },
   loc_txt = {
     name = "Gigantamax Pikachu",
     text = {
-      "#1#",
-      "{br:2}ERROR - CONTACT STEAK",
       "{C:inactive}Wait, it doesn't do anything?"
     }
   },

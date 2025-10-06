@@ -132,11 +132,11 @@ return {
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
 
-            agar_gmax_turns_left_plural = "{C:agar_gmax}#1#{} turns left",
-            agar_gmax_turns_left_singular = "{C:agar_gmax}#1#{} turn left",
+            agar_turns_left_plural = "turns left",
+            agar_turns_left_singular = "turn left",
 
-            agar_turns_left_plural_ex = "#1# turns left!",
-            agar_turns_left_singular_ex = "#1# turn left!",
+            agar_x_turns_left_plural_ex = "#1# turns left!",
+            agar_x_turns_left_singular_ex = "#1# turn left!",
         },
     },
 }

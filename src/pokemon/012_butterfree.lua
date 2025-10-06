@@ -8,9 +8,7 @@ local gmax_butterfree = {
   loc_txt = {
     name = "Gigantamax Butterfree",
     text = {
-      "#1#",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:mult}+#2# Mult"
+      "{C:mult}+#3# Mult"
     }
   },
   loc_vars = function(self, info_queue, center)

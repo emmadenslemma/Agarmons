@@ -16,6 +16,11 @@ GMAX = {
     item.config = item.config or {}
     item.config.extra = item.config.extra or {}
     item.config.extra.turns_left = 3
+    -- Add "x turns left" to loc_txt.text
+    if item.loc_txt and item.loc_txt.text then -- we still have to manually define it if we use localization files
+      table.insert(item.loc_txt.text, 1, "{C:agar_gmax}#1#{} #2#")
+      table.insert(item.loc_txt.text, 2, "{br:2}ERROR - CONTACT STEAK")
+    end
     -- Add `revert` to the end of `calculate`
     if item.calculate then
       local calculate_ref = item.calculate
@@ -46,7 +51,7 @@ GMAX = {
       card.ability.extra.turns_left = card.ability.extra.turns_left - 1
       if card.ability.extra.turns_left > 0 then
         card_eval_status_text(card, "extra", nil, nil, nil, {
-          message = localize { type = "variable", key = (card.ability.extra.turns_left == 1 and "agar_turns_left_singular_ex" or "agar_turns_left_plural_ex"), vars = { card.ability.extra.turns_left } },
+          message = localize { type = "variable", key = card.ability.extra.turns_left == 1 and "agar_x_turns_left_singular_ex" or "agar_x_turns_left_plural_ex", vars = { card.ability.extra.turns_left } },
           colour = G.C.agar_gmax,
         })
       else
@@ -60,16 +65,11 @@ GMAX = {
     end
   end,
   loc_vars = function(self, info_queue, center, loc_table)
-    local loc_turns_left = localize {
-      type = "variable",
-      key = center.ability.extra.turns_left == 1 and "agar_gmax_turns_left_singular" or "agar_gmax_turns_left_plural",
-      vars = { center.ability.extra.turns_left }
-    }
-
     loc_table = loc_table or {}
     loc_table.vars = loc_table.vars or {}
 
-    table.insert(loc_table.vars, 1, loc_turns_left)
+    table.insert(loc_table.vars, 1, center.ability.extra.turns_left)
+    table.insert(loc_table.vars, 2, localize(center.ability.extra.turns_left == 1 and "agar_turns_left_singular" or "agar_turns_left_plural"))
 
     return loc_table
   end,
