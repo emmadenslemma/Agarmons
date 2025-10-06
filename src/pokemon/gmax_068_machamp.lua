@@ -3,7 +3,7 @@ local gmax_machamp = {
   name = "gmax_machamp",
   pos = { x = 8, y = 7 },
   soul_pos = { x = 9, y = 7 },
-  config = { extra = { Xmult_mod = 0.5, hands = 4, discards = 4 } },
+  config = { extra = { Xmult_mod = 0.4, hands = 4, discards = 4 } },
   loc_txt = {
     name = "Gigantamax Machamp",
     text = {
@@ -26,13 +26,15 @@ local gmax_machamp = {
   calculate = function(self, card, context)
     if context.joker_main then
       local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
-      return {
-        message = localize("agar_gmax_chi_strike_ex"),
-        Xmult = current_Xmult,
-      }
+      if current_Xmult > 1 then
+        return {
+          message = localize("agar_gmax_chi_strike_ex"),
+          Xmult = current_Xmult,
+        }
+      end
     end
   end,
-  -- `add_to/remove_from_deck` Stolen from Machamp to keep your hands during dynamax
+  -- `add_to/remove_from_deck` Stolen from regular Machamp to keep your hands during dynamax
   add_to_deck = function(self, card, from_debuff)
     G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
     G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards

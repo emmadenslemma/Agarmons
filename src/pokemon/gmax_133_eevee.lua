@@ -3,7 +3,7 @@ local gmax_eevee = {
   name = "gmax_eevee",
   pos = { x = 0, y = 8 },
   soul_pos = { x = 1, y = 8 },
-  config = { extra = { Xmult_mod = 1.5 } },
+  config = { extra = { Xmult_mod = 1.25 } },
   loc_txt = {
     name = "Gigantamax Eevee",
     text = {
