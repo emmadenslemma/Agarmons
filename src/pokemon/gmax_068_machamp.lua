@@ -1,7 +1,6 @@
 -- G-Max Machamp 068
 local gmax_machamp = {
   name = "gmax_machamp",
-  base_key = "j_poke_machamp",
   pos = { x = 8, y = 7 },
   soul_pos = { x = 9, y = 7 },
   config = { extra = { Xmult_mod = 0.5, hands = 4, discards = 4 } },
@@ -54,6 +53,7 @@ local gmax_machamp = {
 }
 
 local init = function()
+  GMAX.evos["j_poke_machamp"] = "j_agar_gmax_machamp"
   -- edit get_family_keys to let us insert gmax into existing families
   -- for _, family in pairs(pokermon.family) do
   --   if family[1] == "machop" then

@@ -1,13 +1,12 @@
--- find somewhere else to put this later:
+-- Add "Can Dynamax" tooltip to existing Pokemon
 local type_tooltip_ref = type_tooltip
 type_tooltip = function(self, info_queue, center)
   type_tooltip_ref(self, info_queue, center)
-  if pokermon_config.detailed_tooltips and center.config.center.gmax_key then
+  if pokermon_config.detailed_tooltips and GMAX.get_gmax_key(center) then
     info_queue[#info_queue + 1] = { set = 'Other', key = 'gmax_poke' }
   end
 end
 
--- Repeating functions from Gigantamax Pokemon
 GMAX = {
   preload = function(item)
     -- Required to block Transformation
@@ -18,8 +17,8 @@ GMAX = {
     item.config.extra.turns_left = 3
     -- Add "x turns left" to loc_txt.text
     if item.loc_txt and item.loc_txt.text then -- we still have to manually define it if we use localization files
-      table.insert(item.loc_txt.text, 1, "{C:agar_gmax}#1#{} #2#")
-      table.insert(item.loc_txt.text, 2, "{br:2}ERROR - CONTACT STEAK")
+      table.insert(item.loc_txt.text, 1, "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#")
+      table.insert(item.loc_txt.text, 2, "{br:2.5}ERROR - CONTACT STEAK") -- Consider leaving this up to the individual jokers
     end
     -- Add `revert` to the end of `calculate`
     if item.calculate then
@@ -43,9 +42,20 @@ GMAX = {
       item.loc_vars = GMAX.loc_vars
     end
   end,
+  get_gmax_key = function (base_card)
+    return GMAX.evos[base_card.config.center_key]
+  end,
+  get_base_key = function(gmax_card)
+    for base, gmax in pairs(GMAX.evos) do
+      if gmax == gmax_card.config.center_key then
+        return base
+      end
+    end
+  end,
   revert = function(self, card, context)
     if context.end_of_round and context.cardarea == G.jokers then
-      poke_evolve(card, card.config.center.base_key, true)
+      -- TODO: This needs to happen AFTER clearing the blind so we can still get completion stake stickers
+      poke_evolve(card, GMAX.get_base_key(card), true)
     end
     if context.after and context.cardarea == G.jokers then
       card.ability.extra.turns_left = card.ability.extra.turns_left - 1
@@ -55,9 +65,10 @@ GMAX = {
           colour = G.C.agar_gmax,
         })
       else
+        -- Event to make it devolve after scoring visuals are over
         G.E_MANAGER:add_event(Event({
           func = function()
-            poke_evolve(card, card.config.center.base_key, true)
+            poke_evolve(card, GMAX.get_base_key(card), true)
             return true
           end
         }))
@@ -74,3 +85,6 @@ GMAX = {
     return loc_table
   end,
 }
+
+-- key is pre-gmax object key, value is post-gmax object key
+GMAX.evos = GMAX.evos or {} -- (initializing it here so lower priority mods can just copy paste this whole file without overwriting it)

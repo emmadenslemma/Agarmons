@@ -1,15 +1,12 @@
--- G-Max Pikachu 025
-local gmax_pikachu = {
-  name = "gmax_pikachu",
-  base_key = "j_poke_pikachu",
-  pos = { x = 4, y = 7 },
-  soul_pos = { x = 5, y = 7 },
+-- G-Max Meowth 052
+local gmax_meowth = {
+  name = "gmax_meowth",
+  pos = { x = 6, y = 7 },
+  soul_pos = { x = 7, y = 7 },
   config = { extra = {} },
   loc_txt = {
-    name = "Gigantamax Pikachu",
-    text = {
-      "{C:inactive}Wait, it doesn't do anything?"
-    }
+    name = "Gigantamax Meowth",
+    text = {}
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -18,21 +15,26 @@ local gmax_pikachu = {
   rarity = "agar_gmax",
   cost = 10,
   stage = "Gigantamax",
-  ptype = "Lightning",
+  ptype = "Colorless",
   gen = 1,
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
       return {
-        message = localize("agar_gmax_volt_crash_ex"),
+        message = localize("agar_gmax_gold_rush_ex"),
       }
     end
   end,
 }
 
+local init = function()
+  GMAX.evos["j_poke_meowth"] = "j_agar_gmax_meowth"
+end
+
 return {
-  name = "Agarmons G-Max Pikachu",
+  name = "Agarmons G-Max Meowth",
   enabled = agarmons_config.gmax or false,
-  list = { gmax_pikachu }
+  init = init,
+  list = { gmax_meowth }
 }

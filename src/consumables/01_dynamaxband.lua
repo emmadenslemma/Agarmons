@@ -35,14 +35,14 @@ local dynamaxband = {
       target = G.jokers.highlighted[1]
     else
       for _, _card in pairs(G.jokers) do
-        if _card.config.center.gmax_key ~= nil then
+        if GMAX.get_gmax_key(_card) then
           target = _card
           break
         end
       end
     end
 
-    poke_evolve(target, target.config.center.gmax_key, false, localize("agar_dynamax_ex"))
+    poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
 
     card.ability.extra.usable = false
   end,
@@ -61,10 +61,10 @@ local dynamaxband = {
     end
 
     if G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return G.jokers.highlighted[1].config.center.gmax_key ~= nil
+      return GMAX.get_gmax_key(G.jokers.highlighted[1]) ~= nil
     else
       for _, _card in pairs(G.jokers) do
-        if _card.config.center.gmax_key ~= nil then
+        if GMAX.get_gmax_key(_card) then
           return true
         end
       end
@@ -82,6 +82,11 @@ local dynamaxband = {
     return true
   end,
   in_pool = function(self)
+    for _, card in pairs(G.jokers) do
+      if GMAX.get_gmax_key(card) then
+        return true
+      end
+    end
     return false
   end,
 }

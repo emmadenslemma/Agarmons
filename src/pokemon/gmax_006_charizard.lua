@@ -1,7 +1,6 @@
 -- G-Max Charizard 012
 local gmax_charizard = {
   name = "gmax_charizard",
-  base_key = "j_poke_charizard",
   pos = { x = 0, y = 7 },
   soul_pos = { x = 1, y = 7 },
   config = { extra = {} },
@@ -29,8 +28,13 @@ local gmax_charizard = {
   end,
 }
 
+local init = function()
+  GMAX.evos["j_poke_charizard"] = "j_agar_gmax_charizard"
+end
+
 return {
   name = "Agarmons G-Max Charizard",
   enabled = agarmons_config.gmax or false,
+  init = init,
   list = { gmax_charizard }
 }

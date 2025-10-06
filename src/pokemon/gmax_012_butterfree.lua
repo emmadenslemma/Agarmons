@@ -1,10 +1,9 @@
 -- G-Max Butterfree 012
 local gmax_butterfree = {
   name = "gmax_butterfree",
-  base_key = "j_poke_butterfree",
   pos = { x = 2, y = 7 },
   soul_pos = { x = 3, y = 7 },
-  config = { extra = { mult = 120 } },
+  config = { extra = { mult = 100 } },
   loc_txt = {
     name = "Gigantamax Butterfree",
     text = {
@@ -32,8 +31,13 @@ local gmax_butterfree = {
   end,
 }
 
+local init = function()
+  GMAX.evos["j_poke_butterfree"] = "j_agar_gmax_butterfree"
+end
+
 return {
   name = "Agarmons G-Max Butterfree",
   enabled = agarmons_config.gmax or false,
+  init = init,
   list = { gmax_butterfree }
 }
