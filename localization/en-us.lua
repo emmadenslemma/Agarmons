@@ -101,6 +101,7 @@ return {
             agar_gmax_volt_crash_ex = "G-Max Volt Crash!",
             agar_gmax_gold_rush_ex = "G-Max Gold Rush!",
             agar_gmax_chi_strike_ex = "G-Max Chi Strike!",
+            agar_gmax_cuddle_ex = "G-Max Cuddle!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",
