@@ -14,7 +14,7 @@ local gmax_eevee = {
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    local current_Xmult = center.ability.extra.Xmult_mod -- Find out how that Adjacent stuff works
+    local current_Xmult = center.ability.extra.Xmult_mod * #poke_get_adjacent_jokers(center)
     return { vars = { center.ability.extra.Xmult_mod, current_Xmult } }
   end,
   rarity = "agar_gmax",
@@ -26,7 +26,7 @@ local gmax_eevee = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
-      local current_Xmult = card.ability.extra.Xmult_mod * 2
+      local current_Xmult = card.ability.extra.Xmult_mod * #poke_get_adjacent_jokers(card)
       return {
         message = localize("agar_gmax_cuddle_ex"),
         Xmult = current_Xmult,
