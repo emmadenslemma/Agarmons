@@ -34,7 +34,7 @@ local dynamaxband = {
     if #G.jokers.highlighted == 1 then
       target = G.jokers.highlighted[1]
     else
-      for _, _card in pairs(G.jokers) do
+      for _, _card in pairs(G.jokers.cards) do
         if GMAX.get_gmax_key(_card) then
           target = _card
           break
@@ -63,7 +63,7 @@ local dynamaxband = {
     if G.jokers.highlighted and #G.jokers.highlighted == 1 then
       return GMAX.get_gmax_key(G.jokers.highlighted[1]) ~= nil
     else
-      for _, _card in pairs(G.jokers) do
+      for _, _card in pairs(G.jokers.cards) do
         if GMAX.get_gmax_key(_card) then
           return true
         end
@@ -82,7 +82,7 @@ local dynamaxband = {
     return true
   end,
   in_pool = function(self)
-    for _, card in pairs(G.jokers) do
+    for _, card in pairs(G.jokers.cards) do
       if GMAX.get_gmax_key(card) then
         return true
       end
