@@ -1,5 +1,7 @@
 agarmons_config = SMODS.current_mod.config
 
+SMODS.current_mod.optional_features = { retrigger_joker = true }
+
 assert(SMODS.load_file("src/sprites.lua"))()
 assert(SMODS.load_file("src/rarities.lua"))()
 assert(SMODS.load_file("src/pokemon.lua"))()
