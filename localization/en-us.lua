@@ -92,6 +92,9 @@ return {
             agar_innards_out_ex = "Innards Out!",
             agar_dynamax_ex = "Dynamax!",
 
+            agar_turns_left_plural = "turns left",
+            agar_turns_left_singular = "turn left",
+
             -- G-Max Messages
             agar_gmax_wildfire_ex = "G-Max Wildfire!",
             agar_gmax_befuddle_ex = "G-Max Befuddle!",
@@ -131,9 +134,6 @@ return {
         },
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
-
-            agar_turns_left_plural = "turns left",
-            agar_turns_left_singular = "turn left",
 
             agar_x_turns_left_plural_ex = "#1# turns left!",
             agar_x_turns_left_singular_ex = "#1# turn left!",
