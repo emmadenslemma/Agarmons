@@ -2,8 +2,8 @@ local blueorb = {
   name = "blueorb",
   key = "blueorb",
   set = "Spectral",
-  pos = { x = 2, y = 1 },
-  soul_pos = { x = 3, y = 1 },
+  pos = { x = 2, y = 2 },
+  soul_pos = { x = 3, y = 2 },
   helditem = true,
   config = { extra = { usable = true, active = false } },
   loc_txt = {

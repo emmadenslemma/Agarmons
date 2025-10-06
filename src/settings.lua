@@ -40,7 +40,7 @@ SMODS.current_mod.config_tab = function()
           create_toggle { label = localize("agar_enable_groudon"), ref_table = agarmons_config, ref_value = "groudon" },
           -- create_toggle { label = localize("agar_enable_rayquaza"), ref_table = agarmons_config, ref_value = "rayquaza" },
           create_toggle { label = localize("agar_enable_cosmog"), ref_table = agarmons_config, ref_value = "cosmog" },
-          -- create_toggle { label = localize("agar_enable_gmax"), ref_table = agarmons_config, ref_value = "gmax" },
+          create_toggle { label = localize("agar_enable_gmax"), ref_table = agarmons_config, ref_value = "gmax" },
         },
       },
     },
