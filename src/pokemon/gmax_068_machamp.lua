@@ -3,18 +3,18 @@ local gmax_machamp = {
   name = "gmax_machamp",
   pos = { x = 8, y = 7 },
   soul_pos = { x = 9, y = 7 },
-  config = { extra = { Xmult_mod = 0.4, hands = 4, discards = 4 } },
+  config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
     name = "Gigantamax Machamp",
     text = {
-      "{C:white,X:mult}X#3#{} for each remaining hand",
-      "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
+      "{C:white,X:mult}X#3#{}",
+      "Doubles after",
+      "every hand played",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    local current_Xmult = center.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
-    return { vars = { center.ability.extra.Xmult_mod, current_Xmult } }
+    return { vars = { center.ability.extra.Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 12,
@@ -24,14 +24,15 @@ local gmax_machamp = {
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main then
-      local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
-      if current_Xmult > 1 then
-        return {
-          message = localize("agar_gmax_chi_strike_ex"),
-          Xmult = current_Xmult,
-        }
-      end
+    if context.joker_main
+        and card.ability.extra.Xmult > 1 then
+      return {
+        Xmult = card.ability.extra.Xmult
+      }
+    end
+    if context.after and context.cardarea == G.jokers and not context.blueprint
+        and card.ability.extra.turns_left > 1 then
+      card.ability.extra.Xmult = card.ability.extra.Xmult * 2
     end
   end,
   -- `add_to/remove_from_deck` Stolen from regular Machamp to keep your hands during dynamax
