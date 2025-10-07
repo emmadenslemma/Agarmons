@@ -7,7 +7,7 @@ local gmax_charizard = {
   loc_txt = {
     name = "Gigantamax Charizard",
     text = {
-      "{C:white,X:mult}X#3#{} per discard",
+      "Gains {C:white,X:mult}X#3#{} per discard",
       "used this round",
       "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
     }
