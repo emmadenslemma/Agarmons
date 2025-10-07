@@ -15,7 +15,7 @@ local gmax_pikachu = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
-    return { vars = { center.ability.extra.money, interest_gap } }
+    return { vars = { center.ability.extra.money, interest_gap < 0 and interest_gap or 0 } }
   end,
   rarity = "agar_gmax",
   cost = 10,

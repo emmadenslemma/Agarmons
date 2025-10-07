@@ -7,8 +7,7 @@ local gmax_machamp = {
   loc_txt = {
     name = "Gigantamax Machamp",
     text = {
-      "{C:white,X:mult}X#3#{} Mult",
-      "Doubles after",
+      "{C:white,X:mult}X#3#{} Mult, doubles after",
       "every hand played",
     }
   },
