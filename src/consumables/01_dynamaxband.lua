@@ -12,7 +12,7 @@ local sprite_pos = {
 local function update_sprite(card)
   if card.ability.extra.usable then
     card.children.center:set_sprite_pos(sprite_pos.base.usable)
-    if card.ability.extra.targeting then
+    if card.targeting then
       card.children.floating_sprite:set_sprite_pos(sprite_pos.soul.active)
     else
       card.children.floating_sprite:set_sprite_pos(sprite_pos.soul.inactive)
@@ -32,13 +32,13 @@ SMODS.current_mod.calculate = function(self, context)
   if context.first_hand_drawn then
     SMODS.find_card("c_agar_dynamaxband")
     for _, dynamaxband in pairs(SMODS.find_card("c_agar_dynamaxband")) do
-      local target = dynamaxband.ability.extra.targeting
+      local target = dynamaxband.targeting
       if target and not target.getting_sliced then
         poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
         dynamaxband.ability.extra.usable = false
         dynamaxband:juice_up()
       else
-        dynamaxband.ability.extra.targeting = nil
+        dynamaxband.targeting = nil
       end
 
       update_sprite(dynamaxband)
@@ -54,7 +54,7 @@ local dynamaxband = {
   key = "dynamaxband",
   set = "Spectral",
   helditem = true,
-  config = { extra = { usable = true, targeting = nil } },
+  config = { extra = { usable = true } },
   pos = sprite_pos.base.usable,
   soul_pos = sprite_pos.soul.inactive,
   loc_txt = {
@@ -73,10 +73,10 @@ local dynamaxband = {
   },
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = { set = 'Other', key = 'endless' }
-    if center.ability.extra.targeting and center.ability.extra.targeting.config then
+    if center.targeting then
       return {
         key = "c_agar_dynamaxband_targeting",
-        vars = { localize { type = "name_text", set = "Joker", key = center.ability.extra.targeting.config.center_key } }
+        vars = { localize { type = "name_text", set = "Joker", key = center.targeting.config.center_key } }
       }
     end
   end,
@@ -88,8 +88,8 @@ local dynamaxband = {
   unlocked = true,
   discovered = true,
   use = function(self, card)
-    if card.ability.extra.targeting then
-      card.ability.extra.targeting = nil
+    if card.targeting then
+      card.targeting = nil
     else
       local target
       if #G.jokers.highlighted == 1 then
@@ -104,7 +104,7 @@ local dynamaxband = {
       end
 
       if not G.GAME.blind.in_blind then
-        card.ability.extra.targeting = target
+        card.targeting = target
       else
         poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
         card.ability.extra.usable = false
@@ -146,8 +146,8 @@ local dynamaxband = {
       card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_reset") })
     end
     if context.selling_card then
-      if card.ability.extra.targeting == context.card then
-        card.ability.extra.targeting = nil
+      if card.targeting == context.card then
+        card.targeting = nil
         update_sprite(card)
       end
     end
