@@ -21,7 +21,7 @@ local gmax_meowth = {
     return { vars = { center.ability.extra.money1, num, dem } }
   end,
   rarity = "agar_gmax",
-  cost = 10,
+  cost = 8,
   stage = "Gigantamax",
   ptype = "Colorless",
   gen = 1,

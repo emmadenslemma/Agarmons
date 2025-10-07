@@ -18,7 +18,7 @@ local gmax_pikachu = {
     return { vars = { center.ability.extra.money, interest_gap < 0 and interest_gap or 0 } }
   end,
   rarity = "agar_gmax",
-  cost = 10,
+  cost = 8,
   stage = "Gigantamax",
   ptype = "Lightning",
   gen = 1,

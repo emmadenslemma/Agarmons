@@ -15,7 +15,7 @@ local gmax_eevee = {
     return { vars = { center.ability.extra.Xmult } }
   end,
   rarity = "agar_gmax",
-  cost = 12,
+  cost = 8,
   stage = "Gigantamax",
   ptype = "Colorless",
   gen = 1,
