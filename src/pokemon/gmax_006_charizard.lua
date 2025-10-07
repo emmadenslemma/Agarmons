@@ -29,7 +29,6 @@ local gmax_charizard = {
       local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.discards_used
       if current_Xmult > 1 then
         return {
-          message = localize("agar_gmax_wildfire_ex"),
           Xmult = current_Xmult,
         }
       end

@@ -24,8 +24,7 @@ local gmax_butterfree = {
   calculate = function(self, card, context)
     if context.joker_main then
       return {
-        message = localize("agar_gmax_befuddle_ex"),
-        mult = card.ability.extra.mult
+        mult = card.ability.extra.mult,
       }
     end
   end,

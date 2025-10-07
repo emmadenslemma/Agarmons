@@ -30,7 +30,6 @@ local gmax_pikachu = {
       if interest_gap > 0 then
         return {
           dollars = interest_gap * card.ability.extra.money,
-          message = localize("agar_gmax_volt_crash_ex"),
         }
       end
     end
