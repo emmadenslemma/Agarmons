@@ -15,7 +15,7 @@ for _, file in ipairs(files) do
           GMAX.preload(item)
         end
 
-        local custom_atlas = item.atlas and string.find(item.atlas, "agar")
+        local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
         if not custom_atlas then
           poke_load_atlas(item)
