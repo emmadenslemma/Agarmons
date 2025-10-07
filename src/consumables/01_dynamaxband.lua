@@ -73,7 +73,7 @@ local dynamaxband = {
   },
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = { set = 'Other', key = 'endless' }
-    if center.ability.extra.targeting then
+    if center.ability.extra.targeting and center.ability.extra.targeting.config then
       return {
         key = "c_agar_dynamaxband_targeting",
         vars = { localize { type = "name_text", set = "Joker", key = center.ability.extra.targeting.config.center_key } }
