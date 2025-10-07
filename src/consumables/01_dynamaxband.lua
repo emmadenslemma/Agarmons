@@ -1,14 +1,62 @@
+local sprite_pos = {
+  base = {
+    usable = { x = 0, y = 0 },
+    recharging = { x = 0, y = 1 },
+  },
+  soul = {
+    inactive = { x = 1, y = 0 },
+    active = { x = 1, y = 1 },
+  },
+}
+
+local function update_sprite(card)
+  if card.ability.extra.usable then
+    card.children.center:set_sprite_pos(sprite_pos.base.usable)
+    if card.ability.extra.targeting then
+      card.children.floating_sprite:set_sprite_pos(sprite_pos.soul.active)
+    else
+      card.children.floating_sprite:set_sprite_pos(sprite_pos.soul.inactive)
+    end
+  else
+    card.children.center:set_sprite_pos(sprite_pos.base.recharging)
+    card.children.floating_sprite:set_sprite_pos(sprite_pos.soul.inactive)
+  end
+end
+
+local calculate_ref = SMODS.current_mod.calculate
+
+SMODS.current_mod.calculate = function(self, context)
+  if calculate_ref then
+    calculate_ref(self, context)
+  end
+  if context.first_hand_drawn then
+    SMODS.find_card("c_agar_dynamaxband")
+    for _, dynamaxband in pairs(SMODS.find_card("c_agar_dynamaxband")) do
+      local target = dynamaxband.ability.extra.targeting
+      if target and not target.getting_sliced then
+        poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
+        dynamaxband.ability.extra.usable = false
+        dynamaxband:juice_up()
+      else
+        dynamaxband.ability.extra.targeting = nil
+      end
+
+      update_sprite(dynamaxband)
+    end
+  end
+end
+
 -- Activate to """mega evolve""" to a Gmax pokemon for 3 ~~turns~~ hands
 -- once per round use
--- Issues: Having to use it on the same mon repeatedly - have it auto-use on entering blind?
---   what happens if it's already Gmaxed? can we un-gmax at the end of blind? test if stake stickers still apply
+-- Issues: Gmax pokemon revert before you can stake sticker them. Bummer.
 local dynamaxband = {
   name = "dynamaxband",
   key = "dynamaxband",
   set = "Spectral",
   helditem = true,
-  config = { extra = { usable = true } },
-  pos = { x = 0, y = 0 },
+  config = { extra = { usable = true, targeting = nil } },
+  pos = sprite_pos.base.usable,
+  soul_pos = sprite_pos.soul.inactive,
   loc_txt = {
     name = "Dynamax Band",
     text = {
@@ -16,11 +64,21 @@ local dynamaxband = {
       "{br:2}ERROR - CONTACT STEAK",
       "{C:attention}Dynamaxes{} a Pokemon",
       "for the next {C:attention}3{} hands",
+      "{br:2}ERROR - CONTACT STEAK",
+      "Targets a Joker to",
+      "{C:attention}Dynamax{} automatically if",
+      "used outside of a blind",
       "{C:inactive}(Usable once per round)",
     },
   },
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = { set = 'Other', key = 'endless' }
+    if center.ability.extra.targeting then
+      return {
+        key = "c_agar_dynamaxband_targeting",
+        vars = { localize { type = "name_text", set = "Joker", key = center.ability.extra.targeting.config.center_key } }
+      }
+    end
   end,
   atlas = "AgarmonsConsumables",
   cost = 4,
@@ -30,21 +88,30 @@ local dynamaxband = {
   unlocked = true,
   discovered = true,
   use = function(self, card)
-    local target
-    if #G.jokers.highlighted == 1 then
-      target = G.jokers.highlighted[1]
+    if card.ability.extra.targeting then
+      card.ability.extra.targeting = nil
     else
-      for _, _card in pairs(G.jokers.cards) do
-        if GMAX.get_gmax_key(_card) then
-          target = _card
-          break
+      local target
+      if #G.jokers.highlighted == 1 then
+        target = G.jokers.highlighted[1]
+      else
+        for _, _card in pairs(G.jokers.cards) do
+          if GMAX.get_gmax_key(_card) then
+            target = _card
+            break
+          end
         end
+      end
+
+      if not G.GAME.blind.in_blind then
+        card.ability.extra.targeting = target
+      else
+        poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
+        card.ability.extra.usable = false
       end
     end
 
-    poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
-
-    card.ability.extra.usable = false
+    update_sprite(card)
   end,
   can_use = function(self, card)
     -- Conditionals taken from Pokermon's Mega Stone
@@ -75,7 +142,14 @@ local dynamaxband = {
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
       card.ability.extra.usable = true
+      update_sprite(card)
       card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_reset") })
+    end
+    if context.selling_card then
+      if card.ability.extra.targeting == context.card then
+        card.ability.extra.targeting = nil
+        update_sprite(card)
+      end
     end
   end,
   keep_on_use = function(self, card)

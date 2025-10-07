@@ -41,6 +41,19 @@ return {
             },
         },
         Spectral = {
+            c_agar_dynamaxband_targeting = {
+                name = "Dynamax Band",
+                text = {
+                    "{C:attention}Reusable{}",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Dynamaxes{} a Pokemon",
+                    "for the next {C:attention}3{} hands",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Currently targeting {C:enhanced}#1#{}",
+                    "Use again to stop targeting",
+                    "{C:inactive}(Usable once per round)",
+                },
+            },
             c_agar_redorb_active = {
                 name = "Red Orb",
                 text = {
@@ -64,9 +77,9 @@ return {
         },
         Other = {
             gmax_poke = {
-                name = "Gigantamax",
+                name = "Gigantamax Factor",
                 text = {
-                    "Can {C:attention}Dynamax{} with", "a {C:attention}Dynamax Band{}"
+                    "Can {C:attention}Gigantamax{} with", "a {C:attention}Dynamax Band{}"
                 }
             },
         },
