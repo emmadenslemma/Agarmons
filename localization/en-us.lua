@@ -105,6 +105,9 @@ return {
             agar_innards_out_ex = "Innards Out!",
             agar_dynamax_ex = "Dynamax!",
 
+            cards_singular = "card",
+            cards_plural = "cards",
+
             agar_turns_left_plural = "hands left",
             agar_turns_left_singular = "hand left",
 
@@ -115,6 +118,7 @@ return {
             agar_gmax_gold_rush_ex = "G-Max Gold Rush!",
             agar_gmax_chi_strike_ex = "G-Max Chi Strike!",
             agar_gmax_cuddle_ex = "G-Max Cuddle!",
+            agar_gmax_meltdown_ex = "G-Max Meltdown!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",
