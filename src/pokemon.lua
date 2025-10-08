@@ -1,5 +1,8 @@
 local subdir = "src/pokemon/"
 
+-- Required for settings.lua
+AGAR.enabled = {}
+
 local function load_pokemon(item)
   if item.rarity == "agar_gmax" then
     AGAR.GMAX.preload(item)
@@ -40,14 +43,23 @@ local function load_pokemon_folder(folder)
         poke:init()
       end
 
+      local family = {}
+
       if poke.list and #poke.list > 0 then
         for _, item in ipairs(poke.list) do
+          family[#family + 1] = item.name
+
           if poke.enabled then
+            AGAR.enabled[#AGAR.enabled + 1] = poke.name
             load_pokemon(item)
           else
             load_pokemon_shell(item)
           end
         end
+      end
+
+      if #family > 1 then
+        pokermon.add_family(family)
       end
     end
   end
