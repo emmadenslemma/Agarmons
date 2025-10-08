@@ -18,7 +18,7 @@ local function load_pokemon_folder(folder)
         if poke.list and #poke.list > 0 then
           for _, item in ipairs(poke.list) do
             if item.rarity == "agar_gmax" then
-              GMAX.preload(item)
+              AGAR.GMAX.preload(item)
             end
 
             local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")

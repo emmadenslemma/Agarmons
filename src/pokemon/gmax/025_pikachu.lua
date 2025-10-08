@@ -37,7 +37,7 @@ local gmax_pikachu = {
 }
 
 local init = function()
-  GMAX.evos["j_poke_pikachu"] = "j_agar_gmax_pikachu"
+  AGAR.GMAX.evos["j_poke_pikachu"] = "j_agar_gmax_pikachu"
 end
 
 return {
