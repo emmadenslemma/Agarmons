@@ -104,6 +104,8 @@ return {
             agar_shore_up_ex = "Shore Up!",
             agar_innards_out_ex = "Innards Out!",
             agar_dynamax_ex = "Dynamax!",
+            agar_geomancy_charging = "Absorbing...",
+            agar_geomancy_ex = "Geomancy!",
 
             cards_singular = "card",
             cards_plural = "cards",

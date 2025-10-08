@@ -5,6 +5,8 @@ return {
   kyogre = true,
   groudon = true,
   rayquaza = true,
+  xerneas = true,
+  yveltal = false,
   dewpider = false,
   sandygast = false,
   pyukumuku = true,
