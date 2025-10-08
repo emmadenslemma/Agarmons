@@ -30,7 +30,7 @@ local gmax_gengar = {
       }
     end
     -- Apply Gengar's base effect
-    SMODS.Joker.obj_table.j_poke_gengar.calculate(self, card, context)
+    return SMODS.Joker.obj_table.j_poke_gengar.calculate(self, card, context)
   end,
 }
 
