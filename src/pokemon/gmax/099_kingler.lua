@@ -23,7 +23,8 @@ local gmax_kingler = {
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play then
+    if context.individual and context.cardarea == G.play
+        and context.other_card:is_face() then
       context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + card.ability.extra.chips
       return {
         message = localize('k_upgrade_ex'),
