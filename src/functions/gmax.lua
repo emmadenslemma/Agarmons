@@ -1,14 +1,18 @@
+local gmax = {}
+
+-- key is pre-gmax object key, value is post-gmax object key
+gmax.evos = gmax.evos or {}
+
 -- Add "Can Dynamax" tooltip to existing Pokemon
 local type_tooltip_ref = type_tooltip
 type_tooltip = function(self, info_queue, center)
   type_tooltip_ref(self, info_queue, center)
-  if pokermon_config.detailed_tooltips and GMAX.get_gmax_key(center) then
+  if pokermon_config.detailed_tooltips and gmax.get_gmax_key(center) then
     info_queue[#info_queue + 1] = { set = 'Other', key = 'gmax_poke' }
   end
 end
 
-GMAX = {
-  preload = function(item)
+gmax.preload = function(item)
     -- Required to block Transformation
     item.aux_poke = true
     -- Add `turns_left` to extra
@@ -25,44 +29,46 @@ GMAX = {
       local calculate_ref = item.calculate
       item.calculate = function(self, card, context)
         local ret, no_eff = calculate_ref(self, card, context)
-        GMAX.revert(self, card, context)
+        gmax.revert(self, card, context)
         return ret, no_eff
       end
     else
-      item.calculate = GMAX.revert
+      item.calculate = gmax.revert
     end
     -- Add  `loc_vars` to.. loc_vars
     if item.loc_vars then
       local loc_vars_ref = item.loc_vars
       item.loc_vars = function(self, info_queue, center)
         local loc_table = loc_vars_ref(self, info_queue, center)
-        return GMAX.loc_vars(self, info_queue, center, loc_table)
+        return gmax.loc_vars(self, info_queue, center, loc_table)
       end
     else
-      item.loc_vars = GMAX.loc_vars
+      item.loc_vars = gmax.loc_vars
     end
-  end,
-  get_gmax_key = function(base_card)
+  end
+
+  gmax.get_gmax_key = function(base_card)
     return base_card
         and base_card.config
-        and GMAX.evos[base_card.config.center_key]
+        and gmax.evos[base_card.config.center_key]
         or nil
-  end,
-  get_base_key = function(gmax_card)
+  end
+  gmax.get_base_key = function(gmax_card)
     if gmax_card and gmax_card.config then
-      for base, gmax in pairs(GMAX.evos) do
+      for base, gmax in pairs(gmax.evos) do
         if gmax == gmax_card.config.center_key then
           return base
         end
       end
     end
     return nil
-  end,
-  revert = function(self, card, context)
+  end
+
+  gmax.revert = function(self, card, context)
     if context.end_of_round and context.cardarea == G.jokers then
       -- TODO: This needs to happen AFTER clearing the blind so we can still get completion stake stickers
       --   but BEFORE end of round tallies so we can get Pikachu/Gengar progress
-      poke_evolve(card, GMAX.get_base_key(card), true)
+      poke_evolve(card, gmax.get_base_key(card), true)
     end
     if context.after and context.cardarea == G.jokers then
       card.ability.extra.turns_left = card.ability.extra.turns_left - 1
@@ -75,14 +81,15 @@ GMAX = {
         -- Event to make it devolve after scoring visuals are over
         G.E_MANAGER:add_event(Event({
           func = function()
-            poke_evolve(card, GMAX.get_base_key(card), true)
+            poke_evolve(card, gmax.get_base_key(card), true)
             return true
           end
         }))
       end
     end
-  end,
-  loc_vars = function(self, info_queue, center, loc_table)
+  end
+
+  gmax.loc_vars = function(self, info_queue, center, loc_table)
     loc_table = loc_table or {}
     loc_table.vars = loc_table.vars or {}
 
@@ -90,8 +97,10 @@ GMAX = {
     table.insert(loc_table.vars, 2, localize(center.ability.extra.turns_left == 1 and "agar_turns_left_singular" or "agar_turns_left_plural"))
 
     return loc_table
-  end,
-}
+  end
 
--- key is pre-gmax object key, value is post-gmax object key
-GMAX.evos = GMAX.evos or {} -- (initializing it here so lower priority mods can just copy paste this whole file without overwriting it)
+return {
+  name = "Agarmons GMAX Functions",
+  key = "GMAX",
+  value = gmax
+}
