@@ -78,7 +78,7 @@ local dynamaxband = {
     if center.targeting then
       return {
         key = "c_agar_dynamaxband_targeting",
-        vars = { localize { type = "name_text", set = "Joker", key = center.targeting.config.center_key } }
+        vars = { localize { type = "name_text", set = "Joker", key = center.targeting.config.center.key } }
       }
     end
   end,

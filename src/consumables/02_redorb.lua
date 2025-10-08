@@ -59,7 +59,7 @@ local redorb = {
     local target_key = card.ability.extra.active and "j_agar_primal_groudon" or "j_agar_groudon"
 
     if G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return G.jokers.highlighted[1].config.center_key == target_key
+      return G.jokers.highlighted[1].config.center.key == target_key
     else
       return next(SMODS.find_card(target_key, true)) ~= nil
     end

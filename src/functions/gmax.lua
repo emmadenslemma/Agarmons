@@ -50,13 +50,13 @@ gmax.preload = function(item)
   gmax.get_gmax_key = function(base_card)
     return base_card
         and base_card.config
-        and gmax.evos[base_card.config.center_key]
+        and gmax.evos[base_card.config.center.key]
         or nil
   end
   gmax.get_base_key = function(gmax_card)
     if gmax_card and gmax_card.config then
       for base, gmax in pairs(gmax.evos) do
-        if gmax == gmax_card.config.center_key then
+        if gmax == gmax_card.config.center.key then
           return base
         end
       end

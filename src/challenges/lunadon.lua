@@ -35,15 +35,15 @@ SMODS.current_mod.calculate = function(self, context)
     for _, card in pairs(G.jokers.cards) do
       local is_luna = false
       for _, luna in pairs(lunas) do
-        if card.config.center_key == luna then
+        if card.config.center.key == luna then
           is_luna = true
           break
         end
       end
       if is_luna then
-        prev_luna = prev_luna or card.config.center_key
+        prev_luna = prev_luna or card.config.center.key
       else
-        prev_don = prev_luna or card.config.center_key
+        prev_don = prev_luna or card.config.center.key
       end
       G.E_MANAGER:add_event(Event({
         trigger = 'after',
