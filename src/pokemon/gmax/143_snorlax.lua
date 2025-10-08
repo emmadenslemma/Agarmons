@@ -3,7 +3,7 @@ local gmax_snorlax = {
   name = "gmax_snorlax",
   pos = { x = 2, y = 8 },
   soul_pos = { x = 3, y = 8 },
-  config = { extra = { money_mod = 5, Xmult_mod = 0.2, Xmult = 1, no_holding = true } },
+  config = { extra = { money_mod = 4, Xmult_mod = 0.2, Xmult = 1, no_holding = true } },
   loc_txt = {
     name = "Gigantamax Snorlax",
     text = {
