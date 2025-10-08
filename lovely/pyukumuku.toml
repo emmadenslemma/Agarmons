@@ -1,0 +1,26 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# [Card:get_chip_mult] Get Lucky Mult procs
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+position = "after"
+match_indent = true
+pattern = '''self.lucky_trigger = true
+ret = ret + self.ability.mult'''
+payload = '''
+self.lucky_mult_trigger = true'''
+
+# [Card:get_p_dollars] Get Lucky Money procs
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+position = "after"
+match_indent = true
+pattern = '''self.lucky_trigger = true
+ret = ret +  self.ability.p_dollars'''
+payload = '''
+self.lucky_money_trigger = true'''
