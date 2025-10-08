@@ -1,3 +1,5 @@
+local gmax = AGAR.GMAX
+
 local sprite_pos = {
   base = {
     usable = { x = 0, y = 0 },
@@ -34,7 +36,7 @@ SMODS.current_mod.calculate = function(self, context)
     for _, dynamaxband in pairs(SMODS.find_card("c_agar_dynamaxband")) do
       local target = dynamaxband.targeting
       if target and not target.getting_sliced then
-        poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
+        poke_evolve(target, gmax.get_gmax_key(target), false, localize("agar_dynamax_ex"))
         dynamaxband.ability.extra.usable = false
         dynamaxband:juice_up()
       else
@@ -96,7 +98,7 @@ local dynamaxband = {
         target = G.jokers.highlighted[1]
       else
         for _, _card in pairs(G.jokers.cards) do
-          if GMAX.get_gmax_key(_card) then
+          if gmax.get_gmax_key(_card) then
             target = _card
             break
           end
@@ -106,7 +108,7 @@ local dynamaxband = {
       if not G.GAME.blind.in_blind then
         card.targeting = target
       else
-        poke_evolve(target, GMAX.get_gmax_key(target), false, localize("agar_dynamax_ex"))
+        poke_evolve(target, gmax.get_gmax_key(target), false, localize("agar_dynamax_ex"))
         card.ability.extra.usable = false
       end
     end
@@ -128,10 +130,10 @@ local dynamaxband = {
     end
 
     if G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return GMAX.get_gmax_key(G.jokers.highlighted[1]) ~= nil
+      return gmax.get_gmax_key(G.jokers.highlighted[1]) ~= nil
     else
       for _, _card in pairs(G.jokers.cards) do
-        if GMAX.get_gmax_key(_card) then
+        if gmax.get_gmax_key(_card) then
           return true
         end
       end
@@ -157,7 +159,7 @@ local dynamaxband = {
   end,
   in_pool = function(self)
     for _, card in pairs(G.jokers.cards) do
-      if GMAX.get_gmax_key(card) then
+      if gmax.get_gmax_key(card) then
         return true
       end
     end
