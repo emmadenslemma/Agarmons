@@ -55,7 +55,7 @@ local gmax_machamp = {
 }
 
 local init = function()
-  GMAX.evos["j_poke_machamp"] = "j_agar_gmax_machamp"
+  AGAR.GMAX.evos["j_poke_machamp"] = "j_agar_gmax_machamp"
   -- edit get_family_keys to let us insert gmax into existing families
   -- for _, family in pairs(pokermon.family) do
   --   if family[1] == "machop" then

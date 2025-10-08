@@ -31,7 +31,7 @@ local gmax_butterfree = {
 }
 
 local init = function()
-  GMAX.evos["j_poke_butterfree"] = "j_agar_gmax_butterfree"
+  AGAR.GMAX.evos["j_poke_butterfree"] = "j_agar_gmax_butterfree"
 end
 
 return {

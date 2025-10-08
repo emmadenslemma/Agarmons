@@ -45,7 +45,7 @@ local gmax_meowth = {
 }
 
 local init = function()
-  GMAX.evos["j_poke_meowth"] = "j_agar_gmax_meowth"
+  AGAR.GMAX.evos["j_poke_meowth"] = "j_agar_gmax_meowth"
 end
 
 return {

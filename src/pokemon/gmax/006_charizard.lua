@@ -46,7 +46,7 @@ local gmax_charizard = {
 }
 
 local init = function()
-  GMAX.evos["j_poke_charizard"] = "j_agar_gmax_charizard"
+  AGAR.GMAX.evos["j_poke_charizard"] = "j_agar_gmax_charizard"
 end
 
 return {
