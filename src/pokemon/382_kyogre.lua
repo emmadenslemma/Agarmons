@@ -131,13 +131,8 @@ local primal_kyogre = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "kyogre", "primal_kyogre" }
-end
-
 return {
   name = "Agarmons Kyogre",
   enabled = agarmons_config.kyogre or false,
-  init = init,
   list = { kyogre, primal_kyogre }
 }

@@ -74,13 +74,8 @@ local hatterene = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "hatenna", "hattrem", "hatterene" }
-end
-
 return {
   name = "Agarmons Hatenna Evo Line",
   enabled = agarmons_config.hatenna or false,
-  init = init,
   list = { hatenna, hattrem, hatterene }
 }

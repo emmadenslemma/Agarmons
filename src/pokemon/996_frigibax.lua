@@ -127,13 +127,8 @@ local baxcalibur = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "frigibax", "arctibax", "baxcalibur" }
-end
-
 return {
   name = "Agarmons Frigibax Evo Line",
   enabled = agarmons_config.frigibax or false,
-  init = init,
   list = { frigibax, arctibax, baxcalibur }
 }

@@ -54,13 +54,8 @@ local mega_rayquaza = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "rayquaza", "mega_rayquaza" }
-end
-
 return {
   name = "Agarmons Rayquaza",
   enabled = agarmons_config.rayquaza or false,
-  init = init,
   list = { rayquaza, mega_rayquaza }
 }

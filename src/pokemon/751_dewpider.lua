@@ -94,13 +94,8 @@ local araquanid = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "dewpider", "araquanid" }
-end
-
 return {
   name = "Agarmons Dewpider Evo Line",
   enabled = agarmons_config.dewpider or false,
-  init = init,
   list = { dewpider, araquanid }
 }

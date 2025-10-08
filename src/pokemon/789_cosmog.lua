@@ -396,8 +396,6 @@ local lunala = {
 }
 
 local init = function()
-  pokermon.add_family { "cosmog", "cosmoem", "solgaleo", "lunala" }
-
   local applies_splash_ref = applies_splash
   function applies_splash()
     return applies_splash_ref() or

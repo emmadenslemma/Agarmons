@@ -114,8 +114,6 @@ local palossand = {
 }
 
 local init = function()
-  pokermon.add_family { "sandygast", "palossand" }
-
   local reset_game_globals_ref = SMODS.current_mod.reset_game_globals
 
   SMODS.current_mod.reset_game_globals = function(run_start)

@@ -131,13 +131,8 @@ local walrein = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "spheal", "sealeo", "walrein" }
-end
-
 return {
   name = "Agarmons Spheal Evo Line",
   enabled = agarmons_config.spheal or false,
-  init = init,
   list = { spheal, sealeo, walrein }
 }

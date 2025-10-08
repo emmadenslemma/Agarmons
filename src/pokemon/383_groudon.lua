@@ -131,13 +131,8 @@ local primal_groudon = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "groudon", "primal_groudon" }
-end
-
 return {
   name = "Agarmons Groudon",
   enabled = agarmons_config.groudon or false,
-  init = init,
   list = { groudon, primal_groudon }
 }
