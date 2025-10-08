@@ -1,5 +1,30 @@
 local subdir = "src/pokemon/"
 
+local function load_pokemon(item)
+  if item.rarity == "agar_gmax" then
+    AGAR.GMAX.preload(item)
+  end
+
+  local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
+
+  if not custom_atlas then
+    poke_load_atlas(item)
+    poke_load_sprites(item)
+  end
+
+  pokermon.Pokemon(item, "agar", custom_atlas)
+end
+
+local function load_pokemon_shell(item)
+  item.key = "shell_" .. item.name
+  item.is_shell = true
+  item.no_collection = true
+  item.custom_pool_func = true
+  item.in_pool = function() end
+  load_pokemon(item)
+  item.discovered = true
+end
+
 local function load_pokemon_folder(folder)
   local files = NFS.getDirectoryItems(SMODS.current_mod.path .. folder)
 
@@ -10,25 +35,17 @@ local function load_pokemon_folder(folder)
     if file_type ~= "directory" and file_type ~= "symlink" then
       local poke = assert(SMODS.load_file(folder .. filename))()
 
-      if poke.enabled then
-        if poke.init then
-          poke:init()
-        end
+      -- init contains functions for disabling conflicts from other mods et. al so we skip when loading shells
+      if poke.enabled and poke.init then
+        poke:init()
+      end
 
-        if poke.list and #poke.list > 0 then
-          for _, item in ipairs(poke.list) do
-            if item.rarity == "agar_gmax" then
-              AGAR.GMAX.preload(item)
-            end
-
-            local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
-
-            if not custom_atlas then
-              poke_load_atlas(item)
-              poke_load_sprites(item)
-            end
-
-            pokermon.Pokemon(item, "agar", custom_atlas)
+      if poke.list and #poke.list > 0 then
+        for _, item in ipairs(poke.list) do
+          if poke.enabled then
+            load_pokemon(item)
+          else
+            load_pokemon_shell(item)
           end
         end
       end
