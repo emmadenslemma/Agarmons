@@ -112,7 +112,9 @@ return {
             agar_turns_left_singular = "hand left",
 
             -- G-Max Messages
+            agar_gmax_vine_lash_ex = "G-Max Vine Lash!",
             agar_gmax_wildfire_ex = "G-Max Wildfire!",
+            agar_gmax_cannonade_ex = "G-Max Cannonade!",
             agar_gmax_befuddle_ex = "G-Max Befuddle!",
             agar_gmax_volt_crash_ex = "G-Max Volt Crash!",
             agar_gmax_gold_rush_ex = "G-Max Gold Rush!",

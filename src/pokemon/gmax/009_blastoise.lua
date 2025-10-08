@@ -8,7 +8,7 @@ local gmax_blastoise = {
     name = "Gigantamax Blastoise",
     text = {
       "Every hand played",
-      "gives {C:blue}+#3#{} Hands"
+      "gives {C:blue}+#3#{} hand"
     }
   },
   loc_vars = function(self, info_queue, center)
