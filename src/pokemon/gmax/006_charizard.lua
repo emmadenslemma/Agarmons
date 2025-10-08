@@ -35,14 +35,8 @@ local gmax_charizard = {
     end
   end,
   -- `add_to/remove_from_deck` Stolen from regular Charizard to keep your discard during dynamax
-  add_to_deck = function(self, card, from_debuff)
-    G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
-    ease_discard(card.ability.extra.d_size)
-  end,
-  remove_from_deck = function(self, card, from_debuff)
-    G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
-    ease_discard(-card.ability.extra.d_size)
-  end,
+  add_to_deck = SMODS.Joker.obj_table.j_poke_charizard.add_to_deck,
+  remove_from_deck = SMODS.Joker.obj_table.j_poke_charizard.remove_from_deck,
 }
 
 local init = function()
