@@ -35,23 +35,8 @@ local gmax_machamp = {
     end
   end,
   -- `add_to/remove_from_deck` Stolen from regular Machamp to keep your hands during dynamax
-  add_to_deck = function(self, card, from_debuff)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
-    G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
-    if not from_debuff then
-      ease_hands_played(card.ability.extra.hands)
-    end
-    ease_discard(-card.ability.extra.discards)
-  end,
-  remove_from_deck = function(self, card, from_debuff)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
-    G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
-    local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
-    if to_decrease > 0 then
-      ease_hands_played(-to_decrease)
-    end
-    ease_discard(card.ability.extra.discards)
-  end
+  add_to_deck = SMODS.Joker.obj_table.j_poke_machamp.add_to_deck,
+  remove_from_deck = SMODS.Joker.obj_table.j_poke_machamp.remove_from_deck,
 }
 
 local init = function()
