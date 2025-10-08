@@ -65,9 +65,7 @@ gmax.preload = function(item)
   end
 
   gmax.revert = function(self, card, context)
-    if context.end_of_round and context.cardarea == G.jokers then
-      -- TODO: This needs to happen AFTER clearing the blind so we can still get completion stake stickers
-      --   but BEFORE end of round tallies so we can get Pikachu/Gengar progress
+    if context.round_eval then
       poke_evolve(card, gmax.get_base_key(card), true)
     end
     if context.after and context.cardarea == G.jokers then
