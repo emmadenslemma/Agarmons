@@ -50,7 +50,7 @@ local function load_pokemon_folder(folder)
           family[#family + 1] = item.name
 
           if poke.enabled then
-            AGAR.enabled[#AGAR.enabled + 1] = poke.name
+            AGAR.enabled[item.name] = true
             load_pokemon(item)
           else
             load_pokemon_shell(item)
