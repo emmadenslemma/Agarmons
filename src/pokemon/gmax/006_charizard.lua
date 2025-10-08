@@ -1,4 +1,4 @@
--- G-Max Charizard 012
+-- G-Max Charizard 006
 local gmax_charizard = {
   name = "gmax_charizard",
   pos = { x = 0, y = 7 },
