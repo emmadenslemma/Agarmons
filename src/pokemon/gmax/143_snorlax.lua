@@ -3,16 +3,18 @@ local gmax_snorlax = {
   name = "gmax_snorlax",
   pos = { x = 2, y = 8 },
   soul_pos = { x = 3, y = 8 },
-  config = { extra = { Xmult = 1 } },
+  config = { extra = { money_mod = 5, Xmult_mod = 0.2, Xmult = 1, no_holding = true } },
   loc_txt = {
     name = "Gigantamax Snorlax",
     text = {
-      "{C:inactive}Does nothing (yet!)"
+      "{C:white,X:mult}X#3#{} Mult. Every hand",
+      "adds {C:money}$#4#{} of sell value",
+      "to leftmost Joker",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = {} }
+    return { vars = { center.ability.extra.Xmult, center.ability.extra.money_mod } }
   end,
   rarity = "agar_gmax",
   cost = 12,
@@ -21,7 +23,29 @@ local gmax_snorlax = {
   gen = 1,
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
+  poke_custom_values_to_keep = { "no_holding" },
   calculate = function(self, card, context)
+    if context.before and context.cardarea == G.jokers then
+      local target = G.jokers.cards[1]
+
+      target.ability.extra_value = target.ability.extra_value + card.ability.extra.money_mod
+      target:set_cost()
+
+      -- Event to align with the message
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          target:juice_up()
+          return true
+        end
+      }))
+
+      return {
+        message = localize("agar_gmax_replenish_ex"),
+        colour = G.ARGS.LOC_COLOURS.agar_gmax,
+      }
+    end
+    -- Apply Snorlax's base effect
+    return SMODS.Joker.obj_table.j_poke_snorlax.calculate(self, card, context)
   end,
 }
 

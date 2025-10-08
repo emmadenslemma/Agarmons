@@ -119,6 +119,7 @@ return {
             agar_gmax_chi_strike_ex = "G-Max Chi Strike!",
             agar_gmax_cuddle_ex = "G-Max Cuddle!",
             agar_gmax_meltdown_ex = "G-Max Meltdown!",
+            agar_gmax_replenish_ex = "G-Max Replenish!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",

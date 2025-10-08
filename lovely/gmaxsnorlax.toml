@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Stop Snorlax from spawning leftovers when returning to normal
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokemon/pokejokers_05.lua"]'
+position = "at"
+match_indent = true
+pattern = '''if not from_debuff and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then'''
+payload = '''if not from_debuff and not AGAR.GMAX.no_holding and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then'''
