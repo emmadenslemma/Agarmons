@@ -1,8 +1,5 @@
 local subdir = "src/pokemon/"
 
--- Required for settings.lua
-AGAR.enabled = {}
-
 local function load_pokemon(item)
   if item.rarity == "agar_gmax" then
     AGAR.GMAX.preload(item)
@@ -19,13 +16,10 @@ local function load_pokemon(item)
 end
 
 local function load_pokemon_shell(item)
-  item.key = "shell_" .. item.name
-  item.is_shell = true
   item.no_collection = true
   item.custom_pool_func = true
   item.in_pool = function() end
   load_pokemon(item)
-  item.discovered = true
 end
 
 local function load_pokemon_folder(folder)
@@ -38,7 +32,7 @@ local function load_pokemon_folder(folder)
     if file_type ~= "directory" and file_type ~= "symlink" then
       local poke = assert(SMODS.load_file(folder .. filename))()
 
-      -- init contains functions for disabling conflicts from other mods et. al so we skip when loading shells
+      -- init contains functions for disabling conflicts from other mods et al so we skip when loading shells
       if poke.enabled and poke.init then
         poke:init()
       end
@@ -50,9 +44,9 @@ local function load_pokemon_folder(folder)
           family[#family + 1] = item.name
 
           if poke.enabled then
-            AGAR.enabled[item.name] = true
             load_pokemon(item)
           else
+            -- Required to view them in the Config tab
             load_pokemon_shell(item)
           end
         end

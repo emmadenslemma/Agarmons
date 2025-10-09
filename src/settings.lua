@@ -1,9 +1,9 @@
 local create_cardarea = function(card_names)
   local cardarea = CardArea(0, 0, G.CARD_W * (2 - 1 / #card_names), G.CARD_H, { card_limit = #card_names, type = 'title' })
   for _, card_name in ipairs(card_names) do
-    local prefix = AGAR.enabled[card_name] and "j_agar_" or "j_agar_shell_"
+    local prefix = "j_agar_"
     local key = prefix .. card_name
-    local card = Card(0, 0, G.CARD_W, G.CARD_H, nil, G.P_CENTERS[key])
+    local card = Card(0, 0, G.CARD_W, G.CARD_H, nil, G.P_CENTERS[key], { bypass_discovery_center = true, bypass_discovery_ui = true })
     cardarea:emplace(card)
   end
   return cardarea
@@ -42,7 +42,7 @@ SMODS.current_mod.config_tab = function()
           create_preview_toggle({ "pyukumuku" }, localize("agar_enable_pyukumuku"), "pyukumuku"),
         }},
         { n = G.UIT.C, config = { align = "tm" }, nodes = {
-          create_preview_toggle({ "bagon", "shelgon", "mega_salamence", "salamence" }, localize("agar_enable_bagon"), "bagon"),
+          create_preview_toggle({ "bagon", "shelgon", "salamence", "mega_salamence" }, localize("agar_enable_bagon"), "bagon"),
           create_preview_toggle({ "frigibax", "arctibax", "baxcalibur" }, localize("agar_enable_frigibax"), "frigibax"),
         }},
         { n = G.UIT.C, config = { align = "tm" }, nodes = {
