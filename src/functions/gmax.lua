@@ -1,6 +1,6 @@
 local gmax = {}
 
--- stop Snorlax from spawning leftovers
+-- stops Snorlax from spawning leftovers
 gmax.no_holding = false
 
 -- key is pre-gmax object key, value is post-gmax object key
@@ -10,7 +10,7 @@ gmax.evos = gmax.evos or {}
 local type_tooltip_ref = type_tooltip
 type_tooltip = function(self, info_queue, center)
   type_tooltip_ref(self, info_queue, center)
-  if pokermon_config.detailed_tooltips and gmax.get_gmax_key(center) then
+  if agarmons_config.gmax and pokermon_config.detailed_tooltips and gmax.get_gmax_key(center) then
     info_queue[#info_queue + 1] = { set = 'Other', key = 'gmax_poke' }
   end
 end
