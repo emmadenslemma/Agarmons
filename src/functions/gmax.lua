@@ -68,11 +68,19 @@ gmax.get_base_key = function(gmax_card)
   return nil
 end
 
+gmax.evolve = function(card)
+  poke_evolve(card, gmax.get_gmax_key(card), true, localize("agar_dynamax_ex"))
+end
+
+gmax.devolve = function(card)
+  gmax.no_holding = true
+  poke_evolve(card, gmax.get_base_key(card), true)
+  gmax.no_holding = false
+end
+
 gmax.revert = function(self, card, context)
   if context.round_eval then
-    gmax.no_holding = true
-    poke_evolve(card, gmax.get_base_key(card), true)
-    gmax.no_holding = false
+    gmax.devolve(card)
   end
   if context.after and context.cardarea == G.jokers then
     card.ability.extra.turns_left = card.ability.extra.turns_left - 1
@@ -85,9 +93,7 @@ gmax.revert = function(self, card, context)
       -- Event to make it devolve after scoring visuals are over
       G.E_MANAGER:add_event(Event({
         func = function()
-          gmax.no_holding = true
-          poke_evolve(card, gmax.get_base_key(card), true)
-          gmax.no_holding = false
+          gmax.devolve(card)
           return true
         end
       }))
