@@ -69,17 +69,36 @@ gmax.get_base_key = function(gmax_card)
 end
 
 gmax.evolve = function(card)
-  poke_evolve(card, gmax.get_gmax_key(card), true, localize("agar_dynamax_ex"))
+  poke_evolve(card, gmax.get_gmax_key(card), true)
 end
 
 gmax.devolve = function(card)
-  gmax.no_holding = true
-  poke_evolve(card, gmax.get_base_key(card), true)
-  gmax.no_holding = false
+  -- Events to devolve after stake stickers get applied
+  if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind.boss then
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = delay and 2.0 or 0,
+      func = function()
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            gmax.no_holding = true
+            poke_evolve(card, gmax.get_base_key(card), true)
+            gmax.no_holding = false
+            return true
+          end
+        }))
+        return true
+      end
+    }))
+  else
+    gmax.no_holding = true
+    poke_evolve(card, gmax.get_base_key(card), true)
+    gmax.no_holding = false
+  end
 end
 
 gmax.revert = function(self, card, context)
-  if context.round_eval then
+  if context.end_of_round and not context.individual and not context.repetition then
     gmax.devolve(card)
   end
   if context.after and context.cardarea == G.jokers then
