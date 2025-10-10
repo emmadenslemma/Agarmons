@@ -61,7 +61,7 @@ return {
                     "to its base form",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Also happens if sold",
-                    "{C:inactive}(Useable once per round)",
+                    "{C:inactive}(Usable once per round)",
                 },
             },
             c_agar_blueorb_active = {
@@ -71,7 +71,7 @@ return {
                     "to its base form",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Also happens if sold",
-                    "{C:inactive}(Useable once per round)",
+                    "{C:inactive}(Usable once per round)",
                 },
             },
         },
