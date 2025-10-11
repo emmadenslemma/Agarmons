@@ -3,7 +3,7 @@ local gmax_venusaur = {
   name = "gmax_venusaur",
   pos = { x = 12, y = 6 },
   soul_pos = { x = 13, y = 6 },
-  config = { extra = { draw_mod = 1 } },
+  config = { extra = { draw_mod = 3 } },
   loc_txt = {
     name = "Gigantamax Venusaur",
     text = {
