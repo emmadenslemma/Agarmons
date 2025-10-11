@@ -5,10 +5,12 @@ return {
   kyogre = true,
   groudon = true,
   rayquaza = true,
+  arceus = true,
   dewpider = false,
   sandygast = false,
   pyukumuku = true,
   cosmog = true,
+  sinistea = true,
   frigibax = false,
   gmax = false,
 }
