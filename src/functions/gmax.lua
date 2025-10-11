@@ -69,11 +69,13 @@ gmax.get_base_key = function(gmax_card)
 end
 
 gmax.evolve = function(card)
-  poke_evolve(card, gmax.get_gmax_key(card), true)
+  poke_evolve(card, gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
 end
 
 gmax.devolve = function(card)
   -- Events to devolve after stake stickers get applied
+  -- Don't think about it.
+  -- Evolving with the animation does the same thing, so this will be fixed when I add an animation to Dynamaxing
   if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind.boss then
     G.E_MANAGER:add_event(Event({
       trigger = 'after',

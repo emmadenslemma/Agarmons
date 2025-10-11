@@ -12,7 +12,14 @@ if agarmons_config.gmax then
           local target = target_utils.find_leftmost(card.ability.extra.target)
           if target and not target.getting_sliced then
             gmax.evolve(target)
-            card.ability.extra.usable = false
+            -- Event to fix dynamax band losing its charge but the target
+            -- not being gmaxed if you quit to main menu after starting blind
+            G.E_MANAGER:add_event(Event({
+              func = function()
+                card.ability.extra.usable = false
+                return true
+              end
+            }))
           else
             card.ability.extra.target = nil
           end
@@ -56,13 +63,13 @@ local dynamaxband = {
   soul_set = "Item",
   soul_rate = .01,
   use = function(self, card)
-    if card.ability.extra.target then
-      card.ability.extra.target = nil
+    local target = target_utils.find_leftmost_or_highlighted(gmax.get_gmax_key)
+    if G.GAME.blind.in_blind then
+      gmax.evolve(target)
+      card.ability.extra.usable = false
     else
-      local target = target_utils.find_leftmost_or_highlighted(gmax.get_gmax_key)
-      if G.GAME.blind.in_blind then
-        gmax.evolve(target)
-        card.ability.extra.usable = false
+      if card.ability.extra.target then
+        card.ability.extra.target = nil
       else
         card.ability.extra.target = target.config.center.key
       end
