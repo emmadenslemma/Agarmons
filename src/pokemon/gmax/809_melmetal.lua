@@ -37,7 +37,7 @@ local gmax_melmetal = {
       if cards_to_draw > 0 then
         card_eval_status_text(card, "extra", nil, nil, nil, {
           message = localize("agar_gmax_meltdown_ex"),
-          colour = G.ARGS.LOC_COLOURS.agar_gmax
+          colour = G.C.RARITY["agar_gmax"],
         })
         G.FUNCS.draw_from_deck_to_hand(cards_to_draw)
       end

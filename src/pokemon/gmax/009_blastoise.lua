@@ -28,7 +28,7 @@ local gmax_blastoise = {
 
       return {
         message = localize("agar_gmax_cannonade_ex"),
-        colour = G.ARGS.LOC_COLOURS.agar_gmax,
+        colour = G.C.RARITY["agar_gmax"],
       }
     end
   end,

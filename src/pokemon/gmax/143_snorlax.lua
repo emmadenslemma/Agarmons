@@ -41,7 +41,7 @@ local gmax_snorlax = {
 
       return {
         message = localize("agar_gmax_replenish_ex"),
-        colour = G.ARGS.LOC_COLOURS.agar_gmax,
+        colour = G.C.RARITY["agar_gmax"],
       }
     end
     -- Apply Snorlax's base effect
