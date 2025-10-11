@@ -3,7 +3,7 @@ local gmax_venusaur = {
   name = "gmax_venusaur",
   pos = { x = 12, y = 6 },
   soul_pos = { x = 13, y = 6 },
-  config = { extra = { draw_mod = 3 } },
+  config = { extra = { draw_mod = 3, h_size = 1 } },
   loc_txt = {
     name = "Gigantamax Venusaur",
     text = {
@@ -31,6 +31,9 @@ local gmax_venusaur = {
       G.FUNCS.draw_from_deck_to_hand(card.ability.extra.draw_mod)
     end
   end,
+  -- `add_to/remove_from_deck` Stolen from regular Venusaur to keep your +1 hand size during dynamax
+  add_to_deck = SMODS.Joker.obj_table.j_poke_venusaur.add_to_deck,
+  remove_from_deck = SMODS.Joker.obj_table.j_poke_venusaur.remove_from_deck,
 }
 
 local init = function()
