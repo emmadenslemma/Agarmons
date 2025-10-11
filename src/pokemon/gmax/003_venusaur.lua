@@ -8,7 +8,7 @@ local gmax_venusaur = {
     name = "Gigantamax Venusaur",
     text = {
       "Every hand played",
-      "draws {C:attention}+#3#{} cards"
+      "draws {C:attention}#3#{} cards"
     }
   },
   loc_vars = function(self, info_queue, center)
