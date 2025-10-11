@@ -88,7 +88,7 @@ local dynamaxband = {
     return true
   end,
   in_pool = function(self)
-    return target_utils.find_card(gmax.get_gmax_key)
+    return target_utils.find_leftmost(gmax.get_gmax_key)
   end,
   update = function(self, card, dt)
     if G.STAGE == G.STAGES.RUN then
