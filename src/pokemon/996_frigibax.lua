@@ -9,7 +9,8 @@ local frigibax = {
       "{C:attention,E:1}Five of a Kind",
       "All played cards give",
       "{X:mult,C:white}X#1#{} Mult when scored",
-      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)"
+      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
+      "{C:inactive,s:0.8}(Flush Five does not count)",
     }
   },
   loc_vars = function(self, info_queue, center)
@@ -52,7 +53,8 @@ local arctibax = {
       "{C:attention,E:1}Five of a Kind",
       "All played cards give",
       "{X:mult,C:white}X#1#{} Mult when scored",
-      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)"
+      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
+      "{C:inactive,s:0.8}(Flush Five does not count)",
     }
   },
   loc_vars = function(self, info_queue, center)
@@ -95,6 +97,7 @@ local baxcalibur = {
       "Also retrigger every",
       "card once per {C:chips}#2#{} of",
       "that card's total chips",
+      "{C:inactive,s:0.8}(Flush Five does not count)",
     }
   },
   loc_vars = function(self, info_queue, center)

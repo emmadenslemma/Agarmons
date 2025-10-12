@@ -49,8 +49,9 @@ return {
                     "{C:attention}Dynamaxes{} a Pokemon",
                     "for the next {C:attention}3{} hands",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Currently targeting {C:enhanced}#1#{}",
-                    "Use again to stop targeting",
+                    "{C:attention}Dynamaxes{} {C:enhanced}#1#{}",
+                    "when blind is selected.",
+                    "Use again to cancel",
                     "{C:inactive}(Usable once per round)",
                 },
             },
@@ -61,7 +62,7 @@ return {
                     "to its base form",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Also happens if sold",
-                    "{C:inactive}(Useable once per round)",
+                    "{C:inactive}(Usable once per round)",
                 },
             },
             c_agar_blueorb_active = {
@@ -71,7 +72,7 @@ return {
                     "to its base form",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Also happens if sold",
-                    "{C:inactive}(Useable once per round)",
+                    "{C:inactive}(Usable once per round)",
                 },
             },
         },
@@ -108,6 +109,12 @@ return {
             cards_singular = "card",
             cards_plural = "cards",
 
+            joker_singular = "Joker",
+            joker_plural = "Jokers",
+
+            boss_blind_singular = "Boss Blind",
+            boss_blind_plural = "Boss Blinds",
+
             agar_turns_left_plural = "hands left",
             agar_turns_left_singular = "hand left",
 
@@ -122,6 +129,7 @@ return {
             agar_gmax_cuddle_ex = "G-Max Cuddle!",
             agar_gmax_meltdown_ex = "G-Max Meltdown!",
             agar_gmax_replenish_ex = "G-Max Replenish!",
+            agar_gmax_resonance_ex = "G-Max Resonance!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",
@@ -146,6 +154,8 @@ return {
             agar_enable_kyogre = "Enable Kyogre",
             agar_enable_groudon = "Enable Groudon",
             agar_enable_rayquaza = "Enable Rayquaza",
+            agar_enable_dialga = "Enable Dialga",
+            agar_enable_palkia = "Enable Palkia",
             agar_enable_cosmog = "Enable Cosmog",
             agar_enable_gmax = "Enable Gigantamax [BETA]",
         },
@@ -155,6 +165,7 @@ return {
         },
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
+            a_joker_slot = "+#1# Joker Slot",
 
             agar_x_turns_left_plural_ex = "#1# hands left!",
             agar_x_turns_left_singular_ex = "#1# turn left!",

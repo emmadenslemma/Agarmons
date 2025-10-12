@@ -7,7 +7,7 @@ local function load_pokemon(item)
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
-  if not custom_atlas then
+  if not item.atlas then
     poke_load_atlas(item)
     poke_load_sprites(item)
   end
