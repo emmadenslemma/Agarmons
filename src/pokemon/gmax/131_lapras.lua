@@ -24,7 +24,7 @@ local gmax_lapras = {
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.before and context.cardarea == G.jokers then
+    if context.joker_main then
       card_eval_status_text(card, "extra", nil, nil, nil, {
         message = localize("agar_gmax_resonance_ex"),
         colour = G.C.RARITY["agar_gmax"]
