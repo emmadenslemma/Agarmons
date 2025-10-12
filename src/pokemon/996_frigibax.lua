@@ -37,9 +37,9 @@ local frigibax = {
     end
     return scaling_evo(self, card, context, "j_agar_arctibax", card.ability.extra.five_of_a_kinds, self.config.evo_rqmt)
   end,
-  -- in_pool = function(self)
-  --   return G.GAME.hands["Five of a Kind"].played > 0 and pokemon_in_pool(self)
-  -- end,
+  in_pool = function(self)
+    return G.GAME.hands["Five of a Kind"].played > 0 and pokemon_in_pool(self)
+  end,
 }
 
 -- Arctibax 997
