@@ -109,6 +109,12 @@ return {
             cards_singular = "card",
             cards_plural = "cards",
 
+            joker_singular = "Joker",
+            joker_plural = "Jokers",
+
+            boss_blind_singular = "Boss Blind",
+            boss_blind_plural = "Boss Blinds",
+
             agar_turns_left_plural = "hands left",
             agar_turns_left_singular = "hand left",
 
@@ -148,6 +154,8 @@ return {
             agar_enable_kyogre = "Enable Kyogre",
             agar_enable_groudon = "Enable Groudon",
             agar_enable_rayquaza = "Enable Rayquaza",
+            agar_enable_dialga = "Enable Dialga",
+            agar_enable_palkia = "Enable Palkia",
             agar_enable_cosmog = "Enable Cosmog",
             agar_enable_gmax = "Enable Gigantamax [BETA]",
         },
@@ -157,6 +165,7 @@ return {
         },
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
+            a_joker_slot = "+#1# Joker Slot",
 
             agar_x_turns_left_plural_ex = "#1# hands left!",
             agar_x_turns_left_singular_ex = "#1# turn left!",
