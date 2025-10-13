@@ -34,16 +34,13 @@ local uxie = {
   gen = 4,
   enhancement_gate = "m_gold",
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.hand and not context.end_of_round
-        and SMODS.has_enhancement(context.other_card, "m_gold") then
+    if context.individual and context.cardarea == G.hand and context.end_of_round
+        and SMODS.has_enhancement(context.other_card, "m_gold") and not context.blueprint then
       card.ability.extra.gold_cards_triggered = card.ability.extra.gold_cards_triggered + 1
       if card.ability.extra.gold_cards_triggered == self.config.trigger_rqmt then
         card.ability.extra.gold_cards_triggered = 0
         card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
-        return {
-          message = localize("k_upgrade_ex"),
-          colour = G.C.MULT,
-        }
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.MULT }, card)
       end
     end
     if context.joker_main then
