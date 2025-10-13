@@ -24,6 +24,7 @@ local azelf = {
   ptype = "Psychic",
   gen = 4,
   enhancement_gate = "m_bonus",
+  blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand and not context.end_of_round
         and SMODS.has_enhancement(context.other_card, "m_bonus") then

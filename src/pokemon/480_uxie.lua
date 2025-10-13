@@ -33,6 +33,7 @@ local uxie = {
   ptype = "Psychic",
   gen = 4,
   enhancement_gate = "m_gold",
+  blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand and context.end_of_round
         and SMODS.has_enhancement(context.other_card, "m_gold") and not context.blueprint then
