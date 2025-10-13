@@ -1,3 +1,5 @@
+AGAR = {}
+
 local subdir = "src/functions/"
 local files = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
 
