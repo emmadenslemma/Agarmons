@@ -12,6 +12,12 @@ function list_utils.map(list, func)
   return new_list
 end
 
+function list_utils.for_each(list, func)
+  for _, v in pairs(list) do
+    func(v)
+  end
+end
+
 function list_utils.copy(list)
   return list_utils.map(list, list_utils.id)
 end

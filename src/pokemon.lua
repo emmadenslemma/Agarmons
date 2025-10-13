@@ -15,13 +15,6 @@ local function load_pokemon(item)
   pokermon.Pokemon(item, "agar", custom_atlas)
 end
 
-local function load_pokemon_shell(item)
-  item.no_collection = true
-  item.custom_pool_func = true
-  item.in_pool = function() end
-  load_pokemon(item)
-end
-
 local function load_pokemon_folder(folder)
   local files = NFS.getDirectoryItems(SMODS.current_mod.path .. folder)
 
@@ -45,9 +38,6 @@ local function load_pokemon_folder(folder)
 
           if poke.enabled then
             load_pokemon(item)
-          else
-            -- Required to view them in the Config tab
-            load_pokemon_shell(item)
           end
         end
       end
