@@ -154,6 +154,7 @@ return {
             agar_enable_kyogre = "Enable Kyogre",
             agar_enable_groudon = "Enable Groudon",
             agar_enable_rayquaza = "Enable Rayquaza",
+            agar_enable_lake_trio = "Enable the Lake Trio",
             agar_enable_dialga = "Enable Dialga",
             agar_enable_palkia = "Enable Palkia",
             agar_enable_cosmog = "Enable Cosmog",
