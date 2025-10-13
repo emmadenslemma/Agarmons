@@ -6,8 +6,8 @@ local uxie = {
     name = "Uxie",
     text = {
       "{C:purple}+#1# Foresight",
-      "Gains {C:white,X:mult}X#2#{} Mult every {C:attention}#3# {C:inactive}[#4#]",
-      "{C:attention}Gold{} cards triggered",
+      "Gains {C:white,X:mult}X#2#{} Mult for every",
+      "{C:attention}#3# {C:inactive}[#4#] {C:attention}Gold{} cards triggered",
       "{C:inactive}(Currently {C:white,X:mult}X#5#{C:inactive} Mult)",
       "{br:2}ERROR - CONTACT STEAK",
       "{C:attention}Foreseen{} cards trigger",

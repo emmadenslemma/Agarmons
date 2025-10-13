@@ -6,8 +6,8 @@ local azelf = {
     name = "Azelf",
     text = {
       "{C:purple}+#1# Foresight",
-      "Each {C:attention}Bonus Card{} held",
-      "in hand gives {C:white,X:mult}X#2#{}",
+      "Each {C:attention}Bonus Card{} held in",
+      "hand gives {C:white,X:mult}X#2#{} Mult",
       "{br:2}ERROR - CONTACT STEAK",
       "{C:attention}Foreseen{} cards trigger",
       "held in hand effects",
