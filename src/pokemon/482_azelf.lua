@@ -26,7 +26,7 @@ local azelf = {
   enhancement_gate = "m_bonus",
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand and not context.end_of_round
-        and SMODS:has_enhancement(context.other_card, "m_bonus") then
+        and SMODS.has_enhancement(context.other_card, "m_bonus") then
       if context.other_card.debuff then
         return {
           message = localize("k_debuffed"),
