@@ -125,7 +125,7 @@ local cosmoem = {
 -- Solgaleo 791
 local solgaleo = {
   name = "solgaleo",
-  config = { extra = { Xmult = 1.5, suit = "Hearts", half_active = false, full_active = false } },
+  config = { extra = { Xmult_multi = 1.5, suit = "Hearts", half_active = false, full_active = false } },
   loc_txt = {
     name = "Solgaleo",
     text = {
@@ -143,7 +143,7 @@ local solgaleo = {
       vars = {
         localize(center.ability.extra.suit, "suits_plural"),
         localize(center.ability.extra.suit, "suits_singular"),
-        center.ability.extra.Xmult,
+        center.ability.extra.Xmult_multi,
         colours = {
           center.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
           center.ability.extra.half_active and G.C.SUITS.Hearts or G.C.UI.TEXT_INACTIVE,
@@ -211,7 +211,7 @@ local solgaleo = {
     if context.individual and context.cardarea == G.play
         and card.ability.extra.half_active and context.other_card:is_suit(suit) then
       return {
-        Xmult = card.ability.extra.Xmult
+        Xmult = card.ability.extra.Xmult_multi
       }
     end
     -- Do something at 100% Hearts
@@ -252,7 +252,7 @@ local solgaleo = {
 -- Lunala 792
 local lunala = {
   name = "lunala",
-  config = { extra = { Xmult = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
+  config = { extra = { Xmult_multi = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
   loc_txt = {
     name = "Lunala",
     text = {
@@ -272,7 +272,7 @@ local lunala = {
       vars = {
         localize(center.ability.extra.suit, "suits_plural"),
         localize(center.ability.extra.suit, "suits_singular"),
-        center.ability.extra.Xmult,
+        center.ability.extra.Xmult_multi,
         center.ability.extra.scry,
         colours = {
           center.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
@@ -357,7 +357,7 @@ local lunala = {
         }
       else
         return {
-          Xmult = card.ability.extra.Xmult
+          Xmult = card.ability.extra.Xmult_multi
         }
       end
     end
