@@ -363,12 +363,10 @@ local lunala = {
     end
     -- Apply Scry at 100% Clubs
     if card.ability.extra.full_active then
-      G.scry_hand_effects = true
       if not was_full_active then
         G.GAME.scry_amount = (G.GAME.scry_amount or 0) + card.ability.extra.scry
       end
     else
-      G.scry_hand_effects = false
       if was_full_active then
         G.GAME.scry_amount = math.max(0, (G.GAME.scry_amount or 0) - card.ability.extra.scry)
       end
@@ -380,13 +378,11 @@ local lunala = {
     card.ability.extra.full_active = suit_percent == 1
     if card.ability.extra.full_active then
       G.GAME.scry_amount = (G.GAME.scry_amount or 0) + card.ability.extra.scry
-      G.scry_hand_effects = true
     end
   end,
   remove_from_deck = function(self, card, from_debuff)
     if card.ability.extra.full_active then
       G.GAME.scry_amount = math.max(0, (G.GAME.scry_amount or 0) - card.ability.extra.scry)
-      G.scry_hand_effects = false
     end
     if G.GAME.modifiers.nebby then
       G.STATE = G.STATES.GAME_OVER
