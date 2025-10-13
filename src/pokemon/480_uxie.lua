@@ -35,7 +35,7 @@ local uxie = {
   enhancement_gate = "m_gold",
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand and not context.end_of_round
-        and SMODS:has_enhancement(context.other_card, "m_gold") then
+        and SMODS.has_enhancement(context.other_card, "m_gold") then
       card.ability.extra.gold_cards_triggered = card.ability.extra.gold_cards_triggered + 1
       if card.ability.extra.gold_cards_triggered == self.config.trigger_rqmt then
         card.ability.extra.gold_cards_triggered = 0
