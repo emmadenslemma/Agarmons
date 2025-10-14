@@ -9,10 +9,10 @@ local function create_tile_spacer()
 end
 
 local function create_tile_grid(args)
-  local page_options
+  local page_options = {}
 
   for i, _ in ipairs(content.pages) do
-    page_options[#page_options + 1] = localize('k_page') .. " " .. i .. "/" .. #page_options
+    page_options[#page_options + 1] = localize('k_page') .. " " .. i .. "/" .. #content.pages
   end
 
   local current_page = content.pages[args.page_num]

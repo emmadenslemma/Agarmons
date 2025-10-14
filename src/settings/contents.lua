@@ -1,7 +1,7 @@
 return {
   pages = {
     {
-      title = function() localize("agar_regular_pokemon1") end,
+      title = function() return localize("agar_regular_pokemon1") end,
       tiles = {
         { list = { "j_agar_torkoal" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_torkoal" } end, config_key = "torkoal" },
         { list = { "j_agar_spheal", "j_agar_sealeo", "j_agar_walrein" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_spheal" } end, config_key = "spheal" },
@@ -12,14 +12,14 @@ return {
       }
     },
     {
-      title = function() localize("agar_regular_pokemon2") end,
+      title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
         { list = { "j_agar_frigibax", "j_agar_arctibax", "j_agar_baxcalibur" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_frigibax" } end, config_key = "frigibax" },
         { list = { "j_agar_gmax_charizard", "j_agar_gmax_butterfree", "j_agar_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
       }
     },
     {
-      title = function() localize("agar_legendary_pokemon1") end,
+      title = function() return localize("agar_legendary_pokemon1") end,
       tiles = {
         { list = { "j_agar_kyogre", "j_agar_primal_kyogre" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_kyogre" } end, config_key = "kyogre" },
         { list = { "j_agar_groudon", "j_agar_primal_groudon" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_groudon" } end, config_key = "groudon" },
