@@ -143,6 +143,9 @@ return {
             agar_lunadon_end_2 = "This is my LunaLunaDonDon team",
 
             -- Settings
+            agar_lake_trio = "The Lake Trio",
+            agar_lunala_and_solgaleo = "Lunala and Solgaleo",
+
             agar_enable_torkoal = "Enable Torkoal",
             agar_enable_spheal = "Enable Spheal Line",
             agar_enable_bagon = "Enable Bagon Line",

@@ -11,9 +11,9 @@ DisplayCard.update = Card.update
 DisplayCard.juice_up = Card.juice_up
 
 -- Necessary for drawing
-DisplayCard.draw = Card.draw
 DisplayCard.should_draw_shadow = Card.should_draw_shadow
 DisplayCard.should_draw_base_shader = Card.should_draw_base_shader
+DisplayCard.draw = Card.draw
 
 -- Necessary for displaying the tooltip
 DisplayCard.hover = Card.hover
@@ -30,13 +30,10 @@ end
 
 -- Necessary for not crashing
 function DisplayCard:update_alert() end
-function DisplayCard:highlight() end
+-- function DisplayCard:highlightt() end
 
 function DisplayCard:init(X, Y, W, H, card, center, params)
-  -- These really should go in a loading function for the shells
-  center.set = 'Joker'
-  center.key = 'j_agar_' .. center.name
-  center.ability = center.config
+  self.is_display_card = true
 
   self.params = (type(params) == 'table') and params or {}
 
@@ -45,7 +42,9 @@ function DisplayCard:init(X, Y, W, H, card, center, params)
   self.CT = self.VT
   self.config = {
     card = card or {},
-    center = center
+    -- See if we can get by without this somehow,
+    -- as losing the center lets us not bother with patching pokermon
+    center = center,
   }
   self.tilt_var = { mx = 0, my = 0, dx = 0, dy = 0, amt = 0 }
   self.ambient_tilt = 0.2
@@ -74,10 +73,8 @@ function DisplayCard:init(X, Y, W, H, card, center, params)
   self.unique_val = 1 - self.ID / 1603301
   self.edition = nil
   self.zoom = true
-  self.ability = {}
+  self.ability = {} -- self:set_ability(center, true)
   self:set_sprites(center)
-  -- self:set_ability(center, true)
-  -- self:set_base(card, true)
 
   self.discard_pos = {
     r = 3.6 * (math.random() - 0.5),
