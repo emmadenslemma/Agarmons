@@ -32,11 +32,10 @@ end
 
 -- Necessary for not crashing
 function DisplayCard:update_alert() end
--- function DisplayCard:highlight() end
 
 function DisplayCard:init(X, Y, W, H, key)
   self.is_display_card = true
-
+  -- SMODS still uses these params even though we set the values to true manually. Oh well.
   self.params = { bypass_discovery_center = true, bypass_discovery_ui = true }
 
   Moveable.init(self, X, Y, W, H)
@@ -56,14 +55,10 @@ function DisplayCard:init(X, Y, W, H, key)
   self.states.drag.can = true
   self.states.click.can = true
 
-  if self.params.viewed_back then
-    self.back = 'viewed_back'
-  else
-    self.back = 'selected_back'
-  end
-  self.bypass_discovery_center = self.params.bypass_discovery_center
-  self.bypass_discovery_ui = self.params.bypass_discovery_ui
-  self.bypass_lock = self.params.bypass_lock
+  self.back = 'selected_back'
+  self.bypass_discovery_center = true
+  self.bypass_discovery_ui = true
+  self.bypass_lock = true
   self.no_ui = self.config.card and self.config.card.no_ui
   self.children = {}
   self.base_cost = 0
@@ -93,9 +88,6 @@ function DisplayCard:init(X, Y, W, H, key)
   self.T.scale = 0.95
   self.debuff = false
 
-  self.rank = nil
-  self.added_to_deck = nil
-
   if self.children.front then self.children.front.VT.w = 0 end
   self.children.back.VT.w = 0
   self.children.center.VT.w = 0
@@ -105,10 +97,6 @@ function DisplayCard:init(X, Y, W, H, key)
   end
   self.children.back.parent = self; self.children.back.layered_parallax = nil
   self.children.center.parent = self; self.children.center.layered_parallax = nil
-
-  if getmetatable(self) == Card then
-    table.insert(G.I.CARD, self)
-  end
 end
 
 return DisplayCard
