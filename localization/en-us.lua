@@ -189,18 +189,21 @@ return {
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {
-                    "{C:purple}+#1# Hazards{}, {C:chips}+#2#{} Chips",
-                    "Doubled if played hand",
-                    "contains a {C:attention}Hazard{} card",
+                    "{C:purple}+#1# Hazards",
+                    "Played {C:attention}Hazard{} cards give",
+                    "{C:mult}+#2#{} Mult when scored",
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)",
                 }
             },
             j_agar_araquanid = {
                 name = "Araquanid",
                 text = {
-                    "{C:purple}+#1# Hazards{}, {C:chips}+#2#{} Chips",
-                    "Tripled if played hand",
-                    "contains a {C:attention}Hazard{} card",
+                    "{C:purple}+#1# Hazards",
+                    "Played {C:attention}Hazard{} cards give",
+                    "{C:mult}+#2#{} Mult when scored",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "First played {C:attention}Hazard Card{}",
+                    "gives {C:white,X:mult}X#3#{} Mult when scored",
                 }
             },
             j_agar_sandygast = {
