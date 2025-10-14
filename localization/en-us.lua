@@ -143,8 +143,13 @@ return {
             agar_lunadon_end_2 = "This is my LunaLunaDonDon team",
 
             -- Settings
-            agar_lake_trio = "The Lake Trio",
+            agar_lake_trio = "Uxie, Mesprit, and Azelf",
             agar_lunala_and_solgaleo = "Lunala and Solgaleo",
+            agar_gigantamaxing = "Gigantamaxing",
+
+            agar_regular_pokemon1 = "Regular Pokémon 1/2",
+            agar_regular_pokemon2 = "Regular Pokémon 2/2",
+            agar_legendary_pokemon1 = "Legendary Pokémon",
 
             agar_enable_torkoal = "Enable Torkoal",
             agar_enable_spheal = "Enable Spheal Line",

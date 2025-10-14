@@ -1,5 +1,7 @@
 local DisplayCard = Moveable:extend()
 
+local templates = assert(SMODS.load_file("src/settings/load_templates.lua"))()
+
 DisplayCard.set_card_area = Card.set_card_area
 DisplayCard.set_sprites = Card.set_sprites
 DisplayCard.hard_set_T = Card.hard_set_T
@@ -30,21 +32,21 @@ end
 
 -- Necessary for not crashing
 function DisplayCard:update_alert() end
--- function DisplayCard:highlightt() end
+-- function DisplayCard:highlight() end
 
-function DisplayCard:init(X, Y, W, H, card, center, params)
+function DisplayCard:init(X, Y, W, H, key)
   self.is_display_card = true
 
-  self.params = (type(params) == 'table') and params or {}
+  self.params = { bypass_discovery_center = true, bypass_discovery_ui = true }
 
   Moveable.init(self, X, Y, W, H)
 
   self.CT = self.VT
   self.config = {
-    card = card or {},
+    card = {},
     -- See if we can get by without this somehow,
     -- as losing the center lets us not bother with patching pokermon
-    center = center,
+    center = templates[key],
   }
   self.tilt_var = { mx = 0, my = 0, dx = 0, dy = 0, amt = 0 }
   self.ambient_tilt = 0.2
@@ -74,7 +76,7 @@ function DisplayCard:init(X, Y, W, H, card, center, params)
   self.edition = nil
   self.zoom = true
   self.ability = {} -- self:set_ability(center, true)
-  self:set_sprites(center)
+  self:set_sprites(self.config.center)
 
   self.discard_pos = {
     r = 3.6 * (math.random() - 0.5),
