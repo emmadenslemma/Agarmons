@@ -8,7 +8,7 @@ return {
   lake_trio = true,
   dialga = true,
   palkia = true,
-  dewpider = false,
+  dewpider = true,
   sandygast = false,
   pyukumuku = true,
   cosmog = true,
