@@ -3,16 +3,6 @@ local groudon = {
   name = "groudon",
   soul_pos = { x = 15, y = 25 },
   config = { extra = { Xmult_multi = 2 } },
-  loc_txt = {
-    name = "Groudon",
-    text = {
-      "Played {C:attention}Mult{} cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      -- "{br:2}ERROR - CONTACT STEAK",
-      -- "First scoring unenhanced card",
-      -- "becomes a {C:attention}Mult{} card",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
@@ -59,18 +49,6 @@ local primal_groudon = {
   pos = { x = 2, y = 7 },
   soul_pos = { x = 3, y = 7 },
   config = { extra = { Xmult_multi = 3, retriggers = 1 } },
-  loc_txt = {
-    name = "Primal Groudon",
-    text = {
-      "Disables {C:chips}Chips{}!",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Played {C:attention}Mult{} cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Retrigger other",
-      "{X:fire,C:white}Fire{} type Jokers"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then

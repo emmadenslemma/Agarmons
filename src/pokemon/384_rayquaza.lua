@@ -3,12 +3,6 @@ local rayquaza = {
   name = "rayquaza",
   soul_pos = { x = 17, y = 25 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Rayquaza",
-    text = {
-      "{C:inactive}Does nothing (yet!)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
@@ -33,12 +27,6 @@ local mega_rayquaza = {
   pos = { x = 6, y = 7 },
   soul_pos = { x = 7, y = 7 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Mega Rayquaza",
-    text = {
-      "{C:inactive}Does nothing (yet!)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }

@@ -3,16 +3,6 @@ local kyogre = {
   name = "kyogre",
   soul_pos = { x = 13, y = 25 },
   config = { extra = { Xmult_multi = 2 } },
-  loc_txt = {
-    name = "Kyogre",
-    text = {
-      "Played {C:attention}Bonus{} cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      -- "{br:2}ERROR - CONTACT STEAK",
-      -- "First scoring unenhanced card",
-      -- "becomes a {C:attention}Bonus{} card",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
@@ -59,18 +49,6 @@ local primal_kyogre = {
   pos = { x = 4, y = 7 },
   soul_pos = { x = 5, y = 7 },
   config = { extra = { Xchips_multi = 3, retriggers = 1 } },
-  loc_txt = {
-    name = "Primal Kyogre",
-    text = {
-      "Disables {C:mult}Mult{}!",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Played {C:attention}Bonus{} cards give",
-      "{X:chips,C:white}X#1#{} Chips when scored",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Retrigger other",
-      "{X:water,C:white}Water{} type Jokers"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then

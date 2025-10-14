@@ -2,17 +2,6 @@
 local frigibax = {
   name = "frigibax",
   config = { extra = { Xmult_multi = 1.1, five_of_a_kinds = 0 }, evo_rqmt = 5 },
-  loc_txt = {
-    name = "Frigibax",
-    text = {
-      "If played hand is a",
-      "{C:attention,E:1}Five of a Kind",
-      "All played cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
-      "{C:inactive,s:0.8}(Flush Five does not count)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.Xmult_multi, math.max(0, self.config.evo_rqmt - center.ability.extra.five_of_a_kinds) } }
@@ -46,17 +35,6 @@ local frigibax = {
 local arctibax = {
   name = "arctibax",
   config = { extra = { Xmult_multi = 1.3, five_of_a_kinds = 0 }, evo_rqmt = 5 },
-  loc_txt = {
-    name = "Arctibax",
-    text = {
-      "If played hand is a",
-      "{C:attention,E:1}Five of a Kind",
-      "All played cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
-      "{C:inactive,s:0.8}(Flush Five does not count)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.Xmult_multi, math.max(0, self.config.evo_rqmt - center.ability.extra.five_of_a_kinds) } }
@@ -86,20 +64,6 @@ local arctibax = {
 local baxcalibur = {
   name = "baxcalibur",
   config = { extra = { Xmult_multi = 1.5, chips_per_retrigger = 1000 } },
-  loc_txt = {
-    name = "Baxcalibur",
-    text = {
-      "If played hand is a",
-      "{C:attention,E:1}Five of a Kind",
-      "All played cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Also retrigger every",
-      "card once per {C:chips}#2#{} of",
-      "that card's total chips",
-      "{C:inactive,s:0.8}(Flush Five does not count)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.Xmult_multi, center.ability.extra.chips_per_retrigger } }

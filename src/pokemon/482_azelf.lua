@@ -2,17 +2,6 @@
 local azelf = {
   name = "azelf",
   config = { extra = { scry = 5, Xmult_multi = 2 } },
-  loc_txt = {
-    name = "Azelf",
-    text = {
-      "{C:purple}+#1# Foresight",
-      "Each {C:attention}Bonus Card{} held in",
-      "hand gives {C:white,X:mult}X#2#{} Mult",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:attention}Foreseen{} cards trigger",
-      "held in hand effects",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.scry, center.ability.extra.Xmult_multi } }
