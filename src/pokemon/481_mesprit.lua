@@ -2,19 +2,6 @@
 local mesprit = {
   name = "mesprit",
   config = { extra = { scry = 5, num = 1, dem = 3 } },
-  loc_txt = {
-    name = "Mesprit",
-    text = {
-      "{C:purple}+#1# Foresight",
-      "Each {C:attention}Mult Card{} held in",
-      "hand has a {C:green}#2# in #3#{} chance",
-      "to create a {C:dark_edition}Negative {C:tarot}Tarot{}",
-      "card at end of round",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:attention}Foreseen{} cards trigger",
-      "held in hand effects",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local num, dem = SMODS.get_probability_vars(center, center.ability.extra.num, center.ability.extra.dem, "mesprit")

@@ -2,15 +2,6 @@
 local sandygast = {
   name = "sandygast",
   config = { extra = { chips = 0, chip_mod = 2 }, evo_rqmt = 60 },
-  loc_txt = {
-    name = "Sandygast",
-    text = {
-      "Gain {C:chips}+#1#{} Chips per discarded",
-      "{V:1}#2#{} Card, suit changes",
-      "every round",
-      "{C:inactive}(Evolves at {C:chips}+#3#{C:inactive} / +#4# Chips)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
@@ -45,18 +36,6 @@ local sandygast = {
 local palossand = {
   name = "palossand",
   config = { extra = { chips = 0, chip_mod = 3, h_size_mod = 1, d_size_mod = 1 } },
-  loc_txt = {
-    name = "Palossand",
-    text = {
-      "When {C:attention}Blind{} is selected,",
-      "gain {C:attention}+#1#{} hand size for every {X:water,C:white}Water{} card you have",
-      "and {C:red}+#2#{} discard for every {X:earth,C:white}Earth{} card you have",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Gain {C:chips}+#3#{} Chips per discarded {V:1}#4#{} Card",
-      "suit changes every round",
-      "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
@@ -114,8 +93,6 @@ local palossand = {
 }
 
 local init = function()
-  pokermon.add_family { "sandygast", "palossand" }
-
   local reset_game_globals_ref = SMODS.current_mod.reset_game_globals
 
   SMODS.current_mod.reset_game_globals = function(run_start)

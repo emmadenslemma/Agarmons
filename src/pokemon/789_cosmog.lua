@@ -36,13 +36,6 @@ local cosmog = {
   pos = { x = 0, y = 0 },
   soul_pos = { x = 1, y = 0 },
   config = { extra = { rounds = 4 } },
-  loc_txt = {
-    name = "Cosmog",
-    text = {
-      "Applies {C:attention}Splash",
-      "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
@@ -85,13 +78,6 @@ local cosmoem = {
   pos = { x = 2, y = 0 },
   soul_pos = { x = 3, y = 0 },
   config = { extra = { suit_sun = "Hearts", suit_moon = "Clubs" } },
-  loc_txt = {
-    name = "Cosmoem",
-    text = {
-      "{C:inactive}Evolves when deck is",
-      "{C:attention}>50% {C:hearts}#1#{C:inactive} or {C:clubs}#2#",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local ret = { vars = { localize(center.ability.extra.suit_sun, "suits_plural"), localize(center.ability.extra.suit_moon, "suits_plural") } }
@@ -126,17 +112,6 @@ local cosmoem = {
 local solgaleo = {
   name = "solgaleo",
   config = { extra = { Xmult_multi = 1.5, suit = "Hearts", half_active = false, full_active = false } },
-  loc_txt = {
-    name = "Solgaleo",
-    text = {
-      "If first played hand is all {C:hearts}#1#{},",
-      "turn 3 cards held in hand to {C:hearts}#1#{}",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:hearts,s:0.8}#1#",
-      "{V:1}Played {V:2}#2#{V:1} cards give {C:white,B:3}X#3#{V:1} Mult when scored",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:hearts,s:0.8}#1#",
-      "{V:4}Disables effect of every {V:5}Boss Blind",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local ret = {
@@ -253,19 +228,6 @@ local solgaleo = {
 local lunala = {
   name = "lunala",
   config = { extra = { Xmult_multi = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
-  loc_txt = {
-    name = "Lunala",
-    text = {
-      "If first played hand is all {C:clubs}#1#{},",
-      "turn 3 cards held in hand to {C:clubs}#1#{}",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:clubs,s:0.8}#1#",
-      "{V:1}Each {V:2}#2#{V:1} Card held in hand gives {C:white,B:3}X#3#{V:1} Mult",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:clubs,s:0.8}#1#",
-      "{V:4}+#4# Foresight",
-      "{V:5}Foreseen{V:6} cards trigger held",
-      "{V:6}in hand effects",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local ret = {
@@ -392,8 +354,6 @@ local lunala = {
 }
 
 local init = function()
-  pokermon.add_family { "cosmog", "cosmoem", "solgaleo", "lunala" }
-
   local applies_splash_ref = applies_splash
   function applies_splash()
     return applies_splash_ref() or

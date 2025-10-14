@@ -4,14 +4,6 @@ local palkia = {
   pos = { x = 4, y = 3 },
   soul_pos = { x = 5, y = 3 },
   config = { extra = { joker_slot_mod = 1, bosses_defeated = 0, upgrade_rqmt = 1 } },
-  loc_txt = {
-    name = "Palkia",
-    text = {
-      "Gives {C:dark_edition}+#1#{} Joker Slots after",
-      "defeating {C:attention}#2#{} {C:inactive}[#3#]{} {C:attention}#4#{}",
-      "{C:inactive}(Requirement increases each time)"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return {

@@ -2,18 +2,6 @@
 local uxie = {
   name = "uxie",
   config = { extra = { scry = 5, Xmult = 1, Xmult_mod = 1, gold_cards_triggered = 0 }, trigger_rqmt = 11 },
-  loc_txt = {
-    name = "Uxie",
-    text = {
-      "{C:purple}+#1# Foresight",
-      "Gains {C:white,X:mult}X#2#{} Mult for every",
-      "{C:attention}#3# {C:inactive}[#4#] {C:attention}Gold{} cards triggered",
-      "{C:inactive}(Currently {C:white,X:mult}X#5#{C:inactive} Mult)",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:attention}Foreseen{} cards trigger",
-      "held in hand effects",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return {

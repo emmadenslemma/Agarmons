@@ -6,17 +6,6 @@ local dialga = {
   pos = { x = 10, y = 2 },
   soul_pos = { x = 11, y = 2 },
   config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1, retrigger_joker_list = nil } },
-  loc_txt = {
-    name = "Dialga",
-    text = {
-      "Retriggers {C:attention}#1#{} random #2#",
-      "when scoring played hand",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Amount increases after",
-      "defeating {C:attention}#3#{} {C:inactive}[#4#]{} {C:attention}#5#{}",
-      "{C:inactive}(Requirement increases each time)"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return {

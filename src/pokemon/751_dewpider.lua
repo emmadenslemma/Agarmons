@@ -2,15 +2,6 @@
 local dewpider = {
   name = "dewpider",
   config = { extra = { hazards = 4, chips = 45, rounds = 4 } },
-  loc_txt = {
-    name = "Dewpider",
-    text = {
-      "{C:purple}+#1# Hazards{}, {C:chips}+#2#{} Chips",
-      "Doubled if played hand",
-      "contains a {C:attention}Hazard{} card",
-      "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     info_queue[#info_queue + 1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
@@ -51,14 +42,6 @@ local dewpider = {
 local araquanid = {
   name = "araquanid",
   config = { extra = { hazards = 4, chips = 60 } },
-  loc_txt = {
-    name = "Araquanid",
-    text = {
-      "{C:purple}+#1# Hazards{}, {C:chips}+#2#{} Chips",
-      "Tripled if played hand",
-      "contains a {C:attention}Hazard{} card",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     info_queue[#info_queue + 1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
@@ -94,13 +77,8 @@ local araquanid = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "dewpider", "araquanid" }
-end
-
 return {
   name = "Agarmons Dewpider Evo Line",
   enabled = agarmons_config.dewpider or false,
-  init = init,
   list = { dewpider, araquanid }
 }
