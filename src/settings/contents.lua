@@ -26,6 +26,12 @@ return {
         { list = { "j_agar_uxie", "j_agar_mesprit", "j_agar_azelf" }, label = function() return localize("agar_lake_trio") end, config_key = "lake_trio" },
         { list = { "j_agar_dialga" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dialga" } end, config_key = "dialga" },
         { list = { "j_agar_palkia" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_palkia" } end, config_key = "palkia" },
+        { list = { "j_agar_xerneas" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_xerneas" } end, config_key = "xerneas" },
+      }
+    },
+    {
+      title = function() return localize("agar_legendary_pokemon2") end,
+      tiles = {
         { list = { "j_agar_cosmog", "j_agar_cosmoem", "j_agar_solgaleo", "j_agar_lunala" }, label = function() return localize("agar_lunala_and_solgaleo") end, config_key = "cosmog" },
       }
     },
