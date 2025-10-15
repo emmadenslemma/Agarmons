@@ -60,7 +60,7 @@ local function create_tile_grid(args)
             config = { align = "cm", padding = 0.2 },
             nodes = {
               create_option_cycle({
-                options = { localize('k_page') .. " 1/3", localize('k_page') .. " 2/3", localize('k_page') .. " 3/3" },
+                options = page_options,
                 current_option = args.page_num,
                 opt_callback = "agar_update_config_page",
                 scale = 0.8,

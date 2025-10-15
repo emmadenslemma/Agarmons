@@ -530,7 +530,8 @@ return {
 
             agar_regular_pokemon1 = "Regular Pokémon 1/2",
             agar_regular_pokemon2 = "Regular Pokémon 2/2",
-            agar_legendary_pokemon1 = "Legendary Pokémon",
+            agar_legendary_pokemon1 = "Legendary Pokémon 1/2",
+            agar_legendary_pokemon2 = "Legendary Pokémon 2/2",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
