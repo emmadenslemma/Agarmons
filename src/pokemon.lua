@@ -25,25 +25,24 @@ local function load_pokemon_folder(folder)
     if file_type ~= "directory" and file_type ~= "symlink" then
       local poke = assert(SMODS.load_file(folder .. filename))()
 
-      -- init contains functions for disabling conflicts from other mods et al so we skip when loading shells
-      if poke.enabled and poke.init then
-        poke:init()
-      end
+      if poke.enabled then
+        if poke.init then
+          poke:init()
+        end
 
-      local family = {}
+        local family = {}
 
-      if poke.list and #poke.list > 0 then
-        for _, item in ipairs(poke.list) do
-          if poke.enabled then
+        if poke.list and #poke.list > 0 then
+          for _, item in ipairs(poke.list) do
             family[#family + 1] = item.name
 
             load_pokemon(item)
           end
         end
-      end
 
-      if #family > 1 then
-        pokermon.add_family(family)
+        if #family > 1 then
+          pokermon.add_family(family)
+        end
       end
     end
   end
