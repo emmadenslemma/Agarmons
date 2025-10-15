@@ -6,17 +6,6 @@ local xerneas = {
   pos = { x = 4, y = 0 },
   soul_pos = { x = 5, y = 0 },
   config = { extra = { energy_limit_mod = 1, energy_mod = 1, Xmult = 1, Xmult_mod = 1, hands = 4, hands_remaining = 4 } },
-  loc_txt = {
-    name = "Xerneas",
-    text = {
-      "{C:pink}+#1#{} Energy Limit",
-      "Energize {C:white,X:fairy}Fairy{} Jokers by {C:pink}#2#",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Gains {C:white,X:mult}X#3#{} Mult for every",
-      "{C:attention}#4#{C:inactive} [#5#]{} hands played",
-      "{C:inactive}(Currently {C:white,X:mult}X#6#{C:inactive} Mult)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
@@ -48,7 +37,7 @@ local xerneas = {
       }
     end
     -- Gain XMult per Hand
-    if context.after and context.cardarea == G.jokers then
+    if context.before and context.cardarea == G.jokers then
       card.ability.extra.hands_remaining = card.ability.extra.hands_remaining - 1
       if card.ability.extra.hands_remaining > 0 then
         return {
@@ -66,7 +55,8 @@ local xerneas = {
     end
     -- Energize new Fairy type Jokers
     if context.card_added and context.cardarea == G.jokers
-        and not context.card.ability.consumeable then
+        and not context.card.ability.consumeable
+        and energy_matches(context.card, "Fairy") then
       energy.increase(context.card, card.ability.extra.energy_mod)
     end
   end,
@@ -86,10 +76,34 @@ local xerneas = {
     energy.decrease_limit(card.ability.extra.energy_limit_mod)
     energy.decrease_all("Fairy", card.ability.extra.energy_mod)
   end,
+  load = function(self, card, card_table, other_card)
+    -- Load Active 
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        card.children.floating_sprite:set_sprite_pos { x = 7, y = 0 }
+        return true
+      end
+    }))
+  end,
 }
 
+local init = function()
+  -- Energize/De-Energize when using Tera Orb in and out of Fairy Aura
+  local apply_type_sticker_orig = apply_type_sticker
+  apply_type_sticker = function(card, ...)
+    local xerneas_present = SMODS.find_card('j_agar_xerneas', true)
+    if xerneas_present and energy_matches(card, "Fairy") then
+      energy.decrease(card, "Fairy")
+    end
+    apply_type_sticker_orig(card, ...)
+    if xerneas_present and energy_matches(card, "Fairy") then
+      energy.increase(card, "Fairy")
+    end
+  end
+end
+
 return {
-  name = "Agarmons Xerneas",
   enabled = agarmons_config.xerneas or false,
+  init = init,
   list = { xerneas }
 }

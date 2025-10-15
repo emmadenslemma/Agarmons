@@ -186,6 +186,25 @@ return {
                     "{C:inactive}(Requirement increases each time)"
                 }
             },
+            j_agar_xerneas = {
+                name = "Xerneas",
+                text = {
+                    "{C:pink}+#1#{} Energy Limit",
+                    "Energize {C:white,X:fairy}Fairy{} Jokers by {C:pink}#2#",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gains {C:white,X:mult}X#3#{} Mult for every",
+                    "{C:attention}#4#{C:inactive} [#5#]{} hands played",
+                    "{C:inactive}(Currently {C:white,X:mult}X#6#{C:inactive} Mult)",
+                }
+            },
+            j_agar_yveltal = {
+                name = "Yveltal",
+                text = {
+                    "{C:pink}+#1#{} Energy Limit",
+                    "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#1#",
+                    "{br:2}ERROR - CONTACT STEAK",
+                }
+            },
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {

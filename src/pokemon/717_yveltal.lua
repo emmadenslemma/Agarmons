@@ -4,14 +4,6 @@ local energy = AGAR.ENERGY
 local yveltal = {
   name = "yveltal",
   config = { extra = { energy_limit_mod = 1, energy_mod = 1 } },
-  loc_txt = {
-    name = "Yveltal",
-    text = {
-      "{C:pink}+#1#{} Energy Limit",
-      "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#1#",
-      "{br:2}ERROR - CONTACT STEAK",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then

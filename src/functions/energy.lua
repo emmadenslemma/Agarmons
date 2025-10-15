@@ -12,7 +12,18 @@ energy.decrease_limit = function(amount)
       or 0
 end
 
-energy.decrease = function(card, etype, amount) end
+energy.decrease = function(card, etype, amount, no_silent)
+  if etype == "Colorless" then
+    card.ability.extra.c_energy_count = (card.ability.extra.c_energy_count and card.ability.extra.c_energy_count > 0)
+        and card.ability.extra.c_energy_count - 1
+        or 0
+  else
+    card.ability.extra.energy_count = (card.ability.extra.energy_count and card.ability.extra.energy_count > 0)
+        and card.ability.extra.energy_count - 1
+        or 0
+  end
+  energize(card, etype, false, not no_silent, { deenergize = true })
+end
 
 energy.increase = function(card, etype, amount, no_silent)
   if etype == "Colorless" then
