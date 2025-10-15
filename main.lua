@@ -1,3 +1,5 @@
+AGAR = {}
+
 agarmons_config = SMODS.current_mod.config
 
 SMODS.current_mod.optional_features = { retrigger_joker = true }

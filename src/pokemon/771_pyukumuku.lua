@@ -33,17 +33,6 @@ end
 local pyukumuku = {
   name = "pyukumuku",
   config = { extra = { stored = { chips = 0, mult = 0, Xmult = 0, money = 0 }, volatile = "left" } },
-  loc_txt = {
-    name = "Pyukumuku",
-    text = {
-      "Accumulates the effects",
-      "of all cards played",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:attention}Volatile Left{} unleash the stored",
-      "effects, then debuff self this round",
-      "{C:inactive}(Currently {C:chips}+#1#{}, {C:mult}+#2#{}, {X:mult,C:white}X#3#{}, {C:money}$#4#{C:inactive})"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then

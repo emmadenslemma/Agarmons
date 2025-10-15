@@ -1,50 +1,50 @@
 local def_list = {}
 
-def_list["j_agar_dewpider"] = {
-  text = {
-    { text = "+" },
-    { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" },
-  },
-  text_config = { colour = G.C.CHIPS },
-  calc_function = function(card)
-    local chips = card.ability.extra.chips
-    local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+-- def_list["j_agar_dewpider"] = {
+--   text = {
+--     { text = "+" },
+--     { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" },
+--   },
+--   text_config = { colour = G.C.CHIPS },
+--   calc_function = function(card)
+--     local chips = card.ability.extra.chips
+--     local text, _, scoring_hand = JokerDisplay.evaluate_hand()
 
-    if text ~= "Unknown" then
-      for _, scoring_card in pairs(scoring_hand) do
-        if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
-          chips = chips * 2
-          break
-        end
-      end
-    end
+--     if text ~= "Unknown" then
+--       for _, scoring_card in pairs(scoring_hand) do
+--         if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
+--           chips = chips * 2
+--           break
+--         end
+--       end
+--     end
 
-    card.joker_display_values.chips = chips
-  end
-}
+--     card.joker_display_values.chips = chips
+--   end
+-- }
 
-def_list["j_agar_araquanid"] = {
-  text = {
-    { text = "+" },
-    { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" },
-  },
-  text_config = { colour = G.C.CHIPS },
-  calc_function = function(card)
-    local chips = card.ability.extra.chips
-    local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+-- def_list["j_agar_araquanid"] = {
+--   text = {
+--     { text = "+" },
+--     { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" },
+--   },
+--   text_config = { colour = G.C.CHIPS },
+--   calc_function = function(card)
+--     local chips = card.ability.extra.chips
+--     local text, _, scoring_hand = JokerDisplay.evaluate_hand()
 
-    if text ~= "Unknown" then
-      for _, scoring_card in pairs(scoring_hand) do
-        if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
-          chips = chips * 3
-          break
-        end
-      end
-    end
+--     if text ~= "Unknown" then
+--       for _, scoring_card in pairs(scoring_hand) do
+--         if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
+--           chips = chips * 3
+--           break
+--         end
+--       end
+--     end
 
-    card.joker_display_values.chips = chips
-  end
-}
+--     card.joker_display_values.chips = chips
+--   end
+-- }
 
 def_list["j_agar_sandygast"] = {
   text = {

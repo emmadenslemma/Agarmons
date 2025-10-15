@@ -32,7 +32,7 @@ local gmax_melmetal = {
   atlas = "AtlasJokersBasicGen07",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.before and context.cardarea == G.jokers then
+    if context.joker_main then
       local cards_to_draw = card.ability.extra.draw_mod * find_other_poke_or_energy_type(card, "Metal", true)
       if cards_to_draw > 0 then
         card_eval_status_text(card, "extra", nil, nil, nil, {

@@ -1,6 +1,7 @@
-local subdir = "src/pokemon/"
+-- This is just the Load Pokemon file but tweaked a bit
+local poke_templates = {}
 
-local function load_pokemon(item)
+local function load_template(item)
   if item.rarity == "agar_gmax" then
     AGAR.GMAX.preload(item)
   end
@@ -12,7 +13,12 @@ local function load_pokemon(item)
     poke_load_sprites(item)
   end
 
-  pokermon.Pokemon(item, "agar", custom_atlas)
+  item.atlas = (custom_atlas and "agar_" or "poke_") .. item.atlas
+  item.set = 'Joker'
+  item.key = 'j_agar_' .. item.name
+  item.ability = item.config
+
+  poke_templates[item.key] = item
 end
 
 local function load_pokemon_folder(folder)
@@ -25,29 +31,16 @@ local function load_pokemon_folder(folder)
     if file_type ~= "directory" and file_type ~= "symlink" then
       local poke = assert(SMODS.load_file(folder .. filename))()
 
-      -- init contains functions for disabling conflicts from other mods et al so we skip when loading shells
-      if poke.enabled and poke.init then
-        poke:init()
-      end
-
-      local family = {}
-
       if poke.list and #poke.list > 0 then
         for _, item in ipairs(poke.list) do
-          if poke.enabled then
-            family[#family + 1] = item.name
-
-            load_pokemon(item)
-          end
+            load_template(item)
         end
-      end
-
-      if #family > 1 then
-        pokermon.add_family(family)
       end
     end
   end
 end
 
-load_pokemon_folder(subdir)
-load_pokemon_folder(subdir .. 'gmax/')
+load_pokemon_folder("src/pokemon/")
+load_pokemon_folder("src/pokemon/gmax/")
+
+return poke_templates

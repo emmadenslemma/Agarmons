@@ -2,16 +2,6 @@
 local frigibax = {
   name = "frigibax",
   config = { extra = { Xmult_multi = 1.1, five_of_a_kinds = 0 }, evo_rqmt = 5 },
-  loc_txt = {
-    name = "Frigibax",
-    text = {
-      "If played hand is a",
-      "{C:attention,E:1}Five of a Kind",
-      "All played cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.Xmult_multi, math.max(0, self.config.evo_rqmt - center.ability.extra.five_of_a_kinds) } }
@@ -36,25 +26,15 @@ local frigibax = {
     end
     return scaling_evo(self, card, context, "j_agar_arctibax", card.ability.extra.five_of_a_kinds, self.config.evo_rqmt)
   end,
-  -- in_pool = function(self)
-  --   return G.GAME.hands["Five of a Kind"].played > 0 and pokemon_in_pool(self)
-  -- end,
+  in_pool = function(self)
+    return G.GAME.hands["Five of a Kind"].played > 0 and pokemon_in_pool(self)
+  end,
 }
 
 -- Arctibax 997
 local arctibax = {
   name = "arctibax",
   config = { extra = { Xmult_multi = 1.3, five_of_a_kinds = 0 }, evo_rqmt = 5 },
-  loc_txt = {
-    name = "Arctibax",
-    text = {
-      "If played hand is a",
-      "{C:attention,E:1}Five of a Kind",
-      "All played cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.Xmult_multi, math.max(0, self.config.evo_rqmt - center.ability.extra.five_of_a_kinds) } }
@@ -84,19 +64,6 @@ local arctibax = {
 local baxcalibur = {
   name = "baxcalibur",
   config = { extra = { Xmult_multi = 1.5, chips_per_retrigger = 1000 } },
-  loc_txt = {
-    name = "Baxcalibur",
-    text = {
-      "If played hand is a",
-      "{C:attention,E:1}Five of a Kind",
-      "All played cards give",
-      "{X:mult,C:white}X#1#{} Mult when scored",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Also retrigger every",
-      "card once per {C:chips}#2#{} of",
-      "that card's total chips",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.Xmult_multi, center.ability.extra.chips_per_retrigger } }
@@ -127,13 +94,8 @@ local baxcalibur = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "frigibax", "arctibax", "baxcalibur" }
-end
-
 return {
   name = "Agarmons Frigibax Evo Line",
   enabled = agarmons_config.frigibax or false,
-  init = init,
   list = { frigibax, arctibax, baxcalibur }
 }

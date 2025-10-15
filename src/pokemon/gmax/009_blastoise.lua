@@ -23,7 +23,7 @@ local gmax_blastoise = {
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.before and context.cardarea == G.jokers then
+    if context.joker_main then
       ease_hands_played(card.ability.extra.hands)
 
       return {

@@ -53,6 +53,7 @@ end
 gmax.get_gmax_key = function(base_card)
   return base_card
       and base_card.config
+      and base_card.config.center
       and gmax.evos[base_card.config.center.key]
       or nil
 end

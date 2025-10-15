@@ -25,7 +25,7 @@ local gmax_snorlax = {
   blueprint_compat = true,
   poke_custom_values_to_keep = { "no_holding" },
   calculate = function(self, card, context)
-    if context.before and context.cardarea == G.jokers then
+    if context.joker_main then
       local target = G.jokers.cards[1]
 
       target.ability.extra_value = target.ability.extra_value + card.ability.extra.money_mod
