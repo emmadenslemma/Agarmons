@@ -1,3 +1,5 @@
+local target_utils = AGAR.TARGET_UTILS
+
 local redorb = {
   name = "redorb",
   key = "redorb",
@@ -11,7 +13,7 @@ local redorb = {
     text = {
       "Awaken {C:attention}Groudon{}'s",
       "true potential",
-      "{C:inactive}(Useable once per round)",
+      "{C:inactive}(Usable once per round)",
     },
   },
   loc_vars = function(self, info_queue, center)
@@ -24,18 +26,11 @@ local redorb = {
   hidden = true,
   soul_set = "Item",
   soul_rate = .005,
-  unlocked = true,
   use = function(self, card)
     local target_key = card.ability.extra.active and "j_agar_primal_groudon" or "j_agar_groudon"
     local evolve_to = card.ability.extra.active and "j_agar_groudon" or "j_agar_primal_groudon"
 
-    local target
-
-    if G.jokers.highlight and #G.jokers.highlighted == 1 then
-      target = G.jokers.highlighted[1]
-    else
-      target = SMODS.find_card(target_key, true)[1]
-    end
+    local target = target_utils.find_leftmost_or_highlighted(target_key)
 
     poke_evolve(target, evolve_to)
 
@@ -58,11 +53,7 @@ local redorb = {
 
     local target_key = card.ability.extra.active and "j_agar_primal_groudon" or "j_agar_groudon"
 
-    if G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return G.jokers.highlighted[1].config.center_key == target_key
-    else
-      return next(SMODS.find_card(target_key, true)) ~= nil
-    end
+    return target_utils.find_leftmost_or_highlighted(target_key)
   end,
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
@@ -74,11 +65,11 @@ local redorb = {
     return true
   end,
   in_pool = function(self)
-    return next(SMODS.find_card("j_agar_groudon", true)) ~= nil
+    return target_utils.find_leftmost("j_agar_groudon")
   end,
   remove_from_deck = function(self, card, from_debuff)
     if card.ability.extra.active then
-      local target = SMODS.find_card("j_agar_primal_groudon", true)[1]
+      local target = target_utils.find_leftmost("j_agar_primal_groudon")
       if target then
         poke_evolve(target, "j_agar_groudon")
       end

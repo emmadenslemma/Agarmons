@@ -36,13 +36,6 @@ local cosmog = {
   pos = { x = 0, y = 0 },
   soul_pos = { x = 1, y = 0 },
   config = { extra = { rounds = 4 } },
-  loc_txt = {
-    name = "Cosmog",
-    text = {
-      "Applies {C:attention}Splash",
-      "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
@@ -65,7 +58,7 @@ local cosmog = {
   calculate = function(self, card, context)
     return level_evo(self, card, context, "j_agar_cosmoem")
   end,
-  in_pool = cosmog_in_pool,
+  -- in_pool = cosmog_in_pool,
   add_to_deck = function(self, card, from_debuff)
     if G.GAME.modifiers.nebby then
       card.ability.extra.rounds = 12
@@ -85,13 +78,6 @@ local cosmoem = {
   pos = { x = 2, y = 0 },
   soul_pos = { x = 3, y = 0 },
   config = { extra = { suit_sun = "Hearts", suit_moon = "Clubs" } },
-  loc_txt = {
-    name = "Cosmoem",
-    text = {
-      "{C:inactive}Evolves when deck is",
-      "{C:attention}>50% {C:hearts}#1#{C:inactive} or {C:clubs}#2#",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local ret = { vars = { localize(center.ability.extra.suit_sun, "suits_plural"), localize(center.ability.extra.suit_moon, "suits_plural") } }
@@ -113,7 +99,7 @@ local cosmoem = {
     return deck_suit_evo(self, card, context, "j_agar_solgaleo", card.ability.extra.suit_sun, .5 + .5 / deck_size)
         or deck_suit_evo(self, card, context, "j_agar_lunala", card.ability.extra.suit_moon, .5 + .5 / deck_size)
   end,
-  in_pool = cosmog_in_pool,
+  -- in_pool = cosmog_in_pool,
   remove_from_deck = function(self, card, from_debuff)
     if G.GAME.modifiers.nebby then
       G.STATE = G.STATES.GAME_OVER
@@ -125,25 +111,14 @@ local cosmoem = {
 -- Solgaleo 791
 local solgaleo = {
   name = "solgaleo",
-  config = { extra = { Xmult = 1.5, suit = "Hearts", half_active = false, full_active = false } },
-  loc_txt = {
-    name = "Solgaleo",
-    text = {
-      "If first played hand is all {C:hearts}#1#{},",
-      "turn 3 cards held in hand to {C:hearts}#1#{}",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:hearts,s:0.8}#1#",
-      "{V:1}Played {V:2}#2#{V:1} cards give {C:white,B:3}X#3#{V:1} Mult when scored",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:hearts,s:0.8}#1#",
-      "{V:4}Disables effect of every {V:5}Boss Blind",
-    }
-  },
+  config = { extra = { Xmult_multi = 1.5, suit = "Hearts", half_active = false, full_active = false } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local ret = {
       vars = {
         localize(center.ability.extra.suit, "suits_plural"),
         localize(center.ability.extra.suit, "suits_singular"),
-        center.ability.extra.Xmult,
+        center.ability.extra.Xmult_multi,
         colours = {
           center.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
           center.ability.extra.half_active and G.C.SUITS.Hearts or G.C.UI.TEXT_INACTIVE,
@@ -211,7 +186,7 @@ local solgaleo = {
     if context.individual and context.cardarea == G.play
         and card.ability.extra.half_active and context.other_card:is_suit(suit) then
       return {
-        Xmult = card.ability.extra.Xmult
+        Xmult = card.ability.extra.Xmult_multi
       }
     end
     -- Do something at 100% Hearts
@@ -252,27 +227,14 @@ local solgaleo = {
 -- Lunala 792
 local lunala = {
   name = "lunala",
-  config = { extra = { Xmult = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
-  loc_txt = {
-    name = "Lunala",
-    text = {
-      "If first played hand is all {C:clubs}#1#{},",
-      "turn 3 cards held in hand to {C:clubs}#1#{}",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:clubs,s:0.8}#1#",
-      "{V:1}Each {V:2}#2#{V:1} Card held in hand gives {C:white,B:3}X#3#{V:1} Mult",
-      "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:clubs,s:0.8}#1#",
-      "{V:4}+#4# Foresight",
-      "{V:5}Foreseen{V:6} cards trigger held",
-      "{V:6}in hand effects",
-    }
-  },
+  config = { extra = { Xmult_multi = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local ret = {
       vars = {
         localize(center.ability.extra.suit, "suits_plural"),
         localize(center.ability.extra.suit, "suits_singular"),
-        center.ability.extra.Xmult,
+        center.ability.extra.Xmult_multi,
         center.ability.extra.scry,
         colours = {
           center.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
@@ -357,18 +319,16 @@ local lunala = {
         }
       else
         return {
-          Xmult = card.ability.extra.Xmult
+          Xmult = card.ability.extra.Xmult_multi
         }
       end
     end
     -- Apply Scry at 100% Clubs
     if card.ability.extra.full_active then
-      G.scry_hand_effects = true
       if not was_full_active then
         G.GAME.scry_amount = (G.GAME.scry_amount or 0) + card.ability.extra.scry
       end
     else
-      G.scry_hand_effects = false
       if was_full_active then
         G.GAME.scry_amount = math.max(0, (G.GAME.scry_amount or 0) - card.ability.extra.scry)
       end
@@ -380,13 +340,11 @@ local lunala = {
     card.ability.extra.full_active = suit_percent == 1
     if card.ability.extra.full_active then
       G.GAME.scry_amount = (G.GAME.scry_amount or 0) + card.ability.extra.scry
-      G.scry_hand_effects = true
     end
   end,
   remove_from_deck = function(self, card, from_debuff)
     if card.ability.extra.full_active then
       G.GAME.scry_amount = math.max(0, (G.GAME.scry_amount or 0) - card.ability.extra.scry)
-      G.scry_hand_effects = false
     end
     if G.GAME.modifiers.nebby then
       G.STATE = G.STATES.GAME_OVER
@@ -396,8 +354,6 @@ local lunala = {
 }
 
 local init = function()
-  pokermon.add_family { "cosmog", "cosmoem", "solgaleo", "lunala" }
-
   local applies_splash_ref = applies_splash
   function applies_splash()
     return applies_splash_ref() or

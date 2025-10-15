@@ -2,13 +2,6 @@
 local torkoal = {
   name = "torkoal",
   config = { extra = { retriggers = 1 } },
-  loc_txt = {
-    name = "Torkoal",
-    text = {
-      "Retrigger all",
-      "{C:attention}Mult{} cards",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then

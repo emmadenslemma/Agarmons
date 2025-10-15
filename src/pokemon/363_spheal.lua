@@ -2,14 +2,6 @@
 local spheal = {
   name = "spheal",
   config = { extra = { mult = 0, mult_mod = 2 }, evo_rqmt = 12 },
-  loc_txt = {
-    name = "Spheal",
-    text = {
-      "Gain {C:mult}+#1#{} Mult per",
-      "{C:attention}reroll{} in the shop",
-      "{C:inactive}(Evolves at {C:mult}+#2#{C:inactive} / +#3# Mult)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.evo_rqmt } }
@@ -42,14 +34,6 @@ local spheal = {
 local sealeo = {
   name = "sealeo",
   config = { extra = { mult = 0, mult_mod = 3 }, evo_rqmt = 30 },
-  loc_txt = {
-    name = "Sealeo",
-    text = {
-      "Gain {C:mult}+#1#{} Mult per",
-      "{C:attention}reroll{} in the shop",
-      "{C:inactive}(Evolves at {C:mult}+#2#{C:inactive} / +#3# Mult)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.evo_rqmt } }
@@ -82,17 +66,6 @@ local sealeo = {
 local walrein = {
   name = "walrein",
   config = { extra = { mult = 0, mult_mod = 3, Xmult = 1, Xmult_mod = .15, num = 1, dem = 4 } },
-  loc_txt = {
-    name = "Walrein",
-    text = {
-      "Gain {C:mult}+#1#{} Mult per",
-      "{C:attention}reroll{} in the shop",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:green}#5# in #6#{} chance to",
-      "gain {X:mult,C:white}X#3#{} instead",
-      "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult, {X:mult,C:white}X#4#{C:inactive} Mult)",
-    }
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local num, dem = SMODS.get_probability_vars(center, center.ability.extra.num, center.ability.extra.dem, "walrein")
@@ -131,13 +104,8 @@ local walrein = {
   end,
 }
 
-local init = function()
-  pokermon.add_family { "spheal", "sealeo", "walrein" }
-end
-
 return {
   name = "Agarmons Spheal Evo Line",
   enabled = agarmons_config.spheal or false,
-  init = init,
   list = { spheal, sealeo, walrein }
 }

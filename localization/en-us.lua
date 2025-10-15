@@ -1,6 +1,250 @@
 return {
     descriptions = {
         Joker = {
+            j_agar_torkoal = {
+                name = "Torkoal",
+                text = {
+                    "Retrigger all",
+                    "{C:attention}Mult{} cards",
+                }
+            },
+            j_agar_spheal = {
+                name = "Spheal",
+                text = {
+                    "Gain {C:mult}+#1#{} Mult per",
+                    "{C:attention}reroll{} in the shop",
+                    "{C:inactive}(Evolves at {C:mult}+#2#{C:inactive} / +#3# Mult)",
+                }
+            },
+            j_agar_sealeo = {
+                name = "Sealeo",
+                text = {
+                    "Gain {C:mult}+#1#{} Mult per",
+                    "{C:attention}reroll{} in the shop",
+                    "{C:inactive}(Evolves at {C:mult}+#2#{C:inactive} / +#3# Mult)",
+                }
+            },
+            j_agar_walrein = {
+                name = "Walrein",
+                text = {
+                    "Gain {C:mult}+#1#{} Mult per",
+                    "{C:attention}reroll{} in the shop",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:green}#5# in #6#{} chance to",
+                    "gain {X:mult,C:white}X#3#{} instead",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult, {X:mult,C:white}X#4#{C:inactive} Mult)",
+                }
+            },
+            j_agar_bagon = {
+                name = "Bagon",
+                text = {
+                    "If played hand is a",
+                    "{C:attention}Straight{}, gain {C:chips}+#1#{} Chips",
+                    "for every consecutive",
+                    "{C:attention}Straight{} {C:inactive}[#2#]{} played",
+                    "{C:inactive}(Evolves at {C:chips}+#3#{C:inactive} / +#4# Chips)",
+                }
+            },
+            j_agar_shelgon = {
+                name = "Shelgon",
+                text = {
+                    "If played hand is a",
+                    "{C:attention}Straight{}, gain {C:chips}+#1#{} Chips",
+                    "for every consecutive",
+                    "{C:attention}Straight{} {C:inactive}[#2#]{} played",
+                    "{C:inactive}(Evolves at {C:chips}+#3#{C:inactive} / +#4# Chips)",
+                }
+            },
+            j_agar_salamence = {
+                name = "Salamence",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "{C:white,X:mult}X#2#{} Mult for every",
+                    "consecutive {C:attention}Straight{} played",
+                    "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
+                }
+            },
+            j_agar_mega_salamence = {
+                name = "Mega Salamence",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "{X:mult,C:white}X#2#{} Mult if played",
+                    "hand is a {C:attention}Straight{} and",
+                    "retrigger every card one",
+                    "more time than the last",
+                    "{C:inactive,s:0.8}(Retriggers 0, 1, 2, 3, and 4 times)"
+                }
+            },
+            j_agar_kyogre = {
+                name = "Kyogre",
+                text = {
+                    "Played {C:attention}Bonus{} cards give",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    -- "{br:2}ERROR - CONTACT STEAK",
+                    -- "First scoring unenhanced card",
+                    -- "becomes a {C:attention}Bonus{} card",
+                }
+            },
+            j_agar_primal_kyogre = {
+                name = "Primal Kyogre",
+                text = {
+                    "Disables {C:mult}Mult{}!",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Played {C:attention}Bonus{} cards give",
+                    "{X:chips,C:white}X#1#{} Chips when scored",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Retrigger other",
+                    "{X:water,C:white}Water{} type Jokers"
+                }
+            },
+            j_agar_groudon = {
+                name = "Groudon",
+                text = {
+                    "Played {C:attention}Mult{} cards give",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    -- "{br:2}ERROR - CONTACT STEAK",
+                    -- "First scoring unenhanced card",
+                    -- "becomes a {C:attention}Mult{} card",
+                }
+            },
+            j_agar_primal_groudon = {
+                name = "Primal Groudon",
+                text = {
+                    "Disables {C:chips}Chips{}!",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Played {C:attention}Mult{} cards give",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Retrigger other",
+                    "{X:fire,C:white}Fire{} type Jokers"
+                }
+            },
+            j_agar_rayquaza = {
+                name = "Rayquaza",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                }
+            },
+            j_agar_mega_rayquaza = {
+                name = "Mega Rayquaza",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                }
+            },
+            j_agar_uxie = {
+                name = "Uxie",
+                text = {
+                    "{C:purple}+#1# Foresight",
+                    "Gains {C:white,X:mult}X#2#{} Mult for every",
+                    "{C:attention}#3# {C:inactive}[#4#] {C:attention}Gold{} cards triggered",
+                    "{C:inactive}(Currently {C:white,X:mult}X#5#{C:inactive} Mult)",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Foreseen{} cards trigger",
+                    "held in hand effects",
+                }
+            },
+            j_agar_mesprit = {
+                name = "Mesprit",
+                text = {
+                    "{C:purple}+#1# Foresight",
+                    "Each {C:attention}Mult Card{} held in",
+                    "hand has a {C:green}#2# in #3#{} chance",
+                    "to create a {C:dark_edition}Negative {C:tarot}Tarot{}",
+                    "card at end of round",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Foreseen{} cards trigger",
+                    "held in hand effects",
+                }
+            },
+            j_agar_azelf = {
+                name = "Azelf",
+                text = {
+                    "{C:purple}+#1# Foresight",
+                    "Each {C:attention}Bonus Card{} held in",
+                    "hand gives {C:white,X:mult}X#2#{} Mult",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Foreseen{} cards trigger",
+                    "held in hand effects",
+                }
+            },
+            j_agar_dialga = {
+                name = "Dialga",
+                text = {
+                    "Retriggers {C:attention}#1#{} random #2#",
+                    "when scoring played hand",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Amount increases after",
+                    "defeating {C:attention}#3#{} {C:inactive}[#4#]{} {C:attention}#5#{}",
+                    "{C:inactive}(Requirement increases each time)"
+                }
+            },
+            j_agar_palkia = {
+                name = "Palkia",
+                text = {
+                    "Gives {C:dark_edition}+#1#{} Joker Slots after",
+                    "defeating {C:attention}#2#{} {C:inactive}[#3#]{} {C:attention}#4#{}",
+                    "{C:inactive}(Requirement increases each time)"
+                }
+            },
+            j_agar_dewpider = {
+                name = "Dewpider",
+                text = {
+                    "{C:purple}+#1# Hazards",
+                    "Played {C:attention}Hazard{} cards give",
+                    "{C:mult}+#2#{} Mult when scored",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_araquanid = {
+                name = "Araquanid",
+                text = {
+                    "{C:purple}+#1# Hazards",
+                    "Played {C:attention}Hazard{} cards give",
+                    "{C:mult}+#2#{} Mult when scored",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "First played {C:attention}Hazard Card{}",
+                    "gives {C:white,X:mult}X#3#{} Mult when scored",
+                }
+            },
+            j_agar_sandygast = {
+                name = "Sandygast",
+                text = {
+                    "Gain {C:chips}+#1#{} Chips per discarded",
+                    "{V:1}#2#{} Card, suit changes",
+                    "every round",
+                    "{C:inactive}(Evolves at {C:chips}+#3#{C:inactive} / +#4# Chips)",
+                }
+            },
+            j_agar_palossand = {
+                name = "Palossand",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "gain {C:attention}+#1#{} hand size for every {X:water,C:white}Water{} card you have",
+                    "and {C:red}+#2#{} discard for every {X:earth,C:white}Earth{} card you have",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gain {C:chips}+#3#{} Chips per discarded {V:1}#4#{} Card",
+                    "suit changes every round",
+                    "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
+                }
+            },
+            j_agar_pyukumuku = {
+                name = "Pyukumuku",
+                text = {
+                    "Accumulates the effects",
+                    "of all cards played",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Volatile Left{} unleash the stored",
+                    "effects, then debuff self this round",
+                    "{C:inactive}(Currently {C:chips}+#1#{}, {C:mult}+#2#{}, {X:mult,C:white}X#3#{}, {C:money}$#4#{C:inactive})"
+                }
+            },
+            j_agar_cosmog = {
+                name = "Cosmog",
+                text = {
+                    "Applies {C:attention}Splash",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                }
+            },
             j_agar_nebby = {
                 name = '"Nebby"',
                 text = {
@@ -8,11 +252,29 @@ return {
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
                 }
             },
+            j_agar_cosmoem = {
+                name = "Cosmoem",
+                text = {
+                    "{C:inactive}Evolves when deck is",
+                    "{C:attention}>50% {C:hearts}#1#{C:inactive} or {C:clubs}#2#",
+                }
+            },
             j_agar_nebby_cosmoem = {
                 name = "..Nebby?",
                 text = {
                     "{C:inactive}Evolves when deck is",
                     "{C:attention}>50% {C:hearts}#1#{C:inactive} or {C:clubs}#2#",
+                }
+            },
+            j_agar_solgaleo = {
+                name = "Solgaleo",
+                text = {
+                    "If first played hand is all {C:hearts}#1#{},",
+                    "turn 3 cards held in hand to {C:hearts}#1#{}",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:hearts,s:0.8}#1#",
+                    "{V:1}Played {V:2}#2#{V:1} cards give {C:white,B:3}X#3#{V:1} Mult when scored",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:hearts,s:0.8}#1#",
+                    "{V:4}Disables effect of every {V:5}Boss Blind",
                 }
             },
             j_agar_nebby_solgaleo = {
@@ -24,6 +286,19 @@ return {
                     "{V:1}Played {V:2}#2#{V:1} cards give {C:white,B:3}X#3#{V:1} Mult when scored",
                     "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:hearts,s:0.8}#1#",
                     "{V:4}Disables effect of every {V:5}Boss Blind",
+                }
+            },
+            j_agar_lunala = {
+                name = "Lunala",
+                text = {
+                    "If first played hand is all {C:clubs}#1#{},",
+                    "turn 3 cards held in hand to {C:clubs}#1#{}",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}50% {C:clubs,s:0.8}#1#",
+                    "{V:1}Each {V:2}#2#{V:1} Card held in hand gives {C:white,B:3}X#3#{V:1} Mult",
+                    "{C:inactive,s:0.8}if deck is {C:attention,s:0.8}100% {C:clubs,s:0.8}#1#",
+                    "{V:4}+#4# Foresight",
+                    "{V:5}Foreseen{V:6} cards trigger held",
+                    "{V:6}in hand effects",
                 }
             },
             j_agar_nebby_lunala = {
@@ -39,6 +314,91 @@ return {
                     "{V:6}in hand effects",
                 }
             },
+            j_agar_hatenna = {
+                name = "Hatenna",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_hattrem = {
+                name = "Hattrem",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_hatterene = {
+                name = "Hatterene",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                }
+            },
+            j_agar_frigibax = {
+                name = "Frigibax",
+                text = {
+                    "If played hand is a",
+                    "{C:attention,E:1}Five of a Kind",
+                    "All played cards give",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
+                    "{C:inactive,s:0.8}(Flush Five does not count)",
+                }
+            },
+            j_agar_arctibax = {
+                name = "Arctibax",
+                text = {
+                    "If played hand is a",
+                    "{C:attention,E:1}Five of a Kind",
+                    "All played cards give",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
+                    "{C:inactive,s:0.8}(Flush Five does not count)",
+                }
+            },
+            j_agar_baxcalibur = {
+                name = "Baxcalibur",
+                text = {
+                    "If played hand is a",
+                    "{C:attention,E:1}Five of a Kind",
+                    "All played cards give",
+                    "{X:mult,C:white}X#1#{} Mult when scored",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Also retrigger every",
+                    "card once per {C:chips}#2#{} of",
+                    "that card's total chips",
+                    "{C:inactive,s:0.8}(Flush Five does not count)",
+                }
+            },
+            -- All GMAX forms use `loc_txt` for their English localization
+            -- These are here additionally because they're showcased in the Gigantamax toggle
+            j_agar_gmax_charizard = {
+                name = "Gigantamax Charizard",
+                text = {
+                    "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                    "Gains {C:white,X:mult}X#3#{} per discard",
+                    "used this round",
+                    "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
+                }
+            },
+            j_agar_gmax_butterfree = {
+                name = "Gigantamax Butterfree",
+                text = {
+                    "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                    "{C:mult}+#3# Mult"
+                }
+            },
+            j_agar_gmax_machamp = {
+                name = "Gigantamax Machamp",
+                text = {
+                    "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                    "{C:white,X:mult}X#3#{} Mult, doubles after",
+                    "every hand played",
+                }
+            },
         },
         Spectral = {
             c_agar_dynamaxband_targeting = {
@@ -49,8 +409,9 @@ return {
                     "{C:attention}Dynamaxes{} a Pokemon",
                     "for the next {C:attention}3{} hands",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Currently targeting {C:enhanced}#1#{}",
-                    "Use again to stop targeting",
+                    "{C:attention}Dynamaxes{} {C:enhanced}#1#{}",
+                    "when blind is selected.",
+                    "Use again to cancel",
                     "{C:inactive}(Usable once per round)",
                 },
             },
@@ -61,7 +422,7 @@ return {
                     "to its base form",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Also happens if sold",
-                    "{C:inactive}(Useable once per round)",
+                    "{C:inactive}(Usable once per round)",
                 },
             },
             c_agar_blueorb_active = {
@@ -71,7 +432,7 @@ return {
                     "to its base form",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Also happens if sold",
-                    "{C:inactive}(Useable once per round)",
+                    "{C:inactive}(Usable once per round)",
                 },
             },
         },
@@ -110,17 +471,27 @@ return {
             cards_singular = "card",
             cards_plural = "cards",
 
+            joker_singular = "Joker",
+            joker_plural = "Jokers",
+
+            boss_blind_singular = "Boss Blind",
+            boss_blind_plural = "Boss Blinds",
+
             agar_turns_left_plural = "hands left",
             agar_turns_left_singular = "hand left",
 
             -- G-Max Messages
+            agar_gmax_vine_lash_ex = "G-Max Vine Lash!",
             agar_gmax_wildfire_ex = "G-Max Wildfire!",
+            agar_gmax_cannonade_ex = "G-Max Cannonade!",
             agar_gmax_befuddle_ex = "G-Max Befuddle!",
             agar_gmax_volt_crash_ex = "G-Max Volt Crash!",
             agar_gmax_gold_rush_ex = "G-Max Gold Rush!",
             agar_gmax_chi_strike_ex = "G-Max Chi Strike!",
             agar_gmax_cuddle_ex = "G-Max Cuddle!",
             agar_gmax_meltdown_ex = "G-Max Meltdown!",
+            agar_gmax_replenish_ex = "G-Max Replenish!",
+            agar_gmax_resonance_ex = "G-Max Resonance!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",
@@ -134,19 +505,13 @@ return {
             agar_lunadon_end_2 = "This is my LunaLunaDonDon team",
 
             -- Settings
-            agar_enable_torkoal = "Enable Torkoal",
-            agar_enable_spheal = "Enable Spheal Line",
-            agar_enable_bagon = "Enable Bagon Line",
-            agar_enable_sandygast = "Enable Sandygast Line",
-            agar_enable_dewpider = "Enable Dewpider Line",
-            agar_enable_pyukumuku = "Enable Pyukumuku",
-            agar_enable_hatenna = "Enable Hatenna Line",
-            agar_enable_frigibax = "Enable Frigibax Line",
-            agar_enable_kyogre = "Enable Kyogre",
-            agar_enable_groudon = "Enable Groudon",
-            agar_enable_rayquaza = "Enable Rayquaza",
-            agar_enable_cosmog = "Enable Cosmog",
-            agar_enable_gmax = "Enable Gigantamax [BETA]",
+            agar_lake_trio = "Uxie, Mesprit, and Azelf",
+            agar_lunala_and_solgaleo = "Lunala and Solgaleo",
+            agar_gigantamaxing = "Gigantamaxing",
+
+            agar_regular_pokemon1 = "Regular Pokémon 1/2",
+            agar_regular_pokemon2 = "Regular Pokémon 2/2",
+            agar_legendary_pokemon1 = "Legendary Pokémon",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
@@ -154,6 +519,7 @@ return {
         },
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
+            a_joker_slot = "+#1# Joker Slot",
 
             agar_x_turns_left_plural_ex = "#1# hands left!",
             agar_x_turns_left_singular_ex = "#1# turn left!",
