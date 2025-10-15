@@ -36,28 +36,30 @@ local xerneas = {
         Xmult = card.ability.extra.Xmult
       }
     end
-    -- Gain XMult per Hand
-    if context.before and context.cardarea == G.jokers then
-      card.ability.extra.hands_remaining = card.ability.extra.hands_remaining - 1
-      if card.ability.extra.hands_remaining > 0 then
-        return {
-          message = localize("agar_geomancy_charging")
-        }
-      else
-        card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
-        card.ability.extra.hands_remaining = card.ability.extra.hands
-        return {
-          message = localize("agar_geomancy_ex"),
-          colour = G.ARGS.LOC_COLOURS.fairy,
-          sound = "tarot1",
-        }
+    if not context.blueprint then
+      -- Gain XMult per Hand
+      if context.before and context.cardarea == G.jokers then
+        card.ability.extra.hands_remaining = card.ability.extra.hands_remaining - 1
+        if card.ability.extra.hands_remaining > 0 then
+          return {
+            message = localize("agar_geomancy_charging")
+          }
+        else
+          card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
+          card.ability.extra.hands_remaining = card.ability.extra.hands
+          return {
+            message = localize("agar_geomancy_ex"),
+            colour = G.ARGS.LOC_COLOURS.fairy,
+            sound = "tarot1",
+          }
+        end
       end
-    end
-    -- Energize new Fairy type Jokers
-    if context.card_added and context.cardarea == G.jokers
-        and not context.card.ability.consumeable
-        and energy_matches(context.card, "Fairy") then
-      energy.increase(context.card, card.ability.extra.energy_mod)
+      -- Energize new Fairy type Jokers
+      if context.card_added and context.cardarea == G.jokers
+          and not context.card.ability.consumeable
+          and energy_matches(context.card, "Fairy") then
+        energy.increase(context.card, card.ability.extra.energy_mod)
+      end
     end
   end,
   add_to_deck = function(self, card, from_debuff)
@@ -77,7 +79,7 @@ local xerneas = {
     energy.decrease_all("Fairy", card.ability.extra.energy_mod)
   end,
   load = function(self, card, card_table, other_card)
-    -- Load Active 
+    -- Load Active
     G.E_MANAGER:add_event(Event({
       func = function()
         card.children.floating_sprite:set_sprite_pos { x = 7, y = 0 }
