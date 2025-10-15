@@ -4,10 +4,6 @@ local arceus = {
   pos = { x = 4, y = 4 },
   soul_pos = { x = 5, y = 4 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -19,7 +15,6 @@ local arceus = {
   atlas = "AtlasJokersBasicGen04",
   gen = 4,
   aux_poke = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -30,10 +25,6 @@ local arceus_grass = {
   pos = { x = 6, y = 4 },
   soul_pos = { x = 7, y = 4 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Grass)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -46,7 +37,6 @@ local arceus_grass = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -57,10 +47,6 @@ local arceus_fire = {
   pos = { x = 8, y = 4 },
   soul_pos = { x = 9, y = 4 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Fire)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -73,7 +59,6 @@ local arceus_fire = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -84,10 +69,6 @@ local arceus_water = {
   pos = { x = 10, y = 4 },
   soul_pos = { x = 11, y = 4 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Water)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -100,7 +81,6 @@ local arceus_water = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -111,10 +91,6 @@ local arceus_lightning = {
   pos = { x = 0, y = 5 },
   soul_pos = { x = 1, y = 5 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Lightning)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -127,7 +103,6 @@ local arceus_lightning = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -138,10 +113,6 @@ local arceus_psychic = {
   pos = { x = 2, y = 5 },
   soul_pos = { x = 3, y = 5 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Psychic)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -154,7 +125,6 @@ local arceus_psychic = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -165,10 +135,6 @@ local arceus_fighting = {
   pos = { x = 4, y = 5 },
   soul_pos = { x = 5, y = 5 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Fighting)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -181,7 +147,6 @@ local arceus_fighting = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -192,10 +157,6 @@ local arceus_dark = {
   pos = { x = 6, y = 5 },
   soul_pos = { x = 7, y = 5 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Dark)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -208,7 +169,6 @@ local arceus_dark = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -219,10 +179,6 @@ local arceus_metal = {
   pos = { x = 8, y = 5 },
   soul_pos = { x = 9, y = 5 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Metal)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -235,7 +191,6 @@ local arceus_metal = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -246,10 +201,6 @@ local arceus_fairy = {
   pos = { x = 10, y = 5 },
   soul_pos = { x = 11, y = 5 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Fairy)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -262,7 +213,6 @@ local arceus_fairy = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -273,10 +223,6 @@ local arceus_dragon = {
   pos = { x = 0, y = 6 },
   soul_pos = { x = 1, y = 6 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Dragon)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -289,7 +235,6 @@ local arceus_dragon = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
@@ -300,10 +245,6 @@ local arceus_earth = {
   pos = { x = 2, y = 6 },
   soul_pos = { x = 3, y = 6 },
   config = { extra = {} },
-  loc_txt = {
-    name = "Arceus (Earth)",
-    text = {}
-  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = {} }
@@ -316,27 +257,11 @@ local arceus_earth = {
   gen = 4,
   aux_poke = true,
   no_collection = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
   end,
 }
 
 local init = function()
-  pokermon.add_family {
-    "arceus",
-    "arceus_grass",
-    "arceus_fire",
-    "arceus_water",
-    "arceus_lightning",
-    "arceus_psychic",
-    "arceus_fighting",
-    "arceus_dark",
-    "arceus_metal",
-    "arceus_fairy",
-    "arceus_dragon",
-    "arceus_earth",
-  }
-
   extended_family["arceus"] = {}
   extended_family["arceus_grass"] = {}
   extended_family["arceus_fire"] = {}
@@ -352,7 +277,6 @@ local init = function()
 end
 
 return {
-  name = "Agarmons Arceus",
   enabled = agarmons_config.arceus or false,
   init = init,
   list = { arceus, arceus_grass, arceus_fire, arceus_water, arceus_lightning, arceus_psychic, arceus_fighting, arceus_dark, arceus_metal, arceus_fairy, arceus_dragon, arceus_earth }

@@ -189,6 +189,54 @@ return {
                     "{C:inactive}(Requirement increases each time)"
                 }
             },
+            j_agar_arceus = {
+                name = "Arceus",
+                text = {}
+            },
+            j_agar_arceus_grass = {
+                name = "Arceus (Grass)",
+                text = {}
+            },
+            j_agar_arceus_fire = {
+                name = "Arceus (Fire)",
+                text = {}
+            },
+            j_agar_arceus_water = {
+                name = "Arceus (Water)",
+                text = {}
+            },
+            j_agar_arceus_lightning = {
+                name = "Arceus (Lightning)",
+                text = {}
+            },
+            j_agar_arceus_psychic = {
+                name = "Arceus (Psychic)",
+                text = {}
+            },
+            j_agar_arceus_fighting = {
+                name = "Arceus (Fighting)",
+                text = {}
+            },
+            j_agar_arceus_dark = {
+                name = "Arceus (Dark)",
+                text = {}
+            },
+            j_agar_arceus_metal = {
+                name = "Arceus (Metal)",
+                text = {}
+            },
+            j_agar_arceus_fairy = {
+                name = "Arceus (Fairy)",
+                text = {}
+            },
+            j_agar_arceus_dragon = {
+                name = "Arceus (Dragon)",
+                text = {}
+            },
+            j_agar_arceus_earth = {
+                name = "Arceus (Earth)",
+                text = {}
+            },
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {
@@ -334,6 +382,19 @@ return {
                     "{V:4}+#4# Foresight",
                     "{V:5}Foreseen{V:6} cards trigger held",
                     "{V:6}in hand effects",
+                }
+            },
+            j_agar_sinistea = {
+                name = "Sinistea",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_polteageist = {
+                name = "Polteageist",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
                 }
             },
             j_agar_hatenna = {
