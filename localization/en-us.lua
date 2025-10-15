@@ -4,8 +4,11 @@ return {
             j_agar_torkoal = {
                 name = "Torkoal",
                 text = {
-                    "Retrigger all",
-                    "{C:attention}Mult{} cards",
+                    "Retrigger all {C:attention}Mult{} cards",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:white,X:mult}X#1#{} Mult for each {C:attention}Mult Card",
+                    "remaining in deck",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
                 }
             },
             j_agar_spheal = {
