@@ -453,6 +453,19 @@ return {
                     "{C:inactive,s:0.8}(Flush Five does not count)",
                 }
             },
+            j_agar_poltchageist = {
+                name = "Poltchageist",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_sinistcha = {
+                name = "Sinistcha",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                }
+            },
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
             j_agar_gmax_charizard = {
