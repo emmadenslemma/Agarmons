@@ -456,14 +456,20 @@ return {
             j_agar_poltchageist = {
                 name = "Poltchageist",
                 text = {
-                    "{C:inactive}Does nothing (yet!)",
-                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                    "Gains {C:chips}+#1#{} Chips",
+                    "when a card is scored",
+                    "{C:green}#2# in #3#{} chance to be",
+                    "consumed on {C:red}discard",
+                    "{C:inactive}(Currently {C:chips}+#4#{} Chips)",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#5#{C:inactive,s:0.8} rounds)",
                 }
             },
             j_agar_sinistcha = {
                 name = "Sinistcha",
                 text = {
-                    "{C:inactive}Does nothing (yet!)",
+                    "Gains {C:chips}+#1#{} Chips when a card is scored",
+                    "{C:green}#2# in #3#{} chance to be consumed on {C:red}discard",
+                    "{C:inactive}(Currently {C:chips}+#4#{} Chips)",
                 }
             },
             -- All GMAX forms use `loc_txt` for their English localization
