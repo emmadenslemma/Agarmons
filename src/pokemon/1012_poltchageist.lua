@@ -12,6 +12,8 @@ local poltchageist = {
   stage = "Basic",
   ptype = "Grass",
   gen = 8,
+  eternal_compat = false,
+  perishable_compat = false,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
@@ -52,6 +54,8 @@ local sinistcha = {
   stage = "One",
   ptype = "Grass",
   gen = 10,
+  eternal_compat = false,
+  perishable_compat = false,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
