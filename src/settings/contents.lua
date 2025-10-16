@@ -14,7 +14,9 @@ return {
     {
       title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
+        { list = { "j_agar_sinistea", "j_agar_polteageist" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sinistea" } end, config_key = "sinistea" },
         { list = { "j_agar_frigibax", "j_agar_arctibax", "j_agar_baxcalibur" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_frigibax" } end, config_key = "frigibax" },
+        { list = { "j_agar_poltchageist", "j_agar_sinistcha" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_poltchageist" } end, config_key = "poltchageist" },
         { list = { "j_agar_gmax_charizard", "j_agar_gmax_butterfree", "j_agar_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
       }
     },
@@ -26,12 +28,13 @@ return {
         { list = { "j_agar_uxie", "j_agar_mesprit", "j_agar_azelf" }, label = function() return localize("agar_lake_trio") end, config_key = "lake_trio" },
         { list = { "j_agar_dialga" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dialga" } end, config_key = "dialga" },
         { list = { "j_agar_palkia" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_palkia" } end, config_key = "palkia" },
-        { list = { "j_agar_xerneas" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_xerneas" } end, config_key = "xerneas" },
+        { list = { "j_agar_arceus" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_arceus" } end, config_key = "arceus" },
       }
     },
     {
       title = function() return localize("agar_legendary_pokemon2") end,
       tiles = {
+        { list = { "j_agar_xerneas" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_xerneas" } end, config_key = "xerneas" },
         { list = { "j_agar_cosmog", "j_agar_cosmoem", "j_agar_solgaleo", "j_agar_lunala" }, label = function() return localize("agar_lunala_and_solgaleo") end, config_key = "cosmog" },
       }
     },

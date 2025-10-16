@@ -17,5 +17,6 @@ return {
   cosmog = true,
   sinistea = true,
   frigibax = false,
+  poltchageist = true,
   gmax = false,
 }

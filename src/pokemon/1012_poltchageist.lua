@@ -67,6 +67,6 @@ local sinistcha = {
 }
 
 return {
-  enabled = agarmons_config.sinistea or false,
+  enabled = agarmons_config.poltchageist or false,
   list = { poltchageist, sinistcha }
 }
