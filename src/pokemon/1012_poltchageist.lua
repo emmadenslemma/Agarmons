@@ -1,11 +1,11 @@
 -- Poltchageist 1012
 local poltchageist = {
   name = "poltchageist",
-  config = { extra = { chips = 0, chip_mod = 2, num = 1, dem = 5, rounds = 3 } },
+  config = { extra = { chips = 0, chip_mod = 2, num = 1, dem = 5 }, evo_rqmt = 40 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local num, dem = SMODS.get_probability_vars(center, center.ability.extra.num, center.ability.extra.dem, "poltchageist")
-    return { vars = { center.ability.extra.chip_mod, num, dem, center.ability.extra.chips, center.ability.extra.rounds } }
+    return { vars = { center.ability.extra.chip_mod, num, dem, center.ability.extra.chips, self.config.evo_rqmt } }
   end,
   rarity = 1,
   cost = 5,
@@ -36,7 +36,7 @@ local poltchageist = {
         message = localize('k_eaten_ex'),
       }
     end
-    return level_evo(self, card, context, "j_agar_sinistcha")
+    return scaling_evo(self, card, context, "j_agar_sinistcha", card.ability.extra.chips, self.config.evo_rqmt)
   end,
 }
 

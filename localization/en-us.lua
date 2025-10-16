@@ -461,8 +461,7 @@ return {
                     "{br:2}ERROR - CONTACT STEAK",
                     "{C:green}#2# in #3#{} chance to be",
                     "consumed on {C:red}discard",
-                    "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)",
-                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#5#{C:inactive,s:0.8} rounds)",
+                    "{C:inactive}(Evolves at {C:chips}+#4#{C:inactive} / +#5# Chips)",
                 }
             },
             j_agar_sinistcha = {
