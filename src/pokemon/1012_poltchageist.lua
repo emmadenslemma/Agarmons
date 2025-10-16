@@ -56,7 +56,11 @@ local sinistcha = {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-      SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, card)
+      return {
+        func = function()
+          SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, card)
+        end
+      }
     end
     if context.joker_main then
       return {
