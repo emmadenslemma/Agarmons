@@ -3,19 +3,22 @@ local energy = AGAR.ENERGY
 -- Yveltal 717
 local yveltal = {
   name = "yveltal",
+  pos = { x = 22, y = 47 },
+  soul_pos = { x = 23, y = 47 },
   config = { extra = { energy_limit_mod = 1, energy_mod = 1, Xmult = 1, Xmult_mod = 1 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue + 1] = { set = 'Other', key = 'energize' }
     end
-    return { vars = { center.ability.extra.energy_limit_mod, center.ability.extra.energy_mod } }
+    return { vars = { center.ability.extra.energy_limit_mod, center.ability.extra.energy_mod, center.ability.extra.Xmult_mod, center.ability.extra.Xmult } }
   end,
   rarity = 4,
   cost = 20,
   stage = "Legendary",
   ptype = "Dark",
   gen = 6,
+  atlas = "AtlasJokersBasicNatdex",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
@@ -40,7 +43,6 @@ local yveltal = {
           G.E_MANAGER:add_event(Event({
             func = function()
               G.GAME.joker_buffer = 0
-              card.ability.extra.mult = card.ability.extra.mult + sliced_card.sell_cost * 2
               card:juice_up(0.8, 0.8)
               sliced_card:start_dissolve({ HEX("57ecab") }, nil, 1.6)
               play_sound('slice1', 0.96 + math.random() * 0.08)
@@ -50,7 +52,7 @@ local yveltal = {
           -- Summon Death
         end
       end
-      if context.destroy_card then
+      if context.joker_type_destroyed then
         card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
         return {
           message = localize('k_upgrade_ex'),

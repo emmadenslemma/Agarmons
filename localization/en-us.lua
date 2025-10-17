@@ -204,8 +204,15 @@ return {
                 name = "Yveltal",
                 text = {
                     "{C:pink}+#1#{} Energy Limit",
-                    "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#1#",
+                    "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#2#",
                     "{br:2}ERROR - CONTACT STEAK",
+                    "When Blind is selected",
+                    "destroy Joker to the right",
+                    "and create a {C:attention}Death{} card",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gains {C:white,X:mult}X#3#{} Mult when a",
+                    "Joker is destroyed",
+                    "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)",
                 }
             },
             j_agar_dewpider = {

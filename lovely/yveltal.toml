@@ -1,0 +1,14 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Call calculate with context `joker_type_destroyed` whenever a Pokermon Joker self-destructs
+## We just want to track how many get destroyed, so preventing destruction isn't included
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+position = "after"
+match_indent = true
+pattern = '''remove = function(self, card, context, check_shiny)'''
+payload = '''  SMODS.calculate_context { joker_type_destroyed = true, card = card }'''
