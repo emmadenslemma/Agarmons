@@ -191,7 +191,10 @@ return {
             },
             j_agar_arceus = {
                 name = "Arceus",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_grass = {
                 name = "Arceus (Grass)",
