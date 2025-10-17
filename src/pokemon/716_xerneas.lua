@@ -30,8 +30,7 @@ local xerneas = {
   atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main
-        and card.ability.extra.Xmult > 1 then
+    if context.joker_main then
       return {
         Xmult = card.ability.extra.Xmult
       }
@@ -79,7 +78,7 @@ local xerneas = {
     energy.decrease_all("Fairy", card.ability.extra.energy_mod)
   end,
   load = function(self, card, card_table, other_card)
-    -- Load Active
+    -- Load Active Form Sprite
     G.E_MANAGER:add_event(Event({
       func = function()
         card.children.floating_sprite:set_sprite_pos { x = 7, y = 0 }
