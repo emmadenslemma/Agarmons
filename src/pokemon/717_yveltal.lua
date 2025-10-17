@@ -5,13 +5,22 @@ local yveltal = {
   name = "yveltal",
   pos = { x = 22, y = 47 },
   soul_pos = { x = 23, y = 47 },
-  config = { extra = { energy_limit_mod = 1, energy_mod = 1, Xmult = 1, Xmult_mod = 1 } },
+  config = { extra = { energy_limit_mod = 1, energy_mod = 1, Xmult = 1, Xmult_mod = 1, destructions = 2, destructions_remaining = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue + 1] = { set = 'Other', key = 'energize' }
     end
-    return { vars = { center.ability.extra.energy_limit_mod, center.ability.extra.energy_mod, center.ability.extra.Xmult_mod, center.ability.extra.Xmult } }
+    return {
+      vars = {
+        center.ability.extra.energy_limit_mod,
+        center.ability.extra.energy_mod,
+        center.ability.extra.Xmult_mod,
+        center.ability.extra.destructions,
+        center.ability.extra.destructions_remaining,
+        center.ability.extra.Xmult
+      }
+    }
   end,
   rarity = 4,
   cost = 20,
@@ -28,7 +37,7 @@ local yveltal = {
     end
     if not context.blueprint then
       -- Stolen from Vanilla Remade Ceremonial Dagger
-      if context.setting_blind then
+      if context.setting_blind and not card.getting_sliced then
         local my_pos = nil
         for i = 1, #G.jokers.cards do
           if G.jokers.cards[i] == card then
@@ -64,11 +73,15 @@ local yveltal = {
         end
       end
       if context.joker_type_destroyed then
-        card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.RED
-        }
+        card.ability.extra.destructions_remaining = card.ability.extra.destructions_remaining - 1
+        if card.ability.extra.destructions_remaining == 0 then
+          card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
+          card.ability.extra.destructions_remaining = card.ability.extra.destructions
+          return {
+            message = localize('k_upgrade_ex'),
+            colour = G.C.RED
+          }
+        end
       end
       -- Energize new Dark type Jokers
       if context.card_added and context.cardarea == G.jokers
