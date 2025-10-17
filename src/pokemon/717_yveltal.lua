@@ -50,6 +50,17 @@ local yveltal = {
             end
           }))
           -- Summon Death
+          -- From Vanilla Remade 8 Ball
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                SMODS.add_card { key = 'c_death' }
+                G.GAME.consumeable_buffer = 0
+              end
+              return true
+            end
+          }))
         end
       end
       if context.joker_type_destroyed then
