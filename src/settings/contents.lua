@@ -27,6 +27,7 @@ return {
         { list = { "j_agar_dialga" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dialga" } end, config_key = "dialga" },
         { list = { "j_agar_palkia" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_palkia" } end, config_key = "palkia" },
         { list = { "j_agar_xerneas" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_xerneas" } end, config_key = "xerneas" },
+        { list = { "j_agar_yveltal" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_yveltal" } end, config_key = "yveltal" },
       }
     },
     {

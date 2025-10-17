@@ -9,7 +9,7 @@ return {
   dialga = true,
   palkia = true,
   xerneas = true,
-  yveltal = false,
+  yveltal = true,
   dewpider = true,
   sandygast = false,
   pyukumuku = true,
