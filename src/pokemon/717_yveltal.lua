@@ -3,7 +3,7 @@ local energy = AGAR.ENERGY
 -- Yveltal 717
 local yveltal = {
   name = "yveltal",
-  config = { extra = { energy_limit_mod = 1, energy_mod = 1 } },
+  config = { extra = { energy_limit_mod = 1, energy_mod = 1, Xmult = 1, Xmult_mod = 1 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
@@ -18,10 +18,51 @@ local yveltal = {
   gen = 6,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    -- Energize new Dark type Jokers
-    if context.card_added and context.cardarea == G.jokers
-        and not context.card.ability.consumeable then
-      energy.increase(context.card, card.ability.extra.energy_mod)
+    if context.joker_main then
+      return {
+        Xmult = card.ability.extra.Xmult
+      }
+    end
+    if not context.blueprint then
+      -- Stolen from Vanilla Remade Ceremonial Dagger
+      if context.setting_blind then
+        local my_pos = nil
+        for i = 1, #G.jokers.cards do
+          if G.jokers.cards[i] == card then
+            my_pos = i
+            break
+          end
+        end
+        if my_pos and G.jokers.cards[my_pos + 1] and not SMODS.is_eternal(G.jokers.cards[my_pos + 1], card) and not G.jokers.cards[my_pos + 1].getting_sliced then
+          local sliced_card = G.jokers.cards[my_pos + 1]
+          sliced_card.getting_sliced = true
+          G.GAME.joker_buffer = G.GAME.joker_buffer - 1
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              G.GAME.joker_buffer = 0
+              card.ability.extra.mult = card.ability.extra.mult + sliced_card.sell_cost * 2
+              card:juice_up(0.8, 0.8)
+              sliced_card:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+              play_sound('slice1', 0.96 + math.random() * 0.08)
+              return true
+            end
+          }))
+          -- Summon Death
+        end
+      end
+      if context.destroy_card then
+        card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
+        return {
+          message = localize('k_upgrade_ex'),
+          colour = G.C.RED
+        }
+      end
+      -- Energize new Dark type Jokers
+      if context.card_added and context.cardarea == G.jokers
+          and not context.card.ability.consumeable
+          and energy_matches(context.card, "Dark") then
+        energy.increase(context.card, card.ability.extra.energy_mod)
+      end
     end
   end,
   add_to_deck = function(self, card, from_debuff)
@@ -31,12 +72,27 @@ local yveltal = {
   end,
   remove_from_deck = function(self, card, from_debuff)
     energy.decrease_limit(card.ability.extra.energy_limit_mod)
-    energy.decrease_all("Fairy", card.ability.extra.energy_mod)
+    energy.decrease_all("Dark", card.ability.extra.energy_mod)
   end,
 }
 
+local init = function()
+  -- Energize/De-Energize when using Tera Orb in and out of Dark Aura
+  local apply_type_sticker_orig = apply_type_sticker
+  apply_type_sticker = function(card, ...)
+    local yveltal_present = SMODS.find_card('j_agar_yveltal', true)
+    if yveltal_present and energy_matches(card, "Dark") then
+      energy.decrease(card, "Dark")
+    end
+    apply_type_sticker_orig(card, ...)
+    if yveltal_present and energy_matches(card, "Dark") then
+      energy.increase(card, "Dark")
+    end
+  end
+end
+
 return {
-  name = "Agarmons Yveltal",
   enabled = agarmons_config.yveltal or false,
+  init = init,
   list = { yveltal }
 }
