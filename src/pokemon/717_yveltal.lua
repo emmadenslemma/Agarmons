@@ -22,6 +22,7 @@ local yveltal = {
       }
     }
   end,
+  designer = "Eternalnacho",
   rarity = 4,
   cost = 20,
   stage = "Legendary",
