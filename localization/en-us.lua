@@ -189,6 +189,14 @@ return {
                     "{C:inactive}(Requirement increases each time)"
                 }
             },
+            j_agar_stunfisk = {
+                name = "Stunfisk",
+                text = {
+                    "When blind is selected,",
+                    "this Joker hides in your deck",
+                    "{C:inactive}(What the-?!)",
+                }
+            },
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {

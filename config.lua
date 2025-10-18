@@ -8,6 +8,7 @@ return {
   lake_trio = true,
   dialga = true,
   palkia = true,
+  stunfisk = true,
   xerneas = true,
   yveltal = true,
   dewpider = true,
