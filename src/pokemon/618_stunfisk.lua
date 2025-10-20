@@ -12,13 +12,13 @@ local stunfisk = {
   ptype = "Lightning",
   gen = 5,
   calculate = function(self, card, context)
-    if context.setting_blind then
+    if context.setting_blind and not context.blueprint and not card.getting_sliced then
       -- Okay so turns out becoming a playing card gets us rendered as a playing card,
       -- and that crashes the game when it finds out we're not a real playing card.
       -- We should probably become a real playing card because not being a playing card
       -- crashes the game when it tries to find out if our hand is a Flush.
       card.set_sprites = function() end
-      card:set_base(G.P_CARDS['D_2']) -- 2 of Diamonds won't be shown bc Stunfisk is a Hazard card anyways
+      card:set_base(G.P_CARDS['D_agar_STUNFISK']) -- 2 of Diamonds won't be shown bc Stunfisk is a Hazard card anyways
       -- We're a playing card now.
       G.playing_card = (G.playing_card and G.playing_card + 1) or 1
       card.playing_card = G.playing_card
@@ -54,7 +54,7 @@ local init = function()
           -- card.base = {}
 
           G.playing_card = math.max((G.playing_card and G.playing_card - 1) or 0, 0)
-          -- card.playing_card = nil
+          card.playing_card = nil
           -- TODO: Look into Card:remove() [line:4752] on how to make this save.
           -- Currently breaks if you reload a save immediately after entering the shop.
           for i, playing_card in ipairs(G.playing_cards) do

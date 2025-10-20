@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# [SMODS.get_enhancements] Add Hazard effects to Stunfisk
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+position = "after"
+match_indent = true
+pattern = '''local enhancements = {}'''
+payload = '''if card.config.center.key == "j_agar_stunfisk" then
+    enhancements["m_poke_hazard"] = true
+end'''
+
+# Stop Sun Stone from creating Stunfisk cards
