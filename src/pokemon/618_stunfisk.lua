@@ -39,6 +39,30 @@ local stunfisk = {
   end
 }
 
+-- Galarian Stunfisk 618-1
+local galarian_stunfisk = {
+  name = "galarian_stunfisk",
+  pos = { x = 6, y = 8 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = {} }
+  end,
+  rarity = 3,
+  cost = 7,
+  stage = "Basic",
+  ptype = "Metal",
+  atlas = "AtlasJokersBasicGen05",
+  gen = 8,
+  calculate = function(self, card, context)
+    if context.setting_blind and not context.blueprint and not card.getting_sliced then
+      -- SMODS.add_card()
+    end
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+  end
+}
+
 local init = function()
   local calculate_ref = SMODS.current_mod.calculate
   SMODS.current_mod.calculate = function(self, context)
@@ -82,5 +106,5 @@ end
 return {
   enabled = agarmons_config.stunfisk or false,
   init = init,
-  list = { stunfisk }
+  list = { stunfisk, galarian_stunfisk }
 }
