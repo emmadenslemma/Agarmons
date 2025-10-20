@@ -10,8 +10,20 @@ target = '=[SMODS _ "src/utils.lua"]'
 position = "after"
 match_indent = true
 pattern = '''local enhancements = {}'''
-payload = '''if card.config.center.key == "j_agar_stunfisk" then
+payload = '''if card.base.value == "agar_Stunfisk" then
     enhancements["m_poke_hazard"] = true
 end'''
 
-# Stop Sun Stone from creating Stunfisk cards
+# [poke_vary_rank] Stop Sun Stone from creating Stunfisk cards
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokeutils.lua"]'
+position = "before"
+match_indent = true
+pattern = '''if #poss_ranks > 0 then'''
+payload = '''for i, rank in ipairs(poss_ranks) do
+  if rank == "agar_Stunfisk" then
+    table.remove(poss_ranks, i)
+    break
+  end
+end'''
