@@ -17,7 +17,7 @@ local spheal = {
     if context.reroll_shop and not context.blueprint then
       card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
       return {
-        message = localize { type = 'variable', key = 'a_mult', vars = { self.ability.mult } },
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
         colour = G.C.MULT,
       }
     end
@@ -49,7 +49,7 @@ local sealeo = {
     if context.reroll_shop and not context.blueprint then
       card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
       return {
-        message = localize { type = 'variable', key = 'a_mult', vars = { self.ability.mult } },
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
         colour = G.C.MULT,
       }
     end
@@ -83,14 +83,14 @@ local walrein = {
       if SMODS.pseudorandom_probability(card, "walrein", card.ability.extra.num, card.ability.extra.dem, "walrein") then
         card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
         return {
-          message = localize { type = 'variable', key = 'a_xmult', vars = { self.ability.Xmult } },
+          message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
           colour = G.C.MULT,
           sound = "tarot1",
         }
       else
         card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
         return {
-          message = localize { type = 'variable', key = 'a_mult', vars = { self.ability.mult } },
+          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
           colour = G.C.MULT,
         }
       end
