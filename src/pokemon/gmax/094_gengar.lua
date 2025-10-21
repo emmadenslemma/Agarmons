@@ -24,7 +24,8 @@ local gmax_gengar = {
   blueprint_compat = true,
   poke_custom_values_to_keep = { "gengar_rounds", "trigger" },
   calculate = function(self, card, context)
-    if context.other_joker then
+    if context.other_joker
+        and context.other_joker.edition and context.other_joker.edition.negative then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }
