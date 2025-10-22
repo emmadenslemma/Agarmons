@@ -80,6 +80,9 @@ local init = function()
     no_collection = true,
     in_pool = function(self, args) return false end,
     calculate = function(self, card, context)
+      if context.check_enhancement and context.other_card == card then
+        return { m_poke_hazard = true }
+      end
     end,
   }
 
