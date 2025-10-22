@@ -17,8 +17,9 @@ local stunfisk = {
       -- and that crashes the game when it finds out we're not a real playing card.
       -- We should probably become a real playing card because not being a playing card
       -- crashes the game when it tries to find out if our hand is a Flush.
-      card.set_sprites = function() end
-      card:set_base(G.P_CARDS['D_agar_STUNFISK']) -- 2 of Diamonds won't be shown bc Stunfisk is a Hazard card anyways
+      -- card.set_sprites = function() end
+      card:set_base(G.P_CARDS['D_2']) -- 2 of Diamonds won't be shown bc Stunfisk is a Hazard card anyways
+      card:set_ability(G.P_CENTERS['m_agar_stunfisk'])
       -- We're a playing card now.
       G.playing_card = (G.playing_card and G.playing_card + 1) or 1
       card.playing_card = G.playing_card
@@ -26,6 +27,7 @@ local stunfisk = {
       -- We're in the deck now.
       card:set_card_area(G.deck)
       card.area:emplace(card)
+
       -- Removing cards messes with the Joker calculating, which works off indexes, so we delay it
       G.E_MANAGER:add_event(Event({
         func = function()
@@ -64,6 +66,31 @@ local galarian_stunfisk = {
 }
 
 local init = function()
+  SMODS.Enhancement {
+    key = "stunfisk",
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, center)
+      return { vars = {} }
+    end,
+    no_rank = true,
+    no_suit = true,
+    always_scores = true,
+    replace_base_card = true,
+    weight = 0,
+    no_collection = true,
+    in_pool = function(self, args) return false end,
+    calculate = function(self, card, context)
+    end,
+  }
+
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      G.P_CENTERS['m_agar_stunfisk'].atlas = G.P_CENTERS['j_agar_stunfisk'].atlas
+      G.P_CENTERS['m_agar_stunfisk'].pos = G.P_CENTERS['j_agar_stunfisk'].pos
+      return true
+    end
+  }))
+
   local calculate_ref = SMODS.current_mod.calculate
   SMODS.current_mod.calculate = function(self, context)
     if calculate_ref then
@@ -72,7 +99,17 @@ local init = function()
     if context.end_of_round and not context.individual and not context.repetition then
       -- TODO: Loop through G.hand and G.discard as well
       for _, card in ipairs(G.deck.cards) do
-        if card.config.center_key == 'j_agar_stunfisk' then
+        if SMODS.has_enhancement(card, 'm_agar_stunfisk') then
+          -- These are all set on creation - we may not need to touch them?
+          card.states.collide.can = true
+          card.states.hover.can = true
+          card.states.drag.can = true
+          card.states.click.can = true
+          -- `front` is the playing card graphic and we have to get rid of it manually
+          card.children.front = nil
+
+          card:set_ability(G.P_CENTERS['j_agar_stunfisk'])
+
           card.config.card = {}
           card.config.card_key = nil
           -- card.base = {}
@@ -88,12 +125,15 @@ local init = function()
             end
           end
 
-          card:set_card_area(G.jokers)
-          card.area:emplace(card)
           -- Once again removing cards mid loop causes problems, so we delay it
           G.E_MANAGER:add_event(Event({
             func = function()
+              -- We have to remove the card from the deck before adding it to jokers,
+              -- otherwise highlighting breaks for some reason.
+              -- Don't ask.
               G.deck:remove_card(card)
+              card:set_card_area(G.jokers)
+              card.area:emplace(card)
               return true
             end
           }))
