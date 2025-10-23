@@ -239,22 +239,19 @@ return {
             j_agar_sandygast = {
                 name = "Sandygast",
                 text = {
-                    "Gain {C:chips}+#1#{} Chips per discarded",
-                    "{V:1}#2#{} Card, suit changes",
-                    "every round",
+                    "Gains {C:chips}+#1#{} Chips",
+                    "per discarded {V:1}#2#{} Card,",
+                    "suit changes every round",
                     "{C:inactive}(Evolves at {C:chips}+#3#{C:inactive} / +#4# Chips)",
                 }
             },
             j_agar_palossand = {
                 name = "Palossand",
                 text = {
-                    "When {C:attention}Blind{} is selected,",
-                    "gain {C:attention}+#1#{} hand size for every {X:water,C:white}Water{} card you have",
-                    "and {C:red}+#2#{} discard for every {X:earth,C:white}Earth{} card you have",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Gain {C:chips}+#3#{} Chips per discarded {V:1}#4#{} Card",
+                    "Gains {C:chips}+#1#{} Chips",
+                    "per discarded {V:1}#2#{} Card,",
                     "suit changes every round",
-                    "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
+                    "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
                 }
             },
             j_agar_pyukumuku = {
