@@ -251,7 +251,10 @@ return {
                     "Gains {C:chips}+#1#{} Chips",
                     "per discarded {V:1}#2#{} Card,",
                     "suit changes every round",
-                    "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gain increased by {C:chips}+#3#{} Chips for",
+                    "every {C:white,X:water}Water{} Joker you have",
+                    "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)",
                 }
             },
             j_agar_pyukumuku = {

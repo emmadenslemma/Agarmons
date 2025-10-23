@@ -1,7 +1,7 @@
 -- Sandygast 769
 local sandygast = {
   name = "sandygast",
-  config = { extra = { chips = 0, chip_mod = 3 }, evo_rqmt = 60 },
+  config = { extra = { chips = 0, chip_mod = 2 }, evo_rqmt = 60 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
@@ -35,11 +35,11 @@ local sandygast = {
 -- Palossand 770
 local palossand = {
   name = "palossand",
-  config = { extra = { chips = 0, chip_mod = 4 } },
+  config = { extra = { chips = 0, chip_mod = 3, chip_mod2 = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
-    return { vars = { center.ability.extra.chip_mod, localize(suit, "suits_singular"), center.ability.extra.chips, colours = { G.C.SUITS[suit] } } }
+    return { vars = { center.ability.extra.chip_mod, localize(suit, "suits_singular"), center.ability.extra.chip_mod2, center.ability.extra.chips, colours = { G.C.SUITS[suit] } } }
   end,
   rarity = "poke_safari",
   cost = 10,
@@ -51,7 +51,7 @@ local palossand = {
   calculate = function(self, card, context)
     if context.discard and not context.blueprint and not context.other_card.debuff
         and context.other_card:is_suit(G.GAME.current_round.sandygast_suit) then
-      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod + #find_pokemon_type("Water") * card.ability.extra.chip_mod2
       return {
         message = localize('k_upgrade_ex'),
         colour = G.C.CHIPS
@@ -66,6 +66,8 @@ local palossand = {
 }
 
 local init = function()
+  energy_values['chip_mod2'] = energy_values['chip_mod']
+
   local reset_game_globals_ref = SMODS.current_mod.reset_game_globals
 
   SMODS.current_mod.reset_game_globals = function(run_start)
