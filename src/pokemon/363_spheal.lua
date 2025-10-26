@@ -106,6 +106,6 @@ local walrein = {
 
 return {
   name = "Agarmons Spheal Evo Line",
-  enabled = agarmons_config.spheal or false,
-  list = { spheal, sealeo, walrein }
+  enabled = false, -- agarmons_config.spheal or false,
+  list = {} -- { spheal, sealeo, walrein }
 }
