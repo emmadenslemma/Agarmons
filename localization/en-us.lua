@@ -189,6 +189,16 @@ return {
                     "{C:inactive}(Requirement increases each time)"
                 }
             },
+            j_agar_regigigas = {
+                name = "Regigigas",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "{br:1.5}ERROR - CONTACT STEAK",
+                    "Debuffed for the",
+                    "first {C:attention}#2#{} rounds",
+                    "{C:inactive}({C:attention}#3#{C:inactive} remaining)"
+                }
+            },
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {
