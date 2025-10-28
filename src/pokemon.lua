@@ -42,10 +42,7 @@ local function load_pokemon_folder(folder)
         end
 
         if nachos_loaded then
-          -- Remove this when Nacho adds GMAX Butterfree to his list
-          if family[1] ~= 'gmax_butterfree' then
-            PkmnDip.dex_order_groups[#PkmnDip.dex_order_groups + 1] = family
-          end
+          PkmnDip.dex_order_groups[#PkmnDip.dex_order_groups + 1] = family
         end
 
         if #family > 1 then
