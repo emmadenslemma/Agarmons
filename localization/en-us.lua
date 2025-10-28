@@ -1,6 +1,15 @@
 return {
     descriptions = {
         Joker = {
+            j_agar_mega_dragonite = {
+                name = "Mega Dragonite",
+                text = {
+                    "If played hand is exactly {C:attention}1{} card,",
+                    "retrigger it {C:attention}#1#{} times for every",
+                    "other Joker you have",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive} retriggers)"
+                }
+            },
             j_agar_torkoal = {
                 name = "Torkoal",
                 text = {

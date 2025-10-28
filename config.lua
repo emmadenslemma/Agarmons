@@ -16,4 +16,5 @@ return {
   cosmog = true,
   frigibax = false,
   gmax = false,
+  new_megas = true,
 }
