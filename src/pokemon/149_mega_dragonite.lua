@@ -1,8 +1,8 @@
 -- 149-1 Mega Dragonite
 local mega_dragonite = {
   name = "mega_dragonite",
-  pos = { x = 26, y = 9 }, -- { x = 0, y = 1 },
-  -- soul_pos = { x = 1, y = 1 },
+  pos = { x = 0, y = 1 },
+  soul_pos = { x = 1, y = 1 },
   config = { extra = { retriggers = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -17,7 +17,7 @@ local mega_dragonite = {
   stage = "Mega",
   ptype = "Dragon",
   gen = 1,
-  atlas = "AtlasJokersBasicNatdex",
+  atlas = "AgarmonsJokers",
   perishable_compat = true,
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play

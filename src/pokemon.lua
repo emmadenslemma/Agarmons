@@ -1,5 +1,7 @@
 local subdir = "src/pokemon/"
 
+local nachos_loaded = (SMODS.Mods["NachosPokermonDip"] or {}).can_load and PkmnDip and PkmnDip.dex_order_groups
+
 local function load_pokemon(item)
   if item.rarity == "agar_gmax" then
     AGAR.GMAX.preload(item)
@@ -25,25 +27,30 @@ local function load_pokemon_folder(folder)
     if file_type ~= "directory" and file_type ~= "symlink" then
       local poke = assert(SMODS.load_file(folder .. filename))()
 
-      -- init contains functions for disabling conflicts from other mods et al so we skip when loading shells
-      if poke.enabled and poke.init then
-        poke:init()
-      end
+      if poke.enabled then
+        if poke.init then
+          poke:init()
+        end
 
-      local family = {}
+        local family = {}
 
-      if poke.list and #poke.list > 0 then
-        for _, item in ipairs(poke.list) do
-          family[#family + 1] = item.name
-
-          if poke.enabled then
+        if poke.list and #poke.list > 0 then
+          for _, item in ipairs(poke.list) do
+            family[#family + 1] = item.name
             load_pokemon(item)
           end
         end
-      end
 
-      if #family > 1 then
-        pokermon.add_family(family)
+        if nachos_loaded then
+          -- Remove this when Nacho adds GMAX Butterfree to his list
+          if family[1] ~= 'gmax_butterfree' then
+            PkmnDip.dex_order_groups[#PkmnDip.dex_order_groups + 1] = family
+          end
+        end
+
+        if #family > 1 then
+          pokermon.add_family(family)
+        end
       end
     end
   end

@@ -557,6 +557,7 @@ return {
             agar_lake_trio = "Uxie, Mesprit, and Azelf",
             agar_lunala_and_solgaleo = "Lunala and Solgaleo",
             agar_gigantamaxing = "Gigantamaxing",
+            agar_new_megas = "Z-A Megas",
 
             agar_regular_pokemon1 = "Regular Pokémon 1/2",
             agar_regular_pokemon2 = "Regular Pokémon 2/2",
