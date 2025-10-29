@@ -41,7 +41,7 @@ local function load_pokemon_folder(folder)
           end
         end
 
-        if nachos_loaded and not poke.name == "Agarmons Bagon Evo Line" then
+        if nachos_loaded and poke.name ~= "Agarmons Bagon Evo Line" then
           PkmnDip.dex_order_groups[#PkmnDip.dex_order_groups + 1] = family
         end
 
