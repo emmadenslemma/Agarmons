@@ -422,7 +422,7 @@ return {
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
             j_agar_gmax_charizard = {
-                name = "Gigantamax Charizard",
+                name = "{C:agar_gmax}G-MAX{} Charizard",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -432,7 +432,7 @@ return {
                 }
             },
             j_agar_gmax_butterfree = {
-                name = "Gigantamax Butterfree",
+                name = "{C:agar_gmax}G-MAX{} Butterfree",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -440,7 +440,7 @@ return {
                 }
             },
             j_agar_gmax_machamp = {
-                name = "Gigantamax Machamp",
+                name = "{C:agar_gmax}G-MAX{} Machamp",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",

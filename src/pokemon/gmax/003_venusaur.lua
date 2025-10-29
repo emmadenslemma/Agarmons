@@ -5,7 +5,7 @@ local gmax_venusaur = {
   soul_pos = { x = 13, y = 6 },
   config = { extra = { Xmult_multi = 1.5, h_size = 1 } },
   loc_txt = {
-    name = "Gigantamax Venusaur",
+    name = "{C:agar_gmax}G-MAX{} Venusaur",
     text = {
       "Each {C:attention}#3#{} held in hand",
       "gives {C:white,X:mult}X#4#{} Mult",

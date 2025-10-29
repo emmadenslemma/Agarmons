@@ -5,7 +5,7 @@ local gmax_machamp = {
   soul_pos = { x = 9, y = 7 },
   config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
-    name = "Gigantamax Machamp",
+    name = "{C:agar_gmax}G-MAX{} Machamp",
     text = {
       "{C:white,X:mult}X#3#{} Mult, doubles after",
       "every hand played",

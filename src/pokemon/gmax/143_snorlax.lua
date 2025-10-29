@@ -5,7 +5,7 @@ local gmax_snorlax = {
   soul_pos = { x = 3, y = 8 },
   config = { extra = { Xmult_mod = 0.2, Xmult = 1, no_holding = true } },
   loc_txt = {
-    name = "Gigantamax Snorlax",
+    name = "{C:agar_gmax}G-MAX{} Snorlax",
     text = {
       "{C:white,X:mult}X#3#{} Mult",
       "All Jokers give Mult equal",
