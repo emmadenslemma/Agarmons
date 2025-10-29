@@ -18,6 +18,7 @@ local mega_dragonite = {
   ptype = "Dragon",
   gen = 1,
   atlas = "AgarmonsJokers",
+  blueprint_compat = true,
   perishable_compat = true,
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play
