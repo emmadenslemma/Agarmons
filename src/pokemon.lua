@@ -55,3 +55,4 @@ end
 
 load_pokemon_folder(subdir)
 load_pokemon_folder(subdir .. 'gmax/')
+load_pokemon_folder(subdir .. 'mega/')
