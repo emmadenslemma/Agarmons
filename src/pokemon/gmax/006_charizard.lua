@@ -3,9 +3,9 @@ local gmax_charizard = {
   name = "gmax_charizard",
   pos = { x = 0, y = 7 },
   soul_pos = { x = 1, y = 7 },
-  config = { extra = { Xmult = 1, Xmult_mod = 0.5, d_size = 1 } },
+  config = { extra = { Xmult = 1, Xmult_mod = 1, d_size = 1 } },
   loc_txt = {
-    name = "Gigantamax Charizard",
+    name = "{C:agar_gmax}G-MAX{} Charizard",
     text = {
       "Gains {C:white,X:mult}X#3#{} per discard",
       "used this round",

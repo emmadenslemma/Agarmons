@@ -5,7 +5,7 @@ local gmax_eevee = {
   soul_pos = { x = 1, y = 8 },
   config = { extra = { Xmult = 2.66 } },
   loc_txt = {
-    name = "Gigantamax Eevee",
+    name = "{C:agar_gmax}G-MAX{} Eevee",
     text = {
       "{C:white,X:mult}X#3#{} Mult",
     }

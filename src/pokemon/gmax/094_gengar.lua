@@ -5,7 +5,7 @@ local gmax_gengar = {
   soul_pos = { x = 11, y = 7 },
   config = { extra = { Xmult_multi = 1.5, gengar_rounds = 5, trigger = false } },
   loc_txt = {
-    name = "Gigantamax Gengar",
+    name = "{C:agar_gmax}G-MAX{} Gengar",
     text = {
       "All {C:dark_edition}Negative{} Jokers",
       "give {X:mult,C:white} X#3# {} Mult",
@@ -24,7 +24,8 @@ local gmax_gengar = {
   blueprint_compat = true,
   poke_custom_values_to_keep = { "gengar_rounds", "trigger" },
   calculate = function(self, card, context)
-    if context.other_joker then
+    if context.other_joker
+        and context.other_joker.edition and context.other_joker.edition.negative then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }

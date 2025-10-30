@@ -1,5 +1,7 @@
 local subdir = "src/pokemon/"
 
+local nachos_loaded = (SMODS.Mods["NachosPokermonDip"] or {}).can_load and PkmnDip and PkmnDip.dex_order_groups
+
 local function load_pokemon(item)
   if item.rarity == "agar_gmax" then
     AGAR.GMAX.preload(item)
@@ -35,9 +37,12 @@ local function load_pokemon_folder(folder)
         if poke.list and #poke.list > 0 then
           for _, item in ipairs(poke.list) do
             family[#family + 1] = item.name
-
             load_pokemon(item)
           end
+        end
+
+        if nachos_loaded and poke.name ~= "Agarmons Bagon Evo Line" then
+          PkmnDip.dex_order_groups[#PkmnDip.dex_order_groups + 1] = family
         end
 
         if #family > 1 then
@@ -50,3 +55,4 @@ end
 
 load_pokemon_folder(subdir)
 load_pokemon_folder(subdir .. 'gmax/')
+load_pokemon_folder(subdir .. 'mega/')

@@ -2,7 +2,7 @@
 local groudon = {
   name = "groudon",
   soul_pos = { x = 15, y = 25 },
-  config = { extra = { Xmult_multi = 2 } },
+  config = { extra = { Xmult_multi = 2.4 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then

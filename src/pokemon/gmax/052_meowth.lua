@@ -6,7 +6,7 @@ local gmax_meowth = {
   -- Include `money` to not reset scaling when dynamaxing
   config = { extra = { money = 1, money1 = 3, num = 1, dem = 10 } },
   loc_txt = {
-    name = "Gigantamax Meowth",
+    name = "{C:agar_gmax}G-MAX{} Meowth",
     text = {
       "Earn {C:money}$#3#{} for every successful",
       "Lucky card trigger",

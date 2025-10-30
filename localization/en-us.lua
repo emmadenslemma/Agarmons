@@ -1,6 +1,15 @@
 return {
     descriptions = {
         Joker = {
+            j_agar_mega_dragonite = {
+                name = "Mega Dragonite",
+                text = {
+                    "If played hand is exactly {C:attention}1{} card,",
+                    "retrigger it {C:attention}#1#{} times for every",
+                    "other Joker you have",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive} retriggers)"
+                }
+            },
             j_agar_torkoal = {
                 name = "Torkoal",
                 text = {
@@ -240,6 +249,16 @@ return {
                 name = "Arceus (Earth)",
                 text = {}
             },
+            j_agar_regigigas = {
+                name = "Regigigas",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "{br:1.5}ERROR - CONTACT STEAK",
+                    "Debuffed for the",
+                    "first {C:attention}#2#{} rounds",
+                    "{C:inactive}({C:attention}#3#{C:inactive} remaining)"
+                }
+            },
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {
@@ -255,8 +274,16 @@ return {
                 name = "Yveltal",
                 text = {
                     "{C:pink}+#1#{} Energy Limit",
-                    "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#1#",
+                    "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#2#",
                     "{br:2}ERROR - CONTACT STEAK",
+                    "When Blind is selected,",
+                    "destroy Joker to the right",
+                    "and create a {C:attention}Death{} card",
+                    "{C:inactive}(Must have room)",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gains {C:white,X:mult}X#3#{} Mult for every",
+                    "{C:attention}#4# {C:inactive}[#5#]{} Jokers destroyed",
+                    "{C:inactive}(Currently {C:white,X:mult}X#6#{C:inactive} Mult)",
                 }
             },
             j_agar_dewpider = {
@@ -282,22 +309,22 @@ return {
             j_agar_sandygast = {
                 name = "Sandygast",
                 text = {
-                    "Gain {C:chips}+#1#{} Chips per discarded",
-                    "{V:1}#2#{} Card, suit changes",
-                    "every round",
+                    "Gains {C:chips}+#1#{} Chips",
+                    "per discarded {V:1}#2#{} Card,",
+                    "suit changes every round",
                     "{C:inactive}(Evolves at {C:chips}+#3#{C:inactive} / +#4# Chips)",
                 }
             },
             j_agar_palossand = {
                 name = "Palossand",
                 text = {
-                    "When {C:attention}Blind{} is selected,",
-                    "gain {C:attention}+#1#{} hand size for every {X:water,C:white}Water{} card you have",
-                    "and {C:red}+#2#{} discard for every {X:earth,C:white}Earth{} card you have",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Gain {C:chips}+#3#{} Chips per discarded {V:1}#4#{} Card",
+                    "Gains {C:chips}+#1#{} Chips",
+                    "per discarded {V:1}#2#{} Card,",
                     "suit changes every round",
-                    "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gain increased by {C:chips}+#3#{} Chips for",
+                    "every {C:white,X:water}Water{} Joker you have",
+                    "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)",
                 }
             },
             j_agar_pyukumuku = {
@@ -483,7 +510,7 @@ return {
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
             j_agar_gmax_charizard = {
-                name = "Gigantamax Charizard",
+                name = "{C:agar_gmax}G-MAX{} Charizard",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -493,7 +520,7 @@ return {
                 }
             },
             j_agar_gmax_butterfree = {
-                name = "Gigantamax Butterfree",
+                name = "{C:agar_gmax}G-MAX{} Butterfree",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -501,7 +528,7 @@ return {
                 }
             },
             j_agar_gmax_machamp = {
-                name = "Gigantamax Machamp",
+                name = "{C:agar_gmax}G-MAX{} Machamp",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -618,6 +645,7 @@ return {
             agar_lake_trio = "Uxie, Mesprit, and Azelf",
             agar_lunala_and_solgaleo = "Lunala and Solgaleo",
             agar_gigantamaxing = "Gigantamaxing",
+            agar_new_megas = "Z-A Megas",
 
             agar_regular_pokemon1 = "Regular Pokémon 1/2",
             agar_regular_pokemon2 = "Regular Pokémon 2/2",

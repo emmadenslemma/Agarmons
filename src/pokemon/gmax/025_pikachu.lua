@@ -5,7 +5,7 @@ local gmax_pikachu = {
   soul_pos = { x = 5, y = 7 },
   config = { extra = { money = 1 } },
   loc_txt = {
-    name = "Gigantamax Pikachu",
+    name = "{C:agar_gmax}G-MAX{} Pikachu",
     text = {
       "Every hand gives {C:money}$#3#{} for",
       "every {C:money}$1{} you are from",
