@@ -15,7 +15,7 @@ return {
       title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
         { list = { "j_agar_gmax_charizard", "j_agar_gmax_butterfree", "j_agar_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
-        { list = { "j_agar_mega_dragonite" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
+        { list = { "j_agar_mega_dragonite", "j_agar_mega_victreebel" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
       }
     },
     {
