@@ -1,13 +1,13 @@
 -- Sinistea 856
 local sinistea = {
   name = "sinistea",
-  config = { extra = { rounds = 5 } },
+  config = { extra = { Xmult = 2, Xmult_mod = 0.05, rounds = 4 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.rounds } }
+    return { vars = { center.ability.extra.Xmult, center.ability.extra.Xmult_mod, center.ability.extra.rounds } }
   end,
-  rarity = 1,
-  cost = 4,
+  rarity = 2,
+  cost = 5,
   stage = "Basic",
   ptype = "Psychic",
   gen = 8,
@@ -20,10 +20,10 @@ local sinistea = {
 -- Polteageist 857
 local polteageist = {
   name = "polteageist",
-  config = { extra = {} },
+  config = { extra = { Xmult = 2, Xmult_mod = 0.05 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.rounds } }
+    return { vars = { center.ability.extra.Xmult, center.ability.extra.Xmult_mod, center.ability.extra.Xmult_mod * 2 } }
   end,
   rarity = "poke_safari",
   cost = 8,

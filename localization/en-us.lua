@@ -417,14 +417,20 @@ return {
             j_agar_sinistea = {
                 name = "Sinistea",
                 text = {
-                    "{C:inactive}Does nothing (yet!)",
-                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "Loses {C:white,X:mult}X#2#{} Mult",
+                    "when hand is played",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)",
                 }
             },
             j_agar_polteageist = {
                 name = "Polteageist",
                 text = {
-                    "{C:inactive}Does nothing (yet!)",
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "Loses {C:white,X:mult}X#2#{} Mult",
+                    "when hand is played",
+                    "Gains {C:white,X:mult}X#3#{} Mult",
+                    "at end of round",
                 }
             },
             j_agar_hatenna = {
