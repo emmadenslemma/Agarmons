@@ -3,11 +3,21 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Stop crashes when trying to view shell family keys
+# View ptypes in pokedex view
 [[patches]]
 [patches.pattern]
-target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+target = '=[SMODS Pokermon "pokeui.lua"]'
 position = "after"
 match_indent = true
-pattern = '''get_family_keys = function(cardname, custom_prefix, card)'''
-payload = '''  custom_prefix = card.config.center.is_shell and (custom_prefix .. "_shell") or custom_prefix'''
+pattern = '''if type(keys[j]) == "table" and G.P_CENTERS[key].set_sprites then
+  card.ability.extra.form = keys[j].form'''
+payload = '''  if keys[j].ptype then card.ability.extra.ptype = keys[j].ptype end'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokeui.lua"]'
+position = "after"
+match_indent = true
+pattern = '''if type(keys[j]) == "table" then
+  card.ability.extra.form = keys[j].form'''
+payload = '''  if keys[j].ptype then card.ability.extra.ptype = keys[j].ptype end'''

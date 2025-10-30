@@ -207,47 +207,80 @@ return {
             },
             j_agar_arceus_grass = {
                 name = "Arceus (Grass)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_fire = {
                 name = "Arceus (Fire)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_water = {
                 name = "Arceus (Water)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_lightning = {
                 name = "Arceus (Lightning)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_psychic = {
                 name = "Arceus (Psychic)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_fighting = {
                 name = "Arceus (Fighting)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_dark = {
                 name = "Arceus (Dark)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_metal = {
                 name = "Arceus (Metal)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_fairy = {
                 name = "Arceus (Fairy)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_dragon = {
                 name = "Arceus (Dragon)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_arceus_earth = {
                 name = "Arceus (Earth)",
-                text = {}
+                text = {
+                    "When Blind is selected,",
+                    "pick a {C:dark_edition,E:1}Divine Intervention",
+                }
             },
             j_agar_regigigas = {
                 name = "Regigigas",
