@@ -579,6 +579,14 @@ return {
                 },
             },
         },
+        Item = {
+            c_agar_originball = {
+                name = "Origin Ball",
+                text = {
+                    "Summons {C:dark_edition,E:1}Arceus"
+                }
+            },
+        },
         Other = {
             gmax_poke = {
                 name = "Gigantamax Factor",
