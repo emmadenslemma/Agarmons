@@ -28,6 +28,15 @@ local family_utils = {
   end
 }
 
+local type_tooltip_ref = type_tooltip
+type_tooltip = function(self, info_queue, center)
+  type_tooltip_ref(self, info_queue, center)
+  if agarmons_config.new_megas and pokermon_config.detailed_tooltips
+      and center.config and center.config.center and family_utils.get_injection_payload(center.config.center.key) then
+    info_queue[#info_queue + 1] = { set = 'Other', key = 'mega_poke' }
+  end
+end
+
 local get_family_keys_ref = get_family_keys
 get_family_keys = function(cardname, custom_prefix, card)
   if custom_prefix == my_custom_prefix then
