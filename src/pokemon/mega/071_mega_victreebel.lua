@@ -28,9 +28,7 @@ local mega_victreebel = {
 }
 
 local function init()
-  local family_utils = AGAR.FAMILY_UTILS
-  family_utils.append_key_to_family('j_agar_mega_victreebel', 'j_poke_victreebel')
-  family_utils.add_megas_to_center('j_poke_victreebel', 'mega_victreebel')
+  AGAR.FAMILY_UTILS.init_mega(mega_victreebel)
 end
 
 return {

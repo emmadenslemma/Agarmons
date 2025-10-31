@@ -34,9 +34,7 @@ local mega_dragonite = {
 }
 
 local function init()
-  local family_utils = AGAR.FAMILY_UTILS
-  family_utils.append_key_to_family('j_agar_mega_dragonite', 'j_poke_dragonite')
-  family_utils.add_megas_to_center('j_poke_dragonite', 'mega_dragonite')
+  AGAR.FAMILY_UTILS.init_mega(mega_dragonite)
 end
 
 return {
