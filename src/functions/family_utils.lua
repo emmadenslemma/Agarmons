@@ -49,6 +49,12 @@ local family_utils = {
     append_to_family(pre_evo_name, name)
     add_megas_to_center(pre_evo_key, name)
   end,
+  init_gmax = function(name_or_template)
+    local name = type(name_or_template) == 'table' and name_or_template.name or name_or_template
+    local pre_evo_name = string.sub(name, 6)
+
+    append_to_family(pre_evo_name, name)
+  end,
 }
 
 
