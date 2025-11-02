@@ -1,6 +1,7 @@
 local my_custom_prefix = 'agar'
 local poke_custom_prefix = 'poke'
 local family_injection_keys = {}
+local invalid_family_keys = {}
 
 local function key_str(prefix, name) return 'j_' .. prefix .. '_' .. (name or '') end
 
@@ -19,6 +20,7 @@ local function append_to_family(existing_name, new_name)
   local new_key = key_str(my_custom_prefix, new_name)
   local existing_key = key_str(poke_custom_prefix, existing_name)
   family_injection_keys[existing_key] = new_key
+  invalid_family_keys[#invalid_family_keys+1] = key_str(poke_custom_prefix, new_name)
 end
 
 local function add_megas_to_center(center_key, new_mega)
@@ -81,7 +83,7 @@ get_family_keys = function(cardname, custom_prefix, card)
   local keys = get_family_keys_ref(cardname, custom_prefix, card)
   local valid_keys = {}
   for i, key in ipairs(keys) do
-    if G.P_CENTERS[key] then
+    if not AGAR.LIST_UTILS.elem(invalid_family_keys, key) then
       valid_keys[#valid_keys + 1] = key
       local injection_key = family_utils.get_injection_payload(key)
       if injection_key then
