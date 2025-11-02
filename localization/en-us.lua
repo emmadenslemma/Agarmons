@@ -1,6 +1,13 @@
 return {
     descriptions = {
         Joker = {
+            j_agar_mega_victreebel = {
+                name = "Mega Victreebel",
+                text = {
+                    "Played cards with {C:attention}Even{} rank",
+                    "retrigger {C:attention}#1#{} times",
+                }
+            },
             j_agar_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {

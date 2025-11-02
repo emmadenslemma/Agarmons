@@ -17,7 +17,7 @@ return {
         { list = { "j_agar_frigibax", "j_agar_arctibax", "j_agar_baxcalibur" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_frigibax" } end, config_key = "frigibax" },
         { list = { "j_agar_poltchageist", "j_agar_sinistcha" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_poltchageist" } end, config_key = "poltchageist" },
         { list = { "j_agar_gmax_charizard", "j_agar_gmax_butterfree", "j_agar_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
-        { list = { "j_agar_mega_dragonite" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
+        { list = { "j_agar_mega_dragonite", "j_agar_mega_victreebel" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
       }
     },
     {

@@ -54,11 +54,9 @@ local cosmog = {
   atlas = "AgarmonsJokers",
   gen = 7,
   blueprint_compat = true,
-  custom_pool_func = true,
   calculate = function(self, card, context)
     return level_evo(self, card, context, "j_agar_cosmoem")
   end,
-  -- in_pool = cosmog_in_pool,
   add_to_deck = function(self, card, from_debuff)
     if G.GAME.modifiers.nebby then
       card.ability.extra.rounds = 12
@@ -93,13 +91,11 @@ local cosmoem = {
   atlas = "AgarmonsJokers",
   gen = 7,
   blueprint_compat = true,
-  custom_pool_func = true,
   calculate = function(self, card, context)
     local deck_size = #G.playing_cards
     return deck_suit_evo(self, card, context, "j_agar_solgaleo", card.ability.extra.suit_sun, .5 + .5 / deck_size)
         or deck_suit_evo(self, card, context, "j_agar_lunala", card.ability.extra.suit_moon, .5 + .5 / deck_size)
   end,
-  -- in_pool = cosmog_in_pool,
   remove_from_deck = function(self, card, from_debuff)
     if G.GAME.modifiers.nebby then
       G.STATE = G.STATES.GAME_OVER
