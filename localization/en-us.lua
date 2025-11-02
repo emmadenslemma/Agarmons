@@ -626,6 +626,78 @@ return {
                     "Summons {C:dark_edition,E:1}Arceus"
                 }
             },
+            c_agar_colorlessplate = {
+                name = "Colorless Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:colorless}Colorless{} type"
+                }
+            },
+            c_agar_grassplate = {
+                name = "Grass Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:grass}Grass{} type"
+                }
+            },
+            c_agar_fireplate = {
+                name = "Fire Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:fire}Fire{} type"
+                }
+            },
+            c_agar_waterplate = {
+                name = "Water Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:water}Water{} type"
+                }
+            },
+            c_agar_lightningplate = {
+                name = "Lightning Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:lightning}Lightning{} type"
+                }
+            },
+            c_agar_psychicplate = {
+                name = "Psychic Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:psychic}Psychic{} type"
+                }
+            },
+            c_agar_fightingplate = {
+                name = "Fighting Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:fighting}Fighting{} type"
+                }
+            },
+            c_agar_darkplate = {
+                name = "Darkness Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:dark}Dark{} type"
+                }
+            },
+            c_agar_metalplate = {
+                name = "Metal Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:metal}Metal{} type"
+                }
+            },
+            c_agar_fairyplate = {
+                name = "Fairy Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:fairy}Fairy{} type"
+                }
+            },
+            c_agar_dragonplate = {
+                name = "Dragon Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:dragon}Dragon{} type"
+                }
+            },
+            c_agar_earthplate = {
+                name = "Earth Plate",
+                text = {
+                    "Changes {C:dark_edition}Arceus{} to {C:white,X:earth}Earth{} type"
+                }
+            },
         },
         Other = {
             gmax_poke = {

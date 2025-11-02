@@ -63,8 +63,6 @@ local init = function()
     { key = "arceus", ptype = "Dragon" },
     { key = "arceus", ptype = "Earth" },
   }
-
-  extended_family["arceus"] = {}
 end
 
 return {
