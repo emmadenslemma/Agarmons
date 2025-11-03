@@ -24,6 +24,7 @@ local nebby = {
         }
       },
       { id = "c_ankh" },
+      { id = "c_poke_transformation" },
     },
   },
 }
