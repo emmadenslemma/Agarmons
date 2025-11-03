@@ -34,14 +34,23 @@ SMODS.current_mod.calculate = function(self, context)
   if calculate_ref then
     calculate_ref(self, context)
   end
-  if context.first_hand_drawn
-      and G.GAME.modifiers.nebby
-      and not SMODS.find_card('j_agar_cosmog')[1]
-      and not SMODS.find_card('j_agar_cosmoem')[1]
-      and not SMODS.find_card('j_agar_lunala')[1]
-      and not SMODS.find_card('j_agar_solgaleo')[1] then
-    G.STATE = G.STATES.GAME_OVER
-    G.STATE_COMPLETE = false
+  if G.GAME.modifiers.nebby then
+    if context.first_hand_drawn
+        and not SMODS.find_card('j_agar_cosmog')[1]
+        and not SMODS.find_card('j_agar_cosmoem')[1]
+        and not SMODS.find_card('j_agar_lunala')[1]
+        and not SMODS.find_card('j_agar_solgaleo')[1] then
+      G.STATE = G.STATES.GAME_OVER
+      G.STATE_COMPLETE = false
+    end
+    if (context.selling_card or context.joker_type_destroyed)
+        and (context.card.config.center.key == 'j_agar_cosmog'
+          or context.card.config.center.key == 'j_agar_cosmoem'
+          or context.card.config.center.key == 'j_agar_lunala'
+          or context.card.config.center.key == 'j_agar_solgaleo') then
+      G.STATE = G.STATES.GAME_OVER
+      G.STATE_COMPLETE = false
+    end
   end
 end
 
