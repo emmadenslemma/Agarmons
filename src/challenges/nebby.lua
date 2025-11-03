@@ -28,6 +28,23 @@ local nebby = {
   },
 }
 
+local calculate_ref = SMODS.current_mod.calculate
+
+SMODS.current_mod.calculate = function(self, context)
+  if calculate_ref then
+    calculate_ref(self, context)
+  end
+  if context.first_hand_drawn
+      and G.GAME.modifiers.nebby
+      and not SMODS.find_card('j_agar_cosmog')[1]
+      and not SMODS.find_card('j_agar_cosmoem')[1]
+      and not SMODS.find_card('j_agar_lunala')[1]
+      and not SMODS.find_card('j_agar_solgaleo')[1] then
+    G.STATE = G.STATES.GAME_OVER
+    G.STATE_COMPLETE = false
+  end
+end
+
 return {
   name = "Agarmons Nebby Challenge",
   enabled = agarmons_config.cosmog or false,
