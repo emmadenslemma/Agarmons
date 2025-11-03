@@ -14,6 +14,7 @@ return {
   sandygast = true,
   pyukumuku = true,
   cosmog = true,
+  toxel = true,
   frigibax = false,
   gmax = false,
   new_megas = true,

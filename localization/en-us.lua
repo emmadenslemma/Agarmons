@@ -370,6 +370,27 @@ return {
                     "{V:6}in hand effects",
                 }
             },
+            j_agar_toxel = {
+                name = "Toxel",
+                text = {
+                    "{C:attention}Baby{}, {X:mult,C:white}X#1#{} Mult",
+                    "Creates a {C:dark_edition}Negative{} copy of",
+                    "{C:attention}Black Sludge{} at end of round",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_toxtricity_amped = {
+                name = "Toxtricity (Amped)",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                }
+            },
+            j_agar_toxtricity_lowkey = {
+                name = "Toxtricity (Low Key)",
+                text = {
+                    "{C:inactive}Does nothing (yet!)",
+                }
+            },
             j_agar_hatenna = {
                 name = "Hatenna",
                 text = {
