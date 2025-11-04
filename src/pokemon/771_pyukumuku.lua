@@ -22,9 +22,9 @@ local total_Xmult = function(card)
 end
 
 local total_money = function(card)
-  local total_money = 0
+  local total_money = card.ability.perma_p_dollars or 0
   if not SMODS.has_enhancement(card, "m_lucky") or card.lucky_money_trigger then
-    total_money = card.ability.p_dollars
+    total_money = total_money + card.ability.p_dollars
   end
   if card.seal == "Gold" then
     total_money = total_money + 3
