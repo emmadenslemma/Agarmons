@@ -11,6 +11,9 @@ end
 
 local total_Xmult = function(card)
   local card_Xmult = card.ability.x_mult + (card.ability.perma_x_mult or 0)
+  if card.ability.extra and type(card.ability.extra) == 'table' then
+    card_Xmult = card_Xmult + (card.ability.extra.toxicXMult or 1) - 1
+  end
   local total_Xmult = card_Xmult > 1 and card_Xmult or 0
   if card.edition then
     total_Xmult = total_Xmult + (card.edition.x_mult or 0)
