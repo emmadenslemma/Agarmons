@@ -1,5 +1,7 @@
 local gmax = {}
 
+gmax.scale = 1.2
+
 -- stops Snorlax from spawning leftovers
 gmax.no_holding = false
 
@@ -18,6 +20,8 @@ end
 gmax.preload = function(item)
   -- Required to block Transformation
   item.aux_poke = true
+  -- *Make it bigger*
+  item.display_size = { w = 71 * gmax.scale, h = 95 * gmax.scale }
   -- Add `turns_left` to extra
   item.config = item.config or {}
   item.config.extra = item.config.extra or {}
