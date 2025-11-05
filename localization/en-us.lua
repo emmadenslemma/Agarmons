@@ -8,6 +8,14 @@ return {
                     "retrigger {C:attention}#1#{} times",
                 }
             },
+            j_agar_mega_starmie = {
+                name = "Mega Starmie",
+                text = {
+                    "Scored {C:diamonds}Diamond{} cards",
+                    "permanently gain {C:mult}+#1#{} Mult and {C:money}$#2#{}",
+                    "when hand is played",
+                }
+            },
             j_agar_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {
