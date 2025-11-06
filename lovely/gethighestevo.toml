@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Add gmax exception to `get_highest_evo`
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+position = "at"
+match_indent = true
+pattern = '''while max > 0 and (string.sub(max_evo_name,1,5) == "mega_" or G.P_CENTERS[prefix_config..max_evo_name].aux_poke) do'''
+payload = '''while max > 0 and (string.sub(max_evo_name,1,5) == "mega_" or string.sub(max_evo_name,1,5) == "gmax_" or G.P_CENTERS[prefix_config..max_evo_name].aux_poke) do'''
