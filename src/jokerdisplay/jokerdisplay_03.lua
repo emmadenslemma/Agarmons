@@ -112,6 +112,12 @@ def_list["mega_salamence"] = {
   end,
 }
 
+def_list["regirock"] = {}
+
+def_list["regice"] = {}
+
+def_list["registeel"] = {}
+
 def_list["groudon"] = {
   text = {
     {
@@ -178,7 +184,10 @@ def_list["kyogre"] = {
 
 def_list["primal_kyogre"] = {}
 
+def_list["rayquaza"] = {}
+
+def_list["mega_rayquaza"] = {}
+
 return {
-  name = "Agarmons Gen 3 JokerDisplay Definitions",
   dict = def_list
 }
