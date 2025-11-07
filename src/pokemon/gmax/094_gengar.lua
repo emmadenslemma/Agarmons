@@ -37,6 +37,7 @@ local gmax_gengar = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_gengar"] = "j_agar_gmax_gengar"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_gengar)
 end
 
 return {

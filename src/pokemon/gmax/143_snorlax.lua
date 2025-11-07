@@ -37,6 +37,7 @@ local gmax_snorlax = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_snorlax"] = "j_agar_gmax_snorlax"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_snorlax)
 end
 
 return {

@@ -32,6 +32,7 @@ local gmax_eevee = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_eevee"] = "j_agar_gmax_eevee"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_eevee)
 end
 
 return {

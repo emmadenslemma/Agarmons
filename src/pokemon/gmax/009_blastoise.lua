@@ -39,6 +39,7 @@ local gmax_blastoise = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_blastoise"] = "j_agar_gmax_blastoise"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_blastoise)
 end
 
 return {

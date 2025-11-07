@@ -52,8 +52,6 @@ gmax.preload = function(item)
   else
     item.loc_vars = gmax.loc_vars
   end
-
-  AGAR.FAMILY_UTILS.init_gmax(item)
 end
 
 gmax.get_gmax_key = function(base_card)
