@@ -11,3 +11,12 @@ position = "at"
 match_indent = true
 pattern = '''while max > 0 and (string.sub(max_evo_name,1,5) == "mega_" or G.P_CENTERS[prefix_config..max_evo_name].aux_poke) do'''
 payload = '''while max > 0 and (string.sub(max_evo_name,1,5) == "mega_" or string.sub(max_evo_name,1,5) == "gmax_" or G.P_CENTERS[prefix_config..max_evo_name].aux_poke) do'''
+
+# Add gmax exception to `get_previous_evo`
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+position = "at"
+match_indent = true
+pattern = '''if G.P_CENTERS['j_'..prefix..'_'..prev_name]['stage'] == prev_stage and not G.P_CENTERS['j_'..prefix..'_'..prev_name]['aux_poke'] == true then'''
+payload = '''if string.sub(prev_name,1,5) ~= "gmax_" and G.P_CENTERS['j_'..prefix..'_'..prev_name]['stage'] == prev_stage and not G.P_CENTERS['j_'..prefix..'_'..prev_name]['aux_poke'] == true then'''
