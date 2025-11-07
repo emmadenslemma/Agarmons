@@ -5,7 +5,7 @@ local invalid_family_keys = {}
 
 local function key_str(prefix, name) return 'j_' .. prefix .. '_' .. (name or '') end
 
-local function append_to_family(existing_name, new_name)
+local function append_to_family(existing_name, new_name, target_prefix)
   for _, family in ipairs(pokermon.family) do
     local found_pos
     for i, member in ipairs(family) do
@@ -18,9 +18,9 @@ local function append_to_family(existing_name, new_name)
     end
   end
   local new_key = key_str(my_custom_prefix, new_name)
-  local existing_key = key_str(poke_custom_prefix, existing_name)
+  local existing_key = key_str(target_prefix, existing_name)
   family_injection_keys[existing_key] = new_key
-  invalid_family_keys[#invalid_family_keys+1] = key_str(poke_custom_prefix, new_name)
+  invalid_family_keys[#invalid_family_keys+1] = key_str(target_prefix, new_name)
 end
 
 local function add_megas_to_center(center_key, new_mega)
@@ -43,19 +43,21 @@ local family_utils = {
   get_injection_payload = function(existing_key)
     return family_injection_keys[existing_key]
   end,
-  init_mega = function(name_or_template)
+  init_mega = function(name_or_template, target_prefix)
+    if not target_prefix then target_prefix = poke_custom_prefix end
     local name = type(name_or_template) == 'table' and name_or_template.name or name_or_template
     local pre_evo_name = string.sub(name, 6)
-    local pre_evo_key = key_str(poke_custom_prefix, pre_evo_name)
+    local pre_evo_key = key_str(target_prefix, pre_evo_name)
 
-    append_to_family(pre_evo_name, name)
+    append_to_family(pre_evo_name, name, target_prefix)
     add_megas_to_center(pre_evo_key, name)
   end,
-  init_gmax = function(name_or_template)
+  init_gmax = function(name_or_template, target_prefix)
+    if not target_prefix then target_prefix = poke_custom_prefix end
     local name = type(name_or_template) == 'table' and name_or_template.name or name_or_template
     local pre_evo_name = string.sub(name, 6)
 
-    append_to_family(pre_evo_name, name)
+    append_to_family(pre_evo_name, name, target_prefix)
   end,
 }
 
@@ -75,8 +77,8 @@ get_family_keys = function(cardname, custom_prefix, card)
     local custom_key = key_str(custom_prefix, cardname)
     local injection_target = family_utils.get_injection_target(custom_key)
     if injection_target then
-      custom_prefix = poke_custom_prefix
-      local _, prefix_end = string.find(injection_target, key_str(poke_custom_prefix))
+      local _, prefix_end = string.find(injection_target, "j_[a-z]+_")
+      custom_prefix = string.sub(injection_target, 3, prefix_end - 1)
       cardname = string.sub(injection_target, prefix_end + 1)
     end
   end

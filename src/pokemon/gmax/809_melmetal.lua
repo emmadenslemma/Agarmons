@@ -47,7 +47,7 @@ local gmax_melmetal = {
 
 local init = function()
   AGAR.GMAX.evos["j_sonfive_melmetal"] = "j_agar_gmax_melmetal"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_melmetal)
+  AGAR.FAMILY_UTILS.init_gmax(gmax_melmetal, "sonfive")
 end
 
 return {

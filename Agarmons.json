@@ -10,7 +10,7 @@
 	"priority": 24,
 	"badge_colour": "F792BC",
 	"display_name": "Agarmons",
-	"version": "0.8.4",
+	"version": "0.8.5",
 	"dependencies": [
 		"Pokermon (>=3.2.0-911a)"
 	]
