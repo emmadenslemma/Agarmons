@@ -387,7 +387,7 @@ return {
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)",
                 }
             },
-            j_agar_toxtricity_amped = {
+            j_agar_toxtricity = {
                 name = "Toxtricity (Amped)",
                 text = {
                     "Played {C:attention}Toxic{} cards give",

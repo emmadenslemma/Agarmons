@@ -39,10 +39,11 @@ local toxtricity = {
   config = { extra = { form = "amped", money = 2, money_mod = 1, threshold = 0.5 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    local key = center.ability.extra.form == "amped"
-        and "j_agar_toxtricity_amped"
-        or "j_agar_toxtricity_lowkey"
-    return { key = key, vars = { center.ability.extra.money, center.ability.extra.money_mod, center.ability.extra.threshold } }
+    local ret = { vars = { center.ability.extra.money, center.ability.extra.money_mod, center.ability.extra.threshold } }
+    if center.ability.extra.form == "lowkey" then
+      ret.key = "j_agar_toxtricity_lowkey"
+    end
+    return ret
   end,
   rarity = 3,
   cost = 7,

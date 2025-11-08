@@ -8,7 +8,7 @@ return {
         { list = { "j_agar_dewpider", "j_agar_araquanid" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dewpider" } end, config_key = "dewpider" },
         { list = { "j_agar_sandygast", "j_agar_palossand" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sandygast" } end, config_key = "sandygast" },
         { list = { "j_agar_pyukumuku" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_pyukumuku" } end, config_key = "pyukumuku" },
-        { list = { "j_agar_toxel", "j_agar_toxtricity_amped", "j_agar_toxtricity_lowkey" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxel" } end, config_key = "toxel" },
+        { list = { "j_agar_toxel", "j_agar_toxtricity" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxel" } end, config_key = "toxel" },
       }
     },
     {
