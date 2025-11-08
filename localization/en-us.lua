@@ -226,17 +226,23 @@ return {
             j_agar_stunfisk = {
                 name = "Stunfisk",
                 text = {
-                    "When blind is selected,",
-                    "this Joker hides in your deck",
-                    "{C:inactive}(What the-?!)",
+                    "Hides in your deck",
+                    "when {C:attention}Blind{} is selected",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "When drawn, {C:attention}3{} random",
+                    "{C:attention}unenhanced{} cards in hand",
+                    "become {C:attention}Gold{} cards",
                 }
             },
             j_agar_galarian_stunfisk = {
                 name = "Galarian Stunfisk",
                 text = {
-                    "When blind is selected,",
-                    "this Joker hides in your deck",
-                    "{C:inactive}(What the-?!)",
+                    "Hides in your deck",
+                    "when {C:attention}Blind{} is selected",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "When drawn, {C:attention}3{} random",
+                    "{C:attention}unenhanced{} cards in hand",
+                    "become {C:attention}Steel{} cards",
                 }
             },
             j_agar_xerneas = {
@@ -505,16 +511,26 @@ return {
             },
         },
         Enhanced = {
-            m_agar_stunfisk ={
-                name="Stunfisk",
-                text={
-                    "How'd that get in here",
+            m_agar_stunfisk = {
+                name = "Stunfisk",
+                text = {
+                    "Hides in your deck",
+                    "when {C:attention}Blind{} is selected",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "When drawn, {C:attention}3{} random",
+                    "{C:attention}unenhanced{} cards in hand",
+                    "become {C:attention}Gold{} cards",
                 },
             },
-            m_agar_galarian_stunfisk ={
-                name="Stunfisk",
-                text={
-                    "How'd that get in here",
+            m_agar_galarian_stunfisk = {
+                name = "Galarian Stunfisk",
+                text = {
+                    "Hides in your deck",
+                    "when {C:attention}Blind{} is selected",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "When drawn, {C:attention}3{} random",
+                    "{C:attention}unenhanced{} cards in hand",
+                    "become {C:attention}Steel{} cards",
                 },
             },
         },
