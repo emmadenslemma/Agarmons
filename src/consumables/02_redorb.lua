@@ -37,18 +37,7 @@ local redorb = {
     card.ability.extra.usable = false
   end,
   can_use = function(self, card)
-    -- Conditionals taken from Pokermon's Mega Stone
-    if G.STATE == G.STATES.SMODS_BOOSTER_OPENED
-        or G.STATE == G.STATES.TAROT_PACK
-        or G.STATE == G.STATES.SPECTRAL_PACK
-        or G.STATE == G.STATES.PLANET_PACK
-        or G.STATE == G.STATES.STANDARD_PACK
-        or card.area == G.shop_jokers
-        or not (G.jokers and G.jokers.cards)
-        or #G.jokers.cards == 0
-        or not card.ability.extra.usable then
-      return false
-    end
+    if not card.ability.extra.usable then return false end
 
     local target_key = card.ability.extra.active and "j_agar_primal_groudon" or "j_agar_groudon"
 
