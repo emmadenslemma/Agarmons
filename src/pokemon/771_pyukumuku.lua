@@ -11,6 +11,9 @@ end
 
 local total_Xmult = function(card)
   local card_Xmult = card.ability.x_mult + (card.ability.perma_x_mult or 0)
+  if card.ability.extra and type(card.ability.extra) == 'table' then
+    card_Xmult = card_Xmult + (card.ability.extra.toxicXMult or 1) - 1
+  end
   local total_Xmult = card_Xmult > 1 and card_Xmult or 0
   if card.edition then
     total_Xmult = total_Xmult + (card.edition.x_mult or 0)
@@ -19,9 +22,9 @@ local total_Xmult = function(card)
 end
 
 local total_money = function(card)
-  local total_money = 0
+  local total_money = card.ability.perma_p_dollars or 0
   if not SMODS.has_enhancement(card, "m_lucky") or card.lucky_money_trigger then
-    total_money = card.ability.p_dollars
+    total_money = total_money + card.ability.p_dollars
   end
   if card.seal == "Gold" then
     total_money = total_money + 3

@@ -63,6 +63,7 @@ local gmax_lapras = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_lapras"] = "j_agar_gmax_lapras"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_lapras)
 end
 
 return {

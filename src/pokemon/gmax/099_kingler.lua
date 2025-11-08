@@ -36,6 +36,7 @@ local gmax_kingler = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_kingler"] = "j_agar_gmax_kingler"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_kingler)
 end
 
 return {

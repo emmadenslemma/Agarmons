@@ -38,6 +38,7 @@ local gmax_pikachu = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_pikachu"] = "j_agar_gmax_pikachu"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_pikachu)
 end
 
 return {

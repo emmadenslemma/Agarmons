@@ -45,6 +45,7 @@ local gmax_venusaur = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_venusaur"] = "j_agar_gmax_venusaur"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_venusaur)
 end
 
 return {
