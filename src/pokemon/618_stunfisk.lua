@@ -137,6 +137,7 @@ local init = function()
         for _, drawn_card in ipairs(context.hand_drawn) do
           if drawn_card == card then
             convert_random_cards(3, 'm_gold', 'stunfisk')
+            play_sound('voice' .. math.random(1, 11), G.SPEEDFACTOR * (math.random() * 0.01 + 0.12), 0.25)
             return {
               message = localize('k_upgrade_ex'),
               colour = G.C.GOLD,
@@ -161,6 +162,7 @@ local init = function()
         for _, drawn_card in ipairs(context.hand_drawn) do
           if drawn_card == card then
             convert_random_cards(3, 'm_steel', 'galarian_stunfisk')
+            play_sound('voice' .. math.random(1, 11), G.SPEEDFACTOR * (math.random() * 0.01 + 0.1), 0.25)
             return {
               message = localize('k_upgrade_ex'),
               colour = G.C.GREEN,
@@ -185,6 +187,16 @@ local init = function()
   function G.FUNCS.evaluate_round(...)
     rescue_stunfisk()
     return evaluate_round_ref(...)
+  end
+
+  local card_set_ability_ref = Card.set_ability
+  function Card:set_ability(center, initial, delay_sprites)
+    if self.config and self.config.center
+        and (self.config.center.key == 'm_agar_stunfisk' or self.config.center.key == 'm_agar_galarian_stunfisk')
+        and center and center.key ~= 'j_agar_stunfisk' and center.key ~= 'j_agar_galarian_stunfisk' then
+      return
+    end
+    return card_set_ability_ref(self, center, initial, delay_sprites)
   end
 end
 
