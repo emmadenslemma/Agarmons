@@ -235,7 +235,7 @@ return {
                 }
             },
             j_agar_galarian_stunfisk = {
-                name = "Galarian Stunfisk",
+                name = "{s:0.6}Galarian{}Stunfisk",
                 text = {
                     "Hides in your deck",
                     "when {C:attention}Blind{} is selected",
