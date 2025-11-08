@@ -14,7 +14,7 @@ return {
   dewpider = true,
   sandygast = true,
   pyukumuku = true,
-  cosmog = true,
+  cosmog = false,
   toxel = true,
   frigibax = false,
   gmax = false,
