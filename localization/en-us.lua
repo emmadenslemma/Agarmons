@@ -231,6 +231,14 @@ return {
                     "{C:inactive}(What the-?!)",
                 }
             },
+            j_agar_galarian_stunfisk = {
+                name = "Galarian Stunfisk",
+                text = {
+                    "When blind is selected,",
+                    "this Joker hides in your deck",
+                    "{C:inactive}(What the-?!)",
+                }
+            },
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {
@@ -494,6 +502,20 @@ return {
                     "{C:white,X:mult}X#3#{} Mult, doubles after",
                     "every hand played",
                 }
+            },
+        },
+        Enhanced = {
+            m_agar_stunfisk ={
+                name="Stunfisk",
+                text={
+                    "How'd that get in here",
+                },
+            },
+            m_agar_galarian_stunfisk ={
+                name="Stunfisk",
+                text={
+                    "How'd that get in here",
+                },
             },
         },
         Spectral = {
