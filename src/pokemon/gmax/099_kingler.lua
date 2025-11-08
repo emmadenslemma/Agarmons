@@ -5,7 +5,7 @@ local gmax_kingler = {
   soul_pos = { x = 13, y = 7 },
   config = { extra = { chips = 16 } },
   loc_txt = {
-    name = "Gigantamax Kingler",
+    name = "{C:agar_gmax}G-MAX{} Kingler",
     text = {
       "Played face cards permanently",
       "get {C:chips}+#3#{} chips when scored",
@@ -36,6 +36,7 @@ local gmax_kingler = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_kingler"] = "j_agar_gmax_kingler"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_kingler)
 end
 
 return {

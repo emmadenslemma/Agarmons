@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# [Card:generate_UIBox_ability_table] Display regular card text when Regigigas is debuffed
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+position = "at"
+match_indent = true
+pattern = '''elseif self.debuff then'''
+payload = '''elseif self.debuff and self.config.center_key ~= "j_agar_regigigas" then'''

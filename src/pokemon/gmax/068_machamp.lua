@@ -5,7 +5,7 @@ local gmax_machamp = {
   soul_pos = { x = 9, y = 7 },
   config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
-    name = "Gigantamax Machamp",
+    name = "{C:agar_gmax}G-MAX{} Machamp",
     text = {
       "{C:white,X:mult}X#3#{} Mult, doubles after",
       "every hand played",
@@ -41,13 +41,7 @@ local gmax_machamp = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_machamp"] = "j_agar_gmax_machamp"
-  -- edit get_family_keys to let us insert gmax into existing families
-  -- for _, family in pairs(pokermon.family) do
-  --   if family[1] == "machop" then
-  --     family[#family + 1] = "gmax_machamp"
-  --     break
-  --   end
-  -- end
+  AGAR.FAMILY_UTILS.init_gmax(gmax_machamp)
 end
 
 return {

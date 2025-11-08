@@ -5,7 +5,7 @@ local gmax_lapras = {
   soul_pos = { x = 15, y = 7 },
   config = { extra = { chips = 0 } },
   loc_txt = {
-    name = "Gigantamax Lapras",
+    name = "{C:agar_gmax}G-MAX{} Lapras",
     text = {
       "{C:chips}+#3#{} Chips",
       "Every hand played",
@@ -63,6 +63,7 @@ local gmax_lapras = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_lapras"] = "j_agar_gmax_lapras"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_lapras)
 end
 
 return {

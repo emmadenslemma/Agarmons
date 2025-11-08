@@ -1,52 +1,64 @@
 local def_list = {}
 
--- def_list["j_agar_dewpider"] = {
---   text = {
---     { text = "+" },
---     { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" },
---   },
---   text_config = { colour = G.C.CHIPS },
---   calc_function = function(card)
---     local chips = card.ability.extra.chips
---     local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+def_list["dewpider"] = {
+  text = {
+    { text = "+" },
+    { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" },
+  },
+  text_config = { colour = G.C.MULT },
+  calc_function = function(card)
+    local mult = 0
+    local text, _, scoring_hand = JokerDisplay.evaluate_hand()
 
---     if text ~= "Unknown" then
---       for _, scoring_card in pairs(scoring_hand) do
---         if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
---           chips = chips * 2
---           break
---         end
---       end
---     end
+    if text ~= "Unknown" then
+      for _, scoring_card in pairs(scoring_hand) do
+        if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
+          mult = mult + card.ability.extra.mult * JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+        end
+      end
+    end
 
---     card.joker_display_values.chips = chips
---   end
--- }
+    card.joker_display_values.mult = mult
+  end
+}
 
--- def_list["j_agar_araquanid"] = {
---   text = {
---     { text = "+" },
---     { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" },
---   },
---   text_config = { colour = G.C.CHIPS },
---   calc_function = function(card)
---     local chips = card.ability.extra.chips
---     local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+def_list["araquanid"] = {
+  text = {
+    { text = "+", colour = G.C.MULT },
+    { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT },
+    { text = " " },
+    {
+      border_nodes = {
+        { text = "X" },
+        { ref_table = "card.joker_display_values", ref_value = "Xmult", retrigger_type = "exp" }
+      },
+      border_colour = G.C.MULT
+    },
+  },
+  calc_function = function(card)
+    local mult = 0
+    local hazard_cards = {}
+    local text, _, scoring_hand = JokerDisplay.evaluate_hand()
 
---     if text ~= "Unknown" then
---       for _, scoring_card in pairs(scoring_hand) do
---         if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
---           chips = chips * 3
---           break
---         end
---       end
---     end
+    if text ~= "Unknown" then
+      for _, scoring_card in pairs(scoring_hand) do
+        if SMODS.has_enhancement(scoring_card, "m_poke_hazard") then
+          mult = mult + card.ability.extra.mult * JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+          table.insert(hazard_cards, scoring_card)
+        end
+      end
+    end
 
---     card.joker_display_values.chips = chips
---   end
--- }
+    local first_hazard = JokerDisplay.calculate_leftmost_card(hazard_cards)
 
-def_list["j_agar_sandygast"] = {
+    card.joker_display_values.mult = mult
+    card.joker_display_values.Xmult = first_hazard
+        and card.ability.extra.Xmult_multi ^ JokerDisplay.calculate_card_triggers(first_hazard, scoring_hand)
+        or 1
+  end
+}
+
+def_list["sandygast"] = {
   text = {
     { text = "+" },
     { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
@@ -68,7 +80,7 @@ def_list["j_agar_sandygast"] = {
   end
 }
 
-def_list["j_agar_palossand"] = {
+def_list["palossand"] = {
   text = {
     { text = "+" },
     { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
@@ -90,7 +102,7 @@ def_list["j_agar_palossand"] = {
   end
 }
 
-def_list["j_agar_pyukumuku"] = {
+def_list["pyukumuku"] = {
   text = {
     { text = "+", colour = G.C.CHIPS },
     { ref_table = "card.ability.extra.stored", ref_value = "chips", retrigger_type = "mult", colour = G.C.CHIPS },
@@ -111,7 +123,14 @@ def_list["j_agar_pyukumuku"] = {
   },
 }
 
+def_list["cosmog"] = {}
+
+def_list["cosmoem"] = {}
+
+def_list["lunala"] = {}
+
+def_list["solgaleo"] = {}
+
 return {
-  name = "Agarmons Gen 7 JokerDisplay Definitions",
   dict = def_list
 }

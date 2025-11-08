@@ -32,12 +32,12 @@ local dewpider = {
 -- Araquanid 752
 local araquanid = {
   name = "araquanid",
-  config = { extra = { hazards = 4, mult = 8, Xmult = 2 } },
+  config = { extra = { hazards = 4, mult = 8, Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     info_queue[#info_queue + 1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
     info_queue[#info_queue + 1] = G.P_CENTERS.m_poke_hazard
-    return { vars = { center.ability.extra.hazards, center.ability.extra.mult, center.ability.extra.Xmult } }
+    return { vars = { center.ability.extra.hazards, center.ability.extra.mult, center.ability.extra.Xmult_multi } }
   end,
   rarity = 2,
   cost = 5,
@@ -62,7 +62,7 @@ local araquanid = {
       if context.other_card == first_hazard then
         return {
           mult = card.ability.extra.mult,
-          Xmult = card.ability.extra.Xmult
+          Xmult = card.ability.extra.Xmult_multi
         }
       else
         return {

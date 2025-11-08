@@ -3,17 +3,18 @@ local gmax_venusaur = {
   name = "gmax_venusaur",
   pos = { x = 12, y = 6 },
   soul_pos = { x = 13, y = 6 },
-  config = { extra = { draw_mod = 3, h_size = 1 } },
+  config = { extra = { Xmult_multi = 1.5, h_size = 1 } },
   loc_txt = {
-    name = "Gigantamax Venusaur",
+    name = "{C:agar_gmax}G-MAX{} Venusaur",
     text = {
-      "Every hand played",
-      "draws {C:attention}#3#{} cards"
+      "Each {C:attention}#3#{} held in hand",
+      "gives {C:white,X:mult}X#4#{} Mult",
+      "{C:inactive,s:0.8}(Rank changes every round){}",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.draw_mod } }
+    return { vars = { localize(G.GAME.current_round.bulb1card and G.GAME.current_round.bulb1card.rank or "Ace", 'ranks'), center.ability.extra.Xmult_multi } }
   end,
   rarity = "agar_gmax",
   cost = 12,
@@ -23,12 +24,18 @@ local gmax_venusaur = {
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main then
-      card_eval_status_text(card, "extra", nil, nil, nil, {
-        message = localize("agar_gmax_vine_lash_ex"),
-        colour = G.C.RARITY["agar_gmax"]
-      })
-      G.FUNCS.draw_from_deck_to_hand(card.ability.extra.draw_mod)
+    if context.individual and context.cardarea == G.hand
+        and context.other_card:get_id() == G.GAME.current_round.bulb1card.id then
+      if context.other_card.debuff then
+        return {
+          message = localize("k_debuffed"),
+          colour = G.C.RED
+        }
+      else
+        return {
+          Xmult = card.ability.extra.Xmult_multi
+        }
+      end
     end
   end,
   -- `add_to/remove_from_deck` Stolen from regular Venusaur to keep your +1 hand size during dynamax
@@ -38,6 +45,7 @@ local gmax_venusaur = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_venusaur"] = "j_agar_gmax_venusaur"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_venusaur)
 end
 
 return {

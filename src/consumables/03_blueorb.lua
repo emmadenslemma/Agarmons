@@ -4,7 +4,7 @@ local blueorb = {
   name = "blueorb",
   key = "blueorb",
   set = "Spectral",
-  pos = { x = 1, y = 2 },
+  pos = { x = 3, y = 0 },
   helditem = true,
   config = { extra = { usable = true, active = false } },
   loc_txt = {

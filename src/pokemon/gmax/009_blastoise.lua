@@ -5,7 +5,7 @@ local gmax_blastoise = {
   soul_pos = { x = 15, y = 6 },
   config = { extra = { hands = 1 } },
   loc_txt = {
-    name = "Gigantamax Blastoise",
+    name = "{C:agar_gmax}G-MAX{} Blastoise",
     text = {
       "Every hand played",
       "gives {C:blue}+#3#{} hand"
@@ -39,6 +39,7 @@ local gmax_blastoise = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_blastoise"] = "j_agar_gmax_blastoise"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_blastoise)
 end
 
 return {

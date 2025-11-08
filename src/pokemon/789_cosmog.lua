@@ -54,20 +54,12 @@ local cosmog = {
   atlas = "AgarmonsJokers",
   gen = 7,
   blueprint_compat = true,
-  custom_pool_func = true,
   calculate = function(self, card, context)
     return level_evo(self, card, context, "j_agar_cosmoem")
   end,
-  -- in_pool = cosmog_in_pool,
   add_to_deck = function(self, card, from_debuff)
     if G.GAME.modifiers.nebby then
       card.ability.extra.rounds = 12
-    end
-  end,
-  remove_from_deck = function(self, card, from_debuff)
-    if G.GAME.modifiers.nebby then
-      G.STATE = G.STATES.GAME_OVER
-      G.STATE_COMPLETE = false
     end
   end,
 }
@@ -93,18 +85,10 @@ local cosmoem = {
   atlas = "AgarmonsJokers",
   gen = 7,
   blueprint_compat = true,
-  custom_pool_func = true,
   calculate = function(self, card, context)
     local deck_size = #G.playing_cards
     return deck_suit_evo(self, card, context, "j_agar_solgaleo", card.ability.extra.suit_sun, .5 + .5 / deck_size)
         or deck_suit_evo(self, card, context, "j_agar_lunala", card.ability.extra.suit_moon, .5 + .5 / deck_size)
-  end,
-  -- in_pool = cosmog_in_pool,
-  remove_from_deck = function(self, card, from_debuff)
-    if G.GAME.modifiers.nebby then
-      G.STATE = G.STATES.GAME_OVER
-      G.STATE_COMPLETE = false
-    end
   end,
 }
 
@@ -215,12 +199,6 @@ local solgaleo = {
     local suit_percent = get_suit_percent(card.ability.extra.suit)
     card.ability.extra.half_active = suit_percent >= 0.5
     card.ability.extra.full_active = suit_percent == 1
-  end,
-  remove_from_deck = function(self, card, from_debuff)
-    if G.GAME.modifiers.nebby then
-      G.STATE = G.STATES.GAME_OVER
-      G.STATE_COMPLETE = false
-    end
   end,
 }
 
@@ -345,10 +323,6 @@ local lunala = {
   remove_from_deck = function(self, card, from_debuff)
     if card.ability.extra.full_active then
       G.GAME.scry_amount = math.max(0, (G.GAME.scry_amount or 0) - card.ability.extra.scry)
-    end
-    if G.GAME.modifiers.nebby then
-      G.STATE = G.STATES.GAME_OVER
-      G.STATE_COMPLETE = false
     end
   end,
 }

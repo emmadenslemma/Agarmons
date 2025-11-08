@@ -1,6 +1,30 @@
 return {
     descriptions = {
         Joker = {
+            j_agar_mega_victreebel = {
+                name = "Mega Victreebel",
+                text = {
+                    "Played cards with {C:attention}Even{} rank",
+                    "retrigger {C:attention}#1#{} times",
+                }
+            },
+            j_agar_mega_starmie = {
+                name = "Mega Starmie",
+                text = {
+                    "Scored {C:diamonds}Diamond{} cards",
+                    "permanently gain {C:mult}+#1#{} Mult and {C:money}$#2#{}",
+                    "when hand is played",
+                }
+            },
+            j_agar_mega_dragonite = {
+                name = "Mega Dragonite",
+                text = {
+                    "If played hand is exactly {C:attention}1{} card,",
+                    "retrigger it {C:attention}#1#{} times for every",
+                    "other Joker you have",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive} retriggers)"
+                }
+            },
             j_agar_torkoal = {
                 name = "Torkoal",
                 text = {
@@ -189,6 +213,16 @@ return {
                     "{C:inactive}(Requirement increases each time)"
                 }
             },
+            j_agar_regigigas = {
+                name = "Regigigas",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "{br:1.5}ERROR - CONTACT STEAK",
+                    "Debuffed for the",
+                    "first {C:attention}#2#{} rounds",
+                    "{C:inactive}({C:attention}#3#{C:inactive} remaining)"
+                }
+            },
             j_agar_stunfisk = {
                 name = "Stunfisk",
                 text = {
@@ -247,22 +281,22 @@ return {
             j_agar_sandygast = {
                 name = "Sandygast",
                 text = {
-                    "Gain {C:chips}+#1#{} Chips per discarded",
-                    "{V:1}#2#{} Card, suit changes",
-                    "every round",
+                    "Gains {C:chips}+#1#{} Chips",
+                    "per discarded {V:1}#2#{} Card,",
+                    "suit changes every round",
                     "{C:inactive}(Evolves at {C:chips}+#3#{C:inactive} / +#4# Chips)",
                 }
             },
             j_agar_palossand = {
                 name = "Palossand",
                 text = {
-                    "When {C:attention}Blind{} is selected,",
-                    "gain {C:attention}+#1#{} hand size for every {X:water,C:white}Water{} card you have",
-                    "and {C:red}+#2#{} discard for every {X:earth,C:white}Earth{} card you have",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Gain {C:chips}+#3#{} Chips per discarded {V:1}#4#{} Card",
+                    "Gains {C:chips}+#1#{} Chips",
+                    "per discarded {V:1}#2#{} Card,",
                     "suit changes every round",
-                    "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gain increased by {C:chips}+#3#{} Chips for",
+                    "every {C:white,X:water}Water{} Joker you have",
+                    "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)",
                 }
             },
             j_agar_pyukumuku = {
@@ -352,6 +386,30 @@ return {
                     "{V:6}in hand effects",
                 }
             },
+            j_agar_toxel = {
+                name = "Toxel",
+                text = {
+                    "{C:attention}Baby{}, {X:mult,C:white}X#1#{} Mult",
+                    "Creates a {C:dark_edition}Negative{} copy of",
+                    "{C:attention}Black Sludge{} at end of round",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_toxtricity = {
+                name = "Toxtricity (Amped)",
+                text = {
+                    "Played {C:attention}Toxic{} cards give",
+                    "{C:money}$#1#{} plus {C:money}$#2#{} for every {C:white,X:mult}X#3#",
+                    "{C:attention}Toxic{} Mult when scored",
+                }
+            },
+            j_agar_toxtricity_lowkey = {
+                name = "Toxtricity (Low Key)",
+                text = {
+                    "{C:attention}Toxic{} cards held in hand give",
+                    "{C:money}$#1#{} when hand is played"
+                }
+            },
             j_agar_hatenna = {
                 name = "Hatenna",
                 text = {
@@ -411,7 +469,7 @@ return {
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
             j_agar_gmax_charizard = {
-                name = "Gigantamax Charizard",
+                name = "{C:agar_gmax}G-MAX{} Charizard",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -421,7 +479,7 @@ return {
                 }
             },
             j_agar_gmax_butterfree = {
-                name = "Gigantamax Butterfree",
+                name = "{C:agar_gmax}G-MAX{} Butterfree",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -429,7 +487,7 @@ return {
                 }
             },
             j_agar_gmax_machamp = {
-                name = "Gigantamax Machamp",
+                name = "{C:agar_gmax}G-MAX{} Machamp",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
@@ -546,6 +604,7 @@ return {
             agar_lake_trio = "Uxie, Mesprit, and Azelf",
             agar_lunala_and_solgaleo = "Lunala and Solgaleo",
             agar_gigantamaxing = "Gigantamaxing",
+            agar_new_megas = "Z-A Megas",
 
             agar_regular_pokemon1 = "Regular Pokémon 1/2",
             agar_regular_pokemon2 = "Regular Pokémon 2/2",

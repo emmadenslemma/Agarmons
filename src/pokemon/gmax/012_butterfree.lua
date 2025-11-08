@@ -5,7 +5,7 @@ local gmax_butterfree = {
   soul_pos = { x = 3, y = 7 },
   config = { extra = { mult = 100 } },
   loc_txt = {
-    name = "Gigantamax Butterfree",
+    name = "{C:agar_gmax}G-MAX{} Butterfree",
     text = {
       "{C:mult}+#3# Mult"
     }
@@ -32,6 +32,7 @@ local gmax_butterfree = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_butterfree"] = "j_agar_gmax_butterfree"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_butterfree)
 end
 
 return {

@@ -5,7 +5,7 @@ local gmax_eevee = {
   soul_pos = { x = 1, y = 8 },
   config = { extra = { Xmult = 2.66 } },
   loc_txt = {
-    name = "Gigantamax Eevee",
+    name = "{C:agar_gmax}G-MAX{} Eevee",
     text = {
       "{C:white,X:mult}X#3#{} Mult",
     }
@@ -32,6 +32,7 @@ local gmax_eevee = {
 
 local init = function()
   AGAR.GMAX.evos["j_poke_eevee"] = "j_agar_gmax_eevee"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_eevee)
 end
 
 return {

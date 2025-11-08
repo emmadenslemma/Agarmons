@@ -5,7 +5,7 @@ local gmax_melmetal = {
   soul_pos = { x = 9, y = 5 },
   config = { extra = { draw_mod = 1 } },
   loc_txt = {
-    name = "Gigantamax Melmetal",
+    name = "{C:agar_gmax}G-MAX{} Melmetal",
     text = {
       "Every hand played draws {C:attention}#3#{} card for",
       "every {C:white,X:metal}Metal{} card you have",
@@ -47,6 +47,7 @@ local gmax_melmetal = {
 
 local init = function()
   AGAR.GMAX.evos["j_sonfive_melmetal"] = "j_agar_gmax_melmetal"
+  AGAR.FAMILY_UTILS.init_gmax(gmax_melmetal, "sonfive")
 end
 
 return {
