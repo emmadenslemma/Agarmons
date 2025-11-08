@@ -17,6 +17,7 @@ local toxel = {
   stage = "Baby",
   ptype = "Lightning",
   gen = 8,
+	toxic = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
@@ -28,51 +29,73 @@ local toxel = {
     if context.end_of_round and context.cardarea == G.jokers and not card.debuff then
       SMODS.add_card { key = 'c_stall_blacksludge', edition = 'e_negative' }
     end
-    return pseudorandom(pseudoseed('toxel')) < .5
-        and level_evo(self, card, context, "j_agar_toxtricity_amped")
-        or level_evo(self, card, context, "j_agar_toxtricity_lowkey")
+    return level_evo(self, card, context, "j_agar_toxtricity")
   end,
 }
 
-local toxtricity_amped = {
-  name = "toxtricity_amped",
+local toxtricity = {
+  name = "toxtricity",
   pos = { x = 6, y = 0, },
-  config = { extra = {} },
+  config = { extra = { form = "amped", money = 2, money_mod = 1, threshold = 0.5 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = {} }
+    local key = center.ability.extra.form == "amped"
+        and "j_agar_toxtricity_amped"
+        or "j_agar_toxtricity_lowkey"
+    return { key = key, vars = { center.ability.extra.money, center.ability.extra.money_mod, center.ability.extra.threshold } }
   end,
   rarity = 3,
   cost = 7,
   stage = "Basic",
   ptype = "Lightning",
   gen = 8,
+	toxic = true,
   atlas = "AtlasJokersBasicGen08",
   blueprint_compat = true,
+  enhancement_gate = 'm_stall_toxic',
   calculate = function(self, card, context)
-  end,
-}
+    if context.individual and not context.end_of_round
+        and SMODS.has_enhancement(context.other_card, 'm_stall_toxic')
+        and ((card.ability.extra.form == "amped" and context.cardarea == G.play)
+          or (card.ability.extra.form == "lowkey" and context.cardarea == G.hand)) then
+      local money = card.ability.extra.money
 
-local toxtricity_lowkey = {
-  name = "toxtricity_lowkey",
-  pos = { x = 8, y = 0, },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = {} }
+      if card.ability.extra.form == "amped" then
+        money = money + card.ability.extra.money_mod * math.floor((G.GAME.current_round.toxic.toxicXMult - 1) / card.ability.extra.threshold)
+      end
+
+      return {
+        dollars = money
+      }
+    end
   end,
-  rarity = 3,
-  cost = 7,
-  stage = "Basic",
-  ptype = "Lightning",
-  gen = 8,
-  atlas = "AtlasJokersBasicGen08",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
+  set_ability = function(self, card, initial, delay_sprites)
+    if initial then
+      local form = pseudorandom(pseudoseed('toxtricity')) < .5
+          and "amped"
+          or "lowkey"
+
+      card.ability.extra.form = form
+      self:set_sprites(card)
+    end
   end,
+  set_sprites = function(self, card, front)
+    if card.ability and card.ability.extra and card.ability.extra.form then
+      local pos = card.ability.extra.form == "amped"
+          and { x = 6, y = 0 }
+          or { x = 8, y = 0 }
+
+      card.children.center:set_sprite_pos(pos)
+    end
+  end
 }
 
 return {
   enabled = (SMODS.Mods["ToxicStall"] or {}).can_load and agarmons_config.toxel,
-  list = { toxel, toxtricity_amped, toxtricity_lowkey }
+  list = { toxel, toxtricity },
+  family = {
+    "toxel",
+    { key = "toxtricity", form = "amped" },
+    { key = "toxtricity", form = "lowkey" },
+  },
 }

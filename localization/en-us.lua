@@ -390,13 +390,16 @@ return {
             j_agar_toxtricity_amped = {
                 name = "Toxtricity (Amped)",
                 text = {
-                    "{C:inactive}Does nothing (yet!)",
+                    "Played {C:attention}Toxic{} cards give",
+                    "{C:money}$#1#{} plus {C:money}$#2#{} for every {C:white,X:mult}X#3#",
+                    "{C:attention}Toxic{} Mult when scored",
                 }
             },
             j_agar_toxtricity_lowkey = {
                 name = "Toxtricity (Low Key)",
                 text = {
-                    "{C:inactive}Does nothing (yet!)",
+                    "{C:attention}Toxic{} cards held in hand give",
+                    "{C:money}$#1#{} when hand is played"
                 }
             },
             j_agar_hatenna = {

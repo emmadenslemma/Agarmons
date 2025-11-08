@@ -45,7 +45,9 @@ local function load_pokemon_folder(folder)
           PkmnDip.dex_order_groups[#PkmnDip.dex_order_groups + 1] = family
         end
 
-        if #family > 1 then
+        if poke.family then
+          pokermon.add_family(poke.family)
+        elseif #family > 1 then
           pokermon.add_family(family)
         end
       end
