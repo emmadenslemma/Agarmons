@@ -1,7 +1,7 @@
 -- Azelf 482
 local azelf = {
   name = "azelf",
-  config = { extra = { scry = 5, Xmult_multi = 2 } },
+  config = { extra = { scry = 3, Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.scry, center.ability.extra.Xmult_multi } }

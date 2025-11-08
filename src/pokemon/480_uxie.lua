@@ -1,7 +1,7 @@
 -- Uxie 480
 local uxie = {
   name = "uxie",
-  config = { extra = { scry = 5, Xmult = 1, Xmult_mod = 1, gold_cards_triggered = 0 }, trigger_rqmt = 11 },
+  config = { extra = { scry = 3, Xmult = 1, Xmult_mod = 1, gold_cards_triggered = 0 }, trigger_rqmt = 11 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return {

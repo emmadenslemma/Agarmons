@@ -1,7 +1,7 @@
 -- Mesprit 481
 local mesprit = {
   name = "mesprit",
-  config = { extra = { scry = 5, num = 1, dem = 3 } },
+  config = { extra = { scry = 3, num = 1, dem = 3 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local num, dem = SMODS.get_probability_vars(center, center.ability.extra.num, center.ability.extra.dem, "mesprit")
