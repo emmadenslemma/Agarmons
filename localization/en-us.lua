@@ -570,6 +570,34 @@ return {
                 },
             },
         },
+        Back = {
+            b_agar_gmaxdeck = {
+                name = "G-MAX Deck",
+                text = {
+                    "Start run with a",
+                    "{C:spectral,T:c_agar_dynamaxband}#1#{} card",
+                    "{C:red}#2#{} Booster Pack slot",
+                }
+            },
+        },
+        Sleeve = {
+            sleeve_agar_gmaxsleeve = {
+                name = "G-MAX Sleeve",
+                text = {
+                    "Start run with a",
+                    "{C:spectral,T:c_agar_dynamaxband}#1#{} card",
+                    "{C:red}#2#{} Booster Pack slot",
+                }
+            },
+            sleeve_agar_gmaxsleeve_alt = {
+                name = "G-MAX Sleeve",
+                text = {
+                    "Start run with a",
+                    "{C:dark_edition}Negative {C:spectral,T:c_agar_dynamaxband}#1#",
+                    "card instead",
+                }
+            },
+        },
         Other = {
             gmax_poke = {
                 name = "Gigantamax Factor",
