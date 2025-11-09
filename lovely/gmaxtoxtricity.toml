@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Keep Toxtricity's form when reverting from Gigantamaxing
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+position = "before"
+match_indent = true
+pattern = '''if to_key == 'j_poke_gourgeist' then'''
+payload = '''if to_key == 'j_agar_toxtricity' then
+  new_card:set_ability(card) 
+end'''
