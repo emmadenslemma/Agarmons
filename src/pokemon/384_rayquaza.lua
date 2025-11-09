@@ -44,6 +44,6 @@ local mega_rayquaza = {
 
 return {
   name = "Agarmons Rayquaza",
-  enabled = agarmons_config.rayquaza or false,
+  enabled = false, -- agarmons_config.rayquaza or false,
   list = { rayquaza, mega_rayquaza }
 }
