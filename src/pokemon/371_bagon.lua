@@ -165,18 +165,8 @@ local mega_salamence = {
   end,
 }
 
-local init = function()
-  if (SMODS.Mods["NachosPokermonDip"] or {}).can_load then
-    SMODS.Joker:take_ownership('nacho_bagon', { aux_poke = true, no_collection = true, custom_pool_func = true, in_pool = function() return false end }, true)
-    SMODS.Joker:take_ownership('nacho_shelgon', { aux_poke = true, no_collection = true, custom_pool_func = true, in_pool = function() return false end }, true)
-    SMODS.Joker:take_ownership('nacho_salamence', { aux_poke = true, no_collection = true, custom_pool_func = true, in_pool = function() return false end }, true)
-    SMODS.Joker:take_ownership('nacho_mega_salamence', { aux_poke = true, no_collection = true, custom_pool_func = true, in_pool = function() return false end }, true)
-  end
-end
-
 return {
   name = "Agarmons Bagon Evo Line",
   enabled = agarmons_config.bagon or false,
-  init = init,
   list = { bagon, shelgon, salamence, mega_salamence }
 }
