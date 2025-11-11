@@ -444,40 +444,12 @@ return {
                     "{C:inactive}Does nothing (yet!)",
                 }
             },
-            j_agar_frigibax = {
-                name = "Frigibax",
+            j_agar_eternatus = {
+                name = "Eternatus",
                 text = {
-                    "If played hand is a",
-                    "{C:attention,E:1}Five of a Kind",
-                    "All played cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
-                    "{C:inactive,s:0.8}(Flush Five does not count)",
-                }
-            },
-            j_agar_arctibax = {
-                name = "Arctibax",
-                text = {
-                    "If played hand is a",
-                    "{C:attention,E:1}Five of a Kind",
-                    "All played cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
-                    "{C:inactive,s:0.8}(Flush Five does not count)",
-                }
-            },
-            j_agar_baxcalibur = {
-                name = "Baxcalibur",
-                text = {
-                    "If played hand is a",
-                    "{C:attention,E:1}Five of a Kind",
-                    "All played cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Also retrigger every",
-                    "card once per {C:chips}#2#{} of",
-                    "that card's total chips",
-                    "{C:inactive,s:0.8}(Flush Five does not count)",
+                    "when {C:attention}Blind{} is selected,",
+                    "{C:agar_gmax}Dynamaxes{} adjacent Jokers",
+                    "for the next {C:attention}3{} hands",
                 }
             },
             -- All GMAX forms use `loc_txt` for their English localization
