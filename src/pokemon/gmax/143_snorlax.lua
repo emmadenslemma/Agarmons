@@ -1,8 +1,6 @@
 -- G-Max Snorlax 143
 local gmax_snorlax = {
   name = "gmax_snorlax",
-  pos = { x = 2, y = 8 },
-  soul_pos = { x = 3, y = 8 },
   config = { extra = { Xmult_mod = 0.2, Xmult = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Snorlax",
@@ -21,7 +19,6 @@ local gmax_snorlax = {
   stage = "Gigantamax",
   ptype = "Colorless",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   poke_custom_values_to_keep = { "Xmult" },
   calculate = function(self, card, context)

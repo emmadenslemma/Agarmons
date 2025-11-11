@@ -1,8 +1,6 @@
 -- G-Max Butterfree 012
 local gmax_butterfree = {
   name = "gmax_butterfree",
-  pos = { x = 2, y = 7 },
-  soul_pos = { x = 3, y = 7 },
   config = { extra = { mult = 100 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Butterfree",
@@ -19,7 +17,6 @@ local gmax_butterfree = {
   stage = "Gigantamax",
   ptype = "Grass",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then

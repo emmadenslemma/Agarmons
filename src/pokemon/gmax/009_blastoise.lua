@@ -1,8 +1,6 @@
 -- G-Max Blastoise 009
 local gmax_blastoise = {
   name = "gmax_blastoise",
-  pos = { x = 14, y = 6 },
-  soul_pos = { x = 15, y = 6 },
   config = { extra = { hands = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Blastoise",
@@ -20,7 +18,6 @@ local gmax_blastoise = {
   stage = "Gigantamax",
   ptype = "Water",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then

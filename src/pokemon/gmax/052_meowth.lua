@@ -1,8 +1,6 @@
 -- G-Max Meowth 052
 local gmax_meowth = {
   name = "gmax_meowth",
-  pos = { x = 6, y = 7 },
-  soul_pos = { x = 7, y = 7 },
   -- Include `money` to not reset scaling when dynamaxing
   config = { extra = { money = 1, money1 = 3, num = 1, dem = 10 } },
   loc_txt = {
@@ -25,7 +23,6 @@ local gmax_meowth = {
   stage = "Gigantamax",
   ptype = "Colorless",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play

@@ -1,8 +1,6 @@
 -- G-Max Lapras 131
 local gmax_lapras = {
   name = "gmax_lapras",
-  pos = { x = 14, y = 7 },
-  soul_pos = { x = 15, y = 7 },
   config = { extra = { chips = 0 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Lapras",
@@ -21,7 +19,6 @@ local gmax_lapras = {
   stage = "Gigantamax",
   ptype = "Water",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   poke_custom_values_to_keep = { "chips" },
   calculate = function(self, card, context)

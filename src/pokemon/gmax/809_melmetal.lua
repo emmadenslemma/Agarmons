@@ -1,8 +1,6 @@
 -- G-Max Melmetal 809
 local gmax_melmetal = {
   name = "gmax_melmetal",
-  pos = { x = 8, y = 5 },
-  soul_pos = { x = 9, y = 5 },
   config = { extra = { draw_mod = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Melmetal",
@@ -29,7 +27,6 @@ local gmax_melmetal = {
   stage = "Gigantamax",
   ptype = "Metal",
   gen = 7,
-  atlas = "AtlasJokersBasicGen07",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then

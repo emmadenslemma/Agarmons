@@ -1,8 +1,6 @@
 -- G-Max Venusaur 003
 local gmax_venusaur = {
   name = "gmax_venusaur",
-  pos = { x = 12, y = 6 },
-  soul_pos = { x = 13, y = 6 },
   config = { extra = { Xmult_multi = 1.5, h_size = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Venusaur",
@@ -21,7 +19,6 @@ local gmax_venusaur = {
   stage = "Gigantamax",
   ptype = "Grass",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand

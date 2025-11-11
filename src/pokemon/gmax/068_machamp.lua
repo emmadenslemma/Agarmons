@@ -1,8 +1,6 @@
 -- G-Max Machamp 068
 local gmax_machamp = {
   name = "gmax_machamp",
-  pos = { x = 8, y = 7 },
-  soul_pos = { x = 9, y = 7 },
   config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Machamp",
@@ -20,7 +18,6 @@ local gmax_machamp = {
   stage = "Gigantamax",
   ptype = "Fighting",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main

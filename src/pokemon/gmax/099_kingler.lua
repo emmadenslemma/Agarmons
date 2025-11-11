@@ -1,8 +1,6 @@
 -- G-Max Kingler 099
 local gmax_kingler = {
   name = "gmax_kingler",
-  pos = { x = 12, y = 7 },
-  soul_pos = { x = 13, y = 7 },
   config = { extra = { chips = 16 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Kingler",
@@ -20,7 +18,6 @@ local gmax_kingler = {
   stage = "Gigantamax",
   ptype = "Water",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play

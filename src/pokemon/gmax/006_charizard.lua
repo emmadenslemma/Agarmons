@@ -1,8 +1,6 @@
 -- G-Max Charizard 006
 local gmax_charizard = {
   name = "gmax_charizard",
-  pos = { x = 0, y = 7 },
-  soul_pos = { x = 1, y = 7 },
   config = { extra = { Xmult = 1, Xmult_mod = 1, d_size = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Charizard",
@@ -22,7 +20,6 @@ local gmax_charizard = {
   stage = "Gigantamax",
   ptype = "Fire",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then

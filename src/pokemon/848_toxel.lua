@@ -96,8 +96,6 @@ local toxtricity = {
 -- G-Max Toxtricity 849-1
 local gmax_toxtricity = {
   name = "gmax_toxtricity",
-  pos = { x = 14, y = 12 },
-  soul_pos = { x = 15, y = 12 },
   config = { extra = { form = "amped", money1 = 1, retriggers = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Toxtricity",
@@ -117,7 +115,6 @@ local gmax_toxtricity = {
   ptype = "Lightning",
   gen = 8,
   toxic = true,
-  atlas = "AtlasJokersBasicGen08",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and not context.end_of_round

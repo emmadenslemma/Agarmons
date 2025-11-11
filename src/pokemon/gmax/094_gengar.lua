@@ -1,8 +1,6 @@
 -- G-Max Gengar 094
 local gmax_gengar = {
   name = "gmax_gengar",
-  pos = { x = 10, y = 7 },
-  soul_pos = { x = 11, y = 7 },
   config = { extra = { Xmult_multi = 1.5, gengar_rounds = 5, trigger = false } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Gengar",
@@ -20,7 +18,6 @@ local gmax_gengar = {
   stage = "Gigantamax",
   ptype = "Psychic",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   poke_custom_values_to_keep = { "gengar_rounds", "trigger" },
   calculate = function(self, card, context)

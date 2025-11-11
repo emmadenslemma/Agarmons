@@ -1,8 +1,6 @@
 -- G-Max Pikachu 025
 local gmax_pikachu = {
   name = "gmax_pikachu",
-  pos = { x = 4, y = 7 },
-  soul_pos = { x = 5, y = 7 },
   config = { extra = { money = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Pikachu",
@@ -22,7 +20,6 @@ local gmax_pikachu = {
   stage = "Gigantamax",
   ptype = "Lightning",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
