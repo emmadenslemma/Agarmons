@@ -5,7 +5,7 @@ return {
       tiles = {
         { list = { "j_agar_torkoal" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_torkoal" } end, config_key = "torkoal" },
         { list = { "j_agar_bagon", "j_agar_shelgon", "j_agar_salamence", "j_agar_mega_salamence" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_bagon" } end, config_key = "bagon" },
-        { list = { "j_agar_stunfisk" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_stunfisk" } end, config_key = "stunfisk" },
+        { list = { "j_agar_stunfisk", "j_agar_galarian_stunfisk" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_stunfisk" } end, config_key = "stunfisk" },
         { list = { "j_agar_dewpider", "j_agar_araquanid" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dewpider" } end, config_key = "dewpider" },
         { list = { "j_agar_sandygast", "j_agar_palossand" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sandygast" } end, config_key = "sandygast" },
         { list = { "j_agar_pyukumuku" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_pyukumuku" } end, config_key = "pyukumuku" },
@@ -15,7 +15,6 @@ return {
       title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
         { list = { "j_agar_toxel", "j_agar_toxtricity" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxtricity" } end, config_key = "toxel" },
-        { list = { "j_agar_frigibax", "j_agar_arctibax", "j_agar_baxcalibur" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_frigibax" } end, config_key = "frigibax" },
         { list = { "j_agar_gmax_charizard", "j_agar_gmax_butterfree", "j_agar_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
         { list = { "j_agar_mega_dragonite", "j_agar_mega_victreebel", "j_agar_mega_starmie" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
       }
