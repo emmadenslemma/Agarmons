@@ -5,7 +5,7 @@ local dialga = {
   name = "dialga",
   pos = { x = 10, y = 2 },
   soul_pos = { x = 11, y = 2 },
-  config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1, retrigger_joker_list = nil } },
+  config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 2, retrigger_joker_list = nil } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return {
@@ -15,6 +15,7 @@ local dialga = {
         center.ability.extra.upgrade_rqmt,
         center.ability.extra.upgrade_rqmt - center.ability.extra.bosses_defeated,
         center.ability.extra.upgrade_rqmt == 1 and localize("boss_blind_singular") or localize("boss_blind_plural"),
+        center.ability.extra.upgrade_rqmt_increase
       }
     }
   end,
@@ -58,7 +59,7 @@ local dialga = {
         card.ability.extra.bosses_defeated = card.ability.extra.bosses_defeated + 1
         if card.ability.extra.bosses_defeated == card.ability.extra.upgrade_rqmt then
           card.ability.extra.bosses_defeated = 0
-          card.ability.extra.upgrade_rqmt = card.ability.extra.upgrade_rqmt + 1
+          card.ability.extra.upgrade_rqmt = card.ability.extra.upgrade_rqmt + card.ability.extra.upgrade_rqmt_increase
           card.ability.extra.joker_retriggers = card.ability.extra.joker_retriggers + 1
           return {
             message = localize('k_upgrade_ex'),

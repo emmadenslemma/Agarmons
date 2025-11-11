@@ -202,7 +202,7 @@ return {
                     "{br:2}ERROR - CONTACT STEAK",
                     "Amount increases after",
                     "defeating {C:attention}#3#{} {C:inactive}[#4#]{} {C:attention}#5#{}",
-                    "{C:inactive}(Requirement increases each time)"
+                    "{C:inactive}(Requirement increases by {C:attention}#6#{C:inactive} each time)"
                 }
             },
             j_agar_palkia = {
@@ -210,7 +210,7 @@ return {
                 text = {
                     "Gives {C:dark_edition}+#1#{} Joker Slots after",
                     "defeating {C:attention}#2#{} {C:inactive}[#3#]{} {C:attention}#4#{}",
-                    "{C:inactive}(Requirement increases each time)"
+                    "{C:inactive}(Requirement increases by {C:attention}#5#{C:inactive} each time)"
                 }
             },
             j_agar_regigigas = {

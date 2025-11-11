@@ -3,7 +3,7 @@ local palkia = {
   name = "palkia",
   pos = { x = 4, y = 3 },
   soul_pos = { x = 5, y = 3 },
-  config = { extra = { joker_slot_mod = 1, bosses_defeated = 0, upgrade_rqmt = 1 } },
+  config = { extra = { joker_slot_mod = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 1 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return {
@@ -12,6 +12,7 @@ local palkia = {
         center.ability.extra.upgrade_rqmt,
         center.ability.extra.upgrade_rqmt - center.ability.extra.bosses_defeated,
         center.ability.extra.upgrade_rqmt == 1 and localize("boss_blind_singular") or localize("boss_blind_plural"),
+        center.ability.extra.upgrade_rqmt_increase,
       }
     }
   end,
@@ -28,7 +29,7 @@ local palkia = {
       card.ability.extra.bosses_defeated = card.ability.extra.bosses_defeated + 1
       if card.ability.extra.bosses_defeated == card.ability.extra.upgrade_rqmt then
         card.ability.extra.bosses_defeated = 0
-        card.ability.extra.upgrade_rqmt = card.ability.extra.upgrade_rqmt + 1
+        card.ability.extra.upgrade_rqmt = card.ability.extra.upgrade_rqmt + card.ability.extra.upgrade_rqmt_increase
         G.jokers.config.card_limit = G.jokers.config.card_limit + 1
         return {
           message = localize { type = 'variable', key = 'a_joker_slot', vars = { card.ability.extra.joker_slot_mod } },
