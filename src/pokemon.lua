@@ -46,7 +46,9 @@ local function load_pokemon_folder(folder)
         end
 
         if poke.family then
-          pokermon.add_family(poke.family)
+          if #poke.family > 1 then
+            pokermon.add_family(poke.family)
+          end
         elseif #family > 1 then
           pokermon.add_family(family)
         end

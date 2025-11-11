@@ -203,5 +203,6 @@ end
 return {
   enabled = agarmons_config.stunfisk or false,
   init = init,
-  list = { stunfisk, galarian_stunfisk }
+  list = { stunfisk, galarian_stunfisk },
+  family = {},
 }
