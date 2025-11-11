@@ -23,6 +23,7 @@ local gmax_lapras = {
   gen = 1,
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
+  poke_custom_values_to_keep = { "chips" },
   calculate = function(self, card, context)
     if context.joker_main then
       card_eval_status_text(card, "extra", nil, nil, nil, {
@@ -64,6 +65,13 @@ local gmax_lapras = {
 local init = function()
   AGAR.GMAX.evos["j_poke_lapras"] = "j_agar_gmax_lapras"
   AGAR.FAMILY_UTILS.init_gmax(gmax_lapras)
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep or {}
+      table.insert(G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep, "chips")
+      return true
+    end
+  }))
 end
 
 return {

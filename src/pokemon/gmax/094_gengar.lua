@@ -38,6 +38,14 @@ local gmax_gengar = {
 local init = function()
   AGAR.GMAX.evos["j_poke_gengar"] = "j_agar_gmax_gengar"
   AGAR.FAMILY_UTILS.init_gmax(gmax_gengar)
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep or {}
+      table.insert(G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep, "gengar_rounds")
+      table.insert(G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep, "trigger")
+      return true
+    end
+  }))
 end
 
 return {

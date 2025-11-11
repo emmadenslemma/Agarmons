@@ -3,7 +3,7 @@ local gmax_snorlax = {
   name = "gmax_snorlax",
   pos = { x = 2, y = 8 },
   soul_pos = { x = 3, y = 8 },
-  config = { extra = { Xmult_mod = 0.2, Xmult = 1, no_holding = true } },
+  config = { extra = { Xmult_mod = 0.2, Xmult = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Snorlax",
     text = {
@@ -23,7 +23,7 @@ local gmax_snorlax = {
   gen = 1,
   atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
-  poke_custom_values_to_keep = { "no_holding" },
+  poke_custom_values_to_keep = { "Xmult" },
   calculate = function(self, card, context)
     if context.other_joker then
       return {
@@ -38,6 +38,13 @@ local gmax_snorlax = {
 local init = function()
   AGAR.GMAX.evos["j_poke_snorlax"] = "j_agar_gmax_snorlax"
   AGAR.FAMILY_UTILS.init_gmax(gmax_snorlax)
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep or {}
+      table.insert(G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep, "Xmult")
+      return true
+    end
+  }))
 end
 
 return {
