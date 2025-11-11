@@ -3,8 +3,6 @@ local list_utils = AGAR.LIST_UTILS
 -- Dialga 483
 local dialga = {
   name = "dialga",
-  pos = { x = 10, y = 2 },
-  soul_pos = { x = 11, y = 2 },
   config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 2, retrigger_joker_list = nil } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -25,7 +23,6 @@ local dialga = {
   stage = "Legendary",
   ptype = "Dragon",
   gen = 4,
-  atlas = "AtlasJokersBasicGen04",
   calculate = function(self, card, context)
     if not context.blueprint then
       -- Loop through jokers to select them from retriggers

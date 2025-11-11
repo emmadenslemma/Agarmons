@@ -1,7 +1,6 @@
 -- Kyogre 382
 local kyogre = {
   name = "kyogre",
-  soul_pos = { x = 13, y = 25 },
   config = { extra = { Xmult_multi = 2.4 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -46,8 +45,6 @@ local kyogre = {
 -- Primal Kyogre 382-1
 local primal_kyogre = {
   name = "primal_kyogre",
-  pos = { x = 4, y = 7 },
-  soul_pos = { x = 5, y = 7 },
   config = { extra = { Xchips_multi = 3, retriggers = 1 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -60,7 +57,6 @@ local primal_kyogre = {
   cost = 30,
   stage = "Primal",
   ptype = "Water",
-  atlas = "AtlasJokersBasicGen03",
   gen = 3,
   aux_poke = true, -- Required for Transformation
   blueprint_compat = true,

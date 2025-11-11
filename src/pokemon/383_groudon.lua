@@ -1,7 +1,6 @@
 -- Groudon 383
 local groudon = {
   name = "groudon",
-  soul_pos = { x = 15, y = 25 },
   config = { extra = { Xmult_multi = 2.4 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -46,8 +45,6 @@ local groudon = {
 -- Primal Groudon 383-1
 local primal_groudon = {
   name = "primal_groudon",
-  pos = { x = 2, y = 7 },
-  soul_pos = { x = 3, y = 7 },
   config = { extra = { Xmult_multi = 3, retriggers = 1 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -60,7 +57,6 @@ local primal_groudon = {
   cost = 30,
   stage = "Primal",
   ptype = "Earth",
-  atlas = "AtlasJokersBasicGen03",
   gen = 3,
   aux_poke = true, -- Required for Transformation
   blueprint_compat = true,
