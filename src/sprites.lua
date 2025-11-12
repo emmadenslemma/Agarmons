@@ -39,3 +39,10 @@ SMODS.Atlas({
     px = 32,
     py = 32
 })
+
+SMODS.Atlas({
+    key = "gmax_clouds",
+    path = "gmax_clouds.png",
+    px = 71,
+    py = 95
+})
