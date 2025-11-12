@@ -143,12 +143,13 @@ SMODS.DrawStep {
     if not G.shared_gmax_clouds then
       G.shared_gmax_clouds = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["agar_gmax_clouds"])
     end
-    if self.ability and self.ability.extra and self.ability.extra.turns_left then
+    if self.ability and self.ability.extra and type(self.ability.extra) == 'table'
+        and self.ability.extra.turns_left then
       local y_offset = G.CARD_H / 4
       G.shared_gmax_clouds:draw_shader('dissolve', nil, nil, true, self.children.center, nil, 0, nil, -y_offset)
     end
-   end,
-   conditions = { vortex = false, facing = 'front' }
+  end,
+  conditions = { vortex = false, facing = 'front' }
 }
 
 return {
