@@ -1,14 +1,3 @@
-local cosmog_in_pool = function(self)
-  local suits_found = false
-  for _, v in pairs(G.playing_cards) do
-    if v:is_suit("Hearts", true) or v:is_suit("Clubs", true) then
-      suits_found = true
-      break
-    end
-  end
-  return suits_found and pokemon_in_pool(self)
-end
-
 local get_suit_percent = function(suit, changed_cards, to_be_removed)
   local suit_count = 0
   local total_deck = #G.playing_cards
@@ -33,8 +22,6 @@ end
 -- Cosmog 789
 local cosmog = {
   name = "cosmog",
-  pos = { x = 0, y = 0 },
-  soul_pos = { x = 1, y = 0 },
   config = { extra = { rounds = 4 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -49,13 +36,16 @@ local cosmog = {
   end,
   rarity = 4,
   cost = 10,
-  stage = "Basic",
+  stage = "Legendary",
   ptype = "Psychic",
-  atlas = "AgarmonsJokers",
   gen = 7,
-  blueprint_compat = true,
+  aux_poke = true,
+  custom_pool_func = true,
   calculate = function(self, card, context)
     return level_evo(self, card, context, "j_agar_cosmoem")
+  end,
+  in_pool = function(self)
+    return false
   end,
   add_to_deck = function(self, card, from_debuff)
     if G.GAME.modifiers.nebby then
@@ -67,8 +57,6 @@ local cosmog = {
 -- Cosmoem 790
 local cosmoem = {
   name = "cosmoem",
-  pos = { x = 2, y = 0 },
-  soul_pos = { x = 3, y = 0 },
   config = { extra = { suit_sun = "Hearts", suit_moon = "Clubs" } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -80,15 +68,19 @@ local cosmoem = {
   end,
   rarity = 4,
   cost = 15,
-  stage = "One",
+  stage = "Legendary",
   ptype = "Psychic",
-  atlas = "AgarmonsJokers",
   gen = 7,
+  aux_poke = true,
+  custom_pool_func = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     local deck_size = #G.playing_cards
     return deck_suit_evo(self, card, context, "j_agar_solgaleo", card.ability.extra.suit_sun, .5 + .5 / deck_size)
         or deck_suit_evo(self, card, context, "j_agar_lunala", card.ability.extra.suit_moon, .5 + .5 / deck_size)
+  end,
+  in_pool = function(self)
+    return false
   end,
 }
 
