@@ -11,6 +11,7 @@ local bagon = {
   stage = "Basic",
   ptype = "Dragon",
   gen = 3,
+  pseudol = true,
   blueprint_compat = true,
   perishable_compat = false,
   poke_custom_values_to_keep = { "straights" },
