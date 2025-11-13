@@ -1,8 +1,6 @@
 -- Calyrex 898
 local calyrex = {
   name = "calyrex",
-  pos = { x = 10, y = 10, },
-  soul_pos = { x = 11, y = 10, },
   config = { extra = { Xmult_multi = 1.75 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -13,7 +11,6 @@ local calyrex = {
   stage = "Legendary",
   ptype = "Psychic",
   gen = 8,
-  atlas = "AtlasJokersBasicGen08",
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
         (context.other_card:get_id() == 11 or context.other_card:get_id() == 12) then
