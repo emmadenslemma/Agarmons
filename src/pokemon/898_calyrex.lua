@@ -11,6 +11,7 @@ local calyrex = {
   stage = "Legendary",
   ptype = "Psychic",
   gen = 8,
+  blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
         (context.other_card:get_id() == 11 or context.other_card:get_id() == 12) then
