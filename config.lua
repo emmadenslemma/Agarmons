@@ -17,6 +17,7 @@ return {
   cosmog = false,
   toxel = true,
   eternatus = true,
+  calyrex = true,
   gmax = false,
   new_megas = true,
 }
