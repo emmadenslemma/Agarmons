@@ -484,7 +484,7 @@ return {
                 name = "Calyrex",
                 text = {
                     "Played {C:attention}Queens{} and",
-                    "{C:attention}Jacks{} give {C:white,X:mult}#1#{} Mult",
+                    "{C:attention}Jacks{} give {C:white,X:mult}X#1#{} Mult",
                     "when scored",
                 }
             },
