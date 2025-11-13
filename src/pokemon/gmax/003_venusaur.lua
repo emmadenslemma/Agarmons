@@ -1,18 +1,19 @@
 -- G-Max Venusaur 003
 local gmax_venusaur = {
   name = "gmax_venusaur",
-  config = { extra = { Xmult_multi = 1.5, h_size = 1 } },
+  config = { extra = { Xmult_mod = 0.5, h_size = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Venusaur",
     text = {
-      "Each {C:attention}#3#{} held in hand",
-      "gives {C:white,X:mult}X#4#{} Mult",
-      "{C:inactive,s:0.8}(Rank changes every round){}",
+      "{C:white,X:mult}X#3#{} Mult for each",
+      "card held in hand",
+      "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { localize(G.GAME.current_round.bulb1card and G.GAME.current_round.bulb1card.rank or "Ace", 'ranks'), center.ability.extra.Xmult_multi } }
+    local current_Xmult = center.ability.extra.Xmult_mod * (G.hand and (#G.hand.cards - #G.hand.highlighted) or 0)
+    return { vars = { center.ability.extra.Xmult_mod, current_Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 12,
@@ -21,16 +22,11 @@ local gmax_venusaur = {
   gen = 1,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.hand
-        and context.other_card:get_id() == G.GAME.current_round.bulb1card.id then
-      if context.other_card.debuff then
+    if context.joker_main then
+      local current_Xmult = card.ability.extra.Xmult_mod * (G.hand and #G.hand.cards or 0)
+      if current_Xmult > 1 then
         return {
-          message = localize("k_debuffed"),
-          colour = G.C.RED
-        }
-      else
-        return {
-          Xmult = card.ability.extra.Xmult_multi
+          Xmult = current_Xmult,
         }
       end
     end

@@ -1,17 +1,19 @@
 -- G-Max Blastoise 009
 local gmax_blastoise = {
   name = "gmax_blastoise",
-  config = { extra = { hands = 1 } },
+  config = { extra = { Xmult_mod = 1, hands = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Blastoise",
     text = {
-      "Every hand played",
-      "gives {C:blue}+#3#{} hand"
+      "{C:white,X:mult}X#3#{} Mult for each",
+      "remaining hand",
+      "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.hands } }
+    local current_Xmult = center.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
+    return { vars = { center.ability.extra.Xmult_mod, current_Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 12,
@@ -21,12 +23,12 @@ local gmax_blastoise = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
-      ease_hands_played(card.ability.extra.hands)
-
-      return {
-        message = localize("agar_gmax_cannonade_ex"),
-        colour = G.C.RARITY["agar_gmax"],
-      }
+      local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
+      if current_Xmult > 1 then
+        return {
+          Xmult = current_Xmult,
+        }
+      end
     end
   end,
   -- `add/remove_from_deck` from regular Blastoise to keep extra hand

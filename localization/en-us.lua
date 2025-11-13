@@ -467,7 +467,7 @@ return {
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
-                    "Gains {C:white,X:mult}X#3#{} per discard",
+                    "{C:white,X:mult}X#3#{} Mult per discard",
                     "used this round",
                     "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
                 }
