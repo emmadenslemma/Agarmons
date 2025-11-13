@@ -480,6 +480,14 @@ return {
                     "{C:inactive,s:0.8}(Flush Five does not count)",
                 }
             },
+            j_agar_calyrex = {
+                name = "Calyrex",
+                text = {
+                    "Played {C:attention}Queens{} and",
+                    "{C:attention}Jacks{} give {C:white,X:mult}#1#{} Mult",
+                    "when scored",
+                }
+            },
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
             j_agar_gmax_charizard = {

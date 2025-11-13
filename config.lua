@@ -16,6 +16,7 @@ return {
   pyukumuku = true,
   cosmog = false,
   toxel = true,
+  calyrex = true,
   gmax = false,
   new_megas = true,
 }
