@@ -1,4 +1,4 @@
-AGAR = {}
+AGAR = AGAR or {}
 
 agarmons_config = SMODS.current_mod.config
 
