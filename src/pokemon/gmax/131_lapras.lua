@@ -1,6 +1,7 @@
 -- G-Max Lapras 131
 local gmax_lapras = {
   name = "gmax_lapras",
+  inject_prefix = "poke",
   config = { extra = { chips = 0 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Lapras",
@@ -60,8 +61,8 @@ local gmax_lapras = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_lapras"] = "j_agar_gmax_lapras"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_lapras)
+  AG.append_to_family("lapras", "gmax_lapras")
+  AG.gmax.evos["j_poke_lapras"] = "j_poke_gmax_lapras"
   G.E_MANAGER:add_event(Event({
     func = function()
       G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep or {}

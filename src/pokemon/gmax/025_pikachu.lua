@@ -1,6 +1,7 @@
 -- G-Max Pikachu 025
 local gmax_pikachu = {
   name = "gmax_pikachu",
+  inject_prefix = "poke",
   config = { extra = { money = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Pikachu",
@@ -34,8 +35,8 @@ local gmax_pikachu = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_pikachu"] = "j_agar_gmax_pikachu"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_pikachu)
+  AG.append_to_family("pikachu", "gmax_pikachu")
+  AG.gmax.evos["j_poke_pikachu"] = "j_poke_gmax_pikachu"
 end
 
 return {

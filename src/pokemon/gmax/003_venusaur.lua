@@ -1,6 +1,7 @@
 -- G-Max Venusaur 003
 local gmax_venusaur = {
   name = "gmax_venusaur",
+  inject_prefix = "poke",
   config = { extra = { Xmult_mod = 0.5, h_size = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Venusaur",
@@ -37,8 +38,8 @@ local gmax_venusaur = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_venusaur"] = "j_agar_gmax_venusaur"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_venusaur)
+  AG.append_to_family("venusaur", "gmax_venusaur")
+  AG.gmax.evos["j_poke_venusaur"] = "j_poke_gmax_venusaur"
 end
 
 return {

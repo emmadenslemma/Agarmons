@@ -1,6 +1,7 @@
 -- G-Max Butterfree 012
 local gmax_butterfree = {
   name = "gmax_butterfree",
+  inject_prefix = "poke",
   config = { extra = { mult = 100 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Butterfree",
@@ -28,8 +29,8 @@ local gmax_butterfree = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_butterfree"] = "j_agar_gmax_butterfree"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_butterfree)
+  AG.append_to_family("butterfree", "gmax_butterfree")
+  AG.gmax.evos["j_poke_butterfree"] = "j_poke_gmax_butterfree"
 end
 
 return {

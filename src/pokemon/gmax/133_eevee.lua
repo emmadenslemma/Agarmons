@@ -1,6 +1,7 @@
 -- G-Max Eevee 133
 local gmax_eevee = {
   name = "gmax_eevee",
+  inject_prefix = "poke",
   config = { extra = { Xmult = 2.66 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Eevee",
@@ -28,8 +29,8 @@ local gmax_eevee = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_eevee"] = "j_agar_gmax_eevee"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_eevee)
+  AG.append_to_family("eevee", "gmax_eevee")
+  AG.gmax.evos["j_poke_eevee"] = "j_poke_gmax_eevee"
 end
 
 return {

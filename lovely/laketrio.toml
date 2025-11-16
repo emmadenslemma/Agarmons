@@ -16,7 +16,7 @@ payload = '''function SMODS.calculate_main_scoring(context, scoring_hand)
     for _, card in ipairs(context.cardarea.cards) do
         cards[#cards+1] = card
     end
-    if context.cardarea == G.hand and AGAR.EFFECTS.apply_scry_hand_effects() and G.scry_view then
+    if context.cardarea == G.hand and AG.effects.apply_scry_hand_effects() and G.scry_view then
         for _, scry_card in pairs(G.scry_view.cards) do
             cards[#cards+1] = scry_card
         end
@@ -36,7 +36,7 @@ payload = '''function SMODS.calculate_end_of_round_effects(context)
     for _, card in ipairs(context.cardarea.cards) do
         cards[#cards+1] = card
     end
-    if context.cardarea == G.hand and AGAR.EFFECTS.apply_scry_hand_effects() and G.scry_view then
+    if context.cardarea == G.hand and AG.effects.apply_scry_hand_effects() and G.scry_view then
         for _, scry_card in pairs(G.scry_view.cards) do
             cards[#cards+1] = scry_card
         end

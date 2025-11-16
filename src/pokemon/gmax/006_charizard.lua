@@ -1,6 +1,7 @@
 -- G-Max Charizard 006
 local gmax_charizard = {
   name = "gmax_charizard",
+  inject_prefix = "poke",
   pos = { x = 0, y = 7 },
   soul_pos = { x = 1, y = 7 },
   config = { extra = { Xmult_mod = 1, d_size = 1 } },
@@ -40,8 +41,8 @@ local gmax_charizard = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_charizard"] = "j_agar_gmax_charizard"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_charizard)
+  AG.append_to_family("charizard", "gmax_charizard")
+  AG.gmax.evos["j_poke_charizard"] = "j_poke_gmax_charizard"
 end
 
 return {

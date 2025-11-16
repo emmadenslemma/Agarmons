@@ -1,25 +1,23 @@
-local gmax = {}
-
-gmax.scale = 1.2
-
--- stops Snorlax from spawning leftovers
-gmax.no_holding = false
-
--- key is pre-gmax object key, value is post-gmax object key
-gmax.evos = gmax.evos or {}
+AG.gmax = {
+  scale = 1.2,
+  -- stops Snorlax from spawning leftovers
+  no_holding = false,
+  -- key is pre-gmax object key, value is post-gmax object key
+  evos = {}
+}
 
 -- Add "Can Dynamax" tooltip to existing Pokemon
 local type_tooltip_ref = type_tooltip
 type_tooltip = function(self, info_queue, center)
   type_tooltip_ref(self, info_queue, center)
-  if agarmons_config.gmax and pokermon_config.detailed_tooltips and gmax.get_gmax_key(center) then
+  if agarmons_config.gmax and pokermon_config.detailed_tooltips and AG.gmax.get_gmax_key(center) then
     info_queue[#info_queue + 1] = { set = 'Other', key = 'gmax_poke' }
   end
 end
 
-gmax.preload = function(item)
+AG.gmax.preload = function(item)
   -- *Make it bigger*
-  item.display_size = { w = 71 * gmax.scale, h = 95 * gmax.scale }
+  item.display_size = { w = 71 * AG.gmax.scale, h = 95 * AG.gmax.scale }
   -- Add `turns_left` to extra
   item.config = item.config or {}
   item.config.extra = item.config.extra or {}
@@ -34,35 +32,35 @@ gmax.preload = function(item)
     local calculate_ref = item.calculate
     item.calculate = function(self, card, context)
       local ret, no_eff = calculate_ref(self, card, context)
-      gmax.revert(self, card, context)
+      AG.gmax.revert(self, card, context)
       return ret, no_eff
     end
   else
-    item.calculate = gmax.revert
+    item.calculate = AG.gmax.revert
   end
   -- Add  `loc_vars` to.. loc_vars
   if item.loc_vars then
     local loc_vars_ref = item.loc_vars
     item.loc_vars = function(self, info_queue, center)
       local loc_table = loc_vars_ref(self, info_queue, center)
-      return gmax.loc_vars(self, info_queue, center, loc_table)
+      return AG.gmax.loc_vars(self, info_queue, center, loc_table)
     end
   else
-    item.loc_vars = gmax.loc_vars
+    item.loc_vars = AG.gmax.loc_vars
   end
 end
 
-gmax.get_gmax_key = function(base_card)
+AG.gmax.get_gmax_key = function(base_card)
   return base_card
       and base_card.config
       and base_card.config.center
-      and gmax.evos[base_card.config.center.key]
+      and AG.gmax.evos[base_card.config.center.key]
       or nil
 end
 
-gmax.get_base_key = function(gmax_card)
+AG.gmax.get_base_key = function(gmax_card)
   if gmax_card and gmax_card.config then
-    for base, gmax in pairs(gmax.evos) do
+    for base, gmax in pairs(AG.gmax.evos) do
       if gmax == gmax_card.config.center.key then
         return base
       end
@@ -71,11 +69,11 @@ gmax.get_base_key = function(gmax_card)
   return nil
 end
 
-gmax.evolve = function(card)
-  poke_evolve(card, gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
+AG.gmax.evolve = function(card)
+  poke_evolve(card, AG.gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
 end
 
-gmax.devolve = function(card)
+AG.gmax.devolve = function(card)
   -- Events to devolve after stake stickers get applied
   -- Don't think about it.
   -- Evolving with the animation does the same thing, so this will be fixed when I add an animation to Dynamaxing
@@ -86,9 +84,9 @@ gmax.devolve = function(card)
       func = function()
         G.E_MANAGER:add_event(Event({
           func = function()
-            gmax.no_holding = true
-            poke_evolve(card, gmax.get_base_key(card), true)
-            gmax.no_holding = false
+            AG.gmax.no_holding = true
+            poke_evolve(card, AG.gmax.get_base_key(card), true)
+            AG.gmax.no_holding = false
             return true
           end
         }))
@@ -96,15 +94,15 @@ gmax.devolve = function(card)
       end
     }))
   else
-    gmax.no_holding = true
-    poke_evolve(card, gmax.get_base_key(card), true)
-    gmax.no_holding = false
+    AG.gmax.no_holding = true
+    poke_evolve(card, AG.gmax.get_base_key(card), true)
+    AG.gmax.no_holding = false
   end
 end
 
-gmax.revert = function(self, card, context)
+AG.gmax.revert = function(self, card, context)
   if context.end_of_round and not context.individual and not context.repetition then
-    gmax.devolve(card)
+    AG.gmax.devolve(card)
   end
   if context.after and context.cardarea == G.jokers then
     card.ability.extra.turns_left = card.ability.extra.turns_left - 1
@@ -117,7 +115,7 @@ gmax.revert = function(self, card, context)
       -- Event to make it devolve after scoring visuals are over
       G.E_MANAGER:add_event(Event({
         func = function()
-          gmax.devolve(card)
+          AG.gmax.devolve(card)
           return true
         end
       }))
@@ -125,7 +123,7 @@ gmax.revert = function(self, card, context)
   end
 end
 
-gmax.loc_vars = function(self, info_queue, center, loc_table)
+AG.gmax.loc_vars = function(self, info_queue, center, loc_table)
   loc_table = loc_table or {}
   loc_table.vars = loc_table.vars or {}
 
@@ -150,10 +148,4 @@ SMODS.DrawStep {
     end
   end,
   conditions = { vortex = false, facing = 'front' }
-}
-
-return {
-  name = "Agarmons GMAX Functions",
-  key = "GMAX",
-  value = gmax
 }

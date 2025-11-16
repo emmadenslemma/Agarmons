@@ -7,14 +7,21 @@ local function load_pokemon(item)
     AGAR.GMAX.preload(item)
   end
 
+  local custom_prefix = item.inject_prefix or "agar"
+
+  if item.inject_prefix then
+    item.key = item.inject_prefix .. '_' .. item.name
+    item.prefix_config = { key = { mod = false } }
+  end
+
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
-  if not item.atlas then
+  if custom_prefix and not item.atlas then
     poke_load_atlas(item)
     poke_load_sprites(item)
   end
 
-  pokermon.Pokemon(item, "agar", custom_atlas)
+  pokermon.Pokemon(item, custom_prefix, custom_atlas)
 end
 
 local function load_pokemon_folder(folder)

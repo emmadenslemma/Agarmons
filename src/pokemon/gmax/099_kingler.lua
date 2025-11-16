@@ -1,6 +1,7 @@
 -- G-Max Kingler 099
 local gmax_kingler = {
   name = "gmax_kingler",
+  inject_prefix = "poke",
   config = { extra = { chips = 16 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Kingler",
@@ -32,8 +33,8 @@ local gmax_kingler = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_kingler"] = "j_agar_gmax_kingler"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_kingler)
+  AG.append_to_family("kingler", "gmax_kingler")
+  AG.gmax.evos["j_poke_kingler"] = "j_poke_gmax_kingler"
 end
 
 return {

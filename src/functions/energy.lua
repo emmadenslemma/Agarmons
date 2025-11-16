@@ -1,4 +1,4 @@
-local energy = {}
+AG.energy = {}
 
 -- Energy Manipulation by Sonfive, gets overwritten with his version if PokermonPlus is present
 energy_shift = energy_shift or function(card, energy_delta, etype, evolving, silent, increment)
@@ -94,19 +94,19 @@ energy_shift = energy_shift or function(card, energy_delta, etype, evolving, sil
     end
 end
 
-energy.increase_limit = function(amount)
+AG.energy.increase_limit = function(amount)
   G.GAME.energy_plus = G.GAME.energy_plus
       and G.GAME.energy_plus + amount
       or amount
 end
 
-energy.decrease_limit = function(amount)
+AG.energy.decrease_limit = function(amount)
   G.GAME.energy_plus = G.GAME.energy_plus and G.GAME.energy_plus > 0
       and G.GAME.energy_plus - amount
       or 0
 end
 
-energy.decrease = function(card, etype, amount, no_silent)
+AG.energy.decrease = function(card, etype, amount, no_silent)
   amount = amount or 1
   if etype == "Colorless" then
     card.ability.extra.c_energy_count = (card.ability.extra.c_energy_count and card.ability.extra.c_energy_count > 0)
@@ -120,7 +120,7 @@ energy.decrease = function(card, etype, amount, no_silent)
   energy_shift(card, -amount, card.ability.extra.ptype, false, not no_silent, false)
 end
 
-energy.increase = function(card, etype, amount, no_silent)
+AG.energy.increase = function(card, etype, amount, no_silent)
   amount = amount or 1
   if etype == "Colorless" then
     card.ability.extra.c_energy_count = card.ability.extra.c_energy_count
@@ -134,24 +134,18 @@ energy.increase = function(card, etype, amount, no_silent)
   energy_shift(card, amount, card.ability.extra.ptype, false, not no_silent, false)
 end
 
-energy.increase_all = function(etype, amount)
+AG.energy.increase_all = function(etype, amount)
   for _, card in pairs(G.jokers.cards) do
     if not etype or is_type(card, etype) then
-      energy.increase(card, etype, amount)
+      AG.energy.increase(card, etype, amount)
     end
   end
 end
 
-energy.decrease_all = function(etype, amount)
+AG.energy.decrease_all = function(etype, amount)
   for _, card in pairs(G.jokers.cards) do
     if not etype or is_type(card, etype) then
-      energy.decrease(card, etype, amount)
+      AG.energy.decrease(card, etype, amount)
     end
   end
 end
-
-return {
-  name = "Agarmons Energy Functions",
-  key = "ENERGY",
-  value = energy
-}

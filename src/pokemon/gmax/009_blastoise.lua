@@ -1,6 +1,7 @@
 -- G-Max Blastoise 009
 local gmax_blastoise = {
   name = "gmax_blastoise",
+  inject_prefix = "poke",
   config = { extra = { Xmult_mod = 1, hands = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Blastoise",
@@ -37,8 +38,8 @@ local gmax_blastoise = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_blastoise"] = "j_agar_gmax_blastoise"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_blastoise)
+  AG.append_to_family("blastoise", "gmax_blastoise")
+  AG.gmax.evos["j_poke_blastoise"] = "j_poke_gmax_blastoise"
 end
 
 return {

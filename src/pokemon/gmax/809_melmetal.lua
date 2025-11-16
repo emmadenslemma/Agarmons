@@ -1,6 +1,7 @@
 -- G-Max Melmetal 809
 local gmax_melmetal = {
   name = "gmax_melmetal",
+  inject_prefix = "sonfive",
   config = { extra = { draw_mod = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Melmetal",
@@ -43,8 +44,8 @@ local gmax_melmetal = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_sonfive_melmetal"] = "j_agar_gmax_melmetal"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_melmetal, "sonfive")
+  AG.append_to_family("melmetal", "gmax_melmetal")
+  AG.gmax.evos["j_sonfive_melmetal"] = "j_sonfive_gmax_melmetal"
 end
 
 return {

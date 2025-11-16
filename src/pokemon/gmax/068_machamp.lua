@@ -1,6 +1,7 @@
 -- G-Max Machamp 068
 local gmax_machamp = {
   name = "gmax_machamp",
+  inject_prefix = "poke",
   config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Machamp",
@@ -37,8 +38,8 @@ local gmax_machamp = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_machamp"] = "j_agar_gmax_machamp"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_machamp)
+  AG.append_to_family("machamp", "gmax_machamp")
+  AG.gmax.evos["j_poke_machamp"] = "j_poke_gmax_machamp"
 end
 
 return {

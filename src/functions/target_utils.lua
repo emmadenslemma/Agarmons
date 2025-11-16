@@ -1,7 +1,7 @@
-local target_utils = {}
+AG.target_utils = {}
 
 -- Version of SMODS.find_card that optionally prioritizes highlighted cards
-function target_utils.find_card(key_or_func, use_highlighted)
+function AG.target_utils.find_card(key_or_func, use_highlighted)
   local results = {}
   local highlight_results = {}
   local is_target = function(card)
@@ -32,16 +32,10 @@ function target_utils.find_card(key_or_func, use_highlighted)
   end
 end
 
-function target_utils.find_leftmost(key_or_func, use_highlighted)
-  return target_utils.find_card(key_or_func, use_highlighted)[1]
+function AG.target_utils.find_leftmost(key_or_func, use_highlighted)
+  return AG.target_utils.find_card(key_or_func, use_highlighted)[1]
 end
 
-function target_utils.find_leftmost_or_highlighted(key_or_func)
-  return target_utils.find_leftmost(key_or_func, true)
+function AG.target_utils.find_leftmost_or_highlighted(key_or_func)
+  return AG.target_utils.find_leftmost(key_or_func, true)
 end
-
-return {
-  name = "Agarmons Targeting Helper Functions",
-  key = "TARGET_UTILS",
-  value = target_utils
-}

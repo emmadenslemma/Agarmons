@@ -1,6 +1,7 @@
 -- G-Max Meowth 052
 local gmax_meowth = {
   name = "gmax_meowth",
+  inject_prefix = "poke",
   -- Include `money` to not reset scaling when dynamaxing
   config = { extra = { money = 1, money1 = 3, num = 1, dem = 10 } },
   loc_txt = {
@@ -42,8 +43,8 @@ local gmax_meowth = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_meowth"] = "j_agar_gmax_meowth"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_meowth)
+  AG.append_to_family("meowth", "gmax_meowth")
+  AG.gmax.evos["j_poke_meowth"] = "j_poke_gmax_meowth"
 end
 
 return {

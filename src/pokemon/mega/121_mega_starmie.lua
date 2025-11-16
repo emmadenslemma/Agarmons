@@ -1,6 +1,7 @@
 -- Mega Starmie 121-1
 local mega_starmie = {
   name = "mega_starmie",
+  inject_prefix = "poke",
   pos = { x = 6, y = 1 },
   soul_pos = { x = 7, y = 1 },
   config = { extra = { mult_mod = 1, money_mod = 1 } },
@@ -34,7 +35,8 @@ local mega_starmie = {
 }
 
 local function init()
-  AGAR.FAMILY_UTILS.init_mega(mega_starmie)
+  AG.append_to_family("starmie", "mega_starmie")
+  AG.add_megas_to_center("j_poke_starmie", "mega_starmie")
 end
 
 return {

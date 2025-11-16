@@ -1,6 +1,7 @@
 -- G-Max Snorlax 143
 local gmax_snorlax = {
   name = "gmax_snorlax",
+  inject_prefix = "poke",
   config = { extra = { Xmult_mod = 0.2, Xmult = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Snorlax",
@@ -33,8 +34,8 @@ local gmax_snorlax = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_snorlax"] = "j_agar_gmax_snorlax"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_snorlax)
+  AG.append_to_family("snorlax", "gmax_snorlax")
+  AG.gmax.evos["j_poke_snorlax"] = "j_poke_gmax_snorlax"
   G.E_MANAGER:add_event(Event({
     func = function()
       G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep or {}
