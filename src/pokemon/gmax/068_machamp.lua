@@ -38,7 +38,7 @@ local gmax_machamp = {
 }
 
 local init = function()
-  AG.append_to_family("machamp", "gmax_machamp")
+  AG.append_to_family("machamp", "gmax_machamp", true)
   AG.gmax.evos["j_poke_machamp"] = "j_poke_gmax_machamp"
 end
 

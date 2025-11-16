@@ -34,7 +34,7 @@ local gmax_snorlax = {
 }
 
 local init = function()
-  AG.append_to_family("snorlax", "gmax_snorlax")
+  AG.append_to_family("snorlax", "gmax_snorlax", true)
   AG.gmax.evos["j_poke_snorlax"] = "j_poke_gmax_snorlax"
   G.E_MANAGER:add_event(Event({
     func = function()

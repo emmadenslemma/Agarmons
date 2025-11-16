@@ -33,7 +33,7 @@ local gmax_kingler = {
 }
 
 local init = function()
-  AG.append_to_family("kingler", "gmax_kingler")
+  AG.append_to_family("kingler", "gmax_kingler", true)
   AG.gmax.evos["j_poke_kingler"] = "j_poke_gmax_kingler"
 end
 

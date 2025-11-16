@@ -38,7 +38,7 @@ local gmax_venusaur = {
 }
 
 local init = function()
-  AG.append_to_family("venusaur", "gmax_venusaur")
+  AG.append_to_family("venusaur", "gmax_venusaur", true)
   AG.gmax.evos["j_poke_venusaur"] = "j_poke_gmax_venusaur"
 end
 

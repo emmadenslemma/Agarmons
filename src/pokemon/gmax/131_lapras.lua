@@ -61,7 +61,7 @@ local gmax_lapras = {
 }
 
 local init = function()
-  AG.append_to_family("lapras", "gmax_lapras")
+  AG.append_to_family("lapras", "gmax_lapras", true)
   AG.gmax.evos["j_poke_lapras"] = "j_poke_gmax_lapras"
   G.E_MANAGER:add_event(Event({
     func = function()

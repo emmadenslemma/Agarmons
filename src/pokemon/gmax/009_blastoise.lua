@@ -38,7 +38,7 @@ local gmax_blastoise = {
 }
 
 local init = function()
-  AG.append_to_family("blastoise", "gmax_blastoise")
+  AG.append_to_family("blastoise", "gmax_blastoise", true)
   AG.gmax.evos["j_poke_blastoise"] = "j_poke_gmax_blastoise"
 end
 
