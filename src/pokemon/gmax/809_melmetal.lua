@@ -30,13 +30,10 @@ local gmax_melmetal = {
   gen = 7,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main then
+    if context.before then
       local cards_to_draw = card.ability.extra.draw_mod * find_other_poke_or_energy_type(card, "Metal", true)
       if cards_to_draw > 0 then
-        card_eval_status_text(card, "extra", nil, nil, nil, {
-          message = localize("agar_gmax_meltdown_ex"),
-          colour = G.C.RARITY["agar_gmax"],
-        })
+        SMODS.calculate_effect({ message = localize("agar_gmax_meltdown_ex"), colour = G.C.RARITY["agar_gmax"] }, card)
         G.FUNCS.draw_from_deck_to_hand(cards_to_draw)
       end
     end

@@ -6,7 +6,7 @@ local gmax_pikachu = {
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Pikachu",
     text = {
-      "Every hand gives {C:money}$#2#{} for",
+      "Every hand gives {C:money}$#3#{} for",
       "every {C:money}$1{} you are from",
       "the interest cap",
       "{C:inactive}(Currently {C:money}$#4#{C:inactive})",
@@ -25,7 +25,7 @@ local gmax_pikachu = {
   gen = 1,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main then
+    if context.before then
       local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
       if interest_gap > 0 then
         return {
