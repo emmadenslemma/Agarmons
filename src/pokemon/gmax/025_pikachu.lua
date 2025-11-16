@@ -2,19 +2,21 @@
 local gmax_pikachu = {
   name = "gmax_pikachu",
   inject_prefix = "poke",
-  config = { extra = { money = 1 } },
+  config = { extra = { money_mod = 2 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Pikachu",
     text = {
-      "Every hand gives {C:money}$#3#{} for",
+      "Every hand gives {C:money}$#2#{} for",
       "every {C:money}$1{} you are from",
-      "the interest cap {C:inactive}[$#4#]",
+      "the interest cap",
+      "{C:inactive}(Currently {C:money}$#4#{C:inactive})",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
-    return { vars = { center.ability.extra.money, interest_gap > 0 and interest_gap or 0 } }
+    local current_dollars = center.ability.extra.money_mod * math.max(interest_gap, 0)
+    return { vars = { center.ability.extra.money_mod, current_dollars } }
   end,
   rarity = "agar_gmax",
   cost = 8,
@@ -27,7 +29,7 @@ local gmax_pikachu = {
       local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
       if interest_gap > 0 then
         return {
-          dollars = interest_gap * card.ability.extra.money,
+          dollars = interest_gap * card.ability.extra.money_mod,
         }
       end
     end
