@@ -9,11 +9,6 @@ local function load_pokemon(item)
 
   local custom_prefix = item.inject_prefix or "agar"
 
-  if item.inject_prefix then
-    item.key = item.inject_prefix .. '_' .. item.name
-    item.prefix_config = { key = { mod = false } }
-  end
-
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
   if custom_prefix and not item.atlas then
@@ -22,6 +17,16 @@ local function load_pokemon(item)
   end
 
   pokermon.Pokemon(item, custom_prefix, custom_atlas)
+end
+
+local load_pokemon_ref = pokermon.load_pokemon
+function pokermon.load_pokemon(item)
+  if item.inject_prefix then
+    item.key = item.inject_prefix .. '_' .. item.name
+    item.prefix_config = item.prefix_config or {}
+    item.prefix_config.key = { mod = false }
+  end
+  return load_pokemon_ref(item)
 end
 
 local function load_pokemon_folder(folder)
