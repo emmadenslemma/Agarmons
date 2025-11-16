@@ -1,14 +1,14 @@
 return {
     descriptions = {
         Joker = {
-            j_agar_mega_victreebel = {
+            j_poke_mega_victreebel = {
                 name = "Mega Victreebel",
                 text = {
                     "Played cards with {C:attention}Even{} rank",
                     "retrigger {C:attention}#1#{} times",
                 }
             },
-            j_agar_mega_starmie = {
+            j_poke_mega_starmie = {
                 name = "Mega Starmie",
                 text = {
                     "Scored {C:diamonds}Diamond{} cards",
@@ -16,7 +16,7 @@ return {
                     "when hand is played",
                 }
             },
-            j_agar_mega_dragonite = {
+            j_poke_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {
                     "If played hand is exactly {C:attention}1{} card,",
@@ -462,7 +462,7 @@ return {
             },
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
-            j_agar_gmax_charizard = {
+            j_poke_gmax_charizard = {
                 name = "{C:agar_gmax}G-MAX{} Charizard",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
@@ -472,7 +472,7 @@ return {
                     "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
                 }
             },
-            j_agar_gmax_butterfree = {
+            j_poke_gmax_butterfree = {
                 name = "{C:agar_gmax}G-MAX{} Butterfree",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
@@ -480,7 +480,7 @@ return {
                     "{C:mult}+#3# Mult"
                 }
             },
-            j_agar_gmax_machamp = {
+            j_poke_gmax_machamp = {
                 name = "{C:agar_gmax}G-MAX{} Machamp",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
