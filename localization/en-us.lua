@@ -400,6 +400,60 @@ return {
                     "{V:6}in hand effects",
                 }
             },
+            j_agar_grookey = {
+                name = "Grookey",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                }
+            },
+            j_agar_thwackey = {
+                name = "Thwackey",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                }
+            },
+            j_agar_rillaboom = {
+                name = "Rillaboom",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                }
+            },
+            j_agar_scorbunny = {
+                name = "Scorbunny",
+                text = {
+                    "{C:red}+#1#{} discard",
+                }
+            },
+            j_agar_raboot = {
+                name = "Raboot",
+                text = {
+                    "{C:red}+#1#{} discard",
+                }
+            },
+            j_agar_cinderace = {
+                name = "Cinderace",
+                text = {
+                    "{C:red}+#1#{} discard",
+                }
+            },
+            j_agar_sobble = {
+                name = "Sobble",
+                text = {
+                    "{C:blue}+#1#{} hands",
+                }
+            },
+            j_agar_drizzile = {
+                name = "Drizzile",
+                text = {
+                    "{C:blue}+#1#{} hands",
+                }
+            },
+            j_agar_inteleon = {
+                name = "Inteleon",
+                text = {
+                    "{C:blue}+#1#{} hands",
+                }
+            },
             j_agar_toxel = {
                 name = "Toxel",
                 text = {
