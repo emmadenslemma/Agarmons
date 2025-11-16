@@ -1,5 +1,3 @@
-local energy = AGAR.ENERGY
-
 -- Xerneas 716
 local xerneas = {
   name = "xerneas",
@@ -57,13 +55,13 @@ local xerneas = {
       if context.card_added and context.cardarea == G.jokers
           and not context.card.ability.consumeable
           and energy_matches(context.card, "Fairy") then
-        energy.increase(context.card, card.ability.extra.energy_mod)
+        AG.energy.increase(context.card, card.ability.extra.energy_mod)
       end
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    energy.increase_limit(card.ability.extra.energy_limit_mod)
-    energy.increase_all("Fairy", card.ability.extra.energy_mod)
+    AG.energy.increase_limit(card.ability.extra.energy_limit_mod)
+    AG.energy.increase_all("Fairy", card.ability.extra.energy_mod)
     -- Make the Sprite change pop alongside the Energy increase
     G.E_MANAGER:add_event(Event({
       func = function()
@@ -71,11 +69,11 @@ local xerneas = {
         return true
       end
     }))
-    energy.increase(card, "Fairy", card.ability.extra.energy_mod, true)
+    AG.energy.increase(card, "Fairy", card.ability.extra.energy_mod, true)
   end,
   remove_from_deck = function(self, card, from_debuff)
-    energy.decrease_limit(card.ability.extra.energy_limit_mod)
-    energy.decrease_all("Fairy", card.ability.extra.energy_mod)
+    AG.energy.decrease_limit(card.ability.extra.energy_limit_mod)
+    AG.energy.decrease_all("Fairy", card.ability.extra.energy_mod)
   end,
   load = function(self, card, card_table, other_card)
     -- Load Active Form Sprite
@@ -94,11 +92,11 @@ local init = function()
   apply_type_sticker = function(card, ...)
     local xerneas_present = SMODS.find_card('j_agar_xerneas', true)
     if xerneas_present and energy_matches(card, "Fairy") then
-      energy.decrease(card, "Fairy")
+      AG.energy.decrease(card, "Fairy")
     end
     apply_type_sticker_orig(card, ...)
     if xerneas_present and energy_matches(card, "Fairy") then
-      energy.increase(card, "Fairy")
+      AG.energy.increase(card, "Fairy")
     end
   end
 end

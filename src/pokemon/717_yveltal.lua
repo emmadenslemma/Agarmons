@@ -1,5 +1,3 @@
-local energy = AGAR.ENERGY
-
 -- Yveltal 717
 local yveltal = {
   name = "yveltal",
@@ -88,18 +86,18 @@ local yveltal = {
       if context.card_added and context.cardarea == G.jokers
           and not context.card.ability.consumeable
           and energy_matches(context.card, "Dark") then
-        energy.increase(context.card, card.ability.extra.energy_mod)
+        AG.energy.increase(context.card, card.ability.extra.energy_mod)
       end
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    energy.increase_limit(card.ability.extra.energy_limit_mod)
-    energy.increase_all("Dark", card.ability.extra.energy_mod)
-    energy.increase(card, "Dark", card.ability.extra.energy_mod, true)
+    AG.energy.increase_limit(card.ability.extra.energy_limit_mod)
+    AG.energy.increase_all("Dark", card.ability.extra.energy_mod)
+    AG.energy.increase(card, "Dark", card.ability.extra.energy_mod, true)
   end,
   remove_from_deck = function(self, card, from_debuff)
-    energy.decrease_limit(card.ability.extra.energy_limit_mod)
-    energy.decrease_all("Dark", card.ability.extra.energy_mod)
+    AG.energy.decrease_limit(card.ability.extra.energy_limit_mod)
+    AG.energy.decrease_all("Dark", card.ability.extra.energy_mod)
   end,
 }
 
@@ -109,11 +107,11 @@ local init = function()
   apply_type_sticker = function(card, ...)
     local yveltal_present = SMODS.find_card('j_agar_yveltal', true)
     if yveltal_present and energy_matches(card, "Dark") then
-      energy.decrease(card, "Dark")
+      AG.energy.decrease(card, "Dark")
     end
     apply_type_sticker_orig(card, ...)
     if yveltal_present and energy_matches(card, "Dark") then
-      energy.increase(card, "Dark")
+      AG.energy.increase(card, "Dark")
     end
   end
   -- Fix to `remove` not calling the correct context

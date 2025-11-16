@@ -1,5 +1,3 @@
-local list_utils = AGAR.LIST_UTILS
-
 -- Dialga 483
 local dialga = {
   name = "dialga",
@@ -27,7 +25,7 @@ local dialga = {
     if not context.blueprint then
       -- Loop through jokers to select them from retriggers
       if context.before then
-        local joker_list = list_utils.filter(G.jokers.cards, function(joker) return joker ~= card end)
+        local joker_list = AG.list_utils.filter(G.jokers.cards, function(joker) return joker ~= card end)
         local retrigger_joker_list = {}
         for i = 1, card.ability.extra.joker_retriggers do
           if #joker_list == 0 then break end
@@ -44,7 +42,7 @@ local dialga = {
       -- Retrigger everything in the list
       if context.retrigger_joker_check and not context.before and not context.after
           and card.ability.extra.retrigger_joker_list
-          and list_utils.elem(card.ability.extra.retrigger_joker_list, context.other_card) then
+          and AG.list_utils.elem(card.ability.extra.retrigger_joker_list, context.other_card) then
         return {
           repetitions = 1
         }

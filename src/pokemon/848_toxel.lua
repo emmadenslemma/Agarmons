@@ -135,7 +135,7 @@ local gmax_toxtricity = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_agar_toxtricity"] = "j_agar_gmax_toxtricity"
+  AG.gmax.evos["j_agar_toxtricity"] = "j_agar_gmax_toxtricity"
 end
 
 local family = {

@@ -1,7 +1,4 @@
-local gmax = AGAR.GMAX
-local target_utils = AGAR.TARGET_UTILS
-
-local scale = gmax.scale / 0.96
+local scale = AG.gmax.scale / 0.96
 
 -- Eternatus 890
 local eternatus = {
@@ -20,14 +17,14 @@ local eternatus = {
   calculate = function(self, card, context)
     if context.setting_blind and not card.getting_sliced and not context.blueprint then
       for _, other_joker in ipairs(poke_get_adjacent_jokers(card)) do
-        if not other_joker.getting_sliced and gmax.get_gmax_key(other_joker) then
-          gmax.evolve(other_joker)
+        if not other_joker.getting_sliced and AG.gmax.get_gmax_key(other_joker) then
+          AG.gmax.evolve(other_joker)
         end
       end
     end
   end,
   in_pool = function(self)
-    return target_utils.find_leftmost(gmax.get_gmax_key) and pokemon_in_pool(self)
+    return AG.target_utils.find_leftmost(AG.gmax.get_gmax_key) and pokemon_in_pool(self)
   end
 }
 

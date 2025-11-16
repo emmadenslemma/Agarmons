@@ -4,7 +4,7 @@ local nachos_loaded = (SMODS.Mods["NachosPokermonDip"] or {}).can_load and PkmnD
 
 local function load_pokemon(item)
   if item.rarity == "agar_gmax" then
-    AGAR.GMAX.preload(item)
+    AG.gmax.preload(item)
   end
 
   local custom_prefix = item.inject_prefix or "agar"
