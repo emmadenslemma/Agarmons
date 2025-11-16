@@ -8,6 +8,7 @@ local eternatus = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
   end,
+  designer = "Eternalnacho",
   rarity = 4,
   cost = 20,
   stage = "Legendary",
