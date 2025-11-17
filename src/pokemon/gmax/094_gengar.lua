@@ -36,14 +36,8 @@ local gmax_gengar = {
 local init = function()
   AG.append_to_family("gengar", "gmax_gengar", true)
   AG.gmax.evos["j_poke_gengar"] = "j_poke_gmax_gengar"
-  G.E_MANAGER:add_event(Event({
-    func = function()
-      G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep or {}
-      table.insert(G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep, "gengar_rounds")
-      table.insert(G.P_CENTERS["j_poke_gengar"].poke_custom_values_to_keep, "trigger")
-      return true
-    end
-  }))
+
+  SMODS.Joker:take_ownership("poke_gengar", { gmax = "gmax_gengar", poke_custom_values_to_keep = { "gengar_rounds", "trigger" } }, true)
 end
 
 return {
