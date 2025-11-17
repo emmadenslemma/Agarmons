@@ -266,10 +266,6 @@ return {
                     "destroy Joker to the right",
                     "and create a {C:attention}Death{} card",
                     "{C:inactive}(Must have room)",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Gains {C:white,X:mult}X#3#{} Mult for every",
-                    "{C:attention}#4# {C:inactive}[#5#]{} Jokers destroyed",
-                    "{C:inactive}(Currently {C:white,X:mult}X#6#{C:inactive} Mult)",
                 }
             },
             j_agar_dewpider = {
