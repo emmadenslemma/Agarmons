@@ -42,7 +42,6 @@ local gmax_venusaur = {
 
 local init = function()
   AG.append_to_family("venusaur", "gmax_venusaur", true)
-  AG.gmax.evos["j_poke_venusaur"] = "j_poke_gmax_venusaur"
   AG.gmax.disable_method_during_evolve("j_poke_venusaur", "add_to_deck")
   AG.gmax.disable_method_during_evolve("j_poke_venusaur", "remove_from_deck")
 

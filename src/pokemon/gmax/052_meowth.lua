@@ -47,14 +47,8 @@ local gmax_meowth = {
 
 local init = function()
   AG.append_to_family("meowth", "gmax_meowth")
-  AG.gmax.evos["j_poke_meowth"] = "j_poke_gmax_meowth"
-  G.E_MANAGER:add_event(Event({
-    func = function()
-      G.P_CENTERS["j_poke_meowth"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_meowth"].poke_custom_values_to_keep or {}
-      table.insert(G.P_CENTERS["j_poke_meowth"].poke_custom_values_to_keep, "money")
-      return true
-    end
-  }))
+
+  SMODS.Joker:take_ownership("poke_meowth", { gmax = "gmax_meowth", poke_custom_values_to_keep = { "money" } }, true)
 end
 
 return {

@@ -30,7 +30,8 @@ local gmax_butterfree = {
 
 local init = function()
   AG.append_to_family("butterfree", "gmax_butterfree", true)
-  AG.gmax.evos["j_poke_butterfree"] = "j_poke_gmax_butterfree"
+
+  SMODS.Joker:take_ownership("poke_butterfree", { gmax = "gmax_butterfree" }, true)
 end
 
 return {

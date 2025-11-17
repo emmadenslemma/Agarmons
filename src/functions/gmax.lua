@@ -2,8 +2,6 @@ AG.gmax = {
   scale = 1.15,
   -- stops Snorlax from spawning leftovers and machamp from giving extra hands
   evolving = false,
-  -- key is pre-gmax object key, value is post-gmax object key
-  evos = {}
 }
 
 -- Add "Can Dynamax" tooltip to existing Pokemon
@@ -64,22 +62,35 @@ AG.gmax.disable_method_during_evolve = function(key, method_name)
 end
 
 AG.gmax.get_gmax_key = function(base_card)
-  return base_card
-      and base_card.config
-      and base_card.config.center
-      and AG.gmax.evos[base_card.config.center.key]
-      or nil
+  if base_card and base_card.config and base_card.config.center and base_card.config.center.gmax then
+    local gmax_name = base_card.config.center.gmax
+    local prefix = base_card.config.center.poke_custom_prefix or "poke"
+    return "j_" .. prefix .. "_" .. gmax_name
+  end
 end
 
 AG.gmax.get_base_key = function(gmax_card)
-  if gmax_card and gmax_card.config then
-    for base, gmax in pairs(AG.gmax.evos) do
-      if gmax == gmax_card.config.center.key then
-        return base
-      end
-    end
+  if gmax_card and gmax_card.config and gmax_card.config.center then
+    local base_name = AG.gmax.get_previous_from_gmax(gmax_card)
+    local prefix = gmax_card.config.center.poke_custom_prefix or "poke"
+    return "j_" .. prefix .. "_" .. base_name
   end
   return nil
+end
+
+function AG.gmax.get_previous_from_gmax(card)
+  local name = card.ability.name
+  local prev = string.sub(name, 6)
+  local prefix = card.config.center.poke_custom_prefix or "poke"
+  return G.P_CENTERS["j_"..prefix.."_"..prev] and prev or nil
+end
+
+local get_previous_evo_ref = get_previous_evo
+function get_previous_evo(card, full_key)
+  if card.rarity == "agar_gmax" then
+    return AG.gmax.get_previous_from_gmax(card)
+  end
+  return get_previous_evo_ref(card, full_key)
 end
 
 AG.gmax.evolve = function(card)

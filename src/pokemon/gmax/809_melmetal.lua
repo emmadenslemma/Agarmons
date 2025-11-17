@@ -42,7 +42,8 @@ local gmax_melmetal = {
 
 local init = function()
   AG.append_to_family("melmetal", "gmax_melmetal", true)
-  AG.gmax.evos["j_sonfive_melmetal"] = "j_sonfive_gmax_melmetal"
+
+  SMODS.Joker:take_ownership("sonfive_melmetal", { gmax = "gmax_melmetal" }, true)
 end
 
 return {

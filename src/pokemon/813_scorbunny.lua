@@ -75,6 +75,7 @@ local cinderace = {
     G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
     ease_discard(-card.ability.extra.d_size)
   end,
+  gmax = "gmax_cinderace"
 }
 
 -- G-Max Cinderace 815-1
@@ -101,12 +102,7 @@ local gmax_cinderace = {
   end,
 }
 
-local function init()
-  AG.gmax.evos["j_agar_cinderace"] = "j_agar_gmax_cinderace"
-end
-
 return {
   enabled = agarmons_config.scorbunny,
-  init = init,
   list = { scorbunny, raboot, cinderace, gmax_cinderace }
 }

@@ -68,7 +68,8 @@ local rillaboom = {
   end,
   remove_from_deck = function(self, card, from_debuff)
     G.hand:change_size(-card.ability.extra.h_size)
-  end
+  end,
+  gmax = "gmax_rillaboom"
 }
 
 -- G-Max Rillaboom 812-1
@@ -95,12 +96,7 @@ local gmax_rillaboom = {
   end,
 }
 
-local function init()
-  AG.gmax.evos["j_agar_rillaboom"] = "j_agar_gmax_rillaboom"
-end
-
 return {
   enabled = agarmons_config.scorbunny,
-  init = init,
   list = { grookey, thwackey, rillaboom, gmax_rillaboom }
 }

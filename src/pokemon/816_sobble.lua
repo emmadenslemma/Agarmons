@@ -90,6 +90,7 @@ local inteleon = {
       ease_hands_played(-to_decrease)
     end
   end,
+  gmax = "gmax_inteleon"
 }
 
 -- G-Max Inteleon 818-1
@@ -116,12 +117,7 @@ local gmax_inteleon = {
   end,
 }
 
-local function init()
-  AG.gmax.evos["j_agar_inteleon"] = "j_agar_gmax_inteleon"
-end
-
 return {
   enabled = agarmons_config.sobble,
-  init = init,
   list = { sobble, drizzile, inteleon, gmax_inteleon }
 }

@@ -90,7 +90,8 @@ local toxtricity = {
 
       card.children.center:set_sprite_pos(pos)
     end
-  end
+  end,
+  gmax = "gmax_toxtricity"
 }
 
 -- G-Max Toxtricity 849-1
@@ -134,10 +135,6 @@ local gmax_toxtricity = {
   end,
 }
 
-local init = function()
-  AG.gmax.evos["j_agar_toxtricity"] = "j_agar_gmax_toxtricity"
-end
-
 local family = {
   "toxel",
   { key = "toxtricity", form = "amped" },
@@ -152,7 +149,6 @@ end
 
 return {
   enabled = (SMODS.Mods["ToxicStall"] or {}).can_load and agarmons_config.toxel,
-  init = init,
   list = { toxel, toxtricity, gmax_toxtricity },
   family = family,
 }

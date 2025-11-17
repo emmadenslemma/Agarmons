@@ -42,7 +42,6 @@ local gmax_blastoise = {
 
 local init = function()
   AG.append_to_family("blastoise", "gmax_blastoise", true)
-  AG.gmax.evos["j_poke_blastoise"] = "j_poke_gmax_blastoise"
   AG.gmax.disable_method_during_evolve("j_poke_blastoise", "add_to_deck")
   AG.gmax.disable_method_during_evolve("j_poke_blastoise", "remove_from_deck")
 
