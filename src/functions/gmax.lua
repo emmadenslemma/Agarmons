@@ -70,7 +70,20 @@ AG.gmax.get_base_key = function(gmax_card)
 end
 
 AG.gmax.evolve = function(card)
+  AG.gmax.evolving = true
   poke_evolve(card, AG.gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
+  -- Events to reset `evolving` after the evolution animation
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          AG.gmax.evolving = false
+          return true
+        end
+      }))
+      return true
+    end
+  }))
 end
 
 AG.gmax.devolve = function(card)

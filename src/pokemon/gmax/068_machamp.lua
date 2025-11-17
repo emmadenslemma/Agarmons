@@ -2,7 +2,7 @@
 local gmax_machamp = {
   name = "gmax_machamp",
   inject_prefix = "poke",
-  config = { extra = { Xmult = 1.5, hands = 4 } },
+  config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Machamp",
     text = {
@@ -36,12 +36,32 @@ local gmax_machamp = {
   end,
   add_to_deck = function(self, card, from_debuff)
     ease_hands_played(card.ability.extra.hands)
+    ease_hands_played(card.ability.extra.hands)
   end,
+  remove_from_deck = function(self, card, from_debuff)
+    ease_hands_played(-card.ability.extra.hands)
+  end
 }
 
 local init = function()
   AG.append_to_family("machamp", "gmax_machamp", true)
   AG.gmax.evos["j_poke_machamp"] = "j_poke_gmax_machamp"
+  SMODS.Joker:take_ownership('poke_machamp', {
+    gmax = "gmax_machamp",
+    remove_from_deck = function(self, card, from_debuff)
+      G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+      G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+      if AG.gmax.evolving then
+        ease_hands_played(-card.ability.extra.hands)
+      else
+        local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
+        if to_decrease > 0 then
+          ease_hands_played(-to_decrease)
+        end
+      end
+      ease_discard(card.ability.extra.discards)
+    end
+  }, true)
 end
 
 return {
