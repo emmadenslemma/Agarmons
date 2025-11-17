@@ -2,17 +2,19 @@
 local gmax_machamp = {
   name = "gmax_machamp",
   inject_prefix = "poke",
-  config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
+  config = { extra = { Xmult = 1.5, hands = 4 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Machamp",
     text = {
-      "{C:white,X:mult}X#3#{} Mult, doubles after",
+      "Gain {C:blue}+#3#{} additional Hands",
+      "this round",
+      "{C:white,X:mult}X#4#{} Mult, doubles after",
       "every hand played",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult } }
+    return { vars = { center.ability.extra.hands, center.ability.extra.Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 12,
@@ -32,9 +34,9 @@ local gmax_machamp = {
       card.ability.extra.Xmult = card.ability.extra.Xmult * 2
     end
   end,
-  -- `add_to/remove_from_deck` Stolen from regular Machamp to keep your hands during dynamax
-  add_to_deck = SMODS.Joker.obj_table.j_poke_machamp.add_to_deck,
-  remove_from_deck = SMODS.Joker.obj_table.j_poke_machamp.remove_from_deck,
+  add_to_deck = function(self, card, from_debuff)
+    ease_hands_played(card.ability.extra.hands)
+  end,
 }
 
 local init = function()

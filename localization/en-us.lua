@@ -539,7 +539,9 @@ return {
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#3#{} Mult, doubles after",
+                    "Gain {C:blue}+#3#{} additional Hands",
+                    "this round",
+                    "{C:white,X:mult}X#4#{} Mult, doubles after",
                     "every hand played",
                 }
             },
