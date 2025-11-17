@@ -709,6 +709,12 @@ return {
             agar_legendary_pokemon1 = "Legendary Pokémon 1/2",
             agar_legendary_pokemon2 = "Legendary Pokémon 2/2",
         },
+        poker_hands = {
+            ["Six of a Kind"] = "Six of a Kind",
+            ["Seven of a Kind"] = "Seven of a Kind",
+            ["Flush Six"] = "Flush Six",
+            ["Flush Seven"] = "Flush Seven",
+        },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
             ch_c_nebby = { "Nebby must survive" },
