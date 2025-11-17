@@ -1,4 +1,4 @@
-local scale = AG.gmax.scale / 0.96
+local scale = AG.gmax.scale * 1.1
 
 -- Eternatus 890
 local eternatus = {
