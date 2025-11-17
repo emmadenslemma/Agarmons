@@ -50,6 +50,10 @@ local init = function()
       if #scoring_hand == 6 then
         return "Six of a Kind"
       elseif #scoring_hand == 7 then
+        -- here you go Mael
+        if cards[1]:get_id() == 7 then
+          return "Barbaracle"
+        end
         return "Seven of a Kind"
       end
     end
@@ -59,6 +63,9 @@ local init = function()
       if #scoring_hand == 6 then
         return "Flush Six"
       elseif #scoring_hand == 7 then
+        if cards[1]:get_id() == 7 then
+          return "Barbaraflush"
+        end
         return "Flush Seven"
       end
     end
