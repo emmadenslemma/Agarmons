@@ -8,6 +8,7 @@ local yveltal = {
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue + 1] = { set = 'Other', key = 'energize' }
+      info_queue[#info_queue + 1] = G.P_CENTERS.c_death
     end
     return { vars = { center.ability.extra.energy_limit_mod, center.ability.extra.energy_mod } }
   end,
