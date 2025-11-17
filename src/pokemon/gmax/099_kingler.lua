@@ -7,7 +7,7 @@ local gmax_kingler = {
     name = "{C:agar_gmax}G-MAX{} Kingler",
     text = {
       "Played face cards permanently",
-      "get {C:chips}+#3#{} chips when scored",
+      "gain {C:chips}+#3#{} chips when scored",
     }
   },
   loc_vars = function(self, info_queue, center)
