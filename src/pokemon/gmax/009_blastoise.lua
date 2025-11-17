@@ -32,14 +32,37 @@ local gmax_blastoise = {
       end
     end
   end,
-  -- `add/remove_from_deck` from regular Blastoise to keep extra hand
-  add_to_deck = SMODS.Joker.obj_table.j_poke_blastoise.add_to_deck,
-  remove_from_deck = SMODS.Joker.obj_table.j_poke_blastoise.remove_from_deck,
+  add_to_deck = function(self, card, from_debuff)
+    G.P_CENTERS.j_poke_blastoise.add_to_deck(self, card, from_debuff)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    G.P_CENTERS.j_poke_blastoise.remove_from_deck(self, card, from_debuff)
+  end,
 }
 
 local init = function()
   AG.append_to_family("blastoise", "gmax_blastoise", true)
   AG.gmax.evos["j_poke_blastoise"] = "j_poke_gmax_blastoise"
+
+  SMODS.Joker:take_ownership("poke_blastoise", {
+    gmax = "gmax_blastoise",
+    -- Stop hands from changing during GMAX
+    add_to_deck = function(self, card, from_debuff)
+      if AG.gmax.evolving then return end
+      G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
+      if not from_debuff then
+        ease_hands_played(card.ability.extra.hands)
+      end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+      if AG.gmax.evolving then return end
+      G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+      local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
+      if to_decrease > 0 then
+        ease_hands_played(-to_decrease)
+      end
+    end
+  }, true)
 end
 
 return {

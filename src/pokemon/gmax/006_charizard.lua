@@ -35,14 +35,32 @@ local gmax_charizard = {
       end
     end
   end,
-  -- `add_to/remove_from_deck` Stolen from regular Charizard to keep your discard during dynamax
-  add_to_deck = SMODS.Joker.obj_table.j_poke_charizard.add_to_deck,
-  remove_from_deck = SMODS.Joker.obj_table.j_poke_charizard.remove_from_deck,
+  add_to_deck = function(self, card, from_debuff)
+    G.P_CENTERS.j_poke_charizard.add_to_deck(self, card, from_debuff)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    G.P_CENTERS.j_poke_charizard.remove_from_deck(self, card, from_debuff)
+  end,
 }
 
 local init = function()
   AG.append_to_family("charizard", "gmax_charizard", true)
   AG.gmax.evos["j_poke_charizard"] = "j_poke_gmax_charizard"
+
+  SMODS.Joker:take_ownership("poke_charizard", {
+    gmax = "gmax_charizard",
+    -- Stop discards from changing during GMAX
+    add_to_deck = function(self, card, from_debuff)
+      if AG.gmax.evolving then return end
+      G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
+      ease_discard(card.ability.extra.d_size)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+      if AG.gmax.evolving then return end
+      G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
+      ease_discard(-card.ability.extra.d_size)
+    end
+  }, true)
 end
 
 return {
