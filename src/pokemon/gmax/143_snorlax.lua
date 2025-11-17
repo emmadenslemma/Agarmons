@@ -39,13 +39,17 @@ local gmax_snorlax = {
 local init = function()
   AG.append_to_family("snorlax", "gmax_snorlax", true)
   AG.gmax.evos["j_poke_snorlax"] = "j_poke_gmax_snorlax"
-  G.E_MANAGER:add_event(Event({
-    func = function()
-      G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep or {}
-      table.insert(G.P_CENTERS["j_poke_snorlax"].poke_custom_values_to_keep, "Xmult")
-      return true
+  SMODS.Joker:take_ownership('poke_snorlax', {
+    gmax = "gmax_snorlax",
+    poke_custom_values_to_keep = { "Xmult" },
+    add_to_deck = function(self, card, from_debuff)
+      if not from_debuff and not AG.gmax.evolving and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        local _card = SMODS.add_card { key = 'c_poke_leftovers' }
+        card_eval_status_text(_card, 'extra', nil, nil, nil, {message = localize('poke_plus_pokeitem'), colour = G.C.FILTER})
+        return true
+      end
     end
-  }))
+  }, true)
 end
 
 return {

@@ -1,7 +1,7 @@
 AG.gmax = {
   scale = 1.2,
-  -- stops Snorlax from spawning leftovers
-  no_holding = false,
+  -- stops Snorlax from spawning leftovers and machamp from giving extra hands
+  evolving = false,
   -- key is pre-gmax object key, value is post-gmax object key
   evos = {}
 }
@@ -84,9 +84,9 @@ AG.gmax.devolve = function(card)
       func = function()
         G.E_MANAGER:add_event(Event({
           func = function()
-            AG.gmax.no_holding = true
+            AG.gmax.evolving = true
             poke_evolve(card, AG.gmax.get_base_key(card), true)
-            AG.gmax.no_holding = false
+            AG.gmax.evolving = false
             return true
           end
         }))
@@ -94,9 +94,9 @@ AG.gmax.devolve = function(card)
       end
     }))
   else
-    AG.gmax.no_holding = true
+    AG.gmax.evolving = true
     poke_evolve(card, AG.gmax.get_base_key(card), true)
-    AG.gmax.no_holding = false
+    AG.gmax.evolving = false
   end
 end
 
