@@ -23,11 +23,12 @@ local gmax_lapras = {
   blueprint_compat = true,
   poke_custom_values_to_keep = { "chips" },
   calculate = function(self, card, context)
-    if context.joker_main then
+    if context.before then
       SMODS.calculate_effect({
         message = localize("agar_gmax_resonance_ex"),
         colour = G.C.RARITY["agar_gmax"]
       }, card)
+
       G.E_MANAGER:add_event(Event({
         func = function()
           -- Stolen from Missingno
