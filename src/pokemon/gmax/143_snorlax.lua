@@ -44,8 +44,8 @@ local init = function()
     poke_custom_values_to_keep = { "Xmult" },
     add_to_deck = function(self, card, from_debuff)
       if not from_debuff and not AG.gmax.evolving and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-        local _card = SMODS.add_card { key = 'c_poke_leftovers' }
-        card_eval_status_text(_card, 'extra', nil, nil, nil, {message = localize('poke_plus_pokeitem'), colour = G.C.FILTER})
+        local leftovers = SMODS.add_card { key = 'c_poke_leftovers' }
+        SMODS.calculate_effect({ message = localize('poke_plus_pokeitem') }, leftovers)
         return true
       end
     end
