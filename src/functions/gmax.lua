@@ -50,6 +50,19 @@ AG.gmax.preload = function(item)
   end
 end
 
+AG.gmax.disable_method_during_evolve = function(key, method_name)
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      local center = G.P_CENTERS[key]
+      local orig_method = center[method_name]
+      center[method_name] = function(...)
+        if not AG.gmax.evolving then orig_method(...) end
+      end
+      return true
+    end
+  }))
+end
+
 AG.gmax.get_gmax_key = function(base_card)
   return base_card
       and base_card.config

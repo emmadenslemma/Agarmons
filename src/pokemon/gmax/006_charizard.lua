@@ -46,21 +46,10 @@ local gmax_charizard = {
 local init = function()
   AG.append_to_family("charizard", "gmax_charizard", true)
   AG.gmax.evos["j_poke_charizard"] = "j_poke_gmax_charizard"
+  AG.gmax.disable_method_during_evolve("j_poke_blastoise", "add_to_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_blastoise", "remove_from_deck")
 
-  SMODS.Joker:take_ownership("poke_charizard", {
-    gmax = "gmax_charizard",
-    -- Stop discards from changing during GMAX
-    add_to_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
-      ease_discard(card.ability.extra.d_size)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
-      ease_discard(-card.ability.extra.d_size)
-    end
-  }, true)
+  SMODS.Joker:take_ownership("poke_charizard", { gmax = "gmax_charizard" }, true)
 end
 
 return {

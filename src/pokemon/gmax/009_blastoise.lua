@@ -43,26 +43,10 @@ local gmax_blastoise = {
 local init = function()
   AG.append_to_family("blastoise", "gmax_blastoise", true)
   AG.gmax.evos["j_poke_blastoise"] = "j_poke_gmax_blastoise"
+  AG.gmax.disable_method_during_evolve("j_poke_blastoise", "add_to_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_blastoise", "remove_from_deck")
 
-  SMODS.Joker:take_ownership("poke_blastoise", {
-    gmax = "gmax_blastoise",
-    -- Stop hands from changing during GMAX
-    add_to_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
-      if not from_debuff then
-        ease_hands_played(card.ability.extra.hands)
-      end
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
-      local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
-      if to_decrease > 0 then
-        ease_hands_played(-to_decrease)
-      end
-    end
-  }, true)
+  SMODS.Joker:take_ownership("poke_blastoise", { gmax = "gmax_blastoise" }, true)
 end
 
 return {

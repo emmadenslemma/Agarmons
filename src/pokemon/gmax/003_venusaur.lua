@@ -43,19 +43,10 @@ local gmax_venusaur = {
 local init = function()
   AG.append_to_family("venusaur", "gmax_venusaur", true)
   AG.gmax.evos["j_poke_venusaur"] = "j_poke_gmax_venusaur"
+  AG.gmax.disable_method_during_evolve("j_poke_venusaur", "add_to_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_venusaur", "remove_from_deck")
 
-  SMODS.Joker:take_ownership('poke_venusaur', {
-    gmax = "gmax_venusaur",
-    -- Stop hand size from changing during GMAX
-    add_to_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.hand:change_size(card.ability.extra.h_size)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.hand:change_size(-card.ability.extra.h_size)
-    end
-  }, true)
+  SMODS.Joker:take_ownership('poke_venusaur', { gmax = "gmax_venusaur" }, true)
 end
 
 return {

@@ -46,30 +46,10 @@ local gmax_machamp = {
 local init = function()
   AG.append_to_family("machamp", "gmax_machamp", true)
   AG.gmax.evos["j_poke_machamp"] = "j_poke_gmax_machamp"
+  AG.gmax.disable_method_during_evolve("j_poke_machamp", "add_to_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_machamp", "remove_from_deck")
 
-  SMODS.Joker:take_ownership("poke_machamp", {
-    gmax = "gmax_machamp",
-    -- Stop hands/discards from changing during GMAX
-    add_to_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
-      G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discards
-      if not from_debuff then
-        ease_hands_played(card.ability.extra.hands)
-      end
-      ease_discard(-card.ability.extra.discards)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-      if AG.gmax.evolving then return end
-      G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
-      G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
-      local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
-      if to_decrease > 0 then
-        ease_hands_played(-to_decrease)
-      end
-      ease_discard(card.ability.extra.discards)
-    end
-  }, true)
+  SMODS.Joker:take_ownership("poke_machamp", { gmax = "gmax_machamp" }, true)
 end
 
 return {
