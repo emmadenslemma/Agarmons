@@ -86,7 +86,6 @@ local stunfisk = {
 -- Galarian Stunfisk 618-1
 local galarian_stunfisk = {
   name = "galarian_stunfisk",
-  pos = { x = 6, y = 8 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -96,7 +95,6 @@ local galarian_stunfisk = {
   cost = 7,
   stage = "Basic",
   ptype = "Metal",
-  atlas = "AtlasJokersBasicGen05",
   gen = 8,
   calculate = function(self, card, context)
     if context.setting_blind and not context.blueprint and not card.getting_sliced then

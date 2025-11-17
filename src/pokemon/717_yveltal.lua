@@ -1,8 +1,6 @@
 -- Yveltal 717
 local yveltal = {
   name = "yveltal",
-  pos = { x = 22, y = 47 },
-  soul_pos = { x = 23, y = 47 },
   config = { extra = { energy_limit_mod = 1, energy_mod = 1 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -18,7 +16,6 @@ local yveltal = {
   stage = "Legendary",
   ptype = "Dark",
   gen = 6,
-  atlas = "AtlasJokersBasicNatdex",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if not context.blueprint then
