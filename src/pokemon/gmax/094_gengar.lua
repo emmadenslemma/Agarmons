@@ -7,7 +7,7 @@ local gmax_gengar = {
     name = "{C:agar_gmax}G-MAX{} Gengar",
     text = {
       "All {C:dark_edition}Negative{} Jokers",
-      "give {X:mult,C:white} X#3# {} Mult",
+      "give {X:mult,C:white}X#3#{} Mult",
     }
   },
   loc_vars = function(self, info_queue, center)
