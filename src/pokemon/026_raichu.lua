@@ -42,7 +42,7 @@ local init = function()
 end
 
 return {
-  enabled = true, -- agarmons_config.alolan_raichu or false,
+  enabled = agarmons_config.alolan_raichu or false,
   init = init,
   list = { alolan_raichu }
 }

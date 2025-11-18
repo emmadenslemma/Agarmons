@@ -1,4 +1,5 @@
 return {
+  alolan_raichu = true,
   torkoal = true,
   bagon = true,
   kyogre = true,

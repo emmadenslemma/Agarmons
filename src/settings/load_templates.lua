@@ -6,6 +6,8 @@ local function load_template(item)
     AG.gmax.preload(item)
   end
 
+  local custom_prefix = item.inject_prefix or "agar"
+
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
   if not item.atlas then
@@ -15,7 +17,7 @@ local function load_template(item)
 
   item.atlas = (custom_atlas and "agar_" or "poke_") .. item.atlas
   item.set = 'Joker'
-  item.key = 'j_agar_' .. item.name
+  item.key = 'j_' .. custom_prefix .. '_' .. item.name
   item.ability = item.config
 
   poke_templates[item.key] = item
