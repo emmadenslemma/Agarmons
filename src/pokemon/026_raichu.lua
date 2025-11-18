@@ -2,10 +2,10 @@
 local alolan_raichu = {
   name = "alolan_raichu",
   inject_prefix = "poke",
-  config = { extra = { chips = 0, chip_mod = 1 }, threshold = 180 },
+  config = { extra = { chips = 0, chip_mod = 0.5 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.chip_mod, self.config.threshold, center.ability.extra.chips } }
+    return { vars = { 1, 1 / center.ability.extra.chip_mod, math.floor(center.ability.extra.chips) } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -15,23 +15,21 @@ local alolan_raichu = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
-      return {
-        chips = card.ability.extra.chips
-      }
+      local chips = math.floor(card.ability.extra.chips)
+      if chips > 0 then
+        return {
+          chips = chips
+        }
+      end
     end
     if context.money_altered and context.amount < 0 then
-      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod * (-context.amount)
+      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod * (-context.amount) * (#find_pokemon_type("Lightning") > 0 and 2 or 1)
       return {
         message = localize('k_upgrade_ex'),
         colour = G.C.CHIPS,
       }
     end
   end,
-  calc_dollar_bonus = function(self, card)
-    if card.ability.extra.chips >= self.config.threshold and not (card.edition and card.edition.negative) then
-      card:set_edition({ negative = true }, true)
-    end
-  end
 }
 
 local init = function()

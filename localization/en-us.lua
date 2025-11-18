@@ -15,11 +15,9 @@ return {
                 name = "{s:0.6}Alolan{}Raichu",
                 text = {
                     "Gains {C:chips}+#1#{} Chips for",
-                    "every {C:money}$1{} you spend",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Becomes {C:dark_edition}Negative{}",
-                    "at end of round with",
-                    "at least {C:chips}#2#{} Chips",
+                    "every {C:money}$#2#{} you spend,",
+                    "doubled if you have",
+                    "a {X:lightning,C:black}Lightning{} Joker",
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
                 }
             },
