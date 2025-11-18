@@ -1,6 +1,3 @@
-local gmax = AGAR.GMAX
-local target_utils = AGAR.TARGET_UTILS
-
 -- activate auto-gmax feature
 if agarmons_config.gmax then
   local calculate_ref = SMODS.current_mod.calculate
@@ -9,9 +6,9 @@ if agarmons_config.gmax then
     if context.first_hand_drawn then
       for _, card in pairs(SMODS.find_card("c_agar_dynamaxband")) do
         if card.ability.extra.target then
-          local target = target_utils.find_leftmost(card.ability.extra.target)
+          local target = AG.target_utils.find_leftmost(card.ability.extra.target)
           if target and not target.getting_sliced then
-            gmax.evolve(target)
+            AG.gmax.evolve(target)
             -- Event to fix dynamax band losing its charge but the target
             -- not being gmaxed if you quit to main menu after starting blind
             G.E_MANAGER:add_event(Event({
@@ -61,11 +58,11 @@ local dynamaxband = {
   cost = 4,
   hidden = true,
   soul_set = "Item",
-  soul_rate = .005,
+  soul_rate = .0075,
   use = function(self, card)
-    local target = target_utils.find_leftmost_or_highlighted(gmax.get_gmax_key)
+    local target = AG.target_utils.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
     if G.GAME.blind.in_blind then
-      gmax.evolve(target)
+      AG.gmax.evolve(target)
       card.ability.extra.usable = false
     else
       if card.ability.extra.target then
@@ -77,7 +74,7 @@ local dynamaxband = {
   end,
   can_use = function(self, card)
     return card.ability.extra.usable
-        and target_utils.find_leftmost_or_highlighted(gmax.get_gmax_key)
+        and AG.target_utils.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
   end,
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
@@ -86,7 +83,7 @@ local dynamaxband = {
     end
     if context.selling_card and card.ability.extra.target then
       local key = context.card.config.center.key
-      if key == card.ability.extra.target or gmax.get_base_key(key) == card.ability.extra.target then
+      if key == card.ability.extra.target or AG.gmax.get_base_key(key) == card.ability.extra.target then
         card.ability.extra.target = nil
       end
     end
@@ -95,7 +92,7 @@ local dynamaxband = {
     return true
   end,
   in_pool = function(self)
-    return target_utils.find_leftmost(gmax.get_gmax_key)
+    return AG.target_utils.find_leftmost(AG.gmax.get_gmax_key)
   end,
   update = function(self, card, dt)
     if G.STAGE == G.STAGES.RUN then

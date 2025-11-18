@@ -1,10 +1,6 @@
-local list_utils = AGAR.LIST_UTILS
-
 -- Dialga 483
 local dialga = {
   name = "dialga",
-  pos = { x = 10, y = 2 },
-  soul_pos = { x = 11, y = 2 },
   config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 2, retrigger_joker_list = nil } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -25,12 +21,11 @@ local dialga = {
   stage = "Legendary",
   ptype = "Dragon",
   gen = 4,
-  atlas = "AtlasJokersBasicGen04",
   calculate = function(self, card, context)
     if not context.blueprint then
       -- Loop through jokers to select them from retriggers
       if context.before then
-        local joker_list = list_utils.filter(G.jokers.cards, function(joker) return joker ~= card end)
+        local joker_list = AG.list_utils.filter(G.jokers.cards, function(joker) return joker ~= card end)
         local retrigger_joker_list = {}
         for i = 1, card.ability.extra.joker_retriggers do
           if #joker_list == 0 then break end
@@ -47,7 +42,7 @@ local dialga = {
       -- Retrigger everything in the list
       if context.retrigger_joker_check and not context.before and not context.after
           and card.ability.extra.retrigger_joker_list
-          and list_utils.elem(card.ability.extra.retrigger_joker_list, context.other_card) then
+          and AG.list_utils.elem(card.ability.extra.retrigger_joker_list, context.other_card) then
         return {
           repetitions = 1
         }

@@ -1,8 +1,6 @@
 -- Palkia 484
 local palkia = {
   name = "palkia",
-  pos = { x = 4, y = 3 },
-  soul_pos = { x = 5, y = 3 },
   config = { extra = { joker_slot_mod = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 1 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -21,7 +19,6 @@ local palkia = {
   stage = "Legendary",
   ptype = "Water",
   gen = 4,
-  atlas = "AtlasJokersBasicGen04",
   calculate = function(self, card, context)
     if context.end_of_round
         and context.game_over == false and context.main_eval and context.beat_boss

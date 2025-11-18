@@ -1,6 +1,7 @@
 -- Mega Victreebel 071-1
 local mega_victreebel = {
   name = "mega_victreebel",
+  inject_prefix = "poke",
   pos = { x = 2, y = 1 },
   soul_pos = { x = 3, y = 1 },
   config = { extra = { retriggers = 2 } },
@@ -28,7 +29,8 @@ local mega_victreebel = {
 }
 
 local function init()
-  AGAR.FAMILY_UTILS.init_mega(mega_victreebel)
+  AG.append_to_family("victreebel", "mega_victreebel")
+  AG.add_megas_to_center("j_poke_victreebel", "mega_victreebel")
 end
 
 return {

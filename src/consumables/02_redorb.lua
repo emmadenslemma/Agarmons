@@ -1,5 +1,3 @@
-local target_utils = AGAR.TARGET_UTILS
-
 local redorb = {
   name = "redorb",
   key = "redorb",
@@ -29,7 +27,7 @@ local redorb = {
     local target_key = card.ability.extra.active and "j_agar_primal_groudon" or "j_agar_groudon"
     local evolve_to = card.ability.extra.active and "j_agar_groudon" or "j_agar_primal_groudon"
 
-    local target = target_utils.find_leftmost_or_highlighted(target_key)
+    local target = AG.target_utils.find_leftmost_or_highlighted(target_key)
 
     poke_evolve(target, evolve_to)
 
@@ -41,7 +39,7 @@ local redorb = {
 
     local target_key = card.ability.extra.active and "j_agar_primal_groudon" or "j_agar_groudon"
 
-    return target_utils.find_leftmost_or_highlighted(target_key)
+    return AG.target_utils.find_leftmost_or_highlighted(target_key)
   end,
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
@@ -53,11 +51,11 @@ local redorb = {
     return true
   end,
   in_pool = function(self)
-    return target_utils.find_leftmost("j_agar_groudon")
+    return AG.target_utils.find_leftmost("j_agar_groudon")
   end,
   remove_from_deck = function(self, card, from_debuff)
     if card.ability.extra.active then
-      local target = target_utils.find_leftmost("j_agar_primal_groudon")
+      local target = AG.target_utils.find_leftmost("j_agar_primal_groudon")
       if target then
         poke_evolve(target, "j_agar_groudon")
       end

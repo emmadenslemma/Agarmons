@@ -1,8 +1,7 @@
 -- G-Max Melmetal 809
 local gmax_melmetal = {
   name = "gmax_melmetal",
-  pos = { x = 8, y = 5 },
-  soul_pos = { x = 9, y = 5 },
+  inject_prefix = "sonfive",
   config = { extra = { draw_mod = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Melmetal",
@@ -29,16 +28,12 @@ local gmax_melmetal = {
   stage = "Gigantamax",
   ptype = "Metal",
   gen = 7,
-  atlas = "AtlasJokersBasicGen07",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main then
+    if context.before then
       local cards_to_draw = card.ability.extra.draw_mod * find_other_poke_or_energy_type(card, "Metal", true)
       if cards_to_draw > 0 then
-        card_eval_status_text(card, "extra", nil, nil, nil, {
-          message = localize("agar_gmax_meltdown_ex"),
-          colour = G.C.RARITY["agar_gmax"],
-        })
+        SMODS.calculate_effect({ message = localize("agar_gmax_meltdown_ex"), colour = G.C.RARITY["agar_gmax"] }, card)
         G.FUNCS.draw_from_deck_to_hand(cards_to_draw)
       end
     end
@@ -46,8 +41,9 @@ local gmax_melmetal = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_sonfive_melmetal"] = "j_agar_gmax_melmetal"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_melmetal, "sonfive")
+  AG.append_to_family("melmetal", "gmax_melmetal", true)
+
+  SMODS.Joker:take_ownership("sonfive_melmetal", { gmax = "gmax_melmetal" }, true)
 end
 
 return {

@@ -1,7 +1,6 @@
 -- Rayquaza 384
 local rayquaza = {
   name = "rayquaza",
-  soul_pos = { x = 17, y = 25 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -24,8 +23,6 @@ local rayquaza = {
 -- Mega Rayquaza 384-1
 local mega_rayquaza = {
   name = "mega_rayquaza",
-  pos = { x = 6, y = 7 },
-  soul_pos = { x = 7, y = 7 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
@@ -36,7 +33,6 @@ local mega_rayquaza = {
   stage = "Mega",
   ptype = "Dragon",
   gen = 3,
-  atlas = "AtlasJokersBasicGen03",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end,

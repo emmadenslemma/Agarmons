@@ -1,51 +1,51 @@
 -- G-Max Venusaur 003
 local gmax_venusaur = {
   name = "gmax_venusaur",
-  pos = { x = 12, y = 6 },
-  soul_pos = { x = 13, y = 6 },
-  config = { extra = { Xmult_multi = 1.5, h_size = 1 } },
+  inject_prefix = "poke",
+  config = { extra = { Xmult_mod = 0.5, h_size = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Venusaur",
     text = {
-      "Each {C:attention}#3#{} held in hand",
-      "gives {C:white,X:mult}X#4#{} Mult",
-      "{C:inactive,s:0.8}(Rank changes every round){}",
+      "{C:white,X:mult}X#3#{} Mult for each",
+      "card held in hand",
+      "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { localize(G.GAME.current_round.bulb1card and G.GAME.current_round.bulb1card.rank or "Ace", 'ranks'), center.ability.extra.Xmult_multi } }
+    local current_Xmult = center.ability.extra.Xmult_mod * (G.hand and (#G.hand.cards - #G.hand.highlighted) or 0)
+    return { vars = { center.ability.extra.Xmult_mod, current_Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 12,
   stage = "Gigantamax",
   ptype = "Grass",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.hand
-        and context.other_card:get_id() == G.GAME.current_round.bulb1card.id then
-      if context.other_card.debuff then
+    if context.joker_main then
+      local current_Xmult = card.ability.extra.Xmult_mod * (G.hand and #G.hand.cards or 0)
+      if current_Xmult > 1 then
         return {
-          message = localize("k_debuffed"),
-          colour = G.C.RED
-        }
-      else
-        return {
-          Xmult = card.ability.extra.Xmult_multi
+          Xmult = current_Xmult,
         }
       end
     end
   end,
-  -- `add_to/remove_from_deck` Stolen from regular Venusaur to keep your +1 hand size during dynamax
-  add_to_deck = SMODS.Joker.obj_table.j_poke_venusaur.add_to_deck,
-  remove_from_deck = SMODS.Joker.obj_table.j_poke_venusaur.remove_from_deck,
+  add_to_deck = function(self, card, from_debuff)
+    G.P_CENTERS.j_poke_venusaur.add_to_deck(self, card, from_debuff)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    G.P_CENTERS.j_poke_venusaur.remove_from_deck(self, card, from_debuff)
+  end,
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_venusaur"] = "j_agar_gmax_venusaur"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_venusaur)
+  AG.append_to_family("venusaur", "gmax_venusaur", true)
+  AG.gmax.disable_method_during_evolve("j_poke_venusaur", "add_to_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_venusaur", "remove_from_deck")
+
+  SMODS.Joker:take_ownership('poke_venusaur', { gmax = "gmax_venusaur" }, true)
 end
 
 return {

@@ -1,14 +1,14 @@
 return {
     descriptions = {
         Joker = {
-            j_agar_mega_victreebel = {
+            j_poke_mega_victreebel = {
                 name = "Mega Victreebel",
                 text = {
                     "Played cards with {C:attention}Even{} rank",
                     "retrigger {C:attention}#1#{} times",
                 }
             },
-            j_agar_mega_starmie = {
+            j_poke_mega_starmie = {
                 name = "Mega Starmie",
                 text = {
                     "Scored {C:diamonds}Diamond{} cards",
@@ -16,7 +16,7 @@ return {
                     "when hand is played",
                 }
             },
-            j_agar_mega_dragonite = {
+            j_poke_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {
                     "If played hand is exactly {C:attention}1{} card,",
@@ -266,10 +266,6 @@ return {
                     "destroy Joker to the right",
                     "and create a {C:attention}Death{} card",
                     "{C:inactive}(Must have room)",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Gains {C:white,X:mult}X#3#{} Mult for every",
-                    "{C:attention}#4# {C:inactive}[#5#]{} Jokers destroyed",
-                    "{C:inactive}(Currently {C:white,X:mult}X#6#{C:inactive} Mult)",
                 }
             },
             j_agar_dewpider = {
@@ -400,6 +396,60 @@ return {
                     "{V:6}in hand effects",
                 }
             },
+            j_agar_grookey = {
+                name = "Grookey",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                }
+            },
+            j_agar_thwackey = {
+                name = "Thwackey",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                }
+            },
+            j_agar_rillaboom = {
+                name = "Rillaboom",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                }
+            },
+            j_agar_scorbunny = {
+                name = "Scorbunny",
+                text = {
+                    "{C:red}+#1#{} discard",
+                }
+            },
+            j_agar_raboot = {
+                name = "Raboot",
+                text = {
+                    "{C:red}+#1#{} discard",
+                }
+            },
+            j_agar_cinderace = {
+                name = "Cinderace",
+                text = {
+                    "{C:red}+#1#{} discard",
+                }
+            },
+            j_agar_sobble = {
+                name = "Sobble",
+                text = {
+                    "{C:blue}+#1#{} hands",
+                }
+            },
+            j_agar_drizzile = {
+                name = "Drizzile",
+                text = {
+                    "{C:blue}+#1#{} hands",
+                }
+            },
+            j_agar_inteleon = {
+                name = "Inteleon",
+                text = {
+                    "{C:blue}+#1#{} hands",
+                }
+            },
             j_agar_toxel = {
                 name = "Toxel",
                 text = {
@@ -444,40 +494,20 @@ return {
                     "{C:inactive}Does nothing (yet!)",
                 }
             },
-            j_agar_frigibax = {
-                name = "Frigibax",
+            j_agar_eternatus = {
+                name = "Eternatus",
                 text = {
-                    "If played hand is a",
-                    "{C:attention,E:1}Five of a Kind",
-                    "All played cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
-                    "{C:inactive,s:0.8}(Flush Five does not count)",
+                    "when {C:attention}Blind{} is selected,",
+                    "{C:agar_gmax}Dynamaxes{} adjacent Jokers",
+                    "for the next {C:attention}3{} hands",
                 }
             },
-            j_agar_arctibax = {
-                name = "Arctibax",
+            j_agar_calyrex = {
+                name = "Calyrex",
                 text = {
-                    "If played hand is a",
-                    "{C:attention,E:1}Five of a Kind",
-                    "All played cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    "{C:inactive,s:0.8}(Evolves after playing {C:attention,s:0.8}#2#{C:inactive,s:0.8} Five of a Kinds)",
-                    "{C:inactive,s:0.8}(Flush Five does not count)",
-                }
-            },
-            j_agar_baxcalibur = {
-                name = "Baxcalibur",
-                text = {
-                    "If played hand is a",
-                    "{C:attention,E:1}Five of a Kind",
-                    "All played cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Also retrigger every",
-                    "card once per {C:chips}#2#{} of",
-                    "that card's total chips",
-                    "{C:inactive,s:0.8}(Flush Five does not count)",
+                    "Played {C:attention}Queens{} and",
+                    "{C:attention}Jacks{} give {C:white,X:mult}X#1#{} Mult",
+                    "when scored",
                 }
             },
             j_agar_calyrex = {
@@ -490,17 +520,17 @@ return {
             },
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
-            j_agar_gmax_charizard = {
+            j_poke_gmax_charizard = {
                 name = "{C:agar_gmax}G-MAX{} Charizard",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
-                    "Gains {C:white,X:mult}X#3#{} per discard",
+                    "{C:white,X:mult}X#3#{} Mult per discard",
                     "used this round",
                     "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
                 }
             },
-            j_agar_gmax_butterfree = {
+            j_poke_gmax_butterfree = {
                 name = "{C:agar_gmax}G-MAX{} Butterfree",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
@@ -508,12 +538,14 @@ return {
                     "{C:mult}+#3# Mult"
                 }
             },
-            j_agar_gmax_machamp = {
+            j_poke_gmax_machamp = {
                 name = "{C:agar_gmax}G-MAX{} Machamp",
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#3#{} Mult, doubles after",
+                    "Gain {C:blue}+#3#{} additional Hands",
+                    "this round",
+                    "{C:white,X:mult}X#4#{} Mult, doubles after",
                     "every hand played",
                 }
             },
@@ -684,6 +716,14 @@ return {
             agar_regular_pokemon2 = "Regular Pokémon 2/2",
             agar_legendary_pokemon1 = "Legendary Pokémon 1/2",
             agar_legendary_pokemon2 = "Legendary Pokémon 2/2",
+        },
+        poker_hands = {
+            ["Six of a Kind"] = "Six of a Kind",
+            ["Seven of a Kind"] = "Seven of a Kind",
+            ["Flush Six"] = "Flush Six",
+            ["Flush Seven"] = "Flush Seven",
+            ["Barbaracle"] = "Barbaracle",
+            ["Barbaraflush"] = "Barbaraflush",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },

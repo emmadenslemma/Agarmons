@@ -1,6 +1,7 @@
 -- Mega Dragonite 149-1
 local mega_dragonite = {
   name = "mega_dragonite",
+  inject_prefix = "poke",
   pos = { x = 0, y = 1 },
   soul_pos = { x = 1, y = 1 },
   config = { extra = { retriggers = 2 } },
@@ -34,7 +35,8 @@ local mega_dragonite = {
 }
 
 local function init()
-  AGAR.FAMILY_UTILS.init_mega(mega_dragonite)
+  AG.append_to_family("dragonite", "mega_dragonite")
+  AG.add_megas_to_center("j_poke_dragonite", "mega_dragonite")
 end
 
 return {

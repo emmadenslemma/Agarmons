@@ -1,8 +1,7 @@
 -- G-Max Butterfree 012
 local gmax_butterfree = {
   name = "gmax_butterfree",
-  pos = { x = 2, y = 7 },
-  soul_pos = { x = 3, y = 7 },
+  inject_prefix = "poke",
   config = { extra = { mult = 100 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Butterfree",
@@ -19,7 +18,6 @@ local gmax_butterfree = {
   stage = "Gigantamax",
   ptype = "Grass",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
@@ -31,8 +29,9 @@ local gmax_butterfree = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_butterfree"] = "j_agar_gmax_butterfree"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_butterfree)
+  AG.append_to_family("butterfree", "gmax_butterfree", true)
+
+  SMODS.Joker:take_ownership("poke_butterfree", { gmax = "gmax_butterfree" }, true)
 end
 
 return {

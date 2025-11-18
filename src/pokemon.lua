@@ -4,17 +4,29 @@ local nachos_loaded = (SMODS.Mods["NachosPokermonDip"] or {}).can_load and PkmnD
 
 local function load_pokemon(item)
   if item.rarity == "agar_gmax" then
-    AGAR.GMAX.preload(item)
+    AG.gmax.preload(item)
   end
+
+  local custom_prefix = item.inject_prefix or "agar"
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
-  if not item.atlas then
+  if custom_prefix and not item.atlas then
     poke_load_atlas(item)
     poke_load_sprites(item)
   end
 
-  pokermon.Pokemon(item, "agar", custom_atlas)
+  pokermon.Pokemon(item, custom_prefix, custom_atlas)
+end
+
+local load_pokemon_ref = pokermon.load_pokemon
+function pokermon.load_pokemon(item)
+  if item.inject_prefix then
+    item.key = item.inject_prefix .. '_' .. item.name
+    item.prefix_config = item.prefix_config or {}
+    item.prefix_config.key = { mod = false }
+  end
+  return load_pokemon_ref(item)
 end
 
 local function load_pokemon_folder(folder)

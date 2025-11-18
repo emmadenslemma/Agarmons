@@ -1,6 +1,6 @@
 -- Yes, this file is a mess, I'm not touching it again.
 local Tile = assert(SMODS.load_file("src/settings/tile.lua"))()
-local map = AGAR.LIST_UTILS.map
+local map = AG.list_utils.map
 
 local content = assert(SMODS.load_file("src/settings/contents.lua"))()
 

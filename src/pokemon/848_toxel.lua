@@ -90,14 +90,13 @@ local toxtricity = {
 
       card.children.center:set_sprite_pos(pos)
     end
-  end
+  end,
+  gmax = "gmax_toxtricity"
 }
 
 -- G-Max Toxtricity 849-1
 local gmax_toxtricity = {
   name = "gmax_toxtricity",
-  pos = { x = 14, y = 12 },
-  soul_pos = { x = 15, y = 12 },
   config = { extra = { form = "amped", money1 = 1, retriggers = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Toxtricity",
@@ -117,7 +116,6 @@ local gmax_toxtricity = {
   ptype = "Lightning",
   gen = 8,
   toxic = true,
-  atlas = "AtlasJokersBasicGen08",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and not context.end_of_round
@@ -137,10 +135,6 @@ local gmax_toxtricity = {
   end,
 }
 
-local init = function()
-  AGAR.GMAX.evos["j_agar_toxtricity"] = "j_agar_gmax_toxtricity"
-end
-
 local family = {
   "toxel",
   { key = "toxtricity", form = "amped" },
@@ -155,7 +149,6 @@ end
 
 return {
   enabled = (SMODS.Mods["ToxicStall"] or {}).can_load and agarmons_config.toxel,
-  init = init,
   list = { toxel, toxtricity, gmax_toxtricity },
   family = family,
 }

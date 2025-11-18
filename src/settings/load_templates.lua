@@ -3,7 +3,7 @@ local poke_templates = {}
 
 local function load_template(item)
   if item.rarity == "agar_gmax" then
-    AGAR.GMAX.preload(item)
+    AG.gmax.preload(item)
   end
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")

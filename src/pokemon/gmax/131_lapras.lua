@@ -1,8 +1,7 @@
 -- G-Max Lapras 131
 local gmax_lapras = {
   name = "gmax_lapras",
-  pos = { x = 14, y = 7 },
-  soul_pos = { x = 15, y = 7 },
+  inject_prefix = "poke",
   config = { extra = { chips = 0 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Lapras",
@@ -21,15 +20,15 @@ local gmax_lapras = {
   stage = "Gigantamax",
   ptype = "Water",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   poke_custom_values_to_keep = { "chips" },
   calculate = function(self, card, context)
-    if context.joker_main then
-      card_eval_status_text(card, "extra", nil, nil, nil, {
+    if context.before then
+      SMODS.calculate_effect({
         message = localize("agar_gmax_resonance_ex"),
         colour = G.C.RARITY["agar_gmax"]
-      })
+      }, card)
+
       G.E_MANAGER:add_event(Event({
         func = function()
           -- Stolen from Missingno
@@ -58,20 +57,14 @@ local gmax_lapras = {
       }))
     end
     -- Keep Lapras's regular Chips scoring
-    return SMODS.Joker.obj_table.j_poke_lapras.calculate(self, card, context)
+    return G.P_CENTERS.j_poke_lapras.calculate(self, card, context)
   end,
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_lapras"] = "j_agar_gmax_lapras"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_lapras)
-  G.E_MANAGER:add_event(Event({
-    func = function()
-      G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep = G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep or {}
-      table.insert(G.P_CENTERS["j_poke_lapras"].poke_custom_values_to_keep, "chips")
-      return true
-    end
-  }))
+  AG.append_to_family("lapras", "gmax_lapras", true)
+
+  SMODS.Joker:take_ownership("poke_lapras", { gmax = "gmax_lapras", poke_custom_values_to_keep = { "chips" } }, true)
 end
 
 return {

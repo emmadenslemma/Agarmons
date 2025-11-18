@@ -1,14 +1,13 @@
 -- G-Max Kingler 099
 local gmax_kingler = {
   name = "gmax_kingler",
-  pos = { x = 12, y = 7 },
-  soul_pos = { x = 13, y = 7 },
+  inject_prefix = "poke",
   config = { extra = { chips = 16 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Kingler",
     text = {
       "Played face cards permanently",
-      "get {C:chips}+#3#{} chips when scored",
+      "gain {C:chips}+#3#{} chips when scored",
     }
   },
   loc_vars = function(self, info_queue, center)
@@ -20,7 +19,6 @@ local gmax_kingler = {
   stage = "Gigantamax",
   ptype = "Water",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play
@@ -35,8 +33,9 @@ local gmax_kingler = {
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_kingler"] = "j_agar_gmax_kingler"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_kingler)
+  AG.append_to_family("kingler", "gmax_kingler", true)
+
+  SMODS.Joker:take_ownership("poke_kingler", { gmax = "gmax_kingler" }, true)
 end
 
 return {

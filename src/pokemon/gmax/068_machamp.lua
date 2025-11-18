@@ -1,26 +1,26 @@
 -- G-Max Machamp 068
 local gmax_machamp = {
   name = "gmax_machamp",
-  pos = { x = 8, y = 7 },
-  soul_pos = { x = 9, y = 7 },
+  inject_prefix = "poke",
   config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Machamp",
     text = {
-      "{C:white,X:mult}X#3#{} Mult, doubles after",
+      "Gain {C:blue}+#3#{} additional Hands",
+      "this round",
+      "{C:white,X:mult}X#4#{} Mult, doubles after",
       "every hand played",
     }
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult } }
+    return { vars = { center.ability.extra.hands, center.ability.extra.Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 12,
   stage = "Gigantamax",
   ptype = "Fighting",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main
@@ -34,14 +34,21 @@ local gmax_machamp = {
       card.ability.extra.Xmult = card.ability.extra.Xmult * 2
     end
   end,
-  -- `add_to/remove_from_deck` Stolen from regular Machamp to keep your hands during dynamax
-  add_to_deck = SMODS.Joker.obj_table.j_poke_machamp.add_to_deck,
-  remove_from_deck = SMODS.Joker.obj_table.j_poke_machamp.remove_from_deck,
+  add_to_deck = function(self, card, from_debuff)
+    ease_hands_played(card.ability.extra.hands)
+    G.P_CENTERS.j_poke_machamp.add_to_deck(self, card, from_debuff)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    G.P_CENTERS.j_poke_machamp.remove_from_deck(self, card, from_debuff)
+  end
 }
 
 local init = function()
-  AGAR.GMAX.evos["j_poke_machamp"] = "j_agar_gmax_machamp"
-  AGAR.FAMILY_UTILS.init_gmax(gmax_machamp)
+  AG.append_to_family("machamp", "gmax_machamp", true)
+  AG.gmax.disable_method_during_evolve("j_poke_machamp", "add_to_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_machamp", "remove_from_deck")
+
+  SMODS.Joker:take_ownership("poke_machamp", { gmax = "gmax_machamp" }, true)
 end
 
 return {
