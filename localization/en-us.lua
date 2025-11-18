@@ -539,14 +539,6 @@ return {
                     "when scored",
                 }
             },
-            j_agar_calyrex = {
-                name = "Calyrex",
-                text = {
-                    "Played {C:attention}Queens{} and",
-                    "{C:attention}Jacks{} give {C:white,X:mult}X#1#{} Mult",
-                    "when scored",
-                }
-            },
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
             j_poke_gmax_charizard = {
