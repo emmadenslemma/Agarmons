@@ -9,7 +9,6 @@ SMODS.current_mod.optional_features = {
 
 assert(SMODS.load_file("src/sprites.lua"))()
 assert(SMODS.load_file("src/functions.lua"))()
-assert(SMODS.load_file("src/artists.lua"))()
 assert(SMODS.load_file("src/rarities.lua"))()
 assert(SMODS.load_file("src/pokemon.lua"))()
 assert(SMODS.load_file("src/consumables.lua"))()
