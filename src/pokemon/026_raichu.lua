@@ -2,28 +2,26 @@
 local alolan_raichu = {
   name = "alolan_raichu",
   inject_prefix = "poke",
-  config = { extra = { chips = 0, chip_mod = 0.5 } },
+  config = { extra = { chips = 0, chip_mod = 1, per_money = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { 1, 1 / center.ability.extra.chip_mod, math.floor(center.ability.extra.chips) } }
+    return { vars = { center.ability.extra.chip_mod, center.ability.extra.per_money, center.ability.extra.chips } }
   end,
   rarity = "poke_safari",
   cost = 8,
   stage = "One",
   ptype = "Psychic",
   gen = 7,
+  designer = "Hasmed",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main then
-      local chips = math.floor(card.ability.extra.chips)
-      if chips > 0 then
-        return {
-          chips = chips
-        }
-      end
+    if context.joker_main and card.ability.extra.chips > 0 then
+      return {
+        chips = card.ability.extra.chips
+      }
     end
     if context.money_altered and context.amount < 0 then
-      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod * (-context.amount) * (#find_pokemon_type("Lightning") > 0 and 2 or 1)
+      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod / card.ability.extra.per_money * (-context.amount) * (#find_pokemon_type("Lightning") > 0 and 2 or 1)
       return {
         message = localize('k_upgrade_ex'),
         colour = G.C.CHIPS,
