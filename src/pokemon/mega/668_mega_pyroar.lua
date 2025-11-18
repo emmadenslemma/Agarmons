@@ -4,10 +4,14 @@ local mega_pyroar = {
   inject_prefix = "poke",
   pos = { x = 8, y = 1 },
   soul_pos = { x = 9, y = 1 },
-  config = { extra = { chips = 180, create_energy_mod = 2 } },
+  config = { extra = { create_energy_mod = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.chips, center.ability.extra.create_energy_mod } }
+    if pokermon_config.detailed_tooltips then
+      info_queue[#info_queue + 1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
+      info_queue[#info_queue + 1] = G.P_CENTERS.c_poke_fire_energy
+    end
+    return { vars = { center.ability.extra.create_energy_mod } }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -18,45 +22,22 @@ local mega_pyroar = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and next(context.poker_hands['Flush']) then
-      for _, scoring_card in ipairs(context.scoring_hand) do
-        if scoring_card:get_id() == 12 or scoring_card:get_id() == 13 then
-          local energies_to_create = 0
-
-          for _ = 1, card.ability.extra.create_energy_mod do
-            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-              G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-              energies_to_create = energies_to_create + 1
-            end
-          end
-
-          if energies_to_create > 0 then
-            return {
-              chips = card.ability.extra.chips,
-              extra = {
-                message = localize { type = 'variable', key = 'a_poke_plus_energy', vars = { energies_to_create } },
-                colour = G.ARGS.LOC_COLOURS.pink,
-                func = function()
-                  G.E_MANAGER:add_event(Event({
-                    func = function()
-                      for _ = 1, energies_to_create do
-                        SMODS.add_card { set = 'Energy' }
-                      end
-                      G.GAME.consumeable_buffer = 0
-                      return true
-                    end
-                  }))
-                end,
-              }
-            }
-          end
-        end
-      end
       return {
-        chips = card.ability.extra.chips
+        message = localize { type = 'variable', key = 'a_poke_plus_energy', vars = { card.ability.extra.create_energy_mod } },
+        colour = G.ARGS.LOC_COLOURS.pink,
+        func = function()
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              for _ = 1, card.ability.extra.create_energy_mod do
+                SMODS.add_card { key = 'c_poke_fire_energy', edition = 'e_negative' }
+              end
+              return true
+            end
+          }))
+        end,
       }
     end
   end,
-  designer = "Thor's Girdle",
   artist = "KingOfThe-X-Roads",
 }
 
