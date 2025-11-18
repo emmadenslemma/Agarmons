@@ -268,10 +268,9 @@ return {
             j_poke_mega_pyroar = {
                 name = "Mega Pyroar",
                 text = {
-                    "{C:chips}+#1#{} Chips if played hand contains a {C:attention}Flush{}",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Create {C:attention}#2#{} {C:pink}Energy{} cards if it",
-                    "also contains a {C:attention}King{} or {C:attention}Queen{}",
+                    "Creates {C:attention}#1#{} {C:dark_edition}Negative",
+                    "{C:attention}Fire Energy{} cards if played",
+                    "hand contains a {C:attention}Flush{}",
                 }
             },
             j_agar_xerneas = {
