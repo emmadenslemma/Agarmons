@@ -1,6 +1,28 @@
 return {
     descriptions = {
         Joker = {
+            j_poke_pikachu = {
+                name = "Pikachu",
+                text = {
+                    "Earn {C:money}$#1#{} for each Joker card",
+                    "you have at end of round",
+                    "{C:inactive,s:0.8}(Max of {C:money,s:0.8}$10{C:inactive,s:0.8})",
+                    "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Thunder Stone{C:inactive,s:0.8})",
+                    "{C:inactive,s:0.8}(Evolves with a {C:psychic,s:0.8}Psychic{C:inactive,s:0.8} sticker)",
+                }
+            },
+            j_poke_alolan_raichu = {
+                name = "{s:0.6}Alolan{}Raichu",
+                text = {
+                    "Gains {C:chips}+#1#{} Chips for",
+                    "every {C:money}$1{} you spend",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Becomes {C:dark_edition}Negative{}",
+                    "at end of round with",
+                    "at least {C:chips}#2#{} Chips",
+                    "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
+                }
+            },
             j_poke_mega_victreebel = {
                 name = "Mega Victreebel",
                 text = {
