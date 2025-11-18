@@ -23,7 +23,7 @@ local gmax_snorlax = {
   poke_custom_values_to_keep = { "Xmult" },
   calculate = function(self, card, context)
     -- Add Regular Snorlax's scoring effect
-    G.P_CENTERS.j_poke_snorlax.calculate(self, card, context)
+    return G.P_CENTERS.j_poke_snorlax.calculate(self, card, context)
   end,
   add_to_deck = function(self, card, from_debuff)
     SMODS.change_play_limit(card.ability.extra.selection_limit_mod)
