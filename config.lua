@@ -12,7 +12,7 @@ return {
   stunfisk = true,
   xerneas = true,
   yveltal = true,
-  dewpider = true,
+  dewpider = false,
   sandygast = true,
   pyukumuku = true,
   cosmog = false,
