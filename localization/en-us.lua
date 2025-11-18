@@ -265,6 +265,15 @@ return {
                     "become {C:attention}Steel{} cards",
                 }
             },
+            j_poke_mega_pyroar = {
+                name = "Mega Pyroar",
+                text = {
+                    "{C:chips}+#1#{} Chips if played hand contains a {C:attention}Flush{}",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Create {C:attention}#2#{} {C:pink}Energy{} cards if it",
+                    "also contains a {C:attention}King{} or {C:attention}Queen{}",
+                }
+            },
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {
@@ -752,6 +761,7 @@ return {
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
             a_joker_slot = "+#1# Joker Slot",
+            a_poke_plus_energy = "+#1# Energy",
 
             agar_x_turns_left_plural_ex = "#1# hands left!",
             agar_x_turns_left_singular_ex = "#1# turn left!",
