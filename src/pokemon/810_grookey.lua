@@ -97,6 +97,6 @@ local gmax_rillaboom = {
 }
 
 return {
-  enabled = agarmons_config.scorbunny,
+  enabled = false, -- agarmons_config.scorbunny,
   list = { grookey, thwackey, rillaboom, gmax_rillaboom }
 }
