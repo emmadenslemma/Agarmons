@@ -37,7 +37,7 @@ local gmax_centiskorch = {
 local init = function()
   AG.append_to_family("centiskorch", "gmax_centiskorch", true)
 
-  SMODS.Joker:take_ownership("j_Gem_centiskorch", { gmax = "gmax_centiskorch", poke_custom_values_to_keep = { "mult" } }, true)
+  SMODS.Joker:take_ownership("Gem_centiskorch", { gmax = "gmax_centiskorch", poke_custom_values_to_keep = { "mult" } }, true)
 end
 
 return {
