@@ -21,6 +21,6 @@ return {
   toxel = true,
   eternatus = true,
   calyrex = true,
-  gmax = false,
+  gmax = true,
   new_megas = true,
 }
