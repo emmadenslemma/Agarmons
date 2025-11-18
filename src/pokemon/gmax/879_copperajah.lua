@@ -34,6 +34,7 @@ local gmax_copperajah = {
   stage = "Gigantamax",
   ptype = "Metal",
   gen = 8,
+  designer = "Maelmc",
   blueprint_compat = true,
   calculate = function(self, card, context)
     -- Ripped directly from Maelmc's code
