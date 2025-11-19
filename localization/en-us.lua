@@ -659,6 +659,14 @@ return {
                     "{C:red}#7#{} discard, {C:red}#8#{} hand size",
                 }
             },
+            b_agar_uberdeck = {
+                name = "Uber Deck",
+                text = {
+                    "Start run with",
+                    "a free {C:legendary}Legendary",
+                    "{C:red}#1#{} Joker slot",
+                }
+            },
         },
         Sleeve = {
             sleeve_agar_gmaxsleeve = {
@@ -690,6 +698,22 @@ return {
                 name = "Challenge Mode",
                 text = {
                     "Are you sure about this?",
+                }
+            },
+            sleeve_agar_ubersleeve = {
+                name = "Uber Sleeve",
+                text = {
+                    "Start run with",
+                    "a free {C:legendary}Legendary",
+                    "{C:red}#1#{} Joker slot",
+                }
+            },
+            sleeve_agar_ubersleeve_alt = {
+                name = "Uber Sleeve",
+                text = {
+                    "Start run with",
+                    "a free {C:legendary}Legendary",
+                    "{C:red}#1#{} Joker slot",
                 }
             },
         },
