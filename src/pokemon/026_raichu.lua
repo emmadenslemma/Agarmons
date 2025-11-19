@@ -33,12 +33,16 @@ local alolan_raichu = {
 local init = function()
   AG.append_to_family("raichu", "alolan_raichu")
 
-  SMODS.Joker:take_ownership("poke_pikachu", {
-    calculate = function(self, card, context)
-      return item_evo(self, card, context, "j_poke_raichu")
-          or type_evo(self, card, context, "j_poke_alolan_raichu", "psychic")
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      local pikachu_calculate_ref = G.P_CENTERS.j_poke_pikachu.calculate
+      G.P_CENTERS.j_poke_pikachu.calculate = function(self, card, context)
+        return pikachu_calculate_ref(self, card, context)
+            or type_evo(self, card, context, "j_poke_alolan_raichu", "psychic")
+      end
+      return true
     end
-  }, true)
+  }))
 end
 
 return {
