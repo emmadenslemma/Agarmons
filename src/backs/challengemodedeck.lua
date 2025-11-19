@@ -89,7 +89,7 @@ local challengemodesleeve = {
 }
 
 return {
-  enabled = true,
+  enabled = pokermon_config.pokemon_aprilfools,
   list = { challengemodedeck },
   sleeves = { challengemodesleeve },
 }
