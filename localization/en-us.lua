@@ -4,9 +4,12 @@ return {
             j_poke_pikachu = {
                 name = "Pikachu",
                 text = {
-                    "Earn {C:money}$#1#{} for each Joker card",
-                    "you have at end of round",
-                    "{C:inactive,s:0.8}(Max of {C:money,s:0.8}$10{C:inactive,s:0.8})",
+                    "{C:mult}+#1#{} Mult if you",
+                    "have {C:money}#3#${} or more",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Earn {C:money}#2#${} when {C:attention}Blind{}",
+                    "is selected if you have",
+                    "less than {C:money}#3#$",
                     "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Thunder Stone{C:inactive,s:0.8})",
                     "{C:inactive,s:0.8}(Evolves with a {C:psychic,s:0.8}Psychic{C:inactive,s:0.8} sticker)",
                 }
