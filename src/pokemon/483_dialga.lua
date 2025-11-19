@@ -19,7 +19,7 @@ local dialga = {
   rarity = 4,
   cost = 20,
   stage = "Legendary",
-  ptype = "Dragon",
+  ptype = "Metal",
   gen = 4,
   calculate = function(self, card, context)
     if not context.blueprint then
