@@ -650,6 +650,15 @@ return {
                     "{C:red}#2#{} Booster Pack slot",
                 }
             },
+            b_agar_challengemodedeck = {
+                name = "Challenge Mode",
+                text = {
+                    "{C:red}#1#{} Joker slot, {C:red}#2#{} consumable slot,",
+                    "{C:red}#3#{} shop slot, {C:red}#4#{} Voucher slot,",
+                    "{C:red}#5#{} Booster Pack slot, {C:red}#6#{} hand,",
+                    "{C:red}#7#{} discard, {C:red}#8#{} hand size",
+                }
+            },
         },
         Sleeve = {
             sleeve_agar_gmaxsleeve = {
@@ -666,6 +675,21 @@ return {
                     "Start run with a",
                     "{C:dark_edition}Negative {C:spectral,T:c_agar_dynamaxband}#1#",
                     "card instead",
+                }
+            },
+            sleeve_agar_challengemodesleeve = {
+                name = "Challenge Mode",
+                text = {
+                    "{C:red}#1#{} Joker slot, {C:red}#2#{} consumable slot,",
+                    "{C:red}#3#{} shop slot, {C:red}#4#{} Voucher slot,",
+                    "{C:red}#5#{} Booster Pack slot, {C:red}#6#{} hand,",
+                    "{C:red}#7#{} discard, {C:red}#8#{} hand size",
+                }
+            },
+            sleeve_agar_challengemodesleeve_alt = {
+                name = "Challenge Mode",
+                text = {
+                    "Are you sure about this?",
                 }
             },
         },
