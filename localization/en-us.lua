@@ -427,6 +427,14 @@ return {
                     "{V:6}in hand effects",
                 }
             },
+            j_agar_marshadow = {
+                name = "Marshadow",
+                text = {
+                    "Copies ability of",
+                    "{C:attention}Joker to the left,",
+                    "but {C:attention}#1#%{} stronger",
+                }
+            },
             j_agar_grookey = {
                 name = "Grookey",
                 text = {

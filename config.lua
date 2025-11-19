@@ -16,6 +16,7 @@ return {
   sandygast = true,
   pyukumuku = true,
   cosmog = false,
+  marshadow = true,
   grookey = true,
   scorbunny = true,
   sobble = true,
