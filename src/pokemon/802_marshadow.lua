@@ -42,9 +42,24 @@ local marshadow = {
     for i = 2, #G.jokers.cards do
       if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i - 1] end
     end
-    -- Increase values here
+    -- Increase values
+    local pre_boost_values = {}
+    if other_joker and other_joker.ability and type(other_joker.ability.extra) == 'table' then
+      local values = other_joker.ability.extra
+      for k, _ in pairs(energy_values) do
+        if values[k] then
+          pre_boost_values[k] = values[k]
+          values[k] = values[k] * card.ability.extra.effect_multiplier
+        end
+      end
+    end
     local ret = SMODS.blueprint_effect(card, other_joker, context)
     -- Decrease values
+    if other_joker and other_joker.ability and type(other_joker.ability.extra) == 'table' then
+      for k, v in pairs(pre_boost_values) do
+        other_joker.ability.extra[k] = v
+      end
+    end
     return ret
   end,
 }
