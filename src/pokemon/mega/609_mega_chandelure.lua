@@ -1,0 +1,33 @@
+-- Mega Chandelure 609-1
+local mega_chandelure = {
+  name = "mega_chandelure",
+  inject_prefix = "poke",
+  pos = { x = 0, y = 2 },
+  soul_pos = { x = 1, y = 2 },
+  config = { extra = {  } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = {  } }
+  end,
+  rarity = "poke_mega",
+  cost = 12,
+  stage = "Mega",
+  ptype = "Fire",
+  gen = 5,
+  atlas = "AgarmonsJokers",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end,
+  artist = "KingOfThe-X-Roads",
+}
+
+local function init()
+  AG.append_to_family("chandelure", "mega_chandelure")
+  AG.add_megas_to_center("j_poke_chandelure", "mega_chandelure")
+end
+
+return {
+  enabled = agarmons_config.new_megas,
+  init = init,
+  list = { mega_chandelure }
+}

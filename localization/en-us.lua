@@ -246,6 +246,12 @@ return {
                     "{C:inactive}({C:attention}#3#{C:inactive} remaining)"
                 }
             },
+            j_poke_mega_chandelure = {
+                name = "Mega Chandelure",
+                text = {
+                    "{C:inactive}Does nothing (Yet!)",
+                }
+            },
             j_agar_stunfisk = {
                 name = "Stunfisk",
                 text = {
