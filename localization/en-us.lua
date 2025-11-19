@@ -431,7 +431,7 @@ return {
                 name = "Marshadow",
                 text = {
                     "Copies ability of",
-                    "{C:attention}Joker to the left,",
+                    "{C:attention}Joker{} to the left,",
                     "but {C:attention}#1#%{} stronger",
                 }
             },
