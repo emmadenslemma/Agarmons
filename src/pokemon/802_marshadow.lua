@@ -36,6 +36,7 @@ local marshadow = {
   stage = "Legendary",
   ptype = "Fighting",
   gen = 7,
+  designer = "ERIX",
   blueprint_compat = true,
   calculate = function(self, card, context)
     local other_joker = nil
