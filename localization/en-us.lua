@@ -249,7 +249,10 @@ return {
             j_poke_mega_chandelure = {
                 name = "Mega Chandelure",
                 text = {
-                    "{C:inactive}Does nothing (Yet!)",
+                    "Each Joker with {C:money}$1{} sell value",
+                    "gives {C:white,X:mult}X#1#{} Mult for every {C:money}$1",
+                    "of this Joker's sell value",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
             j_agar_stunfisk = {
