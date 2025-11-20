@@ -35,7 +35,8 @@ local terrakion = {
         if stones > 0 then
           card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod * stones
           return {
-            message = localize('agar_rock_smash_ex')
+            message = localize('agar_rock_smash_ex'),
+            colour = G.C.MULT,
           }
         else
           return {
