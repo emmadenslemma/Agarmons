@@ -282,7 +282,11 @@ return {
                 text = {
                     "At end of round, destroy",
                     "{C:attention}#1#{} cards remaining in deck",
-                    "with the lowest ranks",
+                    "with the lowest ranks,",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gain {C:white,X:mult}X#2#{} Mult for any",
+                    "{C:attention}Stone{} cards destroyed",
+                    "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
                 }
             },
             j_agar_terrakion_aprilfools = {
@@ -290,7 +294,10 @@ return {
                 text = {
                     "At end of round, destroy",
                     "{C:attention}#1#{} cards remaining in deck",
-                    "with the lowest ranks",
+                    "with the lowest ranks,",
+                    "gains {C:white,X:mult}X#2#{} Mult for any",
+                    "{C:attention}Stone{} cards destroyed",
+                    "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
                 }
             },
             j_poke_mega_pyroar = {
@@ -775,6 +782,7 @@ return {
             agar_geomancy_ex = "Geomancy!",
             agar_rock_smash_ex = "Rock Smash!",
             agar_double_kick_ex = "Double Kick!",
+            agar_rock_slide_ex = "Rock Slide!",
 
             cards_singular = "card",
             cards_plural = "cards",
