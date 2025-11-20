@@ -2,7 +2,7 @@
 local gmax_urshifu_single_strike = {
   name = "gmax_urshifu_single_strike",
   inject_prefix = "Gem",
-  config = { extra = { Xmult = 7, Xmult_mod = 1 } },
+  config = { extra = { Xmult1 = 7, Xmult2 = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Urshifu Single Strike",
     text = {
@@ -13,7 +13,7 @@ local gmax_urshifu_single_strike = {
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult, center.ability.extra.Xmult_mod } }
+    return { vars = { center.ability.extra.Xmult1, center.ability.extra.Xmult2 } }
   end,
   rarity = "agar_gmax",
   cost = 30,
@@ -25,7 +25,7 @@ local gmax_urshifu_single_strike = {
   calculate = function(self, card, context)
     -- Increase xmult when a discard is used
     if context.pre_discard and not context.blueprint then
-      card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
+      card.ability.extra.Xmult1 = card.ability.extra.Xmult1 + card.ability.extra.Xmult2
       return {
         message = localize('k_upgrade_ex'),
         colour = G.C.RED,
@@ -37,13 +37,13 @@ local gmax_urshifu_single_strike = {
     -- Give Xmult
     if context.cardarea == G.jokers and context.joker_main then
       return {
-        Xmult = card.ability.extra.Xmult
+        Xmult = card.ability.extra.Xmult1
       }
     end
 
     -- Lose a third of your xmult when hand is played
     if context.after and not context.blueprint then
-      card.ability.extra.Xmult = card.ability.extra.Xmult * (2 / 3)
+      card.ability.extra.Xmult1 = card.ability.extra.Xmult1 * (2 / 3)
     end
   end,
 }
