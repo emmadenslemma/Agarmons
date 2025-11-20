@@ -777,8 +777,6 @@ return {
             ["Seven of a Kind"] = "Seven of a Kind",
             ["Flush Six"] = "Flush Six",
             ["Flush Seven"] = "Flush Seven",
-            ["Barbaracle"] = "Barbaracle",
-            ["Barbaraflush"] = "Barbaraflush",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
