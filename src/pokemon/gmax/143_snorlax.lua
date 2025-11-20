@@ -44,31 +44,26 @@ local init = function()
 
   SMODS.Joker:take_ownership("poke_snorlax", { gmax = "gmax_snorlax", poke_custom_values_to_keep = { "Xmult" } }, true)
 
-  SMODS.PokerHand:take_ownership("Five of a Kind", {
-    modify_display_text = function(self, cards, scoring_hand)
-      if #scoring_hand == 6 then
-        return "Six of a Kind"
-      elseif #scoring_hand == 7 then
-        -- here you go Mael
-        if cards[1]:get_id() == 7 then
-          return "Barbaracle"
+  if not (SMODS.Mods['PokermonMaelmc'] or {}).can_load then
+    SMODS.PokerHand:take_ownership("Five of a Kind", {
+      modify_display_text = function(self, cards, scoring_hand)
+        if #scoring_hand == 6 then
+          return "Six of a Kind"
+        elseif #scoring_hand == 7 then
+          return "Seven of a Kind"
         end
-        return "Seven of a Kind"
       end
-    end
-  }, true)
-  SMODS.PokerHand:take_ownership("Flush Five", {
-    modify_display_text = function(self, cards, scoring_hand)
-      if #scoring_hand == 6 then
-        return "Flush Six"
-      elseif #scoring_hand == 7 then
-        if cards[1]:get_id() == 7 then
-          return "Barbaraflush"
+    }, true)
+    SMODS.PokerHand:take_ownership("Flush Five", {
+      modify_display_text = function(self, cards, scoring_hand)
+        if #scoring_hand == 6 then
+          return "Flush Six"
+        elseif #scoring_hand == 7 then
+          return "Flush Seven"
         end
-        return "Flush Seven"
       end
-    end
-  }, true)
+    }, true)
+  end
 end
 
 return {
