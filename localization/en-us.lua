@@ -277,6 +277,22 @@ return {
                     "become {C:attention}Steel{} cards",
                 }
             },
+            j_agar_terrakion = {
+                name = "Terrakion",
+                text = {
+                    "At end of round, destroy",
+                    "{C:attention}#1#{} cards remaining in deck",
+                    "with the lowest ranks",
+                }
+            },
+            j_agar_terrakion_aprilfools = {
+                name = "Milf Pounder",
+                text = {
+                    "At end of round, destroy",
+                    "{C:attention}#1#{} cards remaining in deck",
+                    "with the lowest ranks",
+                }
+            },
             j_poke_mega_pyroar = {
                 name = "Mega Pyroar",
                 text = {
@@ -757,6 +773,8 @@ return {
             agar_dynamax_ex = "Dynamax!",
             agar_geomancy_charging = "Absorbing...",
             agar_geomancy_ex = "Geomancy!",
+            agar_rock_smash_ex = "Rock Smash!",
+            agar_double_kick_ex = "Double Kick!",
 
             cards_singular = "card",
             cards_plural = "cards",
@@ -802,8 +820,9 @@ return {
 
             agar_regular_pokemon1 = "Regular Pokémon 1/2",
             agar_regular_pokemon2 = "Regular Pokémon 2/2",
-            agar_legendary_pokemon1 = "Legendary Pokémon 1/2",
-            agar_legendary_pokemon2 = "Legendary Pokémon 2/2",
+            agar_legendary_pokemon1 = "Legendary Pokémon 1/3",
+            agar_legendary_pokemon2 = "Legendary Pokémon 2/3",
+            agar_legendary_pokemon3 = "Legendary Pokémon 3/3",
         },
         poker_hands = {
             ["Six of a Kind"] = "Six of a Kind",
