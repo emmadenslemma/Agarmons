@@ -692,7 +692,7 @@ return {
                 }
             },
             b_agar_uberdeck = {
-                name = "Uber Deck",
+                name = "Ubers Deck",
                 text = {
                     "Start run with",
                     "a free {C:legendary}Legendary",
@@ -733,7 +733,7 @@ return {
                 }
             },
             sleeve_agar_ubersleeve = {
-                name = "Uber Sleeve",
+                name = "Ubers Sleeve",
                 text = {
                     "Start run with",
                     "a free {C:legendary}Legendary",
@@ -741,7 +741,7 @@ return {
                 }
             },
             sleeve_agar_ubersleeve_alt = {
-                name = "Uber Sleeve",
+                name = "Ubers Sleeve",
                 text = {
                     "Start run with",
                     "a free {C:legendary}Legendary",
