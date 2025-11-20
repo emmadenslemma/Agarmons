@@ -1,7 +1,7 @@
 -- Terrakion 639
 local terrakion = {
   name = "terrakion",
-  config = { extra = { Xmult = 1, Xmult_mod = 1, destroy_mod = 2 } },
+  config = { extra = { Xmult = 1, Xmult_mod = 0.5, destroy_mod = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local key = pokermon_config.pokemon_aprilfools and (self.key .. '_aprilfools') or self.key
