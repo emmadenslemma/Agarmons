@@ -6,7 +6,7 @@ local function load_template(item)
     AG.gmax.preload(item)
   end
 
-  local custom_prefix = item.inject_prefix or "agar"
+  local custom_prefix = item.agar_inject_prefix or "agar"
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 

@@ -1,7 +1,7 @@
 -- G-Max Lapras 131
 local gmax_lapras = {
   name = "gmax_lapras",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { chips = 0 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Lapras",

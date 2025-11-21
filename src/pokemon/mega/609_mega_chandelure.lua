@@ -1,7 +1,7 @@
 -- Mega Chandelure 609-1
 local mega_chandelure = {
   name = "mega_chandelure",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   pos = { x = 0, y = 2 },
   soul_pos = { x = 1, y = 2 },
   config = { extra = { Xmult_multi = 0.03 } },

@@ -1,7 +1,7 @@
 -- G-Max Urshifu Rapid Strike Style 892
 local gmax_urshifu_rapid_strike = {
   name = "gmax_urshifu_rapid_strike",
-  inject_prefix = "Gem",
+  agar_inject_prefix = "Gem",
   config = { extra = { Xmult_mod = 0.1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Urshifu Rapid Strike",

@@ -1,7 +1,7 @@
 -- G-Max Machamp 068
 local gmax_machamp = {
   name = "gmax_machamp",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { Xmult = 1.5, hands = 4, discards = 4 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Machamp",

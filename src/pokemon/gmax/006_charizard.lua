@@ -1,7 +1,7 @@
 -- G-Max Charizard 006
 local gmax_charizard = {
   name = "gmax_charizard",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   pos = { x = 0, y = 7 },
   soul_pos = { x = 1, y = 7 },
   config = { extra = { Xmult_mod = 1, d_size = 1 } },

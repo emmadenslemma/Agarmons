@@ -1,7 +1,7 @@
 -- G-Max Eevee 133
 local gmax_eevee = {
   name = "gmax_eevee",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { Xmult = 2.66 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Eevee",

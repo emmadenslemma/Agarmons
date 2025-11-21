@@ -1,7 +1,7 @@
 -- Mega Starmie 121-1
 local mega_starmie = {
   name = "mega_starmie",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   pos = { x = 6, y = 1 },
   soul_pos = { x = 7, y = 1 },
   config = { extra = { mult_mod = 1, money_mod = 1 } },

@@ -1,7 +1,7 @@
 -- G-Max Copperajah 879
 local gmax_copperajah = {
   name = "gmax_copperajah",
-  inject_prefix = "maelmc",
+  agar_inject_prefix = "maelmc",
   config = { extra = { Xmult_mod = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Copperajah",

@@ -1,7 +1,7 @@
 -- G-Max Urshifu Single Strike Style 892
 local gmax_urshifu_single_strike = {
   name = "gmax_urshifu_single_strike",
-  inject_prefix = "Gem",
+  agar_inject_prefix = "Gem",
   config = { extra = { Xmult1 = 7, Xmult2 = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Urshifu Single Strike",

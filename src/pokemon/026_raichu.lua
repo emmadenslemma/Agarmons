@@ -1,7 +1,7 @@
 -- Alolan Raichu 26-1
 local alolan_raichu = {
   name = "alolan_raichu",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { chips = 0, chip_mod = 1, per_money = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)

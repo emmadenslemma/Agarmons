@@ -1,7 +1,7 @@
 -- G-Max Venusaur 003
 local gmax_venusaur = {
   name = "gmax_venusaur",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { Xmult_mod = 0.5, h_size = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Venusaur",

@@ -1,7 +1,7 @@
 -- G-Max Blastoise 009
 local gmax_blastoise = {
   name = "gmax_blastoise",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { Xmult_mod = 1, hands = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Blastoise",

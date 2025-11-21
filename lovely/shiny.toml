@@ -1,18 +1,18 @@
 [manifest]
 version = "1.0.0"
 dump_lua = true
-priority = 999
+priority = 0
 
-# Fix injected jokers using the wrong atlas for shinies
-## Slightly strange patch format to hopefully support several mods doing this
+# Use 'agar' prefix for prefix-injected Jokers with custom sprites
 [[patches]]
 [patches.pattern]
 target = '=[SMODS Pokermon "editions/editions1.lua"]'
-position = "at"
+position = "before"
 match_indent = true
 pattern = '''SMODS.Joker:take_ownership(card.config.center_key, {atlas = card.config.center.poke_custom_prefix..'_shiny'..noprefix_atlas, discovered = true, unlocked = true}, true)'''
-payload = '''if card.config.center.inject_prefix then
+payload = '''if card.config.center.agar_inject_prefix then
   SMODS.Joker:take_ownership(card.config.center_key, {atlas = 'agar_shiny'..noprefix_atlas, discovered = true, unlocked = true}, true)
-else
-  SMODS.Joker:take_ownership(card.config.center_key, {atlas = card.config.center.poke_custom_prefix..'_shiny'..noprefix_atlas, discovered = true, unlocked = true}, true)
+  card:set_sprites(card.config.center)
+  card.config.center.atlas = prev_atlas
+  return
 end'''

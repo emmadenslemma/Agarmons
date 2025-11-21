@@ -1,7 +1,7 @@
 -- G-Max Melmetal 809
 local gmax_melmetal = {
   name = "gmax_melmetal",
-  inject_prefix = "sonfive",
+  agar_inject_prefix = "sonfive",
   config = { extra = { draw_mod = 1 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Melmetal",

@@ -1,7 +1,7 @@
 -- G-Max Butterfree 012
 local gmax_butterfree = {
   name = "gmax_butterfree",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { mult = 100 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Butterfree",

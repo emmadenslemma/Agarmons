@@ -1,7 +1,7 @@
 -- G-Max Kingler 099
 local gmax_kingler = {
   name = "gmax_kingler",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { chips = 16 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Kingler",
