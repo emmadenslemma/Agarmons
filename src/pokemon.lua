@@ -70,5 +70,6 @@ local function load_pokemon_folder(folder)
 end
 
 load_pokemon_folder(subdir)
+load_pokemon_folder(subdir .. 'regional/')
 load_pokemon_folder(subdir .. 'gmax/')
 load_pokemon_folder(subdir .. 'mega/')

@@ -43,6 +43,7 @@ local function load_pokemon_folder(folder)
 end
 
 load_pokemon_folder("src/pokemon/")
+load_pokemon_folder("src/pokemon/regional/")
 load_pokemon_folder("src/pokemon/gmax/")
 load_pokemon_folder("src/pokemon/mega/")
 
