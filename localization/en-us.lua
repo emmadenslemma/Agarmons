@@ -696,7 +696,8 @@ return {
                 text = {
                     "Start run with",
                     "a free {C:legendary}Legendary",
-                    "{C:red}#1#{} Joker slot",
+                    "Required score scales {C:red}much",
+                    "faster for each {C:attention}Ante",
                 }
             },
         },
@@ -737,7 +738,8 @@ return {
                 text = {
                     "Start run with",
                     "a free {C:legendary}Legendary",
-                    "{C:red}#1#{} Joker slot",
+                    "Required score scales {C:red}much",
+                    "faster for each {C:attention}Ante",
                 }
             },
             sleeve_agar_ubersleeve_alt = {
@@ -745,7 +747,8 @@ return {
                 text = {
                     "Start run with",
                     "a free {C:legendary}Legendary",
-                    "{C:red}#1#{} Joker slot",
+                    "Required score scales {C:red}MUCH",
+                    "faster for each {C:attention}Ante",
                 }
             },
         },
