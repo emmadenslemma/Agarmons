@@ -4,7 +4,7 @@ local mega_chandelure = {
   inject_prefix = "poke",
   pos = { x = 0, y = 2 },
   soul_pos = { x = 1, y = 2 },
-  config = { extra = { Xmult_multi = 0.05 } },
+  config = { extra = { Xmult_multi = 0.03 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local current_Xmult = 1 + center.ability.extra.Xmult_multi * center.sell_cost
