@@ -568,7 +568,7 @@ return {
             j_agar_eternatus = {
                 name = "Eternatus",
                 text = {
-                    "when {C:attention}Blind{} is selected,",
+                    "When {C:attention}Blind{} is selected,",
                     "{C:agar_gmax}Dynamaxes{} adjacent Jokers",
                     "for the next {C:attention}3{} hands",
                 }
