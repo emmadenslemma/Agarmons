@@ -6,10 +6,12 @@ local uber_pack = {
   draw_hand = false,
   no_collection = true,
   create_card = function(self, card)
+    local exclude_keys = AG.list_utils.map(G.pack_cards.cards, function(pack_card) return pack_card.config.center.key end)
     return SMODS.create_card {
-      key = get_random_poke_key("uber_pack", "Legendary"),
+      key = get_random_poke_key("uber_pack", "Legendary", nil, nil, nil, exclude_keys),
+      no_edition = true,
       skip_materialize = true,
-      key_append = "uber_pack"
+      key_append = "uber_pack",
     }
   end,
   create_UIBox = function(self)
@@ -42,6 +44,9 @@ local uber_pack = {
           {n=G.UIT.C,config={align = "tm", padding = 0.05}, nodes={
             UIBox_dyn_container({
               {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 4}, nodes={
+                {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+                  {n=G.UIT.O, config={object = DynaText({string = localize { type = "name_text", set = "Back", key = "b_agar_uberdeck" }, colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.7, maxw = 4, pop_in = 0.5})}}
+                }},
                 {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
                   {n=G.UIT.O, config={object = DynaText({string = {localize('k_choose')..' '}, colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}},
                   {n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'pack_choices'}}, colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}}
