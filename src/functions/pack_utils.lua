@@ -28,9 +28,6 @@ function AG.pack_utils.open_fake_pack(key)
   G.GAME.pack_choices = SMODS.OPENED_BOOSTER.ability.choose
   G.GAME.pack_size = SMODS.OPENED_BOOSTER.ability.extra
 
-  -- TODO: How much do I need to delay this for G.pack_cards to exist?
-  -- also I need to spawn the cards much closer to the cardarea
-  -- also I need to spawn the cards one at a time
   G.E_MANAGER:add_event(Event({
     blocking = false,
     trigger = 'after',
