@@ -694,8 +694,8 @@ return {
             b_agar_uberdeck = {
                 name = "Ubers Deck",
                 text = {
-                    "Start run with",
-                    "a free {C:legendary}Legendary",
+                    "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
+                    "{C:attention}Pokémon{} to start with",
                     "Required score scales {C:red}much",
                     "faster for each {C:attention}Ante",
                 }
@@ -736,8 +736,8 @@ return {
             sleeve_agar_ubersleeve = {
                 name = "Ubers Sleeve",
                 text = {
-                    "Start run with",
-                    "a free {C:legendary}Legendary",
+                    "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
+                    "{C:attention}Pokémon{} to start with",
                     "Required score scales {C:red}much",
                     "faster for each {C:attention}Ante",
                 }
@@ -745,8 +745,8 @@ return {
             sleeve_agar_ubersleeve_alt = {
                 name = "Ubers Sleeve",
                 text = {
-                    "Start run with",
-                    "a free {C:legendary}Legendary",
+                    "Select {C:attention}2{} of {C:attention}5",
+                    "{C:legendary}Legendary{} {C:attention}Pokémon{} instead",
                     "Required score scales {C:red}MUCH",
                     "faster for each {C:attention}Ante",
                 }
