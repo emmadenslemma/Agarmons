@@ -7,6 +7,10 @@ local uber_pack = {
   no_collection = true,
   create_card = function(self, card)
     local exclude_keys = AG.list_utils.map(G.pack_cards.cards, function(pack_card) return pack_card.config.center.key end)
+    -- workaround for `get_random_poke_key` not respecting custom pool functions
+    exclude_keys[#exclude_keys+1] = "j_agar_eternatus"
+    exclude_keys[#exclude_keys+1] = "j_agar_cosmog"
+    exclude_keys[#exclude_keys+1] = "j_agar_cosmoem"
     return SMODS.create_card {
       key = get_random_poke_key("uber_pack", "Legendary", nil, nil, nil, exclude_keys),
       no_edition = true,
