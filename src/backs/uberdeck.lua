@@ -3,9 +3,11 @@ local uberdeck = {
   key = "uberdeck",
   atlas = "AgarmonsBacks",
   pos = { x = 2, y = 0 },
-  config = { scaling = 3 },
+  config = { hands = -1, hand_size = -1 },
+  loc_vars = function(self)
+    return { vars = { self.config.hands, self.config.hand_size } }
+  end,
   apply = function(self)
-    G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + self.config.scaling
     G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -24,22 +26,26 @@ local ubersleeve = {
   key = "ubersleeve",
   atlas = "AgarmonsSleeves",
   pos = { x = 2, y = 0 },
-  config = { scaling = 3 },
   loc_vars = function(self)
     local key = self.key
+    local vars = {}
+
     if self.get_current_deck_key() == "b_agar_uberdeck" then
-      key = self.key .. "_alt"
+      self.config = {}
+      key = key .. "_alt"
+    else
+      self.config = { hands = -1, hand_size = -1 }
+      vars = { self.config.hands, self.config.hand_size }
     end
-    return { key = key }
+
+    return { key = key, vars = vars }
   end,
   apply = function(self)
     CardSleeves.Sleeve.apply(self)
     if self.get_current_deck_key() == "b_agar_uberdeck" then
-      G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + self.config.scaling * 2
       -- Is this the most robust way of doing this? Of course not. But it works
       G.P_CENTERS['p_agar_uber_pack'].config = { extra = 5, choose = 2 }
     else
-      G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + self.config.scaling
       G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
       G.E_MANAGER:add_event(Event({
         trigger = 'after',

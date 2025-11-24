@@ -696,8 +696,7 @@ return {
                 text = {
                     "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
                     "{C:attention}Pokémon{} to start with",
-                    "Required score scales {C:red}much",
-                    "faster for each {C:attention}Ante",
+                    "{C:blue}#1#{} hand, {C:red}#2#{} hand size",
                 }
             },
         },
@@ -738,8 +737,7 @@ return {
                 text = {
                     "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
                     "{C:attention}Pokémon{} to start with",
-                    "Required score scales {C:red}much",
-                    "faster for each {C:attention}Ante",
+                    "{C:blue}#1#{} hand, {C:red}#2#{} hand size",
                 }
             },
             sleeve_agar_ubersleeve_alt = {
@@ -747,8 +745,6 @@ return {
                 text = {
                     "Select {C:attention}2{} of {C:attention}5",
                     "{C:legendary}Legendary{} {C:attention}Pokémon{} instead",
-                    "Required score scales {C:red}MUCH",
-                    "faster for each {C:attention}Ante",
                 }
             },
         },
