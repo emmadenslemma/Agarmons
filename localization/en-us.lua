@@ -246,6 +246,15 @@ return {
                     "{C:inactive}({C:attention}#3#{C:inactive} remaining)"
                 }
             },
+            j_poke_mega_chandelure = {
+                name = "Mega Chandelure",
+                text = {
+                    "Each Joker with {C:money}$1{} sell value",
+                    "gives {C:white,X:mult}X#1#{} Mult for every {C:money}$1",
+                    "of this Joker's sell value",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
+                }
+            },
             j_agar_stunfisk = {
                 name = "Stunfisk",
                 text = {
@@ -266,6 +275,29 @@ return {
                     "When drawn, {C:attention}3{} random",
                     "{C:attention}unenhanced{} cards in hand",
                     "become {C:attention}Steel{} cards",
+                }
+            },
+            j_agar_terrakion = {
+                name = "Terrakion",
+                text = {
+                    "At end of round, destroy",
+                    "{C:attention}#1#{} cards remaining in deck",
+                    "with the lowest ranks,",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Gain {C:white,X:mult}X#2#{} Mult for any",
+                    "{C:attention}Stone{} cards destroyed",
+                    "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
+                }
+            },
+            j_agar_terrakion_aprilfools = {
+                name = "Milf Pounder",
+                text = {
+                    "At end of round, destroy",
+                    "{C:attention}#1#{} cards remaining in deck",
+                    "with the lowest ranks,",
+                    "gains {C:white,X:mult}X#2#{} Mult for any",
+                    "{C:attention}Stone{} cards destroyed",
+                    "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
                 }
             },
             j_poke_mega_pyroar = {
@@ -536,7 +568,7 @@ return {
             j_agar_eternatus = {
                 name = "Eternatus",
                 text = {
-                    "when {C:attention}Blind{} is selected,",
+                    "When {C:attention}Blind{} is selected,",
                     "{C:agar_gmax}Dynamaxes{} adjacent Jokers",
                     "for the next {C:attention}3{} hands",
                 }
@@ -659,6 +691,14 @@ return {
                     "{C:red}#7#{} discard, {C:red}#8#{} hand size",
                 }
             },
+            b_agar_uberdeck = {
+                name = "Ubers Deck",
+                text = {
+                    "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
+                    "{C:attention}Pokémon{} to start with",
+                    "{C:blue}#1#{} hand every round",
+                }
+            },
         },
         Sleeve = {
             sleeve_agar_gmaxsleeve = {
@@ -690,6 +730,21 @@ return {
                 name = "Challenge Mode",
                 text = {
                     "Are you sure about this?",
+                }
+            },
+            sleeve_agar_ubersleeve = {
+                name = "Ubers Sleeve",
+                text = {
+                    "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
+                    "{C:attention}Pokémon{} to start with",
+                    "{C:blue}#1#{} hand every round",
+                }
+            },
+            sleeve_agar_ubersleeve_alt = {
+                name = "Ubers Sleeve",
+                text = {
+                    "Select {C:attention}2{} of {C:attention}5",
+                    "{C:legendary}Legendary{} {C:attention}Pokémon{} instead",
                 }
             },
         },
@@ -724,6 +779,9 @@ return {
             agar_dynamax_ex = "Dynamax!",
             agar_geomancy_charging = "Absorbing...",
             agar_geomancy_ex = "Geomancy!",
+            agar_rock_smash_ex = "Rock Smash!",
+            agar_double_kick_ex = "Double Kick!",
+            agar_rock_slide_ex = "Rock Slide!",
 
             cards_singular = "card",
             cards_plural = "cards",
@@ -771,6 +829,7 @@ return {
             agar_regular_pokemon2 = "Regular Pokémon 2/2",
             agar_legendary_pokemon1 = "Legendary Pokémon 1/2",
             agar_legendary_pokemon2 = "Legendary Pokémon 2/2",
+            agar_legendary_pokemon3 = "Legendary Pokémon 3/3",
         },
         poker_hands = {
             ["Six of a Kind"] = "Six of a Kind",

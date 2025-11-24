@@ -1,7 +1,7 @@
 -- G-Max Snorlax 143
 local gmax_snorlax = {
   name = "gmax_snorlax",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { Xmult_mod = 0.2, Xmult = 1, selection_limit_mod = 2 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Snorlax",

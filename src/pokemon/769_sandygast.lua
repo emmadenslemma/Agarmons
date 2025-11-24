@@ -1,7 +1,7 @@
 -- Sandygast 769
 local sandygast = {
   name = "sandygast",
-  config = { extra = { chips = 0, chip_mod = 2 }, evo_rqmt = 60 },
+  config = { extra = { chips = 0, chip_mod = 3 }, evo_rqmt = 60 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
@@ -35,7 +35,7 @@ local sandygast = {
 -- Palossand 770
 local palossand = {
   name = "palossand",
-  config = { extra = { chips = 0, chip_mod = 3, chip_mod2 = 2 } },
+  config = { extra = { chips = 0, chip_mod = 4, chip_mod2 = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"

@@ -1,7 +1,7 @@
 -- G-Max Pikachu 025
 local gmax_pikachu = {
   name = "gmax_pikachu",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { money_mod = 2 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Pikachu",

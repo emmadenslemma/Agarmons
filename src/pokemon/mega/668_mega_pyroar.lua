@@ -1,7 +1,7 @@
 -- Mega Pyroar 668-1
 local mega_pyroar = {
   name = "mega_pyroar",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   pos = { x = 8, y = 1 },
   soul_pos = { x = 9, y = 1 },
   config = { extra = { create_energy_mod = 2 } },

@@ -1,0 +1,40 @@
+-- Mega Chandelure 609-1
+local mega_chandelure = {
+  name = "mega_chandelure",
+  agar_inject_prefix = "poke",
+  pos = { x = 0, y = 2 },
+  soul_pos = { x = 1, y = 2 },
+  config = { extra = { Xmult_multi = 0.03 } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    local current_Xmult = 1 + center.ability.extra.Xmult_multi * center.sell_cost
+    return { vars = { center.ability.extra.Xmult_multi, current_Xmult } }
+  end,
+  rarity = "poke_mega",
+  cost = 12,
+  stage = "Mega",
+  ptype = "Fire",
+  gen = 5,
+  designer = "Gem",
+  atlas = "AgarmonsJokers",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.other_joker and context.other_joker.sell_cost < 2 then
+      return {
+        Xmult = 1 + card.ability.extra.Xmult_multi * card.sell_cost
+      }
+    end
+  end,
+  artist = "KingOfThe-X-Roads",
+}
+
+local function init()
+  AG.append_to_family("chandelure", "mega_chandelure")
+  AG.add_megas_to_center("j_poke_chandelure", "mega_chandelure")
+end
+
+return {
+  enabled = agarmons_config.new_megas,
+  init = init,
+  list = { mega_chandelure }
+}

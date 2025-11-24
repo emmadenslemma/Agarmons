@@ -1,7 +1,7 @@
 -- G-Max Gengar 094
 local gmax_gengar = {
   name = "gmax_gengar",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   config = { extra = { Xmult_multi = 1.5, gengar_rounds = 5, trigger = false } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Gengar",

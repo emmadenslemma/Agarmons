@@ -1,7 +1,7 @@
 -- Mega Victreebel 071-1
 local mega_victreebel = {
   name = "mega_victreebel",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   pos = { x = 2, y = 1 },
   soul_pos = { x = 3, y = 1 },
   config = { extra = { retriggers = 2 } },

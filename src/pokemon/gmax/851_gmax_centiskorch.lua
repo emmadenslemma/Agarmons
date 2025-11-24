@@ -1,7 +1,7 @@
 -- G-Max Centiskorch 851
 local gmax_centiskorch = {
   name = "gmax_centiskorch",
-  inject_prefix = "Gem",
+  agar_inject_prefix = "Gem",
   config = { extra = { mult = 0, mult_mod = 4 } },
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Centiskorch",

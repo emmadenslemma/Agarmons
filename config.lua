@@ -10,6 +10,7 @@ return {
   palkia = true,
   regigigas = true,
   stunfisk = true,
+  terrakion = true,
   xerneas = true,
   yveltal = true,
   dewpider = false,

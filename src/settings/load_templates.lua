@@ -6,7 +6,7 @@ local function load_template(item)
     AG.gmax.preload(item)
   end
 
-  local custom_prefix = item.inject_prefix or "agar"
+  local custom_prefix = item.agar_inject_prefix or "agar"
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
@@ -43,6 +43,7 @@ local function load_pokemon_folder(folder)
 end
 
 load_pokemon_folder("src/pokemon/")
+load_pokemon_folder("src/pokemon/regional/")
 load_pokemon_folder("src/pokemon/gmax/")
 load_pokemon_folder("src/pokemon/mega/")
 

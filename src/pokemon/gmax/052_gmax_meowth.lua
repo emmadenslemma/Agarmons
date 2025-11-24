@@ -1,7 +1,7 @@
 -- G-Max Meowth 052
 local gmax_meowth = {
   name = "gmax_meowth",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   -- Include `money` to not reset scaling when dynamaxing
   config = { extra = { money = 1, money1 = 3 } },
   loc_txt = {

@@ -1,7 +1,7 @@
 -- Mega Dragonite 149-1
 local mega_dragonite = {
   name = "mega_dragonite",
-  inject_prefix = "poke",
+  agar_inject_prefix = "poke",
   pos = { x = 0, y = 1 },
   soul_pos = { x = 1, y = 1 },
   config = { extra = { retriggers = 2 } },
