@@ -696,7 +696,7 @@ return {
                 text = {
                     "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
                     "{C:attention}Pokémon{} to start with",
-                    "{C:blue}#1#{} hand, {C:red}#2#{} hand size",
+                    "{C:blue}#1#{} hand every round",
                 }
             },
         },
@@ -737,7 +737,7 @@ return {
                 text = {
                     "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
                     "{C:attention}Pokémon{} to start with",
-                    "{C:blue}#1#{} hand, {C:red}#2#{} hand size",
+                    "{C:blue}#1#{} hand every round",
                 }
             },
             sleeve_agar_ubersleeve_alt = {

@@ -3,9 +3,9 @@ local uberdeck = {
   key = "uberdeck",
   atlas = "AgarmonsBacks",
   pos = { x = 2, y = 0 },
-  config = { hands = -1, hand_size = -1 },
+  config = { hands = -1 },
   loc_vars = function(self)
-    return { vars = { self.config.hands, self.config.hand_size } }
+    return { vars = { self.config.hands } }
   end,
   apply = function(self)
     G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
@@ -34,8 +34,8 @@ local ubersleeve = {
       self.config = {}
       key = key .. "_alt"
     else
-      self.config = { hands = -1, hand_size = -1 }
-      vars = { self.config.hands, self.config.hand_size }
+      self.config = { hands = -1 }
+      vars = { self.config.hands }
     end
 
     return { key = key, vars = vars }
