@@ -4,11 +4,11 @@ local mega_chandelure = {
   agar_inject_prefix = "poke",
   pos = { x = 0, y = 2 },
   soul_pos = { x = 1, y = 2 },
-  config = { extra = { Xmult_multi = 0.03 } },
+  config = { extra = { Xmult_multi = 1, Xmult_multi1 = 0.03 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    local current_Xmult = 1 + center.ability.extra.Xmult_multi * center.sell_cost
-    return { vars = { center.ability.extra.Xmult_multi, current_Xmult } }
+    local current_Xmult = center.ability.extra.Xmult_multi + center.ability.extra.Xmult_multi1 * center.sell_cost
+    return { vars = { center.ability.extra.Xmult_multi1, current_Xmult } }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -21,7 +21,7 @@ local mega_chandelure = {
   calculate = function(self, card, context)
     if context.other_joker and context.other_joker.sell_cost < 2 then
       return {
-        Xmult = 1 + card.ability.extra.Xmult_multi * card.sell_cost
+        Xmult = card.ability.extra.Xmult_multi + card.ability.extra.Xmult_multi1 * card.sell_cost
       }
     end
   end,
