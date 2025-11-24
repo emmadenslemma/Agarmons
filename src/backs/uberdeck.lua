@@ -1,4 +1,16 @@
 local open_uber_pack = function()
+  local size = G.P_CENTERS['p_agar_uber_pack'].config.extra
+  G.pack_cards = CardArea(
+    G.ROOM.T.x + 9 + G.hand.T.x, G.hand.T.y,
+    math.max(1, math.min(size, 5)) * G.CARD_W * 1.1,
+    1.05 * G.CARD_H,
+    {
+      card_limit = size,
+      type = 'consumeable',
+      highlight_limit = 1,
+      negative_info = true
+    }
+  )
   AG.skip_booster_animation = true
   G.E_MANAGER:add_event(Event({
     func = function()

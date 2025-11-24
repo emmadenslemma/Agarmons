@@ -17,7 +17,7 @@ local uber_pack = {
   create_UIBox = function(self)
     local _size = math.max(1, SMODS.OPENED_BOOSTER.ability.extra)
 
-    G.pack_cards = CardArea(
+    G.pack_cards = G.pack_cards or CardArea(
       G.ROOM.T.x + 9 + G.hand.T.x, G.hand.T.y,
       math.max(1, math.min(_size, 5)) * G.CARD_W * 1.1,
       1.05 * G.CARD_H,
