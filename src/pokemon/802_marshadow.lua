@@ -1,7 +1,7 @@
 -- Marshadow 898
 local marshadow = {
   name = "marshadow",
-  config = { extra = { effect_multiplier = 1.25 } },
+  config = { extra = { effect_multiplier = 1.5 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     local main_end
