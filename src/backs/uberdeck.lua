@@ -1,5 +1,4 @@
 local open_uber_pack = function()
-  -- G.CONTROLLER.locks[lock] = true
   AG.skip_booster_animation = true
   G.E_MANAGER:add_event(Event({
     func = function()
@@ -12,7 +11,6 @@ local open_uber_pack = function()
       booster.cost = 0
       booster.from_tag = true
       G.FUNCS.use_card({ config = { ref_table = booster } })
-      -- G.CONTROLLER.locks[lock] = nil
       G.E_MANAGER:add_event(Event({
         func = function()
           AG.skip_booster_animation = false
@@ -34,28 +32,18 @@ local uberdeck = {
     return { vars = { self.config.hands } }
   end,
   apply = function(self)
+    G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
     G.E_MANAGER:add_event(Event({
       func = function()
         G.E_MANAGER:add_event(Event({
           func = function()
             open_uber_pack()
-            -- add_tag(Tag('tag_agar_uber_tag'))
             return true
           end
         }))
         return true
       end
     }))
-    -- G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
-    -- G.E_MANAGER:add_event(Event({
-    --   trigger = 'after',
-    --   delay = 1.8,
-    --   blocking = false,
-    --   func = function()
-    --     AG.pack_utils.open_fake_pack('p_agar_uber_pack')
-    --     return true
-    --   end
-    -- }))
   end,
 }
 
@@ -86,11 +74,13 @@ local ubersleeve = {
     else
       G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
       G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 1.8,
-        blocking = false,
         func = function()
-          AG.pack_utils.open_fake_pack('p_agar_uber_pack')
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              open_uber_pack()
+              return true
+            end
+          }))
           return true
         end
       }))
@@ -101,5 +91,5 @@ local ubersleeve = {
 return {
   enabled = true,
   list = { uberdeck },
-  --sleeves = { ubersleeve },
+  sleeves = { ubersleeve },
 }
