@@ -1,3 +1,27 @@
+local open_uber_pack = function()
+  AG.skip_booster_animation = true
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      local booster = SMODS.create_card { key = 'p_agar_uber_pack', area = G.play }
+      booster.states.visible = false
+      booster.T.x = G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2
+      booster.T.y = G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2
+      booster.T.w = G.CARD_W * 1.27
+      booster.T.h = G.CARD_H * 1.27
+      booster.cost = 0
+      booster.from_tag = true
+      G.FUNCS.use_card({ config = { ref_table = booster } })
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          AG.skip_booster_animation = false
+          return true
+        end
+      }))
+      return true
+    end
+  }))
+end
+
 local uberdeck = {
   name = "uberdeck",
   key = "uberdeck",
@@ -10,11 +34,13 @@ local uberdeck = {
   apply = function(self)
     G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
     G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 1.8,
-      blocking = false,
       func = function()
-        AG.pack_utils.open_fake_pack('p_agar_uber_pack')
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            open_uber_pack()
+            return true
+          end
+        }))
         return true
       end
     }))
@@ -48,11 +74,13 @@ local ubersleeve = {
     else
       G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
       G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 1.8,
-        blocking = false,
         func = function()
-          AG.pack_utils.open_fake_pack('p_agar_uber_pack')
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              open_uber_pack()
+              return true
+            end
+          }))
           return true
         end
       }))
