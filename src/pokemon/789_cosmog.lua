@@ -39,7 +39,6 @@ local cosmog = {
   stage = "Legendary",
   ptype = "Psychic",
   gen = 7,
-  aux_poke = true,
   custom_pool_func = true,
   calculate = function(self, card, context)
     return level_evo(self, card, context, "j_agar_cosmoem")
@@ -71,7 +70,6 @@ local cosmoem = {
   stage = "Legendary",
   ptype = "Psychic",
   gen = 7,
-  aux_poke = true,
   custom_pool_func = true,
   blueprint_compat = true,
   calculate = function(self, card, context)

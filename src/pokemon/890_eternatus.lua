@@ -14,7 +14,6 @@ local eternatus = {
   stage = "Legendary",
   ptype = "Dark",
   gen = 8,
-  aux_poke = true, -- workaround for master ball ignoring custom `in_pool` functions
   custom_pool_func = true,
   calculate = function(self, card, context)
     if context.setting_blind and not card.getting_sliced and not context.blueprint then
