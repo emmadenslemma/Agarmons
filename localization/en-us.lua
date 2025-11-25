@@ -509,9 +509,10 @@ return {
                 name = "Cinderace",
                 text = {
                     "{C:red}+#1#{} discard",
-                    "{C:mult}+#2#{} Mult for every card",
+                    "{C:mult}+#2#{} Mult and {C:white,X:mult}X#3#{} Mult",
+                    "for every card",
                     "discarded this round",
-                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult and {C:white,X:mult}X#5#{C:inactive} Mult)",
                 }
             },
             j_agar_sobble = {
