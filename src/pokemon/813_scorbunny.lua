@@ -46,10 +46,10 @@ local scorbunny = {
 -- Raboot 814
 local raboot = {
   name = "raboot",
-  config = { extra = { d_size = 2, hands = 1 } },
+  config = { extra = { d_size = 1, mult = 0, mult_mod = 2, discarded_cards = 0 }, evo_rqmt = 80 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.d_size, center.ability.extra.hands } }
+    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -58,23 +58,32 @@ local raboot = {
   gen = 8,
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        mult = card.ability.extra.mult
+      }
+    end
+    if context.pre_discard then
+      local discard_amount = #context.full_hand
+      card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod * discard_amount
+      card.ability.extra.discarded_cards = card.ability.extra.discarded_cards + discard_amount
+      return {
+        message = localize('k_upgrade_ex'),
+        colour = G.C.MULT,
+      }
+    end
+    if context.end_of_round and context.cardarea == G.jokers then
+      card.ability.extra.mult = 0
+    end
+    return scaling_evo(self, card, context, "j_agar_cinderace", card.ability.extra.discarded_cards, self.config.evo_rqmt)
   end,
   add_to_deck = function(self, card, from_debuff)
     G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
     ease_discard(card.ability.extra.d_size)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
-    local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
-    if to_decrease > 0 then
-      ease_hands_played(-to_decrease)
-    end
   end,
   remove_from_deck = function(self, card, from_debuff)
     G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
     ease_discard(-card.ability.extra.d_size)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
-    if not from_debuff then
-      ease_hands_played(card.ability.extra.hands)
-    end
   end,
 }
 
