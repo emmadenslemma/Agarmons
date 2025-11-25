@@ -606,10 +606,11 @@ return {
                 text = {
                     "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
                     "{br:2.5}ERROR - CONTACT STEAK",
-                    "Gain {C:blue}+#3#{} additional Hands",
-                    "this round",
-                    "{C:white,X:mult}X#4#{} Mult, doubles after",
-                    "every hand played",
+                    "Gain {C:blue}+#3#{} Hands this round",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                    "If played hand is exactly",
+                    "{C:attention}4{} cards, played cards give",
+                    "{C:white,X:mult}X#4#{} Mult when scored",
                 }
             },
         },
