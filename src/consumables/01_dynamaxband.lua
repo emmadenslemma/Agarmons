@@ -58,7 +58,7 @@ local dynamaxband = {
   cost = 4,
   hidden = true,
   soul_set = "Item",
-  soul_rate = .0075,
+  soul_rate = .0066,
   use = function(self, card)
     local target = AG.target_utils.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
     if G.GAME.blind.in_blind then
