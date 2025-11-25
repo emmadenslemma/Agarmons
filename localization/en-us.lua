@@ -508,7 +508,10 @@ return {
             j_agar_cinderace = {
                 name = "Cinderace",
                 text = {
-                    "{C:red}+#1#{} discards, {C:blue}-#2#{} hand",
+                    "{C:red}+#1#{} discard",
+                    "{C:mult}+#2#{} Mult for every card",
+                    "discarded this round",
+                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
                 }
             },
             j_agar_sobble = {
