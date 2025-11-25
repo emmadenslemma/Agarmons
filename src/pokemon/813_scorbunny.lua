@@ -30,8 +30,12 @@ local scorbunny = {
     end
     if context.end_of_round and context.cardarea == G.jokers then
       card.ability.extra.mult = 0
+      return scaling_evo(self, card, context, "j_agar_raboot", card.ability.extra.discarded_cards, self.config.evo_rqmt)
+          or {
+            message = localize('k_reset'),
+            colour = G.C.MULT,
+          }
     end
-    return scaling_evo(self, card, context, "j_agar_raboot", card.ability.extra.discarded_cards, self.config.evo_rqmt)
   end,
   add_to_deck = function(self, card, from_debuff)
     G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
@@ -74,8 +78,12 @@ local raboot = {
     end
     if context.end_of_round and context.cardarea == G.jokers then
       card.ability.extra.mult = 0
+      return scaling_evo(self, card, context, "j_agar_cinderace", card.ability.extra.discarded_cards, self.config.evo_rqmt)
+          or {
+            message = localize('k_reset'),
+            colour = G.C.MULT,
+          }
     end
-    return scaling_evo(self, card, context, "j_agar_cinderace", card.ability.extra.discarded_cards, self.config.evo_rqmt)
   end,
   add_to_deck = function(self, card, from_debuff)
     G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
