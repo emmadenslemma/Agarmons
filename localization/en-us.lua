@@ -745,6 +745,7 @@ return {
                 text = {
                     "Select {C:attention}2{} of {C:attention}5",
                     "{C:legendary}Legendary{} {C:attention}Pokémon{} instead",
+                    "{C:blue}#1#{} hand every round",
                 }
             },
         },

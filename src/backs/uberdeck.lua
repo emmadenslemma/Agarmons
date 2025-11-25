@@ -64,19 +64,15 @@ local ubersleeve = {
   key = "ubersleeve",
   atlas = "AgarmonsSleeves",
   pos = { x = 2, y = 0 },
+  config = { hands = -1 },
   loc_vars = function(self)
     local key = self.key
-    local vars = {}
 
     if self.get_current_deck_key() == "b_agar_uberdeck" then
-      self.config = {}
       key = key .. "_alt"
-    else
-      self.config = { hands = -1 }
-      vars = { self.config.hands }
     end
 
-    return { key = key, vars = vars }
+    return { key = key, vars = { self.config.hands } }
   end,
   apply = function(self)
     CardSleeves.Sleeve.apply(self)
