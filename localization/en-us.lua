@@ -488,19 +488,23 @@ return {
             j_agar_scorbunny = {
                 name = "Scorbunny",
                 text = {
-                    "{C:red}+#1#{} discard",
+                    "{C:red}+#1#{} discards, {C:blue}-#2#{} hand",
+                    "{C:mult}+#3#{} Mult for every card",
+                    "discarded this round",
+                    "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+                    "{C:inactive,s:0.8}(Evolves after discarding {C:attention,s:0.8}#5#{C:inactive,s:0.8} / #6# cards)"
                 }
             },
             j_agar_raboot = {
                 name = "Raboot",
                 text = {
-                    "{C:red}+#1#{} discard",
+                    "{C:red}+#1#{} discards, {C:blue}-#2#{} hand",
                 }
             },
             j_agar_cinderace = {
                 name = "Cinderace",
                 text = {
-                    "{C:red}+#1#{} discard",
+                    "{C:red}+#1#{} discards, {C:blue}-#2#{} hand",
                 }
             },
             j_agar_sobble = {
