@@ -1,10 +1,10 @@
 -- Scorbunny 813
 local scorbunny = {
   name = "scorbunny",
-  config = { extra = { d_size = 2, hands = 1, mult = 0, mult_mod = 1, discarded_cards = 0 }, evo_rqmt = 100 },
+  config = { extra = { d_size = 1, mult = 0, mult_mod = 1, discarded_cards = 0 }, evo_rqmt = 80 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.d_size, center.ability.extra.hands, center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
+    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = 2,
   cost = 5,
@@ -36,19 +36,10 @@ local scorbunny = {
   add_to_deck = function(self, card, from_debuff)
     G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
     ease_discard(card.ability.extra.d_size)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
-    local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
-    if to_decrease > 0 then
-      ease_hands_played(-to_decrease)
-    end
   end,
   remove_from_deck = function(self, card, from_debuff)
     G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
     ease_discard(-card.ability.extra.d_size)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
-    if not from_debuff then
-      ease_hands_played(card.ability.extra.hands)
-    end
   end,
 }
 
