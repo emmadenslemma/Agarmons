@@ -20,12 +20,16 @@ local alolan_raichu = {
         chips = card.ability.extra.chips
       }
     end
-    if context.money_altered and context.amount < 0 then
-      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod / card.ability.extra.per_money * (-context.amount) * (#find_pokemon_type("Lightning") > 0 and 2 or 1)
-      return {
-        message = localize('k_upgrade_ex'),
-        colour = G.C.CHIPS,
-      }
+    if context.money_altered then
+      local amount_spent = context.amount
+      if (SMODS.Mods["Talisman"] or {}).can_load then amount_spent = to_number(amount_spent) end
+      if context.amount < 0 then
+        card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod / card.ability.extra.per_money * (-amount_spent) * (#find_pokemon_type("Lightning") > 0 and 2 or 1)
+        return {
+          message = localize('k_upgrade_ex'),
+          colour = G.C.CHIPS,
+        }
+      end
     end
   end,
 }
