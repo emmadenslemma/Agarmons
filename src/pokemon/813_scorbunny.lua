@@ -1,7 +1,7 @@
 -- Scorbunny 813
 local scorbunny = {
   name = "scorbunny",
-  config = { extra = { d_size = 1, mult = 0, mult_mod = 1, discarded_cards = 0 }, evo_rqmt = 80 },
+  config = { extra = { d_size = 1, mult = 0, mult_mod = 1, discarded_cards = 0 }, evo_rqmt = 75 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
@@ -50,7 +50,7 @@ local scorbunny = {
 -- Raboot 814
 local raboot = {
   name = "raboot",
-  config = { extra = { d_size = 1, mult = 0, mult_mod = 2, discarded_cards = 0 }, evo_rqmt = 80 },
+  config = { extra = { d_size = 1, mult = 0, mult_mod = 2, discarded_cards = 0 }, evo_rqmt = 75 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
