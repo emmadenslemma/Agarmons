@@ -4,10 +4,10 @@ local mega_feraligatr = {
   agar_inject_prefix = "poke",
   pos = { x = 4, y = 2 },
   soul_pos = { x = 5, y = 2 },
-  config = { extra = { hands = 1, chip_mod = 10 } },
+  config = { extra = { chip_mod = 13 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.hands, center.ability.extra.chip_mod } }
+    return { vars = { center.ability.extra.chip_mod } }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -25,19 +25,6 @@ local mega_feraligatr = {
             card.ability.extra.chip_mod * G.GAME.current_round.hands_played
         SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.CHIPS }, scoring_card)
       end
-    end
-  end,
-  add_to_deck = function(self, card, from_debuff)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
-    if not from_debuff then
-      ease_hands_played(card.ability.extra.hands)
-    end
-  end,
-  remove_from_deck = function(self, card, from_debuff)
-    G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
-    local to_decrease = math.min(G.GAME.current_round.hands_left - 1, card.ability.extra.hands)
-    if to_decrease > 0 then
-      ease_hands_played(-to_decrease)
     end
   end,
   designer = "Fox",

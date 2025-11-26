@@ -51,7 +51,6 @@ return {
             j_poke_mega_feraligatr = {
                 name = "Mega Feraligatr",
                 text = {
-                    "{C:blue}+#1#{} hand",
                     "Scored cards permanently",
                     "gain {C:chips}+#2#{} Chips per hand played",
                     "this round when played",
