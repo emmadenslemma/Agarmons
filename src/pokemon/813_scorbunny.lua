@@ -1,10 +1,10 @@
 -- Scorbunny 813
 local scorbunny = {
   name = "scorbunny",
-  config = { extra = { d_size = 1, mult = 0, mult_mod = 1, discarded_cards = 0 }, evo_rqmt = 75 },
+  config = { extra = { d_size = 1, mult = 0, mult_mod = 1, mult_loss = 1, discarded_cards = 0 }, evo_rqmt = 75 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
+    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult_loss, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = 2,
   cost = 5,
@@ -17,6 +17,14 @@ local scorbunny = {
     if context.joker_main then
       return {
         mult = card.ability.extra.mult
+      }
+    end
+    if context.after and card.ability.extra.mult > 0 then
+      local mult_lost = math.min(card.ability.extra.mult, card.ability.extra.mult_loss * #context.full_hand)
+      card.ability.extra.mult = card.ability.extra.mult - mult_lost
+      return {
+        message = localize { type = 'variable', key = 'a_mult_minus', vars = { mult_lost } },
+        colour = G.C.MULT
       }
     end
     if context.pre_discard then
@@ -50,10 +58,10 @@ local scorbunny = {
 -- Raboot 814
 local raboot = {
   name = "raboot",
-  config = { extra = { d_size = 1, mult = 0, mult_mod = 2, discarded_cards = 0 }, evo_rqmt = 75 },
+  config = { extra = { d_size = 1, mult = 0, mult_mod = 2, mult_loss = 2, discarded_cards = 0 }, evo_rqmt = 75 },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
+    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult_loss, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -67,6 +75,14 @@ local raboot = {
         mult = card.ability.extra.mult
       }
     end
+    if context.after and card.ability.extra.mult > 0 then
+      local mult_lost = math.min(card.ability.extra.mult, card.ability.extra.mult_loss * #context.full_hand)
+      card.ability.extra.mult = card.ability.extra.mult - mult_lost
+      return {
+        message = localize { type = 'variable', key = 'a_mult_minus', vars = { mult_lost } },
+        colour = G.C.MULT
+      }
+    end
     if context.pre_discard then
       local discard_amount = #context.full_hand
       card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod * discard_amount
@@ -78,7 +94,8 @@ local raboot = {
     end
     if context.end_of_round and context.cardarea == G.jokers then
       card.ability.extra.mult = 0
-      return scaling_evo(self, card, context, "j_agar_cinderace", card.ability.extra.discarded_cards, self.config.evo_rqmt)
+      return scaling_evo(self, card, context, "j_agar_cinderace", card.ability.extra.discarded_cards,
+            self.config.evo_rqmt)
           or {
             message = localize('k_reset'),
             colour = G.C.MULT,

@@ -489,20 +489,22 @@ return {
                 name = "Scorbunny",
                 text = {
                     "{C:red}+#1#{} discard",
-                    "{C:mult}+#2#{} Mult for every card",
-                    "discarded this round",
-                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
-                    "{C:inactive,s:0.8}(Evolves after discarding {C:attention,s:0.8}#4#{C:inactive,s:0.8} / #5# cards)"
+                    "{C:mult}+#2#{} Mult per card discarded",
+                    "{C:mult}-#3#{} Mult per card played",
+                    "Resets at end of round",
+                    "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+                    "{C:inactive,s:0.8}(Evolves after discarding {C:attention,s:0.8}#5#{C:inactive,s:0.8} / #6# cards)"
                 }
             },
             j_agar_raboot = {
                 name = "Raboot",
                 text = {
                     "{C:red}+#1#{} discard",
-                    "{C:mult}+#2#{} Mult for every card",
-                    "discarded this round",
-                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
-                    "{C:inactive,s:0.8}(Evolves after discarding {C:attention,s:0.8}#4#{C:inactive,s:0.8} / #5# cards)"
+                    "{C:mult}+#2#{} Mult per card discarded",
+                    "{C:mult}-#3#{} Mult per card played",
+                    "Resets at end of round",
+                    "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+                    "{C:inactive,s:0.8}(Evolves after discarding {C:attention,s:0.8}#5#{C:inactive,s:0.8} / #6# cards)"
                 }
             },
             j_agar_cinderace = {
