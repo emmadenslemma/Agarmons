@@ -9,7 +9,7 @@ local function load_pokemon(item)
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
 
-  if custom_prefix and not item.atlas then
+  if not item.atlas then
     poke_load_atlas(item)
     poke_load_sprites(item)
   end
@@ -46,10 +46,17 @@ local function load_pokemon_folder(folder)
 
         if poke.list and #poke.list > 0 then
           for _, item in ipairs(poke.list) do
-            family[#family + 1] = item.name
+            family[#family+1] = item.name
             load_pokemon(item)
           end
         end
+
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = family
+            return true
+          end
+        }))
 
         if poke.family then
           if #poke.family > 1 then
