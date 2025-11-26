@@ -52,7 +52,7 @@ return {
                 name = "Mega Feraligatr",
                 text = {
                     "Scored cards permanently",
-                    "gain {C:chips}+#2#{} Chips per hand played",
+                    "gain {C:chips}+#1#{} Chips per hand played",
                     "this round when played",
                 }
             },
