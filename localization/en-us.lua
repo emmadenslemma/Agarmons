@@ -24,6 +24,14 @@ return {
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
                 }
             },
+            j_poke_mega_clefable = {
+                name = "Mega Clefable",
+                text = {
+                    "Played {C:clubs}Club{} cards give",
+                    "{C:white,X:mult}X#1#{} Mult when scored for each",
+                    "{C:clubs}Club{} card in scoring hand",
+                }
+            },
             j_poke_mega_victreebel = {
                 name = "Mega Victreebel",
                 text = {
