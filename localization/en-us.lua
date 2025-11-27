@@ -48,6 +48,13 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive} retriggers)"
                 }
             },
+            j_poke_mega_meganium = {
+                name = "Mega Meganium",
+                text = {
+                    "First card of each suit",
+                    "held in hand gives {C:money}$#1#",
+                }
+            },
             j_poke_mega_feraligatr = {
                 name = "Mega Feraligatr",
                 text = {
