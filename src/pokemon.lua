@@ -51,12 +51,7 @@ local function load_pokemon_folder(folder)
           end
         end
 
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = family
-            return true
-          end
-        }))
+        pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = family
 
         if poke.family then
           if #poke.family > 1 then
