@@ -35,7 +35,7 @@ local gmax_lapras = {
           local tags = {}
           for k, v in pairs(G.P_TAGS) do
             if v.key ~= "tag_boss" then
-              tags[#tags + 1] = v
+              tags[#tags+1] = v
             end
           end
           local temp_tag = pseudorandom_element(tags, pseudoseed("gmaxlapras"))
@@ -44,7 +44,7 @@ local gmax_lapras = {
             local _poker_hands = {}
             for k, v in pairs(G.GAME.hands) do
               if v.visible then
-                _poker_hands[#_poker_hands + 1] = k
+                _poker_hands[#_poker_hands+1] = k
               end
             end
             tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed("gmaxlapras"))
@@ -62,7 +62,7 @@ local gmax_lapras = {
 }
 
 local init = function()
-  AG.append_to_family("lapras", "gmax_lapras", true)
+  pokermon.add_family({ "lapras", "gmax_lapras" })
 
   SMODS.Joker:take_ownership("poke_lapras", { gmax = "gmax_lapras", poke_custom_values_to_keep = { "chips" } }, true)
 end
