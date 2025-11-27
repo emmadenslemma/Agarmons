@@ -203,6 +203,6 @@ local gmax_cinderace = {
 }
 
 return {
-  enabled = false, -- agarmons_config.scorbunny,
+  enabled = agarmons_config.scorbunny,
   list = { scorbunny, raboot, cinderace, gmax_cinderace }
 }
