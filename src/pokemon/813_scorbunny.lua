@@ -19,7 +19,7 @@ local scorbunny = {
         mult = card.ability.extra.mult
       }
     end
-    if context.after and card.ability.extra.mult > 0 then
+    if context.before and card.ability.extra.mult > 0 then
       local mult_lost = math.min(card.ability.extra.mult, card.ability.extra.mult_loss * #context.full_hand)
       card.ability.extra.mult = card.ability.extra.mult - mult_lost
       return {
@@ -75,7 +75,7 @@ local raboot = {
         mult = card.ability.extra.mult
       }
     end
-    if context.after and card.ability.extra.mult > 0 then
+    if context.before and card.ability.extra.mult > 0 then
       local mult_lost = math.min(card.ability.extra.mult, card.ability.extra.mult_loss * #context.full_hand)
       card.ability.extra.mult = card.ability.extra.mult - mult_lost
       return {
