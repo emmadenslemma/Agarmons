@@ -67,8 +67,7 @@ local init = function()
 end
 
 return {
-  name = "Agarmons G-Max Snorlax",
-  enabled = agarmons_config.gmax or false,
+  can_load = agarmons_config.gmax,
   init = init,
   list = { gmax_snorlax }
 }

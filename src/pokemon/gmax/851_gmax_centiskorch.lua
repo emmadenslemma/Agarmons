@@ -41,7 +41,7 @@ local init = function()
 end
 
 return {
-  enabled = (SMODS.Mods["GemPokermon"] or {}).can_load and Gem_config.Sizzlipede and agarmons_config.gmax or false,
+  can_load = (SMODS.Mods["GemPokermon"] or {}).can_load and Gem_config.Sizzlipede and agarmons_config.gmax,
   init = init,
   list = { gmax_centiskorch }
 }

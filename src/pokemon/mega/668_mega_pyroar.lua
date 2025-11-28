@@ -8,8 +8,8 @@ local mega_pyroar = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
-      info_queue[#info_queue + 1] = G.P_CENTERS.c_poke_fire_energy
+      info_queue[#info_queue+1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
+      info_queue[#info_queue+1] = G.P_CENTERS.c_poke_fire_energy
     end
     return { vars = { center.ability.extra.create_energy_mod } }
   end,
@@ -47,7 +47,7 @@ local function init()
 end
 
 return {
-  enabled = agarmons_config.new_megas,
+  can_load = agarmons_config.new_megas,
   init = init,
   list = { mega_pyroar }
 }

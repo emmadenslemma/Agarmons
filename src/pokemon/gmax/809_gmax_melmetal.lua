@@ -47,8 +47,7 @@ local init = function()
 end
 
 return {
-  name = "Agarmons G-Max Melmetal",
-  enabled = (SMODS.Mods["SonfivesPokermonPlus"] or {}).can_load and sonfive_config.Meltan and agarmons_config.gmax or false,
+  can_load = (SMODS.Mods["SonfivesPokermonPlus"] or {}).can_load and agarmons_config.gmax,
   init = init,
   list = { gmax_melmetal }
 }

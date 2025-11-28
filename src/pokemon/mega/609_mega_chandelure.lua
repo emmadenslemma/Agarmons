@@ -34,7 +34,7 @@ local function init()
 end
 
 return {
-  enabled = agarmons_config.new_megas,
+  can_load = agarmons_config.new_megas,
   init = init,
   list = { mega_chandelure }
 }

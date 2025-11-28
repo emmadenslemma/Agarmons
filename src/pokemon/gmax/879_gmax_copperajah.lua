@@ -15,7 +15,7 @@ local gmax_copperajah = {
     type_tooltip(self, info_queue, center)
 
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+      info_queue[#info_queue+1] = G.P_CENTERS.m_steel
     end
 
     local steel_count = 0
@@ -68,9 +68,9 @@ local init = function()
       type_tooltip(self, info_queue, card)
       -- just to shorten function
       local abbr = card.ability.extra
-      info_queue[#info_queue + 1] = { set = 'Other', key = 'poke_hazards', vars = { abbr.hazards } }
-      info_queue[#info_queue + 1] = G.P_CENTERS.m_poke_hazard
-      info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+      info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { abbr.hazards } }
+      info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
+      info_queue[#info_queue+1] = G.P_CENTERS.m_steel
 
       return { vars = { abbr.hazards, abbr.reset_steel } }
     end,
@@ -88,7 +88,7 @@ local init = function()
 end
 
 return {
-  enabled = (SMODS.Mods["PokermonMaelmc"] or {}).can_load and agarmons_config.gmax or false,
+  can_load = (SMODS.Mods["PokermonMaelmc"] or {}).can_load and agarmons_config.gmax,
   init = init,
   list = { gmax_copperajah }
 }
