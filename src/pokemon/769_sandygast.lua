@@ -68,19 +68,14 @@ local palossand = {
 local init = function()
   energy_values['chip_mod2'] = energy_values['chip_mod']
 
-  local reset_game_globals_ref = SMODS.current_mod.reset_game_globals
-
-  SMODS.current_mod.reset_game_globals = function(run_start)
-    if reset_game_globals_ref then
-      reset_game_globals_ref(run_start)
-    end
+  AG.hookafterfunc(SMODS.current_mod, 'reset_game_globals', function(run_start)
     local sandygast_suits = {}
     for _, v in ipairs({ "Spades", "Hearts", "Clubs", "Diamonds" }) do
-      if v ~= G.GAME.current_round.sandygast_suit then sandygast_suits[#sandygast_suits + 1] = v end
+      if v ~= G.GAME.current_round.sandygast_suit then sandygast_suits[#sandygast_suits+1] = v end
     end
     local sandygast_card = pseudorandom_element(sandygast_suits, pseudoseed("sandygast" .. G.GAME.round_resets.ante))
     G.GAME.current_round.sandygast_suit = sandygast_card
-  end
+  end)
 end
 
 return {
