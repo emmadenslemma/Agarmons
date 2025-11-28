@@ -1,0 +1,36 @@
+local function load_file(file, load_item)
+  if file.init then
+    file.init()
+  end
+  if file.list then
+    for _, item in ipairs(file.list) do
+      load_item(item)
+    end
+  end
+end
+
+local function load_directory(path, load_item, options)
+  options = options or {}
+  local files = NFS.getDirectoryItems(SMODS.current_mod.path .. path)
+
+  for _, file_path in ipairs(files) do
+    local file = assert(SMODS.load_file(path .. '/' .. file_path))()
+
+    if type(file) == 'table' and file.can_load ~= false then
+      if options.pre_load then options.pre_load(file) end
+      load_file(file, load_item)
+      if options.post_load then options.post_load(file) end
+    end
+  end
+end
+
+local function load_sleeves(file)
+  if (SMODS.Mods['CardSleeves'] or {}).can_load and CardSleeves
+      and file.sleeves and #file.sleeves > 0 then
+    for _, sleeve in ipairs(file.sleeves) do
+      CardSleeves.Sleeve(sleeve)
+    end
+  end
+end
+
+return load_directory, load_sleeves

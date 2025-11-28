@@ -47,7 +47,7 @@ local gmaxsleeve = {
 }
 
 return {
-  enabled = agarmons_config.gmax,
+  can_load = agarmons_config.gmax,
   list = { gmaxdeck },
   sleeves = { gmaxsleeve },
 }

@@ -64,7 +64,6 @@ local redorb = {
 }
 
 return {
-  name = "Red Orb",
-  enabled = agarmons_config.groudon or false,
+  can_load = agarmons_config.groudon,
   list = { redorb }
 }

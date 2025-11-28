@@ -45,7 +45,7 @@ local dynamaxband = {
   },
   loc_vars = function(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { set = 'Other', key = 'endless' }
+      info_queue[#info_queue+1] = { set = 'Other', key = 'endless' }
     end
     if center.ability.extra.target then
       return {
@@ -103,7 +103,6 @@ local dynamaxband = {
 }
 
 return {
-  name = "Agarmons Dynamax Band",
-  enabled = agarmons_config.gmax or false,
+  can_load = agarmons_config.gmax,
   list = { dynamaxband }
 }

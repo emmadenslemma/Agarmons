@@ -63,6 +63,5 @@ local uber_pack = {
 }
 
 return {
-  enabled = true,
   list = { uber_pack }
 }

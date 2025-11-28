@@ -97,7 +97,6 @@ local ubersleeve = {
 }
 
 return {
-  enabled = true,
   list = { uberdeck },
   sleeves = { ubersleeve },
 }

@@ -56,7 +56,6 @@ SMODS.current_mod.calculate = function(self, context)
 end
 
 return {
-  name = "Agarmons Nebby Challenge",
-  enabled = agarmons_config.cosmog or false,
+  can_load = agarmons_config.cosmog,
   list = { nebby }
 }

@@ -4,8 +4,8 @@ local lunas = {
 }
 
 if (SMODS.Mods["PokermonMaelmc"] or {}).can_load then
-  lunas[#lunas + 1] = "j_maelmc_lunatone"
-  lunas[#lunas + 1] = "j_maelmc_bloodmoon_ursaluna"
+  lunas[#lunas+1] = "j_maelmc_lunatone"
+  lunas[#lunas+1] = "j_maelmc_bloodmoon_ursaluna"
 end
 
 local dons = {
@@ -69,7 +69,7 @@ SMODS.current_mod.calculate = function(self, context)
         local adjusted_dons = {}
         for _, don in pairs(dons) do
           if don ~= prev_don then
-            adjusted_dons[#adjusted_dons + 1] = don
+            adjusted_dons[#adjusted_dons+1] = don
           end
         end
         new_don = pseudorandom_element(adjusted_dons, pseudoseed("don" .. G.GAME.round_resets.ante))
@@ -108,14 +108,14 @@ SMODS.current_mod.calculate = function(self, context)
       local second_luna_pool = {}
       for _, luna in pairs(lunas) do
         if luna ~= luna1 then
-          second_luna_pool[#second_luna_pool + 1] = luna
+          second_luna_pool[#second_luna_pool+1] = luna
         end
       end
 
       local second_don_pool = {}
       for _, don in pairs(dons) do
         if don ~= don1 then
-          second_don_pool[#second_don_pool + 1] = don
+          second_don_pool[#second_don_pool+1] = don
         end
       end
 
@@ -205,7 +205,6 @@ local lunadon = {
 }
 
 return {
-  name = "Agarmons Lunadon Challenge",
-  enabled = agarmons_config.cosmog and agarmons_config.groudon or false,
+  can_load = agarmons_config.cosmog and agarmons_config.groudon,
   list = { lunadon }
 }

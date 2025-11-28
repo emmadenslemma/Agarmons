@@ -64,7 +64,6 @@ local blueorb = {
 }
 
 return {
-  name = "Blue Orb",
-  enabled = agarmons_config.kyogre or false,
+  can_load = agarmons_config.kyogre,
   list = { blueorb }
 }
