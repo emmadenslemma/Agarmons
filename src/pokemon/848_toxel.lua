@@ -5,9 +5,9 @@ local toxel = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { set = 'Other', key = 'baby' }
-      info_queue[#info_queue + 1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
-      info_queue[#info_queue + 1] = G.P_CENTERS.c_stall_blacksludge
+      info_queue[#info_queue+1] = { set = 'Other', key = 'baby' }
+      info_queue[#info_queue+1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
+      info_queue[#info_queue+1] = G.P_CENTERS.c_stall_blacksludge
     end
     return { vars = { center.ability.extra.Xmult_minus, center.ability.extra.rounds } }
   end,
@@ -40,7 +40,7 @@ local toxtricity = {
   config = { extra = { form = "amped", money = 2, money_mod = 1, threshold = 0.5 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    info_queue[#info_queue + 1] = G.P_CENTERS['m_stall_toxic']
+    info_queue[#info_queue+1] = G.P_CENTERS['m_stall_toxic']
     local ret = { vars = { center.ability.extra.money, center.ability.extra.money_mod, center.ability.extra.threshold } }
     if center.ability.extra.form == "lowkey" then
       ret.key = "j_agar_toxtricity_lowkey"
@@ -107,7 +107,7 @@ local gmax_toxtricity = {
   },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    info_queue[#info_queue + 1] = G.P_CENTERS['m_stall_toxic']
+    info_queue[#info_queue+1] = G.P_CENTERS['m_stall_toxic']
     return { vars = { center.ability.extra.money1 } }
   end,
   rarity = "agar_gmax",
@@ -135,20 +135,14 @@ local gmax_toxtricity = {
   end,
 }
 
-local family = {
-  "toxel",
-  { key = "toxtricity", form = "amped" },
-  { key = "toxtricity", form = "lowkey" },
-}
-
-if agarmons_config.gmax then
-  table.insert(family, "gmax_toxtricity")
-else
-  gmax_toxtricity.no_collection = true
-end
-
 return {
-  enabled = (SMODS.Mods["ToxicStall"] or {}).can_load and agarmons_config.toxel,
+  can_load = (SMODS.Mods["ToxicStall"] or {}).can_load == true,
+  enabled = agarmons_config.toxel,
   list = { toxel, toxtricity, gmax_toxtricity },
-  family = family,
+  family = {
+    "toxel",
+    { key = "toxtricity", form = "amped" },
+    { key = "toxtricity", form = "lowkey" },
+    "gmax_toxtricity"
+  }
 }

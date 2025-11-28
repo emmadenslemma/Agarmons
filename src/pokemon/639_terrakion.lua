@@ -49,6 +49,7 @@ local terrakion = {
 }
 
 return {
+  can_load = false,
   enabled = false, -- agarmons_config.terrakion or false,
   list = { terrakion }
 }

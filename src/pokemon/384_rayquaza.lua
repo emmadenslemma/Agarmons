@@ -5,7 +5,7 @@ local rayquaza = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { set = 'Other', key = 'mega_poke' }
+      info_queue[#info_queue+1] = { set = 'Other', key = 'mega_poke' }
     end
     return { vars = {} }
   end,
@@ -39,7 +39,7 @@ local mega_rayquaza = {
 }
 
 return {
-  name = "Agarmons Rayquaza",
+  can_load = false,
   enabled = false, -- agarmons_config.rayquaza or false,
   list = { rayquaza, mega_rayquaza }
 }

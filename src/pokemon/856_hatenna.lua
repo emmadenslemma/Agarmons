@@ -55,7 +55,7 @@ local hatterene = {
 }
 
 return {
-  name = "Agarmons Hatenna Evo Line",
+  can_load = false,
   enabled = agarmons_config.hatenna or false,
   list = { hatenna, hattrem, hatterene }
 }
