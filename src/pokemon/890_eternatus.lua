@@ -49,6 +49,7 @@ local eternatus = {
 -- }
 
 return {
-  enabled = agarmons_config.gmax and agarmons_config.eternatus or false,
+  can_load = agarmons_config.gmax,
+  config_key = "eternatus",
   list = { eternatus }
 }

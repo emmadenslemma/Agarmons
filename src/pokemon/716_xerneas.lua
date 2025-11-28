@@ -7,7 +7,7 @@ local xerneas = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { set = 'Other', key = 'energize' }
+      info_queue[#info_queue+1] = { set = 'Other', key = 'energize' }
     end
     return {
       vars = {
@@ -102,7 +102,7 @@ local init = function()
 end
 
 return {
-  enabled = agarmons_config.xerneas or false,
+  config_key = "xerneas",
   init = init,
   list = { xerneas }
 }

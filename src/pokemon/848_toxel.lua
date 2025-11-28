@@ -137,7 +137,7 @@ local gmax_toxtricity = {
 
 return {
   can_load = (SMODS.Mods["ToxicStall"] or {}).can_load == true,
-  enabled = agarmons_config.toxel,
+  config_key = "toxel",
   list = { toxel, toxtricity, gmax_toxtricity },
   family = {
     "toxel",

@@ -199,7 +199,7 @@ local init = function()
 end
 
 return {
-  enabled = agarmons_config.stunfisk or false,
+  config_key = "stunfisk",
   init = init,
   list = { stunfisk, galarian_stunfisk },
   family = {},

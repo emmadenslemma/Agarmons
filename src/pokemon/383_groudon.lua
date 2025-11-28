@@ -5,7 +5,7 @@ local groudon = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
+      info_queue[#info_queue+1] = G.P_CENTERS.m_mult
     end
     return { vars = { center.ability.extra.Xmult_multi } }
   end,
@@ -49,7 +49,7 @@ local primal_groudon = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
+      info_queue[#info_queue+1] = G.P_CENTERS.m_mult
     end
     return { vars = { center.ability.extra.Xmult_multi } }
   end,
@@ -106,7 +106,6 @@ local primal_groudon = {
 }
 
 return {
-  name = "Agarmons Groudon",
-  enabled = agarmons_config.groudon or false,
+  config_key = "groudon",
   list = { groudon, primal_groudon }
 }

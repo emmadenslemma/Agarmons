@@ -38,7 +38,6 @@ local palkia = {
 }
 
 return {
-  name = "Agarmons Palkia",
-  enabled = agarmons_config.palkia or false,
+  config_key = "palkia",
   list = { palkia }
 }

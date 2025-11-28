@@ -26,27 +26,12 @@ local regigigas = {
 }
 
 local init = function()
-  local set_debuff_ref = SMODS.current_mod.set_debuff
-  SMODS.current_mod.set_debuff = function(card)
-    local ret = false
-    if set_debuff_ref then
-      ret = set_debuff_ref(card)
-    end
+  AG.hookafterfunc(SMODS.current_mod, 'set_debuff', function(card)
+    return card.config.center_key == "j_agar_regigigas"
+        and card.ability.extra.slow_start_rounds < 0
+  end)
 
-    if not ret
-        and card.config.center_key == "j_agar_regigigas"
-        and card.ability.extra.slow_start_rounds < 0 then
-      ret = true
-    end
-
-    return ret
-  end
-
-  local calculate_ref = SMODS.current_mod.calculate
-  SMODS.current_mod.calculate = function(self, context)
-    if calculate_ref then
-      calculate_ref(self, context)
-    end
+  AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
     if context.end_of_round and not context.individual and not context.repetition then
       for _, card in pairs(G.jokers.cards) do
         if card.config.center_key == "j_agar_regigigas" then
@@ -58,11 +43,11 @@ local init = function()
         end
       end
     end
-  end
+  end)
 end
 
 return {
-  enabled = agarmons_config.regigigas or false,
+  config_key = "regigigas",
   init = init,
   list = { regigigas }
 }

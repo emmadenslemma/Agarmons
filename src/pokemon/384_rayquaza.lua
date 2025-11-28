@@ -40,6 +40,6 @@ local mega_rayquaza = {
 
 return {
   can_load = false,
-  enabled = false, -- agarmons_config.rayquaza or false,
+  config_key = "rayquaza",
   list = { rayquaza, mega_rayquaza }
 }

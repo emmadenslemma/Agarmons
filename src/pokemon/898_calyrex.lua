@@ -23,6 +23,6 @@ local calyrex = {
 }
 
 return {
-  enabled = agarmons_config.calyrex or false,
+  config_key = "calyrex",
   list = { calyrex }
 }

@@ -5,7 +5,7 @@ local kyogre = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+      info_queue[#info_queue+1] = G.P_CENTERS.m_bonus
     end
     return { vars = { center.ability.extra.Xmult_multi } }
   end,
@@ -49,7 +49,7 @@ local primal_kyogre = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+      info_queue[#info_queue+1] = G.P_CENTERS.m_bonus
     end
     return { vars = { center.ability.extra.Xchips_multi } }
   end,
@@ -106,7 +106,6 @@ local primal_kyogre = {
 }
 
 return {
-  name = "Agarmons Kyogre",
-  enabled = agarmons_config.kyogre or false,
+  config_key = "kyogre",
   list = { kyogre, primal_kyogre }
 }

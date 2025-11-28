@@ -59,6 +59,6 @@ local marshadow = {
 }
 
 return {
-  enabled = agarmons_config.marshadow or false,
+  config_key = "marshadow",
   list = { marshadow }
 }

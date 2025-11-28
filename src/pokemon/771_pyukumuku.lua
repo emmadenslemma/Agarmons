@@ -39,7 +39,7 @@ local pyukumuku = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { set = "Other", key = "poke_volatile_" .. center.ability.extra.volatile }
+      info_queue[#info_queue+1] = { set = "Other", key = "poke_volatile_" .. center.ability.extra.volatile }
     end
     return { vars = { center.ability.extra.stored.chips, center.ability.extra.stored.mult, center.ability.extra.stored.Xmult, center.ability.extra.stored.money } }
   end,
@@ -94,7 +94,6 @@ local pyukumuku = {
 }
 
 return {
-  name = "Agarmons Pyukumuku",
-  enabled = agarmons_config.pyukumuku or false,
+  config_key = "pyukumuku",
   list = { pyukumuku }
 }

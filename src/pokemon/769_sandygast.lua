@@ -79,8 +79,7 @@ local init = function()
 end
 
 return {
-  name = "Agarmons Sandygast Evo Line",
-  enabled = agarmons_config.sandygast or false,
+  config_key = "sandygast",
   init = init,
   list = { sandygast, palossand }
 }

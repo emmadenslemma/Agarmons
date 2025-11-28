@@ -40,6 +40,6 @@ local mesprit = {
 }
 
 return {
-  enabled = agarmons_config.lake_trio or false,
+  config_key = "lake_trio",
   list = { mesprit }
 }

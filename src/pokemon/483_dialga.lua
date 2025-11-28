@@ -30,7 +30,7 @@ local dialga = {
         for i = 1, card.ability.extra.joker_retriggers do
           if #joker_list == 0 then break end
           local random_idx = math.floor(pseudorandom(pseudoseed('dialga')) * #joker_list) + 1
-          retrigger_joker_list[#retrigger_joker_list + 1] = joker_list[random_idx]
+          retrigger_joker_list[#retrigger_joker_list+1] = joker_list[random_idx]
           table.remove(joker_list, random_idx)
         end
         card.ability.extra.retrigger_joker_list = retrigger_joker_list
@@ -66,7 +66,6 @@ local dialga = {
 }
 
 return {
-  name = "Agarmons Dialga",
-  enabled = agarmons_config.dialga or false,
+  config_key = "dialga",
   list = { dialga }
 }

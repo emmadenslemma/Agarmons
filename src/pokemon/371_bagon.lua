@@ -74,7 +74,7 @@ local salamence = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { set = 'Other', key = 'mega_poke' }
+      info_queue[#info_queue+1] = { set = 'Other', key = 'mega_poke' }
     end
     local current_Xmult = 1 + center.ability.extra.Xmult_mod * center.ability.extra.straights
     return { vars = { center.ability.extra.chips, center.ability.extra.Xmult_mod, current_Xmult } }
@@ -167,7 +167,6 @@ local mega_salamence = {
 }
 
 return {
-  name = "Agarmons Bagon Evo Line",
-  enabled = agarmons_config.bagon or false,
+  config_key = "bagon",
   list = { bagon, shelgon, salamence, mega_salamence }
 }

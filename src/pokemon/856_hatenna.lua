@@ -56,6 +56,6 @@ local hatterene = {
 
 return {
   can_load = false,
-  enabled = agarmons_config.hatenna or false,
+  config_key = "hatenna",
   list = { hatenna, hattrem, hatterene }
 }

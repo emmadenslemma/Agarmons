@@ -4,6 +4,12 @@ local function load_file(file, load_item)
   end
   if file.list then
     for _, item in ipairs(file.list) do
+      if file.config_key then
+        item.agar_config_key = file.config_key
+        -- if not agarmons_config[item.agar_config_key] then
+        --   item.no_collection = true
+        -- end
+      end
       load_item(item)
     end
   end
@@ -59,7 +65,7 @@ end
 local function load_pokemon_family(file)
   local names = AG.list_utils.map(file.list, function(a) return a.name end)
   pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = names
-  if file.family then
+  if file.family and #file.family > 1 then
     pokermon.add_family(file.family)
   elseif #names > 1 then
     pokermon.add_family(names)

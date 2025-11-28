@@ -4,8 +4,8 @@ local dewpider = {
   config = { extra = { hazards = 4, mult = 8, rounds = 4 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    info_queue[#info_queue + 1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_poke_hazard
+    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
+    info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
     return { vars = { center.ability.extra.hazards, center.ability.extra.mult, center.ability.extra.rounds } }
   end,
   rarity = 1,
@@ -35,8 +35,8 @@ local araquanid = {
   config = { extra = { hazards = 4, mult = 8, Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    info_queue[#info_queue + 1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_poke_hazard
+    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
+    info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
     return { vars = { center.ability.extra.hazards, center.ability.extra.mult, center.ability.extra.Xmult_multi } }
   end,
   rarity = 2,
@@ -74,7 +74,6 @@ local araquanid = {
 }
 
 return {
-  name = "Agarmons Dewpider Evo Line",
-  enabled = agarmons_config.dewpider or false,
+  config_key = "dewpider",
   list = { dewpider, araquanid }
 }

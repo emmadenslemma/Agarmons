@@ -119,6 +119,6 @@ local gmax_inteleon = {
 
 return {
   can_load = false,
-  enabled = false, -- agarmons_config.sobble,
+  config_key = "sobble",
   list = { sobble, drizzile, inteleon, gmax_inteleon }
 }
