@@ -5,7 +5,7 @@ local marshadow = {
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = { set = 'Other', key = 'energize' }
+      info_queue[#info_queue+1] = { set = 'Other', key = 'energizable_values' }
     end
     local main_end
     if center.area and center.area == G.jokers then

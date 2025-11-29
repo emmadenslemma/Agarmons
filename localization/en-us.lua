@@ -488,7 +488,7 @@ return {
                     "Copies ability of",
                     "{C:attention}Joker{} to the left,",
                     "but {C:attention}#1#%{} stronger",
-                    "{C:inactive,s:0.8}(Only boosts Energizable values)",
+                    "{C:inactive,s:0.8}(Only boosts {C:pink,s:0.8}Energizable{C:inactive,s:0.8} values)",
                 }
             },
             j_agar_grookey = {
@@ -793,6 +793,14 @@ return {
                 name = "Gigantamax Factor",
                 text = {
                     "Can {C:attention}Gigantamax{} with", "a {C:attention}Dynamax Band{}"
+                }
+            },
+
+            energizable_values = {
+                name = "Energizable Values",
+                text = {
+                    "{C:mult}Mult{}, {C:chips}Chips{}, {C:money}${} and",
+                    "{X:mult,C:white}X{} Mult values",
                 }
             },
         },
