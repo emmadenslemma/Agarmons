@@ -46,3 +46,10 @@ SMODS.Atlas({
     px = 71,
     py = 95
 })
+
+SMODS.Atlas({
+    key = "AgarmonsCommandozo",
+    path = "commandozo.png",
+    px = 142,
+    py = 95
+})
