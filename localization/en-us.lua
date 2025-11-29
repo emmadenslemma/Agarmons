@@ -488,6 +488,7 @@ return {
                     "Copies ability of",
                     "{C:attention}Joker{} to the left,",
                     "but {C:attention}#1#%{} stronger",
+                    "{C:inactive,s:0.8}(Only boosts Energizable values)",
                 }
             },
             j_agar_grookey = {
