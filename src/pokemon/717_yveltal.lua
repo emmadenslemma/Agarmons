@@ -78,7 +78,7 @@ local init = function()
   -- Energize/De-Energize when using Tera Orb in and out of Dark Aura
   local apply_type_sticker_orig = apply_type_sticker
   apply_type_sticker = function(card, ...)
-    local yveltal_present = SMODS.find_card('j_agar_yveltal', true)
+    local yveltal_present = next(SMODS.find_card('j_agar_yveltal', true))
     if yveltal_present and energy_matches(card, "Dark") then
       AG.energy.decrease(card, "Dark")
     end
