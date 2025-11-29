@@ -9,7 +9,7 @@ local type_tooltip_ref = type_tooltip
 type_tooltip = function(self, info_queue, center)
   type_tooltip_ref(self, info_queue, center)
   if agarmons_config.gmax and pokermon_config.detailed_tooltips and AG.gmax.get_gmax_key(center) then
-    info_queue[#info_queue + 1] = { set = 'Other', key = 'gmax_poke' }
+    info_queue[#info_queue+1] = { set = 'Other', key = 'gmax_poke' }
   end
 end
 
@@ -82,7 +82,7 @@ function AG.gmax.get_previous_from_gmax(card)
   local name = card.ability.name
   local prev = string.sub(name, 6)
   local prefix = card.config.center.poke_custom_prefix or "poke"
-  return G.P_CENTERS["j_"..prefix.."_"..prev] and prev or nil
+  return G.P_CENTERS["j_" .. prefix .. "_" .. prev] and prev or nil
 end
 
 local get_previous_evo_ref = get_previous_evo
@@ -138,7 +138,7 @@ AG.gmax.devolve = function(card)
 end
 
 AG.gmax.revert = function(self, card, context)
-  if context.end_of_round and not context.individual and not context.repetition then
+  if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
     AG.gmax.devolve(card)
   end
   if context.after and context.cardarea == G.jokers then
