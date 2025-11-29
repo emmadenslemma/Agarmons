@@ -9,7 +9,7 @@ local type_tooltip_ref = type_tooltip
 type_tooltip = function(self, info_queue, center)
   type_tooltip_ref(self, info_queue, center)
   if agarmons_config.gmax and pokermon_config.detailed_tooltips and AG.gmax.get_gmax_key(center) then
-    info_queue[#info_queue + 1] = { set = 'Other', key = 'gmax_poke' }
+    info_queue[#info_queue+1] = { set = 'Other', key = 'gmax_poke' }
   end
 end
 
@@ -82,7 +82,7 @@ function AG.gmax.get_previous_from_gmax(card)
   local name = card.ability.name
   local prev = string.sub(name, 6)
   local prefix = card.config.center.poke_custom_prefix or "poke"
-  return G.P_CENTERS["j_"..prefix.."_"..prev] and prev or nil
+  return G.P_CENTERS["j_" .. prefix .. "_" .. prev] and prev or nil
 end
 
 local get_previous_evo_ref = get_previous_evo
@@ -114,7 +114,8 @@ AG.gmax.devolve = function(card)
   -- Events to devolve after stake stickers get applied
   -- Don't think about it.
   -- Evolving with the animation does the same thing, so this will be fixed when I add an animation to Dynamaxing
-  if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind.boss then
+  ---- Crashing with Zoroark copying a G-Max form, temporarily disabled
+  if false and G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind.boss then
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = delay and 2.0 or 0,
