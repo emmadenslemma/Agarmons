@@ -114,7 +114,8 @@ AG.gmax.devolve = function(card)
   -- Events to devolve after stake stickers get applied
   -- Don't think about it.
   -- Evolving with the animation does the same thing, so this will be fixed when I add an animation to Dynamaxing
-  if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind.boss then
+  ---- Crashing with Zoroark copying a G-Max form, temporarily disabled
+  if false and G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind.boss then
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = delay and 2.0 or 0,
