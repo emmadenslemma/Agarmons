@@ -1,0 +1,30 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# [CardArea:align_cards] Align cards that take multiple joker slots properly
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+position = "before"
+match_indent = true
+pattern = '''local highlight_height = G.HIGHLIGHT_H/2'''
+payload = '''-- from Agarmons: makes cards that take multiple joker slots visually line up
+local true_count = self:count_extra_slots_used(self.cards)
+if true_count > 0 then
+    local prev_extra_slots = 0
+    for k, card in ipairs(self.cards) do
+        local kx = k + prev_extra_slots
+        local slots_used = 1 + (card.ability.extra_slots_used or 0)
+
+        if not card.states.drag.is then
+            card.T.r = 0.1 * (-true_count / 2 - 0.5 + kx) / (true_count) + (G.SETTINGS.reduced_motion and 0 or 1) * 0.02 * math.sin(2 * G.TIMERS.REAL + card.T.x)
+
+            card.T.x = self.T.x + (self.T.w - self.card_w) * ((kx - 1) / (true_count - 1)) + 0.5 * (self.card_w - card.T.w) +
+                (slots_used > 1 and (self.card_w * slots_used / math.max(slots_used, #self.cards)) or 0)
+        end
+
+        prev_extra_slots = prev_extra_slots + slots_used - 1
+    end
+end'''
