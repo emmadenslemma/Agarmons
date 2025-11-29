@@ -139,7 +139,7 @@ AG.gmax.devolve = function(card)
 end
 
 AG.gmax.revert = function(self, card, context)
-  if context.end_of_round and not context.individual and not context.repetition then
+  if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
     AG.gmax.devolve(card)
   end
   if context.after and context.cardarea == G.jokers then
