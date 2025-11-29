@@ -90,7 +90,7 @@ local init = function()
   -- Energize/De-Energize when using Tera Orb in and out of Fairy Aura
   local apply_type_sticker_orig = apply_type_sticker
   apply_type_sticker = function(card, ...)
-    local xerneas_present = SMODS.find_card('j_agar_xerneas', true)
+    local xerneas_present = next(SMODS.find_card('j_agar_xerneas', true))
     if xerneas_present and energy_matches(card, "Fairy") then
       AG.energy.decrease(card, "Fairy")
     end
