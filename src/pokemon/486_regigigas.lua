@@ -27,14 +27,14 @@ local regigigas = {
 
 local init = function()
   AG.hookafterfunc(SMODS.current_mod, 'set_debuff', function(card)
-    return card.config.center_key == "j_agar_regigigas"
-        and card.ability.extra.slow_start_rounds < 0
+    return card.config.center.key == "j_agar_regigigas"
+        and card.ability.extra.slow_start_rounds > 0
   end)
 
   AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
     if context.end_of_round and not context.individual and not context.repetition then
       for _, card in pairs(G.jokers.cards) do
-        if card.config.center_key == "j_agar_regigigas" then
+        if card.config.center.key == "j_agar_regigigas" then
           card.ability.extra.slow_start_rounds = math.max(card.ability.extra.slow_start_rounds - 1, 0)
           if card.ability.extra.slow_start_rounds == 0 then
             card:set_debuff(false)
