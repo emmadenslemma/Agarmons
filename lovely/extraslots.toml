@@ -22,7 +22,7 @@ if true_count > 2 or (true_count > 1 and self.config.spread) then
             card.T.r = 0.1 * (-true_count / 2 - 0.5 + kx) / (true_count) + (G.SETTINGS.reduced_motion and 0 or 1) * 0.02 * math.sin(2 * G.TIMERS.REAL + card.T.x)
 
             card.T.x = self.T.x + (self.T.w - self.card_w) * ((kx - 1) / (true_count - 1)) + 0.5 * (self.card_w - card.T.w) +
-                (slots_used > 1 and (self.card_w * slots_used / math.max(slots_used, #self.cards)) or 0)
+                (slots_used > 1 and (self.card_w * slots_used / math.max(slots_used, true_count + 1 - slots_used)) or 0)
         end
 
         prev_extra_slots = prev_extra_slots + slots_used - 1
