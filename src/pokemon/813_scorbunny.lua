@@ -203,6 +203,7 @@ local gmax_cinderace = {
 }
 
 return {
+  can_load = false,
   config_key = "scorbunny",
   list = { scorbunny, raboot, cinderace, gmax_cinderace }
 }
