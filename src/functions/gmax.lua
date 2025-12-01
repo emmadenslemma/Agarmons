@@ -5,13 +5,11 @@ AG.gmax = {
 }
 
 -- Add "Can Dynamax" tooltip to existing Pokemon
-local type_tooltip_ref = type_tooltip
-type_tooltip = function(self, info_queue, center)
-  type_tooltip_ref(self, info_queue, center)
+AG.hookafterfunc(_G, 'type_tooltip', function(self, info_queue, center)
   if agarmons_config.gmax and pokermon_config.detailed_tooltips and AG.gmax.get_gmax_key(center) then
     info_queue[#info_queue+1] = { set = 'Other', key = 'gmax_poke' }
   end
-end
+end, true)
 
 AG.gmax.preload = function(item)
   -- *Make it bigger*
@@ -49,16 +47,10 @@ AG.gmax.preload = function(item)
 end
 
 AG.gmax.disable_method_during_evolve = function(key, method_name)
-  G.E_MANAGER:add_event(Event({
-    func = function()
-      local center = G.P_CENTERS[key]
-      local orig_method = center[method_name]
-      center[method_name] = function(...)
-        if not AG.gmax.evolving then orig_method(...) end
-      end
-      return true
-    end
-  }))
+  local center = SMODS.Joker.obj_table[key]
+  AG.hookbeforefunc(center, method_name, function()
+    return AG.gmax.evolving
+  end)
 end
 
 AG.gmax.get_gmax_key = function(base_card)
@@ -85,14 +77,12 @@ function AG.gmax.get_previous_from_gmax(card)
   return G.P_CENTERS["j_" .. prefix .. "_" .. prev] and prev or nil
 end
 
-local get_previous_evo_ref = get_previous_evo
-function get_previous_evo(card, full_key)
+AG.hookbeforefunc(_G, 'get_previous_evo', function(card, full_key)
   local name = card.name or card.ability.name
   if string.sub(name, 6) == "gmax_" then
     return AG.gmax.get_previous_from_gmax(card)
   end
-  return get_previous_evo_ref(card, full_key)
-end
+end)
 
 AG.gmax.evolve = function(card)
   AG.gmax.evolving = true
