@@ -37,14 +37,9 @@ local alolan_raichu = {
 local init = function()
   AG.append_to_family("raichu", "alolan_raichu")
 
-  G.E_MANAGER:add_event(Event({
-    func = function()
-      AG.hookafterfunc(G.P_CENTERS.j_poke_pikachu, 'calculate', function(self, card, context)
-        return type_evo(self, card, context, "j_poke_alolan_raichu", "psychic")
-      end)
-      return true
-    end
-  }))
+  AG.hookafterfunc(SMODS.Joker.obj_table.j_poke_pikachu, 'calculate', function(self, card, context)
+    return type_evo(self, card, context, "j_poke_alolan_raichu", "psychic")
+  end)
 end
 
 return {
