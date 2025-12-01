@@ -6,9 +6,8 @@ local uber_pack = {
   draw_hand = false,
   no_collection = true,
   create_card = function(self, card)
-    local exclude_keys = AG.list_utils.map(G.pack_cards.cards, function(pack_card) return pack_card.config.center.key end)
     return SMODS.create_card {
-      key = get_random_poke_key("uber_pack", "Legendary", nil, nil, nil, exclude_keys),
+      key = get_random_poke_key("uber_pack", "Legendary"),
       no_edition = true,
       skip_materialize = true,
       key_append = "uber_pack",
