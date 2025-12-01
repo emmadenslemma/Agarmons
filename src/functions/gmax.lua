@@ -87,7 +87,8 @@ end
 
 local get_previous_evo_ref = get_previous_evo
 function get_previous_evo(card, full_key)
-  if card.rarity == "agar_gmax" then
+  local name = card.name or card.ability.name
+  if string.sub(name, 6) == "gmax_" then
     return AG.gmax.get_previous_from_gmax(card)
   end
   return get_previous_evo_ref(card, full_key)
