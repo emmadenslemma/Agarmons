@@ -132,7 +132,7 @@ local solgaleo = {
         conv_cards[#conv_cards+1] = hand_cards[i]
       end
       for i = 1, limit do
-        SMODS.change_base(conv_cards[i], suit)
+        assert(SMODS.change_base(conv_cards[i], suit))
         conv_cards[i]:juice_up()
       end
     end
@@ -254,7 +254,7 @@ local lunala = {
           conv_cards[#conv_cards+1] = hand_cards[i]
         end
         for i = 1, limit do
-          SMODS.change_base(conv_cards[i], suit)
+          assert(SMODS.change_base(conv_cards[i], suit))
           conv_cards[i]:juice_up()
         end
       end
