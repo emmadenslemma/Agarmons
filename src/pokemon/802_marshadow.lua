@@ -5,7 +5,7 @@ local marshadow = {
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = { set = 'Other', key = 'energizable_values' }
+      info_queue[#info_queue + 1] = { set = 'Other', key = 'energizable_values' }
     end
     local main_end
     if card.area and card.area == G.jokers then
@@ -14,7 +14,9 @@ local marshadow = {
         if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i - 1] end
       end
       local compatible = other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat
-      local colour = compatible and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8) or mix_colours(G.C.RED, G.C.JOKER_GREY, 0.8)
+      local colour = compatible
+          and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8) or
+          mix_colours(G.C.RED, G.C.JOKER_GREY, 0.8)
       local text = ' ' .. localize('k_' .. (compatible and 'compatible' or 'incompatible')) .. ' '
       ---@format disable-next
       main_end = {
