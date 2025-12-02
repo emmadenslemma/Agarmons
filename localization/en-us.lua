@@ -50,10 +50,12 @@ return {
             j_poke_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {
-                    "If played hand is exactly {C:attention}1{} card,",
-                    "retrigger it {C:attention}#1#{} times for every",
-                    "other Joker you have",
-                    "{C:inactive}(Currently {C:attention}#2#{C:inactive} retriggers)"
+                    "Applies {C:attention}Splash",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "If played hand is a",
+                    "{C:attention}High Card{}, played cards",
+                    "give {C:white,X:mult}X#1#{} Mult when",
+                    "scored",
                 }
             },
             j_poke_mega_meganium = {

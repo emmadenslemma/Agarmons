@@ -4,14 +4,10 @@ local mega_dragonite = {
   agar_inject_prefix = "poke",
   pos = { x = 0, y = 1 },
   soul_pos = { x = 1, y = 1 },
-  config = { extra = { retriggers = 2 } },
+  config = { extra = { Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    local other_joker_count = 0
-    if G.jokers and G.jokers.cards then
-      other_joker_count = #G.jokers.cards - 1
-    end
-    return { vars = { card.ability.extra.retriggers, other_joker_count * card.ability.extra.retriggers } }
+    return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -21,22 +17,22 @@ local mega_dragonite = {
   atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.repetition and context.cardarea == G.play
-        and #G.play.cards == 1 then
-      local other_joker_count = #G.jokers.cards - 1
-      if other_joker_count > 0 then
-        return {
-          repetitions = other_joker_count * card.ability.extra.retriggers
-        }
-      end
+    if context.individual and context.cardarea == G.play and not context.end_of_round
+        and context.scoring_hand and context.scoring_name == "High Card" then
+      return {
+        Xmult = card.ability.extra.Xmult_multi
+      }
     end
   end,
-  designer = "Gem"
 }
 
 local function init()
   AG.append_to_family("dragonite", "mega_dragonite")
   SMODS.Joker:take_ownership("poke_dragonite", { megas = { "mega_dragonite" } }, true)
+
+  AG.hookafterfunc(_G, 'applies_splash', function()
+    return next(SMODS.find_card("j_poke_mega_dragonite"))
+  end)
 end
 
 return {
