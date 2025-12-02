@@ -73,9 +73,6 @@ local salamence = {
   config = { extra = { Xmult_mod = .25, chips = 186, straights = 0 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = { set = 'Other', key = 'mega_poke' }
-    end
     local current_Xmult = 1 + card.ability.extra.Xmult_mod * card.ability.extra.straights
     return { vars = { card.ability.extra.chips, card.ability.extra.Xmult_mod, current_Xmult } }
   end,

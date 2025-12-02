@@ -36,7 +36,7 @@ local mega_starmie = {
 
 local function init()
   AG.append_to_family("starmie", "mega_starmie")
-  AG.add_megas_to_center("j_poke_starmie", "mega_starmie")
+  SMODS.Joker:take_ownership("poke_starmie", { megas = { "mega_starmie" } }, true)
 end
 
 return {

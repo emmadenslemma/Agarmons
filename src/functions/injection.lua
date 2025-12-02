@@ -9,6 +9,7 @@ function AG.append_to_family(existing_name, new_name, to_end)
   end
 end
 
+---@deprecated
 function AG.add_megas_to_center(center_key, new_mega)
   local center = SMODS.Joker.obj_table[center_key]
   center.megas = center.megas or {}

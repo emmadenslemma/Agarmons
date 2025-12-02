@@ -30,7 +30,7 @@ local mega_chandelure = {
 
 local function init()
   AG.append_to_family("chandelure", "mega_chandelure")
-  AG.add_megas_to_center("j_poke_chandelure", "mega_chandelure")
+  SMODS.Joker:take_ownership("poke_chandelure", { megas = { "mega_chandelure" } }, true)
 end
 
 return {

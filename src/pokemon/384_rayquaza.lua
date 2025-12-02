@@ -4,9 +4,6 @@ local rayquaza = {
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = { set = 'Other', key = 'mega_poke' }
-    end
     return { vars = {} }
   end,
   rarity = 4,

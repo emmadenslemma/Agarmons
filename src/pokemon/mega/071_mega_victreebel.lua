@@ -30,7 +30,7 @@ local mega_victreebel = {
 
 local function init()
   AG.append_to_family("victreebel", "mega_victreebel")
-  AG.add_megas_to_center("j_poke_victreebel", "mega_victreebel")
+  SMODS.Joker:take_ownership("poke_victreebel", { megas = { "mega_victreebel" } }, true)
 end
 
 return {
