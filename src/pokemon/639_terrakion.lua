@@ -31,6 +31,7 @@ local terrakion = {
         end
       end
       if #cards > 0 then
+        ---@diagnostic disable-next-line: redundant-parameter
         SMODS.destroy_cards(cards, nil, nil, true)
         if stones > 0 then
           card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod * stones
