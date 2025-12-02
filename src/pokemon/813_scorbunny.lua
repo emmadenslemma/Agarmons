@@ -2,9 +2,9 @@
 local scorbunny = {
   name = "scorbunny",
   config = { extra = { d_size = 1, mult = 0, mult_mod = 1, mult_loss = 1, discarded_cards = 0 }, evo_rqmt = 75 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult_loss, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.d_size, card.ability.extra.mult_mod, card.ability.extra.mult_loss, card.ability.extra.mult, card.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = 2,
   cost = 5,
@@ -59,9 +59,9 @@ local scorbunny = {
 local raboot = {
   name = "raboot",
   config = { extra = { d_size = 1, mult = 0, mult_mod = 2, mult_loss = 2, discarded_cards = 0 }, evo_rqmt = 75 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.mult_loss, center.ability.extra.mult, center.ability.extra.discarded_cards, self.config.evo_rqmt } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.d_size, card.ability.extra.mult_mod, card.ability.extra.mult_loss, card.ability.extra.mult, card.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -116,9 +116,9 @@ local raboot = {
 local cinderace = {
   name = "cinderace",
   config = { extra = { d_size = 1, mult = 0, mult_mod = 2, Xmult = 0, Xmult_mod = 0.3 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.d_size, center.ability.extra.mult_mod, center.ability.extra.Xmult_mod, center.ability.extra.mult, 1 + center.ability.extra.Xmult } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.d_size, card.ability.extra.mult_mod, card.ability.extra.Xmult_mod, card.ability.extra.mult, 1 + card.ability.extra.Xmult } }
   end,
   rarity = "poke_safari",
   cost = 10,
@@ -176,8 +176,8 @@ local gmax_cinderace = {
       "{C:inactive}Does nothing (yet!)",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "agar_gmax",

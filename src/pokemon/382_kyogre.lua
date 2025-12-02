@@ -2,12 +2,12 @@
 local kyogre = {
   name = "kyogre",
   config = { extra = { Xmult_multi = 2.4 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = G.P_CENTERS.m_bonus
     end
-    return { vars = { center.ability.extra.Xmult_multi } }
+    return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
   cost = 20,
@@ -46,12 +46,12 @@ local kyogre = {
 local primal_kyogre = {
   name = "primal_kyogre",
   config = { extra = { Xchips_multi = 3, retriggers = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = G.P_CENTERS.m_bonus
     end
-    return { vars = { center.ability.extra.Xchips_multi } }
+    return { vars = { card.ability.extra.Xchips_multi } }
   end,
   rarity = "agar_primal",
   cost = 30,

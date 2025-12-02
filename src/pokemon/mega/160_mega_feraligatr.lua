@@ -5,9 +5,9 @@ local mega_feraligatr = {
   pos = { x = 4, y = 2 },
   soul_pos = { x = 5, y = 2 },
   config = { extra = { chip_mod = 13 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.chip_mod } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.chip_mod } }
   end,
   rarity = "poke_mega",
   cost = 12,

@@ -9,9 +9,9 @@ local gmax_eevee = {
       "{C:white,X:mult}X#3#{} Mult",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 8,

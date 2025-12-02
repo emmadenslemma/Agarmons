@@ -2,10 +2,10 @@
 local sandygast = {
   name = "sandygast",
   config = { extra = { chips = 0, chip_mod = 3 }, evo_rqmt = 60 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
-    return { vars = { center.ability.extra.chip_mod, localize(suit, "suits_singular"), center.ability.extra.chips, center.ability.evo_rqmt, colours = { G.C.SUITS[suit] } } }
+    return { vars = { card.ability.extra.chip_mod, localize(suit, "suits_singular"), card.ability.extra.chips, card.ability.evo_rqmt, colours = { G.C.SUITS[suit] } } }
   end,
   rarity = 2,
   cost = 6,
@@ -36,10 +36,10 @@ local sandygast = {
 local palossand = {
   name = "palossand",
   config = { extra = { chips = 0, chip_mod = 4, chip_mod2 = 2 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
-    return { vars = { center.ability.extra.chip_mod, localize(suit, "suits_singular"), center.ability.extra.chip_mod2, center.ability.extra.chips, colours = { G.C.SUITS[suit] } } }
+    return { vars = { card.ability.extra.chip_mod, localize(suit, "suits_singular"), card.ability.extra.chip_mod2, card.ability.extra.chips, colours = { G.C.SUITS[suit] } } }
   end,
   rarity = "poke_safari",
   cost = 10,

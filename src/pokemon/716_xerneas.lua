@@ -4,19 +4,19 @@ local xerneas = {
   pos = { x = 4, y = 0 },
   soul_pos = { x = 5, y = 0 },
   config = { extra = { energy_limit_mod = 1, energy_mod = 1, Xmult = 1, Xmult_mod = 1, hands = 4, hands_remaining = 4 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'energize' }
     end
     return {
       vars = {
-        center.ability.extra.energy_limit_mod,
-        center.ability.extra.energy_mod,
-        center.ability.extra.Xmult_mod,
-        center.ability.extra.hands,
-        center.ability.extra.hands_remaining,
-        center.ability.extra.Xmult
+        card.ability.extra.energy_limit_mod,
+        card.ability.extra.energy_mod,
+        card.ability.extra.Xmult_mod,
+        card.ability.extra.hands,
+        card.ability.extra.hands_remaining,
+        card.ability.extra.Xmult
       }
     }
   end,

@@ -2,9 +2,9 @@
 local azelf = {
   name = "azelf",
   config = { extra = { scry = 3, Xmult_multi = 2 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.scry, center.ability.extra.Xmult_multi } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.scry, card.ability.extra.Xmult_multi } }
   end,
   designer = "CBMX",
   rarity = 4,

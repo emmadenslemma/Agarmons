@@ -11,9 +11,9 @@ local gmax_centiskorch = {
       "gain {C:mult}+#3#{} Mult when scored",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.mult_mod } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.mult_mod } }
   end,
   rarity = "agar_gmax",
   cost = 10,

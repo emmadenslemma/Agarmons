@@ -2,14 +2,14 @@
 local toxel = {
   name = "toxel",
   config = { extra = { Xmult_minus = 0.75, rounds = 2 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'baby' }
       info_queue[#info_queue+1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
       info_queue[#info_queue+1] = G.P_CENTERS.c_stall_blacksludge
     end
-    return { vars = { center.ability.extra.Xmult_minus, center.ability.extra.rounds } }
+    return { vars = { card.ability.extra.Xmult_minus, card.ability.extra.rounds } }
   end,
   designer = "Gem",
   rarity = 2,
@@ -38,11 +38,11 @@ local toxtricity = {
   name = "toxtricity",
   pos = { x = 6, y = 0, },
   config = { extra = { form = "amped", money = 2, money_mod = 1, threshold = 0.5 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_CENTERS['m_stall_toxic']
-    local ret = { vars = { center.ability.extra.money, center.ability.extra.money_mod, center.ability.extra.threshold } }
-    if center.ability.extra.form == "lowkey" then
+    local ret = { vars = { card.ability.extra.money, card.ability.extra.money_mod, card.ability.extra.threshold } }
+    if card.ability.extra.form == "lowkey" then
       ret.key = "j_agar_toxtricity_lowkey"
     end
     return ret
@@ -105,10 +105,10 @@ local gmax_toxtricity = {
       "give {C:money}$#3#{} and retrigger",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_CENTERS['m_stall_toxic']
-    return { vars = { center.ability.extra.money1 } }
+    return { vars = { card.ability.extra.money1 } }
   end,
   rarity = "agar_gmax",
   cost = 12,

@@ -5,9 +5,9 @@ local mega_victreebel = {
   pos = { x = 2, y = 1 },
   soul_pos = { x = 3, y = 1 },
   config = { extra = { retriggers = 2 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.retriggers } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.retriggers } }
   end,
   rarity = "poke_mega",
   cost = 12,

@@ -2,9 +2,9 @@
 local regigigas = {
   name = "regigigas",
   config = { extra = { slow_start_rounds = 5, Xmult = 5 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult, self.config.extra.slow_start_rounds, math.max(center.ability.extra.slow_start_rounds, 0) } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult, self.config.extra.slow_start_rounds, math.max(card.ability.extra.slow_start_rounds, 0) } }
   end,
   rarity = 4,
   cost = 20,

@@ -5,13 +5,13 @@ local mega_dragonite = {
   pos = { x = 0, y = 1 },
   soul_pos = { x = 1, y = 1 },
   config = { extra = { retriggers = 2 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     local other_joker_count = 0
     if G.jokers and G.jokers.cards then
       other_joker_count = #G.jokers.cards - 1
     end
-    return { vars = { center.ability.extra.retriggers, other_joker_count * center.ability.extra.retriggers } }
+    return { vars = { card.ability.extra.retriggers, other_joker_count * card.ability.extra.retriggers } }
   end,
   rarity = "poke_mega",
   cost = 12,

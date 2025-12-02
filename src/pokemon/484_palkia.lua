@@ -2,15 +2,15 @@
 local palkia = {
   name = "palkia",
   config = { extra = { joker_slot_mod = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return {
       vars = {
-        center.ability.extra.joker_slot_mod,
-        center.ability.extra.upgrade_rqmt,
-        center.ability.extra.upgrade_rqmt - center.ability.extra.bosses_defeated,
-        center.ability.extra.upgrade_rqmt == 1 and localize("boss_blind_singular") or localize("boss_blind_plural"),
-        center.ability.extra.upgrade_rqmt_increase,
+        card.ability.extra.joker_slot_mod,
+        card.ability.extra.upgrade_rqmt,
+        card.ability.extra.upgrade_rqmt - card.ability.extra.bosses_defeated,
+        card.ability.extra.upgrade_rqmt == 1 and localize("boss_blind_singular") or localize("boss_blind_plural"),
+        card.ability.extra.upgrade_rqmt_increase,
       }
     }
   end,

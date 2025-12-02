@@ -2,8 +2,8 @@
 local torkoal = {
   name = "torkoal",
   config = { extra = { retriggers = 1, Xmult_mod = 0.1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = G.P_CENTERS.m_mult
     end
@@ -11,11 +11,11 @@ local torkoal = {
     if G.deck and G.deck.cards then
       for _, card in pairs(G.deck.cards) do
         if SMODS.has_enhancement(card, 'm_mult') then
-          Xmult_total = Xmult_total + center.ability.extra.Xmult_mod
+          Xmult_total = Xmult_total + card.ability.extra.Xmult_mod
         end
       end
     end
-    return { vars = { center.ability.extra.Xmult_mod, Xmult_total } }
+    return { vars = { card.ability.extra.Xmult_mod, Xmult_total } }
   end,
   rarity = 3,
   cost = 7,

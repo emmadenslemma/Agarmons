@@ -2,13 +2,13 @@
 local yveltal = {
   name = "yveltal",
   config = { extra = { energy_limit_mod = 1, energy_mod = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'energize' }
       info_queue[#info_queue+1] = G.P_CENTERS.c_death
     end
-    return { vars = { center.ability.extra.energy_limit_mod, center.ability.extra.energy_mod } }
+    return { vars = { card.ability.extra.energy_limit_mod, card.ability.extra.energy_mod } }
   end,
   designer = "Eternalnacho",
   rarity = 4,

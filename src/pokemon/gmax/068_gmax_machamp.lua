@@ -13,9 +13,9 @@ local gmax_machamp = {
       "{C:white,X:mult}X#4#{} Mult when scored",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.hands, center.ability.extra.Xmult_multi } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.hands, card.ability.extra.Xmult_multi } }
   end,
   rarity = "agar_gmax",
   cost = 12,

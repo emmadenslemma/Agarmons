@@ -23,12 +23,12 @@ end
 local cosmog = {
   name = "cosmog",
   config = { extra = { rounds = 4 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = "Joker", key = "j_splash", config = {} }
     end
-    local ret = { vars = { center.ability.extra.rounds } }
+    local ret = { vars = { card.ability.extra.rounds } }
     if G.GAME.modifiers.nebby then
       ret.key = "j_agar_nebby"
     end
@@ -57,9 +57,9 @@ local cosmog = {
 local cosmoem = {
   name = "cosmoem",
   config = { extra = { suit_sun = "Hearts", suit_moon = "Clubs" } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    local ret = { vars = { localize(center.ability.extra.suit_sun, "suits_plural"), localize(center.ability.extra.suit_moon, "suits_plural") } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    local ret = { vars = { localize(card.ability.extra.suit_sun, "suits_plural"), localize(card.ability.extra.suit_moon, "suits_plural") } }
     if G.GAME.modifiers.nebby then
       ret.key = "j_agar_nebby_cosmoem"
     end
@@ -86,19 +86,19 @@ local cosmoem = {
 local solgaleo = {
   name = "solgaleo",
   config = { extra = { Xmult_multi = 1.5, suit = "Hearts", half_active = false, full_active = false } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     local ret = {
       vars = {
-        localize(center.ability.extra.suit, "suits_plural"),
-        localize(center.ability.extra.suit, "suits_singular"),
-        center.ability.extra.Xmult_multi,
+        localize(card.ability.extra.suit, "suits_plural"),
+        localize(card.ability.extra.suit, "suits_singular"),
+        card.ability.extra.Xmult_multi,
         colours = {
-          center.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.half_active and G.C.SUITS.Hearts or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.half_active and G.C.MULT or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.full_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.full_active and G.C.FILTER or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.half_active and G.C.SUITS.Hearts or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.half_active and G.C.MULT or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.full_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.full_active and G.C.FILTER or G.C.UI.TEXT_INACTIVE,
         }
       }
     }
@@ -196,21 +196,21 @@ local solgaleo = {
 local lunala = {
   name = "lunala",
   config = { extra = { Xmult_multi = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     local ret = {
       vars = {
-        localize(center.ability.extra.suit, "suits_plural"),
-        localize(center.ability.extra.suit, "suits_singular"),
-        center.ability.extra.Xmult_multi,
-        center.ability.extra.scry,
+        localize(card.ability.extra.suit, "suits_plural"),
+        localize(card.ability.extra.suit, "suits_singular"),
+        card.ability.extra.Xmult_multi,
+        card.ability.extra.scry,
         colours = {
-          center.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.half_active and G.C.SUITS.Clubs or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.half_active and G.C.MULT or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.full_active and G.C.PURPLE or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.full_active and G.C.FILTER or G.C.UI.TEXT_INACTIVE,
-          center.ability.extra.full_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.half_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.half_active and G.C.SUITS.Clubs or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.half_active and G.C.MULT or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.full_active and G.C.PURPLE or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.full_active and G.C.FILTER or G.C.UI.TEXT_INACTIVE,
+          card.ability.extra.full_active and G.C.UI.TEXT_DARK or G.C.UI.TEXT_INACTIVE,
         }
       }
     }

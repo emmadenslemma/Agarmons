@@ -12,11 +12,11 @@ local gmax_pikachu = {
       "{C:inactive}(Currently {C:money}$#4#{C:inactive})",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
-    local current_dollars = center.ability.extra.money_mod * math.max(interest_gap, 0)
-    return { vars = { center.ability.extra.money_mod, current_dollars } }
+    local current_dollars = card.ability.extra.money_mod * math.max(interest_gap, 0)
+    return { vars = { card.ability.extra.money_mod, current_dollars } }
   end,
   rarity = "agar_gmax",
   cost = 8,

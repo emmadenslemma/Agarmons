@@ -65,8 +65,8 @@ end
 local stunfisk = {
   name = "stunfisk",
   config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,
@@ -87,8 +87,8 @@ local stunfisk = {
 local galarian_stunfisk = {
   name = "galarian_stunfisk",
   config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,

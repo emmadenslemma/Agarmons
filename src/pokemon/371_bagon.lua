@@ -2,9 +2,9 @@
 local bagon = {
   name = "bagon",
   config = { extra = { chips = 0, chip_mod = 2, straights = 0 }, evo_rqmt = 36 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.chip_mod, center.ability.extra.straights, center.ability.extra.chips, center.ability.evo_rqmt } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.chip_mod, card.ability.extra.straights, card.ability.extra.chips, card.ability.evo_rqmt } }
   end,
   rarity = 2,
   cost = 6,
@@ -37,9 +37,9 @@ local bagon = {
 local shelgon = {
   name = "shelgon",
   config = { extra = { chips = 0, chip_mod = 3, straights = 0 }, evo_rqmt = 186 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.chip_mod, center.ability.extra.straights, center.ability.extra.chips, center.ability.evo_rqmt } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.chip_mod, card.ability.extra.straights, card.ability.extra.chips, card.ability.evo_rqmt } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -71,13 +71,13 @@ local shelgon = {
 local salamence = {
   name = "salamence",
   config = { extra = { Xmult_mod = .25, chips = 186, straights = 0 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'mega_poke' }
     end
-    local current_Xmult = 1 + center.ability.extra.Xmult_mod * center.ability.extra.straights
-    return { vars = { center.ability.extra.chips, center.ability.extra.Xmult_mod, current_Xmult } }
+    local current_Xmult = 1 + card.ability.extra.Xmult_mod * card.ability.extra.straights
+    return { vars = { card.ability.extra.chips, card.ability.extra.Xmult_mod, current_Xmult } }
   end,
   rarity = "poke_safari",
   cost = 10,
@@ -119,10 +119,10 @@ local mega_salamence = {
   pos = { x = 8, y = 6 },
   soul_pos = { x = 9, y = 6 },
   config = { extra = { Xmult_mod = .25, chips = 186, retriggers = 0, straights = 0 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    local current_Xmult = 1 + center.ability.extra.Xmult_mod * center.ability.extra.straights
-    return { vars = { center.ability.extra.chips, current_Xmult } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    local current_Xmult = 1 + card.ability.extra.Xmult_mod * card.ability.extra.straights
+    return { vars = { card.ability.extra.chips, current_Xmult } }
   end,
   rarity = "poke_mega",
   cost = 12,

@@ -2,9 +2,9 @@
 local hatenna = {
   name = "hatenna",
   config = { extra = { rounds = 5 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.rounds } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.rounds } }
   end,
   rarity = 1,
   cost = 4,
@@ -21,9 +21,9 @@ local hatenna = {
 local hattrem = {
   name = "hattrem",
   config = { extra = { rounds = 5 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.rounds } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.rounds } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -40,8 +40,8 @@ local hattrem = {
 local hatterene = {
   name = "hatterene",
   config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "poke_safari",

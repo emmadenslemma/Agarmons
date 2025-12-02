@@ -2,9 +2,9 @@
 local grookey = {
   name = "grookey",
   config = { extra = { h_size = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.h_size } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.h_size } }
   end,
   rarity = 2,
   cost = 5,
@@ -27,9 +27,9 @@ local grookey = {
 local thwackey = {
   name = "thwackey",
   config = { extra = { h_size = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.h_size } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.h_size } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -51,9 +51,9 @@ local thwackey = {
 local rillaboom = {
   name = "rillaboom",
   config = { extra = { h_size = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.h_size } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.h_size } }
   end,
   rarity = "poke_safari",
   cost = 10,
@@ -82,8 +82,8 @@ local gmax_rillaboom = {
       "{C:inactive}Does nothing (yet!)",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "agar_gmax",

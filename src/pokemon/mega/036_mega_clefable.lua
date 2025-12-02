@@ -5,9 +5,9 @@ local mega_clefable = {
   pos = { x = 6, y = 2 },
   soul_pos = { x = 7, y = 2 },
   config = { extra = { Xmult_multi = 0.1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult_multi } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = "poke_mega",
   cost = 12,

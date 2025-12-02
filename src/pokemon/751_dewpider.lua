@@ -2,11 +2,11 @@
 local dewpider = {
   name = "dewpider",
   config = { extra = { hazards = 4, mult = 8, rounds = 4 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { card.ability.extra.hazards } }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-    return { vars = { center.ability.extra.hazards, center.ability.extra.mult, center.ability.extra.rounds } }
+    return { vars = { card.ability.extra.hazards, card.ability.extra.mult, card.ability.extra.rounds } }
   end,
   rarity = 1,
   cost = 4,
@@ -33,11 +33,11 @@ local dewpider = {
 local araquanid = {
   name = "araquanid",
   config = { extra = { hazards = 4, mult = 8, Xmult_multi = 2 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { center.ability.extra.hazards } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { card.ability.extra.hazards } }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-    return { vars = { center.ability.extra.hazards, center.ability.extra.mult, center.ability.extra.Xmult_multi } }
+    return { vars = { card.ability.extra.hazards, card.ability.extra.mult, card.ability.extra.Xmult_multi } }
   end,
   rarity = 2,
   cost = 5,

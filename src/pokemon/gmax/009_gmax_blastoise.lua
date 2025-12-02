@@ -11,10 +11,10 @@ local gmax_blastoise = {
       "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    local current_Xmult = center.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
-    return { vars = { center.ability.extra.Xmult_mod, current_Xmult } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
+    return { vars = { card.ability.extra.Xmult_mod, current_Xmult } }
   end,
   rarity = "agar_gmax",
   cost = 12,

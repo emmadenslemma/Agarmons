@@ -36,12 +36,12 @@ end
 local pyukumuku = {
   name = "pyukumuku",
   config = { extra = { stored = { chips = 0, mult = 0, Xmult = 0, money = 0 }, volatile = "left" } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = { set = "Other", key = "poke_volatile_" .. center.ability.extra.volatile }
+      info_queue[#info_queue+1] = { set = "Other", key = "poke_volatile_" .. card.ability.extra.volatile }
     end
-    return { vars = { center.ability.extra.stored.chips, center.ability.extra.stored.mult, center.ability.extra.stored.Xmult, center.ability.extra.stored.money } }
+    return { vars = { card.ability.extra.stored.chips, card.ability.extra.stored.mult, card.ability.extra.stored.Xmult, card.ability.extra.stored.money } }
   end,
   rarity = 3,
   cost = 8,

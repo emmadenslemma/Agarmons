@@ -10,9 +10,9 @@ local gmax_snorlax = {
       "{C:attention}+#4#{} card selection limit",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult, center.ability.extra.selection_limit_mod } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult, card.ability.extra.selection_limit_mod } }
   end,
   rarity = "agar_gmax",
   cost = 12,

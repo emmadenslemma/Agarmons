@@ -2,10 +2,10 @@
 local mesprit = {
   name = "mesprit",
   config = { extra = { scry = 3, num = 1, dem = 3 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    local num, dem = SMODS.get_probability_vars(center, center.ability.extra.num, center.ability.extra.dem, "mesprit")
-    return { vars = { center.ability.extra.scry, num, dem } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "mesprit")
+    return { vars = { card.ability.extra.scry, num, dem } }
   end,
   designer = "CBMX",
   rarity = 4,

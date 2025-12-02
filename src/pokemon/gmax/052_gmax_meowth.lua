@@ -14,9 +14,9 @@ local gmax_meowth = {
       "earn {C:money}$#3#{} instead",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.money1 } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.money1 } }
   end,
   rarity = "agar_gmax",
   cost = 8,

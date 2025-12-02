@@ -11,8 +11,8 @@ local gmax_copperajah = {
       "{C:inactive}(Currently {X:red,C:white}X#4#{C:inactive} Mult)",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
 
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = G.P_CENTERS.m_steel
@@ -27,7 +27,7 @@ local gmax_copperajah = {
       end
     end
 
-    return { vars = { center.ability.extra.Xmult_mod, 1 + center.ability.extra.Xmult_mod * steel_count } }
+    return { vars = { card.ability.extra.Xmult_mod, 1 + card.ability.extra.Xmult_mod * steel_count } }
   end,
   rarity = "agar_gmax",
   cost = 12,

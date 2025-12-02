@@ -2,16 +2,16 @@
 local dialga = {
   name = "dialga",
   config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 2, retrigger_joker_list = nil } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return {
       vars = {
-        center.ability.extra.joker_retriggers,
-        center.ability.extra.joker_retriggers == 1 and localize("joker_singular") or localize("joker_plural"),
-        center.ability.extra.upgrade_rqmt,
-        center.ability.extra.upgrade_rqmt - center.ability.extra.bosses_defeated,
-        center.ability.extra.upgrade_rqmt == 1 and localize("boss_blind_singular") or localize("boss_blind_plural"),
-        center.ability.extra.upgrade_rqmt_increase
+        card.ability.extra.joker_retriggers,
+        card.ability.extra.joker_retriggers == 1 and localize("joker_singular") or localize("joker_plural"),
+        card.ability.extra.upgrade_rqmt,
+        card.ability.extra.upgrade_rqmt - card.ability.extra.bosses_defeated,
+        card.ability.extra.upgrade_rqmt == 1 and localize("boss_blind_singular") or localize("boss_blind_plural"),
+        card.ability.extra.upgrade_rqmt_increase
       }
     }
   end,

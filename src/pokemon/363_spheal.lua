@@ -2,9 +2,9 @@
 local spheal = {
   name = "spheal",
   config = { extra = { mult = 0, mult_mod = 2 }, evo_rqmt = 12 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.evo_rqmt } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult, card.ability.evo_rqmt } }
   end,
   rarity = 2,
   cost = 6,
@@ -34,9 +34,9 @@ local spheal = {
 local sealeo = {
   name = "sealeo",
   config = { extra = { mult = 0, mult_mod = 3 }, evo_rqmt = 30 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.evo_rqmt } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult, card.ability.evo_rqmt } }
   end,
   rarity = "poke_safari",
   cost = 9,
@@ -66,10 +66,10 @@ local sealeo = {
 local walrein = {
   name = "walrein",
   config = { extra = { mult = 0, mult_mod = 3, Xmult = 1, Xmult_mod = .15, num = 1, dem = 4 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    local num, dem = SMODS.get_probability_vars(center, center.ability.extra.num, center.ability.extra.dem, "walrein")
-    return { vars = { center.ability.extra.mult_mod, center.ability.extra.mult, center.ability.extra.Xmult_mod, center.ability.extra.Xmult, num, dem } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "walrein")
+    return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult, card.ability.extra.Xmult_mod, card.ability.extra.Xmult, num, dem } }
   end,
   rarity = "poke_safari",
   cost = 10,

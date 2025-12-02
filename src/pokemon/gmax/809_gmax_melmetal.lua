@@ -12,13 +12,13 @@ local gmax_melmetal = {
       "{C:inactive}(Currently #4# #5#)",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    local metal_cards = find_other_poke_or_energy_type(center, "Metal", true)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    local metal_cards = find_other_poke_or_energy_type(card, "Metal", true)
     return {
       vars = {
-        center.ability.extra.draw_mod,
-        center.ability.extra.draw_mod * metal_cards,
+        card.ability.extra.draw_mod,
+        card.ability.extra.draw_mod * metal_cards,
         metal_cards == 1 and localize("cards_singular") or localize("cards_plural")
       }
     }

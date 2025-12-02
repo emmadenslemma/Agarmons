@@ -5,9 +5,9 @@ local mega_starmie = {
   pos = { x = 6, y = 1 },
   soul_pos = { x = 7, y = 1 },
   config = { extra = { mult_mod = 1, money_mod = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.mult_mod, center.ability.extra.money_mod } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.mult_mod, card.ability.extra.money_mod } }
   end,
   rarity = "poke_mega",
   cost = 12,

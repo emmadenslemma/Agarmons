@@ -11,9 +11,9 @@ local gmax_lapras = {
       "creates a random {C:attention}Tag{}"
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.chips } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.chips } }
   end,
   rarity = "agar_gmax",
   cost = 10,

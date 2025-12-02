@@ -10,9 +10,9 @@ local gmax_urshifu_rapid_strike = {
       "for every {C:chips}5 chips{} they have",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult_mod } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult_mod } }
   end,
   rarity = "agar_gmax",
   cost = 30,

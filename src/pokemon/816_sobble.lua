@@ -2,9 +2,9 @@
 local sobble = {
   name = "sobble",
   config = { extra = { hands = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.hands } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.hands } }
   end,
   rarity = 2,
   cost = 5,
@@ -34,9 +34,9 @@ local sobble = {
 local drizzile = {
   name = "drizzile",
   config = { extra = { hands = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.hands } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.hands } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -65,9 +65,9 @@ local drizzile = {
 local inteleon = {
   name = "inteleon",
   config = { extra = { hands = 1 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.hands } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.hands } }
   end,
   rarity = "poke_safari",
   cost = 10,
@@ -103,8 +103,8 @@ local gmax_inteleon = {
       "{C:inactive}Does nothing (yet!)",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "agar_gmax",

@@ -3,9 +3,9 @@ local alolan_raichu = {
   name = "alolan_raichu",
   agar_inject_prefix = "poke",
   config = { extra = { chips = 0, chip_mod = 1, per_money = 2 } },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.chip_mod, center.ability.extra.per_money, center.ability.extra.chips } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.chip_mod, card.ability.extra.per_money, card.ability.extra.chips } }
   end,
   rarity = "poke_safari",
   cost = 8,

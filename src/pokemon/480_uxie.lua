@@ -2,15 +2,15 @@
 local uxie = {
   name = "uxie",
   config = { extra = { scry = 3, Xmult = 1, Xmult_mod = 1, gold_cards_triggered = 0 }, trigger_rqmt = 11 },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
     return {
       vars = {
-        center.ability.extra.scry,
-        center.ability.extra.Xmult_mod,
+        card.ability.extra.scry,
+        card.ability.extra.Xmult_mod,
         self.config.trigger_rqmt,
-        self.config.trigger_rqmt - center.ability.extra.gold_cards_triggered,
-        center.ability.extra.Xmult,
+        self.config.trigger_rqmt - card.ability.extra.gold_cards_triggered,
+        card.ability.extra.Xmult,
       }
     }
   end,

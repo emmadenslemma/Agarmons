@@ -11,9 +11,9 @@ local gmax_urshifu_single_strike = {
       "Loses a third when a hand is played",
     }
   },
-  loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult1, center.ability.extra.Xmult2 } }
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult1, card.ability.extra.Xmult2 } }
   end,
   rarity = "agar_gmax",
   cost = 30,
