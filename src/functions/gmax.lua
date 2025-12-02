@@ -157,7 +157,10 @@ AG.gmax.loc_vars = function(self, info_queue, center, loc_table)
   loc_table.vars = loc_table.vars or {}
 
   table.insert(loc_table.vars, 1, center.ability.extra.turns_left)
-  table.insert(loc_table.vars, 2, localize(center.ability.extra.turns_left == 1 and "agar_turns_left_singular" or "agar_turns_left_plural"))
+  table.insert(loc_table.vars, 2,
+    localize(center.ability.extra.turns_left == 1
+      and "agar_turns_left_singular"
+      or "agar_turns_left_plural"))
 
   return loc_table
 end

@@ -15,12 +15,12 @@ function AG.target_utils.find_card(key_or_func, use_highlighted)
     if use_highlighted and cardarea.highlighted and #cardarea.highlighted == 1 then
       highlight = cardarea.highlighted[1]
       if is_target(highlight) then
-        highlight_results[#highlight_results + 1] = highlight
+        highlight_results[#highlight_results+1] = highlight
       end
     elseif cardarea.cards then
       for _, card in pairs(cardarea.cards) do
         if is_target(card) then
-          results[#results + 1] = card
+          results[#results+1] = card
         end
       end
     end
