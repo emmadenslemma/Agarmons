@@ -1,8 +1,13 @@
 local function do_fuse(card, with, fuse_into)
   G.E_MANAGER:add_event(Event({
     func = function()
+      local form = with.ability.extra.form or card.ability.extra.form
       poke_evolve(with, fuse_into, true)
       card:remove()
+      if form then
+        with.ability.extra.form = form
+        with.config.center:set_sprites(with)
+      end
       return true
     end
   }))
