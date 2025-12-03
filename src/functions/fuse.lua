@@ -6,7 +6,7 @@ local function do_fuse(card, with, fuse_into)
       card:remove()
       if form then
         with.ability.extra.form = form
-        with.config.center:set_sprites(with)
+        with.config.center:set_ability(with)
       end
       return true
     end

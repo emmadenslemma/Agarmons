@@ -101,6 +101,9 @@ local dondozo_commander = {
   custom_pool_func = true,
   calculate = function(self, card, context)
   end,
+  set_ability = function(self, card, initial, delay_sprites)
+    self:set_sprites(card)
+  end,
   set_sprites = function(self, card, front)
     if card.ability and card.ability.extra and card.ability.extra.form then
       local pos = ({
