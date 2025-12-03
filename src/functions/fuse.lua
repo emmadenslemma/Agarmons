@@ -6,7 +6,9 @@ local function do_fuse(card, with, fuse_into)
       card:remove()
       if form then
         with.ability.extra.form = form
-        with.config.center:set_ability(with)
+        if type(with.config.center.set_ability) == 'function' then
+          with.config.center:set_ability(with)
+        end
       end
       return true
     end
