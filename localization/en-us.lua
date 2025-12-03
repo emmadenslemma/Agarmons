@@ -621,6 +621,27 @@ return {
                     "when scored",
                 }
             },
+            j_agar_tatsugiri_curly = {
+                name = "Tatsugiri (Curly)",
+                text = {
+                    "{C:green}#1# in #2#{} chance to be eaten",
+                    "at end of round",
+                }
+            },
+            j_agar_tatsugiri_stretchy = {
+                name = "Tatsugiri (Stretchy)",
+                text = {
+                    "{C:green}#1# in #2#{} chance to be eaten",
+                    "at end of round",
+                }
+            },
+            j_agar_tatsugiri_droopy = {
+                name = "Tatsugiri (Droopy)",
+                text = {
+                    "{C:green}#1# in #2#{} chance to be eaten",
+                    "at end of round",
+                }
+            },
             -- All GMAX forms use `loc_txt` for their English localization
             -- These are here additionally because they're showcased in the Gigantamax toggle
             j_poke_gmax_charizard = {
