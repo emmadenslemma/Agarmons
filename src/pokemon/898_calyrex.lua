@@ -2,6 +2,14 @@
 local calyrex = {
   name = "calyrex",
   config = { extra = { Xmult_multi = 1.75 } },
+  loc_txt = {
+    name = "Calyrex",
+    text = {
+      "Played {C:attention}Queens{} and",
+      "{C:attention}Jacks{} give {C:white,X:mult}X#1#{} Mult",
+      "when scored",
+    }
+  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
@@ -29,11 +37,12 @@ local calyrex = {
 -- Calyrex Ice Rider 898-1
 local calyrex_ice = {
   name = "calyrex_ice",
-  config = { extra = { Xmult_multi = 1.75 } },
+  config = { extra = { Xmult_multi = 2 } },
   loc_txt = {
     name = "Calyrex Ice Rider",
     text = {
-      "{C:dark_edition}???",
+      "Played {C:attention}Jacks{} give",
+      "{C:white,X:mult}X#1#{} Mult when scored",
     }
   },
   loc_vars = function(self, info_queue, card)
@@ -50,7 +59,7 @@ local calyrex_ice = {
   custom_pool_func = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
-        (context.other_card:get_id() == 11 or context.other_card:get_id() == 12) then
+        context.other_card:get_id() == 11 then
       return {
         xmult = card.ability.extra.Xmult_multi
       }
@@ -64,11 +73,12 @@ local calyrex_ice = {
 -- Calyrex Shadow Rider 898-2
 local calyrex_shadow = {
   name = "calyrex_shadow",
-  config = { extra = { Xmult_multi = 1.75 } },
+  config = { extra = { Xmult_multi = 2 } },
   loc_txt = {
     name = "Calyrex Shadow Rider",
     text = {
-      "{C:dark_edition}???",
+      "Played {C:attention}Queens{} give",
+      "{C:white,X:mult}X#1#{} Mult when scored",
     }
   },
   loc_vars = function(self, info_queue, card)
@@ -85,7 +95,7 @@ local calyrex_shadow = {
   custom_pool_func = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
-        (context.other_card:get_id() == 11 or context.other_card:get_id() == 12) then
+        context.other_card:get_id() == 12 then
       return {
         xmult = card.ability.extra.Xmult_multi
       }
