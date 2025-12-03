@@ -78,7 +78,7 @@ local tatsugiri = {
 local dondozo_commander = {
   name = "dondozo_commander",
   pos = { x = 0, y = 0 },
-  config = { extra = { form = nil }, extra_slots_used = 1 },
+  config = { extra = { form = "curly" }, extra_slots_used = 1 },
   display_size = { w = 142, h = 95 },
   loc_txt = {
     name = "Dondozo",
@@ -100,13 +100,6 @@ local dondozo_commander = {
   blueprint_compat = true,
   custom_pool_func = true,
   calculate = function(self, card, context)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-    if initial then
-      card.ability.extra.form = card.ability.extra.form
-          or pseudorandom_element({ "curly", "droopy", "stretchy" }, pseudoseed("dondozo_commander"))
-    end
-    self:set_sprites(card)
   end,
   set_sprites = function(self, card, front)
     if card.ability and card.ability.extra and card.ability.extra.form then
