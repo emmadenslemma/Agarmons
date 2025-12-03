@@ -19,7 +19,7 @@ local terrakion = {
         Xmult = card.ability.extra.Xmult
       }
     end
-    if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
+    if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
       local cards = {}
       local deck = copy_table(G.deck.cards)
       table.sort(deck, function(a, b) return a:get_nominal() < b:get_nominal() end)
