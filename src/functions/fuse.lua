@@ -32,6 +32,7 @@ local function get_adjacent_jokers(card, dir)
 end
 
 local function get_fuses(card)
+  if card.area and card.area ~= G.jokers then return end
   local fuses = card.config.center.fuses
   if fuses and fuses.with then return { fuses } end
   return fuses
