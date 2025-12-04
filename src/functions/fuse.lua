@@ -44,7 +44,7 @@ local function try_fuse(card)
     for _, fuse in ipairs(fuses) do
       for _, other_card in ipairs(get_adjacent_jokers(card, fuse.direction)) do
         if other_card.config.center.key == fuse.with then
-          if fuse.evo_self then
+          if fuse.evo_this then
             do_fuse(other_card, card, fuse.into)
           else
             do_fuse(card, other_card, fuse.into)
