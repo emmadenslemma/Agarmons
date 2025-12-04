@@ -53,3 +53,8 @@ SMODS.Atlas({
     px = 142,
     py = 95
 })
+
+SMODS.Shader({
+    key = 'fuse',
+    path = 'fuse.fs'
+})
