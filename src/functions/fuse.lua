@@ -22,11 +22,11 @@ end
 
 local function get_adjacent_jokers(card, dir)
   local adjacent = {}
-  if dir ~= 'right' and card.rank > 1 then
-    table.insert(adjacent, G.jokers.cards[card.rank - 1])
-  end
   if dir ~= 'left' and card.rank < #G.jokers.cards then
     table.insert(adjacent, G.jokers.cards[card.rank + 1])
+  end
+  if dir ~= 'right' and card.rank > 1 then
+    table.insert(adjacent, G.jokers.cards[card.rank - 1])
   end
   return adjacent
 end
@@ -42,15 +42,14 @@ local function try_fuse(card)
   local fuses = get_fuses(card)
   if fuses then
     for _, fuse in ipairs(fuses) do
-      local target
-      for _, _card in ipairs(get_adjacent_jokers(card, fuse.direction)) do
-        if _card.config.center.key == fuse.with then target = _card end
-      end
-      if target then
-        if fuse.from == 'self' then
-          do_fuse(target, card, fuse.into)
-        else
-          do_fuse(card, target, fuse.into)
+      for _, other_card in ipairs(get_adjacent_jokers(card, fuse.direction)) do
+        if other_card.config.center.key == fuse.with then
+          if fuse.from == 'self' then
+            do_fuse(other_card, card, fuse.into)
+          else
+            do_fuse(card, other_card, fuse.into)
+          end
+          return
         end
       end
     end
@@ -87,6 +86,8 @@ AG.hookafterfunc(Card, 'drag', function(self)
               return true
             end
           }))
+
+          return
         end
       end
     end
