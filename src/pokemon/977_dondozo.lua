@@ -96,6 +96,7 @@ local dondozo_commander = {
   ptype = "Water",
   gen = 9,
   atlas = "AgarmonsCommandozo",
+  aux_poke = true,
   no_collection = true,
   blueprint_compat = true,
   custom_pool_func = true,
