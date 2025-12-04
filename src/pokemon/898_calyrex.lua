@@ -74,17 +74,19 @@ local calyrex_ice = {
 -- Calyrex Shadow Rider 898-2
 local calyrex_shadow = {
   name = "calyrex_shadow",
-  config = { extra = { Xmult_multi = 2 } },
+  config = { extra = { Xmult = 3.5 } },
   loc_txt = {
     name = "Calyrex Shadow Rider",
     text = {
-      "Played {C:attention}Queens{} give",
-      "{C:white,X:mult}X#1#{} Mult when scored",
+      "{C:white,X:mult}X#1#{} Mult",
+      "{br:2}ERROR - CONTACT STEAK",
+      "Played {C:attention}Queens{} give half this",
+      "Joker's {C:white,X:mult}X{} Mult when scored",
     }
   },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.Xmult_multi } }
+    return { vars = { card.ability.extra.Xmult } }
   end,
   rarity = 4,
   cost = 20,
@@ -96,10 +98,15 @@ local calyrex_shadow = {
   blueprint_compat = true,
   custom_pool_func = true,
   calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        Xmult = card.ability.extra.Xmult
+      }
+    end
     if context.individual and context.cardarea == G.play and
         context.other_card:get_id() == 12 then
       return {
-        xmult = card.ability.extra.Xmult_multi
+        Xmult = card.ability.extra.Xmult / 2
       }
     end
   end,
