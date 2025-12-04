@@ -38,6 +38,27 @@ local function get_fuses(card)
   return fuses
 end
 
+local function try_fuse(card)
+  local fuses = get_fuses(card)
+  if fuses then
+    for _, fuse in ipairs(fuses) do
+      local target
+      for _, _card in ipairs(get_adjacent_jokers(card, fuse.direction)) do
+        if _card.config.center.key == fuse.with then target = _card end
+      end
+      if target then
+        if fuse.from == 'self' then
+          do_fuse(target, card, fuse.into)
+        else
+          do_fuse(card, target, fuse.into)
+        end
+      end
+    end
+  end
+end
+
+AG.hookafterfunc(Card, 'stop_drag', try_fuse)
+
 -- Decide when to draw the 'fuse' shader
 AG.hookafterfunc(Card, 'drag', function(self)
   if self.ready_to_fuse then return end
@@ -82,19 +103,3 @@ SMODS.DrawStep {
   end,
   conditions = { vortex = false, facing = 'front' },
 }
-
-AG.hookafterfunc(Card, 'stop_drag', function(self)
-  -- Try fuse
-  local fuses = get_fuses(self)
-  if fuses then
-    for _, fuse in ipairs(fuses) do
-      local target
-      for _, card in ipairs(get_adjacent_jokers(self, fuse.direction)) do
-        if card.config.center.key == fuse.with then target = card end
-      end
-      if target then
-        do_fuse(self, target, fuse.into)
-      end
-    end
-  end
-end)
