@@ -199,6 +199,7 @@ local init = function()
 end
 
 return {
+  can_load = false,
   config_key = "stunfisk",
   init = init,
   list = { stunfisk, galarian_stunfisk },
