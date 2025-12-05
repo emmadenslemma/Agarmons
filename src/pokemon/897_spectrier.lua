@@ -30,28 +30,25 @@ local spectrier = {
       }
     end
     if context.using_consumeable and context.consumeable.ability.set == 'Spectral'
-        and not context.consumeable.helditem and not context.blueprint then
-      card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
+        and not context.consumeable.helditem then
+      if not context.blueprint then
+        card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
+      end
 
       if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            SMODS.add_card { set = 'Spectral', key_append = 'spectrier' }
+            G.GAME.consumeable_buffer = 0
+            return true
+          end
+        }))
+
         return {
           message = localize('k_plus_spectral'),
           colour = G.C.SECONDARY_SET.Spectral,
-          func = function()
-            G.E_MANAGER:add_event(Event({
-              func = function()
-                SMODS.add_card { set = 'Spectral', key_append = 'spectrier' }
-                G.GAME.consumeable_buffer = 0
-                return true
-              end
-            }))
-          end,
-        }
-      else
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.RED,
         }
       end
     end
