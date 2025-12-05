@@ -16,6 +16,7 @@ return {
   dewpider = false,
   sandygast = true,
   pyukumuku = true,
+  drampa = true,
   cosmog = false,
   marshadow = true,
   grookey = true,

@@ -408,6 +408,27 @@ return {
                     "{C:inactive}(Currently {C:chips}+#1#{}, {C:mult}+#2#{}, {X:mult,C:white}X#3#{}, {C:money}$#4#{C:inactive})"
                 }
             },
+            j_agar_drampa = {
+                name = "Drampa",
+                text = {
+                    "{C:attention}+#1#{} Booster Pack slot",
+                    "available in shop",
+                    "{C:attention}Booster Packs{} are always",
+                    "{C:attention}Jumbo{} or above",
+                }
+            },
+            j_agar_mega_drampa = {
+                name = "Mega Drampa",
+                text = {
+                    "{C:attention}+#1#{} Booster Pack slot",
+                    "available in shop",
+                    "{C:attention}+#2#{} card selection limit",
+                    "in {C:attention}Booster Packs",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Booster Packs{} are",
+                    "always {C:attention}Mega",
+                }
+            },
             j_agar_cosmog = {
                 name = "Cosmog",
                 text = {
