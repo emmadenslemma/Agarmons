@@ -14,7 +14,10 @@ local spectrier = {
   },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { localize { type = 'name_text', set = 'Spectral', key = 'c_wraith' }, card.ability.extra.Xmult_mod, card.ability.extra.Xmult } }
+    local wraith_name_text = localize { type = 'name_text', set = 'Spectral', key = 'c_wraith' }
+    info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { wraith_name_text } }
+    info_queue[#info_queue+1] = { set = 'Spectral', key = 'c_wraith' }
+    return { vars = { wraith_name_text, card.ability.extra.Xmult_mod, card.ability.extra.Xmult } }
   end,
   rarity = 4,
   cost = 20,
