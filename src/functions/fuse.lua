@@ -1,3 +1,6 @@
+local fuse_delay = 0.35
+local fuse_timer
+
 local function do_fuse(card, with, fuse_into)
   G.E_MANAGER:add_event(Event({
     func = function()
@@ -56,11 +59,28 @@ local function try_fuse(card)
   end
 end
 
-AG.hookafterfunc(Card, 'stop_drag', try_fuse)
+AG.hookbeforefunc(Card, 'drag', function(self)
+  if get_fuses(self) and not fuse_timer then
+    fuse_timer = love.timer.getTime()
+  end
+end)
+
+AG.hookafterfunc(Card, 'stop_drag', function(self)
+  if fuse_timer then
+    if love.timer.getTime() - fuse_timer >= fuse_delay then
+      try_fuse(self)
+    end
+    fuse_timer = nil
+  end
+end)
 
 -- Decide when to draw the 'fuse' shader
 AG.hookafterfunc(Card, 'drag', function(self)
-  if self.ready_to_fuse then return end
+  if not fuse_timer
+      or love.timer.getTime() - fuse_timer < fuse_delay
+      or self.ready_to_fuse then
+    return
+  end
   local fuses = get_fuses(self)
   if fuses then
     for _, fuse in ipairs(fuses) do
