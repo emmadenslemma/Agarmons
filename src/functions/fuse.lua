@@ -91,6 +91,8 @@ AG.hookafterfunc(Card, 'drag', function(self)
 
           local cur_rank = self.rank
 
+          juice_card_until(self, function(_card) return _card.ready_to_fuse and _card.rank == cur_rank end, true)
+
           G.E_MANAGER:add_event(Event({
             trigger = 'condition',
             blocking = false,
