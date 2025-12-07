@@ -55,7 +55,7 @@ local xerneas = {
       if context.card_added and context.cardarea == G.jokers
           and not context.card.ability.consumeable
           and energy_matches(context.card, "Fairy") then
-        AG.energy.increase(context.card, card.ability.extra.energy_mod)
+        increment_energy(context.card, "Fairy", card.ability.extra.energy_mod)
       end
     end
   end,
@@ -69,7 +69,7 @@ local xerneas = {
         return true
       end
     }))
-    AG.energy.increase(card, "Fairy", card.ability.extra.energy_mod, true)
+    increment_energy(card, "Fairy", card.ability.extra.energy_mod)
   end,
   remove_from_deck = function(self, card, from_debuff)
     AG.energy.decrease_limit(card.ability.extra.energy_limit_mod)
@@ -91,12 +91,12 @@ local init = function()
   local apply_type_sticker_orig = apply_type_sticker
   apply_type_sticker = function(card, ...)
     local xerneas_present = next(SMODS.find_card('j_agar_xerneas', true))
-    if xerneas_present and energy_matches(card, "Fairy") then
-      AG.energy.decrease(card, "Fairy")
+    if xerneas_present and energy_matches(card, "Fairy") and not poke_is_in_collection(card) then
+      increment_energy(card, "Fairy", -1)
     end
     apply_type_sticker_orig(card, ...)
-    if xerneas_present and energy_matches(card, "Fairy") then
-      AG.energy.increase(card, "Fairy")
+    if xerneas_present and energy_matches(card, "Fairy") and not poke_is_in_collection(card) then
+      increment_energy(card, "Fairy")
     end
   end
 end

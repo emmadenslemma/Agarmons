@@ -10,10 +10,10 @@
 	"priority": 24,
 	"badge_colour": "F792BC",
 	"display_name": "Agarmons",
-	"version": "0.13.1",
+	"version": "0.13.2",
 	"dependencies": [
 		"Steamodded (>=1.0.0~BETA-1016c)",
 		"Lovely (>=0.7)",
-		"Pokermon (>=3.5.0-1128a)"
+		"Pokermon (>=3.5.1-1206b)"
 	]
 }
