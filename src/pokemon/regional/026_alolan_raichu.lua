@@ -2,10 +2,10 @@
 local alolan_raichu = {
   name = "alolan_raichu",
   agar_inject_prefix = "poke",
-  config = { extra = { chips = 0, chip_mod = 1, per_money = 1, money_mod = 1 } },
+  config = { extra = { chips = 0, chip_mod = 1, per_money = 1, money = 2, money_mod = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.chip_mod, card.ability.extra.per_money, card.ability.extra.chips, card.ability.extra.money_mod } }
+    return { vars = { card.ability.extra.chip_mod, card.ability.extra.per_money, card.ability.extra.chips, card.ability.extra.money, card.ability.extra.money_mod } }
   end,
   rarity = "poke_safari",
   cost = 8,
@@ -15,11 +15,9 @@ local alolan_raichu = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.setting_blind then
-      local lightning_jokers = #find_pokemon_type("Lightning")
-      if lightning_jokers > 0 then
-        card:juice_up()
-        ease_poke_dollars(card, "alolan_raichu", lightning_jokers * card.ability.money_mod)
-      end
+      local lightning_jokers = find_pokemon_type("Lightning")
+      card:juice_up()
+      ease_poke_dollars(card, "alolan_raichu", card.ability.money + lightning_jokers * card.ability.money_mod)
     end
     if context.joker_main and card.ability.extra.chips > 0 then
       return {
