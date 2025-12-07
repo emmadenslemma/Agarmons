@@ -1,5 +1,6 @@
 local fuse_delay = 0.35
 local fuse_timer
+local fuse_dist = G.CARD_H -- it just lines up what can I say
 
 local function do_fuse(card, with, fuse_into)
   G.E_MANAGER:add_event(Event({
@@ -41,20 +42,45 @@ local function get_fuses(card)
   return fuses
 end
 
-local function try_fuse(card)
+local function get_distance(card, other_card)
+  local x1, x2 = card.T.x, other_card.T.x
+  local y1, y2 = card.T.y, other_card.T.y
+  return math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
+end
+
+local function get_valid_fuse_target(card)
   local fuses = get_fuses(card)
   if fuses then
     for _, fuse in ipairs(fuses) do
       for _, other_card in ipairs(get_adjacent_jokers(card, fuse.direction)) do
-        if other_card.config.center.key == fuse.with then
-          if fuse.evo_this then
-            do_fuse(other_card, card, fuse.into)
-          else
-            do_fuse(card, other_card, fuse.into)
-          end
-          return
+        if other_card.config.center.key == fuse.with
+            and get_distance(card, other_card) < fuse_dist then
+          return {
+            card = other_card,
+            fuse = fuse,
+          }
         end
       end
+    end
+  end
+end
+
+local function can_fuse(card)
+  return fuse_timer
+      and love.timer.getTime() - fuse_timer >= fuse_delay
+      and get_valid_fuse_target(card)
+end
+
+local function try_fuse(card)
+  local target = get_valid_fuse_target(card)
+  if target then
+    local other_card = target.card
+    local fuse = target.fuse
+
+    if fuse.evo_this then
+      do_fuse(other_card, card, fuse.into)
+    else
+      do_fuse(card, other_card, fuse.into)
     end
   end
 end
@@ -67,7 +93,7 @@ end)
 
 AG.hookafterfunc(Card, 'stop_drag', function(self)
   if fuse_timer then
-    if love.timer.getTime() - fuse_timer >= fuse_delay then
+    if can_fuse(self) then
       try_fuse(self)
     end
     fuse_timer = nil
@@ -76,43 +102,34 @@ end)
 
 -- Decide when to draw the 'fuse' shader
 AG.hookafterfunc(Card, 'drag', function(self)
-  if not fuse_timer
-      or love.timer.getTime() - fuse_timer < fuse_delay
-      or self.ready_to_fuse then
-    return
-  end
-  local fuses = get_fuses(self)
-  if fuses then
-    for _, fuse in ipairs(fuses) do
-      for _, card in ipairs(get_adjacent_jokers(self, fuse.direction)) do
-        if card.config.center.key == fuse.with then
-          self.ready_to_fuse = true
-          card.ready_to_fuse = true
+  if self.ready_to_fuse or not can_fuse(self) then return end
+  local target = get_valid_fuse_target(self)
+  if target then
+    local card = target.card
+    self.ready_to_fuse = true
+    card.ready_to_fuse = true
 
-          local cur_rank = self.rank
+    local stay_juiced = true
+    juice_card_until(self, function() return stay_juiced end, true)
 
-          juice_card_until(self, function(_card) return _card.ready_to_fuse and _card.rank == cur_rank end, true)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'condition',
+      blocking = false,
+      func = function()
+        if not self or not card then return true end
 
-          G.E_MANAGER:add_event(Event({
-            trigger = 'condition',
-            blocking = false,
-            func = function()
-              if not self or not card then return true end
-
-              if self.rank == cur_rank and self.states.drag.is then
-                return false
-              end
-
-              self.ready_to_fuse = false
-              card.ready_to_fuse = false
-              return true
-            end
-          }))
-
-          return
+        if self.states.drag.is and (get_valid_fuse_target(self) or {}).card == card and can_fuse(self) then
+          return false
         end
+
+        self.ready_to_fuse = false
+        card.ready_to_fuse = false
+        stay_juiced = false
+        return true
       end
-    end
+    }))
+
+    return
   end
 end)
 
