@@ -2,19 +2,25 @@
 local alolan_raichu = {
   name = "alolan_raichu",
   agar_inject_prefix = "poke",
-  config = { extra = { chips = 0, chip_mod = 1, per_money = 2 } },
+  config = { extra = { chips = 0, chip_mod = 1, per_money = 1, money_mod = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.chip_mod, card.ability.extra.per_money, card.ability.extra.chips } }
+    return { vars = { card.ability.extra.chip_mod, card.ability.extra.per_money, card.ability.extra.chips, card.ability.extra.money_mod } }
   end,
   rarity = "poke_safari",
   cost = 8,
   stage = "One",
   ptype = "Psychic",
   gen = 7,
-  designer = "Hasmed",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.setting_blind then
+      local lightning_jokers = #find_pokemon_type("Lightning")
+      if lightning_jokers > 0 then
+        card:juice_up()
+        ease_poke_dollars(card, "alolan_raichu", lightning_jokers * card.ability.money_mod)
+      end
+    end
     if context.joker_main and card.ability.extra.chips > 0 then
       return {
         chips = card.ability.extra.chips
@@ -24,7 +30,8 @@ local alolan_raichu = {
       local amount_spent = context.amount
       if (SMODS.Mods["Talisman"] or {}).can_load then amount_spent = to_number(amount_spent) end
       if context.amount < 0 then
-        card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod / card.ability.extra.per_money * (-amount_spent) * (#find_pokemon_type("Lightning") > 0 and 2 or 1)
+        card.ability.extra.chips = card.ability.extra.chips +
+            card.ability.extra.chip_mod / card.ability.extra.per_money * (-amount_spent)
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.CHIPS,
