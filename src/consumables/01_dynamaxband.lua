@@ -1,12 +1,13 @@
 -- activate auto-gmax feature
 if agarmons_config.gmax then
-  local calculate_ref = SMODS.current_mod.calculate
-  SMODS.current_mod.calculate = function(self, context)
+  AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
     if calculate_ref then calculate_ref(self, context) end
     if context.first_hand_drawn then
       for _, card in pairs(SMODS.find_card("c_agar_dynamaxband")) do
         if card.ability.extra.target then
-          local target = AG.target_utils.find_leftmost(card.ability.extra.target)
+          local target = AG.target_utils.find_leftmost(function(joker)
+            return joker.unique_val == card.ability.extra.target
+          end)
           if target and not target.getting_sliced then
             AG.gmax.evolve(target)
             -- Event to fix dynamax band losing its charge but the target
@@ -23,7 +24,7 @@ if agarmons_config.gmax then
         end
       end
     end
-  end
+  end)
 end
 
 local dynamaxband = {
@@ -43,14 +44,15 @@ local dynamaxband = {
       "for the next {C:attention}3{} hands",
     }
   },
-  loc_vars = function(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'endless' }
     end
-    if center.ability.extra.target then
+    if card.ability.extra.target then
+      local target = AG.target_utils.find_leftmost(function(joker) return joker.unique_val == card.ability.extra.target end)
       return {
         key = "c_agar_dynamaxband_targeting",
-        vars = { localize { type = "name_text", set = "Joker", key = center.ability.extra.target } }
+        vars = { localize { type = "name_text", set = "Joker", key = target.config.center.key } }
       }
     end
   end,
@@ -68,7 +70,8 @@ local dynamaxband = {
       if card.ability.extra.target then
         card.ability.extra.target = nil
       else
-        card.ability.extra.target = target.config.center.key
+        card.ability.extra.target = target.unique_val
+        card.ability.extra.target__ID = target.unique_val__saved_ID or target.ID
       end
     end
   end,
@@ -82,8 +85,7 @@ local dynamaxband = {
       card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_reset") })
     end
     if context.selling_card and card.ability.extra.target then
-      local key = context.card.config.center.key
-      if key == card.ability.extra.target or AG.gmax.get_base_key(key) == card.ability.extra.target then
+      if context.card.unique_val == card.ability.extra.target then
         card.ability.extra.target = nil
       end
     end
@@ -98,6 +100,12 @@ local dynamaxband = {
     if G.STAGE == G.STAGES.RUN then
       card.children.center:set_sprite_pos(card.ability.extra.usable and { x = 0, y = 0 } or { x = 0, y = 1 })
       card.children.floating_sprite:set_sprite_pos(card.ability.extra.target and { x = 1, y = 1 } or { x = 1, y = 0 })
+    end
+  end,
+  load = function(self, card, card_table, other_card)
+    local target__ID = card_table.ability.extra.target__ID
+    if target__ID and G.ID <= target__ID then
+      G.ID = target__ID + 1
     end
   end,
 }
