@@ -39,3 +39,25 @@ function AG.list_utils.elem(list, item)
   end
   return false
 end
+
+function AG.list_utils.any(list, func)
+  -- if we didn't care about performance, we'd do it like this:
+  -- return #AG.list_utils.filter(list, func) > 0
+  for _, v in pairs(list) do
+    if func(v) then
+      return true
+    end
+  end
+  return false
+end
+
+function AG.list_utils.all(list, func)
+  -- if we didn't care about performance, we'd do it like this:
+  -- return #AG.list_utils.filter(list, func) == #list
+  for _, v in pairs(list) do
+    if not func(v) then
+      return false
+    end
+  end
+  return true
+end
