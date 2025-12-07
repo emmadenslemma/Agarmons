@@ -1,7 +1,6 @@
 -- activate auto-gmax feature
 if agarmons_config.gmax then
   AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
-    if calculate_ref then calculate_ref(self, context) end
     if context.first_hand_drawn then
       for _, card in pairs(SMODS.find_card("c_agar_dynamaxband")) do
         if card.ability.extra.target then
