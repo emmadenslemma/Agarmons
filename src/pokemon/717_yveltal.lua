@@ -59,14 +59,14 @@ local yveltal = {
       if context.card_added and context.cardarea == G.jokers
           and not context.card.ability.consumeable
           and energy_matches(context.card, "Dark") then
-        AG.energy.increase(context.card, card.ability.extra.energy_mod)
+        increment_energy(card, "Dark", card.ability.extra.energy_mod)
       end
     end
   end,
   add_to_deck = function(self, card, from_debuff)
     AG.energy.increase_limit(card.ability.extra.energy_limit_mod)
     AG.energy.increase_all("Dark", card.ability.extra.energy_mod)
-    AG.energy.increase(card, "Dark", card.ability.extra.energy_mod, true)
+    increment_energy(card, "Dark", card.ability.extra.energy_mod)
   end,
   remove_from_deck = function(self, card, from_debuff)
     AG.energy.decrease_limit(card.ability.extra.energy_limit_mod)
@@ -79,12 +79,12 @@ local init = function()
   local apply_type_sticker_orig = apply_type_sticker
   apply_type_sticker = function(card, ...)
     local yveltal_present = next(SMODS.find_card('j_agar_yveltal', true))
-    if yveltal_present and energy_matches(card, "Dark") then
-      AG.energy.decrease(card, "Dark")
+    if yveltal_present and energy_matches(card, "Dark") and not poke_is_in_collection(card) then
+      increment_energy(card, "Dark", -1)
     end
     apply_type_sticker_orig(card, ...)
-    if yveltal_present and energy_matches(card, "Dark") then
-      AG.energy.increase(card, "Dark")
+    if yveltal_present and energy_matches(card, "Dark") and not poke_is_in_collection(card) then
+      increment_energy(card, "Dark")
     end
   end
 end
