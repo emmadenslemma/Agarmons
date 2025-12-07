@@ -42,19 +42,13 @@ local function get_fuses(card)
   return fuses
 end
 
-local function get_distance(card, other_card)
-  local x1, x2 = card.T.x, other_card.T.x
-  local y1, y2 = card.T.y, other_card.T.y
-  return math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
-end
-
 local function get_valid_fuse_target(card)
   local fuses = get_fuses(card)
   if fuses then
     for _, fuse in ipairs(fuses) do
       for _, other_card in ipairs(get_adjacent_jokers(card, fuse.direction)) do
         if other_card.config.center.key == fuse.with
-            and get_distance(card, other_card) < fuse_dist then
+            and AG.get_distance(card, other_card) < fuse_dist then
           return {
             card = other_card,
             fuse = fuse,

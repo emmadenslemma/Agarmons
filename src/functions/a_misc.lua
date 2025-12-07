@@ -29,3 +29,9 @@ function AG.hookafterfunc(table, funcname, hook, always_run)
     end
   end
 end
+
+function AG.get_distance(card, other_card)
+  local x1, x2 = card.T.x, other_card.T.x
+  local y1, y2 = card.T.y, other_card.T.y
+  return math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
+end
