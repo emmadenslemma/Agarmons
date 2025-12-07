@@ -65,8 +65,10 @@ end
 local function load_pokemon_family(file)
   local names = AG.list_utils.map(file.list, function(a) return a.name end)
   pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = names
-  if file.family and #file.family > 1 then
-    pokermon.add_family(file.family)
+  if file.family then
+    if #file.family > 1 then
+      pokermon.add_family(file.family)
+    end
   elseif #names > 1 then
     pokermon.add_family(names)
   end
