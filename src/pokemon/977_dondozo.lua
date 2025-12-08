@@ -122,6 +122,7 @@ local dondozo_commander = {
 }
 
 return {
+  can_load = false,
   init = init,
   list = { dondozo, dondozo_commander, tatsugiri },
   family = {
