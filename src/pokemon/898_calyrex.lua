@@ -94,7 +94,6 @@ local calyrex_shadow = {
   ptype = "Psychic",
   gen = 8,
   aux_poke = true,
-  no_collection = true,
   blueprint_compat = true,
   custom_pool_func = true,
   calculate = function(self, card, context)
@@ -117,5 +116,5 @@ local calyrex_shadow = {
 
 return {
   config_key = "calyrex",
-  list = { calyrex, calyrex_ice, calyrex_shadow }
+  list = { calyrex, --[[calyrex_ice,]] calyrex_shadow }
 }
