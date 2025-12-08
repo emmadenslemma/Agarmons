@@ -17,8 +17,8 @@ local alolan_raichu = {
     if context.setting_blind then
       local lightning_jokers = #find_pokemon_type("Lightning")
       card:juice_up()
-      ease_poke_dollars(card, "alolan_raichu", card.ability.extra.money + lightning_jokers * card.ability.extra
-      .money_mod)
+      ease_poke_dollars(card, "alolan_raichu",
+        card.ability.extra.money + lightning_jokers * card.ability.extra.money_mod)
     end
     if context.joker_main and card.ability.extra.chips > 0 then
       return {
