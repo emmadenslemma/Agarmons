@@ -105,6 +105,7 @@ AG.hookafterfunc(Card, 'drag', function(self)
 
     local stay_juiced = true
     juice_card_until(self, function() return stay_juiced end, true)
+    juice_card_until(card, function() return stay_juiced end, true, 0.3)
 
     G.E_MANAGER:add_event(Event({
       trigger = 'condition',
@@ -127,13 +128,13 @@ AG.hookafterfunc(Card, 'drag', function(self)
   end
 end)
 
-SMODS.DrawStep {
-  key = 'ready_to_fuse',
-  order = 45,
-  func = function(self)
-    if self.ready_to_fuse then
-      self.children.center:draw_shader('agar_fuse')
-    end
-  end,
-  conditions = { vortex = false, facing = 'front' },
-}
+-- SMODS.DrawStep {
+--   key = 'ready_to_fuse',
+--   order = 45,
+--   func = function(self)
+--     if self.ready_to_fuse then
+--       self.children.center:draw_shader('agar_fuse')
+--     end
+--   end,
+--   conditions = { vortex = false, facing = 'front' },
+-- }
