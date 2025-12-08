@@ -25,7 +25,7 @@ local eternatus = {
     end
   end,
   in_pool = function(self)
-    return AG.target_utils.find_leftmost(AG.gmax.get_gmax_key) and pokemon_in_pool(self)
+    return poke_find_card(AG.gmax.get_gmax_key) and pokemon_in_pool(self)
   end
 }
 

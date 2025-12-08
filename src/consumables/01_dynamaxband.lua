@@ -4,7 +4,7 @@ if agarmons_config.gmax then
     if context.first_hand_drawn then
       for _, card in pairs(SMODS.find_card("c_agar_dynamaxband")) do
         if card.ability.extra.target then
-          local target = AG.target_utils.find_leftmost(function(joker)
+          local target = poke_find_card(function(joker)
             return joker.unique_val == card.ability.extra.target
           end)
           if target and not target.getting_sliced then
@@ -48,7 +48,7 @@ local dynamaxband = {
       info_queue[#info_queue+1] = { set = 'Other', key = 'endless' }
     end
     if card.ability.extra.target then
-      local target = AG.target_utils.find_leftmost(function(joker) return joker.unique_val == card.ability.extra.target end)
+      local target = poke_find_card(function(joker) return joker.unique_val == card.ability.extra.target end)
       return {
         key = "c_agar_dynamaxband_targeting",
         vars = { localize { type = "name_text", set = "Joker", key = target.config.center.key } }
@@ -61,7 +61,7 @@ local dynamaxband = {
   soul_set = "Item",
   soul_rate = .0066,
   use = function(self, card)
-    local target = AG.target_utils.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
+    local target = poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
     if G.GAME.blind.in_blind then
       AG.gmax.evolve(target)
       card.ability.extra.usable = false
@@ -76,7 +76,7 @@ local dynamaxband = {
   end,
   can_use = function(self, card)
     return card.ability.extra.usable
-        and AG.target_utils.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
+        and poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
   end,
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
@@ -93,7 +93,7 @@ local dynamaxband = {
     return true
   end,
   in_pool = function(self)
-    return AG.target_utils.find_leftmost(AG.gmax.get_gmax_key)
+    return poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
   end,
   update = function(self, card, dt)
     if G.STAGE == G.STAGES.RUN then

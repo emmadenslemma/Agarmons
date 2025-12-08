@@ -27,7 +27,7 @@ local blueorb = {
     local target_key = card.ability.extra.active and "j_agar_primal_kyogre" or "j_agar_kyogre"
     local evolve_to = card.ability.extra.active and "j_agar_kyogre" or "j_agar_primal_kyogre"
 
-    local target = AG.target_utils.find_leftmost_or_highlighted(target_key)
+    local target = poke_find_leftmost_or_highlighted(target_key)
 
     poke_evolve(target, evolve_to)
 
@@ -39,7 +39,7 @@ local blueorb = {
 
     local target_key = card.ability.extra.active and "j_agar_primal_kyogre" or "j_agar_kyogre"
 
-    return AG.target_utils.find_leftmost_or_highlighted(target_key)
+    return poke_find_leftmost_or_highlighted(target_key)
   end,
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
@@ -51,11 +51,11 @@ local blueorb = {
     return true
   end,
   in_pool = function(self)
-    return AG.target_utils.find_leftmost("j_agar_kyogre")
+    return next(SMODS.find_card("j_agar_kyogre"))
   end,
   remove_from_deck = function(self, card, from_debuff)
     if card.ability.extra.active then
-      local target = AG.target_utils.find_leftmost("j_agar_primal_kyogre")
+      local target = SMODS.find_card("j_agar_primal_kyogre")[1]
       if target then
         poke_evolve(target, "j_agar_kyogre")
       end

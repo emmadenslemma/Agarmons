@@ -33,10 +33,13 @@ function AG.target_utils.find_card(key_or_func, use_highlighted)
   end
 end
 
+---@deprecated use `poke_find_card` instead
 function AG.target_utils.find_leftmost(key_or_func, use_highlighted)
   return AG.target_utils.find_card(key_or_func, use_highlighted)[1]
 end
 
+---@deprecated use `poke_find_leftmost_or_highlighted` instead
 function AG.target_utils.find_leftmost_or_highlighted(key_or_func)
+  ---@diagnostic disable-next-line: deprecated
   return AG.target_utils.find_leftmost(key_or_func, true)
 end
