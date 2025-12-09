@@ -73,8 +73,8 @@ SMODS.DrawStep({
     key = 'pikachu_hats',
     order = 21,
     func = function(self)
-        if agarmons_config.pikachus_with_hats and self.config.center.key == 'j_poke_pikachu' and self.ability.extra.wearing_hat ~= false then
-            if self.ability.extra.wearing_hat or pseudorandom(pseudoseed('pikachu_can_hats')) > PIKACHU_HAT_RATE then
+        if agarmons_config.pikachus_with_hats and self.config.center.key == 'j_poke_pikachu' and self.ability.extra.wearing_hat ~= -1 then
+            if self.ability.extra.wearing_hat or pseudorandom(pseudoseed('pikachu_can_hats')) < PIKACHU_HAT_RATE then
                 local wearing_hat = self.ability.extra.wearing_hat
                     or math.floor(pseudorandom(pseudoseed('pikachu_hats')) * PIKACHU_HAT_VARIANTS)
                 self.ability.extra.wearing_hat = wearing_hat
@@ -91,7 +91,7 @@ SMODS.DrawStep({
                     nil,
                     is_mydude_pikachu and (G.CARD_H / 95 * 2)) -- move the hat down 2 pixels only for MyDude's custom pikachu
             else
-                self.ability.extra.wearing_hat = false
+                self.ability.extra.wearing_hat = -1
             end
         end
     end,
