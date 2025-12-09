@@ -28,4 +28,5 @@ return {
   gmax = true,
   new_megas = true,
   pikachus_with_hats = true,
+  pikachu_hat_rate = 100,
 }

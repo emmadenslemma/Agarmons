@@ -67,14 +67,13 @@ SMODS.Atlas({
 })
 
 PIKACHU_HAT_VARIANTS = 8
-PIKACHU_HAT_RATE = 1
 
 SMODS.DrawStep({
     key = 'pikachu_hats',
     order = 21,
     func = function(self)
         if agarmons_config.pikachus_with_hats and self.config.center.key == 'j_poke_pikachu' and self.ability.extra.wearing_hat ~= -1 then
-            if self.ability.extra.wearing_hat or pseudorandom(pseudoseed('pikachu_can_hats')) < PIKACHU_HAT_RATE then
+            if self.ability.extra.wearing_hat or pseudorandom(pseudoseed('pikachu_can_hats')) < agarmons_config.pikachu_hat_rate / 100 then
                 local wearing_hat = self.ability.extra.wearing_hat
                     or math.floor(pseudorandom(pseudoseed('pikachu_hats')) * PIKACHU_HAT_VARIANTS)
                 self.ability.extra.wearing_hat = wearing_hat
