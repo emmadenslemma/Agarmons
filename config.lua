@@ -27,4 +27,5 @@ return {
   calyrex = true,
   gmax = true,
   new_megas = true,
+  pikachus_with_hats = true,
 }
