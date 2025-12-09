@@ -9,8 +9,8 @@ local torkoal = {
     end
     local Xmult_total = 1
     if G.deck and G.deck.cards then
-      for _, card in pairs(G.deck.cards) do
-        if SMODS.has_enhancement(card, 'm_mult') then
+      for _, card_in_deck in pairs(G.deck.cards) do
+        if SMODS.has_enhancement(card_in_deck, 'm_mult') then
           Xmult_total = Xmult_total + card.ability.extra.Xmult_mod
         end
       end
