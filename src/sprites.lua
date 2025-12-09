@@ -93,4 +93,5 @@ SMODS.DrawStep({
             end
         end
     end,
+    conditions = { vortex = false, facing = 'front' }
 })
