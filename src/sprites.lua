@@ -83,13 +83,12 @@ SMODS.DrawStep({
                     or Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["agar_pikachu_hats"],
                         { x = wearing_hat, y = 0 })
 
-                local is_mydude_pikachu = poke_get_atlas_prefix('pikachu', PokemonSprites['pikachu']) ==
-                    "AtlasJokersSeriesA"
+                local using_mydude_pikachu = self.children.center.atlas.key == 'poke_AtlasJokersSeriesANatdex'
 
                 G.shared_pikachu_hats[wearing_hat].role.draw_major = self
                 G.shared_pikachu_hats[wearing_hat]:draw_shader('dissolve', nil, nil, nil, self.children.center, nil, nil,
                     nil,
-                    is_mydude_pikachu and (G.CARD_H / 95 * 2)) -- move the hat down 2 pixels only for MyDude's custom pikachu
+                    using_mydude_pikachu and (G.CARD_H / 95 * 2)) -- move the hat down 2 pixels only for MyDude's custom pikachu
             else
                 self.ability.extra.wearing_hat = -1
             end
