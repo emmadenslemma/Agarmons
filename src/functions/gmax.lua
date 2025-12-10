@@ -1,5 +1,5 @@
 AG.gmax = {
-  scale = 1.15,
+  scale = 1.,
   -- stops Snorlax from spawning leftovers and machamp from giving extra hands
   evolving = false,
 }
