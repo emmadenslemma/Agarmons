@@ -20,7 +20,7 @@ local dondozo = {
   blueprint_compat = true,
   calculate = function(self, card, context)
   end,
-  fuses = { with = 'j_agar_tatsugiri', into = 'j_agar_dondozo_commander', direction = 'left' }
+  fuses = { with = 'j_agar_tatsugiri', into = 'j_agar_dondozo_commander', direction = 'left', evo_this = true }
 }
 
 -- Tatsugiri 978
