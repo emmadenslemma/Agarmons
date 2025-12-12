@@ -56,6 +56,6 @@ SMODS.current_mod.calculate = function(self, context)
 end
 
 return {
-  can_load = agarmons_config.cosmog,
+  can_load = false, -- agarmons_config.cosmog,
   list = { nebby }
 }
