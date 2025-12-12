@@ -26,7 +26,7 @@ local cosmog = {
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue + 1] = { set = "Joker", key = "j_splash", config = {} }
+      info_queue[#info_queue+1] = { set = "Joker", key = "j_splash", config = {} }
     end
     local ret = { vars = { card.ability.extra.rounds } }
     if G.GAME.modifiers.nebby then
@@ -124,12 +124,12 @@ local solgaleo = {
       local hand_cards = {}
       local conv_cards = {}
       for _, v in pairs(G.hand.cards) do
-        hand_cards[#hand_cards + 1] = v
+        hand_cards[#hand_cards+1] = v
       end
       pseudoshuffle(hand_cards, pseudoseed("solgaleo"))
       local limit = math.min(3, #hand_cards)
       for i = 1, limit do
-        conv_cards[#conv_cards + 1] = hand_cards[i]
+        conv_cards[#conv_cards+1] = hand_cards[i]
       end
       for i = 1, limit do
         assert(SMODS.change_base(conv_cards[i], suit))
@@ -246,12 +246,12 @@ local lunala = {
         local hand_cards = {}
         local conv_cards = {}
         for _, v in pairs(G.hand.cards) do
-          hand_cards[#hand_cards + 1] = v
+          hand_cards[#hand_cards+1] = v
         end
         pseudoshuffle(hand_cards, pseudoseed("lunala"))
         local limit = math.min(3, #hand_cards)
         for i = 1, limit do
-          conv_cards[#conv_cards + 1] = hand_cards[i]
+          conv_cards[#conv_cards+1] = hand_cards[i]
         end
         for i = 1, limit do
           assert(SMODS.change_base(conv_cards[i], suit))
@@ -326,5 +326,5 @@ end
 return {
   config_key = "cosmog",
   init = init,
-  list = { cosmog, cosmoem, solgaleo, lunala }
+  list = { --[[cosmog, cosmoem,]] solgaleo, lunala }
 }
