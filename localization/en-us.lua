@@ -920,6 +920,7 @@ return {
             agar_lunadon_end_2 = "This is my LunaLunaDonDon team",
 
             -- Settings
+            agar_dondozo_and_tatsugiri = "Dondozo and Tatsugiri",
             agar_lake_trio = "Uxie, Mesprit, and Azelf",
             agar_lunala_and_solgaleo = "Lunala and Solgaleo",
             agar_gigantamaxing = "Gigantamaxing",
