@@ -41,7 +41,7 @@ local tatsugiri = {
       })[form]
     }
   end,
-  rarity = "poke_safari",
+  rarity = 1,
   cost = 4,
   stage = "Basic",
   ptype = "Dragon",
