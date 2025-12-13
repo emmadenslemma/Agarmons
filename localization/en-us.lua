@@ -675,8 +675,8 @@ return {
             j_agar_tatsugiri_stretchy = {
                 name = "Tatsugiri (Stretchy)",
                 text = {
-                    "Each card held in",
-                    "hand gives {C:money}$#1#{}",
+                    "Played cards give",
+                    "{C:money}$#1#{} when scored",
                     "{C:money}-$#2#{} for every",
                     "hand played",
                 }

@@ -27,7 +27,7 @@ local dondozo = {
 local tatsugiri = {
   name = "tatsugiri",
   pos = { x = 0, y = 3 },
-  config = { extra = { form = nil, chips = 24, chip_mod = 4, mult = 5, mult_mod = 1, money = 1, money_mod = 0.25 } },
+  config = { extra = { form = nil, chips = 24, chip_mod = 2, mult = 5, mult_mod = 1, money = 1, money_mod = 0.25 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
@@ -42,83 +42,46 @@ local tatsugiri = {
     }
   end,
   rarity = 1,
-  cost = 4,
+  cost = 5,
   stage = "Basic",
   ptype = "Dragon",
   gen = 9,
   atlas = "AtlasJokersBasicGen09",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    -- Yes, there are 3 calculate functions in here.
-    if card.ability.extra.form == "curly" then
-      if context.individual and context.cardarea == G.play then
+    local form = card.ability.extra.form or "curly"
+    local values = ({
+      ["curly"] = { "chips", "chip_mod", G.C.CHIPS },
+      ["droopy"] = { "mult", "mult_mod", G.C.MULT },
+      ["stretchy"] = { "money", "money_mod", G.C.MONEY },
+    })[form]
+
+    local value, value_mod, ret_colour = values[1], values[2], values[3]
+
+    if context.individual and context.cardarea == G.play then
+      return form == "stretchy" and {
+        dollars = ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
+      } or {
+        [value] = card.ability.extra[value]
+      }
+    end
+
+    if context.after and not context.blueprint then
+      card.ability.extra[value] = card.ability.extra[value] - card.ability.extra[value_mod]
+      if card.ability.extra[value] <= 0 then
+        SMODS.destroy_cards(card, nil, nil, true)
         return {
-          chips = card.ability.extra.chips
+          message = localize('k_eaten_ex'),
+          colour = ret_colour,
         }
-      end
-      if context.after and not context.blueprint then
-        card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_mod
-        if card.ability.extra.chips <= 0 then
-          SMODS.destroy_cards(card, nil, nil, true)
-          return {
-            message = localize('k_eaten_ex'),
-            colour = G.C.CHIPS,
-          }
-        else
-          return {
-            message = localize { type = 'variable', key = 'a_chips_minus', vars = { card.ability.extra.chip_mod } },
-            colour = G.C.CHIPS,
-          }
-        end
-      end
-    elseif card.ability.extra.form == "droopy" then
-      if context.individual and context.cardarea == G.play then
+      else
+        local message = form == "stretchy"
+            and ('-' .. localize('$') .. card.ability.extra.money_mod)
+            or localize { type = 'variable', key = 'a_' .. value .. '_minus', vars = { card.ability.extra[value_mod] } }
         return {
-          mult = card.ability.extra.mult
+          message = message,
+          colour = ret_colour,
         }
-      end
-      if context.after and not context.blueprint then
-        card.ability.extra.mult = card.ability.extra.mult - card.ability.extra.mult_mod
-        if card.ability.extra.mult <= 0 then
-          SMODS.destroy_cards(card, nil, nil, true)
-          return {
-            message = localize('k_eaten_ex'),
-            colour = G.C.MULT,
-          }
-        else
-          return {
-            message = localize { type = 'variable', key = 'a_mult_minus', vars = { card.ability.extra.mult_mod } },
-            colour = G.C.MULT,
-          }
-        end
-      end
-    elseif card.ability.extra.form == "stretchy" then
-      if context.individual and context.cardarea == G.hand and not context.end_of_round then
-        if context.other_card.debuff then
-          return {
-            message = localize('k_debuffed'),
-            colour = G.C.RED,
-          }
-        else
-          return {
-            dollars = ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
-          }
-        end
-      end
-      if context.after and not context.blueprint then
-        card.ability.extra.money = card.ability.extra.money - card.ability.extra.money_mod
-        if card.ability.extra.money <= 0 then
-          SMODS.destroy_cards(card, nil, nil, true)
-          return {
-            message = localize('k_eaten_ex'),
-            colour = G.C.MONEY,
-          }
-        else
-          return {
-            message = '-' .. localize('$') .. card.ability.extra.money_mod,
-            colour = G.C.MONEY,
-          }
-        end
       end
     end
   end,
