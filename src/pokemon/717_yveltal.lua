@@ -1,14 +1,14 @@
 -- Yveltal 717
 local yveltal = {
   name = "yveltal",
-  config = { extra = { energy_limit_mod = 1, energy_mod = 1 } },
+  config = { extra = { energy_limit_mod = 1, energy_mod = 1, Xmult = 1.5 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'energize' }
       info_queue[#info_queue+1] = G.P_CENTERS.c_death
     end
-    return { vars = { card.ability.extra.energy_limit_mod, card.ability.extra.energy_mod } }
+    return { vars = { card.ability.extra.energy_limit_mod, card.ability.extra.energy_mod, card.ability.extra.Xmult } }
   end,
   designer = "Eternalnacho",
   rarity = 4,
@@ -18,6 +18,11 @@ local yveltal = {
   gen = 6,
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        Xmult = card.ability.extra.Xmult
+      }
+    end
     if not context.blueprint then
       -- Stolen from Vanilla Remade Ceremonial Dagger
       if context.setting_blind and not card.getting_sliced then

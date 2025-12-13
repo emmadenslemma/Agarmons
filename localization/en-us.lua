@@ -352,6 +352,7 @@ return {
                     "{C:pink}+#1#{} Energy Limit",
                     "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#2#",
                     "{br:2}ERROR - CONTACT STEAK",
+                    "{C:white,X:mult}X#3#{} Mult",
                     "When Blind is selected,",
                     "destroy Joker to the right",
                     "and create a {C:attention}Death{} card",
