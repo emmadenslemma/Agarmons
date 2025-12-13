@@ -4,6 +4,7 @@
 	#define MY_HIGHP_OR_MEDIUMP mediump
 #endif
 
+extern MY_HIGHP_OR_MEDIUMP vec2 fuse;
 extern MY_HIGHP_OR_MEDIUMP number dissolve;
 extern MY_HIGHP_OR_MEDIUMP number time;
 extern MY_HIGHP_OR_MEDIUMP vec4 texture_details;
@@ -12,6 +13,22 @@ extern bool shadow;
 extern MY_HIGHP_OR_MEDIUMP vec4 burn_colour_1;
 extern MY_HIGHP_OR_MEDIUMP vec4 burn_colour_2;
 
+vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv);
+
+vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
+{
+    MY_HIGHP_OR_MEDIUMP vec4 tex = Texel( texture, texture_coords);
+    MY_HIGHP_OR_MEDIUMP vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba)/texture_details.ba;
+
+    MY_HIGHP_OR_MEDIUMP float timefac = fract(fuse.g / 2.) * 4.;
+    MY_HIGHP_OR_MEDIUMP float center_dist = length(.5 - uv) * 2.;
+    tex.rbg = tex.rbg / center_dist;
+    tex.a = tex.a * (step(timefac, uv.y) - step(timefac+(1./texture_details.a), uv.y));
+
+    return dissolve_mask(tex, texture_coords, uv);
+}
+
+// Required functions
 vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv)
 {
     if (dissolve < 0.001) {
@@ -48,24 +65,6 @@ vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv)
     }
 
     return vec4(shadow ? vec3(0.,0.,0.) : tex.xyz, res > adjusted_dissolve ? (shadow ? tex.a*0.3: tex.a) : .0);
-}
-
-vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
-{
-    MY_HIGHP_OR_MEDIUMP vec4 tex = Texel( texture, texture_coords);
-    MY_HIGHP_OR_MEDIUMP vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba)/texture_details.ba;
-
-    if (!shadow &&  dissolve > 0.01){
-        if (burn_colour_2.a > 0.01){
-            tex.rgb = tex.rgb*(1.-0.6*dissolve) + 0.6*burn_colour_2.rgb*dissolve;
-        } else if (burn_colour_1.a > 0.01){
-            tex.rgb = tex.rgb*(1.-0.6*dissolve) + 0.6*burn_colour_1.rgb*dissolve;
-        }
-    }
-
-    tex.b = 0.9;
-
-    return dissolve_mask(tex, texture_coords, uv);
 }
 
 extern MY_HIGHP_OR_MEDIUMP vec2 mouse_screen_pos;

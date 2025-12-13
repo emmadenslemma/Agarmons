@@ -128,13 +128,13 @@ AG.hookafterfunc(Card, 'drag', function(self)
   end
 end)
 
--- SMODS.DrawStep {
---   key = 'ready_to_fuse',
---   order = 45,
---   func = function(self)
---     if self.ready_to_fuse then
---       self.children.center:draw_shader('agar_fuse')
---     end
---   end,
---   conditions = { vortex = false, facing = 'front' },
--- }
+SMODS.DrawStep {
+  key = 'ready_to_fuse',
+  order = 45,
+  func = function(self)
+    if self.ready_to_fuse then
+      self.children.center:draw_shader('agar_fuse', nil, self.ARGS.send_to_shader)
+    end
+  end,
+  conditions = { vortex = false, facing = 'front' },
+}
