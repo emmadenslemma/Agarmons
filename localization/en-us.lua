@@ -647,22 +647,28 @@ return {
             j_agar_tatsugiri_curly = {
                 name = "Tatsugiri (Curly)",
                 text = {
-                    "{C:green}#1# in #2#{} chance to be eaten",
-                    "at end of round",
-                }
-            },
-            j_agar_tatsugiri_stretchy = {
-                name = "Tatsugiri (Stretchy)",
-                text = {
-                    "{C:green}#1# in #2#{} chance to be eaten",
-                    "at end of round",
+                    "Played cards give",
+                    "{C:chips}+#1#{} Chips when scored",
+                    "{C:chips}-#2#{} Chips for every",
+                    "hand played",
                 }
             },
             j_agar_tatsugiri_droopy = {
                 name = "Tatsugiri (Droopy)",
                 text = {
-                    "{C:green}#1# in #2#{} chance to be eaten",
-                    "at end of round",
+                    "Played cards give",
+                    "{C:mult}+#1#{} Mult when scored",
+                    "{C:mult}-#2#{} Mult for every",
+                    "hand played",
+                }
+            },
+            j_agar_tatsugiri_stretchy = {
+                name = "Tatsugiri (Stretchy)",
+                text = {
+                    "Each card held in",
+                    "hand gives {C:money}$#1#{}",
+                    "{C:money}-$#2#{} for every",
+                    "hand played",
                 }
             },
             -- All GMAX forms use `loc_txt` for their English localization
