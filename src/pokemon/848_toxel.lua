@@ -64,7 +64,8 @@ local toxtricity = {
       local money = card.ability.extra.money
 
       if card.ability.extra.form == "amped" then
-        money = money + card.ability.extra.money_mod * math.floor((G.GAME.current_round.toxic.toxicXMult - 1) / card.ability.extra.threshold)
+        money = money + card.ability.extra.money_mod *
+            math.floor((G.GAME.current_round.toxic.toxicXMult - 1) / card.ability.extra.threshold)
       end
 
       return {
@@ -83,6 +84,7 @@ local toxtricity = {
     self:set_sprites(card)
   end,
   set_sprites = function(self, card, front)
+    if not self.discovered and not self.bypass_discovery_center then return end
     if card.ability and card.ability.extra and card.ability.extra.form then
       local pos = card.ability.extra.form == "amped"
           and { x = 6, y = 0 }

@@ -93,6 +93,7 @@ local tatsugiri = {
     self:set_sprites(card)
   end,
   set_sprites = function(self, card, front)
+    if not self.discovered and not self.bypass_discovery_center then return end
     if card.ability and card.ability.extra and card.ability.extra.form then
       local pos = ({
         ["curly"] = { x = 0, y = 3 },
@@ -137,6 +138,7 @@ local dondozo_commander = {
     self:set_sprites(card)
   end,
   set_sprites = function(self, card, front)
+    if not self.discovered and not self.bypass_discovery_center then return end
     if card.ability and card.ability.extra and card.ability.extra.form then
       local pos = ({
         ["curly"] = { x = 0, y = 0 },
