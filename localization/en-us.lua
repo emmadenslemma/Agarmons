@@ -644,6 +644,15 @@ return {
                     "when scored",
                 }
             },
+            j_agar_tatsugiri = {
+                name = "Tatsugiri",
+                text = {
+                    "Played cards give",
+                    "{C:chips}+#1#{} Chips when scored",
+                    "{C:chips}-#2#{} Chips for every",
+                    "hand played",
+                }
+            },
             j_agar_tatsugiri_curly = {
                 name = "Tatsugiri (Curly)",
                 text = {
