@@ -190,7 +190,7 @@ local dondozo_commander = {
 }
 
 return {
-  can_load = false,
+  config_key = "dondozo",
   list = { dondozo, dondozo_commander, tatsugiri },
   family = {
     'dondozo',
