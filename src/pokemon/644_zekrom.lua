@@ -35,6 +35,7 @@ local zekrom = {
 }
 
 return {
+  can_load = false,
   config_key = "zekrom",
   list = { zekrom }
 }

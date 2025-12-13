@@ -35,6 +35,7 @@ local reshiram = {
 }
 
 return {
+  can_load = false,
   config_key = "reshiram",
   list = { reshiram }
 }

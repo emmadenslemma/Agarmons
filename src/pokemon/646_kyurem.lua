@@ -85,6 +85,7 @@ local kyurem_black = {
 }
 
 return {
+  can_load = false,
   config_key = "kyurem",
   list = { kyurem, kyurem_white, kyurem_black }
 }
