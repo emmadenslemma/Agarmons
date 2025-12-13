@@ -28,6 +28,7 @@ return {
   toxel = true,
   eternatus = true,
   calyrex = true,
+  dondozo = true,
   gmax = true,
   new_megas = true,
   pikachus_with_hats = true,
