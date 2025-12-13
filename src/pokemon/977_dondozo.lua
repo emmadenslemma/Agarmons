@@ -27,14 +27,19 @@ local dondozo = {
 local tatsugiri = {
   name = "tatsugiri",
   pos = { x = 0, y = 3 },
-  config = { extra = { form = nil, num = 1, dem = 3 } },
+  config = { extra = { form = nil, chips = 24, chip_mod = 4, mult = 5, mult_mod = 1, money = 1, money_mod = 0.25 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form
     local key = self.key .. '_' .. form
-    local num, dem = SMODS.get_probability_vars(self, card.ability.extra.num, card.ability.extra.dem,
-      'tatsugiri_' .. form)
-    return { key = key, vars = { num, dem } }
+    return {
+      key = key,
+      vars = ({
+        ["curly"] = { card.ability.extra.chips, card.ability.extra.chip_mod },
+        ["droopy"] = { card.ability.extra.mult, card.ability.extra.mult_mod },
+        ["stretchy"] = { card.ability.extra.money, card.ability.extra.money_mod },
+      })[form]
+    }
   end,
   rarity = "poke_safari",
   cost = 4,
@@ -44,13 +49,76 @@ local tatsugiri = {
   atlas = "AtlasJokersBasicGen09",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-      if SMODS.pseudorandom_probability(card, 'tatsugiri_' .. card.ability.extra.form, card.ability.extra.num, card.ability.extra.dem) then
-        ---@diagnostic disable-next-line: redundant-parameter
-        SMODS.destroy_cards(card, nil, nil, true)
+    -- Yes, there are 3 calculate functions in here.
+    if card.ability.extra.form == "curly" then
+      if context.individual and context.cardarea == G.play then
         return {
-          message = localize('k_eaten_ex')
+          chips = card.ability.extra.chips
         }
+      end
+      if context.after and not context.blueprint then
+        card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_mod
+        if card.ability.extra.chips <= 0 then
+          SMODS.destroy_cards(card, nil, nil, true)
+          return {
+            message = localize('k_eaten_ex'),
+            colour = G.C.CHIPS,
+          }
+        else
+          return {
+            message = localize { type = 'variable', key = 'a_chips_minus', vars = { card.ability.extra.chip_mod } },
+            colour = G.C.CHIPS,
+          }
+        end
+      end
+    elseif card.ability.extra.form == "droopy" then
+      if context.individual and context.cardarea == G.play then
+        return {
+          mult = card.ability.extra.mult
+        }
+      end
+      if context.after and not context.blueprint then
+        card.ability.extra.mult = card.ability.extra.mult - card.ability.extra.mult_mod
+        if card.ability.extra.mult <= 0 then
+          SMODS.destroy_cards(card, nil, nil, true)
+          return {
+            message = localize('k_eaten_ex'),
+            colour = G.C.MULT,
+          }
+        else
+          return {
+            message = localize { type = 'variable', key = 'a_mult_minus', vars = { card.ability.extra.mult_mod } },
+            colour = G.C.MULT,
+          }
+        end
+      end
+    elseif card.ability.extra.form == "stretchy" then
+      if context.individual and context.cardarea == G.hand and not context.end_of_round then
+        if context.other_card.debuff then
+          return {
+            message = localize('k_debuffed'),
+            colour = G.C.RED,
+          }
+        else
+          return {
+            dollars = ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
+          }
+        end
+      end
+      if context.after and not context.blueprint then
+        card.ability.extra.money = card.ability.extra.money - card.ability.extra.money_mod
+        if card.ability.extra.money <= 0 then
+          SMODS.destroy_cards(card, nil, nil, true)
+          return {
+            message = localize('k_eaten_ex'),
+            colour = G.C.MONEY,
+          }
+        else
+          return {
+            message = '-' .. localize('$') .. card.ability.extra.money_mod,
+            colour = G.C.MONEY,
+          }
+        end
       end
     end
   end,
@@ -123,7 +191,6 @@ local dondozo_commander = {
 
 return {
   can_load = false,
-  init = init,
   list = { dondozo, dondozo_commander, tatsugiri },
   family = {
     'dondozo',
