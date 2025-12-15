@@ -39,6 +39,7 @@ local cosmog = {
   stage = "Legendary",
   ptype = "Psychic",
   gen = 7,
+  no_collection = true,
   custom_pool_func = true,
   calculate = function(self, card, context)
     return level_evo(self, card, context, "j_agar_cosmoem")
@@ -70,6 +71,7 @@ local cosmoem = {
   stage = "Legendary",
   ptype = "Psychic",
   gen = 7,
+  no_collection = true,
   custom_pool_func = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -326,5 +328,5 @@ end
 return {
   config_key = "cosmog",
   init = init,
-  list = { --[[cosmog, cosmoem,]] solgaleo, lunala }
+  list = { cosmog, cosmoem, solgaleo, lunala }
 }
