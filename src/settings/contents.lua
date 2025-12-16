@@ -21,7 +21,7 @@ return {
         -- { list = { "j_agar_scorbunny", "j_agar_raboot", "j_agar_cinderace" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_scorbunny" } end, config_key = "scorbunny" },
         -- { list = { "j_agar_sobble", "j_agar_drizzile", "j_agar_inteleon" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sobble" } end, config_key = "sobble" },
         { list = { "j_agar_toxel", "j_agar_toxtricity" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxtricity" } end, config_key = "toxel" },
-        { list = { "j_agar_dondozo", "j_agar_tatsugiri" }, label = function() return localize('agar_dondozo_and_tatsugiri') end, config_key = "dondozo" },
+        { list = { "j_agar_tatsugiri" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_tatsugiri" } end, config_key = "dondozo" },
         { list = { "j_poke_gmax_charizard", "j_poke_gmax_butterfree", "j_poke_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
         { list = { "j_poke_mega_dragonite", "j_poke_mega_victreebel", "j_poke_mega_starmie" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
       }
