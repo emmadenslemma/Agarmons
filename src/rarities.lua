@@ -11,3 +11,7 @@ SMODS.Rarity {
   badge_colour = HEX("FF589E"),
   pools = { ["Joker"] = true },
 }
+
+poke_add_stage("Gigantamax")
+poke_add_stage("Primal", "Legendary")
+poke_add_stage("Eternamax", "Legendary")
