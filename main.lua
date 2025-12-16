@@ -2,6 +2,10 @@ AG = {}
 
 agarmons_config = SMODS.current_mod.config
 
+-- -- uncomment for hats on your pikachus:
+-- agarmons_config.pikachus_with_hats = true
+-- agarmons_config.pikachu_hat_rate = 100 -- how often pikachu gets a hat, in percentages
+
 SMODS.current_mod.optional_features = {
   retrigger_joker = true,
   quantum_enhancements = true,
