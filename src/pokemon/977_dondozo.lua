@@ -27,7 +27,7 @@ local dondozo = {
 local tatsugiri = {
   name = "tatsugiri",
   pos = { x = 0, y = 3 },
-  config = { extra = { form = nil, chips = 20, chip_mod = 2, mult = 4, mult_mod = 1, money = 1, money_mod = 0.25 } },
+  config = { extra = { form = nil, chips = 24, chip_mod = 2, mult = 5, mult_mod = 1, money = 1, money_mod = 0.25 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
