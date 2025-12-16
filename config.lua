@@ -31,6 +31,6 @@ return {
   dondozo = true,
   gmax = true,
   new_megas = true,
-  pikachus_with_hats = true,
+  pikachus_with_hats = false,
   pikachu_hat_rate = 100,
 }
