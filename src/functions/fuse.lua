@@ -96,12 +96,11 @@ end)
 
 -- Decide when to draw the 'fuse' shader
 AG.hookafterfunc(Card, 'drag', function(self)
-  if self.ready_to_fuse or not can_fuse(self) then return end
+  if self.ready_to_fuse_with or not can_fuse(self) then return end
   local target = get_valid_fuse_target(self)
   if target then
     local card = target.card
-    self.ready_to_fuse = true
-    card.ready_to_fuse = true
+    self.ready_to_fuse_with = card
 
     local stay_juiced = true
     juice_card_until(self, function() return stay_juiced end, true)
@@ -117,8 +116,7 @@ AG.hookafterfunc(Card, 'drag', function(self)
           return false
         end
 
-        self.ready_to_fuse = false
-        card.ready_to_fuse = false
+        self.ready_to_fuse_with = nil
         stay_juiced = false
         return true
       end
@@ -128,13 +126,37 @@ AG.hookafterfunc(Card, 'drag', function(self)
   end
 end)
 
-SMODS.DrawStep {
-  key = 'ready_to_fuse',
-  order = 45,
-  func = function(self)
-    if self.ready_to_fuse then
-      self.children.center:draw_shader('agar_fuse', nil, self.ARGS.send_to_shader)
-    end
-  end,
-  conditions = { vortex = false, facing = 'front' },
-}
+-- SMODS.DrawStep {
+--   key = 'ready_to_fuse',
+--   order = 45,
+--   func = function(self)
+--     if self.ready_to_fuse_with then
+--       local sprite = self.children.center
+
+--       local x_offset = (self.ready_to_fuse_with.VT.x - self.VT.x) / 2
+--       local y_offset = (self.ready_to_fuse_with.VT.y - self.VT.y) / 2
+
+--       -- local magnitude = math.sqrt(x_offset ^ 2 + y_offset ^ 2)
+
+--       local send_to_shader = {
+--         { name = 'texture_details', val = sprite:get_pos_pixel() },
+--         { name = 'image_details', val = sprite:get_image_dims() },
+--         { name = 'offset', val = { x_offset, y_offset } }
+--       }
+
+--       sprite:draw_shader(
+--         'agar_fuse',
+--         nil,
+--         send_to_shader,
+--         true,
+--         sprite, -- this is required for the offsets to apply
+--         nil,
+--         nil,
+--         x_offset,
+--         y_offset,
+--         true
+--       )
+--     end
+--   end,
+--   conditions = { vortex = false, facing = 'front' },
+-- }
