@@ -38,7 +38,6 @@ local mega_pyroar = {
       }
     end
   end,
-  artist = "KingOfThe-X-Roads",
 }
 
 local function init()

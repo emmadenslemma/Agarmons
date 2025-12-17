@@ -25,7 +25,6 @@ local mega_victreebel = {
     end
   end,
   designer = "Alber_Pro",
-  artist = "KingOfThe-X-Roads",
 }
 
 local function init()

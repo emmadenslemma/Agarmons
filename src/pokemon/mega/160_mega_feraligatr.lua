@@ -28,7 +28,6 @@ local mega_feraligatr = {
     end
   end,
   designer = "Fox",
-  artist = "RetroNC",
 }
 
 local function init()
