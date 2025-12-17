@@ -75,6 +75,16 @@ return {
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
+            j_poke_mega_skarmory = {
+                name = "Mega Skarmory",
+                text = {
+                    "{C:purple}+#1# Hazards",
+                    "Played {C:attention}Hazard{} cards",
+                    "give {X:mult,C:white}X#2#{} Mult for each",
+                    "{C:attention}Gold{} or {C:attention}Steel{} card",
+                    "held in hand when scored",
+                }
+            },
             j_agar_torkoal = {
                 name = "Torkoal",
                 text = {
