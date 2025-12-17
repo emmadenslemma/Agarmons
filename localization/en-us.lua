@@ -70,7 +70,7 @@ return {
             j_poke_mega_feraligatr = {
                 name = "Mega Feraligatr",
                 text = {
-                    "{C:white,X:mult}X#1#{} Mult for each",
+                    "{C:white,X:mult}X#1#{} Mult for each scoring",
                     "card played this round",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
