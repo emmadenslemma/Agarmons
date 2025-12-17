@@ -7,6 +7,8 @@ function AG.append_to_family(existing_name, new_name, to_end)
       end
     end
   end
+  -- if no family is found:
+  pokermon.add_family({ existing_name, new_name })
 end
 
 ---@deprecated
