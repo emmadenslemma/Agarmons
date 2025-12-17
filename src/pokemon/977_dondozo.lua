@@ -47,6 +47,7 @@ local tatsugiri = {
   ptype = "Dragon",
   gen = 9,
   atlas = "AtlasJokersBasicGen09",
+  eternal_compat = false,
   blueprint_compat = true,
   calculate = function(self, card, context)
     local form = card.ability.extra.form or "curly"
