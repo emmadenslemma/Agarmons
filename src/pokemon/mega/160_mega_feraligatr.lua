@@ -4,10 +4,10 @@ local mega_feraligatr = {
   agar_inject_prefix = "poke",
   pos = { x = 4, y = 2 },
   soul_pos = { x = 5, y = 2 },
-  config = { extra = { chip_mod = 13 } },
+  config = { extra = { Xmult = 1, Xmult1 = 0, Xmult_mod = 0.4 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.chip_mod } }
+    return { vars = { card.ability.extra.Xmult_mod, card.ability.extra.Xmult + card.ability.extra.Xmult1 } }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -17,17 +17,26 @@ local mega_feraligatr = {
   atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.before and context.cardarea == G.jokers
-        and context.scoring_hand then
-      for _, scoring_card in pairs(context.scoring_hand) do
-        scoring_card.ability.perma_bonus = scoring_card.ability.perma_bonus or 0
-        scoring_card.ability.perma_bonus = scoring_card.ability.perma_bonus +
-            card.ability.extra.chip_mod * G.GAME.current_round.hands_played
-        SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.CHIPS }, scoring_card)
-      end
+    if context.joker_main then
+      return {
+        Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult1
+      }
+    end
+    if context.before and not context.blueprint then
+      card.ability.extra.Xmult1 = card.ability.extra.Xmult1 + card.ability.extra.Xmult_mod * #context.scoring_hand
+      return {
+        message = localize('k_upgrade_ex'),
+        colour = G.C.MULT,
+      }
+    end
+    if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+      card.ability.extra.Xmult1 = 0
+      return {
+        message = localize('k_reset'),
+        colour = G.C.MULT,
+      }
     end
   end,
-  designer = "Fox",
 }
 
 local function init()

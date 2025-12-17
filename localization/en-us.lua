@@ -70,9 +70,9 @@ return {
             j_poke_mega_feraligatr = {
                 name = "Mega Feraligatr",
                 text = {
-                    "Scored cards permanently",
-                    "gain {C:chips}+#1#{} Chips per hand played",
-                    "this round when played",
+                    "{C:white,X:mult}X#1#{} Mult for each",
+                    "card played this round",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
             j_agar_torkoal = {
