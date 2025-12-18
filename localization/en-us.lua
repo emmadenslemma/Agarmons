@@ -915,6 +915,8 @@ return {
             agar_turns_left_plural = "hands left",
             agar_turns_left_singular = "hand left",
 
+            agar_recharging = 'recharging...',
+
             -- G-Max Messages
             agar_gmax_vine_lash_ex = "G-Max Vine Lash!",
             agar_gmax_wildfire_ex = "G-Max Wildfire!",

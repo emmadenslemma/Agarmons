@@ -35,3 +35,23 @@ function AG.get_distance(card, other_card)
   local y1, y2 = card.T.y, other_card.T.y
   return math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
 end
+
+function AG.active_tooltip(card, is_active, scale)
+  scale = scale or 0.8
+  if card.area and card.area == G.jokers then
+    local colour = is_active
+        and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8)
+        or G.C.UI.TEXT_INACTIVE
+    local text = is_active
+        and ('  ' .. localize('k_active') .. '  ')
+        or (' ' .. localize('agar_recharging') .. ' ')
+    ---@format disable-next
+    return {
+      { n = G.UIT.C, config = { align = "bm", minh = 0.4 }, nodes = {
+        { n = G.UIT.C, config = { ref_table = card, align = "m", colour = colour, r = 0.05, padding = 0.06 }, nodes = {
+          { n = G.UIT.T, config = { text = text, colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * scale } },
+        }}
+      }}
+    }
+  end
+end
