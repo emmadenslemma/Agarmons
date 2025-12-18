@@ -60,21 +60,8 @@ local gmax_copperajah = {
 local init = function()
   AG.append_to_family("copperajah", "gmax_copperajah", true)
 
-  SMODS.Joker:take_ownership("maelmc_copperajah", {
-    gmax = "gmax_copperajah",
-    megas = false,
-    -- Ripped directly from Maelmc's code to remove the 'mega_poke' tooltip
-    loc_vars = function(self, info_queue, card)
-      type_tooltip(self, info_queue, card)
-      -- just to shorten function
-      local abbr = card.ability.extra
-      info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { abbr.hazards } }
-      info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-      info_queue[#info_queue+1] = G.P_CENTERS.m_steel
+  SMODS.Joker:take_ownership("maelmc_copperajah", { gmax = "gmax_copperajah", megas = false }, true)
 
-      return { vars = { abbr.hazards, abbr.reset_steel } }
-    end,
-  }, true)
   SMODS.Joker:take_ownership("maelmc_mega_copperajah", { no_collection = true }, true)
   -- Remove "Mega Copperajah" from the family listing
   for _, family in ipairs(pokermon.family) do
