@@ -49,6 +49,7 @@ local tatsugiri = {
   atlas = "AtlasJokersBasicGen09",
   eternal_compat = false,
   blueprint_compat = true,
+  poke_custom_values_to_keep = { "chips", "mult", "money" },
   calculate = function(self, card, context)
     local form = card.ability.extra.form or "curly"
     local values = ({
@@ -105,7 +106,82 @@ local tatsugiri = {
       card.children.center:set_sprite_pos(pos)
     end
   end,
+  megas = { 'mega_tatsugiri' },
   fuses = { with = 'j_agar_dondozo', into = 'j_agar_dondozo_commander', direction = 'right' },
+}
+
+-- Mega Tatsugiri 978-1
+local mega_tatsugiri = {
+  name = "mega_tatsugiri",
+  pos = { x = 4, y = 3 },
+  soul_pos = { x = 5, y = 3 },
+  config = { extra = { form = nil, chips1 = 50, mult1 = 10, money1 = 2, num = 1, dem = 3, money2 = 3, retriggers = 1, Xmult_multi = 1.25, chips = 25, mult = 5, money = 1 } },
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+    local form = card.ability.extra.form or "curly"
+    local key = self.key .. '_' .. form
+    local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, 'curly_megagiri')
+
+    local vars = ({
+      ["curly"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money1, num, dem },
+      ["droopy"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money1, card.ability.extra.Xmult_multi },
+      ["stretchy"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money2 },
+    })[form]
+
+    return { key = key, vars = vars }
+  end,
+  rarity = "poke_mega",
+  cost = 10,
+  stage = "Mega",
+  ptype = "Dragon",
+  gen = 9,
+  atlas = "AgarmonsJokers",
+  blueprint_compat = true,
+  poke_custom_values_to_keep = { "chips", "mult", "money" },
+  calculate = function(self, card, context)
+    if context.repetition and context.cardarea == G.play
+        and card.ability.extra.form == "curly"
+        and SMODS.pseudorandom_probability(card, 'curly_megagiri', card.ability.extra.num, card.ability.extra.dem, 'curly_megagiri') then
+      return {
+        repetitions = card.ability.extra.retriggers
+      }
+    end
+    if context.individual and context.cardarea == G.play then
+      local Xmult = card.ability.extra.form == "droopy" and card.ability.extra.Xmult_multi
+      local dollars = card.ability.extra.form == "stretchy"
+          and card.ability.extra.money2
+          or card.ability.extra.money1
+
+      return {
+        chips = card.ability.extra.chips1,
+        mult = card.ability.extra.mult1,
+        dollars = ease_poke_dollars(card, "mega_tatsugiri", dollars, true),
+        Xmult = Xmult,
+      }
+    end
+  end,
+  set_ability = function(self, card, initial, delay_sprites)
+    if initial then
+      card.ability.extra.form = card.ability.extra.form
+          or pseudorandom_element({ "curly", "droopy", "stretchy" }, pseudoseed("tatsugiri"))
+    end
+    self:set_sprites(card)
+  end,
+  set_sprites = function(self, card, front)
+    if not self.discovered and not self.bypass_discovery_center then return end
+    if card.ability and card.ability.extra and card.ability.extra.form then
+      local sprites = ({
+        ["curly"] = { { x = 4, y = 3 }, { x = 5, y = 3 } },
+        ["droopy"] = { { x = 6, y = 3 }, { x = 7, y = 3 } },
+        ["stretchy"] = { { x = 8, y = 3 }, { x = 9, y = 3 } },
+      })[card.ability.extra.form]
+
+      local pos, soul_pos = sprites[1], sprites[2]
+
+      card.children.center:set_sprite_pos(pos)
+      card.children.floating_sprite:set_sprite_pos(soul_pos)
+    end
+  end,
 }
 
 local dondozo_commander = {
@@ -157,12 +233,15 @@ local dondozo_commander = {
 
 return {
   config_key = "dondozo",
-  list = { --[[dondozo, dondozo_commander,]] tatsugiri },
+  list = { --[[dondozo, dondozo_commander,]] tatsugiri, mega_tatsugiri },
   family = {
     -- 'dondozo',
     { key = 'tatsugiri', form = 'curly' },
     { key = 'tatsugiri', form = 'droopy' },
     { key = 'tatsugiri', form = 'stretchy' },
+    { key = 'mega_tatsugiri', form = 'curly' },
+    { key = 'mega_tatsugiri', form = 'droopy' },
+    { key = 'mega_tatsugiri', form = 'stretchy' },
     -- 'dondozo_commander'
   }
 }
