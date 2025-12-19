@@ -231,8 +231,18 @@ local dondozo_commander = {
   end,
 }
 
+local init = function()
+  -- Evolution does not like `soul_pos` on forms
+  AG.hookafterfunc(_G, 'poke_backend_evolve', function(card, to_key, energize_amount)
+    if to_key == 'j_agar_mega_tatsugiri' then
+      G.P_CENTERS['j_agar_mega_tatsugiri']:set_sprites(card)
+    end
+  end, true)
+end
+
 return {
   config_key = "dondozo",
+  init = init,
   list = { --[[dondozo, dondozo_commander,]] tatsugiri, mega_tatsugiri },
   family = {
     -- 'dondozo',
