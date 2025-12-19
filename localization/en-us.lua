@@ -207,7 +207,10 @@ return {
             j_agar_rayquaza = {
                 name = "Rayquaza",
                 text = {
-                    "{C:inactive}Does nothing (yet!)",
+                    "{C:attention}Holding {C:tarot}#1#",
+                    "Debuffs all {C:attention}Enhanced{} cards",
+                    "Cards held in hand",
+                    "give {C:white,X:mult}X#2#{} Mult",
                 }
             },
             j_agar_mega_rayquaza = {

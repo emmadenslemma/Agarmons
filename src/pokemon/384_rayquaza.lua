@@ -1,10 +1,15 @@
 -- Rayquaza 384
 local rayquaza = {
   name = "rayquaza",
-  config = { extra = {} },
+  config = { extra = { Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = {} }
+    local hanged_man_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_hanged_man' }
+    if pokermon_config.detailed_tooltips then
+      info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { hanged_man_name_text } }
+      info_queue[#info_queue+1] = G.P_CENTERS.c_hanged_man
+    end
+    return { vars = { hanged_man_name_text, card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
   cost = 20,
@@ -13,8 +18,27 @@ local rayquaza = {
   gen = 3,
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.hand and not context.end_of_round then
+      if context.other_card.debuff then
+        return {
+          message = localize('k_debuffed'),
+          colour = G.C.RED
+        }
+      else
+        return {
+          Xmult = card.ability.extra.Xmult_multi
+        }
+      end
+    end
   end,
-  megas = { "mega_rayquaza" },
+  add_to_deck = function(self, card, from_debuff)
+    if not from_debuff
+        and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+      local hanged_man = SMODS.add_card { key = 'c_hanged_man' }
+      SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.SECONDARY_SET.Tarot }, hanged_man)
+    end
+  end,
+  -- megas = { "mega_rayquaza" },
 }
 
 -- Mega Rayquaza 384-1
@@ -35,8 +59,16 @@ local mega_rayquaza = {
   end,
 }
 
+local init = function()
+  AG.hookafterfunc(SMODS.current_mod, 'set_debuff', function(card)
+    return card.playing_card
+        and card.config.center ~= G.P_CENTERS.c_base
+        and next(SMODS.find_card('j_agar_rayquaza'))
+  end)
+end
+
 return {
-  can_load = false,
   config_key = "rayquaza",
-  list = { rayquaza, mega_rayquaza }
+  init = init,
+  list = { rayquaza, --[[mega_rayquaza]] }
 }
