@@ -115,7 +115,7 @@ local mega_tatsugiri = {
   name = "mega_tatsugiri",
   pos = { x = 4, y = 3 },
   soul_pos = { x = 5, y = 3 },
-  config = { extra = { form = nil, chips1 = 50, mult1 = 10, money1 = 2, num = 1, dem = 3, money2 = 3, retriggers = 1, Xmult_multi = 1.25, chips = 25, mult = 5, money = 1 } },
+  config = { extra = { form = nil, chips1 = 25, mult1 = 5, money1 = 1, num = 1, dem = 3, money2 = 3, retriggers = 1, Xmult_multi = 1.2, chips = 25, mult = 5, money = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
