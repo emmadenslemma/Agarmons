@@ -165,9 +165,10 @@ return {
             j_agar_kyogre = {
                 name = "Kyogre",
                 text = {
-                    "Played cards with {C:chips}#1#",
+                    "{C:attention}Holding {C:tarot}#1#",
+                    "Played cards with {C:chips}#2#",
                     "or more {C:chips}Chips{} give",
-                    "{X:mult,C:white}X#2#{} Mult when scored",
+                    "{X:mult,C:white}X#3#{} Mult when scored",
                 }
             },
             j_agar_primal_kyogre = {
@@ -185,9 +186,10 @@ return {
             j_agar_groudon = {
                 name = "Groudon",
                 text = {
-                    "Played cards with {C:mult}#1#",
+                    "{C:attention}Holding {C:tarot}#1#",
+                    "Played cards with {C:mult}#2#",
                     "or more {C:mult}Mult{} give",
-                    "{X:mult,C:white}X#2#{} Mult when scored",
+                    "{X:mult,C:white}X#3#{} Mult when scored",
                 }
             },
             j_agar_primal_groudon = {

@@ -18,9 +18,10 @@ local spectrier = {
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local wraith_name_text = localize { type = 'name_text', set = 'Spectral', key = 'c_wraith' }
-    info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { wraith_name_text } }
-    info_queue[#info_queue+1] = { set = 'Spectral', key = 'c_wraith' }
-
+    if pokermon_config.detailed_tooltips then
+      info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { wraith_name_text } }
+      info_queue[#info_queue+1] = G.P_CENTERS.c_wraith
+    end
     return {
       vars = { wraith_name_text, card.ability.extra.Xmult_mod, card.ability.extra.Xmult },
       main_end = AG.active_tooltip(card, card.ability.extra.active),

@@ -4,7 +4,12 @@ local groudon = {
   config = { extra = { mult_req = 4, Xmult_multi = 1.75 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.mult_req, card.ability.extra.Xmult_multi } }
+    local empress_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_empress' }
+    if pokermon_config.detailed_tooltips then
+      info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { empress_name_text } }
+      info_queue[#info_queue+1] = G.P_CENTERS.c_empress
+    end
+    return { vars = { empress_name_text, card.ability.extra.mult_req, card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
   cost = 20,
@@ -13,27 +18,18 @@ local groudon = {
   gen = 3,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    -- Create Mult cards
-    -- if context.before and not context.blueprint then
-    --   for _, v in pairs(context.scoring_hand) do
-    --     if v.config.center == G.P_CENTERS.c_base then
-    --       v:set_ability(G.P_CENTERS.m_mult)
-    --       G.E_MANAGER:add_event(Event({
-    --         func = function()
-    --           v:juice_up()
-    --           return true
-    --         end
-    --       }))
-    --       break
-    --     end
-    --   end
-    -- end
-    -- 2X Mult cards
     if context.individual and context.cardarea == G.play
         and poke_total_mult(context.other_card) >= card.ability.extra.mult_req then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }
+    end
+  end,
+  add_to_deck = function(self, card, from_debuff)
+    if not from_debuff
+        and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+      local empress = SMODS.add_card { key = 'c_empress' }
+      SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.SECONDARY_SET.Tarot }, empress)
     end
   end,
 }
