@@ -1,24 +1,20 @@
 -- Kyogre 382
 local kyogre = {
   name = "kyogre",
-  config = { extra = { Xmult_multi = 2.4 } },
+  config = { extra = { chip_req = 30, Xmult_multi = 1.75 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = G.P_CENTERS.m_bonus
-    end
-    return { vars = { card.ability.extra.Xmult_multi } }
+    return { vars = { card.ability.extra.chip_req, card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
   cost = 20,
   stage = "Legendary",
   ptype = "Water",
   gen = 3,
-  enhancement_gate = 'm_bonus',
   blueprint_compat = true,
   calculate = function(self, card, context)
     -- Create Bonus cards
-    -- if context.before and context.cardarea == G.jokers and not context.blueprint then
+    -- if context.before and not context.blueprint then
     --   for _, v in pairs(context.scoring_hand) do
     --     if v.config.center == G.P_CENTERS.c_base then
     --       v:set_ability(G.P_CENTERS.m_bonus)
@@ -34,7 +30,7 @@ local kyogre = {
     -- end
     -- 2X Bonus cards
     if context.individual and context.cardarea == G.play
-        and SMODS.has_enhancement(context.other_card, "m_bonus") then
+        and poke_total_chips(context.other_card) >= card.ability.extra.chip_req then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }

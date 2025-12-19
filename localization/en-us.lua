@@ -165,11 +165,9 @@ return {
             j_agar_kyogre = {
                 name = "Kyogre",
                 text = {
-                    "Played {C:attention}Bonus{} cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    -- "{br:2}ERROR - CONTACT STEAK",
-                    -- "First scoring unenhanced card",
-                    -- "becomes a {C:attention}Bonus{} card",
+                    "Played cards with {C:chips}#1#",
+                    "or more {C:chips}Chips{} give",
+                    "{X:mult,C:white}X#2#{} Mult when scored",
                 }
             },
             j_agar_primal_kyogre = {
@@ -187,11 +185,9 @@ return {
             j_agar_groudon = {
                 name = "Groudon",
                 text = {
-                    "Played {C:attention}Mult{} cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    -- "{br:2}ERROR - CONTACT STEAK",
-                    -- "First scoring unenhanced card",
-                    -- "becomes a {C:attention}Mult{} card",
+                    "Played cards with {C:mult}#1#",
+                    "or more {C:mult}Mult{} give",
+                    "{X:mult,C:white}X#2#{} Mult when scored",
                 }
             },
             j_agar_primal_groudon = {

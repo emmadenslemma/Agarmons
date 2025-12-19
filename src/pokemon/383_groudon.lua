@@ -1,24 +1,20 @@
 -- Groudon 383
 local groudon = {
   name = "groudon",
-  config = { extra = { Xmult_multi = 2.4 } },
+  config = { extra = { mult_req = 4, Xmult_multi = 1.75 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = G.P_CENTERS.m_mult
-    end
-    return { vars = { card.ability.extra.Xmult_multi } }
+    return { vars = { card.ability.extra.mult_req, card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
   cost = 20,
   stage = "Legendary",
   ptype = "Earth",
   gen = 3,
-  enhancement_gate = 'm_mult',
   blueprint_compat = true,
   calculate = function(self, card, context)
     -- Create Mult cards
-    -- if context.before and context.cardarea == G.jokers and not context.blueprint then
+    -- if context.before and not context.blueprint then
     --   for _, v in pairs(context.scoring_hand) do
     --     if v.config.center == G.P_CENTERS.c_base then
     --       v:set_ability(G.P_CENTERS.m_mult)
@@ -34,7 +30,7 @@ local groudon = {
     -- end
     -- 2X Mult cards
     if context.individual and context.cardarea == G.play
-        and SMODS.has_enhancement(context.other_card, "m_mult") then
+        and poke_total_mult(context.other_card) >= card.ability.extra.mult_req then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }
