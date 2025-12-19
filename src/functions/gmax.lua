@@ -133,7 +133,7 @@ AG.gmax.revert = function(self, card, context)
   if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
     AG.gmax.devolve(card)
   end
-  if context.after and context.cardarea == G.jokers then
+  if context.after and context.cardarea == G.jokers and not context.blueprint then
     card.ability.extra.turns_left = card.ability.extra.turns_left - 1
     if card.ability.extra.turns_left > 0 then
       card_eval_status_text(card, "extra", nil, nil, nil, {
