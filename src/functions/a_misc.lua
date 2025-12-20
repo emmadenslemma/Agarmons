@@ -59,7 +59,7 @@ end
 -- Fallback for until base mod does something like this:
 poke_total_mult = poke_total_mult or function(card)
   local total_mult = (card.ability.perma_mult or 0)
-  if not SMODS.has_enhancement(card, "m_lucky") then
+  if card.config.center ~= G.P_CENTERS.m_lucky then
     total_mult = total_mult + card.ability.mult
   end
   if card.edition then
