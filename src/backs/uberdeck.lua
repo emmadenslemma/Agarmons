@@ -69,15 +69,21 @@ local ubersleeve = {
   key = "ubersleeve",
   atlas = "AgarmonsSleeves",
   pos = { x = 2, y = 0 },
-  config = { hands = -1 },
+  config = { joker_slot = -1, scaling_mod = 0.5 },
   loc_vars = function(self)
     local key = self.key
+    local vars
 
     if self.get_current_deck_key() == "b_agar_uberdeck" then
       key = key .. "_alt"
+      vars = { self.config.scaling_mod }
+      self.config = { scaling_mod = 0.5 }
+    else
+      vars = { self.config.joker_slot, self.config.scaling_mod }
+      self.config = { joker_slot = -1, scaling_mod = 0.5 }
     end
 
-    return { key = key, vars = { self.config.hands } }
+    return { key = key, vars = vars }
   end,
   apply = function(self)
     CardSleeves.Sleeve.apply(self)
@@ -97,6 +103,11 @@ local ubersleeve = {
           return true
         end
       }))
+    end
+  end,
+  calculate = function(self, sleeve, context)
+    if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
+      G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + self.config.scaling_mod
     end
   end,
 }
