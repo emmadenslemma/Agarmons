@@ -35,3 +35,7 @@ function get_pack(_key, _type)
   end
   return center
 end
+
+function AG.effects.uncap_interest()
+  return next(SMODS.find_card('j_poke_mega_raichu_y'))
+end

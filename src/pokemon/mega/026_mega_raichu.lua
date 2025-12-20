@@ -33,16 +33,14 @@ local mega_raichu_y = {
   agar_inject_prefix = "poke",
   pos = { x = 4, y = 9 },
   soul_pos = { x = 5, y = 9 },
-  config = { extra = {} },
   loc_txt = {
     name = "Mega Raichu Y",
     text = {
-      "{C:dark_edition}???",
+      "Interest has no cap",
     }
   },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = {} }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -50,9 +48,6 @@ local mega_raichu_y = {
   ptype = "Lightning",
   gen = 1,
   atlas = "AtlasJokersSeriesAGen01",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end,
   artist = "MyDude_YT",
 }
 
@@ -63,7 +58,7 @@ local function init()
 end
 
 return {
-  can_load = false, -- agarmons_config.new_megas,
+  can_load = agarmons_config.new_megas,
   init = init,
   list = { mega_raichu_x, mega_raichu_y },
   family = {},
