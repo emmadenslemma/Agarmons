@@ -16,16 +16,16 @@ local alolan_raichu = {
   calculate = function(self, card, context)
     if context.setting_blind then
       local lightning_jokers = #find_pokemon_type("Lightning")
+      local amount = card.ability.extra.money + lightning_jokers * card.ability.extra.money_mod
       card:juice_up()
-      ease_poke_dollars(card, "alolan_raichu",
-        card.ability.extra.money + lightning_jokers * card.ability.extra.money_mod)
+      ease_poke_dollars(card, "alolan_raichu", amount)
     end
     if context.joker_main and card.ability.extra.chips > 0 then
       return {
         chips = card.ability.extra.chips
       }
     end
-    if context.money_altered then
+    if context.money_altered and context.from_shop then
       local amount_spent = context.amount
       if (SMODS.Mods["Talisman"] or {}).can_load then amount_spent = to_number(amount_spent) end
       if amount_spent < 0 then
