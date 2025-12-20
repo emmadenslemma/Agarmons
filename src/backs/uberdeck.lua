@@ -39,9 +39,9 @@ local uberdeck = {
   key = "uberdeck",
   atlas = "AgarmonsBacks",
   pos = { x = 2, y = 0 },
-  config = { hands = -1 },
+  config = { joker_slot = -1, scaling_mod = 0.5 },
   loc_vars = function(self)
-    return { vars = { self.config.hands } }
+    return { vars = { self.config.joker_slot, self.config.scaling_mod } }
   end,
   apply = function(self)
     G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
@@ -57,6 +57,11 @@ local uberdeck = {
       end
     }))
   end,
+  calculate = function(self, back, context)
+    if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
+      G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + self.config.scaling_mod
+    end
+  end
 }
 
 local ubersleeve = {

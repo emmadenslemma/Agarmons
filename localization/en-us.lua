@@ -833,7 +833,10 @@ return {
                 text = {
                     "Select {C:attention}1{} of {C:attention}3{} {C:legendary}Legendary",
                     "{C:attention}Pokémon{} to start with",
-                    "{C:blue}#1#{} hand every round",
+                    "{C:red}#1#{} Joker slot",
+                    "increases base Blind size",
+                    "by {C:red}X#2#{} after defeating",
+                    "each {C:attention}Boss Blind"
                 }
             },
         },
