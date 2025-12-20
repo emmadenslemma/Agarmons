@@ -6,8 +6,9 @@ local gmax_melmetal = {
   loc_txt = {
     name = "{C:agar_gmax}G-MAX{} Melmetal",
     text = {
-      "Every hand played draws {C:attention}#3#{} card for",
-      "every {C:white,X:metal}Metal{} card you have",
+      "Every hand played draws {C:attention}1{} card,",
+      "plus {C:attention}#3#{} additional card for",
+      "every {C:attention}2 {C:white,X:metal}Metal{} cards you have",
       "{C:inactive,s:0.8}(Includes Jokers and Energy cards)",
       "{C:inactive}(Currently #4# #5#)",
     }
@@ -31,11 +32,10 @@ local gmax_melmetal = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.before then
-      local cards_to_draw = card.ability.extra.draw_mod * find_other_poke_or_energy_type(card, "Metal", true)
-      if cards_to_draw > 0 then
-        SMODS.calculate_effect({ message = localize("agar_gmax_meltdown_ex"), colour = G.C.RARITY["agar_gmax"] }, card)
-        G.FUNCS.draw_from_deck_to_hand(cards_to_draw)
-      end
+      local metal_cards = find_other_poke_or_energy_type(card, "Metal", true)
+      local cards_to_draw = 1 + card.ability.extra.draw_mod * math.floor(metal_cards / 2)
+      SMODS.calculate_effect({ message = localize("agar_gmax_meltdown_ex"), colour = G.C.RARITY["agar_gmax"] }, card)
+      G.FUNCS.draw_from_deck_to_hand(cards_to_draw)
     end
   end,
 }
