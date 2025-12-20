@@ -1,7 +1,7 @@
 -- Rayquaza 384
 local rayquaza = {
   name = "rayquaza",
-  config = { extra = { Xmult_multi = 2 } },
+  config = { extra = { Xmult_multi = 1.75 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local hanged_man_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_hanged_man' }
