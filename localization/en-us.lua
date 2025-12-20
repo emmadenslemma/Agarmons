@@ -21,9 +21,10 @@ return {
                     "for every {C:money}$#2#{} you spend",
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Earn {C:money}$#4#{} plus {C:money}$#5#{} for",
-                    "each {X:lightning,C:black}Lightning{} Joker you have",
-                    "when {C:attention}Blind{} is selected",
+                    "Earn {C:money}$#4#{} plus {C:money}$#5#",
+                    "for each {X:lightning,C:black}Lightning{} Joker",
+                    "you have when {C:attention}Blind",
+                    "is selected",
                 }
             },
             j_poke_mega_clefable = {
