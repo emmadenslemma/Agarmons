@@ -19,7 +19,7 @@ local gmax_melmetal = {
     return {
       vars = {
         card.ability.extra.draw_mod,
-        card.ability.extra.draw_mod * metal_cards,
+        1 + card.ability.extra.draw_mod * math.floor(metal_cards / 2),
         metal_cards == 1 and localize("cards_singular") or localize("cards_plural")
       }
     }
