@@ -35,7 +35,7 @@ local gmax_melmetal = {
       local metal_cards = find_other_poke_or_energy_type(card, "Metal", true)
       local cards_to_draw = 1 + card.ability.extra.draw_mod * math.floor(metal_cards / 2)
       SMODS.calculate_effect({ message = localize("agar_gmax_meltdown_ex"), colour = G.C.RARITY["agar_gmax"] }, card)
-      G.FUNCS.draw_from_deck_to_hand(cards_to_draw)
+      SMODS.draw_cards(cards_to_draw)
     end
   end,
 }
