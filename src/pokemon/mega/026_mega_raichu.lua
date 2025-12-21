@@ -52,14 +52,14 @@ local mega_raichu_y = {
 }
 
 local function init()
-  AG.append_to_family("raichu", "mega_raichu_y")
-  AG.append_to_family("raichu", "mega_raichu_x")
-  SMODS.Joker:take_ownership("poke_raichu", { megas = { "mega_raichu_x", "mega_raichu_y" } }, true)
+  -- AG.append_to_family("raichu", "mega_raichu_x", true)
+  AG.append_to_family("raichu", "mega_raichu_y", true)
+  SMODS.Joker:take_ownership("poke_raichu", { megas = { --[["mega_raichu_x",]] "mega_raichu_y" } }, true)
 end
 
 return {
   can_load = agarmons_config.new_megas,
   init = init,
-  list = { mega_raichu_x, mega_raichu_y },
+  list = { --[[mega_raichu_x,]] mega_raichu_y },
   family = {},
 }
