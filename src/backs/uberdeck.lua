@@ -45,17 +45,9 @@ local uberdeck = {
   end,
   apply = function(self)
     G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
-    G.E_MANAGER:add_event(Event({
-      func = function()
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            open_uber_pack()
-            return true
-          end
-        }))
-        return true
-      end
-    }))
+    AG.defer(function()
+      AG.defer(open_uber_pack)
+    end)
   end,
   calculate = function(self, back, context)
     if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
@@ -86,17 +78,9 @@ local ubersleeve = {
       G.P_CENTERS['p_agar_uber_pack'].config = { extra = 5, choose = 2 }
     else
       G.P_CENTERS['p_agar_uber_pack'].config = { extra = 3, choose = 1 }
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          G.E_MANAGER:add_event(Event({
-            func = function()
-              open_uber_pack()
-              return true
-            end
-          }))
-          return true
-        end
-      }))
+      AG.defer(function()
+        AG.defer(open_uber_pack)
+      end)
     end
   end,
   calculate = function(self, sleeve, context)
