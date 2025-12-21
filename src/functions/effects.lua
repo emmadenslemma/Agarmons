@@ -44,7 +44,10 @@ function AG.effects.upgrade_shop_packs()
   for _, pack in ipairs(G.shop_booster.cards) do
     local new_center = apply_pack_upgrades(pack.config.center)
     if new_center ~= pack.config.center then
-      pack:set_ability(new_center)
+      pack:set_ability(new_center, true)
+      -- `set_ability` overrides these with `self.original_T`, which is *sometimes* erroneously the size of a regular playing card:
+      pack.T.w = G.CARD_W * 1.27
+      pack.T.h = G.CARD_H * 1.27
       pack:set_cost()
       pack:juice_up()
     end
