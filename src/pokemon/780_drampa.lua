@@ -11,6 +11,7 @@ local drampa = {
   ptype = "Dragon",
   gen = 7,
   add_to_deck = function(self, card, from_debuff)
+    AG.defer(AG.effects.upgrade_shop_packs)
     SMODS.change_booster_limit(card.ability.extra.boosters)
   end,
   remove_from_deck = function(self, card, from_debuff)
@@ -36,6 +37,7 @@ local mega_drampa = {
   gen = 7,
   atlas = "AgarmonsJokers",
   add_to_deck = function(self, card, from_debuff)
+    AG.defer(AG.effects.upgrade_shop_packs)
     -- to stop adding boosters when mega evolving/devolving
     G.GAME.modifiers.extra_boosters = (G.GAME.modifiers.extra_boosters or 0) + card.ability.extra.boosters
     G.GAME.modifiers.booster_choice_mod =
