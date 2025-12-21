@@ -72,18 +72,12 @@ local ubersleeve = {
   config = { joker_slot = -1, scaling_mod = 0.5 },
   loc_vars = function(self)
     local key = self.key
-    local vars
 
     if self.get_current_deck_key() == "b_agar_uberdeck" then
       key = key .. "_alt"
-      vars = { self.config.scaling_mod }
-      self.config = { scaling_mod = 0.5 }
-    else
-      vars = { self.config.joker_slot, self.config.scaling_mod }
-      self.config = { joker_slot = -1, scaling_mod = 0.5 }
     end
 
-    return { key = key, vars = vars }
+    return { key = key, vars = { self.config.joker_slot, self.config.scaling_mod } }
   end,
   apply = function(self)
     CardSleeves.Sleeve.apply(self)
