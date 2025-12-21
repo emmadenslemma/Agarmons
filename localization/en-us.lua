@@ -429,7 +429,7 @@ return {
                     "{C:attention}+#1#{} Booster Pack slot",
                     "available in shop",
                     "{C:attention}Booster Packs{} are always",
-                    "{C:attention}Jumbo{} or above",
+                    "{C:attention}Jumbo{} or better",
                 }
             },
             j_agar_mega_drampa = {
@@ -437,11 +437,11 @@ return {
                 text = {
                     "{C:attention}+#1#{} Booster Pack slot",
                     "available in shop",
-                    "{C:attention}+#2#{} card selection limit",
-                    "in {C:attention}Booster Packs",
-                    "{br:2}ERROR - CONTACT STEAK",
                     "{C:attention}Booster Packs{} are",
                     "always {C:attention}Mega",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}+#2#{} card selection limit",
+                    "in {C:attention}Booster Packs",
                 }
             },
             j_agar_cosmog = {
