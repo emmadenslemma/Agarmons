@@ -67,3 +67,12 @@ poke_total_mult = poke_total_mult or function(card)
   end
   return total_mult
 end
+
+function AG.defer(func)
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      func()
+      return true
+    end
+  }))
+end
