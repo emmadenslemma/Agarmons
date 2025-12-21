@@ -23,8 +23,8 @@ end
 
 local function apply_pack_upgrades(center)
   if AG.effects.apply_force_mega_packs() then
-    return try_upgrade_pack(center, "normal", "mega")
-        or try_upgrade_pack(center, "jumbo", "mega") or center
+    center = try_upgrade_pack(center, "normal", "mega") or center
+    return try_upgrade_pack(center, "jumbo", "mega") or center
   elseif AG.effects.apply_force_jumbo_packs() then
     return try_upgrade_pack(center, "normal", "jumbo") or center
   end
