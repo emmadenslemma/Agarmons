@@ -17,14 +17,15 @@ end
 
 local function try_upgrade_pack(center, from, to)
   local upgraded_key = center.key:gsub(from, to)
+  if center.key == upgraded_key then return end
   return G.P_CENTERS[upgraded_key]
       or G.P_CENTERS[upgraded_key:gsub('_%d$', '_1')] -- default to the first variant
 end
 
 local function apply_pack_upgrades(center)
   if AG.effects.apply_force_mega_packs() then
-    center = try_upgrade_pack(center, "normal", "mega") or center
-    return try_upgrade_pack(center, "jumbo", "mega") or center
+    return try_upgrade_pack(center, "normal", "mega")
+        or try_upgrade_pack(center, "jumbo", "mega") or center
   elseif AG.effects.apply_force_jumbo_packs() then
     return try_upgrade_pack(center, "normal", "jumbo") or center
   end
