@@ -28,11 +28,7 @@ local cosmog = {
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = "Joker", key = "j_splash", config = {} }
     end
-    local ret = { vars = { card.ability.extra.rounds } }
-    if G.GAME.modifiers.nebby then
-      ret.key = "j_agar_nebby"
-    end
-    return ret
+    return { vars = { card.ability.extra.rounds } }
   end,
   rarity = 4,
   cost = 10,
@@ -47,24 +43,22 @@ local cosmog = {
   in_pool = function(self)
     return false
   end,
-  add_to_deck = function(self, card, from_debuff)
-    if G.GAME.modifiers.nebby then
-      card.ability.extra.rounds = 12
-    end
-  end,
 }
 
 -- Cosmoem 790
 local cosmoem = {
   name = "cosmoem",
-  config = { extra = { suit_sun = "Hearts", suit_moon = "Clubs" } },
+  config = { extra = { suit_sun = "Hearts", suit_moon = "Clubs", sun_suit_scored = 0, moon_suit_scored = 0 }, evo_rqmt = 20 },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    local ret = { vars = { localize(card.ability.extra.suit_sun, "suits_plural"), localize(card.ability.extra.suit_moon, "suits_plural") } }
-    if G.GAME.modifiers.nebby then
-      ret.key = "j_agar_nebby_cosmoem"
-    end
-    return ret
+    return {
+      vars = {
+        math.min(self.config.evo_rqmt - card.ability.extra.sun_suit_scored, 0),
+        localize(card.ability.extra.suit_sun, "suits_singular"),
+        math.min(self.config.evo_rqmt - card.ability.extra.sun_moon_scored, 0),
+        localize(card.ability.extra.suit_moon, "suits_singular"),
+      }
+    }
   end,
   rarity = 4,
   cost = 15,
@@ -73,11 +67,17 @@ local cosmoem = {
   gen = 7,
   no_collection = true,
   custom_pool_func = true,
-  blueprint_compat = true,
   calculate = function(self, card, context)
-    local deck_size = #G.playing_cards
-    return deck_suit_evo(self, card, context, "j_agar_solgaleo", card.ability.extra.suit_sun, .5 + .5 / deck_size)
-        or deck_suit_evo(self, card, context, "j_agar_lunala", card.ability.extra.suit_moon, .5 + .5 / deck_size)
+    if context.individual and context.cardarea == G.play then
+      if context.other_card:is_suit(card.ability.extra.suit_sun) then
+        card.ability.extra.sun_suit_scored = card.ability.extra.sun_suit_scored + 1
+      end
+      if context.other_card:is_suit(card.ability.extra.suit_moon) then
+        card.ability.extra.moon_suit_scored = card.ability.extra.moon_suit_scored + 1
+      end
+    end
+    return scaling_evo(self, card, context, 'j_agar_solgaleo', card.ability.extra.sun_suit_scored, self.config.evo_rqmt)
+        or scaling_evo(self, card, context, 'j_agar_lunala', card.ability.extra.moon_suit_scored, self.config.evo_rqmt)
   end,
   in_pool = function(self)
     return false

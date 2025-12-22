@@ -461,8 +461,8 @@ return {
             j_agar_cosmoem = {
                 name = "Cosmoem",
                 text = {
-                    "{C:inactive}Evolves when deck is",
-                    "{C:attention}>50% {C:hearts}#1#{C:inactive} or {C:clubs}#2#",
+                    "{C:inactive,s:0.8}(Evolves when scoring {C:attention,s:0.8}#1# {C:hearts,s:0.8}#2#{} cards)",
+                    "{C:inactive,s:0.8}(Evolves when scoring {C:attention,s:0.8}#2# {C:clubs,s:0.8}#4#{} cards)",
                 }
             },
             j_agar_nebby_cosmoem = {
