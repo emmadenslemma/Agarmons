@@ -29,8 +29,8 @@ local calyrex = {
     end
   end,
   fuses = {
-    { with = "j_agar_glastrier", into = "j_agar_calyrex_ice" },
-    { with = "j_agar_spectrier", into = "j_agar_calyrex_shadow" },
+    -- { with = "j_agar_glastrier", into = "j_agar_calyrex_ice" },
+    -- { with = "j_agar_spectrier", into = "j_agar_calyrex_shadow" },
   }
 }
 
@@ -116,5 +116,5 @@ local calyrex_shadow = {
 
 return {
   config_key = "calyrex",
-  list = { calyrex, --[[calyrex_ice,]] calyrex_shadow }
+  list = { calyrex, --[[calyrex_ice, calyrex_shadow]] }
 }
