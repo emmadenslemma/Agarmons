@@ -21,7 +21,7 @@ local terrakion = {
     end
     if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
       local cards = {}
-      local deck = copy_table(G.deck.cards)
+      local deck = AG.list_utils.shallow_copy(G.deck.cards)
       table.sort(deck, function(a, b) return a:get_nominal() < b:get_nominal() end)
       local stones = 0
       for i = 1, math.min(card.ability.extra.destroy_mod, #deck) do
