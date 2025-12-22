@@ -5,7 +5,7 @@ function AG.list_utils.id(a)
 end
 
 function AG.list_utils.map(list, func)
-  new_list = {}
+  local new_list = {}
   for _, v in pairs(list) do
     new_list[#new_list+1] = func(v)
   end
@@ -18,13 +18,16 @@ function AG.list_utils.for_each(list, func)
   end
 end
 
----@deprecated
-function AG.list_utils.copy(list)
-  return AG.list_utils.map(list, AG.list_utils.id)
+function AG.list_utils.shallow_copy(list)
+  local copy = {}
+  for k, v in pairs(list) do
+    copy[k] = v
+  end
+  return copy
 end
 
 function AG.list_utils.filter(list, func)
-  new_list = {}
+  local new_list = {}
   for _, v in pairs(list) do
     if func(v) then
       new_list[#new_list+1] = v
