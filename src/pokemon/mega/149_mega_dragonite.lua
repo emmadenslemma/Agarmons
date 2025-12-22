@@ -17,6 +17,11 @@ local mega_dragonite = {
   atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.modify_scoring_hand and not context.blueprint then
+      return {
+        add_to_hand = true
+      }
+    end
     if context.individual and context.cardarea == G.play and not context.end_of_round
         and context.scoring_hand and context.scoring_name == "High Card" then
       return {
@@ -29,10 +34,6 @@ local mega_dragonite = {
 local function init()
   AG.append_to_family("dragonite", "mega_dragonite")
   SMODS.Joker:take_ownership("poke_dragonite", { megas = { "mega_dragonite" } }, true)
-
-  AG.hookafterfunc(_G, 'applies_splash', function()
-    return next(SMODS.find_card("j_poke_mega_dragonite"))
-  end)
 end
 
 return {

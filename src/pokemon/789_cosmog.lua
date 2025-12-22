@@ -38,6 +38,11 @@ local cosmog = {
   no_collection = true,
   custom_pool_func = true,
   calculate = function(self, card, context)
+    if context.modify_scoring_hand then
+      return {
+        add_to_hand = true
+      }
+    end
     return level_evo(self, card, context, "j_agar_cosmoem")
   end,
   in_pool = function(self)
@@ -319,14 +324,7 @@ local lunala = {
   end,
 }
 
-local init = function()
-  AG.hookafterfunc(_G, 'applies_splash', function()
-    return next(SMODS.find_card("j_agar_cosmog"))
-  end)
-end
-
 return {
   config_key = "cosmog",
-  init = init,
   list = { cosmog, cosmoem, solgaleo, lunala }
 }
