@@ -649,6 +649,15 @@ return {
                     "for the next {C:attention}3{} hands",
                 }
             },
+            j_agar_spectrier = {
+                name = "Spectrier",
+                text = {
+                    "{C:attention}Holding {C:spectral}#1#",
+                    "{C:white,X:mult}X#2#{} Mult for every {C:spectral}Spectral",
+                    "card used this run",
+                    "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)"
+                }
+            },
             j_agar_calyrex = {
                 name = "Calyrex",
                 text = {
