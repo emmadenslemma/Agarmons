@@ -27,6 +27,7 @@ return {
   sobble = true,
   toxel = true,
   eternatus = true,
+  spectrier = true,
   calyrex = true,
   dondozo = true,
   gmax = true,

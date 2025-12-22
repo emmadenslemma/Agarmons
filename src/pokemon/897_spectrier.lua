@@ -94,6 +94,6 @@ local spectrier = {
 }
 
 return {
-  config_key = "calyrex",
+  config_key = "spectrier",
   list = { spectrier }
 }
