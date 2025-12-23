@@ -1,0 +1,19 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Adds Mega Berry Juice creation to Shuckle
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokemon/pokejokers_08.lua"]'
+position = "at"
+match_indent = true
+pattern = '''local _card = create_card('Item', G.consumeables, nil, nil, nil, nil, pokermon.juice_list[sliced_card.config.center.set] or 'c_poke_berry_juice_mystery')'''
+payload = '''
+local _card
+if sliced_card.config.center.key == 'c_poke_megastone' then
+  _card = SMODS.create_card { key = 'c_poke_berry_juice_mega' }
+else
+  _card = create_card('Item', G.consumeables, nil, nil, nil, nil, pokermon.juice_list[sliced_card.config.center.set] or 'c_poke_berry_juice_mystery')
+end'''
