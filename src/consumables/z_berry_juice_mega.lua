@@ -40,7 +40,7 @@ local berry_juice_mega = {
 
 local init = function()
   AG.append_to_family('berry_juice_energy', 'berry_juice_mega')
-  table.insert(extended_family['shuckle'], -2, { item = true, name = 'berry_juice_mega' })
+  table.insert(extended_family['shuckle'], 7, { item = true, name = 'berry_juice_mega' })
 end
 
 return {
