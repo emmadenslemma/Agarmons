@@ -37,13 +37,8 @@ local kyogre = {
 -- Primal Kyogre 382-1
 local primal_kyogre = {
   name = "primal_kyogre",
-  config = { extra = { Xchips_multi = 3, retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = G.P_CENTERS.m_bonus
-    end
-    return { vars = { card.ability.extra.Xchips_multi } }
   end,
   rarity = "agar_primal",
   cost = 30,
@@ -72,22 +67,9 @@ local primal_kyogre = {
         }
       end
     end
-    -- 3X Bonus cards
-    if context.individual and context.cardarea == G.play
-        and SMODS.has_enhancement(context.other_card, "m_bonus") then
-      return {
-        x_chips = card.ability.extra.Xchips_multi
-      }
-    end
-    -- Retrigger Water type Jokers
-    if context.retrigger_joker_check
-        and context.other_card ~= card and is_type(context.other_card, "Water") then
-      return {
-        repetitions = card.ability.extra.retriggers
-      }
-    end
   end,
   remove_from_deck = function(self, card, from_debuff)
+    print(SMODS.find_card('j_agar_primal_kyogre'))
     for _, orb in pairs(SMODS.find_card("c_agar_blueorb", true)) do
       if orb.ability.extra.active then
         orb.ability.extra.active = false

@@ -60,3 +60,14 @@ end
 function AG.effects.uncap_interest()
   return next(SMODS.find_card('j_poke_mega_raichu_y'))
 end
+
+function AG.effects.check_primals()
+  AG.effects.primordial_sea = next(SMODS.find_card('j_agar_primal_kyogre'))
+  AG.effects.desolate_land = next(SMODS.find_card('j_agar_primal_groudon'))
+end
+
+AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
+  if context.before then
+    AG.effects.check_primals()
+  end
+end)

@@ -37,13 +37,8 @@ local groudon = {
 -- Primal Groudon 383-1
 local primal_groudon = {
   name = "primal_groudon",
-  config = { extra = { Xmult_multi = 3, retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = G.P_CENTERS.m_mult
-    end
-    return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = "agar_primal",
   cost = 30,
@@ -71,20 +66,6 @@ local primal_groudon = {
           sound = "gong",
         }
       end
-    end
-    -- 3X Mult cards
-    if context.individual and context.cardarea == G.play
-        and SMODS.has_enhancement(context.other_card, "m_mult") then
-      return {
-        Xmult = card.ability.extra.Xmult_multi
-      }
-    end
-    -- Retrigger Fire type Jokers
-    if context.retrigger_joker_check
-        and context.other_card ~= card and is_type(context.other_card, "Fire") then
-      return {
-        repetitions = card.ability.extra.retriggers
-      }
     end
   end,
   remove_from_deck = function(self, card, from_debuff)

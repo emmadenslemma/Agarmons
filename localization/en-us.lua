@@ -175,13 +175,10 @@ return {
             j_agar_primal_kyogre = {
                 name = "Primal Kyogre",
                 text = {
-                    "Disables {C:mult}Mult{}!",
+                    "Disables {C:mult}Mult",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Played {C:attention}Bonus{} cards give",
-                    "{X:chips,C:white}X#1#{} Chips when scored",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Retrigger other",
-                    "{X:water,C:white}Water{} type Jokers"
+                    "All {C:chips}Chips{} effects",
+                    "become {C:white,X:chips}X{} {C:chips}Chips",
                 }
             },
             j_agar_groudon = {
@@ -196,13 +193,10 @@ return {
             j_agar_primal_groudon = {
                 name = "Primal Groudon",
                 text = {
-                    "Disables {C:chips}Chips{}!",
+                    "Disables {C:chips}Chips",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Played {C:attention}Mult{} cards give",
-                    "{X:mult,C:white}X#1#{} Mult when scored",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Retrigger other",
-                    "{X:fire,C:white}Fire{} type Jokers"
+                    "All {C:mult}Mult{} effects",
+                    "become {C:white,X:mult}X{} {C:mult}Mult",
                 }
             },
             j_agar_rayquaza = {
