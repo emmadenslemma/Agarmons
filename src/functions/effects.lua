@@ -42,7 +42,7 @@ function get_pack(_key, _type)
 end
 
 function AG.effects.upgrade_shop_packs()
-  if G.shop_booster and G.shop_booter.cards then
+  if G.shop_booster and G.shop_booster.cards then
     for _, pack in ipairs(G.shop_booster.cards) do
       local new_center = apply_pack_upgrades(pack.config.center)
       if new_center ~= pack.config.center then
