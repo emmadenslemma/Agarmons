@@ -177,8 +177,7 @@ return {
                 text = {
                     "Disables {C:mult}Mult",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "All {C:chips}Chips{} effects",
-                    "become {C:white,X:chips}X{} {C:chips}Chips",
+                    "All {C:chips}Chips{} become {C:white,X:chips}X{} {C:chips}Chips",
                 }
             },
             j_agar_groudon = {
@@ -195,8 +194,7 @@ return {
                 text = {
                     "Disables {C:chips}Chips",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "All {C:mult}Mult{} effects",
-                    "become {C:white,X:mult}X{} {C:mult}Mult",
+                    "All {C:mult}Mult{} becomes {C:white,X:mult}X{} {C:mult}Mult",
                 }
             },
             j_agar_rayquaza = {
