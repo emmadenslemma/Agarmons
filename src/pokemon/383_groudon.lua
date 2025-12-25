@@ -68,7 +68,13 @@ local primal_groudon = {
       end
     end
   end,
+  add_to_deck = function(self, card, from_debuff)
+    AG.effects.desolate_land = true
+  end,
   remove_from_deck = function(self, card, from_debuff)
+    if not next(SMODS.find_card('j_agar_primal_groudon')) then
+      AG.effects.desolate_land = false
+    end
     for _, orb in pairs(SMODS.find_card("c_agar_redorb", true)) do
       if orb.ability.extra.active then
         orb.ability.extra.active = false

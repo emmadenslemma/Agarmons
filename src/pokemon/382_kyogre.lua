@@ -68,8 +68,13 @@ local primal_kyogre = {
       end
     end
   end,
+  add_to_deck = function(self, card, from_debuff)
+    AG.effects.primordial_sea = true
+  end,
   remove_from_deck = function(self, card, from_debuff)
-    print(SMODS.find_card('j_agar_primal_kyogre'))
+    if not next(SMODS.find_card('j_agar_primal_kyogre')) then
+      AG.effects.primordial_sea = false
+    end
     for _, orb in pairs(SMODS.find_card("c_agar_blueorb", true)) do
       if orb.ability.extra.active then
         orb.ability.extra.active = false
