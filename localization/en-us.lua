@@ -178,7 +178,7 @@ return {
                     "Disables {C:mult}Mult",
                     "{br:1.5}ERROR - CONTACT STEAK",
                     "All {C:chips}Chips{} give the",
-                    "{C:attention}third root{} of their value",
+                    "{C:attention}cube root{} of their value",
                     "as {C:white,X:chips}X{} {C:chips}Chips{} instead",
                 }
             },
