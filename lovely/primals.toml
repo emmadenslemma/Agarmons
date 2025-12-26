@@ -14,7 +14,7 @@ payload = '''
 if G.GAME.desolate_land and not G.GAME.primordial_sea then return end
 if (key == 'chips' or key == 'h_chips' or key == 'chip_mod') and G.GAME.primordial_sea then
     key = 'x_chips'
-    amount = amount^(1/2)
+    amount = amount^(1/3)
 end
 '''
 
