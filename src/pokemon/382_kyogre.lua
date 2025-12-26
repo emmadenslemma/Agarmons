@@ -46,7 +46,6 @@ local primal_kyogre = {
   ptype = "Water",
   gen = 3,
   aux_poke = true, -- Required for Transformation
-  blueprint_compat = true,
   calculate = function(self, card, context)
     if context.before and not G.GAME.desolate_land then
       mult = 1
@@ -76,7 +75,7 @@ local primal_kyogre = {
 
 local init = function()
   AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if G.GAME.primordial_sea and not G.GAME.desolate_land then
+    if G.GAME.primordial_sea and not G.GAME.desolate_land and vals.mult ~= 0 then
       vals.mult = 1
     end
   end)

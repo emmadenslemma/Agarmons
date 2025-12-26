@@ -46,7 +46,6 @@ local primal_groudon = {
   ptype = "Earth",
   gen = 3,
   aux_poke = true, -- Required for Transformation
-  blueprint_compat = true,
   calculate = function(self, card, context)
     -- Disable Chips
     if context.before and not G.GAME.desolate_land then
@@ -77,7 +76,7 @@ local primal_groudon = {
 
 local init = function()
   AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if G.GAME.desolate_land and not G.GAME.primordial_sea then
+    if G.GAME.desolate_land and not G.GAME.primordial_sea and vals.chips ~= 0 then
       vals.chips = 1
     end
   end)
