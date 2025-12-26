@@ -11,8 +11,8 @@ position = "after"
 match_indent = true
 pattern = '''if not SMODS.Calculation_Controls.chips then return end'''
 payload = '''
-if AG.effects.desolate_land and not AG.effects.primordial_sea then return end
-if (key == 'chips' or key == 'h_chips' or key == 'chip_mod') and AG.effects.primordial_sea then key = 'x_chips' end
+if G.GAME.desolate_land and not G.GAME.primordial_sea then return end
+if (key == 'chips' or key == 'h_chips' or key == 'chip_mod') and G.GAME.primordial_sea then key = 'x_chips' end
 '''
 
 # Add 'mult' -> 'x_mult' functionality for Primal Groudon
@@ -23,6 +23,6 @@ position = "after"
 match_indent = true
 pattern = '''if not SMODS.Calculation_Controls.mult then return end'''
 payload = '''
-if AG.effects.primordial_sea and not AG.effects.desolate_land then return end
-if (key == 'mult' or key == 'h_mult' or key == 'mult_mod') and AG.effects.desolate_land then key = 'x_mult' end
+if G.GAME.primordial_sea and not G.GAME.desolate_land then return end
+if (key == 'mult' or key == 'h_mult' or key == 'mult_mod') and G.GAME.desolate_land then key = 'x_mult' end
 '''

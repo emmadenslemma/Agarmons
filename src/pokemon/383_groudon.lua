@@ -49,19 +49,19 @@ local primal_groudon = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     -- Disable Chips
-    if context.before and not AG.effects.desolate_land then
+    if context.before and not G.GAME.desolate_land then
       chips = 1
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    AG.effects.desolate_land = true
+    G.GAME.desolate_land = true
     if G.hand and G.hand.cards then
       G.hand:parse_highlighted() -- For immediate feedback on the Poker Hand chip values
     end
   end,
   remove_from_deck = function(self, card, from_debuff)
     if not next(SMODS.find_card('j_agar_primal_groudon')) then
-      AG.effects.desolate_land = false
+      G.GAME.desolate_land = false
       if G.hand and G.hand.cards then
         G.hand:parse_highlighted()
       end
@@ -77,7 +77,7 @@ local primal_groudon = {
 
 local init = function()
   AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if AG.effects.desolate_land and not AG.effects.primordial_sea then
+    if G.GAME.desolate_land and not G.GAME.primordial_sea then
       vals.chips = 1
     end
   end)

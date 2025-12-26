@@ -48,19 +48,19 @@ local primal_kyogre = {
   aux_poke = true, -- Required for Transformation
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.before and not AG.effects.desolate_land then
+    if context.before and not G.GAME.desolate_land then
       mult = 1
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    AG.effects.primordial_sea = true
+    G.GAME.primordial_sea = true
     if G.hand and G.hand.cards then
       G.hand:parse_highlighted() -- For immediate feedback on the Poker Hand mult values
     end
   end,
   remove_from_deck = function(self, card, from_debuff)
     if not next(SMODS.find_card('j_agar_primal_kyogre')) then
-      AG.effects.primordial_sea = false
+      G.GAME.primordial_sea = false
       if G.hand and G.hand.cards then
         G.hand:parse_highlighted()
       end
@@ -76,7 +76,7 @@ local primal_kyogre = {
 
 local init = function()
   AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if AG.effects.primordial_sea and not AG.effects.desolate_land then
+    if G.GAME.primordial_sea and not G.GAME.desolate_land then
       vals.mult = 1
     end
   end)
