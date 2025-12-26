@@ -76,7 +76,7 @@ local primal_groudon = {
 
 local init = function()
   AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if G.GAME.desolate_land and not G.GAME.primordial_sea and vals.chips ~= 0 then
+    if G.GAME.desolate_land and not G.GAME.primordial_sea and vals.chips and vals.chips ~= 0 then
       vals.chips = 1
     end
   end)

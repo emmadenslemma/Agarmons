@@ -75,7 +75,7 @@ local primal_kyogre = {
 
 local init = function()
   AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if G.GAME.primordial_sea and not G.GAME.desolate_land and vals.mult ~= 0 then
+    if G.GAME.primordial_sea and not G.GAME.desolate_land and vals.mult and vals.mult ~= 0 then
       vals.mult = 1
     end
   end)
