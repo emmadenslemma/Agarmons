@@ -48,32 +48,22 @@ local primal_kyogre = {
   aux_poke = true, -- Required for Transformation
   blueprint_compat = true,
   calculate = function(self, card, context)
-    -- Disable Mult
-    if context.final_scoring_step then
-      if next(SMODS.find_card("j_agar_primal_groudon")) then
-        return {
-          message = localize("agar_primordial_sea_ex"),
-          colour = G.C.BLUE,
-          sound = "timpani",
-        }
-      else
-        mult = 1
-        update_hand_text({ delay = 0 }, { mult = mult, chips = hand_chips })
-
-        return {
-          message = localize("agar_primordial_sea_ex"),
-          colour = G.C.BLUE,
-          sound = "gong",
-        }
-      end
+    if context.before and not AG.effects.desolate_land then
+      mult = 1
     end
   end,
   add_to_deck = function(self, card, from_debuff)
     AG.effects.primordial_sea = true
+    if G.hand and G.hand.cards then
+      G.hand:parse_highlighted() -- For immediate feedback on the Poker Hand mult values
+    end
   end,
   remove_from_deck = function(self, card, from_debuff)
     if not next(SMODS.find_card('j_agar_primal_kyogre')) then
       AG.effects.primordial_sea = false
+      if G.hand and G.hand.cards then
+        G.hand:parse_highlighted()
+      end
     end
     for _, orb in pairs(SMODS.find_card("c_agar_blueorb", true)) do
       if orb.ability.extra.active then
@@ -84,7 +74,16 @@ local primal_kyogre = {
   end,
 }
 
+local init = function()
+  AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
+    if AG.effects.primordial_sea and not AG.effects.desolate_land then
+      vals.mult = 1
+    end
+  end)
+end
+
 return {
   config_key = "kyogre",
+  init = init,
   list = { kyogre, primal_kyogre }
 }

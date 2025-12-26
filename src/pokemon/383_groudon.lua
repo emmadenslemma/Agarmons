@@ -49,31 +49,22 @@ local primal_groudon = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     -- Disable Chips
-    if context.final_scoring_step then
-      if next(SMODS.find_card("j_agar_primal_kyogre")) then
-        return {
-          message = localize("agar_desolate_land_ex"),
-          colour = G.C.RED,
-          sound = "timpani",
-        }
-      else
-        hand_chips = 1
-        update_hand_text({ delay = 0 }, { mult = mult, chips = hand_chips })
-
-        return {
-          message = localize("agar_desolate_land_ex"),
-          colour = G.C.RED,
-          sound = "gong",
-        }
-      end
+    if context.before and not AG.effects.desolate_land then
+      chips = 1
     end
   end,
   add_to_deck = function(self, card, from_debuff)
     AG.effects.desolate_land = true
+    if G.hand and G.hand.cards then
+      G.hand:parse_highlighted() -- For immediate feedback on the Poker Hand chip values
+    end
   end,
   remove_from_deck = function(self, card, from_debuff)
     if not next(SMODS.find_card('j_agar_primal_groudon')) then
       AG.effects.desolate_land = false
+      if G.hand and G.hand.cards then
+        G.hand:parse_highlighted()
+      end
     end
     for _, orb in pairs(SMODS.find_card("c_agar_redorb", true)) do
       if orb.ability.extra.active then
@@ -84,7 +75,16 @@ local primal_groudon = {
   end,
 }
 
+local init = function()
+  AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
+    if AG.effects.desolate_land and not AG.effects.primordial_sea then
+      vals.chips = 1
+    end
+  end)
+end
+
 return {
   config_key = "groudon",
+  init = init,
   list = { groudon, primal_groudon }
 }
