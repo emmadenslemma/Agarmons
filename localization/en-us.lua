@@ -176,8 +176,8 @@ return {
                 name = "Primal Kyogre",
                 text = {
                     "Disables {C:mult}Mult",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "All {C:chips}Chips{} become {C:white,X:chips}X{} {C:chips}Chips",
+                    "All {C:chips}Chips{} become their",
+                    "square root as {C:white,X:chips}X{} {C:chips}Chips",
                 }
             },
             j_agar_groudon = {
@@ -193,8 +193,8 @@ return {
                 name = "Primal Groudon",
                 text = {
                     "Disables {C:chips}Chips",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "All {C:mult}Mult{} becomes {C:white,X:mult}X{} {C:mult}Mult",
+                    "All {C:mult}Mult{} becomes its",
+                    "square root as {C:white,X:mult}X{} {C:mult}Mult",
                 }
             },
             j_agar_rayquaza = {
