@@ -48,7 +48,7 @@ local primal_groudon = {
   aux_poke = true, -- Required for Transformation
   calculate = function(self, card, context)
     -- Disable Chips
-    if context.before and not G.GAME.desolate_land then
+    if context.final_scoring_step and not G.GAME.primordial_sea then
       chips = 1
     end
   end,

@@ -10,7 +10,7 @@
 	"priority": 24,
 	"badge_colour": "F792BC",
 	"display_name": "Agarmons",
-	"version": "0.13.26",
+	"version": "0.13.27",
 	"dependencies": [
 		"Steamodded (>=1.0.0~BETA-1221a)",
 		"Lovely (>=0.7)",

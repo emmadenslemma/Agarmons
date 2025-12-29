@@ -47,7 +47,7 @@ local primal_kyogre = {
   gen = 3,
   aux_poke = true, -- Required for Transformation
   calculate = function(self, card, context)
-    if context.before and not G.GAME.desolate_land then
+    if context.final_scoring_step and not G.GAME.desolate_land then
       mult = 1
     end
   end,
