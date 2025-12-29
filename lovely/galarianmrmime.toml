@@ -1,0 +1,20 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Statue code ripped from Ortalab
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+match_indent = true
+position = 'after'
+pattern = '''
+-- TARGET: adding to hand effects
+'''
+payload = '''
+if AG.effects.apply_ortalab_statue() then
+    table.insert(final_scoring_hand, G.hand.cards[1])
+    AG.effects.ortalab_statue_card = G.hand.cards[1]
+end
+'''

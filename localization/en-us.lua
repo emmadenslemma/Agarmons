@@ -50,6 +50,14 @@ return {
                     "when hand is played",
                 }
             },
+            j_poke_galarian_mrmime = {
+                name = "{s:0.6}Galarian{}Mr. Mime",
+                text = {
+                    "Scores leftmost card",
+                    "{C:attention}held in hand{} as if",
+                    "it was played",
+                }
+            },
             j_poke_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {
