@@ -26,9 +26,8 @@ local groudon = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    if not from_debuff
-        and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-      local empress = SMODS.add_card { key = 'c_empress' }
+    if not from_debuff then
+      local empress = SMODS.add_card { key = 'c_empress', edition = 'e_negative' }
       SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.SECONDARY_SET.Tarot }, empress)
     end
   end,

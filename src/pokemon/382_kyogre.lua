@@ -26,9 +26,8 @@ local kyogre = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    if not from_debuff
-        and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-      local hierophant = SMODS.add_card { key = 'c_heirophant' }
+    if not from_debuff then
+      local hierophant = SMODS.add_card { key = 'c_heirophant', edition = 'e_negative' }
       SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.SECONDARY_SET.Tarot }, hierophant)
     end
   end,

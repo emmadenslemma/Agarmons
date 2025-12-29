@@ -166,7 +166,7 @@ return {
             j_agar_kyogre = {
                 name = "Kyogre",
                 text = {
-                    "{C:attention}Holding {C:tarot}#1#",
+                    "{C:attention}Holding {C:dark_edition}Negative {C:tarot}#1#",
                     "Played cards with {C:chips}#2#",
                     "or more {C:chips}Chips{} give",
                     "{X:mult,C:white}X#3#{} Mult when scored",
@@ -185,7 +185,7 @@ return {
             j_agar_groudon = {
                 name = "Groudon",
                 text = {
-                    "{C:attention}Holding {C:tarot}#1#",
+                    "{C:attention}Holding {C:dark_edition}Negative {C:tarot}#1#",
                     "Played cards with {C:mult}#2#",
                     "or more {C:mult}Mult{} give",
                     "{X:mult,C:white}X#3#{} Mult when scored",
@@ -204,7 +204,7 @@ return {
             j_agar_rayquaza = {
                 name = "Rayquaza",
                 text = {
-                    "{C:attention}Holding {C:tarot}#1#",
+                    "{C:attention}Holding {C:dark_edition}Negative {C:tarot}#1#",
                     "Debuffs all {C:attention}Enhanced{} cards",
                     "Cards held in hand",
                     "give {C:white,X:mult}X#2#{} Mult",

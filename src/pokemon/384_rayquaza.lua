@@ -32,9 +32,8 @@ local rayquaza = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    if not from_debuff
-        and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-      local hanged_man = SMODS.add_card { key = 'c_hanged_man' }
+    if not from_debuff then
+      local hanged_man = SMODS.add_card { key = 'c_hanged_man', edition = 'e_negative' }
       SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.SECONDARY_SET.Tarot }, hanged_man)
     end
   end,
