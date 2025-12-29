@@ -1,6 +1,11 @@
 local function get_current_interest()
-  local interest_cap = AG.effects.uncap_interest() and 0 / 1 or G.GAME.interest_cap / 5
-  return math.min(math.floor(G.GAME.dollars / 5), interest_cap)
+  local interest_levels = math.floor(G.GAME.dollars / 5)
+  -- Talisman gets weird about calculating with infinity, so we have to handle uncapped interest explicitly
+  if AG.effects.uncap_interest() then
+    return interest_levels
+  end
+  local interest_cap = G.GAME.interest_cap / 5
+  return math.min(interest_levels, interest_cap)
 end
 
 -- Mega Raichu X 026-2
