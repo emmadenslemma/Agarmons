@@ -49,7 +49,7 @@ local init = function()
 end
 
 return {
-  enabled = agarmons_config.alolan_raichu or false,
+  config_key = 'alolan_raichu',
   init = init,
   list = { alolan_raichu }
 }
