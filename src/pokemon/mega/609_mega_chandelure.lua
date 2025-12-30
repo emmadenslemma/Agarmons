@@ -25,7 +25,6 @@ local mega_chandelure = {
       }
     end
   end,
-  artist = "KingOfThe-X-Roads",
 }
 
 local function init()
