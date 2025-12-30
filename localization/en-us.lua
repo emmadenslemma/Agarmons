@@ -58,6 +58,15 @@ return {
                     "it was played",
                 }
             },
+            j_poke_mrrime = {
+                name = "Mr. Rime",
+                text = {
+                    "Scores leftmost card",
+                    "{C:attention}held in hand{} as if",
+                    "it was played and",
+                    "retriggers twice",
+                }
+            },
             j_poke_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {
