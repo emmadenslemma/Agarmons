@@ -4,6 +4,7 @@ local redorb = {
   set = "Spectral",
   pos = { x = 2, y = 0 },
   helditem = true,
+  saveable = true,
   config = { extra = { usable = true, active = false } },
   loc_txt = {
     name = "Red Orb",

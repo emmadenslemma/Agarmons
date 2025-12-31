@@ -33,6 +33,7 @@ local dynamaxband = {
   pos = { x = 0, y = 0 },
   soul_pos = { x = 1, y = 0 },
   helditem = true,
+  saveable = true,
   config = { extra = { usable = true, target = nil } },
   loc_txt = {
     name = "Dynamax Band",
