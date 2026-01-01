@@ -29,7 +29,6 @@ local reshiram = {
   end,
   in_pool = function(self)
     return (next(SMODS.find_card("j_poke_pokedex")) or not next(SMODS.find_card("j_agar_kyurem_white")))
-        and pokemon_in_pool(self)
   end,
   fuses = { with = "j_agar_kyurem", into = "j_agar_kyurem_white" },
 }
