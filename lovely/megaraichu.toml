@@ -3,13 +3,13 @@ version = "1.0.0"
 dump_lua = true
 priority = 9999
 
-# [G.FUNCS.evaluate_round] use Infinity instead of interest when Raichu Y is present
+# [G.FUNCS.evaluate_round] Exclude interest cap from calculations when Mega Raichu Y is present
 [[patches]]
 [patches.regex]
 target = "functions/state_events.lua"
 position = "at"
-pattern = '''G\.GAME\.interest_cap\s*\/\s*5'''
-payload = '''(AG.effects.uncap_interest() and 1/0 or G.GAME.interest_cap/5)'''
+pattern = '''math\.min\(math\.floor\(G\.GAME\.dollars\s*\/\s*5\),\s*G\.GAME\.interest_cap\s*\/\s*5\)'''
+payload = '''(AG.effects.uncap_interest() and math.floor(G.GAME.dollars/5) or math.min(math.floor(G.GAME.dollars/5), G.GAME.interest_cap/5))'''
 
 # [add_round_eval_row] show Infinity in the (max of x) interest screen
 [[patches]]
