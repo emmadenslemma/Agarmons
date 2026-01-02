@@ -3,7 +3,7 @@ local berry_juice_mega = {
   key = "poke_berry_juice_mega",
   prefix_config = { key = { mod = false } },
   set = "Item",
-  pos = { x = 4, y = 0 },
+  pos = { x = 3, y = 1 },
   loc_txt = {
     name = "Mega Berry Juice",
     text = {
@@ -35,7 +35,8 @@ local berry_juice_mega = {
   end,
   in_pool = function(self)
     return false
-  end
+  end,
+  artist = { "Sonfive", "Emma" }
 }
 
 local init = function()
