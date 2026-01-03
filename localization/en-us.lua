@@ -1027,6 +1027,8 @@ return {
             a_joker_slot = "+#1# Joker Slot",
             a_poke_plus_energy = "+#1# Energy",
 
+            agar_a_powmult = "^#1# Mult", -- for Beta Arceus
+
             agar_x_turns_left_plural_ex = "#1# hands left!",
             agar_x_turns_left_singular_ex = "#1# turn left!",
         },
