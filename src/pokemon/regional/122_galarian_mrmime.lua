@@ -49,6 +49,7 @@ local init = function()
 end
 
 return {
+  can_load = false,
   init = init,
   list = { galarian_mrmime, mrrime }
 }
