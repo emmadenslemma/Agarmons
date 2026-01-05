@@ -18,7 +18,9 @@ end
 local function try_upgrade_pack(center, from, to)
   local upgraded_key = center.key:gsub(from, to)
   if center.key == upgraded_key then return end
+  local pack_num = tonumber(upgraded_key:match("_(%d)$")) or 1
   return G.P_CENTERS[upgraded_key]
+      or G.P_CENTERS[upgraded_key:gsub('_%d$', '_' .. math.floor(pack_num / 2))]
       or G.P_CENTERS[upgraded_key:gsub('_%d$', '_1')] -- default to the first variant
 end
 
