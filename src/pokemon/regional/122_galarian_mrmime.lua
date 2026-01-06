@@ -5,6 +5,7 @@ local galarian_mrmime = {
   config = { extra = { rounds = 5 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.rounds } }
   end,
   rarity = 3,
   cost = 8,

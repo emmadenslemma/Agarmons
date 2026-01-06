@@ -56,6 +56,7 @@ return {
                     "Scores leftmost card",
                     "{C:attention}held in hand{} as if",
                     "it was played",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
                 }
             },
             j_poke_mrrime = {
