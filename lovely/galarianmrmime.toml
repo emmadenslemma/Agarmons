@@ -34,3 +34,24 @@ if AG.effects.ortalab_statue_card then
     highlight_card(statue_card, 1.05, 'down')
 end
 '''
+
+# Adds Galarian Mr. Mime to Mime Jr.'s evolution
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokemon/pokejokers_15.lua"]'
+position = "before"
+match_indent = true
+pattern = '''return level_evo(self, card, context, "j_poke_mrmime")'''
+payload = '''
+if agarmons_config['galarian_mrmime'] and can_evolve(self, card, context, "j_poke_galarian_mrmime") then
+  local red_seals, blue_seals = 0, 0
+  for k, v in pairs(G.playing_cards) do
+    if v.seal == "Red" then red_seals = red_seals + 1 end
+    if v.seal == "Blue" then blue_seals = blue_seals + 1 end
+  end
+  if blue_seals > red_seals
+      or (blue_seals == red_seals and pseudorandom("gal_jr_evo") > .50) then
+    return level_evo(self, card, context, "j_poke_galarian_mrmime")
+  end
+end
+'''
