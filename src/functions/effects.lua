@@ -83,10 +83,3 @@ end
 
 AG.hookaroundfunc(SMODS, 'calculate_main_scoring', statue_wrapper)
 AG.hookaroundfunc(SMODS, 'calculate_destroying_cards', statue_wrapper)
-
-AG.hookafterfunc(SMODS.current_mod, 'calculate', function(context)
-  if context.after and AG.effects.ortalab_statue_card then
-    AG.effects.ortalab_statue_card:highlight(false)
-    AG.effects.ortalab_statue_card = nil
-  end
-end, true)

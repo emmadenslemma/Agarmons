@@ -18,3 +18,19 @@ if AG.effects.apply_ortalab_statue() then
     AG.effects.ortalab_statue_card = G.hand.cards[1]
 end
 '''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+match_indent = true
+position = 'after'
+pattern = '''
+-- TARGET: effects after hand evaluation
+'''
+payload = '''
+if AG.effects.ortalab_statue_card then
+    local statue_card = AG.effects.ortalab_statue_card
+    AG.effects.ortalab_statue_card = nil
+    highlight_card(statue_card, 1.05, 'down')
+end
+'''
