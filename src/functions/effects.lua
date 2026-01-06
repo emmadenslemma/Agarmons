@@ -65,6 +65,7 @@ end
 
 function AG.effects.apply_ortalab_statue()
   return next(SMODS.find_card('j_poke_galarian_mrmime'))
+      or next(SMODS.find_card('j_poke_mrrime'))
 end
 
 AG.effects.ortalab_statue_card = nil -- for intellisense
