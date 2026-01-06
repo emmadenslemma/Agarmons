@@ -23,6 +23,7 @@ local mrrime = {
   config = { extra = { retriggers = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.retriggers } }
   end,
   rarity = "poke_safari",
   cost = 10,
