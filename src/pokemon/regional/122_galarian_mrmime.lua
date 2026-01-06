@@ -33,9 +33,7 @@ local mrrime = {
   gen = 8,
   calculate = function(self, card, context)
     if AG.effects.ortalab_statue_card
-        and context.repetition
-        and (context.cardarea == G.play
-          or (context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1)))
+        and context.repetition and context.cardarea == G.play
         and context.other_card == AG.effects.ortalab_statue_card then
       return {
         repetitions = card.ability.extra.retriggers
