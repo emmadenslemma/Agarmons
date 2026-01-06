@@ -13,7 +13,8 @@ local mega_metagross = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and (context.cardarea == G.play or context.cardarea == G.hand) and not context.end_of_round
-        and context.scoring_name == "Four of a Kind" then
+        and context.scoring_name == "Four of a Kind"
+        and context.other_card:get_id() == get_X_same(4, context.scoring_hand)[1][1]:get_id() then
       local total_chips = poke_total_chips(context.other_card)
       local Xmult = (total_chips) ^ (1 / 4)
       if Xmult > 0 then

@@ -184,10 +184,11 @@ return {
             j_poke_mega_metagross = {
                 name = "Mega Metagross",
                 text = {
-                    "If played hand is a {C:attention}Four of a Kind{}",
-                    "played and held cards give",
-                    "{X:mult,C:white}X{} Mult equal to the {C:attention}fourth root{} ",
-                    "of that card's total Chips",
+                    "If played hand is a {C:attention}Four of a Kind{},",
+                    "played and held cards of the {C:attention}same rank",
+                    "as the played {C:attention}Four of a Kind",
+                    "give {X:mult,C:white}X{} Mult equal to the {C:attention}fourth root",
+                    "of their total Chips",
                 }
             },
             j_agar_kyogre = {
