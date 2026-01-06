@@ -1,5 +1,9 @@
 return {
+  -- these 2 don't actually disable cleanly atm
+  -- if you're here for a solution you can add `can_load = false,` to the return table of the file
   alolan_raichu = true,
+  galarian_mrmime = true,
+
   torkoal = true,
   bagon = true,
   kyogre = true,

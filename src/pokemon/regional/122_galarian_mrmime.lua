@@ -50,6 +50,7 @@ local init = function()
 end
 
 return {
+  config_key = 'galarian_mrmime',
   init = init,
   list = { galarian_mrmime, mrrime }
 }
