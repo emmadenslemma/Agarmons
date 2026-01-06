@@ -25,7 +25,7 @@ local mega_metagross = {
       end
     end
   end,
-  designer = { "Maelmc", "Gem" },
+  designer = "Gem, Maelmc",
 }
 
 local function init()
