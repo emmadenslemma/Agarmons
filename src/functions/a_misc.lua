@@ -30,6 +30,17 @@ function AG.hookafterfunc(table, funcname, hook, always_run)
   end
 end
 
+function AG.hookaroundfunc(table, funcname, hook)
+  if not table[funcname] then
+    table[funcname] = function(...)
+      return hook(function() end, ...)
+    end
+  else
+    local orig = table[funcname]
+    table[funcname] = function(...) return hook(orig, ...) end
+  end
+end
+
 function AG.get_distance(card, other_card)
   local x1, x2 = card.T.x, other_card.T.x
   local y1, y2 = card.T.y, other_card.T.y

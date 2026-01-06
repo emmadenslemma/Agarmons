@@ -70,25 +70,19 @@ end
 AG.effects.ortalab_statue_card = nil -- for intellisense
 
 -- Ripped from Ortalab with minor adjustments for Galarian Mr. Mime
-local calculate_main_scoring_ref = SMODS.calculate_main_scoring
-SMODS.calculate_main_scoring = function(context, scoring_hand)
-  calculate_main_scoring_ref(context, scoring_hand)
-  if context.cardarea == G.play and AG.effects.apply_ortalab_statue() and AG.effects.ortalab_statue_card then
+local statue_wrapper = function(func, context, ...)
+  -- cardarea is changed when unscoring cards are played, so we have to check early
+  local is_play = context.cardarea == G.play
+  func(context, ...)
+  if is_play and AG.effects.apply_ortalab_statue() and AG.effects.ortalab_statue_card then
     context.cardarea = { cards = { AG.effects.ortalab_statue_card } }
-    calculate_main_scoring_ref(context, scoring_hand)
-    context.cardarea = G.play
+    func(context, ...)
+    context.cardarea = G.play -- for if other mods need to hook this function
   end
 end
 
-local calculate_destroying_cards_ref = SMODS.calculate_destroying_cards
-SMODS.calculate_destroying_cards = function(context, cards_destroyed, scoring_hand)
-  calculate_destroying_cards_ref(context, cards_destroyed, scoring_hand)
-  if context.cardarea == G.play and AG.effects.apply_ortalab_statue() and AG.effects.ortalab_statue_card then
-    context.cardarea = { cards = { AG.effects.ortalab_statue_card } }
-    calculate_destroying_cards_ref(context, cards_destroyed, scoring_hand)
-    context.cardarea = G.play
-  end
-end
+AG.hookaroundfunc(SMODS, 'calculate_main_scoring', statue_wrapper)
+AG.hookaroundfunc(SMODS, 'calculate_destroying_cards', statue_wrapper)
 
 AG.hookafterfunc(SMODS.current_mod, 'calculate', function(context)
   if context.after and AG.effects.ortalab_statue_card then
