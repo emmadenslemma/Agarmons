@@ -181,6 +181,15 @@ return {
                     "{C:inactive,s:0.8}(Retriggers 0, 1, 2, 3, and 4 times)"
                 }
             },
+            j_poke_mega_metagross = {
+                name = "Mega Metagross",
+                text = {
+                    "If played hand is a {C:attention}Four of a Kind{}",
+                    "played and held cards give",
+                    "{X:mult,C:white}X{} Mult equal to the {C:attention}fourth root{} ",
+                    "of that card's total Chips",
+                }
+            },
             j_agar_kyogre = {
                 name = "Kyogre",
                 text = {
