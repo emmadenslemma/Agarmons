@@ -64,7 +64,7 @@ return {
                     "Scores leftmost card",
                     "{C:attention}held in hand{} as if",
                     "it was played and",
-                    "retriggers {C:attention}#1#{} times",
+                    "retriggers it {C:attention}#1#{} times",
                 }
             },
             j_poke_mega_dragonite = {
