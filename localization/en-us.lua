@@ -206,7 +206,7 @@ return {
                     "Disables {C:mult}Mult",
                     "{br:1.5}ERROR - CONTACT STEAK",
                     "All {C:chips}Chips{} give the",
-                    "{C:attention}cube root{} of their value",
+                    "{C:attention}fourth root{} of their value",
                     "as {C:white,X:chips}X{} {C:chips}Chips{} instead",
                 }
             },
@@ -225,7 +225,7 @@ return {
                     "Disables {C:chips}Chips",
                     "{br:1.5}ERROR - CONTACT STEAK",
                     "All {C:mult}Mult{} gives the",
-                    "{C:attention}square root{} of its value",
+                    "{C:attention}cube root{} of its value",
                     "as {C:white,X:mult}X{} {C:mult}Mult{} instead",
                 }
             },
