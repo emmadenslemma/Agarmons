@@ -2,7 +2,7 @@
 local alolan_raichu = {
   name = "alolan_raichu",
   agar_inject_prefix = "poke",
-  config = { extra = { chips = 0, chip_mod = 1, per_money = 2, money = 2, money_mod = 1 } },
+  config = { extra = { chips = 0, chip_mod = 1, per_money = 1, money = 2, money_mod = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chip_mod, card.ability.extra.per_money, card.ability.extra.chips, card.ability.extra.money, card.ability.extra.money_mod } }
