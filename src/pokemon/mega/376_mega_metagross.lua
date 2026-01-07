@@ -15,13 +15,19 @@ local mega_metagross = {
     if context.individual and (context.cardarea == G.play or context.cardarea == G.hand) and not context.end_of_round
         and context.scoring_name == "Four of a Kind"
         and context.other_card:get_id() == get_X_same(4, context.scoring_hand)[1][1]:get_id() then
-      local total_chips = poke_total_chips(context.other_card)
-      local Xmult = (total_chips) ^ (1 / 4)
-      if Xmult > 0 then
+      if context.cardarea == G.hand and context.other_card.debuff then
         return {
-          Xmult = Xmult,
-          card = card
+          message = localize('k_debuffed'),
+          colour = G.C.RED,
         }
+      else
+        local total_chips = poke_total_chips(context.other_card)
+        local Xmult = (total_chips) ^ (1 / 4)
+        if Xmult > 0 then
+          return {
+            Xmult = Xmult
+          }
+        end
       end
     end
   end,
