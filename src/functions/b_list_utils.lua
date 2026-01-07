@@ -64,3 +64,15 @@ function AG.list_utils.all(list, func)
   end
   return true
 end
+
+function AG.list_utils.count_unique(list, optional_map)
+  local seen, count = {}, 0
+  for _, v in pairs(list) do
+    if optional_map then v = optional_map(v) end
+    if v and not seen[v] then
+      seen[v] = true
+      count = count + 1
+    end
+  end
+  return count
+end
