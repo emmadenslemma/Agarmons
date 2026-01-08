@@ -41,7 +41,7 @@ local mega_pyroar = {
 }
 
 local function init()
-  AG.append_to_family("pyroar", "mega_pyroar")
+  poke_add_to_family("pyroar", "mega_pyroar")
   SMODS.Joker:take_ownership("poke_pyroar", { megas = { "mega_pyroar" } }, true)
 end
 

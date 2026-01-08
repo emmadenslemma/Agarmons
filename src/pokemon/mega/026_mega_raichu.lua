@@ -74,8 +74,7 @@ local mega_raichu_y = {
 }
 
 local function init()
-  AG.append_to_family("raichu", "mega_raichu_x", true)
-  AG.append_to_family("raichu", "mega_raichu_y", true)
+  pokermon.add_family { "raichu", "mega_raichu_x", "mega_raichu_y" }
   SMODS.Joker:take_ownership("poke_raichu", { megas = { "mega_raichu_x", "mega_raichu_y" } }, true)
 end
 

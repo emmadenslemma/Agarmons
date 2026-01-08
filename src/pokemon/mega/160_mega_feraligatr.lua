@@ -40,7 +40,7 @@ local mega_feraligatr = {
 }
 
 local function init()
-  AG.append_to_family("feraligatr", "mega_feraligatr")
+  poke_add_to_family("feraligatr", "mega_feraligatr")
   SMODS.Joker:take_ownership("poke_feraligatr", { megas = { "mega_feraligatr" } }, true)
 end
 

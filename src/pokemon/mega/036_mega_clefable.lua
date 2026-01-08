@@ -30,7 +30,7 @@ local mega_clefable = {
 }
 
 local function init()
-  AG.append_to_family("clefable", "mega_clefable")
+  poke_add_to_family("clefable", "mega_clefable")
   SMODS.Joker:take_ownership("poke_clefable", { megas = { "mega_clefable" } }, true)
 end
 

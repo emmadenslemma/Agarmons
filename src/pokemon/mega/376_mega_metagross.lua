@@ -35,7 +35,7 @@ local mega_metagross = {
 }
 
 local function init()
-  AG.append_to_family("metagross", "mega_metagross")
+  poke_add_to_family("metagross", "mega_metagross")
   SMODS.Joker:take_ownership("poke_metagross", { megas = { "mega_metagross" } }, true)
 end
 
