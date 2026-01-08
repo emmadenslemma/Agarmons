@@ -60,7 +60,7 @@ local cosmoem = {
       vars = {
         math.min(self.config.evo_rqmt - card.ability.extra.sun_suit_scored, 0),
         localize(card.ability.extra.suit_sun, "suits_singular"),
-        math.min(self.config.evo_rqmt - card.ability.extra.sun_moon_scored, 0),
+        math.min(self.config.evo_rqmt - card.ability.extra.moon_suit_scored, 0),
         localize(card.ability.extra.suit_moon, "suits_singular"),
       }
     }
