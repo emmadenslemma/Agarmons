@@ -46,7 +46,7 @@ local gmax_meowth = {
 }
 
 local init = function()
-  AG.append_to_family("meowth", "gmax_meowth")
+  poke_add_to_family("meowth", "gmax_meowth")
 
   SMODS.Joker:take_ownership("poke_meowth", { gmax = "gmax_meowth", poke_custom_values_to_keep = { "money" } }, true)
 end
