@@ -1,13 +1,5 @@
+---@deprecated use `poke_add_to_family` instead
 function AG.append_to_family(existing_name, new_name, to_end)
-  for _, family in ipairs(pokermon.family) do
-    for i, member in ipairs(family) do
-      if (type(member) == 'table' and member.key == existing_name) or member == existing_name then
-        table.insert(family, to_end and #family + 1 or i + 1, new_name)
-        return
-      end
-    end
-  end
-  -- if no family is found:
   pokermon.add_family({ existing_name, new_name })
 end
 
