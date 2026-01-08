@@ -44,8 +44,7 @@ local mrrime = {
 }
 
 local init = function()
-  AG.append_to_family("mrmime", "galarian_mrmime")
-  AG.append_to_family("galarian_mrmime", "mrrime")
+  poke_add_to_family("mrmime", { "galarian_mrmime", "mrrime" })
 end
 
 return {

@@ -29,7 +29,7 @@ local gmax_eevee = {
 }
 
 local init = function()
-  AG.append_to_family("eevee", "gmax_eevee")
+  poke_add_to_family("eevee", "gmax_eevee")
 
   SMODS.Joker:take_ownership("poke_eevee", { gmax = "gmax_eevee" }, true)
 end

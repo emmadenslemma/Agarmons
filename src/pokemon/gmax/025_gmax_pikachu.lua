@@ -37,7 +37,7 @@ local gmax_pikachu = {
 }
 
 local init = function()
-  AG.append_to_family("pikachu", "gmax_pikachu")
+  poke_add_to_family("gmax_pikachu", "pikachu")
 
   SMODS.Joker:take_ownership("poke_pikachu", { gmax = "gmax_pikachu" }, true)
 end

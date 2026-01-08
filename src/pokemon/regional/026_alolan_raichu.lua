@@ -41,7 +41,7 @@ local alolan_raichu = {
 }
 
 local init = function()
-  AG.append_to_family("raichu", "alolan_raichu")
+  poke_add_to_family("raichu", "alolan_raichu")
 
   AG.hookafterfunc(SMODS.Joker.obj_table.j_poke_pikachu, 'calculate', function(self, card, context)
     return type_evo(self, card, context, "j_poke_alolan_raichu", "psychic")
