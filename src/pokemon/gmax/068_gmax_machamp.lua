@@ -41,7 +41,7 @@ local gmax_machamp = {
 }
 
 local init = function()
-  AG.append_to_family("machamp", "gmax_machamp", true)
+  poke_add_to_family("machamp", "gmax_machamp")
   AG.gmax.disable_method_during_evolve("j_poke_machamp", "add_to_deck")
   AG.gmax.disable_method_during_evolve("j_poke_machamp", "remove_from_deck")
 

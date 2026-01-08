@@ -36,7 +36,7 @@ local gmax_urshifu_rapid_strike = {
 }
 
 local init = function()
-  AG.append_to_family("urshifu_rapid_strike", "gmax_urshifu_rapid_strike")
+  poke_add_to_family("urshifu_rapid_strike", "gmax_urshifu_rapid_strike")
 
   SMODS.Joker:take_ownership("j_Gem_urshifu_rapid_strike", { gmax = "gmax_urshifu_rapid_strike" }, true)
 end

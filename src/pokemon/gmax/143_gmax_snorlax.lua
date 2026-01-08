@@ -39,7 +39,7 @@ local gmax_snorlax = {
 }
 
 local init = function()
-  AG.append_to_family("snorlax", "gmax_snorlax", true)
+  poke_add_to_family("snorlax", "gmax_snorlax")
   AG.gmax.disable_method_during_evolve("j_poke_snorlax", "add_to_deck")
 
   SMODS.Joker:take_ownership("poke_snorlax", { gmax = "gmax_snorlax", poke_custom_values_to_keep = { "Xmult" } }, true)

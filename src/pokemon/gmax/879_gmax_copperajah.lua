@@ -58,18 +58,17 @@ local gmax_copperajah = {
 }
 
 local init = function()
-  AG.append_to_family("copperajah", "gmax_copperajah", true)
+  poke_add_to_family("copperajah", "gmax_copperajah")
 
   SMODS.Joker:take_ownership("maelmc_copperajah", { gmax = "gmax_copperajah", megas = false }, true)
 
   SMODS.Joker:take_ownership("maelmc_mega_copperajah", { no_collection = true }, true)
   -- Remove "Mega Copperajah" from the family listing
-  for _, family in ipairs(pokermon.family) do
-    for i, member in ipairs(family) do
-      if (type(member) == 'table' and member.key == "mega_copperajah") or member == "mega_copperajah" then
-        table.remove(family, i)
-        return
-      end
+  local family = poke_get_family_list("mega_copperajah")
+  for i, member in ipairs(family) do
+    if (type(member) == 'table' and member.key == "mega_copperajah") or member == "mega_copperajah" then
+      table.remove(family, i)
+      return
     end
   end
 end
