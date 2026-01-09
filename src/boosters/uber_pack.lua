@@ -6,11 +6,11 @@ local uber_pack = {
   draw_hand = false,
   no_collection = true,
   create_card = function(self, card)
-    return SMODS.create_card {
+    return {
       key = get_random_poke_key("uber_pack", "Legendary"),
+      area = G.pack_cards,
       no_edition = true,
       skip_materialize = true,
-      key_append = "uber_pack",
     }
   end,
   create_UIBox = function(self)
