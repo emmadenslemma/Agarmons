@@ -20,7 +20,7 @@ return {
   kyurem = true,
   xerneas = true,
   yveltal = true,
-  dewpider = false,
+  dewpider = true,
   sandygast = true,
   pyukumuku = true,
   drampa = true,

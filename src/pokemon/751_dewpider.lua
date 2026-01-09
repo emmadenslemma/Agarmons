@@ -1,12 +1,12 @@
 -- Dewpider 751
 local dewpider = {
   name = "dewpider",
-  config = { extra = { hazards = 4, mult = 8, rounds = 4 } },
+  config = { extra = { hazard_level = 1, mult = 8, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { card.ability.extra.hazards } }
+    info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = poke_get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-    return { vars = { card.ability.extra.hazards, card.ability.extra.mult, card.ability.extra.rounds } }
+    return { vars = { card.ability.extra.hazard_level, card.ability.extra.mult, card.ability.extra.rounds } }
   end,
   rarity = 1,
   cost = 4,
@@ -16,9 +16,6 @@ local dewpider = {
   blueprint_compat = true,
   hazard_poke = true,
   calculate = function(self, card, context)
-    if context.setting_blind then
-      poke_set_hazards(card.ability.extra.hazards)
-    end
     if context.individual and context.cardarea == G.play
         and SMODS.has_enhancement(context.other_card, "m_poke_hazard") then
       return {
@@ -27,17 +24,23 @@ local dewpider = {
     end
     return level_evo(self, card, context, "j_agar_araquanid")
   end,
+  add_to_deck = function(self, card, from_debuff)
+    poke_change_hazard_level(card.ability.extra.hazard_level)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    poke_change_hazard_level(-card.ability.extra.hazard_level)
+  end,
 }
 
 -- Araquanid 752
 local araquanid = {
   name = "araquanid",
-  config = { extra = { hazards = 4, mult = 8, Xmult_multi = 2 } },
+  config = { extra = { hazard_level = 1, mult = 8, Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    info_queue[#info_queue+1] = { set = 'Other', key = 'poke_hazards', vars = { card.ability.extra.hazards } }
+    info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = poke_get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-    return { vars = { card.ability.extra.hazards, card.ability.extra.mult, card.ability.extra.Xmult_multi } }
+    return { vars = { card.ability.extra.hazard_level, card.ability.extra.mult, card.ability.extra.Xmult_multi } }
   end,
   rarity = 2,
   cost = 5,
@@ -47,9 +50,6 @@ local araquanid = {
   blueprint_compat = true,
   hazard_poke = true,
   calculate = function(self, card, context)
-    if context.setting_blind then
-      poke_set_hazards(card.ability.extra.hazards)
-    end
     if context.individual and context.cardarea == G.play
         and SMODS.has_enhancement(context.other_card, "m_poke_hazard") then
       local first_hazard
@@ -70,6 +70,12 @@ local araquanid = {
         }
       end
     end
+  end,
+  add_to_deck = function(self, card, from_debuff)
+    poke_change_hazard_level(card.ability.extra.hazard_level)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    poke_change_hazard_level(-card.ability.extra.hazard_level)
   end,
 }
 
