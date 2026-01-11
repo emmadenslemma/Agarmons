@@ -3,7 +3,7 @@ local luxuryball = {
   key = "luxuryball",
   set = "Spectral",
   pos = { x = 4, y = 1 },
-  config = { extra = { money_mod = 8 } },
+  config = { extra = { money_mod = 10 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.money_mod } }
   end,
