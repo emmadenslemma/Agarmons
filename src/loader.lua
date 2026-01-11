@@ -59,12 +59,13 @@ local function load_pokemon(item)
     poke_load_sprites(item)
   end
 
+  pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = { item.name }
+
   pokermon.Pokemon(item, custom_prefix, custom_atlas)
 end
 
 local function load_pokemon_family(file)
   local names = AG.list_utils.map(file.list, function(a) return a.name end)
-  pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = names
   if file.family then
     if #file.family > 1 then
       pokermon.add_family(file.family)
