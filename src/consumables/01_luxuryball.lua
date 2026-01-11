@@ -26,7 +26,7 @@ local luxuryball = {
         play_sound('timpani')
         SMODS.add_card { key = get_random_poke_key_options { rarity = 'Rare', key_append = 'luxuryball' } }
         card:juice_up(0.3, 0.5)
-        ease_poke_dollars(card, nil, -card.ability.extra.money_mod)
+        ease_dollars(-card.ability.extra.money_mod, true)
         return true
       end
     }))
