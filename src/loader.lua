@@ -59,8 +59,6 @@ local function load_pokemon(item)
     poke_load_sprites(item)
   end
 
-  pokermon.dex_order_groups[#pokermon.dex_order_groups+1] = { item.name }
-
   pokermon.Pokemon(item, custom_prefix, custom_atlas)
 end
 
