@@ -97,7 +97,7 @@ return {
             j_poke_mega_skarmory = {
                 name = "Mega Skarmory",
                 text = {
-                    "{C:purple}+#1#{} hazard level, {C:purple}+#2#{} hazard level limit",
+                    "{C:hazard}+#1#{} hazard layer, {C:hazard}+#2#{} hazard layer limit",
                     "Played {C:attention}Hazard{} cards",
                     "give {X:mult,C:white}X#3#{} Mult for each",
                     "{C:attention}Gold{} or {C:attention}Steel{} card",
@@ -407,7 +407,7 @@ return {
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {
-                    "{C:purple}+#1#{} hazard level",
+                    "{C:hazard}+#1#{} hazard layer",
                     "Played {C:attention}Hazard{} cards give",
                     "{C:mult}+#2#{} Mult when scored",
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)",
@@ -416,7 +416,7 @@ return {
             j_agar_araquanid = {
                 name = "Araquanid",
                 text = {
-                    "{C:purple}+#1#{} hazard level",
+                    "{C:hazard}+#1#{} hazard layer",
                     "Played {C:attention}Hazard{} cards give",
                     "{C:mult}+#2#{} Mult when scored",
                     "{br:2}ERROR - CONTACT STEAK",
