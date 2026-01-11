@@ -35,7 +35,7 @@ local gmax_centiskorch = {
 }
 
 local init = function()
-  poke_add_to_family("centiskorch", "gmax_centiskorch")
+  pokermon.add_family { "centiskorch", "gmax_centiskorch" }
 
   SMODS.Joker:take_ownership("Gem_centiskorch",
     { gmax = "gmax_centiskorch", poke_custom_values_to_keep = { "mult" } }, true)

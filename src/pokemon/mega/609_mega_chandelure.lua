@@ -28,7 +28,7 @@ local mega_chandelure = {
 }
 
 local function init()
-  poke_add_to_family("chandelure", "mega_chandelure")
+  pokermon.add_family { "chandelure", "mega_chandelure" }
   SMODS.Joker:take_ownership("poke_chandelure", { megas = { "mega_chandelure" } }, true)
 end
 

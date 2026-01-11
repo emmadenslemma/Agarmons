@@ -62,7 +62,7 @@ local gmax_lapras = {
 }
 
 local init = function()
-  poke_add_to_family("lapras", "gmax_lapras")
+  pokermon.add_family { "lapras", "gmax_lapras" }
 
   SMODS.Joker:take_ownership("poke_lapras", { gmax = "gmax_lapras", poke_custom_values_to_keep = { "chips" } }, true)
 end

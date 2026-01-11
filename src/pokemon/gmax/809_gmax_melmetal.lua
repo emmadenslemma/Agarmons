@@ -41,7 +41,7 @@ local gmax_melmetal = {
 }
 
 local init = function()
-  poke_add_to_family("melmetal", "gmax_melmetal")
+  pokermon.add_family { "melmetal", "gmax_melmetal" }
 
   SMODS.Joker:take_ownership("sonfive_melmetal", { gmax = "gmax_melmetal" }, true)
 end

@@ -58,7 +58,7 @@ local gmax_copperajah = {
 }
 
 local init = function()
-  poke_add_to_family("copperajah", "gmax_copperajah")
+  pokermon.add_family { "copperajah", "gmax_copperajah" }
 
   SMODS.Joker:take_ownership("maelmc_copperajah", { gmax = "gmax_copperajah", megas = false }, true)
 

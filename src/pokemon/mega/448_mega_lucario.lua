@@ -33,7 +33,7 @@ local mega_lucario = {
 }
 
 local function init()
-  poke_add_to_family("lucario", "mega_lucario")
+  pokermon.add_family { "lucario", "mega_lucario" }
   SMODS.Joker:take_ownership("poke_lucario", { megas = { "mega_lucario" } }, true)
 end
 

@@ -32,7 +32,7 @@ local mega_dragonite = {
 }
 
 local function init()
-  poke_add_to_family("dragonite", "mega_dragonite")
+  pokermon.add_family { "dragonite", "mega_dragonite" }
   SMODS.Joker:take_ownership("poke_dragonite", { megas = { "mega_dragonite" } }, true)
 end
 

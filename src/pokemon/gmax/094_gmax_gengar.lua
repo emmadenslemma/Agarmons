@@ -34,7 +34,7 @@ local gmax_gengar = {
 }
 
 local init = function()
-  poke_add_to_family("gengar", "gmax_gengar")
+  pokermon.add_family { "gengar", "gmax_gengar" }
 
   SMODS.Joker:take_ownership("poke_gengar",
     { gmax = "gmax_gengar", poke_custom_values_to_keep = { "gengar_rounds", "trigger" } }, true)

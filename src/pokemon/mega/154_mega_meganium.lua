@@ -49,7 +49,7 @@ local mega_meganium = {
 }
 
 local function init()
-  poke_add_to_family("meganium", "mega_meganium")
+  pokermon.add_family { "meganium", "mega_meganium" }
   SMODS.Joker:take_ownership("poke_meganium", { megas = { "mega_meganium" } }, true)
 end
 

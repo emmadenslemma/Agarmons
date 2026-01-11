@@ -28,7 +28,7 @@ local mega_victreebel = {
 }
 
 local function init()
-  poke_add_to_family("victreebel", "mega_victreebel")
+  pokermon.add_family { "victreebel", "mega_victreebel" }
   SMODS.Joker:take_ownership("poke_victreebel", { megas = { "mega_victreebel" } }, true)
 end
 

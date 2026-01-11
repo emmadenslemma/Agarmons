@@ -49,7 +49,7 @@ local gmax_urshifu_single_strike = {
 }
 
 local init = function()
-  poke_add_to_family("urshifu_single_strike", "gmax_urshifu_single_strike")
+  pokermon.add_family { "urshifu_single_strike", "gmax_urshifu_single_strike" }
 
   SMODS.Joker:take_ownership("Gem_urshifu_single_strike", { gmax = "gmax_urshifu_single_strike" }, true)
 end

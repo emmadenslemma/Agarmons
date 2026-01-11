@@ -33,7 +33,7 @@ local gmax_kingler = {
 }
 
 local init = function()
-  poke_add_to_family("kingler", "gmax_kingler")
+  pokermon.add_family { "kingler", "gmax_kingler" }
 
   SMODS.Joker:take_ownership("poke_kingler", { gmax = "gmax_kingler" }, true)
 end
