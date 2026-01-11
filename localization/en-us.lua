@@ -818,6 +818,14 @@ return {
             },
         },
         Spectral = {
+            c_agar_luxuryball = {
+                name = "Luxury Ball",
+                text = {
+                    "Spends {C:money}$#1#{} to create a",
+                    "{C:rare}Rare {C:attention}Pokemon Joker",
+                    "{C:inactive}(Must have room)"
+                },
+            },
             c_agar_dynamaxband_targeting = {
                 name = "Dynamax Band",
                 text = {
