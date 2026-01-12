@@ -42,6 +42,21 @@ local toedscruel = {
         mult = card.ability.extra.mult_mod
       }
     end
+    -- Toggles Xmult deferral
+    if context.before then
+      AG.mycelium_might = true
+      AG.stored_xmult_effects = AG.stored_xmult_effects or {}
+    end
+    -- Cashes in the stored Xmult effects
+    if context.final_scoring_step then
+      if AG.mycelium_might then -- Only do this for the first Toedscruel
+        AG.mycelium_might = false
+        for _, args in ipairs(AG.stored_xmult_effects) do
+          SMODS.calculate_effect(table.unpack(args))
+        end
+        AG.stored_xmult_effects = nil
+      end
+    end
   end
 }
 

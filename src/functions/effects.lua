@@ -84,7 +84,3 @@ end
 
 AG.hookaroundfunc(SMODS, 'calculate_main_scoring', statue_wrapper)
 AG.hookaroundfunc(SMODS, 'calculate_destroying_cards', statue_wrapper)
-
-function AG.effects.apply_mycelium_might()
-  return next(SMODS.find_card('j_agar_toedscruel'))
-end
