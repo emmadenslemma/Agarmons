@@ -4,6 +4,8 @@ return {
   alolan_raichu = true,
   galarian_mrmime = true,
 
+  alolan_diglett = true,
+
   torkoal = true,
   bagon = true,
   kyogre = true,
