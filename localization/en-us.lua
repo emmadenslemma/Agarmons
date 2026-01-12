@@ -722,6 +722,24 @@ return {
                     "when scored",
                 }
             },
+            j_agar_toedscool = {
+                name = "Toedscool",
+                text = {
+                    "Each played {C:attention}4{} gives",
+                    "{C:mult}+#1#{} Mult when scored",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_toedscruel = {
+                name = "Toedscruel",
+                text = {
+                    "Each played {C:attention}4{} gives",
+                    "{C:mult}+#1#{} Mult when scored",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:white,X:mult}X{}m {C:mult}Mult{} effects",
+                    "always score last",
+                }
+            },
             j_agar_tatsugiri = {
                 name = "Tatsugiri",
                 text = {

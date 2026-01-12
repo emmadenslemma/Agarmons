@@ -35,6 +35,7 @@ return {
   eternatus = true,
   spectrier = true,
   calyrex = true,
+  toedscool = true,
   dondozo = true,
   gmax = true,
   new_megas = true,
