@@ -341,6 +341,12 @@ return {
                     "{C:inactive}({C:attention}#3#{C:inactive} remaining)"
                 }
             },
+            j_agar_cresselia = {
+                name = "Cresselia",
+                text = {
+                    "Scoring order is {C:attention}reversed"
+                }
+            },
             j_poke_mega_chandelure = {
                 name = "Mega Chandelure",
                 text = {

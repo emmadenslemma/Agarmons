@@ -1,12 +1,6 @@
 -- Cresselia 488
 local cresselia = {
   name = "cresselia",
-  loc_txt = {
-    name = "Cresselia",
-    text = {
-      "Scoring order is reversed",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
   end,
