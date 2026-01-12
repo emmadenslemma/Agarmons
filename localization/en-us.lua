@@ -1002,6 +1002,21 @@ return {
                     "each {C:attention}Boss Blind"
                 }
             },
+            sleeve_agar_reversedsleeve = {
+                name = "Reversed Sleeve",
+                text = {
+                    "Scoring order",
+                    "is {C:attention}reversed"
+                }
+            },
+            -- Eh we'll figure this one out later
+            sleeve_agar_reversedsleeve_alt = {
+                name = "Reversed Sleeve",
+                text = {
+                    "Scoring order",
+                    "is {C:attention}reversed"
+                }
+            },
         },
         Other = {
             gmax_poke = {
