@@ -84,3 +84,12 @@ end
 
 AG.hookaroundfunc(SMODS, 'calculate_main_scoring', statue_wrapper)
 AG.hookaroundfunc(SMODS, 'calculate_destroying_cards', statue_wrapper)
+
+-- Trick Room code, for scoring consumables before jokers etc.
+AG.hookaroundfunc(SMODS, 'get_card_areas', function(orig, ...)
+  local t = orig(...)
+  if G.GAME.modifiers.trick_room then
+    t = AG.list_utils.rev(t)
+  end
+  return t
+end)
