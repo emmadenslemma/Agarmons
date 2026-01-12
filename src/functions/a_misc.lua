@@ -87,3 +87,6 @@ function AG.defer(func)
     end
   }))
 end
+
+-- Fallback for Lua 5.2 support
+table.unpack = table.unpack or unpack
