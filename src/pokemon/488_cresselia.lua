@@ -25,7 +25,18 @@ local cresselia = {
   end,
 }
 
+local init = function()
+  AG.hookaroundfunc(SMODS, 'get_card_areas', function(orig, ...)
+    local t = orig(...)
+    if G.GAME.trick_room then
+      t = AG.list_utils.rev(t)
+    end
+    return t
+  end)
+end
+
 return {
   config_key = "cresselia",
+  init = init,
   list = { cresselia }
 }

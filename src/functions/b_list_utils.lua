@@ -76,3 +76,11 @@ function AG.list_utils.count_unique(list, optional_map)
   end
   return count
 end
+
+function AG.list_utils.rev(list)
+  local rev_list = {}
+  for i = #list, 1, -1 do
+    table.insert(rev_list, list[i])
+  end
+  return rev_list
+end
