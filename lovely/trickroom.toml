@@ -39,3 +39,13 @@ if G.GAME.trick_room then
     end
 end
 '''
+
+# Reverse the direction of played card scoring under Trick Room
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+position = "at"
+match_indent = true
+pattern = '''for _, card in ipairs(context.cardarea.cards) do'''
+payload = '''for _, card in ipairs(G.GAME.trick_room and AG.list_utils.rev(context.cardarea.cards) or context.cardarea.cards) do'''
+
