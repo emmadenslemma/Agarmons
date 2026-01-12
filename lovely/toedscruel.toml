@@ -3,27 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Pool all Xmult effects when Toedscruel is active
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/game_object.lua"]'
-position = "before"
-match_indent = true
-pattern = '''if not SMODS.Calculation_Controls.mult then return end'''
-payload = '''
-if AG.mycelium_might
-  and (key == 'x_mult'
-    or key == 'Xmult'
-    or key == 'xmult'
-    or key == 'x_mult_mod'
-    or key == 'Xmult_mod') then
-  table.insert(AG.stored_xmult_triggers, {
-    self, effect, scored_card, key, amount, from_edition
-  })
-  return true
-end
-'''
-
+# Toggle the Xmult deferral
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
@@ -33,10 +13,11 @@ pattern = '''-- TARGET: effects before scoring starts'''
 payload = '''
 if AG.effects.apply_mycelium_might() then
   AG.mycelium_might = true
-  AG.stored_xmult_triggers = {}
+  AG.stored_xmult_effects = {}
 end
 '''
 
+# Cash in your Xmult
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
@@ -46,9 +27,9 @@ pattern = '''-- TARGET: effects before deck final_scoring_step'''
 payload = '''
 if AG.mycelium_might then
   AG.mycelium_might = false
-  for _, args in ipairs(AG.stored_xmult_triggers) do
-    SMODS.Scoring_Parameters['mult'].calc_effect(table.unpack(args))
+  for _, args in ipairs(AG.stored_xmult_effects) do
+    SMODS.calculate_effect(table.unpack(args))
   end
-  AG.stored_xmult_triggers = nil
+  AG.stored_xmult_effects = nil
 end
 '''
