@@ -13,15 +13,27 @@ local alolan_diglett = {
   gen = 7,
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.before and next(context.poker_hands['Three of a Kind']) then
+      local hand_cards = AG.list_utils.shallow_copy(G.hand.cards)
+      pseudoshuffle(hand_cards, pseudoseed('alodiglet'))
+      local picked_card = hand_cards[1]
+
+      if picked_card then
+        picked_card:set_ability('m_steel', nil, true)
+        AG.defer(function() picked_card:juice_up() end)
+
+        return {
+          message = localize('poke_dig_ex'),
+          colour = G.ARGS.LOC_COLOURS.metal,
+        }
+      end
+    end
     if context.joker_main then
-      local score_chips = next(context.poker_hands['Three of a Kind'])
       local score_mult = AG.list_utils.any(context.scoring_hand,
         function(c) return c:get_id() == 8 or c:get_id() == 9 or c:get_id() == 10 end)
 
-      return {
-        message = score_chips and score_mult and localize('poke_dig_ex'),
-        chip_mod = score_chips and card.ability.extra.chips,
-        mult_mod = score_mult and card.ability.extra.mult,
+      return score_mult and {
+        mult = card.ability.extra.mult,
       }
     end
     return level_evo(self, card, context, 'j_agar_alolan_dugtrio')

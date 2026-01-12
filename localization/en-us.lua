@@ -38,7 +38,8 @@ return {
             j_agar_alolan_diglett = {
                 name = "{s:0.6}Alolan{}Diglett",
                 text = {
-                    "{C:chips}+#1#{} Chips if played hand",
+                    "Enhances a random held card",
+                    "into a {C:attention}Steel Card{} if played hand",
                     "contains a {C:attention}Three of a kind",
                     "{br:2}ERROR - CONTACT STEAK",
                     "{C:mult}+#2#{} Mult if played hand",
