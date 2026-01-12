@@ -1,14 +1,24 @@
 -- Cresselia 488
 local cresselia = {
   name = "cresselia",
+  config = { extra = { Xmult_multi = 3 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
   cost = 20,
   stage = "Legendary",
   ptype = "Psychic",
   gen = 4,
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play
+        and context.other_card == context.scoring_hand[1] then
+      return {
+        Xmult = card.ability.extra.Xmult_multi
+      }
+    end
+  end,
   add_to_deck = function(self, card, from_debuff)
     G.GAME.trick_room = true
   end,

@@ -344,7 +344,10 @@ return {
             j_agar_cresselia = {
                 name = "Cresselia",
                 text = {
-                    "Scoring order is {C:attention}reversed"
+                    "Scoring order is {C:attention}reversed",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "First played card gives",
+                    "{C:white,X:mult}X#1#{} Mult when scored",
                 }
             },
             j_poke_mega_chandelure = {
