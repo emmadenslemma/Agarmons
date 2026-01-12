@@ -42,18 +42,19 @@ return {
                     "into a {C:attention}Steel Card{} if played hand",
                     "contains a {C:attention}Three of a kind",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "{C:mult}+#2#{} Mult if played hand",
+                    "{C:mult}+#1#{} Mult if played hand",
                     "contains a scoring {C:attention}8{}, {C:attention}9{}, or {C:attention}10",
-                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)"
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)"
                 }
             },
             j_agar_alolan_dugtrio = {
                 name = "{s:0.6}Alolan{}Dugtrio",
                 text = {
-                    "{C:chips}+#1#{} Chips if played hand",
+                    "Enhances a random held card",
+                    "into a {C:attention}Steel Card{} if played hand",
                     "contains a {C:attention}Three of a kind",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "{X:mult,C:white}X#2#{} Mult if played hand",
+                    "{X:mult,C:white}X#1#{} Mult if played hand",
                     "contains a scoring {C:attention}8{}, {C:attention}9{}, or {C:attention}10",
                 }
             },
