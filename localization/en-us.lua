@@ -940,6 +940,13 @@ return {
                     "each {C:attention}Boss Blind"
                 }
             },
+            b_agar_reverseddeck = {
+                name = "Reversed Deck",
+                text = {
+                    "Scoring order",
+                    "is {C:attention}reversed"
+                }
+            },
         },
         Sleeve = {
             sleeve_agar_gmaxsleeve = {
