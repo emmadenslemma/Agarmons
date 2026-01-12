@@ -15,6 +15,14 @@ local cresselia = {
   stage = "Legendary",
   ptype = "Psychic",
   gen = 4,
+  add_to_deck = function(self, card, from_debuff)
+    G.GAME.trick_room = true
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    if not next(SMODS.find_card('j_agar_cresselia')) then
+      G.GAME.trick_room = false
+    end
+  end,
 }
 
 return {

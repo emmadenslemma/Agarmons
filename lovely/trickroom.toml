@@ -16,7 +16,7 @@ for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
 end
 '''
 payload = '''
-if not AG.effects.apply_trick_room() then
+if not G.GAME.trick_room then
     for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
         SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)
         delay(0.3)
@@ -32,7 +32,7 @@ position = "before"
 match_indent = true
 pattern = '''-- context.final_scoring_step calculations'''
 payload = '''
-if AG.effects.apply_trick_room() then
+if G.GAME.trick_room then
     for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
         SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)
         delay(0.3)
