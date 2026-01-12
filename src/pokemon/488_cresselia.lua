@@ -4,6 +4,7 @@ local cresselia = {
   config = { extra = { Xmult_multi = 3 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
+    info_queue[#info_queue+1] = { set = 'Other', key = 'trick_room' }
     return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,

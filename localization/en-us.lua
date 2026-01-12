@@ -344,7 +344,7 @@ return {
             j_agar_cresselia = {
                 name = "Cresselia",
                 text = {
-                    "Scoring order is {C:attention}reversed",
+                    "Applies {C:dark_edition}Trick Room",
                     "{br:2}ERROR - CONTACT STEAK",
                     "First played card gives",
                     "{C:white,X:mult}X#1#{} Mult when scored",
@@ -1033,6 +1033,13 @@ return {
                     "{X:mult,C:white}X{} Mult values",
                 }
             },
+            trick_room = {
+                name = "Trick Room",
+                text = {
+                    "Scoring order",
+                    "is {C:attention}reversed"
+                }
+            }
         },
     },
     misc = {
