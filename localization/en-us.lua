@@ -736,7 +736,7 @@ return {
                     "Each played {C:attention}4{} gives",
                     "{C:mult}+#1#{} Mult when scored",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X{}m {C:mult}Mult{} effects",
+                    "{C:white,X:mult}X{} {C:mult}Mult{} effects",
                     "always score last",
                 }
             },
