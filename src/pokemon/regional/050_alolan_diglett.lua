@@ -26,7 +26,7 @@ end
 -- Alolan Diglett 50-1
 local alolan_diglett = {
   name = "alolan_diglett",
-  config = { extra = { mult = 4, rounds = 4 } },
+  config = { extra = { mult = 8, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult, card.ability.extra.rounds } }
@@ -56,7 +56,7 @@ local alolan_diglett = {
 -- Alolan Dugtrio 51-1
 local alolan_dugtrio = {
   name = "alolan_dugtrio",
-  config = { extra = { Xmult = 1.5 } },
+  config = { extra = { Xmult = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult } }
@@ -76,7 +76,7 @@ local alolan_dugtrio = {
         function(c) return c:get_id() == 8 or c:get_id() == 9 or c:get_id() == 10 end)
 
       return {
-        Xmult_mod = score_mult and card.ability.extra.Xmult,
+        Xmult = score_mult and card.ability.extra.Xmult,
       }
     end
   end,
