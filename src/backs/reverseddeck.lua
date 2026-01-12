@@ -3,7 +3,9 @@ local reverseddeck = {
   key = "reverseddeck",
   atlas = "AgarmonsBacks",
   pos = { x = 3, y = 0 },
-  config = { trick_room = true },
+  apply = function(self, back)
+    G.GAME.modifiers.trick_room = true
+  end,
 }
 
 return {
