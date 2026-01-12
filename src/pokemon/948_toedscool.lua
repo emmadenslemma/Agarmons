@@ -1,6 +1,6 @@
 local toedscool = {
   name = "toedscool",
-  config = { extra = { mult_mod = 4, rounds = 5 } },
+  config = { extra = { mult_mod = 5, rounds = 5 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.rounds } }
