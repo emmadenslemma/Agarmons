@@ -15,6 +15,7 @@ return {
   dialga = true,
   palkia = true,
   regigigas = true,
+  cresselia = true,
   stunfisk = true,
   terrakion = true,
   reshiram = true,
