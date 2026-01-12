@@ -49,3 +49,11 @@ match_indent = true
 pattern = '''for _, card in ipairs(context.cardarea.cards) do'''
 payload = '''for _, card in ipairs(G.GAME.trick_room and AG.list_utils.rev(context.cardarea.cards) or context.cardarea.cards) do'''
 
+# Reverse the direction of Joker scoring under Trick Room
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+position = "at"
+match_indent = true
+pattern = '''for _, area in ipairs(SMODS.get_card_areas('jokers')) do for _, _card in ipairs(area.cards) do'''
+payload = '''for _, area in ipairs(SMODS.get_card_areas('jokers')) do for _, _card in ipairs(G.GAME.trick_room and AG.list_utils.rev(area.cards) or area.cards) do'''
