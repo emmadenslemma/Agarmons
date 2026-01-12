@@ -20,11 +20,11 @@ local cresselia = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    G.GAME.trick_room = true
+    G.GAME.modifiers.trick_room = true
   end,
   remove_from_deck = function(self, card, from_debuff)
     if not next(SMODS.find_card('j_agar_cresselia')) then
-      G.GAME.trick_room = false
+      G.GAME.modifiers.trick_room = false
     end
   end,
 }
@@ -32,7 +32,7 @@ local cresselia = {
 local init = function()
   AG.hookaroundfunc(SMODS, 'get_card_areas', function(orig, ...)
     local t = orig(...)
-    if G.GAME.trick_room then
+    if G.GAME.modifiers.trick_room then
       t = AG.list_utils.rev(t)
     end
     return t
