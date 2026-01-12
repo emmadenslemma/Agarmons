@@ -23,7 +23,8 @@ local cresselia = {
     G.GAME.modifiers.trick_room = true
   end,
   remove_from_deck = function(self, card, from_debuff)
-    if not next(SMODS.find_card('j_agar_cresselia')) then
+    if not next(SMODS.find_card('j_agar_cresselia'))
+        and not G.GAME.selected_back_key.key == 'b_agar_reverseddeck' then -- key.key???
       G.GAME.modifiers.trick_room = false
     end
   end,
