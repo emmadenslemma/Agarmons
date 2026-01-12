@@ -12,9 +12,9 @@ match_indent = true
 pattern = '''if not SMODS.Calculation_Controls.chips then return end'''
 payload = '''
 if G.GAME.desolate_land and not G.GAME.primordial_sea then return end
-if (key == 'chips' or key == 'h_chips' or key == 'chip_mod') and G.GAME.primordial_sea then
+if (key == 'chips' or key == 'h_chips' or key == 'chip_mod') and amount > 0 and G.GAME.primordial_sea then
     key = 'x_chips'
-    amount = amount^(1/4)
+    amount = math.min(1, amount^(1/4))
 end
 '''
 
@@ -27,8 +27,8 @@ match_indent = true
 pattern = '''if not SMODS.Calculation_Controls.mult then return end'''
 payload = '''
 if G.GAME.primordial_sea and not G.GAME.desolate_land then return end
-if (key == 'mult' or key == 'h_mult' or key == 'mult_mod') and G.GAME.desolate_land then
+if (key == 'mult' or key == 'h_mult' or key == 'mult_mod') and amount > 0 and G.GAME.desolate_land then
     key = 'x_mult'
-    amount = amount^(1/3)
+    amount = math.min(1, amount^(1/3))
 end
 '''
