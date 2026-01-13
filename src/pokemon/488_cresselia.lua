@@ -21,13 +21,10 @@ local cresselia = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    G.GAME.modifiers.trick_room = true
+    G.GAME.modifiers.trick_room_setters = (G.GAME.modifiers.trick_room_setters or 0) + 1
   end,
   remove_from_deck = function(self, card, from_debuff)
-    if not next(SMODS.find_card('j_agar_cresselia'))
-        and not G.GAME.selected_back_key.key == 'b_agar_reverseddeck' then -- key.key???
-      G.GAME.modifiers.trick_room = false
-    end
+    G.GAME.modifiers.trick_room_setters = (G.GAME.modifiers.trick_room_setters or 1) - 1
   end,
 }
 

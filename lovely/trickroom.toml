@@ -16,7 +16,7 @@ for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
 end
 '''
 payload = '''
-if not G.GAME.modifiers.trick_room then
+if not AG.effects.apply_trick_room() then
     for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
         SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)
         delay(0.3)
@@ -32,7 +32,7 @@ position = "before"
 match_indent = true
 pattern = '''-- context.final_scoring_step calculations'''
 payload = '''
-if G.GAME.modifiers.trick_room then
+if AG.effects.apply_trick_room() then
     for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do
         SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)
         delay(0.3)
@@ -47,7 +47,7 @@ target = '=[SMODS _ "src/utils.lua"]'
 position = "at"
 match_indent = true
 pattern = '''for _, card in ipairs(context.cardarea.cards) do'''
-payload = '''for _, card in ipairs(G.GAME.modifiers.trick_room and AG.list_utils.rev(context.cardarea.cards) or context.cardarea.cards) do'''
+payload = '''for _, card in ipairs(AG.effects.apply_trick_room() and AG.list_utils.rev(context.cardarea.cards) or context.cardarea.cards) do'''
 
 # Reverse the direction of Joker scoring under Trick Room
 [[patches]]
@@ -56,4 +56,4 @@ target = "functions/state_events.lua"
 position = "at"
 match_indent = true
 pattern = '''for _, area in ipairs(SMODS.get_card_areas('jokers')) do for _, _card in ipairs(area.cards) do'''
-payload = '''for _, area in ipairs(SMODS.get_card_areas('jokers')) do for _, _card in ipairs(G.GAME.modifiers.trick_room and AG.list_utils.rev(area.cards) or area.cards) do'''
+payload = '''for _, area in ipairs(SMODS.get_card_areas('jokers')) do for _, _card in ipairs(AG.effects.apply_trick_room() and AG.list_utils.rev(area.cards) or area.cards) do'''
