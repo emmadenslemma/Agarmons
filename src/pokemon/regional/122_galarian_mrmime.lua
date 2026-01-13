@@ -28,7 +28,7 @@ local mrrime = {
   end,
   rarity = "poke_safari",
   cost = 10,
-  stage = "Basic",
+  stage = "One",
   ptype = "Water",
   gen = 8,
   calculate = function(self, card, context)
