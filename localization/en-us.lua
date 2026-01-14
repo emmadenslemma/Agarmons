@@ -381,6 +381,15 @@ return {
                     "become {C:attention}Steel{} cards",
                 }
             },
+            j_poke_mega_golurk = {
+                name = "Mega Golurk",
+                text = {
+                    "{C:hazard}+#1#{} hazard layer",
+                    "Each {C:attention}Hazard Card{} held in hand",
+                    "gives {C:white,X:mult}X#2#{} Mult and has a",
+                    "{C:green}#3# in #4#{} chance to be destroyed",
+                }
+            },
             j_agar_terrakion = {
                 name = "Terrakion",
                 text = {
