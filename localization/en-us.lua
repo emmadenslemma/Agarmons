@@ -276,6 +276,17 @@ return {
                     "each {C:attention}unique edition{} in hand",
                 }
             },
+            j_poke_mega_froslass = {
+                name = "Mega Froslass",
+                text = {
+                    "Go up to {C:mult}-$#1#{} in debt",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                    "Create a {C:attention}#2#",
+                    "{C:attention}#3#{} and {C:attention}#4#{}",
+                    "if {C:attention}Blind{} is selected",
+                    "while in debt,",
+                }
+            },
             j_agar_uxie = {
                 name = "Uxie",
                 text = {
