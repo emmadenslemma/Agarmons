@@ -770,7 +770,8 @@ return {
                 name = "Toedscruel",
                 text = {
                     "Each played {C:attention}4{} gives",
-                    "{C:mult}+#1#{} Mult when scored",
+                    "{C:mult}+#1#{} Mult and {C:white,X:mult}X#2#{} Mult",
+                    "when scored",
                     "{br:2}ERROR - CONTACT STEAK",
                     "{C:white,X:mult}X{} {C:mult}Mult{} effects",
                     "always score last",

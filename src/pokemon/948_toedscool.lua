@@ -24,10 +24,10 @@ local toedscool = {
 
 local toedscruel = {
   name = "toedscruel",
-  config = { extra = { mult_mod = 8 } },
+  config = { extra = { mult_mod = 5, Xmult_multi = 1.1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.mult_mod } }
+    return { vars = { card.ability.extra.mult_mod, card.ability.extra.Xmult_multi } }
   end,
   rarity = "poke_safari",
   cost = 6,
@@ -39,7 +39,8 @@ local toedscruel = {
     if context.individual and context.cardarea == G.play and
         context.other_card:get_id() == 4 then
       return {
-        mult = card.ability.extra.mult_mod
+        mult = card.ability.extra.mult_mod,
+        Xmult = card.ability.extra.Xmult_multi,
       }
     end
     -- Toggles Xmult deferral
