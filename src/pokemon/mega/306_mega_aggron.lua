@@ -21,6 +21,15 @@ local mega_aggron = {
       }
     end
   end,
+  add_to_deck = function(self, card, from_debuff)
+    AG.defer(function()
+      for _, area in ipairs(SMODS.get_card_areas('jokers')) do
+        for _, joker in ipairs(area.cards) do
+          joker:set_debuff()
+        end
+      end
+    end)
+  end
 }
 
 local function init()
