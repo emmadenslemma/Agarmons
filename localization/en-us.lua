@@ -127,6 +127,13 @@ return {
                     "held in hand when scored",
                 }
             },
+            j_poke_mega_aggron = {
+                name = "Mega Aggron",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "Jokers can't be debuffed",
+                }
+            },
             j_agar_torkoal = {
                 name = "Torkoal",
                 text = {
