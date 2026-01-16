@@ -83,6 +83,7 @@ local alolan_dugtrio = {
 }
 
 return {
+  can_load = false,
   config_key = 'alolan_diglett',
   list = { alolan_diglett, alolan_dugtrio }
 }

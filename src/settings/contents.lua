@@ -5,7 +5,7 @@ return {
       title = function() return localize("agar_regular_pokemon1") end,
       tiles = {
         { list = { "j_poke_alolan_raichu" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_raichu" } end, config_key = "alolan_raichu" },
-        { list = { "j_agar_alolan_diglett", "j_agar_alolan_dugtrio" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_diglett" } end, config_key = "alolan_diglett" },
+        -- { list = { "j_agar_alolan_diglett", "j_agar_alolan_dugtrio" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_diglett" } end, config_key = "alolan_diglett" },
         { list = { "j_poke_galarian_mrmime", "j_poke_mrrime" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_mrmime" } end, config_key = "galarian_mrmime" },
         { list = { "j_agar_torkoal" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_torkoal" } end, config_key = "torkoal" },
         { list = { "j_agar_bagon", "j_agar_shelgon", "j_agar_salamence", "j_agar_mega_salamence" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_bagon" } end, config_key = "bagon" },
