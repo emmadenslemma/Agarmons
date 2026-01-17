@@ -120,7 +120,7 @@ return {
             j_poke_mega_skarmory = {
                 name = "Mega Skarmory",
                 text = {
-                    "{C:hazard}+#1#{} hazard layer, {C:hazard}+#2#{} hazard layer limit",
+                    "{C:hazard}+#1#{} hazard layer and limit",
                     "Played {C:attention}Hazard{} cards",
                     "give {X:mult,C:white}X#3#{} Mult for each",
                     "{C:attention}Gold{} or {C:attention}Steel{} card",
