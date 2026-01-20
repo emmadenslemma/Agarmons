@@ -27,7 +27,7 @@ local palkia = {
       if card.ability.extra.bosses_defeated == card.ability.extra.upgrade_rqmt then
         card.ability.extra.bosses_defeated = 0
         card.ability.extra.upgrade_rqmt = card.ability.extra.upgrade_rqmt + card.ability.extra.upgrade_rqmt_increase
-        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+        G.jokers.config.card_limits.mod = (G.jokers.config.card_limits.mod or 0) + 1
         return {
           message = localize { type = 'variable', key = 'a_joker_slot', vars = { card.ability.extra.joker_slot_mod } },
           colour = G.C.DARK_EDITION
