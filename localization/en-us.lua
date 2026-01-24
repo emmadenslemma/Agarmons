@@ -899,7 +899,7 @@ return {
             c_agar_luxuryball = {
                 name = "Luxury Ball",
                 text = {
-                    "Spends {C:money}$#1#{} to create a",
+                    "Spend {C:money}$#1#{} to create a",
                     "{C:rare}Rare {C:attention}Pokemon Joker",
                     "{C:inactive}(Must have room)"
                 },
