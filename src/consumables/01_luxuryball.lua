@@ -13,8 +13,6 @@ local luxuryball = {
   hidden = true,
   soul_set = "Item",
   soul_rate = .01333,
-  unlocked = true,
-  discovered = true,
   can_use = function(self, card)
     return #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers
   end,
