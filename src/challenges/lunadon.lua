@@ -5,11 +5,14 @@ local function setup_lunadon()
   dons = {}
 
   for key, center in pairs(G.P_CENTERS) do
-    if center.name:find('luna') and not center.name:find('don') then
-      lunas[#lunas+1] = key
-    end
-    if center.name:find('don') and not center.name:find('luna') then
-      dons[#dons+1] = key
+    local name = center.name
+    if name then
+      if name:find('luna') and not name:find('don') then
+        lunas[#lunas+1] = key
+      end
+      if name:find('don') and not name:find('luna') then
+        dons[#dons+1] = key
+      end
     end
   end
 end
