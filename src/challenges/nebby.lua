@@ -29,12 +29,7 @@ local nebby = {
   },
 }
 
-local calculate_ref = SMODS.current_mod.calculate
-
-SMODS.current_mod.calculate = function(self, context)
-  if calculate_ref then
-    calculate_ref(self, context)
-  end
+AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
   if G.GAME.modifiers.nebby then
     if context.first_hand_drawn
         and not SMODS.find_card('j_agar_cosmog')[1]
@@ -53,9 +48,8 @@ SMODS.current_mod.calculate = function(self, context)
       G.STATE_COMPLETE = false
     end
   end
-end
+end, true)
 
 return {
-  can_load = false, -- agarmons_config.cosmog,
   list = { nebby }
 }
