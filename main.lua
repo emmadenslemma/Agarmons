@@ -34,7 +34,7 @@ if (SMODS.Mods["JokerDisplay"] or {}).can_load then
 end
 
 AG.hookbeforefunc(SMODS.current_mod, 'reset_game_globals', function(run_start)
-  if run_start then
+  if run_start and not G.GAME.modifiers.agar_ignore_settings then
     for _, center in pairs(G.P_CENTERS) do
       if center.agar_config_key and not agarmons_config[center.agar_config_key] then
         G.GAME.banned_keys[center.key] = true

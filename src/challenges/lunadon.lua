@@ -1,157 +1,106 @@
-local lunas = {
-  "j_agar_lunala",
-  "j_poke_ursaluna",
-}
+local lunas, dons
 
-if (SMODS.Mods["PokermonMaelmc"] or {}).can_load then
-  lunas[#lunas+1] = "j_maelmc_lunatone"
-  lunas[#lunas+1] = "j_maelmc_bloodmoon_ursaluna"
+local function setup_lunadon()
+  lunas = {}
+  dons = {}
+
+  for key, center in pairs(G.P_CENTERS) do
+    if center.name:find('luna') and not center.name:find('don') then
+      lunas[#lunas+1] = key
+    end
+    if center.name:find('don') and not center.name:find('luna') then
+      dons[#dons+1] = key
+    end
+  end
 end
 
-local dons = {
-  "j_agar_groudon",
-  "j_poke_rhydon",
-  "j_poke_donphan",
-}
-
-local calculate_ref = SMODS.current_mod.calculate
-
-SMODS.current_mod.calculate = function(self, context)
-  if calculate_ref then
-    calculate_ref(self, context)
+AG.hookafterfunc(SMODS.current_mod, 'reset_game_globals', function(run_start)
+  if run_start and G.GAME.modifiers.lunadon then
+    setup_lunadon()
   end
-  if context and context.setting_blind
-      and G.GAME.modifiers.lunadon and G.GAME.round == 1 then
-    play_sound("tarot1")
-    attention_text({
-      scale = 0.8, text = localize("agar_lunadon_start"), hold = 10, align = 'cm', offset = { x = 0, y = -2.7 }, major = G.play
-    })
-  end
-  if context and context.end_of_round and not context.repetition and not context.individual
-      and G.GAME.modifiers.lunadon and G.GAME.blind.boss and not context.game_over then
-    local prev_luna
-    local prev_don
-    -- Scrap em both
-    for _, card in pairs(G.jokers.cards) do
-      local is_luna = false
-      for _, luna in pairs(lunas) do
-        if card.config.center.key == luna then
-          is_luna = true
-          break
+end, true)
+
+local function play_lunadon_quip(quip, hold_time)
+  hold_time = hold_time or 10
+  attention_text({
+    scale = 0.8,
+    text = localize("agar_lunadon_" .. quip),
+    hold = hold_time,
+    align = 'cm',
+    offset = { x = 0, y = -2.7 },
+    major = G.play
+  })
+end
+
+AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
+  if G.GAME.modifiers.lunadon then
+    if context.setting_blind and G.GAME.round == 1 then
+      play_sound("tarot1")
+      play_lunadon_quip("start")
+    end
+    if context.end_of_round and not context.repetition and not context.individual
+        and G.GAME.blind.boss and not context.game_over then
+      local prev_luna
+      local prev_don
+      -- Scrap em both
+      for _, card in pairs(G.jokers.cards) do
+        local is_luna = AG.list_utils.elem(lunas, card.config.center.key)
+        if is_luna then
+          prev_luna = prev_luna or card.config.center.key
+        else
+          prev_don = prev_don or card.config.center.key
         end
-      end
-      if is_luna then
-        prev_luna = prev_luna or card.config.center.key
-      else
-        prev_don = prev_luna or card.config.center.key
-      end
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.2,
-        func = function()
+
+        AG.delay(0.2, function()
           card:remove()
-          return true
-        end
-      }))
-    end
+        end)
+      end
 
-    if G.GAME.round_resets.ante ~= 7 then
-      play_sound("tarot1")
-      local quip_number = math.floor(pseudorandom(pseudoseed("lunadon")) * 6) + 1
-      attention_text({
-        scale = 0.8, text = localize("agar_lunadon_" .. quip_number), hold = 10, align = "cm", offset = { x = 0, y = -2.7 }, major = G.play
-      })
-      -- Roll a new set of LunaDons
-      local new_luna = pseudorandom_element(lunas, pseudoseed("luna" .. G.GAME.round_resets.ante))
-      local new_don
-      -- We only want 1 repeat max
-      if new_luna == prev_luna then
-        local adjusted_dons = {}
-        for _, don in pairs(dons) do
-          if don ~= prev_don then
-            adjusted_dons[#adjusted_dons+1] = don
-          end
-        end
-        new_don = pseudorandom_element(adjusted_dons, pseudoseed("don" .. G.GAME.round_resets.ante))
+      if G.GAME.round_resets.ante ~= 7 then
+        play_sound("tarot1")
+        local quip_number = math.floor(pseudorandom(pseudoseed("lunadon")) * 6) + 1
+        play_lunadon_quip(quip_number)
+        -- Roll a new set of LunaDons
+        local adjusted_lunas = AG.list_utils.filter(lunas, function(luna) return luna ~= prev_luna end)
+        local adjusted_dons = AG.list_utils.filter(dons, function(don) return don ~= prev_don end)
+
+        local new_luna = pseudorandom_element(adjusted_lunas, pseudoseed("luna" .. G.GAME.round_resets.ante))
+        local new_don = pseudorandom_element(adjusted_dons, pseudoseed("don" .. G.GAME.round_resets.ante))
+
+        AG.delay(1.2, function()
+          play_sound("timpani")
+          SMODS.add_card { set = "Joker", key = new_luna, stickers = { 'eternal' } }
+          SMODS.add_card { set = "Joker", key = new_don, stickers = { 'eternal' } }
+        end)
       else
-        new_don = pseudorandom_element(dons, pseudoseed("don" .. G.GAME.round_resets.ante))
-      end
+        -- We're at the endgame: Bring out LunaLunaDonDon
+        play_sound("tarot1")
+        play_lunadon_quip('end_1', 2.4)
 
-      G.E_MANAGER:add_event(Event({
-        trigger = "after",
-        delay = 1.2,
-        func = function()
+        G.jokers.config.card_limit = G.jokers.config.card_limit + 2
+
+        luna1 = pseudorandom_element(lunas, pseudoseed("luna1" .. G.GAME.round_resets.ante))
+        don1 = pseudorandom_element(dons, pseudoseed("don1" .. G.GAME.round_resets.ante))
+
+        local second_luna_pool = AG.list_utils.filter(lunas, function(luna) return luna ~= luna1 end)
+        local second_don_pool = AG.list_utils.filter(dons, function(don) return don ~= don1 end)
+
+        luna2 = pseudorandom_element(second_luna_pool, pseudoseed("luna2" .. G.GAME.round_resets.ante))
+        don2 = pseudorandom_element(second_don_pool, pseudoseed("don2" .. G.GAME.round_resets.ante))
+
+        AG.delay(2.4, function()
           play_sound("timpani")
-          local _luna = SMODS.create_card { set = "Joker", key = new_luna }
-          _luna:set_eternal(true)
-          _luna:add_to_deck()
-          G.jokers:emplace(_luna)
-          local _don = SMODS.create_card { set = "Joker", key = new_don }
-          _don:set_eternal(true)
-          _don:add_to_deck()
-          G.jokers:emplace(_don)
-          return true
-        end
-      }))
-    else
-      -- We're at the endgame: Bring out LunaLunaDonDon
-      play_sound("tarot1")
-      attention_text({
-        scale = 0.8, text = { localize("agar_lunadon_end_1"), localize("agar_lunadon_end_2") }, hold = 2.4, align = 'cm', offset = { x = 0, y = -2.7 }, major = G.play
-      })
+          play_lunadon_quip('end_2')
 
-      G.jokers.config.card_limit = G.jokers.config.card_limit + 2
-
-      luna1 = pseudorandom_element(lunas, pseudoseed("luna1" .. G.GAME.round_resets.ante))
-      don1 = pseudorandom_element(dons, pseudoseed("don1" .. G.GAME.round_resets.ante))
-
-      local second_luna_pool = {}
-      for _, luna in pairs(lunas) do
-        if luna ~= luna1 then
-          second_luna_pool[#second_luna_pool+1] = luna
-        end
+          SMODS.add_card { set = "Joker", key = luna1, stickers = { 'eternal' } }
+          SMODS.add_card { set = "Joker", key = luna2, stickers = { 'eternal' } }
+          SMODS.add_card { set = "Joker", key = don1, stickers = { 'eternal' } }
+          SMODS.add_card { set = "Joker", key = don2, stickers = { 'eternal' } }
+        end)
       end
-
-      local second_don_pool = {}
-      for _, don in pairs(dons) do
-        if don ~= don1 then
-          second_don_pool[#second_don_pool+1] = don
-        end
-      end
-
-      luna2 = pseudorandom_element(second_luna_pool, pseudoseed("luna2" .. G.GAME.round_resets.ante))
-      don2 = pseudorandom_element(second_don_pool, pseudoseed("don2" .. G.GAME.round_resets.ante))
-
-      G.E_MANAGER:add_event(Event({
-        trigger = "after",
-        delay = 2.4,
-        func = function()
-          play_sound("timpani")
-          attention_text({
-            scale = 0.8, text = localize("agar_lunadon_end_2"), hold = 10, align = 'cm', offset = { x = 0, y = -2.7 }, major = G.play
-          })
-          local _luna1 = SMODS.create_card { set = "Joker", key = luna1 }
-          _luna1:set_eternal(true)
-          _luna1:add_to_deck()
-          G.jokers:emplace(_luna1)
-          local _luna2 = SMODS.create_card { set = "Joker", key = luna2 }
-          _luna2:set_eternal(true)
-          _luna2:add_to_deck()
-          G.jokers:emplace(_luna2)
-          local _don1 = SMODS.create_card { set = "Joker", key = don1 }
-          _don1:set_eternal(true)
-          _don1:add_to_deck()
-          G.jokers:emplace(_don1)
-          local _don2 = SMODS.create_card { set = "Joker", key = don2 }
-          _don2:set_eternal(true)
-          _don2:add_to_deck()
-          G.jokers:emplace(_don2)
-          return true
-        end
-      }))
     end
   end
-end
+end, true)
 
 local lunadon = {
   object_type = "Challenge",
@@ -160,6 +109,7 @@ local lunadon = {
     custom = {
       { id = "lunadon" },
       { id = "no_shop_jokers" },
+      { id = "agar_ignore_settings" }
     },
     modifiers = {
       { id = "joker_slots", value = 2 },
@@ -205,6 +155,5 @@ local lunadon = {
 }
 
 return {
-  can_load = agarmons_config.cosmog and agarmons_config.groudon,
   list = { lunadon }
 }
