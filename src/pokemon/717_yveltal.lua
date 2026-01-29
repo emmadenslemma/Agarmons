@@ -52,7 +52,7 @@ local yveltal = {
             func = function()
               if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                 G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                SMODS.add_card { key = 'c_death' }
+                SMODS.add_card { set = 'Tarot', key = 'c_death' }
                 G.GAME.consumeable_buffer = 0
               end
               return true

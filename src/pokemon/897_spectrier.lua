@@ -28,7 +28,7 @@ local spectrier = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    if not from_debuff
+    if not from_debuff and not G.GAME.banned_keys['c_wraith']
         and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
       local wraith = SMODS.add_card { key = 'c_wraith' }
       SMODS.calculate_effect({ message = localize('k_plus_spectral'), colour = G.C.SECONDARY_SET.Spectral }, wraith)

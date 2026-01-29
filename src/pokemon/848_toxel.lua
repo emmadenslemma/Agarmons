@@ -27,7 +27,7 @@ local toxel = {
       }
     end
     if context.end_of_round and context.cardarea == G.jokers and not card.debuff then
-      SMODS.add_card { key = 'c_stall_blacksludge', edition = 'e_negative' }
+      SMODS.add_card { set = 'Item', key = 'c_stall_blacksludge', edition = 'e_negative' }
     end
     return level_evo(self, card, context, "j_agar_toxtricity")
   end,
