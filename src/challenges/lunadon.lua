@@ -1,17 +1,21 @@
 local lunas, dons
 
+local lunadon_banlist = {}
+
 local function setup_lunadon()
   lunas = {}
   dons = {}
 
   for key, center in pairs(G.P_CENTERS) do
-    local name = center.name
-    if name then
-      if name:find('luna') and not name:find('don') then
-        lunas[#lunas+1] = key
-      end
-      if name:find('don') and not name:find('luna') then
-        dons[#dons+1] = key
+    if center.stage and center.stage ~= 'Other' then
+      local name = center.name
+      if name and not AG.list_utils.elem(lunadon_banlist, name) then
+        if name:find('luna') and not name:find('don') then
+          lunas[#lunas+1] = key
+        end
+        if name:find('don') and not name:find('luna') then
+          dons[#dons+1] = key
+        end
       end
     end
   end
@@ -53,11 +57,9 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
         else
           prev_don = prev_don or card.config.center.key
         end
-
-        AG.delay(0.2, function()
-          card:remove()
-        end)
       end
+
+      SMODS.destroy_cards(G.jokers.cards, true, nil, true)
 
       if G.GAME.round_resets.ante ~= 7 then
         play_sound("tarot1")
@@ -72,8 +74,8 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
 
         AG.delay(1.2, function()
           play_sound("timpani")
-          SMODS.add_card { set = "Joker", key = new_luna, stickers = { 'eternal' } }
-          SMODS.add_card { set = "Joker", key = new_don, stickers = { 'eternal' } }
+          SMODS.add_card { set = "Joker", key = new_luna, stickers = { 'eternal' }, force_stickers = true }
+          SMODS.add_card { set = "Joker", key = new_don, stickers = { 'eternal' }, force_stickers = true }
         end)
       else
         -- We're at the endgame: Bring out LunaLunaDonDon
@@ -95,10 +97,10 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
           play_sound("timpani")
           play_lunadon_quip('end_2')
 
-          SMODS.add_card { set = "Joker", key = luna1, stickers = { 'eternal' } }
-          SMODS.add_card { set = "Joker", key = luna2, stickers = { 'eternal' } }
-          SMODS.add_card { set = "Joker", key = don1, stickers = { 'eternal' } }
-          SMODS.add_card { set = "Joker", key = don2, stickers = { 'eternal' } }
+          SMODS.add_card { set = "Joker", key = luna1, stickers = { 'eternal' }, force_stickers = true }
+          SMODS.add_card { set = "Joker", key = luna2, stickers = { 'eternal' }, force_stickers = true }
+          SMODS.add_card { set = "Joker", key = don1, stickers = { 'eternal' }, force_stickers = true }
+          SMODS.add_card { set = "Joker", key = don2, stickers = { 'eternal' }, force_stickers = true }
         end)
       end
     end
@@ -153,6 +155,7 @@ local lunadon = {
       { id = 'bl_final_heart', type = 'blind' },
       { id = 'bl_final_leaf', type = 'blind' },
       { id = 'bl_final_acorn', type = 'blind' },
+      { id = 'bl_poke_mirror', type = 'blind' },
     }
   },
 }
