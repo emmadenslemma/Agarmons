@@ -1,6 +1,10 @@
 local lunas, dons
 
-local lunadon_banlist = {}
+local lunadon_banlist = {
+  'primal_groudon',
+  'miraidon', -- banned until fields are added
+  'koraidon',
+}
 
 local function setup_lunadon()
   lunas = {}
