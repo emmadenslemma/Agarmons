@@ -13,6 +13,7 @@ local nebby = {
     banned_cards = {
       { id = "j_poke_pokedex", ids = { "j_ring_master" } },
       { id = "j_poke_ruins_of_alph", ids = { "j_invisible" } },
+      { id = "j_poke_ditto" },
       {
         id = "j_poke_jirachi",
         ids = {
@@ -26,6 +27,9 @@ local nebby = {
       { id = "c_ankh" },
       { id = "c_poke_transformation" },
     },
+    banned_other = {
+      { id = 'bl_poke_mirror', type = 'blind' },
+    }
   },
 }
 
