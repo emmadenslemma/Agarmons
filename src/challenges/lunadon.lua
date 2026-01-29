@@ -70,10 +70,13 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
         local quip_number = math.floor(pseudorandom(pseudoseed("lunadon")) * 6) + 1
         play_lunadon_quip(quip_number)
         -- Roll a new set of LunaDons
-        local adjusted_lunas = AG.list_utils.filter(lunas, function(luna) return luna ~= prev_luna end)
-        local adjusted_dons = AG.list_utils.filter(dons, function(don) return don ~= prev_don end)
+        local new_luna = pseudorandom_element(lunas, pseudoseed("luna" .. G.GAME.round_resets.ante))
 
-        local new_luna = pseudorandom_element(adjusted_lunas, pseudoseed("luna" .. G.GAME.round_resets.ante))
+        -- Allow up to 1 duplicate
+        local adjusted_dons = new_luna == prev_luna
+            and AG.list_utils.filter(dons, function(don) return don ~= prev_don end)
+            or dons
+
         local new_don = pseudorandom_element(adjusted_dons, pseudoseed("don" .. G.GAME.round_resets.ante))
 
         AG.delay(1.2, function()
