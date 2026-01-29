@@ -35,5 +35,6 @@ local srocks = {
 }
 
 return {
+  can_load = false,
   list = { spikes, srocks }
 }
