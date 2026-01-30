@@ -21,6 +21,7 @@ local glastrier = {
   stage = "Legendary",
   ptype = "Water",
   gen = 8,
+  enhancement_gate = 'm_glass',
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
