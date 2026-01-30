@@ -2,16 +2,6 @@
 local glastrier = {
   name = "glastrier",
   config = { extra = { Xmult = 1, Xmult_mod = 0.4 } },
-  loc_txt = {
-    name = "Glastrier",
-    text = {
-      "{C:attention}Glass{} cards can't be destroyed",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:white,X:mult}X#1#{} Mult for every",
-      "{C:attention}Glass Card{} in your full deck",
-      "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local Xmult_total = card.ability.extra.Xmult
@@ -23,7 +13,8 @@ local glastrier = {
 
       Xmult_total = Xmult_total + card.ability.extra.Xmult_mod * glass_count
     end
-    return { vars = { card.ability.extra.Xmult_mod, Xmult_total } }
+    local key = pokermon_config.pokemon_aprilfools and (self.key .. '_aprilfools') or self.key
+    return { key = key, vars = { card.ability.extra.Xmult_mod, Xmult_total } }
   end,
   rarity = 4,
   cost = 20,
