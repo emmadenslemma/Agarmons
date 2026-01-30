@@ -34,7 +34,10 @@ local glastrier = {
       }
     end
   end,
-  fuses = { with = "j_agar_calyrex", into = "j_agar_calyrex_ice" }
+  in_pool = function(self)
+    return (next(SMODS.find_card("j_poke_pokedex")) or not next(SMODS.find_card("j_agar_calyrex_ice")))
+  end,
+  -- fuses = { with = "j_agar_calyrex", into = "j_agar_calyrex_ice" }
 }
 
 return {
