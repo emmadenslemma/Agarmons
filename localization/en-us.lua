@@ -744,20 +744,24 @@ return {
             j_agar_glastrier = {
                 name = "Glastrier",
                 text = {
-                    "{C:attention}Glass{} cards can't be destroyed",
+                    "{C:attention}Glass{} cards",
+                    "can't be destroyed",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#1#{} Mult for every",
-                    "{C:attention}Glass Card{} in your full deck",
+                    "{C:white,X:mult}X#1#{} Mult for",
+                    "every {C:attention}Glass Card",
+                    "in your full deck",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
             j_agar_glastrier_aprilfools = {
                 name = "Snowjack Horseman",
                 text = {
-                    "{C:attention}Glass{} cards can't be destroyed",
+                    "{C:attention}Glass{} cards",
+                    "can't be destroyed",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#1#{} Mult for every",
-                    "{C:attention}Glass Card{} in your full deck",
+                    "{C:white,X:mult}X#1#{} Mult for",
+                    "every {C:attention}Glass Card",
+                    "in your full deck",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
