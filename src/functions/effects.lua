@@ -1,10 +1,10 @@
 AG.effects = {}
 
 function AG.effects.apply_scry_hand_effects()
-  return SMODS.find_card('j_agar_uxie', false)[1]
-      or SMODS.find_card('j_agar_mesprit', false)[1]
-      or SMODS.find_card('j_agar_azelf', false)[1]
-      or (SMODS.find_card('j_agar_lunala', false)[1] or { ability = { extra = {} } }).ability.extra.full_active
+  return SMODS.find_card('j_agar_uxie')[1]
+      or SMODS.find_card('j_agar_mesprit')[1]
+      or SMODS.find_card('j_agar_azelf')[1]
+      or (SMODS.find_card('j_agar_lunala')[1] or { ability = { extra = {} } }).ability.extra.full_active
 end
 
 function AG.effects.apply_force_jumbo_packs()
@@ -97,4 +97,26 @@ AG.hookaroundfunc(SMODS, 'get_card_areas', function(orig, ...)
     t = AG.list_utils.rev(t)
   end
   return t
+end)
+
+function AG.effects.apply_sturdy_glass()
+  return next(SMODS.find_card('j_agar_glastrier'))
+end
+
+AG.hookaroundfunc(_G, 'poke_remove_card', function(orig, card, ...)
+  if not (SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass()) then
+    return orig(card, ...)
+  end
+end)
+
+-- The final failsafe. this won't work on its own but it should stop the edge cases.
+--    some of the specific fixes are for stopping `context.remove_playing_cards`,
+--     but some are there to stop the game from breaking in half. funny stuff.
+AG.hookaroundfunc(Card, 'shatter', function(orig, card)
+  if SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass() then
+    card.getting_sliced = false
+    card.shattered = false
+    return
+  end
+  return orig(card)
 end)

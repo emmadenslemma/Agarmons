@@ -13,6 +13,7 @@ local nebby = {
     banned_cards = {
       { id = "j_poke_pokedex", ids = { "j_ring_master" } },
       { id = "j_poke_ruins_of_alph", ids = { "j_invisible" } },
+      { id = "j_poke_ditto" },
       {
         id = "j_poke_jirachi",
         ids = {
@@ -26,15 +27,13 @@ local nebby = {
       { id = "c_ankh" },
       { id = "c_poke_transformation" },
     },
+    banned_other = {
+      { id = 'bl_poke_mirror', type = 'blind' },
+    }
   },
 }
 
-local calculate_ref = SMODS.current_mod.calculate
-
-SMODS.current_mod.calculate = function(self, context)
-  if calculate_ref then
-    calculate_ref(self, context)
-  end
+AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
   if G.GAME.modifiers.nebby then
     if context.first_hand_drawn
         and not SMODS.find_card('j_agar_cosmog')[1]
@@ -53,9 +52,8 @@ SMODS.current_mod.calculate = function(self, context)
       G.STATE_COMPLETE = false
     end
   end
-end
+end, true)
 
 return {
-  can_load = false, -- agarmons_config.cosmog,
   list = { nebby }
 }

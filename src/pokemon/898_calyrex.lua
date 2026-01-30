@@ -28,10 +28,10 @@ local calyrex = {
       }
     end
   end,
-  fuses = {
-    -- { with = "j_agar_glastrier", into = "j_agar_calyrex_ice" },
-    -- { with = "j_agar_spectrier", into = "j_agar_calyrex_shadow" },
-  }
+  -- fuses = {
+  -- { with = "j_agar_glastrier", into = "j_agar_calyrex_ice", evo_this = true },
+  -- { with = "j_agar_spectrier", into = "j_agar_calyrex_shadow", evo_this = true },
+  -- }
 }
 
 -- Calyrex Ice Rider 898-1

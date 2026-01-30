@@ -20,6 +20,7 @@ load_directory("src/functions")
 load_directory("src/pokemon", l.load_pokemon, { post_load = l.load_pokemon_family })
 load_directory("src/consumables", function(a) SMODS.Consumable(a) end)
 load_directory("src/boosters", function(a) SMODS.Booster(a) end)
+load_directory("src/vouchers", function(a) SMODS.Voucher(a) end)
 load_directory("src/backs", function(a) SMODS.Back(a) end, { post_load = l.load_sleeves })
 load_directory("src/challenges", function(a)
   a.button_colour = HEX("F792BC")
@@ -33,7 +34,7 @@ if (SMODS.Mods["JokerDisplay"] or {}).can_load then
 end
 
 AG.hookbeforefunc(SMODS.current_mod, 'reset_game_globals', function(run_start)
-  if run_start then
+  if run_start and not G.GAME.modifiers.agar_ignore_settings then
     for _, center in pairs(G.P_CENTERS) do
       if center.agar_config_key and not agarmons_config[center.agar_config_key] then
         G.GAME.banned_keys[center.key] = true

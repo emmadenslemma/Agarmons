@@ -21,7 +21,7 @@ local mega_pyroar = {
   atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main and next(context.poker_hands['Flush']) then
+    if context.joker_main and next(context.poker_hands['Flush']) and not G.GAME.modifiers.no_energy then
       return {
         message = localize { type = 'variable', key = 'a_poke_plus_energy', vars = { card.ability.extra.create_energy_mod } },
         colour = G.ARGS.LOC_COLOURS.pink,

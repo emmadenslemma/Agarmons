@@ -90,3 +90,14 @@ end
 
 -- Fallback for Lua 5.2 support
 table.unpack = table.unpack or unpack
+
+function AG.delay(time, func)
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = time,
+    func = function()
+      func()
+      return true
+    end
+  }))
+end
