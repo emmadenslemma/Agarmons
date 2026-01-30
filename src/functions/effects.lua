@@ -98,3 +98,7 @@ AG.hookaroundfunc(SMODS, 'get_card_areas', function(orig, ...)
   end
   return t
 end)
+
+function AG.effects.apply_sturdy_glass()
+  return next(SMODS.find_card('j_agar_glastrier'))
+end
