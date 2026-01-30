@@ -34,6 +34,7 @@ return {
   sobble = true,
   toxel = true,
   eternatus = true,
+  glastrier = true,
   spectrier = true,
   calyrex = true,
   toedscool = true,

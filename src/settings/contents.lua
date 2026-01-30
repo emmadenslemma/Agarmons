@@ -61,6 +61,7 @@ return {
       title = function() return localize("agar_legendary_pokemon3") end,
       tiles = {
         { list = { "j_agar_eternatus" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_eternatus" } end, config_key = "eternatus" },
+        { list = { "j_agar_glastrier" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_glastrier" } end, config_key = "glastrier" },
         { list = { "j_agar_spectrier" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_spectrier" } end, config_key = "spectrier" },
         { list = { "j_agar_calyrex" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_calyrex" } end, config_key = "calyrex" },
       }
