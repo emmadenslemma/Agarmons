@@ -3,6 +3,11 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+## Welcome to my Sisyphean Hellscape.
+## John SMODS please add a standardized way to do this
+##   (If you're reading this to try to implement your own,
+##    there are additional hooks in `src/functions/effects.lua`)
+
 # SMODS.calculate_destroying_cards
 [[patches]]
 [patches.pattern]
@@ -37,3 +42,12 @@ if AG.effects.apply_sturdy_glass() then
   cards = AG.list_utils.filter(cards, function() return not SMODS.has_enhancement(card, 'm_glass') end)
 end
 '''
+
+# random_destroy (grim, familiar, and incantation)
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+position = "after"
+match_indent = true
+pattern = '''destroyed_cards[#destroyed_cards + 1] = pseudorandom_element(G.hand.cards, pseudoseed('random_destroy'))'''
+payload = '''if SMODS.has_enhancement(destroyed_cards[1], 'm_glass') and AG.effects.apply_sturdy_glass() then'''
