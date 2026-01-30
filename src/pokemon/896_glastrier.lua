@@ -5,7 +5,7 @@ local glastrier = {
   loc_txt = {
     name = "Glastrier",
     text = {
-      "{C:attention}Glass{} cards cannot break",
+      "{C:attention}Glass{} cards can't be destroyed",
       "{br:2}ERROR - CONTACT STEAK",
       "{C:white,X:mult}X#1#{} Mult for every",
       "{C:attention}Glass Card{} in your full deck",

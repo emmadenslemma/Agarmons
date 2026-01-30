@@ -109,7 +109,9 @@ AG.hookaroundfunc(_G, 'poke_remove_card', function(orig, card, ...)
   end
 end)
 
--- The final failsafe, this won't work on its own but it should stop the edge cases
+-- The final failsafe. this won't work on its own but it should stop the edge cases.
+--    some of the specific fixes are for stopping `context.remove_playing_cards`,
+--     but some are there to stop the game from breaking in half. funny stuff.
 AG.hookaroundfunc(Card, 'shatter', function(orig, card)
   if SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass() then
     card.getting_sliced = false
