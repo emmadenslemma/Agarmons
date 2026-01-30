@@ -103,17 +103,31 @@ function AG.effects.apply_sturdy_glass()
   return next(SMODS.find_card('j_agar_glastrier'))
 end
 
+function AG.effects.prevent_destruction(card)
+  return (SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass())
+end
+
 AG.hookaroundfunc(_G, 'poke_remove_card', function(orig, card, ...)
-  if not (SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass()) then
+  if not AG.effects.prevent_destruction(card) then
     return orig(card, ...)
   end
 end)
 
--- The final failsafe. this won't work on its own but it should stop the edge cases.
---    some of the specific fixes are for stopping `context.remove_playing_cards`,
---     but some are there to stop the game from breaking in half. funny stuff.
+AG.hookbeforefunc(SMODS, 'calculate_context', function(context)
+  if context.remove_playing_cards then
+    for i = #context.removed, 1, -1 do
+      if AG.effects.prevent_destruction(context.removed[i]) then
+        table.remove(context.removed, i)
+      end
+    end
+    if #context.removed == 0 then
+      return {}
+    end
+  end
+end)
+
 AG.hookaroundfunc(Card, 'shatter', function(orig, card)
-  if SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass() then
+  if AG.effects.prevent_destruction(card) then
     card.getting_sliced = false
     card.shattered = false
     return
