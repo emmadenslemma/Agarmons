@@ -37,7 +37,9 @@ local function init()
   SMODS.Joker:take_ownership("poke_aggron", { megas = { "mega_aggron" }, poke_custom_values_to_keep = { "Xmult" } }, true)
 
   AG.hookbeforefunc(SMODS.current_mod, 'set_debuff', function(card)
-    if card.ability.set == 'Joker'
+    if (card.ability.set == 'Joker'
+          or card.ability.set == 'Enhanced'
+          or card.ability.set == 'Default')
         and next(SMODS.find_card('j_poke_mega_aggron')) then
       return 'prevent_debuff'
     end
