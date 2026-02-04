@@ -131,7 +131,8 @@ return {
                 name = "Mega Aggron",
                 text = {
                     "{C:white,X:mult}X#1#{} Mult",
-                    "Jokers can't be debuffed",
+                    "Jokers and playing cards",
+                    "can't be debuffed",
                 }
             },
             j_agar_torkoal = {
