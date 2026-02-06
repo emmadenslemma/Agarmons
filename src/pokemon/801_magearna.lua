@@ -3,7 +3,7 @@ local magearna = {
   name = "magearna",
   config = { extra = { Xmult = 1, Xmult_mod = 1 } },
   loc_txt = {
-    name = "Magerna",
+    name = "Magearna",
     text = {
       "Gains {C:white,X:mult}X#1#{} Mult when",
       "a Joker is destroyed",
