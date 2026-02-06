@@ -1120,6 +1120,7 @@ return {
             agar_rock_smash_ex = "Rock Smash!",
             agar_double_kick_ex = "Double Kick!",
             agar_rock_slide_ex = "Rock Slide!",
+            agar_soul_heart = "Soul-Heart",
 
             cards_singular = "card",
             cards_plural = "cards",

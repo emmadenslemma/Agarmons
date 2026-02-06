@@ -28,6 +28,7 @@ return {
   pyukumuku = true,
   drampa = true,
   cosmog = false,
+  magearna = true,
   marshadow = true,
   grookey = true,
   scorbunny = true,
