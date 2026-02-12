@@ -70,7 +70,7 @@ local tatsugiri = {
 
     if context.after and not context.blueprint then
       card.ability.extra[value] = card.ability.extra[value] - card.ability.extra[value_mod]
-      if card.ability.extra[value] <= 0 then
+      if card.ability.extra[value] < 0.01 then
         SMODS.destroy_cards(card, nil, nil, true)
         return {
           message = localize('k_eaten_ex'),
