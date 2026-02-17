@@ -76,7 +76,8 @@ local dynamaxband = {
     end
   end,
   can_use = function(self, card)
-    return card.ability.extra.usable
+    return (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit or card.area ~= G.pack_cards)
+        and card.ability.extra.usable
         and poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
   end,
   calculate = function(self, card, context)
