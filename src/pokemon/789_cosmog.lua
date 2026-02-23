@@ -11,7 +11,7 @@ local get_suit_percent = function(suit, changed_cards, to_be_removed)
     for _, v in pairs(changed_cards) do
       deck_mod = to_be_removed and -1 or 1
       total_deck = total_deck + deck_mod
-      if v:is_suit(suit, true) then
+      if type(v) == 'table' and type(v.is) == 'function' and v:is(Card) and v:is_suit(suit, true) then
         suit_count = suit_count + deck_mod
       end
     end
