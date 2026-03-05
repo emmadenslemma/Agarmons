@@ -12,6 +12,6 @@ SMODS.Rarity {
   pools = { ["Joker"] = true },
 }
 
-poke_add_stage("Gigantamax")
-poke_add_stage("Primal", "Legendary")
-poke_add_stage("Eternamax", "Legendary")
+pokermon.add_stage("Gigantamax")
+pokermon.add_stage("Primal", "Legendary")
+pokermon.add_stage("Eternamax", "Legendary")
