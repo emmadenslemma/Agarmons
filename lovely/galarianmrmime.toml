@@ -13,9 +13,13 @@ pattern = '''
 -- TARGET: adding to hand effects
 '''
 payload = '''
-if AG.effects.apply_ortalab_statue() then
-    table.insert(final_scoring_hand, G.hand.cards[1])
-    AG.effects.ortalab_statue_card = G.hand.cards[1]
+local statue_card_count = AG.effects.get_ortalab_statue_card_count()
+if statue_card_count > 0 then
+    AG.effects.ortalab_statue_cards = {}
+    for i=1, statue_card_count do
+        table.insert(final_scoring_hand, G.hand.cards[i])
+        table.insert(AG.effects.ortalab_statue_cards, G.hand.cards[i])
+    end
 end
 '''
 
@@ -28,10 +32,11 @@ pattern = '''
 -- TARGET: effects after hand evaluation
 '''
 payload = '''
-if AG.effects.ortalab_statue_card then
-    local statue_card = AG.effects.ortalab_statue_card
-    AG.effects.ortalab_statue_card = nil
-    highlight_card(statue_card, 1.05, 'down')
+if AG.effects.ortalab_statue_cards then
+    for _, card in ipairs(AG.effects.ortalab_statue_cards) do
+        highlight_card(card, 1.05, 'down')
+    end
+    AG.effects.ortalab_statue_cards = nil
 end
 '''
 

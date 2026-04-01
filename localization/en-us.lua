@@ -85,10 +85,9 @@ return {
             j_poke_mrrime = {
                 name = "Mr. Rime",
                 text = {
-                    "Scores leftmost card",
+                    "Scores leftmost {C:attention}2{} cards",
                     "{C:attention}held in hand{} as if",
-                    "it was played and",
-                    "retriggers it {C:attention}#1#{} times",
+                    "they were played",
                 }
             },
             j_poke_mega_dragonite = {

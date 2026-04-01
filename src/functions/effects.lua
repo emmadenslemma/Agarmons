@@ -68,15 +68,21 @@ function AG.effects.apply_ortalab_statue()
       or next(SMODS.find_card('j_poke_mrrime'))
 end
 
-AG.effects.ortalab_statue_card = nil -- for intellisense
+function AG.effects.get_ortalab_statue_card_count()
+  return (next(SMODS.find_card('j_poke_mrrime')) and 2)
+      or (next(SMODS.find_card('j_poke_galarian_mrmime')) and 1)
+      or 0
+end
+
+AG.effects.ortalab_statue_cards = nil -- for intellisense
 
 -- Ripped from Ortalab with minor adjustments for Galarian Mr. Mime
 local statue_wrapper = function(func, context, ...)
   -- cardarea is changed when unscoring cards are played, so we have to check early
   local is_play = context.cardarea == G.play
   func(context, ...)
-  if is_play and AG.effects.apply_ortalab_statue() and AG.effects.ortalab_statue_card then
-    context.cardarea = { cards = { AG.effects.ortalab_statue_card } }
+  if is_play and AG.effects.apply_ortalab_statue() and AG.effects.ortalab_statue_cards then
+    context.cardarea = { cards = AG.effects.ortalab_statue_cards }
     func(context, ...)
     context.cardarea = G.play -- for if other mods need to hook this function
   end

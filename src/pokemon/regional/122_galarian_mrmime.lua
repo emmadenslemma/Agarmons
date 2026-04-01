@@ -31,16 +31,6 @@ local mrrime = {
   stage = "One",
   ptype = "Water",
   gen = 8,
-  calculate = function(self, card, context)
-    if AG.effects.ortalab_statue_card
-        and context.repetition and context.cardarea == G.play
-        and context.other_card == AG.effects.ortalab_statue_card then
-      return {
-        repetitions = card.ability.extra.retriggers
-      }
-    end
-  end,
-  designer = "Thor's Girdle"
 }
 
 local init = function()
