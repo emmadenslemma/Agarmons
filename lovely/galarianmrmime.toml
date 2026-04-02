@@ -60,3 +60,12 @@ if agarmons_config['galarian_mrmime'] and can_evolve(self, card, context, "j_pok
   end
 end
 '''
+
+# Fixes Dragonite interaction with Galarian Mr. Mime
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokemon/pokejokers_05.lua"]'
+position = "at"
+match_indent = true
+pattern = '''if context.repetition and context.cardarea == G.play and #context.full_hand == 1 then'''
+payload = '''if context.repetition and context.cardarea == G.play and #context.full_hand == 1 and context.other_card == context.full_hand[1] then'''
