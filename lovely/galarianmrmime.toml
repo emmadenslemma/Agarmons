@@ -17,8 +17,11 @@ local statue_card_count = AG.effects.get_ortalab_statue_card_count()
 if statue_card_count > 0 then
     AG.effects.ortalab_statue_cards = {}
     for i=1, statue_card_count do
-        table.insert(final_scoring_hand, G.hand.cards[i])
-        table.insert(AG.effects.ortalab_statue_cards, G.hand.cards[i])
+        local hand_card = G.hand.cards[i]
+        if hand_card then
+            table.insert(final_scoring_hand, hand_card)
+            table.insert(AG.effects.ortalab_statue_cards, hand_card)
+        end
     end
 end
 '''
