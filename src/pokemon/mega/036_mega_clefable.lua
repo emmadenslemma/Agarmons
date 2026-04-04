@@ -26,7 +26,6 @@ local mega_clefable = {
     end
   end,
   designer = "Fox",
-  artist = "KingOfThe-X-Roads",
 }
 
 local function init()

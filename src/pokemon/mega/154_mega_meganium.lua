@@ -45,7 +45,6 @@ local mega_meganium = {
       end
     end
   end,
-  artist = "KingOfThe-X-Roads",
 }
 
 local function init()

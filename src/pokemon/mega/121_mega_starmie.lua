@@ -31,7 +31,6 @@ local mega_starmie = {
     end
   end,
   designer = "Fox",
-  artist = "KingOfThe-X-Roads",
 }
 
 local function init()

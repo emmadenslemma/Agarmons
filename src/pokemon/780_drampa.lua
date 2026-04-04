@@ -48,7 +48,6 @@ local mega_drampa = {
     G.GAME.modifiers.booster_choice_mod =
         math.max(0, (G.GAME.modifiers.booster_choice_mod or 0) - card.ability.extra.booster_choice_mod)
   end,
-  artist = "KingOfThe-X-Roads",
   designer = "Gem",
 }
 
