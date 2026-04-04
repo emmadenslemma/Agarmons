@@ -144,6 +144,18 @@ return {
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
                 }
             },
+            j_poke_mega_glalie = {
+                name = "Mega Glalie",
+                text = {
+                    "Go up to {C:mult}-$#1#{} in debt",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                    "{C:attention}Volatile Right{}",
+                    "{X:mult,C:white}X#2#{} Mult for each {C:red}${} in debt,",
+                    "then sets money to {C:money}$0{} and",
+                    "debuffs self this round",
+                    "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)"
+                },
+            },
             j_agar_spheal = {
                 name = "Spheal",
                 text = {
