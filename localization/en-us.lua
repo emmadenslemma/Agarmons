@@ -134,6 +134,14 @@ return {
                     "can't be debuffed",
                 }
             },
+            j_poke_mega_medicham = {
+                name = "Mega Medicham",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult for each",
+                    "{C:attention}empty{} consumable slot",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
+                }
+            },
             j_agar_torkoal = {
                 name = "Torkoal",
                 text = {
