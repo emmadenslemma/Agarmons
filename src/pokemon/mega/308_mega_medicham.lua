@@ -1,23 +1,17 @@
 local function count_empty_slots()
   if not G.consumeables then return 2 end
-  local slots = G.consumeables.config.card_limits.total_slots - G.consumeables.config.card_count
-  for _, card in ipairs(G.consumeables.cards) do
-    if card.config.center.key == 'c_poke_megastone' then
-      slots = slots + 1 + card.ability.extra_slots_used
-    end
-  end
-  return slots
+  return G.consumeables.config.card_limits.total_slots - G.consumeables.config.card_count
 end
 
 -- Mega Medicham 308-1
 local mega_medicham = {
   name = "mega_medicham",
   agar_inject_prefix = "poke",
-  config = { extra = { Xmult_mod = 2.5 } },
+  config = { extra = { consumable_slots = 1, Xmult_mod = 2.5 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local current_Xmult = self:get_current_Xmult(card)
-    return { vars = { card.ability.extra.Xmult_mod, current_Xmult } }
+    return { vars = { card.ability.extra.consumable_slots, card.ability.extra.Xmult_mod, current_Xmult } }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -37,6 +31,12 @@ local mega_medicham = {
         }
       end
     end
+  end,
+  add_to_deck = function(self, card, from_debuff)
+    G.consumeables:change_size(card.ability.extra.consumable_slots)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    G.consumeables:change_size(-card.ability.extra.consumable_slots)
   end,
 }
 
