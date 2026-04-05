@@ -10,6 +10,7 @@ local drampa = {
   stage = "Basic",
   ptype = "Dragon",
   gen = 7,
+  blueprint_compat = false,
   add_to_deck = function(self, card, from_debuff)
     AG.defer(AG.effects.upgrade_shop_packs)
     SMODS.change_booster_limit(card.ability.extra.boosters)
@@ -36,6 +37,7 @@ local mega_drampa = {
   ptype = "Dragon",
   gen = 7,
   atlas = "AgarmonsJokers",
+  blueprint_compat = false,
   add_to_deck = function(self, card, from_debuff)
     AG.defer(AG.effects.upgrade_shop_packs)
     -- to stop adding boosters when mega evolving/devolving

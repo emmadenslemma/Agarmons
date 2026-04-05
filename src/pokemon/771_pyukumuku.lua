@@ -48,6 +48,7 @@ local pyukumuku = {
   stage = "Basic",
   ptype = "Water",
   gen = 7,
+  blueprint_compat = false,
   perishable_compat = false,
   calculate = function(self, card, context)
     if not context.blueprint then

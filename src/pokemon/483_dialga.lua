@@ -21,6 +21,7 @@ local dialga = {
   stage = "Legendary",
   ptype = "Metal",
   gen = 4,
+  blueprint_compat = false,
   calculate = function(self, card, context)
     if not context.blueprint then
       -- Loop through jokers to select them from retriggers

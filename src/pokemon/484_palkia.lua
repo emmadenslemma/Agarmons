@@ -19,6 +19,7 @@ local palkia = {
   stage = "Legendary",
   ptype = "Water",
   gen = 4,
+  blueprint_compat = false,
   calculate = function(self, card, context)
     if context.end_of_round
         and context.game_over == false and context.main_eval and context.beat_boss

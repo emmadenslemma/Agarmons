@@ -36,6 +36,7 @@ local cosmog = {
   ptype = "Psychic",
   gen = 7,
   no_collection = true,
+  blueprint_compat = false,
   custom_pool_func = true,
   calculate = function(self, card, context)
     if context.modify_scoring_hand then
@@ -71,6 +72,7 @@ local cosmoem = {
   ptype = "Psychic",
   gen = 7,
   no_collection = true,
+  blueprint_compat = false,
   custom_pool_func = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then

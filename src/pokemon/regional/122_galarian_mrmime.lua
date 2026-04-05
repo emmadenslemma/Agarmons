@@ -12,6 +12,7 @@ local galarian_mrmime = {
   stage = "Basic",
   ptype = "Water",
   gen = 8,
+  blueprint_compat = false,
   calculate = function(self, card, context)
     return level_evo(self, card, context, "j_poke_mrrime")
   end
@@ -31,6 +32,7 @@ local mrrime = {
   stage = "One",
   ptype = "Water",
   gen = 8,
+  blueprint_compat = false,
 }
 
 local init = function()

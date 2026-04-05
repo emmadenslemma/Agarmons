@@ -15,6 +15,7 @@ local eternatus = {
   ptype = "Dark",
   gen = 8,
   custom_pool_func = true,
+  blueprint_compat = false,
   calculate = function(self, card, context)
     if context.setting_blind and not card.getting_sliced and not context.blueprint then
       for _, other_joker in ipairs(poke_get_adjacent_jokers(card)) do

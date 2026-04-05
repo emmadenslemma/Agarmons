@@ -71,6 +71,7 @@ local mega_raichu_y = {
   gen = 1,
   atlas = "AtlasJokersSeriesAGen01",
   artist = "MyDude_YT",
+  blueprint_compat = false,
 }
 
 local function init()
