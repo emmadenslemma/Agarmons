@@ -2,7 +2,7 @@
 local mega_medicham = {
   name = "mega_medicham",
   agar_inject_prefix = "poke",
-  config = { extra = { Xmult_mod = 3 } },
+  config = { extra = { Xmult_mod = 2.5 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local current_Xmult = self:get_current_Xmult(card)
