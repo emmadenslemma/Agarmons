@@ -15,7 +15,7 @@ local mega_medicham = {
   gen = 3,
   blueprint_compat = true,
   get_current_Xmult = function(self, card)
-    if not G.consumeables then return 0 end
+    if not G.consumeables then return 2 end
     local consumable_slots = G.consumeables.config.card_limits.total_slots - G.consumeables.config.card_count
     return consumable_slots * card.ability.extra.Xmult_mod
   end,
