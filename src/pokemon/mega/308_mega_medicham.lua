@@ -1,3 +1,14 @@
+local function count_empty_slots()
+  if not G.consumeables then return 2 end
+  local slots = G.consumeables.config.card_limits.total_slots - G.consumeables.config.card_count
+  for _, card in ipairs(G.consumeables.cards) do
+    if card.config.center.key == 'c_poke_megastone' then
+      slots = slots + 1 + card.ability.extra_slots_used
+    end
+  end
+  return slots
+end
+
 -- Mega Medicham 308-1
 local mega_medicham = {
   name = "mega_medicham",
@@ -15,11 +26,7 @@ local mega_medicham = {
   gen = 3,
   blueprint_compat = true,
   get_current_Xmult = function(self, card)
-    local consumable_slots = G.consumeables
-        and (G.consumeables.config.card_limits.total_slots - G.consumeables.config.card_count)
-        or 2
-
-    return consumable_slots * card.ability.extra.Xmult_mod
+    return count_empty_slots() * card.ability.extra.Xmult_mod
   end,
   calculate = function(self, card, context)
     if context.joker_main then

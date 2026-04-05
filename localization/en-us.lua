@@ -139,6 +139,7 @@ return {
                 text = {
                     "{C:white,X:mult}X#1#{} Mult for each",
                     "{C:attention}empty{} consumable slot",
+                    "{C:spectral,s:0.8}Mega Stone {s:0.8}included",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
