@@ -3,7 +3,7 @@ local beta_arceus = {
   name = "beta_arceus",
   pos = { x = 8, y = 0 },
   soul_pos = { x = 9, y = 0 },
-  config = { extra = { Emult = 1.1 } },
+  config = { extra = { Emult = 2 } },
   loc_txt = {
     name = "Arceus?",
     text = {
