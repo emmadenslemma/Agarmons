@@ -48,6 +48,7 @@ local torkoal = {
 }
 
 return {
+  can_load = false,
   config_key = "torkoal",
   list = { torkoal }
 }
