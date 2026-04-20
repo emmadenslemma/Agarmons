@@ -64,7 +64,7 @@ local yveltal = {
       if context.card_added and context.cardarea == G.jokers
           and not context.card.ability.consumeable
           and energy_matches(context.card, "Dark") then
-        increment_energy(card, "Dark", card.ability.extra.energy_mod)
+        increment_energy(context.card, "Dark", card.ability.extra.energy_mod)
       end
     end
   end,
