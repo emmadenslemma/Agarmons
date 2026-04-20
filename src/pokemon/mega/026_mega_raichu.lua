@@ -12,41 +12,51 @@ end
 local mega_raichu_x = {
   name = "mega_raichu_x",
   agar_inject_prefix = "poke",
-  pos = { x = 2, y = 9 },
-  soul_pos = { x = 3, y = 9 },
-  config = { extra = { Xmult_mod = 0.5, per_interest = 1 } },
+  config = { extra = { hands = 1, per_interest = 5 } },
   loc_txt = {
     name = "Mega Raichu X",
     text = {
-      "{C:white,X:mult}X#1#{} Mult for every",
+      "Earn interest when",
+      "hand is played",
+      "{br:2}ERROR - CONTACT STEAK",
+      "When {C:attention}Blind{} is selected,",
+      "gain {C:blue}+#1#{} hand for every",
       "{C:money}$#2#{} of interest you have",
-      "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
     }
   },
-  get_x_mult = function(self, card)
-    local interest_mod = get_current_interest() / card.ability.extra.per_interest
-    local Xmult_mod = card.ability.extra.Xmult_mod
-    return 1 + Xmult_mod * interest_mod
-  end,
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.Xmult_mod, card.ability.extra.per_interest, self:get_x_mult(card) } }
+    return { vars = { card.ability.extra.hands, card.ability.extra.per_interest } }
   end,
   rarity = "poke_mega",
   cost = 12,
   stage = "Mega",
   ptype = "Lightning",
   gen = 1,
-  atlas = "AtlasJokersSeriesAGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main then
+    if context.setting_blind then
+      AG.defer(function()
+        local hands = math.floor(card.ability.extra.hands * get_current_interest() / card.ability.extra.per_interest)
+        if hands > 0 then
+          ease_hands_played(hands)
+          SMODS.calculate_effect({ message = localize { type = 'variable', key = 'a_hands', vars = { hands } } }, card)
+        end
+      end)
+      return nil, true
+    end
+    if context.before then
+      local interest = G.GAME.interest_amount * get_current_interest()
+      G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + interest
+      AG.defer(function()
+        G.GAME.dollar_buffer = 0
+      end)
       return {
-        Xmult = self:get_x_mult(card)
+        dollars = ease_poke_dollars(card, "mega_raichu_x", interest, true)
       }
     end
   end,
-  artist = "MyDude_YT",
+  designer = "Catzzadilla and Emma",
 }
 
 -- Mega Raichu Y 026-2
