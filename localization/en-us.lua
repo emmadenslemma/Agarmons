@@ -296,15 +296,15 @@ return {
                     "{C:inactive}Does nothing (yet!)",
                 }
             },
-            j_poke_mega_lucario = {
-                name = "Mega Lucario",
-                text = {
-                    "Each {C:attention}editioned{} card",
-                    "held in hand gives {C:white,X:mult}X#1#{} Mult,",
-                    "increased by {C:white,X:mult}X#2#{} Mult for",
-                    "each {C:attention}unique edition{} in hand",
-                }
-            },
+            -- j_poke_mega_lucario = {
+            --     name = "Mega Lucario",
+            --     text = {
+            --         "Each {C:attention}editioned{} card",
+            --         "held in hand gives {C:white,X:mult}X#1#{} Mult,",
+            --         "increased by {C:white,X:mult}X#2#{} Mult for",
+            --         "each {C:attention}unique edition{} in hand",
+            --     }
+            -- },
             j_poke_mega_froslass = {
                 name = "Mega Froslass",
                 text = {
