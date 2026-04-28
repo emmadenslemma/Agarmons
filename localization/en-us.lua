@@ -313,7 +313,7 @@ return {
                     "Create a {C:attention}#2#",
                     "{C:attention}#3#{} and {C:attention}#4#{}",
                     "if {C:attention}Blind{} is selected",
-                    "while in debt,",
+                    "while in debt",
                 }
             },
             j_agar_uxie = {

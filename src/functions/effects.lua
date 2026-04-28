@@ -60,7 +60,7 @@ function AG.effects.upgrade_shop_packs()
 end
 
 function AG.effects.uncap_interest()
-  return next(SMODS.find_card('j_poke_mega_raichu_y'))
+  return false -- next(SMODS.find_card('j_poke_mega_raichu_y'))
 end
 
 function AG.effects.apply_ortalab_statue()

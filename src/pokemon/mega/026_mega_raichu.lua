@@ -65,14 +65,18 @@ local mega_raichu_y = {
   agar_inject_prefix = "poke",
   pos = { x = 4, y = 9 },
   soul_pos = { x = 5, y = 9 },
+  config = { extra = { Xmult = 0.75, per_money = 10 } },
   loc_txt = {
     name = "Mega Raichu Y",
     text = {
-      "Interest has no cap",
+      "{C:white,X:mult}X#1#{} Mult for",
+      "every {C:money}$#2#{} you have",
+      "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive} Mult)",
     }
   },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
+    return { vars = { card.ability.extra.Xmult, card.ability.extra.per_money, self:get_current_Xmult(card) } }
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -81,7 +85,22 @@ local mega_raichu_y = {
   gen = 1,
   atlas = "AtlasJokersSeriesAGen01",
   artist = "MyDude_YT",
-  blueprint_compat = false,
+  get_current_Xmult = function(self, card)
+    -- I'm just gonna `to_big` everything talisman be damned
+    -- so what if it's inefficient, as long as it works
+    local to_big = to_big or function(x) return x end
+    local money = to_big(G.GAME.dollars) + to_big(G.GAME.dollar_buffer or 0)
+    -- alright kids close your eyes
+    return math.max(to_big(1),
+      to_big(1) + to_big(card.ability.extra.Xmult) * math.floor(money / to_big(card.ability.extra.per_money)))
+  end,
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        Xmult = self:get_current_Xmult(card)
+      }
+    end
+  end,
 }
 
 local function init()
