@@ -22,6 +22,7 @@ local dialga = {
   ptype = "Metal",
   gen = 4,
   blueprint_compat = false,
+  poke_custom_values_to_keep = { "joker_retriggers", "bosses_defeated", "upgrade_rqmt" },
   calculate = function(self, card, context)
     if not context.blueprint then
       -- Loop through jokers to select them from retriggers
@@ -66,7 +67,25 @@ local dialga = {
   end,
 }
 
+local dialga_origin = {
+  name = "dialga_origin",
+  config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1 } },
+  loc_vars = function(self, info_queue, card)
+    type_tooltip(self, info_queue, card)
+  end,
+  rarity = 4,
+  cost = 30,
+  stage = "Legendary",
+  ptype = "Metal",
+  gen = 4,
+  blueprint_compat = false,
+  poke_custom_values_to_keep = { "joker_retriggers", "bosses_defeated", "upgrade_rqmt" },
+  calculate = function(self, card, context)
+
+  end,
+}
+
 return {
   config_key = "dialga",
-  list = { dialga }
+  list = { dialga, dialga_origin }
 }

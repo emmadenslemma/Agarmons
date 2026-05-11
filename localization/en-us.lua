@@ -363,6 +363,14 @@ return {
                     "{C:inactive}(Requirement increases by {C:attention}#6#{C:inactive} each time)"
                 }
             },
+            j_agar_dialga_origin = {
+                name = "Dialga{s:0.6}Origin Forme",
+                text = {
+                    "First hand of each",
+                    "round plays {C:green,E:1}twice",
+                    "{C:inactive,s:0.8}({C:chips,s:0.8}chips{C:inactive,s:0.8}/{C:mult,s:0.8}mult{C:inactive,s:0.8} stays between hands)"
+                }
+            },
             j_agar_palkia = {
                 name = "Palkia",
                 text = {
@@ -978,6 +986,16 @@ return {
                 name = "Blue Orb",
                 text = {
                     "Returns {C:attention}Primal Kyogre{} to",
+                    "to its base form",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Also happens if sold",
+                    "{C:inactive}(Usable once per round)",
+                },
+            },
+            c_agar_adamantcrystal_active = {
+                name = "Adamant Crystal",
+                text = {
+                    "Returns {C:attention}Dialga Origin Forme{} to",
                     "to its base form",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Also happens if sold",
