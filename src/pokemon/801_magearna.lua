@@ -47,6 +47,7 @@ local magearna = {
 }
 
 return {
+  can_load = false,
   config_key = "magearna",
   list = { magearna }
 }
