@@ -1,22 +1,31 @@
 local toedscool = {
   name = "toedscool",
-  config = { extra = { mult_mod = 5, rounds = 5 } },
+  config = { extra = { Xmult_multi = 1.5, rounds = 5 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.mult_mod, card.ability.extra.rounds } }
+    return { vars = { card.ability.extra.Xmult_multi, card.ability.extra.rounds } }
   end,
-  rarity = 1,
+  rarity = 2,
   cost = 4,
   stage = "Basic",
   ptype = "Grass",
   gen = 9,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and
-        context.other_card:get_id() == 4 then
-      return {
-        mult = card.ability.extra.mult_mod
-      }
+    if context.individual and context.cardarea == G.play
+        and context.other_card:get_id() == 4 then
+      local fours = 0
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card:get_id() == 4 then
+          if scoring_card == context.other_card then
+            return {
+              Xmult = card.ability.extra.Xmult_multi
+            }
+          end
+          fours = fours + 1
+          if fours == 2 then return end
+        end
+      end
     end
     return level_evo(self, card, context, 'j_agar_toedscruel')
   end
@@ -24,10 +33,10 @@ local toedscool = {
 
 local toedscruel = {
   name = "toedscruel",
-  config = { extra = { mult_mod = 5, Xmult_multi = 1.1 } },
+  config = { extra = { Xmult_multi = 1.5, scored_cards = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.mult_mod, card.ability.extra.Xmult_multi } }
+    return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = "poke_safari",
   cost = 6,
@@ -36,12 +45,20 @@ local toedscruel = {
   gen = 9,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and
-        context.other_card:get_id() == 4 then
-      return {
-        mult = card.ability.extra.mult_mod,
-        Xmult = card.ability.extra.Xmult_multi,
-      }
+    if context.individual and context.cardarea == G.play
+        and context.other_card:get_id() == 4 then
+      local fours = 0
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card:get_id() == 4 then
+          if scoring_card == context.other_card then
+            return {
+              Xmult = card.ability.extra.Xmult_multi
+            }
+          end
+          fours = fours + 1
+          if fours == 2 then return end
+        end
+      end
     end
     -- Toggles Xmult deferral
     if context.before then

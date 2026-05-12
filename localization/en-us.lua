@@ -815,17 +815,16 @@ return {
             j_agar_toedscool = {
                 name = "Toedscool",
                 text = {
-                    "Each played {C:attention}4{} gives",
-                    "{C:mult}+#1#{} Mult when scored",
+                    "First {C:attention}2{} played {C:attention}4s{} gives",
+                    "{C:white,X:mult}X#1#{} Mult when scored",
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)",
                 }
             },
             j_agar_toedscruel = {
                 name = "Toedscruel",
                 text = {
-                    "Each played {C:attention}4{} gives",
-                    "{C:mult}+#1#{} Mult and {C:white,X:mult}X#2#{} Mult",
-                    "when scored",
+                    "First {C:attention}2{} played {C:attention}4s{} gives",
+                    "{C:white,X:mult}X#1#{} Mult when scored",
                     "{br:2}ERROR - CONTACT STEAK",
                     "{C:white,X:mult}X{} {C:mult}Mult{} effects",
                     "always score last",
