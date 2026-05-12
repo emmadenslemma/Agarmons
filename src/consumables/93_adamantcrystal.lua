@@ -9,8 +9,8 @@ local adamantcrystal = {
   loc_txt = {
     name = "Adamant Crystal",
     text = {
-      "Return {C:attention}Dialga{} to",
-      "its original form",
+      "Transform {C:attention}Dialga{} into",
+      "its {C:attention}Origin Forme",
       "{C:inactive}(Usable once per round)",
     }
   },
