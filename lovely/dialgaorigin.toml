@@ -19,3 +19,29 @@ if not G.GAME.agar_replaying_hand then
     hand_chips = mod_chips(G.GAME.hands[text].chips)
 end
 '''
+
+# Replay hand
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+position = "after"
+match_indent = true
+pattern = "G.FUNCS.evaluate_play()"
+payload = '''
+if AG.effects.should_replay_hand() then
+    AG.effects.replay_hand()
+end
+'''
+
+# Keep played cards for the replay
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+position = "at"
+match_indent = true
+pattern = "G.FUNCS.draw_from_play_to_discard()"
+payload = '''
+if not AG.effects.should_replay_hand() then
+    G.FUNCS.draw_from_play_to_discard()
+end
+'''

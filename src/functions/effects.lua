@@ -141,15 +141,26 @@ AG.hookaroundfunc(Card, 'shatter', function(orig, card)
 end)
 
 function AG.effects.should_replay_hand()
-  return G.GAME.current_round.hands_played == 0
+  return not G.GAME.agar_replaying_hand
+      and G.GAME.current_round.hands_played == 0
       and next(SMODS.find_card('j_agar_dialga_origin'))
 end
 
-AG.hookaroundfunc(G.FUNCS, 'evaluate_play', function(orig, e)
-  orig(e)
-  if AG.effects.should_replay_hand() then
-    G.GAME.agar_replaying_hand = true
-    orig(e)
-    G.GAME.agar_replaying_hand = false
-  end
-end)
+function AG.effects.replay_hand()
+  G.E_MANAGER:add_event(Event({
+    func = function()
+      if Talisman and Talisman.scoring_coroutine then return false end
+      G.GAME.agar_replaying_hand = true
+      G.FUNCS.evaluate_play()
+      G.GAME.agar_replaying_hand = false
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if Talisman and Talisman.scoring_coroutine then return false end
+          G.FUNCS.draw_from_play_to_discard()
+          return true
+        end,
+      }))
+      return true
+    end
+  }))
+end
