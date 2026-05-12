@@ -80,9 +80,9 @@ local dialga_origin = {
   gen = 4,
   blueprint_compat = false,
   poke_custom_values_to_keep = { "joker_retriggers", "bosses_defeated", "upgrade_rqmt" },
-  calculate = function(self, card, context)
-
-  end,
+  in_pool = function(self)
+    return false
+  end
 }
 
 return {
