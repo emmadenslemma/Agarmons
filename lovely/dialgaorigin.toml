@@ -19,32 +19,3 @@ if not G.GAME.agar_replaying_hand then
     hand_chips = mod_chips(G.GAME.hands[text].chips)
 end
 '''
-
-## Visual patches, remove if crashing
-
-# Keep Chips/Mult display when about to replay
-# Weird patch patterns are because of Talisman
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-position = "after"
-match_indent = true
-pattern = '''
-G.E_MANAGER:add_event(Event({
-  trigger = 'immediate',
-  	func = (function() G.GAME.current_round.current_hand.handname = '';return true end)
-  }))
-'''
-payload = "::agar_skip_hand_text::"
-
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-position = "before"
-match_indent = true
-pattern = '''
-G.E_MANAGER:add_event(Event({
-    trigger = 'after',delay = 0.4,
-    func = (function()  update_hand_text({delay = 0, immediate = true}, {mult = 0, chips = 0, chip_total = math.floor( SMODS.calculate_round_score() ), level = '', handname = ''});play_sound('button', 0.9, 0.6);return true end)
-  }))'''
-payload = "if AG.effects.should_replay_hand() then goto agar_skip_hand_text end"

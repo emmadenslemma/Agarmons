@@ -141,8 +141,7 @@ AG.hookaroundfunc(Card, 'shatter', function(orig, card)
 end)
 
 function AG.effects.should_replay_hand()
-  return not G.GAME.agar_replaying_hand
-      and G.GAME.current_round.hands_played == 0
+  return G.GAME.current_round.hands_played == 0
       and next(SMODS.find_card('j_agar_dialga_origin'))
 end
 
