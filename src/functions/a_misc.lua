@@ -101,3 +101,93 @@ function AG.delay(time, func)
     end
   }))
 end
+
+function AG.legendary_orb(args)
+  local defaults = {
+    set = "Spectral",
+    helditem = true,
+    saveable = true,
+    config = {},
+    loc_vars = function(self, info_queue, card)
+      if self:get_used_on(card) then
+        return { key = self.key .. "_active" }
+      end
+    end,
+    cost = 4,
+    hidden = true,
+    soul_set = "Item",
+    soul_rate = .005,
+    get_used_on = function(self, card)
+      local used_on = poke_find_card(function(joker)
+        return joker.unique_val == card.ability.extra.used_on
+      end)
+      if not used_on then card.ability.extra.used_on = nil end
+      return used_on
+    end,
+    use = function(self, card)
+      local used_on = self:get_used_on(card)
+
+      if used_on then
+        poke_evolve(used_on, self.agar_base_key)
+
+        card.ability.extra.used_on = nil
+        card.ability.extra.used_on__ID = nil
+      else
+        local target = poke_find_leftmost_or_highlighted(self.agar_base_key)
+
+        poke_evolve(target, self.agar_form_key)
+
+        card.ability.extra.used_on = target.unique_val
+        card.ability.extra.used_on__ID = target.unique_val__saved_ID or target.ID
+      end
+
+      card.ability.extra.usable = false
+    end,
+    can_use = function(self, card)
+      if not card.ability.extra.usable then return false end
+
+      local used_on = self:get_used_on(card)
+      if used_on then return #G.jokers.highlighted == 0 or G.jokers.highlighted[1] == used_on end
+
+      return poke_find_leftmost_or_highlighted(self.agar_base_key)
+    end,
+    calculate = function(self, card, context)
+      if context.end_of_round and context.game_over == false and context.main_eval and not card.ability.extra.usable then
+        card.ability.extra.usable = true
+        return {
+          message = localize("k_reset")
+        }
+      end
+    end,
+    keep_on_use = function(self, card)
+      return true
+    end,
+    in_pool = function(self)
+      return next(SMODS.find_card(self.agar_base_key))
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+      local used_on = self:get_used_on(card)
+      if used_on then
+        poke_evolve(used_on, self.agar_base_key)
+      end
+    end,
+    load = function(self, card, card_table, other_card)
+      local ID = card_table.ability.extra.used_on__ID
+      if ID and G.ID <= ID then
+        G.ID = ID + 1
+      end
+    end
+  }
+
+  local template = SMODS.merge_defaults(args, defaults)
+
+  local extra_defaults = {
+    usable = true,
+    used_on = nil,
+    used_on__ID = nil,
+  }
+
+  template.config.extra = SMODS.merge_defaults(template.config.extra, extra_defaults)
+
+  return template
+end
