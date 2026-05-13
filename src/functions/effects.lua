@@ -173,3 +173,44 @@ function AG.effects.replay_hand()
     end
   }))
 end
+
+function AG.effects.activate_type_aura(ptype, amount)
+  amount = amount or 1
+  G.GAME.agar_type_auras = G.GAME.agar_type_auras or {}
+  G.GAME.agar_type_auras[ptype] = (G.GAME.agar_type_auras[ptype] or 0) + amount
+  AG.energy.mod_all_energy_and_limit(ptype, amount)
+end
+
+function AG.effects.deactivate_type_aura(ptype, amount)
+  amount = amount or 1
+  G.GAME.agar_type_auras = G.GAME.agar_type_auras or {}
+  G.GAME.agar_type_auras[ptype] = math.max(0, (G.GAME.agar_type_auras[ptype] or 0) - amount)
+  AG.energy.mod_all_energy_and_limit(ptype, -amount)
+end
+
+function AG.effects.apply_type_auras(card)
+  for ptype, amount in pairs(G.GAME.agar_type_auras or {}) do
+    AG.energy.mod_energy_and_limit(card, ptype, amount)
+  end
+end
+
+function AG.effects.remove_type_auras(card)
+  for ptype, amount in pairs(G.GAME.agar_type_auras or {}) do
+    AG.energy.mod_energy_and_limit(card, ptype, -amount)
+  end
+end
+
+AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
+  if context.card_added and context.card.ability.set == 'Joker' then
+    AG.effects.apply_type_auras(context.card)
+  end
+end)
+
+AG.hookaroundfunc(_G, 'apply_type_sticker', function(orig, card, ...)
+  if poke_is_in_collection(card) then return orig(card, ...) end
+  AG.effects.remove_type_auras(card)
+  orig(card, ...)
+  AG.defer(function() -- make 'energized' appear after 'tera'
+    AG.effects.apply_type_auras(card)
+  end)
+end)
