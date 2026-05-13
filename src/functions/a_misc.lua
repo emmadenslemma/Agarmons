@@ -179,7 +179,7 @@ function AG.legendary_orb(args)
     end
   }
 
-  local template = SMODS.merge_defaults(args, defaults)
+  local template = SMODS.merge_defaults(args, defaults) or { config = {} }
 
   local extra_defaults = {
     usable = true,
