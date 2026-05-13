@@ -157,6 +157,15 @@ function AG.effects.replay_hand()
         func = function()
           if Talisman and Talisman.scoring_coroutine then return false end
           G.FUNCS.draw_from_play_to_discard()
+          G.GAME.hands_played = G.GAME.hands_played + 1
+          G.GAME.current_round.hands_played = G.GAME.current_round.hands_played + 1
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              if Talisman and Talisman.scoring_coroutine then return false end
+              G.STATE_COMPLETE = false
+              return true
+            end,
+          }))
           return true
         end,
       }))

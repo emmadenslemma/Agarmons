@@ -33,15 +33,34 @@ if AG.effects.should_replay_hand() then
 end
 '''
 
-# Keep played cards for the replay
+# Keep played cards for the replay and disable state switching
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
 position = "at"
 match_indent = true
-pattern = "G.FUNCS.draw_from_play_to_discard()"
+pattern = '''
+        G.FUNCS.draw_from_play_to_discard()
+        G.GAME.hands_played = G.GAME.hands_played + 1
+        G.GAME.current_round.hands_played = G.GAME.current_round.hands_played + 1
+        return true
+    end
+}))
+G.E_MANAGER:add_event(Event({
+    trigger = 'immediate',
+    func = function()
+'''
 payload = '''
-if not AG.effects.should_replay_hand() then
-    G.FUNCS.draw_from_play_to_discard()
-end
+        if not AG.effects.should_replay_hand() then
+            G.FUNCS.draw_from_play_to_discard()
+            G.GAME.hands_played = G.GAME.hands_played + 1
+            G.GAME.current_round.hands_played = G.GAME.current_round.hands_played + 1
+        end
+        return true
+    end
+}))
+G.E_MANAGER:add_event(Event({
+    trigger = 'immediate',
+    func = function()
+        if AG.effects.should_replay_hand() then return true end
 '''
