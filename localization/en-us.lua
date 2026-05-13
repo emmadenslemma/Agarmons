@@ -472,21 +472,17 @@ return {
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {
-                    "{C:pink}+#1#{} Energy Limit",
-                    "Energize {C:white,X:fairy}Fairy{} Jokers by {C:pink}#2#",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "Gains {C:white,X:mult}X#3#{} Mult for every",
-                    "{C:attention}#4#{C:inactive} [#5#]{} hands played",
-                    "{C:inactive}(Currently {C:white,X:mult}X#6#{C:inactive} Mult)",
+                    "{C:fairy}Fairy Aura",
+                    "Gains {C:white,X:mult}X#1#{} Mult for every",
+                    "{C:attention}#2#{C:inactive} [#3#]{} hands played",
+                    "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)",
                 }
             },
             j_agar_yveltal = {
                 name = "Yveltal",
                 text = {
-                    "{C:pink}+#1#{} Energy Limit",
-                    "Energize {C:white,X:dark}Dark{} Jokers by {C:pink}#2#",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#3#{} Mult",
+                    "{C:dark}Dark Aura",
+                    "{C:white,X:mult}X#1#{} Mult",
                     "When Blind is selected,",
                     "destroy Joker to the right",
                     "and create a {C:attention}Death{} card",
@@ -1130,7 +1126,21 @@ return {
                     "Scoring order",
                     "is {C:attention}reversed"
                 }
-            }
+            },
+            fairy_aura = {
+                name = "Fairy Aura",
+                text = {
+                    "{C:white,X:fairy}Fairy{} Jokers have",
+                    "{C:pink}+1{} energy and limit",
+                }
+            },
+            dark_aura = {
+                name = "Dark Aura",
+                text = {
+                    "{C:white,X:dark}Dark{} Jokers have",
+                    "{C:pink}+1{} energy and limit",
+                }
+            },
         },
     },
     misc = {
