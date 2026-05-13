@@ -482,11 +482,10 @@ return {
                 name = "Yveltal",
                 text = {
                     "{C:dark}Dark Aura",
-                    "{C:white,X:mult}X#1#{} Mult",
-                    "When Blind is selected,",
-                    "destroy Joker to the right",
-                    "and create a {C:attention}Death{} card",
-                    "{C:inactive}(Must have room)",
+                    "If {C:attention}first discard{} of",
+                    "round has {C:attention}2{} cards,",
+                    "convert the {C:attention}left{} card",
+                    "into the {C:attention}right{} card",
                 }
             },
             j_agar_dewpider = {
