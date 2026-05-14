@@ -3,14 +3,6 @@ local gmax_venusaur = {
   name = "gmax_venusaur",
   agar_inject_prefix = "poke",
   config = { extra = { Xmult_mod = 0.5, h_size = 1 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Venusaur",
-    text = {
-      "{C:white,X:mult}X#3#{} Mult for each",
-      "card held in hand",
-      "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local current_Xmult = card.ability.extra.Xmult_mod * (G.hand and (#G.hand.cards - #G.hand.highlighted) or 0)

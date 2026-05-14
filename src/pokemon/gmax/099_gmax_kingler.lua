@@ -3,13 +3,6 @@ local gmax_kingler = {
   name = "gmax_kingler",
   agar_inject_prefix = "poke",
   config = { extra = { chips = 16 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Kingler",
-    text = {
-      "Played face cards permanently",
-      "gain {C:chips}+#3#{} chips when scored",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chips } }

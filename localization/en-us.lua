@@ -886,6 +886,14 @@ return {
                     "and {C:money}$#3#{} when scored",
                 }
             },
+            j_poke_gmax_venusaur = {
+                name = "{C:agar_gmax}G-MAX{} Venusaur",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult for each",
+                    "card held in hand",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+                }
+            },
             j_poke_gmax_charizard = {
                 name = "{C:agar_gmax}G-MAX{} Charizard",
                 text = {
@@ -894,10 +902,37 @@ return {
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
                 }
             },
+            j_poke_gmax_blastoise = {
+                name = "{C:agar_gmax}G-MAX{} Blastoise",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult for each",
+                    "remaining hand",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+                }
+            },
             j_poke_gmax_butterfree = {
                 name = "{C:agar_gmax}G-MAX{} Butterfree",
                 text = {
                     "{C:mult}+#1# Mult"
+                }
+            },
+            j_poke_gmax_pikachu = {
+                name = "{C:agar_gmax}G-MAX{} Pikachu",
+                text = {
+                    "Every hand gives {C:money}$#1#{} for",
+                    "every {C:money}$1{} you are from",
+                    "the interest cap",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+                }
+            },
+            j_poke_gmax_meowth = {
+                name = "{C:agar_gmax}G-MAX{} Meowth",
+                text = {
+                    "Add a {C:attention}Gold Seal{} to every",
+                    "{C:green}successfully{} triggered {C:attention}Lucky Card",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                    "If it already has a {C:attention}Gold Seal{},",
+                    "earn {C:money}$#1#{} instead",
                 }
             },
             j_poke_gmax_machamp = {
@@ -908,6 +943,82 @@ return {
                     "If played hand is exactly",
                     "{C:attention}4{} cards, played cards give",
                     "{C:white,X:mult}X#2#{} Mult when scored",
+                }
+            },
+            j_poke_gmax_gengar = {
+                name = "{C:agar_gmax}G-MAX{} Gengar",
+                text = {
+                    "All {C:dark_edition}Negative{} Jokers",
+                    "give {X:mult,C:white}X#1#{} Mult",
+                }
+            },
+            j_poke_gmax_kingler = {
+                name = "{C:agar_gmax}G-MAX{} Kingler",
+                text = {
+                    "Played face cards permanently",
+                    "gain {C:chips}+#1#{} chips when scored",
+                }
+            },
+            j_poke_gmax_lapras = {
+                name = "{C:agar_gmax}G-MAX{} Lapras",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "Every hand played",
+                    "creates a random {C:attention}Tag{}"
+                }
+            },
+            j_poke_gmax_eevee = {
+                name = "{C:agar_gmax}G-MAX{} Eevee",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult",
+                }
+            },
+            j_poke_gmax_snorlax = {
+                name = "{C:agar_gmax}G-MAX{} Snorlax",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult",
+                    "{C:attention}+#2#{} card selection limit",
+                }
+            },
+            j_sonfive_gmax_melmetal = {
+                name = "{C:agar_gmax}G-MAX{} Melmetal",
+                text = {
+                    "Every hand played draws {C:attention}1{} card,",
+                    "plus {C:attention}#1#{} additional card for",
+                    "every {C:attention}2 {C:white,X:metal}Metal{} cards you have",
+                    "{C:inactive,s:0.8}(Includes Jokers and Energy cards)",
+                    "{C:inactive}(Currently #2# #3#)",
+                }
+            },
+            j_Gem_gmax_centiskorch = {
+                name = "{C:agar_gmax}G-MAX{} Centiskorch",
+                text = {
+                    "If played hand has {C:attention}5{} scoring",
+                    "cards, played cards permanently",
+                    "gain {C:mult}+#1#{} Mult when scored",
+                }
+            },
+            -- j_maelmc_gmax_copperajah = {
+            --     name = "{C:agar_gmax}G-MAX{} Copperajah",
+            --     text = {
+            --         "{X:red,C:white}X#1#{} Mult for every {C:attention}Steel",
+            --         "{C:attention}Card{} in your full deck",
+            --         "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)",
+            --     }
+            -- },
+            j_Gem_gmax_urshifu_rapid_strike = {
+                name = "{C:agar_gmax}G-MAX{} Urshifu Rapid Strike",
+                text = {
+                    "Scored cards give {X:mult,C:white} X#1# {} Mult",
+                    "for every {C:chips}5 chips{} they have",
+                }
+            },
+            j_Gem_gmax_urshifu_single_strike = {
+                name = "{C:agar_gmax}G-MAX{} Urshifu Single Strike",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult",
+                    "Gains {X:mult,C:white} X#2# {} Mult when a discard is used.",
+                    "Loses a third when a hand is played",
                 }
             },
         },

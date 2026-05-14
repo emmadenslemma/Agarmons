@@ -3,16 +3,6 @@ local gmax_melmetal = {
   name = "gmax_melmetal",
   agar_inject_prefix = "sonfive",
   config = { extra = { draw_mod = 1 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Melmetal",
-    text = {
-      "Every hand played draws {C:attention}1{} card,",
-      "plus {C:attention}#3#{} additional card for",
-      "every {C:attention}2 {C:white,X:metal}Metal{} cards you have",
-      "{C:inactive,s:0.8}(Includes Jokers and Energy cards)",
-      "{C:inactive}(Currently #4# #5#)",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local metal_cards = find_other_poke_or_energy_type(card, "Metal", true)

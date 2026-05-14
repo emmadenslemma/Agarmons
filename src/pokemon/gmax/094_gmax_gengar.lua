@@ -3,13 +3,6 @@ local gmax_gengar = {
   name = "gmax_gengar",
   agar_inject_prefix = "poke",
   config = { extra = { Xmult_multi = 1.5, gengar_rounds = 5, trigger = false } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Gengar",
-    text = {
-      "All {C:dark_edition}Negative{} Jokers",
-      "give {X:mult,C:white}X#3#{} Mult",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }

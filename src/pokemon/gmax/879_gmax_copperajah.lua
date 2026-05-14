@@ -3,14 +3,6 @@ local gmax_copperajah = {
   name = "gmax_copperajah",
   agar_inject_prefix = "maelmc",
   config = { extra = { Xmult_mod = 1 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Copperajah",
-    text = {
-      "{X:red,C:white}X#3#{} Mult for every {C:attention}Steel",
-      "{C:attention}Card{} in your full deck",
-      "{C:inactive}(Currently {X:red,C:white}X#4#{C:inactive} Mult)",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
 

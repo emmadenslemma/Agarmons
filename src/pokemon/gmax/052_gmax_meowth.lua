@@ -4,16 +4,6 @@ local gmax_meowth = {
   agar_inject_prefix = "poke",
   -- Include `money` to not reset scaling when dynamaxing
   config = { extra = { money = 1, money1 = 3 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Meowth",
-    text = {
-      "Add a {C:attention}Gold Seal{} to every",
-      "{C:green}successfully{} triggered {C:attention}Lucky Card",
-      "{br:2.5}ERROR - CONTACT STEAK",
-      "If it already has a {C:attention}Gold Seal{},",
-      "earn {C:money}$#3#{} instead",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.money1 } }

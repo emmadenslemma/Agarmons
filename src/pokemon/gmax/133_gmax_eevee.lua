@@ -3,12 +3,6 @@ local gmax_eevee = {
   name = "gmax_eevee",
   agar_inject_prefix = "poke",
   config = { extra = { Xmult = 2.66 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Eevee",
-    text = {
-      "{C:white,X:mult}X#3#{} Mult",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult } }

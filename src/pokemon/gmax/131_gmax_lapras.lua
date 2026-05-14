@@ -3,14 +3,6 @@ local gmax_lapras = {
   name = "gmax_lapras",
   agar_inject_prefix = "poke",
   config = { extra = { chips = 0 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Lapras",
-    text = {
-      "{C:chips}+#3#{} Chips",
-      "Every hand played",
-      "creates a random {C:attention}Tag{}"
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chips } }

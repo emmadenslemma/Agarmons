@@ -3,14 +3,6 @@ local gmax_blastoise = {
   name = "gmax_blastoise",
   agar_inject_prefix = "poke",
   config = { extra = { Xmult_mod = 1, hands = 1 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Blastoise",
-    text = {
-      "{C:white,X:mult}X#3#{} Mult for each",
-      "remaining hand",
-      "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.hands_left

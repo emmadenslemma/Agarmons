@@ -3,13 +3,6 @@ local gmax_urshifu_rapid_strike = {
   name = "gmax_urshifu_rapid_strike",
   agar_inject_prefix = "Gem",
   config = { extra = { Xmult_mod = 0.1 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Urshifu Rapid Strike",
-    text = {
-      "Scored cards give {X:mult,C:white} X#3# {} Mult",
-      "for every {C:chips}5 chips{} they have",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_mod } }

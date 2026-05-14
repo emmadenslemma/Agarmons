@@ -3,15 +3,6 @@ local gmax_pikachu = {
   name = "gmax_pikachu",
   agar_inject_prefix = "poke",
   config = { extra = { money_mod = 2 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Pikachu",
-    text = {
-      "Every hand gives {C:money}$#3#{} for",
-      "every {C:money}$1{} you are from",
-      "the interest cap",
-      "{C:inactive}(Currently {C:money}$#4#{C:inactive})",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
