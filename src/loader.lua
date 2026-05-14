@@ -46,10 +46,6 @@ local function load_sleeves(file)
 end
 
 local function load_pokemon(item)
-  if item.rarity == "agar_gmax" then
-    AG.gmax.preload(item)
-  end
-
   local custom_prefix = item.agar_inject_prefix or "agar"
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
@@ -74,6 +70,7 @@ local function load_pokemon_family(file)
 end
 
 local load_pokemon_ref = pokermon.load_pokemon
+---@diagnostic disable-next-line: duplicate-set-field
 function pokermon.load_pokemon(item)
   if item.agar_inject_prefix then
     item.key = item.agar_inject_prefix .. '_' .. item.name

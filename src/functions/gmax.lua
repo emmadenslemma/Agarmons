@@ -1,5 +1,5 @@
 AG.gmax = {
-  scale = 1.,
+  scale = 1.2,
   default_duration = 3,
   -- stops Snorlax from spawning leftovers and machamp from giving extra hands
   evolving = false,
@@ -11,6 +11,12 @@ AG.hookafterfunc(_G, 'type_tooltip', function(self, info_queue, center)
     info_queue[#info_queue+1] = { set = 'Other', key = 'gmax_poke' }
   end
 end, true)
+
+AG.hookbeforefunc(SMODS.Center, 'inject', function(self)
+  if self.rarity == 'agar_gmax' then
+    self.display_size = { w = 71 * AG.gmax.scale, h = 95 * AG.gmax.scale }
+  end
+end)
 
 function AG.gmax.localize_turns_left_desc(card)
   local turns_left = card.ability.gmax_turns_left
@@ -26,21 +32,53 @@ function AG.gmax.localize_turns_left_desc(card)
   return nodes
 end
 
-AG.gmax.preload = function(item)
-  -- *Make it bigger*
-  item.display_size = { w = 71 * AG.gmax.scale, h = 95 * AG.gmax.scale }
-  -- Add `revert` to the end of `calculate`
-  if item.calculate then
-    local calculate_ref = item.calculate
-    item.calculate = function(self, card, context)
-      local ret, no_eff = calculate_ref(self, card, context)
-      AG.gmax.revert(self, card, context)
-      return ret, no_eff
-    end
+function AG.gmax.evolve(card)
+  AG.gmax.evolving = true
+  poke_evolve(card, AG.gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
+  -- Events to reset `evolving` after the evolution animation
+  AG.defer(function()
+    AG.defer(function()
+      AG.gmax.evolving = false
+    end)
+  end)
+end
+
+function AG.gmax.devolve(card)
+  AG.gmax.evolving = true
+  poke_evolve(card, AG.gmax.get_base_key(card), true)
+  AG.gmax.evolving = false
+end
+
+function AG.gmax.end_turn(card)
+  local new_turns_left = card.ability.gmax_turns_left - 1
+
+  card.ability.gmax_turns_left = new_turns_left
+
+  if new_turns_left > 0 then
+    SMODS.calculate_effect({
+      message = localize { type = "variable", key = 'gmax_a_turns_left' .. (new_turns_left == 1 and '' or '_plural') .. '_ex', vars = { new_turns_left } },
+      colour = G.C.agar_gmax,
+    }, card)
   else
-    item.calculate = AG.gmax.revert
+    -- Event to make it devolve after scoring visuals are over
+    AG.defer(function()
+      AG.gmax.devolve(card)
+    end)
   end
 end
+
+AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
+  if context.round_eval then
+    for _, joker in ipairs(G.jokers.cards) do
+      if joker:is_rarity('agar_gmax') then AG.gmax.devolve(joker) end
+    end
+  end
+  if context.after then
+    for _, joker in ipairs(G.jokers.cards) do
+      if joker:is_rarity('agar_gmax') then AG.gmax.end_turn(joker) end
+    end
+  end
+end)
 
 AG.gmax.disable_method_during_evolve = function(key, method_name)
   local center = SMODS.Joker.obj_table[key]
@@ -79,72 +117,6 @@ AG.hookbeforefunc(_G, 'get_previous_evo', function(card, full_key)
     return AG.gmax.get_previous_from_gmax(card)
   end
 end)
-
-AG.gmax.evolve = function(card)
-  AG.gmax.evolving = true
-  poke_evolve(card, AG.gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
-  -- Events to reset `evolving` after the evolution animation
-  G.E_MANAGER:add_event(Event({
-    func = function()
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          AG.gmax.evolving = false
-          return true
-        end
-      }))
-      return true
-    end
-  }))
-end
-
-AG.gmax.devolve = function(card)
-  -- Events to devolve after stake stickers get applied
-  -- Don't think about it.
-  -- Evolving with the animation does the same thing, so this will be fixed when I add an animation to Dynamaxing
-  ---- Crashing with Zoroark copying a G-Max form, temporarily disabled
-  if false and G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind.boss then
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = delay and 2.0 or 0,
-      func = function()
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            AG.gmax.evolving = true
-            poke_evolve(card, AG.gmax.get_base_key(card), true)
-            AG.gmax.evolving = false
-            return true
-          end
-        }))
-        return true
-      end
-    }))
-  else
-    AG.gmax.evolving = true
-    poke_evolve(card, AG.gmax.get_base_key(card), true)
-    AG.gmax.evolving = false
-  end
-end
-
-AG.gmax.revert = function(self, card, context)
-  if context.round_eval and not context.blueprint then
-    AG.gmax.devolve(card)
-  end
-  if context.after and context.cardarea == G.jokers and not context.blueprint then
-    card.ability.gmax_turns_left = card.ability.gmax_turns_left - 1
-    local turns_left = card.ability.gmax_turns_left
-    if turns_left > 0 then
-      SMODS.calculate_effect({
-        message = localize { type = "variable", key = 'gmax_a_turns_left' .. (turns_left == 1 and '' or '_plural') .. '_ex', vars = { turns_left } },
-        colour = G.C.agar_gmax,
-      }, card)
-    else
-      -- Event to make it devolve after scoring visuals are over
-      AG.defer(function()
-        AG.gmax.devolve(card)
-      end)
-    end
-  end
-end
 
 -- SMODS.DrawStep {
 --   key = 'gmax_clouds',

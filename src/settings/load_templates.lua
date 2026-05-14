@@ -2,10 +2,6 @@
 local poke_templates = {}
 
 local function load_template(item)
-  if item.rarity == "agar_gmax" then
-    AG.gmax.preload(item)
-  end
-
   local custom_prefix = item.agar_inject_prefix or "agar"
 
   local custom_atlas = item.atlas and string.find(item.atlas, "Agarmons")
@@ -35,7 +31,7 @@ local function load_pokemon_folder(folder)
 
       if poke.list and #poke.list > 0 then
         for _, item in ipairs(poke.list) do
-            load_template(item)
+          load_template(item)
         end
       end
     end
