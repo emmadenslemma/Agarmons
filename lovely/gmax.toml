@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Add "X turns left" to Joker descriptions
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+position = "after"
+match_indent = true
+pattern = "_c:generate_ui(info_queue, card, desc_nodes, specific_vars, full_UI_table)"
+payload = '''
+if _c.rarity == 'agar_gmax' then
+    table.insert(desc_nodes, 1, AG.gmax.localize_turns_left_desc(card))
+end
+'''

@@ -11,6 +11,12 @@ AG.hookafterfunc(_G, 'type_tooltip', function(self, info_queue, center)
   end
 end, true)
 
+function AG.gmax.localize_turns_left_desc(card)
+  local turns_left = card.ability.extra.turns_left or 0
+  local loc_turns = localize('gmax_turns' .. (turns_left == 1 and '' or '_plural'))
+  return localize({ type = 'text', key = 'gmax_turns_left_desc', vars = { turns_left, loc_turns } })
+end
+
 AG.gmax.preload = function(item)
   -- *Make it bigger*
   item.display_size = { w = 71 * AG.gmax.scale, h = 95 * AG.gmax.scale }
@@ -18,11 +24,6 @@ AG.gmax.preload = function(item)
   item.config = item.config or {}
   item.config.extra = item.config.extra or {}
   item.config.extra.turns_left = 3
-  -- Add "x turns left" to loc_txt.text
-  if item.loc_txt and item.loc_txt.text then -- we still have to manually define it if we use localization files
-    table.insert(item.loc_txt.text, 1, "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#")
-    table.insert(item.loc_txt.text, 2, "{br:2.5}ERROR - CONTACT STEAK")
-  end
   -- Add `revert` to the end of `calculate`
   if item.calculate then
     local calculate_ref = item.calculate
@@ -33,16 +34,6 @@ AG.gmax.preload = function(item)
     end
   else
     item.calculate = AG.gmax.revert
-  end
-  -- Add  `loc_vars` to.. loc_vars
-  if item.loc_vars then
-    local loc_vars_ref = item.loc_vars
-    item.loc_vars = function(self, info_queue, center)
-      local loc_table = loc_vars_ref(self, info_queue, center)
-      return AG.gmax.loc_vars(self, info_queue, center, loc_table)
-    end
-  else
-    item.loc_vars = AG.gmax.loc_vars
   end
 end
 
@@ -137,7 +128,7 @@ AG.gmax.revert = function(self, card, context)
     card.ability.extra.turns_left = card.ability.extra.turns_left - 1
     if card.ability.extra.turns_left > 0 then
       card_eval_status_text(card, "extra", nil, nil, nil, {
-        message = localize { type = "variable", key = card.ability.extra.turns_left == 1 and "agar_x_turns_left_singular_ex" or "agar_x_turns_left_plural_ex", vars = { card.ability.extra.turns_left } },
+        message = localize { type = "variable", key = card.ability.extra.turns_left == 1 and "gmax_a_turns_left_singular_ex" or "gmax_a_turns_left_plural_ex", vars = { card.ability.extra.turns_left } },
         colour = G.C.agar_gmax,
       })
     else
@@ -150,19 +141,6 @@ AG.gmax.revert = function(self, card, context)
       }))
     end
   end
-end
-
-AG.gmax.loc_vars = function(self, info_queue, center, loc_table)
-  loc_table = loc_table or {}
-  loc_table.vars = loc_table.vars or {}
-
-  table.insert(loc_table.vars, 1, center.ability.extra.turns_left)
-  table.insert(loc_table.vars, 2,
-    localize(center.ability.extra.turns_left == 1
-      and "agar_turns_left_singular"
-      or "agar_turns_left_plural"))
-
-  return loc_table
 end
 
 -- SMODS.DrawStep {

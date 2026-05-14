@@ -886,36 +886,28 @@ return {
                     "and {C:money}$#3#{} when scored",
                 }
             },
-            -- All GMAX forms use `loc_txt` for their English localization
-            -- These are here additionally because they're showcased in the Gigantamax toggle
             j_poke_gmax_charizard = {
                 name = "{C:agar_gmax}G-MAX{} Charizard",
                 text = {
-                    "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
-                    "{br:2.5}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#3#{} Mult per discard",
+                    "{C:white,X:mult}X#1#{} Mult per discard",
                     "used this round",
-                    "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
                 }
             },
             j_poke_gmax_butterfree = {
                 name = "{C:agar_gmax}G-MAX{} Butterfree",
                 text = {
-                    "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
-                    "{br:2.5}ERROR - CONTACT STEAK",
-                    "{C:mult}+#3# Mult"
+                    "{C:mult}+#1# Mult"
                 }
             },
             j_poke_gmax_machamp = {
                 name = "{C:agar_gmax}G-MAX{} Machamp",
                 text = {
-                    "{C:agar_gmax,s:1.1}#1#{s:1.1} #2#",
-                    "{br:2.5}ERROR - CONTACT STEAK",
-                    "Gain {C:blue}+#3#{} hands this round",
+                    "Gain {C:blue}+#1#{} hands this round",
                     "{br:2.5}ERROR - CONTACT STEAK",
                     "If played hand is exactly",
                     "{C:attention}4{} cards, played cards give",
-                    "{C:white,X:mult}X#4#{} Mult when scored",
+                    "{C:white,X:mult}X#2#{} Mult when scored",
                 }
             },
         },
@@ -1178,8 +1170,8 @@ return {
             boss_blind_singular = "Boss Blind",
             boss_blind_plural = "Boss Blinds",
 
-            agar_turns_left_plural = "hands left",
-            agar_turns_left_singular = "hand left",
+            gmax_turns = "hand",
+            gmax_turns_plural = "hands",
 
             agar_recharging = 'recharging...',
 
@@ -1230,6 +1222,11 @@ return {
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
             ch_c_nebby = { "Nebby must survive" },
+
+            gmax_turns_left_desc = {
+                "{C:agar_gmax,s:1.1}#1#{s:1.1} #2# left",
+                "{br:2.5}ERROR - CONTACT STEAK", -- TODO: find a way to inject this, possibly using SMODS.localize_box
+            },
         },
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
@@ -1238,8 +1235,8 @@ return {
 
             agar_a_powmult = "^#1# Mult", -- for Beta Arceus
 
-            agar_x_turns_left_plural_ex = "#1# hands left!",
-            agar_x_turns_left_singular_ex = "#1# turn left!",
+            gmax_a_turns_left_plural_ex = "#1# hands left!",
+            gmax_a_turns_left_singular_ex = "#1# hand left!",
         },
     },
 }

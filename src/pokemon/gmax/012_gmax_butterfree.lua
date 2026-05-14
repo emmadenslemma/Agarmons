@@ -3,12 +3,6 @@ local gmax_butterfree = {
   name = "gmax_butterfree",
   agar_inject_prefix = "poke",
   config = { extra = { mult = 100 } },
-  loc_txt = {
-    name = "{C:agar_gmax}G-MAX{} Butterfree",
-    text = {
-      "{C:mult}+#3# Mult"
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult } }
