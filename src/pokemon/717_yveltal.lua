@@ -14,7 +14,7 @@ local yveltal = {
   gen = 6,
   blueprint_compat = false,
   calculate = function(self, card, context)
-    if context.pre_discard and not context.hook and #context.full_hand == 2 and G.GAME.current_round.discards_used == 0 then
+    if context.pre_discard and not context.hook and #context.full_hand == 2 then
       local left = context.full_hand[1]
       local right = context.full_hand[2]
       juice_flip_table(card, context.full_hand, false, 2)

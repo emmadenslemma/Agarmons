@@ -482,8 +482,8 @@ return {
                 name = "Yveltal",
                 text = {
                     "{C:dark}Dark Aura",
-                    "If {C:attention}first discard{} of",
-                    "round has {C:attention}2{} cards,",
+                    "When discarding",
+                    "exactly {C:attention}2{} cards,",
                     "convert the {C:attention}left{} card",
                     "into the {C:attention}right{} card",
                 }
