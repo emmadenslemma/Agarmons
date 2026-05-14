@@ -11,8 +11,11 @@ position = "after"
 match_indent = true
 pattern = "_c:generate_ui(info_queue, card, desc_nodes, specific_vars, full_UI_table)"
 payload = '''
-if _c.rarity == 'agar_gmax' then
-    table.insert(desc_nodes, 1, AG.gmax.localize_turns_left_desc(card))
+if _c.rarity == 'agar_gmax' and not poke_is_in_collection(card) then
+    local turns_left_nodes = AG.gmax.localize_turns_left_desc(card)
+    for i, node in ipairs(turns_left_nodes) do
+        table.insert(desc_nodes, i, node)
+    end
 end
 '''
 

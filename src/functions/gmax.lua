@@ -15,7 +15,15 @@ end, true)
 function AG.gmax.localize_turns_left_desc(card)
   local turns_left = card.ability.gmax_turns_left
   local loc_turns = localize('gmax_turns' .. (turns_left == 1 and '' or '_plural'))
-  return localize({ type = 'text', key = 'gmax_turns_left_desc', vars = { turns_left, loc_turns } })
+  local nodes = {}
+  localize({
+    type = 'descriptions',
+    set = 'Other',
+    key = 'gmax_turns_left_desc',
+    vars = { turns_left, loc_turns },
+    nodes = nodes
+  })
+  return nodes
 end
 
 AG.gmax.preload = function(item)

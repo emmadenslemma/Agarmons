@@ -1103,7 +1103,12 @@ return {
                     "Can {C:attention}Gigantamax{} with", "a {C:attention}Dynamax Band{}"
                 }
             },
-
+            gmax_turns_left_desc = {
+                text = {
+                    "{C:agar_gmax,s:1.1}#1#{s:1.1} #2# left",
+                    "{br:2.5}ERROR - CONTACT STEAK",
+                },
+            },
             energizable_values = {
                 name = "Energizable Values",
                 text = {
@@ -1222,11 +1227,6 @@ return {
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
             ch_c_nebby = { "Nebby must survive" },
-
-            gmax_turns_left_desc = {
-                "{C:agar_gmax,s:1.1}#1#{s:1.1} #2# left",
-                "{br:2.5}ERROR - CONTACT STEAK", -- TODO: find a way to inject this, possibly using SMODS.localize_box
-            },
         },
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
