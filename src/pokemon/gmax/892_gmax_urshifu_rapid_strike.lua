@@ -35,7 +35,7 @@ local init = function()
 end
 
 return {
-  can_load = next(SMODS.find_mod("GemPokermon")) ~= nil and Gem_config.Kubfu and agarmons_config.gmax,
+  can_load = not not (next(SMODS.find_mod("GemPokermon")) and Gem_config.Kubfu and agarmons_config.gmax),
   init = init,
   list = { gmax_urshifu_rapid_strike }
 }
