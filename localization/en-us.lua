@@ -1322,8 +1322,8 @@ return {
             agar_gigantamaxing = "Gigantamaxing",
             agar_new_megas = "Z-A Megas",
 
-            agar_regular_pokemon1 = "Regular Pokémon 1/3",
-            agar_regular_pokemon2 = "Regular Pokémon 2/3",
+            agar_regular_pokemon1 = "Regular Pokémon 1/2",
+            agar_regular_pokemon2 = "Regular Pokémon 2/2",
             agar_regular_pokemon3 = "Regular Pokémon 3/3",
             agar_legendary_pokemon1 = "Legendary Pokémon 1/2",
             agar_legendary_pokemon2 = "Legendary Pokémon 2/2",
