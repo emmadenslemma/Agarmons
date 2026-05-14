@@ -27,7 +27,7 @@ local alolan_raichu = {
     end
     if context.money_altered and context.from_shop then
       local amount_spent = context.amount
-      if (SMODS.Mods["Talisman"] or {}).can_load then amount_spent = to_number(amount_spent) end
+      if next(SMODS.find_mod("Talisman")) then amount_spent = to_number(amount_spent) end
       if amount_spent < 0 then
         card.ability.extra.chips = card.ability.extra.chips +
             card.ability.extra.chip_mod / card.ability.extra.per_money * (-amount_spent)

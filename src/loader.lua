@@ -37,7 +37,7 @@ local function load_directory(path, load_item, options)
 end
 
 local function load_sleeves(file)
-  if (SMODS.Mods['CardSleeves'] or {}).can_load and CardSleeves
+  if next(SMODS.find_mod("CardSleeves")) and CardSleeves
       and file.sleeves and #file.sleeves > 0 then
     for _, sleeve in ipairs(file.sleeves) do
       CardSleeves.Sleeve(sleeve)

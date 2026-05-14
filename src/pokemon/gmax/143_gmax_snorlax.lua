@@ -37,7 +37,7 @@ local init = function()
 
   SMODS.Joker:take_ownership("poke_snorlax", { gmax = "gmax_snorlax", poke_custom_values_to_keep = { "Xmult" } }, true)
 
-  if not (SMODS.Mods['PokermonMaelmc'] or {}).can_load then
+  if not next(SMODS.find_mod("PokermonMaelmc")) then
     SMODS.PokerHand:take_ownership("Five of a Kind", {
       modify_display_text = function(self, cards, scoring_hand)
         if #scoring_hand == 6 then

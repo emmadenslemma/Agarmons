@@ -1,5 +1,5 @@
 local in_debt = function()
-  return G.GAME.dollars < ((SMODS.Mods["Talisman"] or {}).can_load and to_big(0) or 0)
+  return G.GAME.dollars < (next(SMODS.find_mod("Talisman")) and to_big(0) or 0)
 end
 
 -- Mega Froslass 478-1

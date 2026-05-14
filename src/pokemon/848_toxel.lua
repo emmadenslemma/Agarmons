@@ -138,7 +138,7 @@ local gmax_toxtricity = {
 }
 
 return {
-  can_load = (SMODS.Mods["ToxicStall"] or {}).can_load == true,
+  can_load = next(SMODS.find_mod("ToxicStall")) ~= nil,
   config_key = "toxel",
   list = { toxel, toxtricity, gmax_toxtricity },
   family = {

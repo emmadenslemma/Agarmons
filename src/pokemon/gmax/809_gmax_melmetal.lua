@@ -37,7 +37,7 @@ local init = function()
 end
 
 return {
-  can_load = (SMODS.Mods["SonfivesPokermonPlus"] or {}).can_load and agarmons_config.gmax,
+  can_load = next(SMODS.find_mod("SonfivesPokermonPlus")) ~= nil and agarmons_config.gmax,
   init = init,
   list = { gmax_melmetal }
 }

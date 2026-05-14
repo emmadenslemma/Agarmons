@@ -29,7 +29,7 @@ end)
 
 assert(SMODS.load_file("src/settings.lua"))()
 
-if (SMODS.Mods["JokerDisplay"] or {}).can_load then
+if next(SMODS.find_mod("JokerDisplay")) then
   assert(SMODS.load_file("src/jokerdisplay.lua"))()
 end
 

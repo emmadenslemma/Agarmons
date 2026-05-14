@@ -38,7 +38,7 @@ local init = function()
   -- stolen from Talisman, naturally
   -- raise your hand if you think this should be a part of SMODS
   -- no? it's just me? okay .-.
-  if not (SMODS.Mods["Talisman"] or {}).can_load and not (SMODS.Mods["Amulet"] or {}).can_load then
+  if not next(SMODS.find_mod("Talisman")) and not next(SMODS.find_mod("Amulet")) then
     SMODS.Scoring_Parameter({
       key = 'emult',
       default_value = 0,
