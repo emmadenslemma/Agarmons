@@ -8,7 +8,7 @@ local init = function()
 end
 
 return {
-  can_load = not not next(SMODS.find_mod("PokermonMaelmc") and agarmons_config.gmax),
+  can_load = not not (next(SMODS.find_mod("PokermonMaelmc")) and agarmons_config.gmax),
   init = init,
   list = {}
 }
