@@ -15,3 +15,12 @@ if _c.rarity == 'agar_gmax' then
     table.insert(desc_nodes, 1, AG.gmax.localize_turns_left_desc(card))
 end
 '''
+
+# Add `gmax_turns_left` to ability table
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+position = "after"
+match_indent = true
+pattern = "perma_h_x_blind_size = self.ability and self.ability.perma_h_x_blind_size or 0,"
+payload = "gmax_turns_left = center.rarity == 'agar_gmax' and AG.gmax.default_duration or nil"

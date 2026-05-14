@@ -1235,8 +1235,8 @@ return {
 
             agar_a_powmult = "^#1# Mult", -- for Beta Arceus
 
+            gmax_a_turns_left_ex = "#1# hand left!",
             gmax_a_turns_left_plural_ex = "#1# hands left!",
-            gmax_a_turns_left_singular_ex = "#1# hand left!",
         },
     },
 }

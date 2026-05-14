@@ -1,5 +1,6 @@
 AG.gmax = {
   scale = 1.,
+  default_duration = 3,
   -- stops Snorlax from spawning leftovers and machamp from giving extra hands
   evolving = false,
 }
@@ -12,7 +13,7 @@ AG.hookafterfunc(_G, 'type_tooltip', function(self, info_queue, center)
 end, true)
 
 function AG.gmax.localize_turns_left_desc(card)
-  local turns_left = card.ability.extra.turns_left or 0
+  local turns_left = card.ability.gmax_turns_left
   local loc_turns = localize('gmax_turns' .. (turns_left == 1 and '' or '_plural'))
   return localize({ type = 'text', key = 'gmax_turns_left_desc', vars = { turns_left, loc_turns } })
 end
@@ -20,10 +21,6 @@ end
 AG.gmax.preload = function(item)
   -- *Make it bigger*
   item.display_size = { w = 71 * AG.gmax.scale, h = 95 * AG.gmax.scale }
-  -- Add `turns_left` to extra
-  item.config = item.config or {}
-  item.config.extra = item.config.extra or {}
-  item.config.extra.turns_left = 3
   -- Add `revert` to the end of `calculate`
   if item.calculate then
     local calculate_ref = item.calculate
@@ -125,20 +122,18 @@ AG.gmax.revert = function(self, card, context)
     AG.gmax.devolve(card)
   end
   if context.after and context.cardarea == G.jokers and not context.blueprint then
-    card.ability.extra.turns_left = card.ability.extra.turns_left - 1
-    if card.ability.extra.turns_left > 0 then
-      card_eval_status_text(card, "extra", nil, nil, nil, {
-        message = localize { type = "variable", key = card.ability.extra.turns_left == 1 and "gmax_a_turns_left_singular_ex" or "gmax_a_turns_left_plural_ex", vars = { card.ability.extra.turns_left } },
+    card.ability.gmax_turns_left = card.ability.gmax_turns_left - 1
+    local turns_left = card.ability.gmax_turns_left
+    if turns_left > 0 then
+      SMODS.calculate_effect({
+        message = localize { type = "variable", key = 'gmax_a_turns_left' .. (turns_left == 1 and '' or '_plural') .. '_ex', vars = { turns_left } },
         colour = G.C.agar_gmax,
-      })
+      }, card)
     else
       -- Event to make it devolve after scoring visuals are over
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          AG.gmax.devolve(card)
-          return true
-        end
-      }))
+      AG.defer(function()
+        AG.gmax.devolve(card)
+      end)
     end
   end
 end
@@ -151,8 +146,7 @@ end
 --     if not G.shared_gmax_clouds then
 --       G.shared_gmax_clouds = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["agar_gmax_clouds"])
 --     end
---     if self.ability and self.ability.extra and type(self.ability.extra) == 'table'
---         and self.ability.extra.turns_left then
+--     if self.ability.gmax_turns_left then
 --       local y_offset = G.CARD_H / 4
 --       G.shared_gmax_clouds:draw_shader('dissolve', nil, nil, true, self.children.center, nil, 0, nil, -y_offset)
 --     end
