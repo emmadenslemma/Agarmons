@@ -998,14 +998,14 @@ return {
                     "gain {C:mult}+#1#{} Mult when scored",
                 }
             },
-            -- j_maelmc_gmax_copperajah = {
-            --     name = "{C:agar_gmax}G-MAX{} Copperajah",
-            --     text = {
-            --         "{X:red,C:white}X#1#{} Mult for every {C:attention}Steel",
-            --         "{C:attention}Card{} in your full deck",
-            --         "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)",
-            --     }
-            -- },
+            j_maelmc_gmax_copperajah = {
+                name = "{C:agar_gmax}G-MAX{} Copperajah",
+                text = {
+                    "{X:red,C:white}X#1#{} Mult for every {C:attention}Steel",
+                    "{C:attention}Card{} in your full deck",
+                    "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)",
+                }
+            },
             j_Gem_gmax_urshifu_rapid_strike = {
                 name = "{C:agar_gmax}G-MAX{} Urshifu Rapid Strike",
                 text = {
