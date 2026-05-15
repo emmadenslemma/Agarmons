@@ -1,8 +1,25 @@
+local function has_first_unique_rank(card, scoring_hand)
+  for _, other_card in ipairs(scoring_hand) do
+    if other_card == card then return true end
+    if other_card:get_id() == card:get_id() then break end
+  end
+  return false
+end
+
+local function has_first_unique_suit(card, scoring_hand, suit_indexes)
+  if not suit_indexes then return false end
+  local i = get_index(scoring_hand, card)
+  for _, j in ipairs(suit_indexes) do
+    if i == j then return true end
+  end
+  return false
+end
+
 -- G-Max Lapras 131
 local gmax_lapras = {
   name = "gmax_lapras",
   agar_inject_prefix = "poke",
-  config = { extra = { chips = 0 } },
+  config = { extra = { chips = 0, retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chips } }
@@ -16,40 +33,21 @@ local gmax_lapras = {
   poke_custom_values_to_keep = { "chips" },
   calculate = function(self, card, context)
     if context.before then
-      SMODS.calculate_effect({
-        message = localize("agar_gmax_resonance_ex"),
-        colour = G.C.RARITY["agar_gmax"]
-      }, card)
-
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          -- Stolen from Missingno
-          local tags = {}
-          for k, v in pairs(G.P_TAGS) do
-            if v.key ~= "tag_boss" then
-              tags[#tags+1] = v
-            end
-          end
-          local temp_tag = pseudorandom_element(tags, pseudoseed("gmaxlapras"))
-          local tag = Tag(temp_tag.key)
-          if tag.key == "tag_orbital" then
-            local _poker_hands = {}
-            for k, v in pairs(G.GAME.hands) do
-              if v.visible then
-                _poker_hands[#_poker_hands+1] = k
-              end
-            end
-            tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed("gmaxlapras"))
-          end
-          add_tag(tag)
-          play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
-          play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
-          return true
-        end
-      }))
+      card.suits = AG.n_rooks.solve_suits(context.scoring_hand)
+    end
+    if context.cardarea == G.play and context.repetition then
+      local unique_rank = has_first_unique_rank(context.other_card, context.scoring_hand)
+      local unique_suit = has_first_unique_suit(context.other_card, context.scoring_hand, card.suits)
+      local retriggers = (unique_rank and 1 or 0) + (unique_suit and 1 or 0)
+      if retriggers > 0 then
+        return {
+          repetitions = retriggers * card.ability.extra.retriggers,
+          colour = G.C.RARITY["agar_gmax"]
+        }
+      end
     end
     -- Keep Lapras's regular Chips scoring
-    return G.P_CENTERS.j_poke_lapras.calculate(self, card, context)
+    return G.P_CENTERS['j_poke_lapras'].calculate(self, card, context)
   end,
 }
 

@@ -963,8 +963,9 @@ return {
                 name = "{C:agar_gmax}G-MAX{} Lapras",
                 text = {
                     "{C:chips}+#1#{} Chips",
-                    "Every hand played",
-                    "creates a random {C:attention}Tag{}"
+                    "Retrigger each unique",
+                    "{C:attention}rank{} and {C:attention}suit{} played",
+                    "{C:inactive,s:0.8}(Can retrigger the same card twice)",
                 }
             },
             j_poke_gmax_eevee = {
