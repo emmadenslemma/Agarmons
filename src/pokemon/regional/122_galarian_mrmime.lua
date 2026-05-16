@@ -2,7 +2,7 @@
 local galarian_mrmime = {
   name = "galarian_mrmime",
   agar_inject_prefix = "poke",
-  config = { extra = { rounds = 5 } },
+  config = { extra = { rounds = 5, scored_cards = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.rounds } }
@@ -22,10 +22,10 @@ local galarian_mrmime = {
 local mrrime = {
   name = "mrrime",
   agar_inject_prefix = "poke",
-  config = { extra = { retriggers = 2 } },
+  config = { extra = { scored_cards = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.retriggers } }
+    return { vars = { card.ability.extra.scored_cards } }
   end,
   rarity = "poke_safari",
   cost = 10,
