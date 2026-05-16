@@ -69,9 +69,9 @@ function AG.effects.apply_ortalab_statue()
 end
 
 function AG.effects.get_ortalab_statue_card_count()
-  return (next(SMODS.find_card('j_poke_mrrime')) and 2)
-      or (next(SMODS.find_card('j_poke_galarian_mrmime')) and 1)
-      or 0
+  local joker = SMODS.find_card('j_poke_mrrime')[1] or SMODS.find_card('j_poke_galarian_mrmime')[1]
+  if joker then return joker.ability.extra.scored_cards end
+  return 0
 end
 
 AG.effects.ortalab_statue_cards = nil -- for intellisense
