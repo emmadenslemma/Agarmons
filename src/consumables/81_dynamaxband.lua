@@ -3,23 +3,19 @@ if agarmons_config.gmax then
   AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
     if context.first_hand_drawn then
       for _, card in pairs(SMODS.find_card("c_agar_dynamaxband")) do
-        if card.ability.extra.target then
-          local target = poke_find_card(function(joker)
-            return joker.unique_val == card.ability.extra.target
-          end)
-          if target and not target.getting_sliced then
-            AG.gmax.evolve(target)
-            -- Event to fix dynamax band losing its charge but the target
-            -- not being gmaxed if you quit to main menu after starting blind
-            G.E_MANAGER:add_event(Event({
-              func = function()
-                card.ability.extra.usable = false
-                return true
-              end
-            }))
-          else
-            card.ability.extra.target = nil
-          end
+        local target = card.config.center:get_target(card)
+        if target and not target.getting_sliced and not target.agar_gmax_evolving then
+          target.agar_gmax_evolving = true
+          AG.gmax.evolve(target)
+          -- Event to fix dynamax band losing its charge but the target
+          -- not being gmaxed if you quit to main menu after starting blind
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              card.ability.extra.usable = false
+              target.agar_gmax_evolving = nil
+              return true
+            end
+          }))
         end
       end
     end
@@ -48,8 +44,8 @@ local dynamaxband = {
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'endless' }
     end
-    if card.ability.extra.target then
-      local target = poke_find_card(function(joker) return joker.unique_val == card.ability.extra.target end)
+    local target = self:get_target(card)
+    if target then
       return {
         key = "c_agar_dynamaxband_targeting",
         vars = { localize { type = "name_text", set = "Joker", key = target.config.center.key } }
@@ -61,19 +57,21 @@ local dynamaxband = {
   hidden = true,
   soul_set = "Item",
   soul_rate = .0066,
+  get_target = function(self, card)
+    if card.ability.extra.target then
+      local target = poke_find_card(function(joker) return joker.unique_val == card.ability.extra.target end)
+      if not target then card.ability.extra.target = nil end
+      return target
+    end
+  end,
   use = function(self, card)
     local target = poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
+    card.ability.extra.usable = false
     if G.GAME.blind.in_blind then
       AG.gmax.evolve(target)
-      card.ability.extra.usable = false
-    else
-      if card.ability.extra.target then
-        card.ability.extra.target = nil
-      else
-        card.ability.extra.target = target.unique_val
-        card.ability.extra.target__ID = target.unique_val__saved_ID or target.ID
-      end
     end
+    card.ability.extra.target = target.unique_val
+    card.ability.extra.target__ID = target.unique_val__saved_ID or target.ID
   end,
   can_use = function(self, card)
     return (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit or card.area ~= G.pack_cards)
@@ -83,7 +81,9 @@ local dynamaxband = {
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
       card.ability.extra.usable = true
-      card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_reset") })
+      return {
+        message = localize("k_reset")
+      }
     end
     if context.selling_card and card.ability.extra.target then
       if context.card.unique_val == card.ability.extra.target then
