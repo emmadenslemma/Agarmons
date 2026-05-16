@@ -54,6 +54,7 @@ local mega_drampa = {
 }
 
 return {
+  can_load = false,
   config_key = "drampa",
   list = { drampa, mega_drampa }
 }
