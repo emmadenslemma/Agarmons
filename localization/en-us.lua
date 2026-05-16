@@ -76,17 +76,17 @@ return {
             j_poke_galarian_mrmime = {
                 name = "{s:0.6}Galarian{}Mr. Mime",
                 text = {
-                    "Scores leftmost card",
-                    "{C:attention}held in hand{} as if",
-                    "it was played",
+                    "Leftmost card {C:attention}held in",
+                    "{C:attention}hand{} also scores as",
+                    "if it was played",
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#1#{C:inactive,s:0.8} rounds)",
                 }
             },
             j_poke_mrrime = {
                 name = "Mr. Rime",
                 text = {
-                    "Scores leftmost {C:attention}2{} cards",
-                    "{C:attention}held in hand{} as if",
+                    "Leftmost {C:attention}#1#{} cards {C:attention}held in",
+                    "{C:attention}hand{} also score as if",
                     "they were played",
                 }
             },
