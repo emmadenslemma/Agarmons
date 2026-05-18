@@ -104,7 +104,7 @@ local gmax_toxtricity = {
     name = "{C:agar_gmax}G-MAX{} Toxtricity",
     text = {
       "All played and held {C:attention}Toxic{} cards",
-      "give {C:money}$#3#{} and retrigger",
+      "give {C:money}$#1#{} and retrigger",
     }
   },
   loc_vars = function(self, info_queue, card)
