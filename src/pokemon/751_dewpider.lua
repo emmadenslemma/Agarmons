@@ -1,7 +1,7 @@
 -- Dewpider 751
 local dewpider = {
   name = "dewpider",
-  config = { extra = { hazard_level = 1, mult = 8, rounds = 4 } },
+  config = { extra = { hazard_level = 1, mult = 5, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = poke_get_hazard_level_vars() }
@@ -35,7 +35,7 @@ local dewpider = {
 -- Araquanid 752
 local araquanid = {
   name = "araquanid",
-  config = { extra = { hazard_level = 1, mult = 8, Xmult_multi = 2 } },
+  config = { extra = { hazard_level = 1, mult = 5, Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = poke_get_hazard_level_vars() }
