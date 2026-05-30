@@ -861,6 +861,15 @@ return {
                     "hand played",
                 }
             },
+            j_agar_mega_tatsugiri = {
+                name = "Mega Tatsugiri",
+                text = {
+                    "Played cards give",
+                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, and {C:money}$#3#",
+                    "when scored, and have a",
+                    "{C:green}#4# in #5#{} chance to retrigger",
+                }
+            },
             j_agar_mega_tatsugiri_curly = {
                 name = "Mega Tatsugiri (Curly)",
                 text = {
