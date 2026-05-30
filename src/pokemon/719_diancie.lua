@@ -7,17 +7,19 @@ end
 -- Diancie 719
 local diancie = {
   name = "diancie",
-  config = { extra = { money_mod = 1 } },
+  config = { extra = { money_mod = 1, hazard_level = 1, hazard_max = 1 } },
   loc_txt = {
     name = "Diancie",
     text = {
-      "{C:attention}Suitless{} cards are",
-      "considered {C:diamonds}Diamonds",
+      "{C:hazard}+#1#{} hazard layer and limit",
       "{br:2}ERROR - CONTACT STEAK",
       "Earn {C:money}$#1#{} at end of round",
-      "for every {C:diamonds}Diamond{} card",
-      "in your full deck",
+      "for every {C:diamonds}Diamond",
+      "card in your full deck",
       "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+      "{br:2}ERROR - CONTACT STEAK",
+      "{C:attention}Suitless{} cards are",
+      "considered {C:diamonds}Diamonds",
     }
   },
   loc_vars = function(self, info_queue, card)
@@ -30,6 +32,14 @@ local diancie = {
   ptype = "Fairy",
   gen = 6,
   blueprint_compat = false,
+  add_to_deck = function(self, card, from_debuff)
+    poke_change_hazard_max(card.ability.extra.hazard_max)
+    poke_change_hazard_level(card.ability.extra.hazard_level)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    poke_change_hazard_max(-card.ability.extra.hazard_max)
+    poke_change_hazard_level(-card.ability.extra.hazard_level)
+  end,
   calc_dollar_bonus = function(self, card)
     local money = get_diamond_count() * card.ability.extra.money_mod
     if money > 0 then
