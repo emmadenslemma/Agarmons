@@ -43,9 +43,17 @@ local alolan_raichu = {
 local init = function()
   poke_add_to_family("raichu", "alolan_raichu")
 
-  AG.hookafterfunc(SMODS.Joker.obj_table.j_poke_pikachu, 'calculate', function(self, card, context)
-    return type_evo(self, card, context, "j_poke_alolan_raichu", "psychic")
-  end)
+  SMODS.Joker:take_ownership('poke_pikachu', {
+    item_req = { 'thunderstone', 'sunstone' }, -- This is going to have some weird side effects but it's *fine*
+    evo_list = { thunderstone = 'j_poke_raichu', sunstone = 'j_poke_alolan_raichu' },
+    add_to_deck = function(self, card, from_debuff)
+      if agarmons_config.alolan_raichu and not from_debuff then
+        -- Since the evolution code checks `ability.extra.item_req` and not `config.center.item_req` we have to do extra work.
+        card.ability.extra.item_req = copy_table(card.config.center.item_req)
+        card.ability.extra.evo_list = copy_table(card.config.center.evo_list)
+      end
+    end
+  }, true)
 end
 
 return {

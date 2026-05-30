@@ -1,7 +1,7 @@
 return {
     descriptions = {
         Joker = {
-            j_poke_pikachu = {
+            j_poke_pikachu_alolan = {
                 name = "Pikachu",
                 text = {
                     "{C:mult}+#1#{} Mult if you",
@@ -11,7 +11,7 @@ return {
                     "is selected if you have",
                     "less than {C:money}$#3#",
                     "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Thunder Stone{C:inactive,s:0.8})",
-                    "{C:inactive,s:0.8}(Evolves with a {C:psychic,s:0.8}Psychic{C:inactive,s:0.8} sticker)",
+                    "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Sun Stone{C:inactive,s:0.8})",
                 }
             },
             j_poke_alolan_raichu = {
