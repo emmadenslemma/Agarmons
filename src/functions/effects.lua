@@ -223,16 +223,13 @@ function AG.effects.remove_crab_chip_multiplier(mod)
   G.GAME.agar_crab_chip_multiplier = (G.GAME.agar_crab_chip_multiplier or mod or 1) / (mod or 1)
 end
 
-local function hook_chips(orig, card)
-  local chips = orig(card)
-  if card:get_id() == 13 then
+AG.hookaroundfunc(Card, 'get_chip_bonus', function(orig, self)
+  local chips = orig(self)
+  if self:get_id() == 13 then
     chips = chips * (G.GAME.agar_crab_chip_multiplier or 1)
   end
   return chips
-end
-
-AG.hookaroundfunc(Card, 'get_chip_bonus', hook_chips)
-AG.hookaroundfunc(_G, 'poke_total_chips', hook_chips)
+end)
 
 SMODS.Edition:take_ownership('foil', {
   calculate = function(self, card, context)
