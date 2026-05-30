@@ -980,7 +980,8 @@ return {
             j_poke_gmax_eevee = {
                 name = "{C:agar_gmax}G-MAX{} Eevee",
                 text = {
-                    "{C:white,X:mult}X#1#{} Mult",
+                    "First Joker of each",
+                    "{C:pink}Type{} gives {C:white,X:mult}X#1#{} Mult",
                 }
             },
             j_poke_gmax_snorlax = {
