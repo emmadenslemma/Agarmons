@@ -929,7 +929,7 @@ return {
                 name = "{C:agar_gmax}G-MAX{} Pikachu",
                 text = {
                     "Every hand gives {C:money}$#1#{} for",
-                    "every {C:money}$1{} you are from",
+                    "every {C:money}$1{} you are under",
                     "the interest cap",
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 }
