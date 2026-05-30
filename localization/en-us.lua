@@ -964,8 +964,9 @@ return {
             j_poke_gmax_kingler = {
                 name = "{C:agar_gmax}G-MAX{} Kingler",
                 text = {
-                    "Played face cards permanently",
-                    "gain {C:chips}+#1#{} chips when scored",
+                    "Played {C:attention}Kings{} give {C:attention}double",
+                    "their total {C:chips}Chips{} and",
+                    "become {C:dark_edition}Foil{} when scored",
                 }
             },
             j_poke_gmax_lapras = {
@@ -1314,6 +1315,7 @@ return {
             agar_gmax_meltdown_ex = "G-Max Meltdown!",
             agar_gmax_replenish_ex = "G-Max Replenish!",
             agar_gmax_resonance_ex = "G-Max Resonance!",
+            agar_gmax_foam_burst_ex = "G-Max Foam Burst!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",
