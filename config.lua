@@ -23,6 +23,7 @@ return {
   kyurem = true,
   xerneas = true,
   yveltal = true,
+  diancie = true,
   dewpider = true,
   sandygast = true,
   pyukumuku = true,
