@@ -233,6 +233,14 @@ return {
                     "{C:inactive,s:0.8}(Retriggers 0, 1, 2, 3, and 4 times)"
                 }
             },
+            j_poke_mega_salamence = {
+                name = "Mega Salamence",
+                text = {
+                    "Gain {C:attention}+#1#{} hand size",
+                    "this round if played",
+                    "hand is a {C:attention}Straight",
+                }
+            },
             j_poke_mega_metagross = {
                 name = "Mega Metagross",
                 text = {
