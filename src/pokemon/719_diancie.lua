@@ -8,20 +8,6 @@ end
 local diancie = {
   name = "diancie",
   config = { extra = { money_mod = 1, hazard_level = 1, hazard_max = 1 } },
-  loc_txt = {
-    name = "Diancie",
-    text = {
-      "{C:hazard}+#1#{} hazard layer and limit",
-      "{br:2}ERROR - CONTACT STEAK",
-      "Earn {C:money}$#1#{} at end of round",
-      "for every {C:diamonds}Diamond",
-      "card in your full deck",
-      "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
-      "{br:2}ERROR - CONTACT STEAK",
-      "{C:attention}Suitless{} cards are",
-      "considered {C:diamonds}Diamonds",
-    }
-  },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = poke_get_hazard_level_vars() }

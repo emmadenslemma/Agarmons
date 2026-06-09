@@ -496,6 +496,20 @@ return {
                     "into the {C:attention}right{} card",
                 }
             },
+            j_agar_diancie = {
+                name = "Diancie",
+                text = {
+                    "{C:hazard}+#1#{} hazard layer and limit",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Earn {C:money}$#1#{} at end of round",
+                    "for every {C:diamonds}Diamond",
+                    "card in your full deck",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Suitless{} cards are",
+                    "considered {C:diamonds}Diamonds",
+                }
+            },
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {
