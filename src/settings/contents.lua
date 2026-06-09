@@ -20,6 +20,7 @@ return {
       title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
         -- { list = { "j_agar_drampa", "j_agar_mega_drampa" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_drampa" } end, config_key = "drampa" },
+        { list = { "j_agar_toxel", "j_agar_toxtricity" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxtricity" } end, config_key = "toxel" },
         -- { list = { "j_agar_grookey", "j_agar_thwackey", "j_agar_rillaboom" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_grookey" } end, config_key = "grookey" },
         -- { list = { "j_agar_scorbunny", "j_agar_raboot", "j_agar_cinderace" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_scorbunny" } end, config_key = "scorbunny" },
         -- { list = { "j_agar_sobble", "j_agar_drizzile", "j_agar_inteleon" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sobble" } end, config_key = "sobble" },
