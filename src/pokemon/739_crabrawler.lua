@@ -43,9 +43,15 @@ local crabominable = {
   ptype = "Fighting",
   gen = 7,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and not SMODS.has_no_rank(context.other_card) then
+    if context.individual and context.cardarea == G.play and
+        lowest_ranked_card(context.scoring_hand) == context.other_card then
       return {
-        mult = context.other_card.base.nominal
+        mult = context.other_card.base.nominal * 3
+      }
+    end
+    if context.check_enhancement and SMODS.has_enhancement(context.other_card, 'm_glass') then
+      return {
+        m_wild = true
       }
     end
   end,
