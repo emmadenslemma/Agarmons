@@ -510,6 +510,22 @@ return {
                     "considered {C:diamonds}Diamonds",
                 }
             },
+            j_agar_crabrawler = {
+                name = "Crabrawler",
+                text = {
+                    "{C:attention}Lowest{} ranked played card",
+                    "gives its rank as {C:mult}Mult",
+                    "when scored",
+                    "{C:inactive,s:0.8}(Evolves with an {C:attention,s:0.8}Ice Stone{C:inactive,s:0.8})"
+                },
+            },
+            j_agar_crabominable = {
+                name = "Crabominable",
+                text = {
+                    "Played cards give their",
+                    "rank as {C:mult}Mult{} when scored",
+                },
+            },
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {
