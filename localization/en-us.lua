@@ -1,7 +1,7 @@
 return {
     descriptions = {
         Joker = {
-            j_poke_pikachu = {
+            j_poke_pikachu_alolan = {
                 name = "Pikachu",
                 text = {
                     "{C:mult}+#1#{} Mult if you",
@@ -11,7 +11,7 @@ return {
                     "is selected if you have",
                     "less than {C:money}$#3#",
                     "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Thunder Stone{C:inactive,s:0.8})",
-                    "{C:inactive,s:0.8}(Evolves with a {C:psychic,s:0.8}Psychic{C:inactive,s:0.8} sticker)",
+                    "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Sun Stone{C:inactive,s:0.8})",
                 }
             },
             j_poke_alolan_raichu = {
@@ -231,6 +231,14 @@ return {
                     "retrigger every card one",
                     "more time than the last",
                     "{C:inactive,s:0.8}(Retriggers 0, 1, 2, 3, and 4 times)"
+                }
+            },
+            j_poke_mega_salamence = {
+                name = "Mega Salamence",
+                text = {
+                    "Gain {C:attention}+#1#{} hand size",
+                    "this round if played",
+                    "hand is a {C:attention}Straight",
                 }
             },
             j_poke_mega_metagross = {
@@ -487,6 +495,36 @@ return {
                     "convert the {C:attention}left{} card",
                     "into the {C:attention}right{} card",
                 }
+            },
+            j_agar_diancie = {
+                name = "Diancie",
+                text = {
+                    "{C:hazard}+#1#{} hazard layer and limit",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Earn {C:money}$#1#{} at end of round",
+                    "for every {C:diamonds}Diamond",
+                    "card in your full deck",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "{C:attention}Suitless{} cards are",
+                    "considered {C:diamonds}Diamonds",
+                }
+            },
+            j_agar_crabrawler = {
+                name = "Crabrawler",
+                text = {
+                    "{C:attention}Lowest{} ranked played card",
+                    "gives its rank as {C:mult}Mult",
+                    "when scored",
+                    "{C:inactive,s:0.8}(Evolves with an {C:attention,s:0.8}Ice Stone{C:inactive,s:0.8})"
+                },
+            },
+            j_agar_crabominable = {
+                name = "Crabominable",
+                text = {
+                    "Played cards give their",
+                    "rank as {C:mult}Mult{} when scored",
+                },
             },
             j_agar_dewpider = {
                 name = "Dewpider",
@@ -861,6 +899,15 @@ return {
                     "hand played",
                 }
             },
+            j_agar_mega_tatsugiri = {
+                name = "Mega Tatsugiri",
+                text = {
+                    "Played cards give",
+                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, and {C:money}$#3#",
+                    "when scored, and have a",
+                    "{C:green}#4# in #5#{} chance to retrigger",
+                }
+            },
             j_agar_mega_tatsugiri_curly = {
                 name = "Mega Tatsugiri (Curly)",
                 text = {
@@ -920,7 +967,7 @@ return {
                 name = "{C:agar_gmax}G-MAX{} Pikachu",
                 text = {
                     "Every hand gives {C:money}$#1#{} for",
-                    "every {C:money}$1{} you are from",
+                    "every {C:money}$1{} you are under",
                     "the interest cap",
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 }
@@ -955,8 +1002,9 @@ return {
             j_poke_gmax_kingler = {
                 name = "{C:agar_gmax}G-MAX{} Kingler",
                 text = {
-                    "Played face cards permanently",
-                    "gain {C:chips}+#1#{} chips when scored",
+                    "Played {C:attention}Kings{} give {C:attention}double",
+                    "their total {C:chips}Chips{} and",
+                    "become {C:dark_edition}Foil{} when scored",
                 }
             },
             j_poke_gmax_lapras = {
@@ -971,7 +1019,8 @@ return {
             j_poke_gmax_eevee = {
                 name = "{C:agar_gmax}G-MAX{} Eevee",
                 text = {
-                    "{C:white,X:mult}X#1#{} Mult",
+                    "First Joker of each",
+                    "{C:pink}Type{} gives {C:white,X:mult}X#1#{} Mult",
                 }
             },
             j_poke_gmax_snorlax = {
@@ -1304,6 +1353,7 @@ return {
             agar_gmax_meltdown_ex = "G-Max Meltdown!",
             agar_gmax_replenish_ex = "G-Max Replenish!",
             agar_gmax_resonance_ex = "G-Max Resonance!",
+            agar_gmax_foam_burst_ex = "G-Max Foam Burst!",
 
             -- LunaDon Challenge Messages
             agar_lunadon_start = "Let's look at the classic: LunaDon",

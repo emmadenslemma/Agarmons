@@ -214,3 +214,33 @@ AG.hookaroundfunc(_G, 'apply_type_sticker', function(orig, card, ...)
     AG.effects.apply_type_auras(card)
   end)
 end)
+
+function AG.effects.add_crab_chip_multiplier(mod)
+  G.GAME.agar_crab_chip_multiplier = (G.GAME.agar_crab_chip_multiplier or 1) * mod
+end
+
+function AG.effects.remove_crab_chip_multiplier(mod)
+  G.GAME.agar_crab_chip_multiplier = (G.GAME.agar_crab_chip_multiplier or mod or 1) / (mod or 1)
+end
+
+AG.hookaroundfunc(Card, 'get_chip_bonus', function(orig, self)
+  local chips = orig(self)
+  if self:get_id() == 13 then
+    chips = chips * (G.GAME.agar_crab_chip_multiplier or 1)
+  end
+  return chips
+end)
+
+SMODS.Edition:take_ownership('foil', {
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      local chips = card.edition.chips
+      if card:get_id() == 13 then
+        chips = chips * (G.GAME.agar_crab_chip_multiplier or 1)
+      end
+      return {
+        chips = chips
+      }
+    end
+  end
+}, true)

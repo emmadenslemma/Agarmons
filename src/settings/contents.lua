@@ -11,15 +11,15 @@ return {
         -- { list = { "j_agar_bagon", "j_agar_shelgon", "j_agar_salamence", "j_agar_mega_salamence" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_bagon" } end, config_key = "bagon" },
         -- { list = { "j_agar_stunfisk", "j_agar_galarian_stunfisk" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_stunfisk" } end, config_key = "stunfisk" },
         { list = { "j_agar_dewpider", "j_agar_araquanid" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dewpider" } end, config_key = "dewpider" },
+        { list = { "j_agar_crabrawler", "j_agar_crabominable" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_crabrawler" } end, config_key = "crabrawler" },
         { list = { "j_agar_sandygast", "j_agar_palossand" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sandygast" } end, config_key = "sandygast" },
         { list = { "j_agar_pyukumuku" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_pyukumuku" } end, config_key = "pyukumuku" },
-        -- { list = { "j_agar_drampa", "j_agar_mega_drampa" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_drampa" } end, config_key = "drampa" },
-        { list = { "j_agar_toxel", "j_agar_toxtricity" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxtricity" } end, config_key = "toxel" },
       }
     },
     {
       title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
+        -- { list = { "j_agar_drampa", "j_agar_mega_drampa" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_drampa" } end, config_key = "drampa" },
         -- { list = { "j_agar_grookey", "j_agar_thwackey", "j_agar_rillaboom" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_grookey" } end, config_key = "grookey" },
         -- { list = { "j_agar_scorbunny", "j_agar_raboot", "j_agar_cinderace" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_scorbunny" } end, config_key = "scorbunny" },
         -- { list = { "j_agar_sobble", "j_agar_drizzile", "j_agar_inteleon" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sobble" } end, config_key = "sobble" },
@@ -53,14 +53,15 @@ return {
         -- { list = { "j_agar_terrakion" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_terrakion" } end, config_key = "terrakion" },
         { list = { "j_agar_xerneas" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_xerneas" } end, config_key = "xerneas" },
         { list = { "j_agar_yveltal" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_yveltal" } end, config_key = "yveltal" },
+        { list = { "j_agar_diancie" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_diancie" } end, config_key = "diancie" },
         { list = { --[["j_agar_cosmog", "j_agar_cosmoem",]] "j_agar_solgaleo", "j_agar_lunala" }, label = function() return localize("agar_lunala_and_solgaleo") end, config_key = "cosmog" },
         -- { list = { "j_agar_magearna" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_magearna" } end, config_key = "magearna" },
-        { list = { "j_agar_marshadow" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_marshadow" } end, config_key = "marshadow" },
       }
     },
     {
       title = function() return localize("agar_legendary_pokemon3") end,
       tiles = {
+        { list = { "j_agar_marshadow" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_marshadow" } end, config_key = "marshadow" },
         { list = { "j_agar_eternatus" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_eternatus" } end, config_key = "eternatus" },
         { list = { "j_agar_glastrier" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_glastrier" } end, config_key = "glastrier" },
         { list = { "j_agar_spectrier" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_spectrier" } end, config_key = "spectrier" },
