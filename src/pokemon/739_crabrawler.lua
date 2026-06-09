@@ -1,7 +1,7 @@
 local lowest_ranked_card = function(cards)
   local lowest
   for _, card in ipairs(cards) do
-    if not SMODS.has_no_rank(card) and (not lowest or card.base.nominal < lowest.base.nominal) then
+    if not SMODS.has_no_rank(card) and (not lowest or card.base.nominal <= lowest.base.nominal) then
       lowest = card
     end
   end
