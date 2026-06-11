@@ -11,7 +11,7 @@ local luxuryball = {
   cost = 4,
   pokeball = true,
   hidden = true,
-  soul_set = "Item",
+  soul_set = "poke_item",
   soul_rate = .01333,
   can_use = function(self, card)
     return #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers

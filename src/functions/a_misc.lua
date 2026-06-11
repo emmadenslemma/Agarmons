@@ -89,6 +89,7 @@ function AG.defer(func)
 end
 
 -- Fallback for Lua 5.2 support
+---@diagnostic disable-next-line: deprecated
 table.unpack = table.unpack or unpack
 
 function AG.delay(time, func)
@@ -115,7 +116,7 @@ function AG.legendary_orb(args)
     end,
     cost = 4,
     hidden = true,
-    soul_set = "Item",
+    soul_set = "poke_item",
     soul_rate = .005,
     get_used_on = function(self, card)
       local used_on = poke_find_card(function(joker)
