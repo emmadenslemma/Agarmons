@@ -9,7 +9,7 @@ end
 function AG.energy.mod_energy_and_limit(card, etype, amount, silent)
   if not etype or is_type(card, etype) then
     AG.energy.mod_card_energy_limit(card, amount)
-    energy_increase(card, etype, amount, silent)
+    pokermon.energy.modify(card, etype, amount, silent)
   end
 end
 

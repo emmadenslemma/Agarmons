@@ -67,8 +67,6 @@ local palossand = {
 }
 
 local init = function()
-  energy_values['chip_mod2'] = energy_values['chip_mod']
-
   AG.hookafterfunc(SMODS.current_mod, 'reset_game_globals', function(run_start)
     local sandygast_suits = {}
     for _, v in ipairs({ "Spades", "Hearts", "Clubs", "Diamonds" }) do

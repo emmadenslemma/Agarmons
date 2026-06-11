@@ -33,7 +33,7 @@ local beta_arceus = {
 }
 
 local init = function()
-  energy_values.Emult = 0.01
+  pokermon.energy.values.Emult = 0.01
   -- Fallback for Emult if either Talisman or Amulet are missing.
   -- stolen from Talisman, naturally
   -- raise your hand if you think this should be a part of SMODS

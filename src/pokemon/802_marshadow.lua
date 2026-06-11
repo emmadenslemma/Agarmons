@@ -45,7 +45,7 @@ local marshadow = {
     local pre_boost_values = {}
     if other_joker and other_joker.ability and type(other_joker.ability.extra) == 'table' then
       local values = other_joker.ability.extra
-      for k, _ in pairs(energy_values) do
+      for k, _ in pairs(pokermon.energy.values) do
         if values[k] then
           pre_boost_values[k] = values[k]
           values[k] = values[k] * card.ability.extra.effect_multiplier
