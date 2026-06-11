@@ -28,7 +28,7 @@ local crabrawler = {
         mult = context.other_card.base.nominal
       }
     end
-    return item_evo(self, card, context, 'j_agar_crabominable')
+    return pokermon.item_evo(self, card, context, 'j_agar_crabominable')
   end,
 }
 

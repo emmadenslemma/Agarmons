@@ -49,7 +49,7 @@ local alolan_diglett = {
         mult = card.ability.extra.mult,
       }
     end
-    return level_evo(self, card, context, 'j_agar_alolan_dugtrio')
+    return pokermon.level_evo(self, card, context, 'j_agar_alolan_dugtrio')
   end,
 }
 

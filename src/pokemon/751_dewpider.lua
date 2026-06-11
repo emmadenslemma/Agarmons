@@ -22,7 +22,7 @@ local dewpider = {
         mult = card.ability.extra.mult
       }
     end
-    return level_evo(self, card, context, "j_agar_araquanid")
+    return pokermon.level_evo(self, card, context, "j_agar_araquanid")
   end,
   add_to_deck = function(self, card, from_debuff)
     pokermon.change_hazard_level(card.ability.extra.hazard_level)

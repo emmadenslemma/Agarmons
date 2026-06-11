@@ -14,7 +14,7 @@ local galarian_mrmime = {
   gen = 8,
   blueprint_compat = false,
   calculate = function(self, card, context)
-    return level_evo(self, card, context, "j_poke_mrrime")
+    return pokermon.level_evo(self, card, context, "j_poke_mrrime")
   end
 }
 

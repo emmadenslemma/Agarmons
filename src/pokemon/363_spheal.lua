@@ -26,7 +26,7 @@ local spheal = {
         mult = card.ability.extra.mult
       }
     end
-    return scaling_evo(self, card, context, "j_agar_sealeo", card.ability.extra.mult, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, "j_agar_sealeo", card.ability.extra.mult, self.config.evo_rqmt)
   end,
 }
 
@@ -58,7 +58,7 @@ local sealeo = {
         mult = card.ability.extra.mult
       }
     end
-    return scaling_evo(self, card, context, "j_agar_walrein", card.ability.extra.mult, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, "j_agar_walrein", card.ability.extra.mult, self.config.evo_rqmt)
   end,
 }
 

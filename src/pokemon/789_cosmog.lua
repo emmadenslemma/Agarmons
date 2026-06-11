@@ -44,7 +44,7 @@ local cosmog = {
         add_to_hand = true
       }
     end
-    return level_evo(self, card, context, "j_agar_cosmoem")
+    return pokermon.level_evo(self, card, context, "j_agar_cosmoem")
   end,
   in_pool = function(self)
     return false
@@ -83,8 +83,10 @@ local cosmoem = {
         card.ability.extra.moon_suit_scored = card.ability.extra.moon_suit_scored + 1
       end
     end
-    return scaling_evo(self, card, context, 'j_agar_solgaleo', card.ability.extra.sun_suit_scored, self.config.evo_rqmt)
-        or scaling_evo(self, card, context, 'j_agar_lunala', card.ability.extra.moon_suit_scored, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, 'j_agar_solgaleo', card.ability.extra.sun_suit_scored,
+          self.config.evo_rqmt)
+        or pokermon.scaling_evo(self, card, context, 'j_agar_lunala', card.ability.extra.moon_suit_scored,
+          self.config.evo_rqmt)
   end,
   in_pool = function(self)
     return false

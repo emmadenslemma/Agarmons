@@ -28,7 +28,7 @@ local sandygast = {
         chips = card.ability.extra.chips,
       }
     end
-    return scaling_evo(self, card, context, "j_agar_palossand", card.ability.extra.chips, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, "j_agar_palossand", card.ability.extra.chips, self.config.evo_rqmt)
   end,
 }
 

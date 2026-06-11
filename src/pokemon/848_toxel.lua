@@ -29,7 +29,7 @@ local toxel = {
     if context.end_of_round and context.cardarea == G.jokers and not card.debuff then
       SMODS.add_card { set = 'poke_item', key = 'c_stall_blacksludge', edition = 'e_negative' }
     end
-    return level_evo(self, card, context, "j_agar_toxtricity")
+    return pokermon.level_evo(self, card, context, "j_agar_toxtricity")
   end,
 }
 

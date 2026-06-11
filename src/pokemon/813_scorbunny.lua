@@ -38,7 +38,8 @@ local scorbunny = {
     end
     if context.end_of_round and context.cardarea == G.jokers then
       card.ability.extra.mult = 0
-      return scaling_evo(self, card, context, "j_agar_raboot", card.ability.extra.discarded_cards, self.config.evo_rqmt)
+      return pokermon.scaling_evo(self, card, context, "j_agar_raboot", card.ability.extra.discarded_cards,
+            self.config.evo_rqmt)
           or {
             message = localize('k_reset'),
             colour = G.C.MULT,
@@ -94,7 +95,7 @@ local raboot = {
     end
     if context.end_of_round and context.cardarea == G.jokers then
       card.ability.extra.mult = 0
-      return scaling_evo(self, card, context, "j_agar_cinderace", card.ability.extra.discarded_cards,
+      return pokermon.scaling_evo(self, card, context, "j_agar_cinderace", card.ability.extra.discarded_cards,
             self.config.evo_rqmt)
           or {
             message = localize('k_reset'),

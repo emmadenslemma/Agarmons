@@ -13,7 +13,7 @@ local hatenna = {
   gen = 8,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    return level_evo(self, card, context, "j_agar_hattrem")
+    return pokermon.level_evo(self, card, context, "j_agar_hattrem")
   end,
 }
 
@@ -32,7 +32,7 @@ local hattrem = {
   gen = 8,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    return level_evo(self, card, context, "j_agar_hatterene")
+    return pokermon.level_evo(self, card, context, "j_agar_hatterene")
   end,
 }
 

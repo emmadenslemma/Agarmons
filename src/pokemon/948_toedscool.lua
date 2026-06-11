@@ -27,7 +27,7 @@ local toedscool = {
         end
       end
     end
-    return level_evo(self, card, context, 'j_agar_toedscruel')
+    return pokermon.level_evo(self, card, context, 'j_agar_toedscruel')
   end
 }
 
