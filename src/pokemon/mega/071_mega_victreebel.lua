@@ -6,7 +6,7 @@ local mega_victreebel = {
   soul_pos = { x = 3, y = 1 },
   config = { extra = { retriggers = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.retriggers } }
   end,
   rarity = "poke_mega",

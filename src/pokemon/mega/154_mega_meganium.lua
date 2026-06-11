@@ -6,7 +6,7 @@ local mega_meganium = {
   soul_pos = { x = 3, y = 2 },
   config = { extra = { money = 4 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.money } }
   end,
   rarity = "poke_mega",

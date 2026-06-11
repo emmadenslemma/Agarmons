@@ -3,7 +3,7 @@ local dialga = {
   name = "dialga",
   config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 2, retrigger_joker_list = nil } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return {
       vars = {
         card.ability.extra.joker_retriggers,
@@ -71,7 +71,7 @@ local dialga_origin = {
   name = "dialga_origin",
   config = { extra = { joker_retriggers = 1, bosses_defeated = 0, upgrade_rqmt = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
   end,
   rarity = 4,
   cost = 30,

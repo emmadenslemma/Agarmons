@@ -3,7 +3,7 @@ local glastrier = {
   name = "glastrier",
   config = { extra = { Xmult = 1, Xmult_mod = 0.4 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local Xmult_total = card.ability.extra.Xmult
     if G.playing_cards then
       local glass_count = #AG.list_utils.filter(

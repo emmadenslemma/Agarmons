@@ -11,7 +11,7 @@ local calyrex = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
@@ -46,7 +46,7 @@ local calyrex_ice = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = 4,
@@ -85,7 +85,7 @@ local calyrex_shadow = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult } }
   end,
   rarity = 4,

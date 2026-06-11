@@ -10,7 +10,7 @@ local mega_froslass = {
   soul_pos = { x = 5, y = 4 },
   config = { extra = { debt = 25 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_TAGS.tag_poke_pocket_tag
     info_queue[#info_queue+1] = G.P_TAGS.tag_coupon
     info_queue[#info_queue+1] = G.P_TAGS.tag_d_six

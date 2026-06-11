@@ -3,7 +3,7 @@ local palkia = {
   name = "palkia",
   config = { extra = { joker_slot_mod = 1, bosses_defeated = 0, upgrade_rqmt = 1, upgrade_rqmt_increase = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return {
       vars = {
         card.ability.extra.joker_slot_mod,

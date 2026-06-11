@@ -3,7 +3,7 @@ local marshadow = {
   name = "marshadow",
   config = { extra = { effect_multiplier = 1.25 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'energizable_values' }
     end

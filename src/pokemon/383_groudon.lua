@@ -3,7 +3,7 @@ local groudon = {
   name = "groudon",
   config = { extra = { mult_req = 4, Xmult_multi = 1.75 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local empress_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_empress' }
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { empress_name_text } }
@@ -37,7 +37,7 @@ local groudon = {
 local primal_groudon = {
   name = "primal_groudon",
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
   end,
   rarity = "agar_primal",
   cost = 30,

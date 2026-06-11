@@ -3,7 +3,7 @@ local sobble = {
   name = "sobble",
   config = { extra = { hands = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.hands } }
   end,
   rarity = 2,
@@ -35,7 +35,7 @@ local drizzile = {
   name = "drizzile",
   config = { extra = { hands = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.hands } }
   end,
   rarity = "poke_safari",
@@ -66,7 +66,7 @@ local inteleon = {
   name = "inteleon",
   config = { extra = { hands = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.hands } }
   end,
   rarity = "poke_safari",
@@ -104,7 +104,7 @@ local gmax_inteleon = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "agar_gmax",

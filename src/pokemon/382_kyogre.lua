@@ -3,7 +3,7 @@ local kyogre = {
   name = "kyogre",
   config = { extra = { chip_req = 30, Xmult_multi = 1.75 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local hierophant_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_heirophant' }
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { hierophant_name_text } }
@@ -37,7 +37,7 @@ local kyogre = {
 local primal_kyogre = {
   name = "primal_kyogre",
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
   end,
   rarity = "agar_primal",
   cost = 30,

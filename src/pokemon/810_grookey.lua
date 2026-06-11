@@ -3,7 +3,7 @@ local grookey = {
   name = "grookey",
   config = { extra = { h_size = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.h_size } }
   end,
   rarity = 2,
@@ -28,7 +28,7 @@ local thwackey = {
   name = "thwackey",
   config = { extra = { h_size = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.h_size } }
   end,
   rarity = "poke_safari",
@@ -52,7 +52,7 @@ local rillaboom = {
   name = "rillaboom",
   config = { extra = { h_size = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.h_size } }
   end,
   rarity = "poke_safari",
@@ -83,7 +83,7 @@ local gmax_rillaboom = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "agar_gmax",

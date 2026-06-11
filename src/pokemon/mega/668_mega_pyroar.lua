@@ -6,7 +6,7 @@ local mega_pyroar = {
   soul_pos = { x = 9, y = 1 },
   config = { extra = { create_energy_mod = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
       info_queue[#info_queue+1] = G.P_CENTERS.c_poke_fire_energy

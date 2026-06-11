@@ -4,7 +4,7 @@ local galarian_mrmime = {
   agar_inject_prefix = "poke",
   config = { extra = { rounds = 5, scored_cards = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.rounds } }
   end,
   rarity = 3,
@@ -24,7 +24,7 @@ local mrrime = {
   agar_inject_prefix = "poke",
   config = { extra = { scored_cards = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.scored_cards } }
   end,
   rarity = "poke_safari",

@@ -66,7 +66,7 @@ local stunfisk = {
   name = "stunfisk",
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,
@@ -88,7 +88,7 @@ local galarian_stunfisk = {
   name = "galarian_stunfisk",
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,

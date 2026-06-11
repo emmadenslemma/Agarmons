@@ -25,7 +25,7 @@ local mega_raichu_x = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.hands, card.ability.extra.per_interest } }
   end,
   rarity = "poke_mega",
@@ -75,7 +75,7 @@ local mega_raichu_y = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult, card.ability.extra.per_money, self:get_current_Xmult(card) } }
   end,
   rarity = "poke_mega",

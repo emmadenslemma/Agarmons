@@ -6,7 +6,7 @@ local mega_glalie = {
   agar_inject_prefix = "poke",
   config = { extra = { debt = 30, Xmult_mod = 0.2, volatile = 'right' } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local current_Xmult = self:get_current_Xmult(card)
     return { vars = { card.ability.extra.debt, card.ability.extra.Xmult_mod, current_Xmult } }
   end,

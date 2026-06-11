@@ -12,7 +12,7 @@ local gmax_urshifu_single_strike = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult1, card.ability.extra.Xmult2 } }
   end,
   rarity = "agar_gmax",

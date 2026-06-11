@@ -3,7 +3,7 @@ local terrakion = {
   name = "terrakion",
   config = { extra = { Xmult = 1, Xmult_mod = 0.5, destroy_mod = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local key = pokermon_config.pokemon_aprilfools and (self.key .. '_aprilfools') or self.key
     return { key = key, vars = { card.ability.extra.destroy_mod, card.ability.extra.Xmult_mod, card.ability.extra.Xmult } }
   end,

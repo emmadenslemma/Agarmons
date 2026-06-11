@@ -4,7 +4,7 @@ local gmax_pikachu = {
   agar_inject_prefix = "poke",
   config = { extra = { money_mod = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local interest_gap = math.ceil((G.GAME.interest_cap - G.GAME.dollars) / 5)
     local current_dollars = card.ability.extra.money_mod * math.max(interest_gap, 0)
     return { vars = { card.ability.extra.money_mod, current_dollars } }

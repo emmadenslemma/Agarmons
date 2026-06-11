@@ -4,7 +4,7 @@ local gmax_snorlax = {
   agar_inject_prefix = "poke",
   config = { extra = { Xmult_mod = 0.2, Xmult = 1, selection_limit_mod = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult, card.ability.extra.selection_limit_mod } }
   end,
   rarity = "agar_gmax",

@@ -6,7 +6,7 @@ local eternatus = {
   display_size = { w = 71 * scale, h = 95 * scale },
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
   end,
   designer = "Eternalnacho",
   rarity = 4,
@@ -38,7 +38,7 @@ local eternatus = {
 --   display_size = { w = 71 * eternamax_scale, h = 95 * eternamax_scale },
 --   config = { extra = {} },
 --   loc_vars = function(self, info_queue, card)
---     type_tooltip(self, info_queue, card)
+--     pokermon.type_tooltip(self, info_queue, card)
 --   end,
 --   rarity = "agar_eternamax",
 --   cost = 30,

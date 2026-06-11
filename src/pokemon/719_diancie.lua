@@ -9,7 +9,7 @@ local diancie = {
   name = "diancie",
   config = { extra = { money_mod = 1, hazard_level = 1, hazard_max = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
     return { vars = { card.ability.extra.money_mod, get_diamond_count() * card.ability.extra.money_mod } }
