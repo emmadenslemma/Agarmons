@@ -111,7 +111,7 @@ function AG.gmax.get_previous_from_gmax(card)
   return G.P_CENTERS["j_" .. prefix .. "_" .. prev] and prev or nil
 end
 
-AG.hookbeforefunc(_G, 'get_previous_evo', function(card, full_key)
+AG.hookbeforefunc(pokermon, 'get_previous_evo', function(card, full_key)
   local name = card.name or card.ability.name
   if string.sub(name, 6) == "gmax_" then
     return AG.gmax.get_previous_from_gmax(card)

@@ -206,7 +206,7 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
   end
 end)
 
-AG.hookaroundfunc(_G, 'apply_type_sticker', function(orig, card, ...)
+AG.hookaroundfunc(pokermon, 'apply_type_sticker', function(orig, card, ...)
   if pokermon.is_in_collection(card) then return orig(card, ...) end
   AG.effects.remove_type_auras(card)
   orig(card, ...)
