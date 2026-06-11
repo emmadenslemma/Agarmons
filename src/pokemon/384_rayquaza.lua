@@ -3,7 +3,7 @@ local rayquaza = {
   name = "rayquaza",
   config = { extra = { Xmult_multi = 1.5 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local hanged_man_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_hanged_man' }
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { hanged_man_name_text } }
@@ -45,7 +45,7 @@ local mega_rayquaza = {
   name = "mega_rayquaza",
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "poke_mega",

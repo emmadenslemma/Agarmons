@@ -6,7 +6,7 @@ local mega_pyroar = {
   soul_pos = { x = 9, y = 1 },
   config = { extra = { create_energy_mod = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
       info_queue[#info_queue+1] = G.P_CENTERS.c_poke_fire_energy
@@ -21,7 +21,7 @@ local mega_pyroar = {
   atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main and next(context.poker_hands['Flush']) and not G.GAME.modifiers.no_energy then
+    if context.joker_main and next(context.poker_hands['Flush']) and not G.GAME.modifiers.poke_no_energy then
       return {
         message = localize { type = 'variable', key = 'a_poke_plus_energy', vars = { card.ability.extra.create_energy_mod } },
         colour = G.ARGS.LOC_COLOURS.pink,
@@ -29,7 +29,7 @@ local mega_pyroar = {
           G.E_MANAGER:add_event(Event({
             func = function()
               for _ = 1, card.ability.extra.create_energy_mod do
-                SMODS.add_card { key = 'c_poke_fire_energy', edition = 'e_negative' }
+                SMODS.add_card { set = 'poke_energy', key = 'c_poke_fire_energy', edition = 'e_negative' }
               end
               return true
             end

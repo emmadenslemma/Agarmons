@@ -11,7 +11,7 @@ local beta_arceus = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Emult } }
   end,
   rarity = 4,
@@ -33,7 +33,7 @@ local beta_arceus = {
 }
 
 local init = function()
-  energy_values.Emult = 0.01
+  pokermon.energy.values.Emult = 0.01
   -- Fallback for Emult if either Talisman or Amulet are missing.
   -- stolen from Talisman, naturally
   -- raise your hand if you think this should be a part of SMODS

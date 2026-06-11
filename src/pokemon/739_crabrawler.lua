@@ -12,7 +12,7 @@ end
 local crabrawler = {
   name = "crabrawler",
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_CENTERS.c_poke_icestone
   end,
   rarity = 1,
@@ -28,14 +28,14 @@ local crabrawler = {
         mult = context.other_card.base.nominal
       }
     end
-    return item_evo(self, card, context, 'j_agar_crabominable')
+    return pokermon.item_evo(self, card, context, 'j_agar_crabominable')
   end,
 }
 
 local crabominable = {
   name = "crabominable",
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
   end,
   rarity = "poke_safari",
   cost = 7,
@@ -43,9 +43,15 @@ local crabominable = {
   ptype = "Fighting",
   gen = 7,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and not SMODS.has_no_rank(context.other_card) then
+    if context.individual and context.cardarea == G.play and
+        lowest_ranked_card(context.scoring_hand) == context.other_card then
       return {
-        mult = context.other_card.base.nominal
+        mult = context.other_card.base.nominal * 3
+      }
+    end
+    if context.check_enhancement and SMODS.has_enhancement(context.other_card, 'm_glass') then
+      return {
+        m_wild = true
       }
     end
   end,

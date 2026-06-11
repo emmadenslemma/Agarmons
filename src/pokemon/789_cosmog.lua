@@ -9,7 +9,7 @@ local get_suit_percent = function(suit, changed_cards, to_be_removed)
   -- This doesn't account for cards immediately getting destroyed with no event, but we're just gonna assume they don't exist
   if changed_cards then
     for _, v in pairs(changed_cards) do
-      deck_mod = to_be_removed and -1 or 1
+      local deck_mod = to_be_removed and -1 or 1
       total_deck = total_deck + deck_mod
       if type(v) == 'table' and type(v.is) == 'function' and v:is(Card) and v:is_suit(suit, true) then
         suit_count = suit_count + deck_mod
@@ -24,7 +24,7 @@ local cosmog = {
   name = "cosmog",
   config = { extra = { rounds = 4 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = "Joker", key = "j_splash", config = {} }
     end
@@ -44,7 +44,7 @@ local cosmog = {
         add_to_hand = true
       }
     end
-    return level_evo(self, card, context, "j_agar_cosmoem")
+    return pokermon.level_evo(self, card, context, "j_agar_cosmoem")
   end,
   in_pool = function(self)
     return false
@@ -56,7 +56,7 @@ local cosmoem = {
   name = "cosmoem",
   config = { extra = { suit_sun = "Hearts", suit_moon = "Clubs", sun_suit_scored = 0, moon_suit_scored = 0 }, evo_rqmt = 20 },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return {
       vars = {
         math.min(self.config.evo_rqmt - card.ability.extra.sun_suit_scored, 0),
@@ -83,8 +83,10 @@ local cosmoem = {
         card.ability.extra.moon_suit_scored = card.ability.extra.moon_suit_scored + 1
       end
     end
-    return scaling_evo(self, card, context, 'j_agar_solgaleo', card.ability.extra.sun_suit_scored, self.config.evo_rqmt)
-        or scaling_evo(self, card, context, 'j_agar_lunala', card.ability.extra.moon_suit_scored, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, 'j_agar_solgaleo', card.ability.extra.sun_suit_scored,
+          self.config.evo_rqmt)
+        or pokermon.scaling_evo(self, card, context, 'j_agar_lunala', card.ability.extra.moon_suit_scored,
+          self.config.evo_rqmt)
   end,
   in_pool = function(self)
     return false
@@ -96,7 +98,7 @@ local solgaleo = {
   name = "solgaleo",
   config = { extra = { Xmult_multi = 1.5, suit = "Hearts", half_active = false, full_active = false } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local ret = {
       vars = {
         localize(card.ability.extra.suit, "suits_plural"),
@@ -206,7 +208,7 @@ local lunala = {
   name = "lunala",
   config = { extra = { Xmult_multi = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local ret = {
       vars = {
         localize(card.ability.extra.suit, "suits_plural"),
@@ -303,11 +305,11 @@ local lunala = {
     -- Apply Scry at 100% Clubs
     if card.ability.extra.full_active then
       if not was_full_active then
-        G.GAME.scry_amount = (G.GAME.scry_amount or 0) + card.ability.extra.scry
+        G.GAME.poke_scry_amount = (G.GAME.poke_scry_amount or 0) + card.ability.extra.scry
       end
     else
       if was_full_active then
-        G.GAME.scry_amount = math.max(0, (G.GAME.scry_amount or 0) - card.ability.extra.scry)
+        G.GAME.poke_scry_amount = math.max(0, (G.GAME.poke_scry_amount or 0) - card.ability.extra.scry)
       end
     end
   end,
@@ -316,12 +318,12 @@ local lunala = {
     card.ability.extra.half_active = suit_percent >= 0.5
     card.ability.extra.full_active = suit_percent == 1
     if card.ability.extra.full_active then
-      G.GAME.scry_amount = (G.GAME.scry_amount or 0) + card.ability.extra.scry
+      G.GAME.poke_scry_amount = (G.GAME.poke_scry_amount or 0) + card.ability.extra.scry
     end
   end,
   remove_from_deck = function(self, card, from_debuff)
     if card.ability.extra.full_active then
-      G.GAME.scry_amount = math.max(0, (G.GAME.scry_amount or 0) - card.ability.extra.scry)
+      G.GAME.poke_scry_amount = math.max(0, (G.GAME.poke_scry_amount or 0) - card.ability.extra.scry)
     end
   end,
 }

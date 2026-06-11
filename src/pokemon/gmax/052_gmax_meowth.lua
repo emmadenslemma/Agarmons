@@ -5,7 +5,7 @@ local gmax_meowth = {
   -- Include `money` to not reset scaling when dynamaxing
   config = { extra = { money = 1, money1 = 3 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.money1 } }
   end,
   rarity = "agar_gmax",
@@ -36,7 +36,7 @@ local gmax_meowth = {
 }
 
 local init = function()
-  poke_add_to_family("meowth", "gmax_meowth")
+  pokermon.add_to_family("meowth", "gmax_meowth")
 
   SMODS.Joker:take_ownership("poke_meowth", { gmax = "gmax_meowth", poke_custom_values_to_keep = { "money" } }, true)
 end

@@ -21,7 +21,7 @@ local gmax_lapras = {
   agar_inject_prefix = "poke",
   config = { extra = { chips = 0, retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chips } }
   end,
   rarity = "agar_gmax",

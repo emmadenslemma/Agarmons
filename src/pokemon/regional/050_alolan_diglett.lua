@@ -28,7 +28,7 @@ local alolan_diglett = {
   name = "alolan_diglett",
   config = { extra = { mult = 8, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult, card.ability.extra.rounds } }
   end,
   rarity = 2,
@@ -49,7 +49,7 @@ local alolan_diglett = {
         mult = card.ability.extra.mult,
       }
     end
-    return level_evo(self, card, context, 'j_agar_alolan_dugtrio')
+    return pokermon.level_evo(self, card, context, 'j_agar_alolan_dugtrio')
   end,
 }
 
@@ -58,7 +58,7 @@ local alolan_dugtrio = {
   name = "alolan_dugtrio",
   config = { extra = { Xmult = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult } }
   end,
   rarity = "poke_safari",

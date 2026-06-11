@@ -3,7 +3,7 @@ local mega_metagross = {
   name = "mega_metagross",
   agar_inject_prefix = "poke",
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
   end,
   rarity = "poke_mega",
   cost = 12,
@@ -20,7 +20,7 @@ local mega_metagross = {
           colour = G.C.RED,
         }
       else
-        local total_chips = poke_total_chips(context.other_card)
+        local total_chips = pokermon.total_chips(context.other_card)
         local Xmult = (total_chips) ^ (1 / 4)
         if Xmult > 0 then
           return {

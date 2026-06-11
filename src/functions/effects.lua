@@ -112,7 +112,7 @@ function AG.effects.prevent_destruction(card)
   return (SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass())
 end
 
-AG.hookaroundfunc(_G, 'poke_remove_card', function(orig, card, ...)
+AG.hookaroundfunc(pokermon, 'remove_card', function(orig, card, ...)
   if not AG.effects.prevent_destruction(card) then
     return orig(card, ...)
   end
@@ -206,8 +206,8 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
   end
 end)
 
-AG.hookaroundfunc(_G, 'apply_type_sticker', function(orig, card, ...)
-  if poke_is_in_collection(card) then return orig(card, ...) end
+AG.hookaroundfunc(pokermon, 'apply_type_sticker', function(orig, card, ...)
+  if pokermon.is_in_collection(card) then return orig(card, ...) end
   AG.effects.remove_type_auras(card)
   orig(card, ...)
   AG.defer(function() -- make 'energized' appear after 'tera'

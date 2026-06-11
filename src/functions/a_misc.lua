@@ -68,7 +68,7 @@ function AG.active_tooltip(card, is_active, scale)
 end
 
 -- Fallback for until base mod does something like this:
-poke_total_mult = poke_total_mult or function(card)
+pokermon.total_mult = pokermon.total_mult or function(card)
   local total_mult = (card.ability.perma_mult or 0)
   if card.config.center ~= G.P_CENTERS.m_lucky then
     total_mult = total_mult + card.ability.mult
@@ -89,6 +89,7 @@ function AG.defer(func)
 end
 
 -- Fallback for Lua 5.2 support
+---@diagnostic disable-next-line: deprecated
 table.unpack = table.unpack or unpack
 
 function AG.delay(time, func)
@@ -115,10 +116,10 @@ function AG.legendary_orb(args)
     end,
     cost = 4,
     hidden = true,
-    soul_set = "Item",
+    soul_set = "poke_item",
     soul_rate = .005,
     get_used_on = function(self, card)
-      local used_on = poke_find_card(function(joker)
+      local used_on = pokermon.find_card(function(joker)
         return joker.unique_val == card.ability.extra.used_on
       end)
       if not used_on then card.ability.extra.used_on = nil end
@@ -128,14 +129,14 @@ function AG.legendary_orb(args)
       local used_on = self:get_used_on(card)
 
       if used_on then
-        poke_evolve(used_on, self.agar_base_key)
+        pokermon.evolve(used_on, self.agar_base_key)
 
         card.ability.extra.used_on = nil
         card.ability.extra.used_on__ID = nil
       else
-        local target = poke_find_leftmost_or_highlighted(self.agar_base_key)
+        local target = pokermon.find_leftmost_or_highlighted(self.agar_base_key)
 
-        poke_evolve(target, self.agar_form_key)
+        pokermon.evolve(target, self.agar_form_key)
 
         card.ability.extra.used_on = target.unique_val
         card.ability.extra.used_on__ID = target.unique_val__saved_ID or target.ID
@@ -149,7 +150,7 @@ function AG.legendary_orb(args)
       local used_on = self:get_used_on(card)
       if used_on then return #G.jokers.highlighted == 0 or G.jokers.highlighted[1] == used_on end
 
-      return poke_find_leftmost_or_highlighted(self.agar_base_key)
+      return pokermon.find_leftmost_or_highlighted(self.agar_base_key)
     end,
     calculate = function(self, card, context)
       if context.end_of_round and context.game_over == false and context.main_eval and not card.ability.extra.usable then
@@ -168,7 +169,7 @@ function AG.legendary_orb(args)
     remove_from_deck = function(self, card, from_debuff)
       local used_on = self:get_used_on(card)
       if used_on then
-        poke_evolve(used_on, self.agar_base_key)
+        pokermon.evolve(used_on, self.agar_base_key)
       end
     end,
     load = function(self, card, card_table, other_card)

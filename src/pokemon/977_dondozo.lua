@@ -9,7 +9,7 @@ local dondozo = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,
@@ -29,7 +29,7 @@ local tatsugiri = {
   pos = { x = 0, y = 3 },
   config = { extra = { form = nil, chips = 25, chip_mod = 5, mult = 5, mult_mod = 1, money = 1, money_mod = 0.2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
     local key = self.key .. '_' .. form
     return {
@@ -62,7 +62,7 @@ local tatsugiri = {
 
     if context.individual and context.cardarea == G.play then
       return form == "stretchy" and {
-        dollars = ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
+        dollars = pokermon.ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
       } or {
         [value] = card.ability.extra[value]
       }
@@ -117,7 +117,7 @@ local mega_tatsugiri = {
   soul_pos = { x = 5, y = 3 },
   config = { extra = { form = nil, chips1 = 25, mult1 = 5, money1 = 1, num = 1, dem = 3, money2 = 3, retriggers = 1, Xmult_multi = 1.2, chips = 25, mult = 5, money = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
     local key = self.key .. '_' .. form
     local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, 'curly_megagiri')
@@ -155,7 +155,7 @@ local mega_tatsugiri = {
       return {
         chips = card.ability.extra.chips1,
         mult = card.ability.extra.mult1,
-        dollars = ease_poke_dollars(card, "mega_tatsugiri", dollars, true),
+        dollars = pokermon.ease_poke_dollars(card, "mega_tatsugiri", dollars, true),
         Xmult = Xmult,
       }
     end
@@ -196,7 +196,7 @@ local dondozo_commander = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,
@@ -233,7 +233,7 @@ local dondozo_commander = {
 
 local init = function()
   -- Evolution does not like `soul_pos` on forms
-  AG.hookafterfunc(_G, 'poke_backend_evolve', function(card, to_key, energize_amount)
+  AG.hookafterfunc(pokermon, 'backend_evolve', function(card, to_key, energize_amount)
     if to_key == 'j_agar_mega_tatsugiri' then
       G.P_CENTERS['j_agar_mega_tatsugiri']:set_sprites(card)
     end

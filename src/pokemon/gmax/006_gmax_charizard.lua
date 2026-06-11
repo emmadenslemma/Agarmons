@@ -6,7 +6,7 @@ local gmax_charizard = {
   soul_pos = { x = 1, y = 7 },
   config = { extra = { Xmult_mod = 1, d_size = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.discards_used
     return { vars = { card.ability.extra.Xmult_mod, current_Xmult } }
   end,

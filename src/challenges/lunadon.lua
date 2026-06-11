@@ -91,14 +91,14 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
 
         G.jokers.config.card_limit = G.jokers.config.card_limit + 2
 
-        luna1 = pseudorandom_element(lunas, pseudoseed("luna1" .. G.GAME.round_resets.ante))
-        don1 = pseudorandom_element(dons, pseudoseed("don1" .. G.GAME.round_resets.ante))
+        local luna1 = pseudorandom_element(lunas, pseudoseed("luna1" .. G.GAME.round_resets.ante))
+        local don1 = pseudorandom_element(dons, pseudoseed("don1" .. G.GAME.round_resets.ante))
 
         local second_luna_pool = AG.list_utils.filter(lunas, function(luna) return luna ~= luna1 end)
         local second_don_pool = AG.list_utils.filter(dons, function(don) return don ~= don1 end)
 
-        luna2 = pseudorandom_element(second_luna_pool, pseudoseed("luna2" .. G.GAME.round_resets.ante))
-        don2 = pseudorandom_element(second_don_pool, pseudoseed("don2" .. G.GAME.round_resets.ante))
+        local luna2 = pseudorandom_element(second_luna_pool, pseudoseed("luna2" .. G.GAME.round_resets.ante))
+        local don2 = pseudorandom_element(second_don_pool, pseudoseed("don2" .. G.GAME.round_resets.ante))
 
         AG.delay(2.4, function()
           play_sound("timpani")

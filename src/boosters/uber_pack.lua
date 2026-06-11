@@ -7,7 +7,7 @@ local uber_pack = {
   no_collection = true,
   create_card = function(self, card)
     return {
-      key = get_random_poke_key("uber_pack", "Legendary"),
+      key = pokermon.get_random_poke_key("uber_pack", "Legendary"),
       area = G.pack_cards,
       no_edition = true,
       skip_materialize = true,

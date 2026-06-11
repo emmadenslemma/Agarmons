@@ -3,7 +3,7 @@ local hatenna = {
   name = "hatenna",
   config = { extra = { rounds = 5 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.rounds } }
   end,
   rarity = 1,
@@ -13,7 +13,7 @@ local hatenna = {
   gen = 8,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    return level_evo(self, card, context, "j_agar_hattrem")
+    return pokermon.level_evo(self, card, context, "j_agar_hattrem")
   end,
 }
 
@@ -22,7 +22,7 @@ local hattrem = {
   name = "hattrem",
   config = { extra = { rounds = 5 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.rounds } }
   end,
   rarity = "poke_safari",
@@ -32,7 +32,7 @@ local hattrem = {
   gen = 8,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    return level_evo(self, card, context, "j_agar_hatterene")
+    return pokermon.level_evo(self, card, context, "j_agar_hatterene")
   end,
 }
 
@@ -41,7 +41,7 @@ local hatterene = {
   name = "hatterene",
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "poke_safari",

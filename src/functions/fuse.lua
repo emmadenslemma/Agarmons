@@ -9,7 +9,7 @@ local function do_fuse(card, with, fuse_into)
 
       local form = with.ability.extra.form or card.ability.extra.form
 
-      poke_evolve(with, fuse_into, true)
+      pokermon.evolve(with, fuse_into, true)
       card:remove()
 
       if form then

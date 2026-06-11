@@ -4,7 +4,7 @@ local galarian_mrmime = {
   agar_inject_prefix = "poke",
   config = { extra = { rounds = 5, scored_cards = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.rounds } }
   end,
   rarity = 3,
@@ -14,7 +14,7 @@ local galarian_mrmime = {
   gen = 8,
   blueprint_compat = false,
   calculate = function(self, card, context)
-    return level_evo(self, card, context, "j_poke_mrrime")
+    return pokermon.level_evo(self, card, context, "j_poke_mrrime")
   end
 }
 
@@ -24,7 +24,7 @@ local mrrime = {
   agar_inject_prefix = "poke",
   config = { extra = { scored_cards = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.scored_cards } }
   end,
   rarity = "poke_safari",
@@ -36,7 +36,7 @@ local mrrime = {
 }
 
 local init = function()
-  poke_add_to_family("mrmime", { "galarian_mrmime", "mrrime" })
+  pokermon.add_to_family("mrmime", { "galarian_mrmime", "mrrime" })
 end
 
 return {

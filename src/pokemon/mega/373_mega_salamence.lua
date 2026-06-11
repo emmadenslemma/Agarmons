@@ -4,7 +4,7 @@ local mega_salamence = {
   agar_inject_prefix = "poke",
   config = { extra = { hand_size = 5 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.hand_size } }
   end,
   rarity = "poke_mega",

@@ -2,7 +2,7 @@ local toedscool = {
   name = "toedscool",
   config = { extra = { Xmult_multi = 1.5, rounds = 5 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi, card.ability.extra.rounds } }
   end,
   rarity = 2,
@@ -27,7 +27,7 @@ local toedscool = {
         end
       end
     end
-    return level_evo(self, card, context, 'j_agar_toedscruel')
+    return pokermon.level_evo(self, card, context, 'j_agar_toedscruel')
   end
 }
 
@@ -35,7 +35,7 @@ local toedscruel = {
   name = "toedscruel",
   config = { extra = { Xmult_multi = 1.5, scored_cards = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = "poke_safari",

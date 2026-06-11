@@ -4,7 +4,7 @@ local gmax_eevee = {
   agar_inject_prefix = "poke",
   config = { extra = { Xmult = 1.33 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult } }
   end,
   rarity = "agar_gmax",
@@ -30,7 +30,7 @@ local gmax_eevee = {
 }
 
 local init = function()
-  poke_add_to_family("eevee", "gmax_eevee")
+  pokermon.add_to_family("eevee", "gmax_eevee")
 
   SMODS.Joker:take_ownership("poke_eevee", { gmax = "gmax_eevee" }, true)
 end

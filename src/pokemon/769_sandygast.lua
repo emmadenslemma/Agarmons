@@ -3,7 +3,7 @@ local sandygast = {
   name = "sandygast",
   config = { extra = { chips = 0, chip_mod = 2 }, evo_rqmt = 60 },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
     return { vars = { card.ability.extra.chip_mod, localize(suit, "suits_singular"), card.ability.extra.chips, card.ability.evo_rqmt, colours = { G.C.SUITS[suit] } } }
   end,
@@ -28,7 +28,7 @@ local sandygast = {
         chips = card.ability.extra.chips,
       }
     end
-    return scaling_evo(self, card, context, "j_agar_palossand", card.ability.extra.chips, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, "j_agar_palossand", card.ability.extra.chips, self.config.evo_rqmt)
   end,
 }
 
@@ -37,7 +37,7 @@ local palossand = {
   name = "palossand",
   config = { extra = { chips = 0, chip_mod = 3, chip_mod2 = 2 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local suit = G.GAME.current_round.sandygast_suit or "Spades"
     return { vars = { card.ability.extra.chip_mod, localize(suit, "suits_singular"), card.ability.extra.chip_mod2, card.ability.extra.chips, colours = { G.C.SUITS[suit] } } }
   end,
@@ -67,8 +67,6 @@ local palossand = {
 }
 
 local init = function()
-  energy_values['chip_mod2'] = energy_values['chip_mod']
-
   AG.hookafterfunc(SMODS.current_mod, 'reset_game_globals', function(run_start)
     local sandygast_suits = {}
     for _, v in ipairs({ "Spades", "Hearts", "Clubs", "Diamonds" }) do

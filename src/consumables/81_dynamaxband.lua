@@ -55,17 +55,17 @@ local dynamaxband = {
   atlas = "AgarmonsConsumables",
   cost = 4,
   hidden = true,
-  soul_set = "Item",
+  soul_set = "poke_item",
   soul_rate = .0066,
   get_target = function(self, card)
     if card.ability.extra.target then
-      local target = poke_find_card(function(joker) return joker.unique_val == card.ability.extra.target end)
+      local target = pokermon.find_card(function(joker) return joker.unique_val == card.ability.extra.target end)
       if not target then card.ability.extra.target = nil end
       return target
     end
   end,
   use = function(self, card)
-    local target = poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
+    local target = pokermon.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
     card.ability.extra.usable = false
     if G.GAME.blind.in_blind then
       AG.gmax.evolve(target)
@@ -76,7 +76,7 @@ local dynamaxband = {
   can_use = function(self, card)
     return (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit or card.area ~= G.pack_cards)
         and card.ability.extra.usable
-        and poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
+        and pokermon.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
   end,
   calculate = function(self, card, context)
     if context.end_of_round and not card.ability.extra.usable then
@@ -95,7 +95,7 @@ local dynamaxband = {
     return true
   end,
   in_pool = function(self)
-    return poke_find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
+    return pokermon.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
   end,
   update = function(self, card, dt)
     if G.STAGE == G.STAGES.RUN then

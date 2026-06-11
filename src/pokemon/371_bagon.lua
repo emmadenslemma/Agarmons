@@ -3,7 +3,7 @@ local bagon = {
   name = "bagon",
   config = { extra = { chips = 0, chip_mod = 2, straights = 0 }, evo_rqmt = 36 },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chip_mod, card.ability.extra.straights, card.ability.extra.chips, card.ability.evo_rqmt } }
   end,
   rarity = 2,
@@ -29,7 +29,7 @@ local bagon = {
         chips = card.ability.extra.chips
       }
     end
-    return scaling_evo(self, card, context, "j_agar_shelgon", card.ability.extra.chips, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, "j_agar_shelgon", card.ability.extra.chips, self.config.evo_rqmt)
   end,
 }
 
@@ -38,7 +38,7 @@ local shelgon = {
   name = "shelgon",
   config = { extra = { chips = 0, chip_mod = 3, straights = 0 }, evo_rqmt = 186 },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chip_mod, card.ability.extra.straights, card.ability.extra.chips, card.ability.evo_rqmt } }
   end,
   rarity = "poke_safari",
@@ -63,7 +63,7 @@ local shelgon = {
         chips = card.ability.extra.chips
       }
     end
-    return scaling_evo(self, card, context, "j_agar_salamence", card.ability.extra.chips, self.config.evo_rqmt)
+    return pokermon.scaling_evo(self, card, context, "j_agar_salamence", card.ability.extra.chips, self.config.evo_rqmt)
   end,
 }
 
@@ -72,7 +72,7 @@ local salamence = {
   name = "salamence",
   config = { extra = { Xmult_mod = .25, chips = 186, straights = 0 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local current_Xmult = 1 + card.ability.extra.Xmult_mod * card.ability.extra.straights
     return { vars = { card.ability.extra.chips, card.ability.extra.Xmult_mod, current_Xmult } }
   end,
@@ -117,7 +117,7 @@ local mega_salamence = {
   soul_pos = { x = 9, y = 6 },
   config = { extra = { Xmult_mod = .25, chips = 186, retriggers = 0, straights = 0 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local current_Xmult = 1 + card.ability.extra.Xmult_mod * card.ability.extra.straights
     return { vars = { card.ability.extra.chips, current_Xmult } }
   end,

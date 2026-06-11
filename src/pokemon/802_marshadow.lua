@@ -3,7 +3,7 @@ local marshadow = {
   name = "marshadow",
   config = { extra = { effect_multiplier = 1.25 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'energizable_values' }
     end
@@ -45,7 +45,7 @@ local marshadow = {
     local pre_boost_values = {}
     if other_joker and other_joker.ability and type(other_joker.ability.extra) == 'table' then
       local values = other_joker.ability.extra
-      for k, _ in pairs(energy_values) do
+      for k, _ in pairs(pokermon.energy.values) do
         if values[k] then
           pre_boost_values[k] = values[k]
           values[k] = values[k] * card.ability.extra.effect_multiplier

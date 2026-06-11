@@ -6,7 +6,7 @@ local mega_golurk = {
   soul_pos = { x = 1, y = 4 },
   config = { extra = { hazard_level = 1, Xmult_multi = 1.75, dem = 6 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local num, dem = SMODS.get_probability_vars(card, 1, card.ability.extra.dem)
     return { vars = { card.ability.extra.hazard_level, card.ability.extra.Xmult_multi, num, dem } }
   end,
@@ -41,10 +41,10 @@ local mega_golurk = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    poke_change_hazard_level(card.ability.extra.hazard_level)
+    pokermon.change_hazard_level(card.ability.extra.hazard_level)
   end,
   remove_from_deck = function(self, card, from_debuff)
-    poke_change_hazard_level(-card.ability.extra.hazard_level)
+    pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
   designer = "Gem",
 }

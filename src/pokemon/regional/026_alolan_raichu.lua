@@ -4,7 +4,7 @@ local alolan_raichu = {
   agar_inject_prefix = "poke",
   config = { extra = { chips = 0, chip_mod = 1, per_money = 1, money = 2, money_mod = 1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.chip_mod, card.ability.extra.per_money, card.ability.extra.chips, card.ability.extra.money, card.ability.extra.money_mod } }
   end,
   rarity = "poke_safari",
@@ -18,7 +18,7 @@ local alolan_raichu = {
       local lightning_jokers = #find_pokemon_type("Lightning")
       local amount = card.ability.extra.money + lightning_jokers * card.ability.extra.money_mod
       card:juice_up()
-      ease_poke_dollars(card, "alolan_raichu", amount)
+      pokermon.ease_poke_dollars(card, "alolan_raichu", amount)
     end
     if context.joker_main and card.ability.extra.chips > 0 then
       return {
@@ -41,7 +41,7 @@ local alolan_raichu = {
 }
 
 local init = function()
-  poke_add_to_family("raichu", "alolan_raichu")
+  pokermon.add_to_family("raichu", "alolan_raichu")
 
   SMODS.Joker:take_ownership('poke_pikachu', {
     item_req = { 'thunderstone', 'sunstone' }, -- This is going to have some weird side effects but it's *fine*

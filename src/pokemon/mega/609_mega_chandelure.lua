@@ -6,7 +6,7 @@ local mega_chandelure = {
   soul_pos = { x = 1, y = 2 },
   config = { extra = { Xmult_multi = 1, Xmult_multi1 = 0.03 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     local current_Xmult = card.ability.extra.Xmult_multi + card.ability.extra.Xmult_multi1 * card.sell_cost
     return { vars = { card.ability.extra.Xmult_multi1, current_Xmult } }
   end,

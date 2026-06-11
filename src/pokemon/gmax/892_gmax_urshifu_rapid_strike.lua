@@ -4,7 +4,7 @@ local gmax_urshifu_rapid_strike = {
   agar_inject_prefix = "Gem",
   config = { extra = { Xmult_mod = 0.1 } },
   loc_vars = function(self, info_queue, card)
-    type_tooltip(self, info_queue, card)
+    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_mod } }
   end,
   rarity = "agar_gmax",
@@ -16,7 +16,7 @@ local gmax_urshifu_rapid_strike = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and not context.end_of_round then
-      local total_chips = poke_total_chips(context.other_card)
+      local total_chips = pokermon.total_chips(context.other_card)
       local Xmult = (total_chips) * (card.ability.extra.Xmult_mod) / 5 + 1
       if Xmult > 0 then
         return {
