@@ -14,7 +14,7 @@ function AG.target_utils.find_card(key_or_func, use_highlighted)
   ---@diagnostic disable-next-line: missing-parameter
   for _, cardarea in pairs(SMODS.get_card_areas("jokers")) do
     if use_highlighted and cardarea.highlighted and #cardarea.highlighted == 1 then
-      highlight = cardarea.highlighted[1]
+      local highlight = cardarea.highlighted[1]
       if is_target(highlight) then
         highlight_results[#highlight_results+1] = highlight
       end
