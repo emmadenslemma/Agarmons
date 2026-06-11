@@ -19,7 +19,7 @@ local groudon = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play
-        and poke_total_mult(context.other_card) >= card.ability.extra.mult_req then
+        and pokermon.total_mult(context.other_card) >= card.ability.extra.mult_req then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }

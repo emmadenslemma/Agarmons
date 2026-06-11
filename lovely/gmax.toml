@@ -11,7 +11,7 @@ position = "after"
 match_indent = true
 pattern = "_c:generate_ui(info_queue, card, desc_nodes, specific_vars, full_UI_table)"
 payload = '''
-if _c.rarity == 'agar_gmax' and not poke_is_in_collection(card) then
+if _c.rarity == 'agar_gmax' and not pokermon.is_in_collection(card) then
     local turns_left_nodes = AG.gmax.localize_turns_left_desc(card)
     for i, node in ipairs(turns_left_nodes) do
         table.insert(desc_nodes, i, node)
@@ -26,4 +26,4 @@ target = "card.lua"
 position = "after"
 match_indent = true
 pattern = "perma_h_x_blind_size = self.ability and self.ability.perma_h_x_blind_size or 0,"
-payload = "gmax_turns_left = center.rarity == 'agar_gmax' and AG.gmax.default_duration or nil"
+payload = "gmax_turns_left = center.rarity == 'agar_gmax' and AG.gmax.default_duration or nil,"

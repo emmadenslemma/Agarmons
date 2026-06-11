@@ -8,7 +8,7 @@ local mega_skarmory = {
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
     -- Yes, these should be toggled with detailed_tooltips, but this is for consistency with Pokermon
-    info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = poke_get_hazard_level_vars() }
+    info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = G.P_CENTERS.m_steel
@@ -43,12 +43,12 @@ local mega_skarmory = {
     end
   end,
   add_to_deck = function(self, card, from_debuff)
-    poke_change_hazard_max(card.ability.extra.hazard_max)
-    poke_change_hazard_level(card.ability.extra.hazard_level)
+    pokermon.change_hazard_max(card.ability.extra.hazard_max)
+    pokermon.change_hazard_level(card.ability.extra.hazard_level)
   end,
   remove_from_deck = function(self, card, from_debuff)
-    poke_change_hazard_max(-card.ability.extra.hazard_max)
-    poke_change_hazard_level(-card.ability.extra.hazard_level)
+    pokermon.change_hazard_max(-card.ability.extra.hazard_max)
+    pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
 }
 

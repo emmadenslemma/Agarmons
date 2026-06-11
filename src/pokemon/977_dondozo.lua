@@ -62,7 +62,7 @@ local tatsugiri = {
 
     if context.individual and context.cardarea == G.play then
       return form == "stretchy" and {
-        dollars = ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
+        dollars = pokermon.ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
       } or {
         [value] = card.ability.extra[value]
       }
@@ -155,7 +155,7 @@ local mega_tatsugiri = {
       return {
         chips = card.ability.extra.chips1,
         mult = card.ability.extra.mult1,
-        dollars = ease_poke_dollars(card, "mega_tatsugiri", dollars, true),
+        dollars = pokermon.ease_poke_dollars(card, "mega_tatsugiri", dollars, true),
         Xmult = Xmult,
       }
     end
@@ -233,7 +233,7 @@ local dondozo_commander = {
 
 local init = function()
   -- Evolution does not like `soul_pos` on forms
-  AG.hookafterfunc(_G, 'poke_backend_evolve', function(card, to_key, energize_amount)
+  AG.hookafterfunc(pokermon, 'backend_evolve', function(card, to_key, energize_amount)
     if to_key == 'j_agar_mega_tatsugiri' then
       G.P_CENTERS['j_agar_mega_tatsugiri']:set_sprites(card)
     end

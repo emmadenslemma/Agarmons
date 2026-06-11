@@ -22,7 +22,7 @@ local luxuryball = {
       delay = 0.4,
       func = function()
         play_sound('timpani')
-        SMODS.add_card { key = get_random_poke_key_options { rarity = 'Rare', key_append = 'luxuryball' } }
+        SMODS.add_card { set = 'Joker', key = pokermon.get_random_poke_key_options { rarity = 'Rare', key_append = 'luxuryball' } }
         card:juice_up(0.3, 0.5)
         ease_dollars(-card.ability.extra.money_mod, true)
         return true

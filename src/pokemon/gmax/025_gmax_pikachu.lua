@@ -28,7 +28,7 @@ local gmax_pikachu = {
 }
 
 local init = function()
-  poke_add_to_family("pikachu", "gmax_pikachu")
+  pokermon.add_to_family("pikachu", "gmax_pikachu")
 
   SMODS.Joker:take_ownership("poke_pikachu", { gmax = "gmax_pikachu" }, true)
 end

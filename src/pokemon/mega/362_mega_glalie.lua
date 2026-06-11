@@ -37,7 +37,7 @@ local mega_glalie = {
         func = function()
           local money = to_number(G.GAME.dollars)
           if not context.blueprint and money ~= 0 then
-            ease_poke_dollars(card, nil, -money)
+            pokermon.ease_poke_dollars(card, nil, -money)
           end
         end
       }
@@ -52,7 +52,7 @@ local mega_glalie = {
 }
 
 local function init()
-  poke_add_to_family("glalie", "mega_glalie")
+  pokermon.add_to_family("glalie", "mega_glalie")
   SMODS.Joker:take_ownership("poke_glalie", { megas = { "mega_glalie" } }, true)
 end
 

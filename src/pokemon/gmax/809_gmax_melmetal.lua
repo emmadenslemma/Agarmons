@@ -5,7 +5,7 @@ local gmax_melmetal = {
   config = { extra = { draw_mod = 1 } },
   loc_vars = function(self, info_queue, card)
     type_tooltip(self, info_queue, card)
-    local metal_cards = find_other_poke_or_energy_type(card, "Metal", true)
+    local metal_cards = pokermon.find_cards_by_ptype(card, "Metal", true)
     return {
       vars = {
         card.ability.extra.draw_mod,
@@ -22,7 +22,7 @@ local gmax_melmetal = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.before then
-      local metal_cards = find_other_poke_or_energy_type(card, "Metal", true)
+      local metal_cards = pokermon.find_cards_by_ptype(card, "Metal", true)
       local cards_to_draw = 1 + card.ability.extra.draw_mod * math.floor(metal_cards / 2)
       SMODS.calculate_effect({ message = localize("agar_gmax_meltdown_ex"), colour = G.C.RARITY["agar_gmax"] }, card)
       SMODS.draw_cards(cards_to_draw)

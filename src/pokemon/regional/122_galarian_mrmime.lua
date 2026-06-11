@@ -36,7 +36,7 @@ local mrrime = {
 }
 
 local init = function()
-  poke_add_to_family("mrmime", { "galarian_mrmime", "mrrime" })
+  pokermon.add_to_family("mrmime", { "galarian_mrmime", "mrrime" })
 end
 
 return {

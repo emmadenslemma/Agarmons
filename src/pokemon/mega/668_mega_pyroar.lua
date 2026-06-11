@@ -29,7 +29,7 @@ local mega_pyroar = {
           G.E_MANAGER:add_event(Event({
             func = function()
               for _ = 1, card.ability.extra.create_energy_mod do
-                SMODS.add_card { key = 'c_poke_fire_energy', edition = 'e_negative' }
+                SMODS.add_card { set = 'poke_energy', key = 'c_poke_fire_energy', edition = 'e_negative' }
               end
               return true
             end

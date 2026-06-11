@@ -13,8 +13,8 @@ local spikes = {
     return { vars = { card.ability.extra.hazard_level } }
   end,
   redeem = function(self, card)
-    poke_change_hazard_max(card.ability.extra.hazard_level)
-    poke_change_hazard_level(card.ability.extra.hazard_level)
+    pokermon.change_hazard_max(card.ability.extra.hazard_level)
+    pokermon.change_hazard_level(card.ability.extra.hazard_level)
   end,
   in_pool = function(self)
     return (G.GAME.round_resets.hazard_level or 0) > 0

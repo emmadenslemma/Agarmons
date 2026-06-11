@@ -18,7 +18,7 @@ local eternatus = {
   blueprint_compat = false,
   calculate = function(self, card, context)
     if context.setting_blind and not card.getting_sliced and not context.blueprint then
-      for _, other_joker in ipairs(poke_get_adjacent_jokers(card)) do
+      for _, other_joker in ipairs(pokermon.get_adjacent_jokers(card)) do
         if not other_joker.getting_sliced and AG.gmax.get_gmax_key(other_joker) then
           AG.gmax.evolve(other_joker)
         end
@@ -26,7 +26,7 @@ local eternatus = {
     end
   end,
   in_pool = function(self)
-    return poke_find_card(AG.gmax.get_gmax_key)
+    return pokermon.find_card(AG.gmax.get_gmax_key)
   end
 }
 

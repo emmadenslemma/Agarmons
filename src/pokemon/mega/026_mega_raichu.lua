@@ -52,7 +52,7 @@ local mega_raichu_x = {
         G.GAME.dollar_buffer = 0
       end)
       return {
-        dollars = ease_poke_dollars(card, "mega_raichu_x", interest, true)
+        dollars = pokermon.ease_poke_dollars(card, "mega_raichu_x", interest, true)
       }
     end
   end,

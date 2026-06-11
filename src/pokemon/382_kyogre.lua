@@ -19,7 +19,7 @@ local kyogre = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play
-        and poke_total_chips(context.other_card) >= card.ability.extra.chip_req then
+        and pokermon.total_chips(context.other_card) >= card.ability.extra.chip_req then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }

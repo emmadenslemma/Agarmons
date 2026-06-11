@@ -54,7 +54,7 @@ local pyukumuku = {
     if not context.blueprint then
       if context.individual and context.cardarea == G.play then
         -- Effect: Eat every trigger effect (chips, mult, xmult (additively), and money from seals and lucky cards)
-        card.ability.extra.stored.chips = card.ability.extra.stored.chips + poke_total_chips(context.other_card)
+        card.ability.extra.stored.chips = card.ability.extra.stored.chips + pokermon.total_chips(context.other_card)
         card.ability.extra.stored.mult = card.ability.extra.stored.mult + total_mult(context.other_card)
         card.ability.extra.stored.Xmult = card.ability.extra.stored.Xmult + total_Xmult(context.other_card)
         -- is this too much? have we gone too far?

@@ -18,7 +18,7 @@ local mega_victreebel = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play
-        and poke_is_even(context.other_card) then
+        and pokermon.is_even(context.other_card) then
       return {
         repetitions = card.ability.extra.retriggers
       }

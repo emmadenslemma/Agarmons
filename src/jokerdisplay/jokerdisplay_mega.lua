@@ -7,7 +7,7 @@ def_list["mega_victreebel"] = {
   retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
     if held_in_hand then return 0 end
     return SMODS.in_scoring(playing_card, scoring_hand)
-        and poke_is_even(playing_card)
+        and pokermon.is_even(playing_card)
         and joker_card.ability.extra.retriggers * JokerDisplay.calculate_joker_triggers(joker_card)
         or 0
   end,
@@ -33,7 +33,9 @@ def_list["mega_dragonite"] = {
   retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
     if held_in_hand then return 0 end
     return #JokerDisplay.current_hand == 1
-        and joker_card.ability.extra.retriggers * ((G.jokers and G.jokers.cards and #G.jokers.cards or 1) - 1) * JokerDisplay.calculate_joker_triggers(joker_card)
+        and
+        joker_card.ability.extra.retriggers * ((G.jokers and G.jokers.cards and #G.jokers.cards or 1) - 1) *
+        JokerDisplay.calculate_joker_triggers(joker_card)
         or 0
   end,
   calc_function = function(card)

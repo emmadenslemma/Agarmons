@@ -18,7 +18,7 @@ local alolan_raichu = {
       local lightning_jokers = #find_pokemon_type("Lightning")
       local amount = card.ability.extra.money + lightning_jokers * card.ability.extra.money_mod
       card:juice_up()
-      ease_poke_dollars(card, "alolan_raichu", amount)
+      pokermon.ease_poke_dollars(card, "alolan_raichu", amount)
     end
     if context.joker_main and card.ability.extra.chips > 0 then
       return {
@@ -41,7 +41,7 @@ local alolan_raichu = {
 }
 
 local init = function()
-  poke_add_to_family("raichu", "alolan_raichu")
+  pokermon.add_to_family("raichu", "alolan_raichu")
 
   SMODS.Joker:take_ownership('poke_pikachu', {
     item_req = { 'thunderstone', 'sunstone' }, -- This is going to have some weird side effects but it's *fine*

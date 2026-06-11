@@ -34,7 +34,7 @@ end
 
 function AG.gmax.evolve(card)
   AG.gmax.evolving = true
-  poke_evolve(card, AG.gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
+  pokermon.evolve(card, AG.gmax.get_gmax_key(card), false, localize("agar_dynamax_ex"))
   -- Events to reset `evolving` after the evolution animation
   AG.defer(function()
     AG.defer(function()
@@ -45,7 +45,7 @@ end
 
 function AG.gmax.devolve(card)
   AG.gmax.evolving = true
-  poke_evolve(card, AG.gmax.get_base_key(card), true)
+  pokermon.evolve(card, AG.gmax.get_base_key(card), true)
   AG.gmax.evolving = false
 end
 
@@ -122,7 +122,7 @@ end)
 --   key = 'gmax_clouds',
 --   order = 71,
 --   func = function(self)
---     if poke_is_in_collection(self) then return end
+--     if pokermon.is_in_collection(self) then return end
 --     if not G.shared_gmax_clouds then
 --       G.shared_gmax_clouds = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["agar_gmax_clouds"])
 --     end
