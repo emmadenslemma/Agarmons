@@ -1104,7 +1104,16 @@ return {
                 name = "Luxury Ball",
                 text = {
                     "Creates a {C:rare}Rare",
-                    "{C:attention}Pokemon Joker",
+                    "{C:attention}Pokemon{} Joker with",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "{C:inactive}(Must have room)"
+                },
+            },
+            c_agar_cherishball = {
+                name = "Cherish Ball",
+                text = {
+                    "Creates a",
+                    "{C:blue,E:1}Mythical{} {C:attention}Pokemon{} Joker",
                     "{C:inactive}(Must have room)"
                 },
             },

@@ -1,14 +1,15 @@
-local luxuryball = {
-  name = "luxuryball",
-  key = "luxuryball",
+local cherishball = {
+  name = "cherishball",
+  key = "cherishball",
   set = "Spectral",
-  pos = { x = 4, y = 1 },
+  pos = { x = 5, y = 1 },
+  soul_pos = { x = 5, y = 2 },
   atlas = "AgarmonsConsumables",
   cost = 4,
   pokeball = true,
   hidden = true,
-  soul_set = "poke_item",
-  soul_rate = .00667,
+  soul_set = "Item",
+  soul_rate = .0015,
   can_use = function(self, card)
     return #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers
   end,
@@ -20,8 +21,7 @@ local luxuryball = {
         play_sound('timpani')
         SMODS.add_card({
           set = 'Joker',
-          key = pokermon.get_random_poke_key_options { rarity = 'Rare', key_append = 'luxuryball' },
-          edition = 'e_polychrome'
+          attributes = { 'mythical' }
         })
         card:juice_up(0.3, 0.5)
         return true
@@ -32,6 +32,6 @@ local luxuryball = {
 }
 
 return {
-  config_key = "luxuryball",
-  list = { luxuryball },
+  config_key = "cherishball",
+  list = { cherishball },
 }
