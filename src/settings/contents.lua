@@ -73,6 +73,7 @@ return {
       title = function() return localize("agar_consumables1") end,
       tiles = {
         { list = { "c_agar_luxuryball" }, label = function() return localize { type = "name_text", set = "Spectral", key = "c_agar_luxuryball" } end, config_key = "luxuryball" },
+        { list = { "c_agar_cherishball" }, label = function() return localize { type = "name_text", set = "Spectral", key = "c_agar_cherishball" } end, config_key = "cherishball" },
       }
     }
   }

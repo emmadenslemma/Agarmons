@@ -45,6 +45,7 @@ return {
   gmax = true,
   new_megas = true,
   luxuryball = true,
+  cherishball = true,
   pikachus_with_hats = false,
   pikachu_hat_rate = 100,
 }

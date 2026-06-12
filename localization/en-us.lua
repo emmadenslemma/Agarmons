@@ -1109,6 +1109,14 @@ return {
                     "{C:inactive}(Must have room)"
                 },
             },
+            c_agar_cherishball = {
+                name = "Cherish Ball",
+                text = {
+                    "Creates a",
+                    "{C:blue,E:1}Mythical{} {C:attention}Pokemon{} Joker",
+                    "{C:inactive}(Must have room)"
+                },
+            },
             c_agar_dynamaxband_targeting = {
                 name = "Dynamax Band",
                 text = {
