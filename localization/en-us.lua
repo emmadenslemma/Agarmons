@@ -1103,7 +1103,7 @@ return {
             c_agar_luxuryball = {
                 name = "Luxury Ball",
                 text = {
-                    "Spend {C:money}$#1#{} to create a",
+                    "Spend {C:money}$10{} to create a", -- this should use loc_vars but I can't be bothered to fix the config page rn
                     "{C:rare}Rare {C:attention}Pokemon Joker",
                     "{C:inactive}(Must have room)"
                 },
@@ -1382,6 +1382,7 @@ return {
             agar_legendary_pokemon1 = "Legendary Pokémon 1/3",
             agar_legendary_pokemon2 = "Legendary Pokémon 2/3",
             agar_legendary_pokemon3 = "Legendary Pokémon 3/3",
+            agar_consumables1 = "Items",
         },
         poker_hands = {
             ["Six of a Kind"] = "Six of a Kind",
