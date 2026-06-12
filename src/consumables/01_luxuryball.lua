@@ -8,7 +8,7 @@ local luxuryball = {
   pokeball = true,
   hidden = true,
   soul_set = "Item",
-  soul_rate = .008,
+  soul_rate = .00667,
   can_use = function(self, card)
     return #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers
   end,
@@ -18,7 +18,11 @@ local luxuryball = {
       delay = 0.4,
       func = function()
         play_sound('timpani')
-        SMODS.add_card({ set = 'Joker', key = get_random_poke_key_options { rarity = 'Rare', key_append = 'luxuryball' } })
+        SMODS.add_card({
+          set = 'Joker',
+          key = get_random_poke_key_options { rarity = 'Rare', key_append = 'luxuryball' },
+          edition = 'e_polychrome'
+        })
         card:juice_up(0.3, 0.5)
         return true
       end
