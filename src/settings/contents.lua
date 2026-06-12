@@ -68,6 +68,12 @@ return {
         { list = { "j_agar_spectrier" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_spectrier" } end, config_key = "spectrier" },
         { list = { "j_agar_calyrex" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_calyrex" } end, config_key = "calyrex" },
       }
+    },
+    {
+      title = function() return localize("agar_consumables1") end,
+      tiles = {
+        { list = { "c_agar_luxuryball" }, label = function() return localize { type = "name_text", set = "Spectral", key = "c_agar_luxuryball" } end, config_key = "luxuryball" },
+      }
     }
   }
 }
