@@ -1,5 +1,16 @@
 local AgarTile = Object:extend()
-local DisplayCard = assert(SMODS.load_file("src/settings/display_card.lua"))()
+
+local templates = assert(SMODS.load_file("src/settings/load_templates.lua"))()
+
+local SettingsComponent = PokeDisplayCardComponent:extend()
+
+function SettingsComponent:apply(args)
+  for k, v in pairs(args.properties or {}) do
+    self.display_card.properties[k] = v
+  end
+  self.display_card.properties.generate_ui = SMODS.Center.generate_ui
+  self.display_card.no_ui = nil
+end
 
 local tile_colour_enabled = G.C.GREY
 local tile_colour_disabled = mix_colours(G.C.GREY, G.C.UI.BACKGROUND_INACTIVE, 0.3)
@@ -39,9 +50,15 @@ function AgarTile:init(args)
   self.ref_value = args.ref_value
   self.ref_table = args.ref_table
   self.display_cards = args.display_cards or {}
-  self.cardarea = CardArea(0, 0, G.CARD_W * (2 - 1 / #self.display_cards), G.CARD_H, { card_limit = #self.display_cards, type = 'title' })
+  self.cardarea = CardArea(0, 0, G.CARD_W * (2 - 1 / #self.display_cards), G.CARD_H,
+    { card_limit = #self.display_cards, type = 'title' })
   for _, key in ipairs(self.display_cards) do
-    local card = DisplayCard(0, 0, G.CARD_W, G.CARD_H, key)
+    local template = templates[key]
+    local _args = {
+      properties = template,
+      components = { SettingsComponent() }
+    }
+    local card = PokeDisplayCard(_args, 0, 0, G.CARD_W, G.CARD_H)
     self.cardarea:emplace(card)
   end
 end

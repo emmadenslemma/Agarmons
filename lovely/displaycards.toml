@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Temporary fix until its patched upstream
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "pokeui.lua"]'
+match_indent = true
+position = 'at'
+pattern = '''
+if target and target:is(Card) and target.facing ~= 'back'
+'''
+payload = '''
+if target and target:is(Card) and not target:is(PokeDisplayCard) and target.facing ~= 'back'
+'''

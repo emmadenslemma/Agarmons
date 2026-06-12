@@ -14,7 +14,6 @@ local function load_template(item)
   item.atlas = (custom_atlas and "agar_" or "poke_") .. item.atlas
   item.set = 'Joker'
   item.key = 'j_' .. custom_prefix .. '_' .. item.name
-  item.ability = item.config
 
   poke_templates[item.key] = item
 end
@@ -22,7 +21,6 @@ end
 local function load_consumable_template(item)
   item.atlas = "agar_" .. item.atlas
   item.key = 'c_agar_' .. item.name
-  item.ability = item.config
 
   poke_templates[item.key] = item
 end
