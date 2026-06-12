@@ -1104,7 +1104,7 @@ return {
                 name = "Luxury Ball",
                 text = {
                     "Creates a {C:rare}Rare",
-                    "{C:attention}Pokemon Joker",
+                    "{C:attention}Pokemon{} Joker",
                     "{C:inactive}(Must have room)"
                 },
             },
