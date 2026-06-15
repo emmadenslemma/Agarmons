@@ -21,7 +21,8 @@ local cherishball = {
         play_sound('timpani')
         SMODS.add_card({
           set = 'Joker',
-          attributes = { 'mythical' }
+          attributes = { 'mythical' },
+          allow_legendaries = true,
         })
         card:juice_up(0.3, 0.5)
         return true
