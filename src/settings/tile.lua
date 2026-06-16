@@ -58,7 +58,7 @@ function AgarTile:init(args)
       properties = template,
       components = { SettingsComponent() }
     }
-    local card = PokeDisplayCard(_args, 0, 0, G.CARD_W, G.CARD_H)
+    local card = PokeDisplayCard(_args, 0, 0, G.CARD_W, G.CARD_H, { bypass_discovery_center = true })
     self.cardarea:emplace(card)
   end
 end

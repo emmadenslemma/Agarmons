@@ -1,0 +1,21 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Add missing 'params' parameter
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/displaycard.lua"]'
+match_indent = true
+position = 'at'
+pattern = "function PokeDisplayCard:init(args, x, y, w, h)"
+payload = "function PokeDisplayCard:init(args, x, y, w, h, params)"
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/displaycard.lua"]'
+match_indent = true
+position = 'at'
+pattern = "Card.init(self, x, y, w, h, nil, fake_center)"
+payload = "Card.init(self, x, y, w, h, nil, fake_center, params)"
