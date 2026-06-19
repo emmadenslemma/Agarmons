@@ -501,10 +501,10 @@ return {
                 text = {
                     "{C:hazard}+#1#{} hazard layer and limit",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Earn {C:money}$#1#{} at end of round",
+                    "Earn {C:money}$#2#{} at end of round",
                     "for every {C:diamonds}Diamond",
                     "card in your full deck",
-                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+                    "{C:inactive}(Currently {C:money}$#3#{C:inactive})",
                     "{br:2}ERROR - CONTACT STEAK",
                     "{C:attention}Suitless{} cards are",
                     "considered {C:diamonds}Diamonds",

@@ -12,7 +12,7 @@ local diancie = {
     pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-    return { vars = { card.ability.extra.money_mod, get_diamond_count() * card.ability.extra.money_mod } }
+    return { vars = { card.ability.extra.hazard_level, card.ability.extra.money_mod, get_diamond_count() * card.ability.extra.money_mod } }
   end,
   rarity = 4,
   cost = 20,
