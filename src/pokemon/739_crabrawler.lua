@@ -1,19 +1,9 @@
-local lowest_ranked_card = function(cards)
-  local lowest
-  for _, card in ipairs(cards) do
-    if not SMODS.has_no_rank(card) and (not lowest or card.base.nominal <= lowest.base.nominal) then
-      lowest = card
-    end
-  end
-  return lowest
-end
-
 -- Crabrawler 719
 local crabrawler = {
   name = "crabrawler",
   loc_vars = function(self, info_queue, card)
     pokermon.type_tooltip(self, info_queue, card)
-    info_queue[#info_queue+1] = G.P_CENTERS.c_poke_icestone
+    info_queue[#info_queue + 1] = G.P_CENTERS.c_poke_icestone
   end,
   rarity = 1,
   cost = 4,
@@ -22,10 +12,9 @@ local crabrawler = {
   gen = 7,
   item_req = 'icestone',
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and
-        lowest_ranked_card(context.scoring_hand) == context.other_card then
+    if context.individual and context.cardarea == G.play and not SMODS.has_no_rank(context.other_card) then
       return {
-        mult = context.other_card.base.nominal
+        chips = context.other_card.base.nominal
       }
     end
     return pokermon.item_evo(self, card, context, 'j_agar_crabominable')
@@ -43,10 +32,9 @@ local crabominable = {
   ptype = "Fighting",
   gen = 7,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and
-        lowest_ranked_card(context.scoring_hand) == context.other_card then
+    if context.individual and context.cardarea == G.play and not SMODS.has_no_rank(context.other_card) then
       return {
-        mult = context.other_card.base.nominal * 3
+        chips = context.other_card.base.nominal * 3
       }
     end
     if context.check_enhancement and SMODS.has_enhancement(context.other_card, 'm_glass') then
