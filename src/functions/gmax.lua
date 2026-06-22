@@ -81,7 +81,7 @@ AG.hookafterfunc(SMODS.current_mod, 'calculate', function(self, context)
 end)
 
 AG.gmax.disable_method_during_evolve = function(key, method_name)
-  local center = SMODS.Joker.obj_table[key]
+  local center = SMODS.Centers[key]
   AG.hookbeforefunc(center, method_name, function()
     return AG.gmax.evolving
   end)
