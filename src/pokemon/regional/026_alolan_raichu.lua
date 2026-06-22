@@ -51,6 +51,9 @@ local init = function()
     loc_vars = function(self, info_queue, card)
       local ret = orig_loc_vars(self, info_queue, card)
       if agarmons_config.alolan_raichu then
+        if pokermon_config.detailed_tooltips then
+          info_queue[#info_queue+1] = G.P_CENTERS.c_poke_sunstone
+        end
         ret.key = self.key .. '_alt'
       end
       return ret
