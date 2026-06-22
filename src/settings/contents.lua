@@ -4,6 +4,7 @@ return {
     {
       title = function() return localize("agar_regular_pokemon1") end,
       tiles = {
+        { list = { "j_agar_alolan_rattata", "j_agar_alolan_raticate" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_rattata" } end, config_key = "alolan_rattata" },
         { list = { "j_poke_alolan_raichu" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_raichu" } end, config_key = "alolan_raichu" },
         -- { list = { "j_agar_alolan_diglett", "j_agar_alolan_dugtrio" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_diglett" } end, config_key = "alolan_diglett" },
         { list = { "j_poke_galarian_mrmime", "j_poke_mrrime" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_poke_mrmime" } end, config_key = "galarian_mrmime" },
@@ -13,12 +14,12 @@ return {
         { list = { "j_agar_dewpider", "j_agar_araquanid" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dewpider" } end, config_key = "dewpider" },
         { list = { "j_agar_crabrawler", "j_agar_crabominable" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_crabrawler" } end, config_key = "crabrawler" },
         { list = { "j_agar_sandygast", "j_agar_palossand" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sandygast" } end, config_key = "sandygast" },
-        { list = { "j_agar_pyukumuku" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_pyukumuku" } end, config_key = "pyukumuku" },
       }
     },
     {
       title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
+        { list = { "j_agar_pyukumuku" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_pyukumuku" } end, config_key = "pyukumuku" },
         -- { list = { "j_agar_drampa", "j_agar_mega_drampa" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_drampa" } end, config_key = "drampa" },
         { list = { "j_agar_toxel", "j_agar_toxtricity" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxtricity" } end, config_key = "toxel" },
         -- { list = { "j_agar_grookey", "j_agar_thwackey", "j_agar_rillaboom" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_grookey" } end, config_key = "grookey" },

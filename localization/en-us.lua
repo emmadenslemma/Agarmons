@@ -1,6 +1,23 @@
 return {
     descriptions = {
         Joker = {
+            j_agar_alolan_rattata = {
+                name = "{s:0.6}Alolan{}Rattata",
+                text = {
+                    "Retrigger {C:attention}first 2",
+                    "cards held in hand",
+                    "{C:attention}#1#{} additional time",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)"
+                }
+            },
+            j_agar_alolan_raticate = {
+                name = "{s:0.6}Alolan{}Raticate",
+                text = {
+                    "Retrigger {C:attention}first 3",
+                    "cards held in hand",
+                    "{C:attention}#1#{} additional time",
+                }
+            },
             j_poke_pikachu_alolan = {
                 name = "Pikachu",
                 text = {
