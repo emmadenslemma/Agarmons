@@ -89,13 +89,20 @@ return {
                     "{C:mult}+#1#{} Mult then",
                     "debuff self this round",
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds not debuffed)",
-                    "{C:inactive,s:0.8}(Evolves after skipping {C:attention,s:0.8}#3#{C:inactive,s:0.8} Blinds)",
+                    "{C:inactive,s:0.8}(Evolves after skipping {C:attention,s:0.8}#3# Blinds{C:inactive,s:0.8})",
                 }
             },
             j_poke_galarian_weezing = {
                 name = "{s:0.6}Galarian{}Weezing",
                 text = {
-
+                    "{C:attention}Volatile Left",
+                    "{C:mult}+#1#{} Mult for each {C:attention}Blind",
+                    "skipped this run, then",
+                    "debuff self this round",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "You can skip {C:attention}Boss Blinds",
+                    "{C:inactive,s:0.8}(Cannot skip {C:attention,s:0.8}2 Boss Blinds{C:inactive,s:0.8} in a row)",
                 }
             },
             j_poke_mega_starmie = {
@@ -1417,8 +1424,8 @@ return {
             agar_gigantamaxing = "Gigantamaxing",
             agar_new_megas = "Z-A Megas",
 
-            agar_regular_pokemon1 = "Regular Pokémon 1/2",
-            agar_regular_pokemon2 = "Regular Pokémon 2/2",
+            agar_regular_pokemon1 = "Regular Pokémon 1/3",
+            agar_regular_pokemon2 = "Regular Pokémon 2/3",
             agar_regular_pokemon3 = "Regular Pokémon 3/3",
             agar_legendary_pokemon1 = "Legendary Pokémon 1/3",
             agar_legendary_pokemon2 = "Legendary Pokémon 2/3",

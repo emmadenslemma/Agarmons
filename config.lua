@@ -2,6 +2,7 @@ return {
   alolan_rattata = true,
   alolan_raichu = true,
   alolan_diglett = true,
+  galarian_weezing = true,
   galarian_mrmime = true,
 
   torkoal = true,
