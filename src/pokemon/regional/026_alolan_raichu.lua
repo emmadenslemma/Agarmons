@@ -54,6 +54,14 @@ local init = function()
       end
     end
   }, true)
+
+  -- Fixes Transformation
+  AG.hookaroundfunc(pokermon, 'evolve', function(orig, card, to_key, ...)
+    if not agarmons_config.alolan_raichu and to_key == 'j_poke_alolan_raichu' then
+      to_key = 'j_poke_raichu'
+    end
+    return orig(card, to_key, ...)
+  end)
 end
 
 return {

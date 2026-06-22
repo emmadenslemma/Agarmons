@@ -37,6 +37,14 @@ local mrrime = {
 
 local init = function()
   pokermon.add_to_family("mrmime", { "galarian_mrmime", "mrrime" })
+
+  -- Fixes Transformation
+  AG.hookaroundfunc(pokermon, 'evolve', function(orig, card, to_key, ...)
+    if not agarmons_config.galarian_mrmime and (to_key == 'j_poke_galarian_mrmime' or to_key == 'j_poke_mrrime') then
+      to_key = 'j_poke_mrmime'
+    end
+    return orig(card, to_key, ...)
+  end)
 end
 
 return {

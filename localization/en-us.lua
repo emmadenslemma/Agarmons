@@ -18,7 +18,7 @@ return {
                     "{C:attention}#1#{} additional time",
                 }
             },
-            j_poke_pikachu_alolan = {
+            j_poke_pikachu_alt = {
                 name = "Pikachu",
                 text = {
                     "{C:mult}+#1#{} Mult if you",
@@ -80,6 +80,22 @@ return {
                 text = {
                     "Played cards with {C:attention}Even{} rank",
                     "retrigger {C:attention}#1#{} times",
+                }
+            },
+            j_poke_koffing_alt = {
+                name = 'Koffing',
+                text = {
+                    "{C:attention}Volatile Left{}",
+                    "{C:mult}+#1#{} Mult then",
+                    "debuff self this round",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds not debuffed)",
+                    "{C:inactive,s:0.8}(Evolves after skipping {C:attention,s:0.8}#3#{C:inactive,s:0.8} Blinds)",
+                }
+            },
+            j_poke_galarian_weezing = {
+                name = "{s:0.6}Galarian{}Weezing",
+                text = {
+
                 }
             },
             j_poke_mega_starmie = {

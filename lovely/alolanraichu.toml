@@ -27,6 +27,6 @@ return {vars = {center.ability.extra.mult, center.ability.extra.money, center.ab
 '''
 payload = '''
 if agarmons_config.alolan_raichu then
-  return {key = self.key .. '_alolan', vars = {center.ability.extra.mult, center.ability.extra.money, center.ability.extra.money_threshold}}
+  return {key = self.key .. '_alt', vars = {center.ability.extra.mult, center.ability.extra.money, center.ability.extra.money_threshold}}
 end
 '''
