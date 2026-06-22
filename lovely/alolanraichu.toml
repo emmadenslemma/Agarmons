@@ -15,18 +15,3 @@ return pokermon.item_evo(self, card, context, "j_poke_raichu")
 payload = '''
 if agarmons_config.alolan_raichu then return pokermon.item_evo(self, card, context, nil) end
 '''
-
-# Only show Alolan Raichu's evolution requirement when enabled
-[[patches]]
-[patches.pattern]
-target = '=[SMODS Pokermon "pokemon/pokejokers_01.lua"]'
-match_indent = true
-position = 'before'
-pattern = '''
-return {vars = {center.ability.extra.mult, center.ability.extra.money, center.ability.extra.money_threshold}}
-'''
-payload = '''
-if agarmons_config.alolan_raichu then
-  return {key = self.key .. '_alt', vars = {center.ability.extra.mult, center.ability.extra.money, center.ability.extra.money_threshold}}
-end
-'''

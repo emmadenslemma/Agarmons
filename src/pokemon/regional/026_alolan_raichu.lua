@@ -43,9 +43,18 @@ local alolan_raichu = {
 local init = function()
   pokermon.add_to_family("raichu", "alolan_raichu")
 
+  local orig_loc_vars = assert(SMODS.Centers.j_poke_pikachu.loc_vars)
+
   SMODS.Joker:take_ownership('poke_pikachu', {
     item_req = { 'thunderstone', 'sunstone' }, -- This is going to have some weird side effects but it's *fine*
     evo_list = { thunderstone = 'j_poke_raichu', sunstone = 'j_poke_alolan_raichu' },
+    loc_vars = function(self, info_queue, card)
+      local ret = orig_loc_vars(self, info_queue, card)
+      if agarmons_config.alolan_raichu then
+        ret.key = self.key .. '_alt'
+      end
+      return ret
+    end,
     add_to_deck = function(self, card, from_debuff)
       if agarmons_config.alolan_raichu and not from_debuff then
         -- Since the evolution code checks `ability.extra.item_req` and not `config.center.item_req` we have to do extra work.
