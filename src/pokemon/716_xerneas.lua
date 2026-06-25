@@ -43,7 +43,7 @@ local xerneas = {
         card.ability.extra.hands_remaining = card.ability.extra.hands
         return {
           message = localize("agar_geomancy_ex"),
-          colour = G.ARGS.LOC_COLOURS.fairy,
+          colour = pokermon.colours.fairy,
           sound = "tarot1",
         }
       end

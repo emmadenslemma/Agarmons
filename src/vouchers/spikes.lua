@@ -6,7 +6,7 @@ local spikes = {
   loc_txt = {
     name = "Spikes",
     text = {
-      "{C:hazard}+#1#{} hazard layer and limit"
+      "{C:poke_hazard}+#1#{} hazard layer and limit"
     }
   },
   loc_vars = function(self, info_queue, card)

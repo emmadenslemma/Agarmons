@@ -40,7 +40,7 @@ local magearna = {
       card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
       return {
         message = localize('agar_soul_heart'),
-        colour = G.ARGS.LOC_COLOURS.fairy
+        colour = pokermon.colours.fairy
       }
     end
   end,

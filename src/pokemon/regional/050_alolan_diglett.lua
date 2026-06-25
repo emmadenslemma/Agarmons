@@ -18,7 +18,7 @@ local calculate_3oak_effect = function(self, card, context)
 
     return {
       message = localize('poke_dig_ex'),
-      colour = G.ARGS.LOC_COLOURS.metal,
+      colour = pokermon.colours.metal,
     }
   end
 end

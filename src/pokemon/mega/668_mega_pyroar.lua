@@ -24,7 +24,7 @@ local mega_pyroar = {
     if context.joker_main and next(context.poker_hands['Flush']) and not G.GAME.modifiers.poke_no_energy then
       return {
         message = localize { type = 'variable', key = 'a_poke_plus_energy', vars = { card.ability.extra.create_energy_mod } },
-        colour = G.ARGS.LOC_COLOURS.pink,
+        colour = pokermon.colours.pink,
         func = function()
           G.E_MANAGER:add_event(Event({
             func = function()
