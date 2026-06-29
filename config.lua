@@ -1,7 +1,7 @@
 return {
   alolan_rattata = true,
   alolan_raichu = true,
-  alolan_diglett = true,
+  alolan_diglett = false,
   galarian_weezing = true,
   galarian_mrmime = true,
 
