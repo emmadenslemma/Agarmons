@@ -111,10 +111,11 @@ function AG.gmax.get_previous_from_gmax(card)
   return G.P_CENTERS["j_" .. prefix .. "_" .. prev] and prev or nil
 end
 
-AG.hookbeforefunc(pokermon, 'get_previous_evo', function(card, full_key)
-  local name = card.name or card.ability.name
-  if string.sub(name, 6) == "gmax_" then
-    return AG.gmax.get_previous_from_gmax(card)
+AG.hookbeforefunc(pokermon, 'get_previous_evo_from_center', function(center, full_key)
+  if center.stage == 'Gigantamax' then
+    local prev = center.name:gsub('^gmax_', '')
+    local prefix = center.poke_custom_prefix or "poke"
+    return full_key and ('j_' .. prefix .. '_' .. prev) or prev
   end
 end)
 

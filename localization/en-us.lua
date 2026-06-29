@@ -39,7 +39,7 @@ return {
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Earn {C:money}$#4#{} plus {C:money}$#5#",
-                    "for each {X:lightning,C:black}Lightning{} Joker",
+                    "for each {X:poke_lightning,C:black}Lightning{} Joker",
                     "you have when {C:attention}Blind",
                     "is selected",
                 }
@@ -157,7 +157,7 @@ return {
             j_poke_mega_skarmory = {
                 name = "Mega Skarmory",
                 text = {
-                    "{C:hazard}+#1#{} hazard layer and limit",
+                    "{C:poke_hazard}+#1#{} hazard layer and limit",
                     "Played {C:attention}Hazard{} cards",
                     "give {X:mult,C:white}X#3#{} Mult for each",
                     "{C:attention}Gold{} or {C:attention}Steel{} card",
@@ -478,7 +478,7 @@ return {
             j_poke_mega_golurk = {
                 name = "Mega Golurk",
                 text = {
-                    "{C:hazard}+#1#{} hazard layer",
+                    "{C:poke_hazard}+#1#{} hazard layer",
                     "Each {C:attention}Hazard Card{} held in hand",
                     "gives {C:white,X:mult}X#2#{} Mult and has a",
                     "{C:green}#3# in #4#{} chance to be destroyed",
@@ -518,7 +518,7 @@ return {
             j_agar_xerneas = {
                 name = "Xerneas",
                 text = {
-                    "{C:fairy}Fairy Aura",
+                    "{C:poke_fairy}Fairy Aura",
                     "Gains {C:white,X:mult}X#1#{} Mult for every",
                     "{C:attention}#2#{C:inactive} [#3#]{} hands played",
                     "{C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)",
@@ -527,7 +527,7 @@ return {
             j_agar_yveltal = {
                 name = "Yveltal",
                 text = {
-                    "{C:dark}Dark Aura",
+                    "{C:poke_dark}Dark Aura",
                     "When discarding",
                     "exactly {C:attention}2{} cards,",
                     "convert the {C:attention}left{} card",
@@ -537,7 +537,7 @@ return {
             j_agar_diancie = {
                 name = "Diancie",
                 text = {
-                    "{C:hazard}+#1#{} hazard layer and limit",
+                    "{C:poke_hazard}+#1#{} hazard layer and limit",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Earn {C:money}$#2#{} at end of round",
                     "for every {C:diamonds}Diamond",
@@ -569,7 +569,7 @@ return {
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {
-                    "{C:hazard}+#1#{} hazard layer",
+                    "{C:poke_hazard}+#1#{} hazard layer",
                     "Played {C:attention}Hazard{} cards give",
                     "{C:mult}+#2#{} Mult when scored",
                     "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)",
@@ -578,7 +578,7 @@ return {
             j_agar_araquanid = {
                 name = "Araquanid",
                 text = {
-                    "{C:hazard}+#1#{} hazard layer",
+                    "{C:poke_hazard}+#1#{} hazard layer",
                     "Played {C:attention}Hazard{} cards give",
                     "{C:mult}+#2#{} Mult when scored",
                     "{br:2}ERROR - CONTACT STEAK",
@@ -603,7 +603,7 @@ return {
                     "suit changes every round",
                     "{br:2}ERROR - CONTACT STEAK",
                     "Gain increased by {C:chips}+#3#{} Chips for",
-                    "every {C:white,X:water}Water{} Joker you have",
+                    "every {C:white,X:poke_water}Water{} Joker you have",
                     "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips)",
                 }
             },
@@ -721,7 +721,7 @@ return {
                     "Copies ability of",
                     "{C:attention}Joker{} to the left,",
                     "but {C:attention}#1#%{} stronger",
-                    "{C:inactive,s:0.8}(Only boosts {C:pink,s:0.8}Energizable{C:inactive,s:0.8} values)",
+                    "{C:inactive,s:0.8}(Only boosts {C:poke_pink,s:0.8}Energizable{C:inactive,s:0.8} values)",
                 }
             },
             j_agar_grookey = {
@@ -1060,7 +1060,7 @@ return {
                 name = "{C:agar_gmax}G-MAX{} Eevee",
                 text = {
                     "First Joker of each",
-                    "{C:pink}Type{} gives {C:white,X:mult}X#1#{} Mult",
+                    "{C:poke_pink}Type{} gives {C:white,X:mult}X#1#{} Mult",
                 }
             },
             j_poke_gmax_snorlax = {
@@ -1075,7 +1075,7 @@ return {
                 text = {
                     "Every hand played draws {C:attention}1{} card,",
                     "plus {C:attention}#1#{} additional card for",
-                    "every {C:attention}2 {C:white,X:metal}Metal{} cards you have",
+                    "every {C:attention}2 {C:white,X:poke_metal}Metal{} cards you have",
                     "{C:inactive,s:0.8}(Includes Jokers and Energy cards)",
                     "{C:inactive}(Currently #2# #3#)",
                 }
@@ -1336,15 +1336,15 @@ return {
             fairy_aura = {
                 name = "Fairy Aura",
                 text = {
-                    "{C:white,X:fairy}Fairy{} Jokers have",
-                    "{C:pink}+1{} energy and limit",
+                    "{C:white,X:poke_fairy}Fairy{} Jokers have",
+                    "{C:poke_pink}+1{} energy and limit",
                 }
             },
             dark_aura = {
                 name = "Dark Aura",
                 text = {
-                    "{C:white,X:dark}Dark{} Jokers have",
-                    "{C:pink}+1{} energy and limit",
+                    "{C:white,X:poke_dark}Dark{} Jokers have",
+                    "{C:poke_pink}+1{} energy and limit",
                 }
             },
         },
