@@ -1,53 +1,34 @@
-local calculate_3oak_effect = function(self, card, context)
-  local hand_cards = AG.list_utils.shallow_copy(G.hand.cards)
-  pseudoshuffle(hand_cards, pseudoseed('alodiglet'))
-
-  if hand_cards[1] then
-    juice_flip_table(card, hand_cards, false, 1)
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.2,
-      func = function()
-        hand_cards[1]:set_ability('m_steel')
-        return true
-      end
-    }))
-
-    juice_flip_table(card, hand_cards, true, 1)
-
-    return {
-      message = localize('poke_dig_ex'),
-      colour = G.ARGS.LOC_COLOURS.metal,
-    }
-  end
-end
+local any = AG.list_utils.any
 
 -- Alolan Diglett 50-1
 local alolan_diglett = {
   name = "alolan_diglett",
-  config = { extra = { mult = 8, rounds = 4 } },
+  config = { extra = { chips = 40, mult = 6, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.mult, card.ability.extra.rounds } }
+    return { vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.rounds } }
   end,
-  rarity = 2,
-  cost = 6,
+  rarity = 1,
+  cost = 5,
   stage = "Basic",
   ptype = "Metal",
   gen = 7,
-  blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.before and next(context.poker_hands['Three of a Kind']) then
-      return calculate_3oak_effect(self, card, context)
-    end
     if context.joker_main then
-      local score_mult = AG.list_utils.any(context.scoring_hand,
-        function(c) return c:get_id() == 8 or c:get_id() == 9 or c:get_id() == 10 end)
+      local score_chips = any(context.scoring_hand, function(c) return c:get_id() == 8 or c:get_id() == 9 or c:get_id() == 10 end)
+      local score_mult = next(context.poker_hands['Three of a Kind'])
 
-      return score_mult and {
-        mult = card.ability.extra.mult,
-      }
+      if score_chips and score_mult then
+        return {
+          message = localize('poke_dig_ex'),
+          chip_mod = card.ability.extra.chips,
+          mult_mod = card.ability.extra.mult,
+        }
+      else
+        return {
+          chips = score_chips and card.ability.extra.chips,
+          mult = score_mult and card.ability.extra.mult,
+        }
+      end
     end
     return pokermon.level_evo(self, card, context, 'j_agar_alolan_dugtrio')
   end,
@@ -56,34 +37,37 @@ local alolan_diglett = {
 -- Alolan Dugtrio 51-1
 local alolan_dugtrio = {
   name = "alolan_dugtrio",
-  config = { extra = { Xmult = 2 } },
+  config = { extra = { chips = 80, Xmult = 1.75 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
-    return { vars = { card.ability.extra.Xmult } }
+    return { vars = { card.ability.extra.Xmult, card.ability.extra.chips } }
   end,
-  rarity = "poke_safari",
-  cost = 8,
+  rarity = 2,
+  cost = 6,
   stage = "One",
   ptype = "Metal",
   gen = 7,
-  blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.before and next(context.poker_hands['Three of a Kind']) then
-      return calculate_3oak_effect(self, card, context)
-    end
     if context.joker_main then
-      local score_mult = AG.list_utils.any(context.scoring_hand,
-        function(c) return c:get_id() == 8 or c:get_id() == 9 or c:get_id() == 10 end)
+      local score_chips = any(context.scoring_hand, function(c) return c:get_id() == 8 or c:get_id() == 9 or c:get_id() == 10 end)
+      local score_Xmult = next(context.poker_hands['Three of a Kind'])
 
-      return {
-        Xmult = score_mult and card.ability.extra.Xmult,
-      }
+      if score_chips and score_Xmult then
+        return {
+          message = localize('poke_dig_ex'),
+          chip_mod = card.ability.extra.chips,
+          Xmult_mod = card.ability.extra.Xmult,
+        }
+      else
+        return {
+          chips = score_chips and card.ability.extra.chips,
+          Xmult = score_Xmult and card.ability.extra.Xmult,
+        }
+      end
     end
   end,
 }
 
 return {
-  can_load = false,
   config_key = 'alolan_diglett',
   list = { alolan_diglett, alolan_dugtrio }
 }
