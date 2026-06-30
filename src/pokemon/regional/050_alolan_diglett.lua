@@ -3,7 +3,7 @@ local any = AG.list_utils.any
 -- Alolan Diglett 50-1
 local alolan_diglett = {
   name = "alolan_diglett",
-  config = { extra = { chips = 40, mult = 6, rounds = 4 } },
+  config = { extra = { chips = 60, mult = 4, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.rounds } }
   end,
@@ -37,7 +37,7 @@ local alolan_diglett = {
 -- Alolan Dugtrio 51-1
 local alolan_dugtrio = {
   name = "alolan_dugtrio",
-  config = { extra = { chips = 80, Xmult = 1.75 } },
+  config = { extra = { chips = 120, Xmult = 1.5 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult, card.ability.extra.chips } }
   end,
