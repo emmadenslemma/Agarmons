@@ -50,6 +50,8 @@ function AG.gmax.devolve(card)
 end
 
 function AG.gmax.end_turn(card)
+  if not card.ability.gmax_turns_left then return end
+
   local new_turns_left = card.ability.gmax_turns_left - 1
 
   card.ability.gmax_turns_left = new_turns_left
