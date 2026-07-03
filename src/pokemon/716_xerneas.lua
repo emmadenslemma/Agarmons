@@ -5,7 +5,6 @@ local xerneas = {
   soul_pos = { x = 5, y = 0 },
   config = { extra = { Xmult = 1, Xmult_mod = 1, hands = 4, hands_remaining = 4 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'fairy_aura' }
     end

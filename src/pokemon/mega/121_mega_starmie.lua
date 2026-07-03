@@ -6,7 +6,6 @@ local mega_starmie = {
   soul_pos = { x = 7, y = 1 },
   config = { extra = { mult_mod = 1, money_mod = 1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.money_mod } }
   end,
   rarity = "poke_mega",

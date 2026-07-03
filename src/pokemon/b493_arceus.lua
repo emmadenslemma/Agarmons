@@ -11,7 +11,6 @@ local beta_arceus = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Emult } }
   end,
   rarity = 4,

@@ -2,7 +2,6 @@
 local yveltal = {
   name = "yveltal",
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'dark_aura' }
     end

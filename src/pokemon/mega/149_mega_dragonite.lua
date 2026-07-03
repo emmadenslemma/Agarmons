@@ -6,7 +6,6 @@ local mega_dragonite = {
   soul_pos = { x = 1, y = 1 },
   config = { extra = { Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = "poke_mega",

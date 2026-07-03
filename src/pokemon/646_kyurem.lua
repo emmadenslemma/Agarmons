@@ -9,7 +9,6 @@ local kyurem = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 4,
@@ -37,7 +36,6 @@ local kyurem_white = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 4,
@@ -66,7 +64,6 @@ local kyurem_black = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 4,

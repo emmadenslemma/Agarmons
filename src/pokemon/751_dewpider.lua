@@ -3,7 +3,6 @@ local dewpider = {
   name = "dewpider",
   config = { extra = { hazard_level = 1, mult = 5, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
     return { vars = { card.ability.extra.hazard_level, card.ability.extra.mult, card.ability.extra.rounds } }
@@ -37,7 +36,6 @@ local araquanid = {
   name = "araquanid",
   config = { extra = { hazard_level = 1, mult = 5, Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
     return { vars = { card.ability.extra.hazard_level, card.ability.extra.mult, card.ability.extra.Xmult_multi } }

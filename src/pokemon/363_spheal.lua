@@ -3,7 +3,6 @@ local spheal = {
   name = "spheal",
   config = { extra = { mult = 0, mult_mod = 2 }, evo_rqmt = 12 },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult, card.ability.evo_rqmt } }
   end,
   rarity = 2,
@@ -35,7 +34,6 @@ local sealeo = {
   name = "sealeo",
   config = { extra = { mult = 0, mult_mod = 3 }, evo_rqmt = 30 },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult, card.ability.evo_rqmt } }
   end,
   rarity = "poke_safari",
@@ -67,7 +65,6 @@ local walrein = {
   name = "walrein",
   config = { extra = { mult = 0, mult_mod = 3, Xmult = 1, Xmult_mod = .15, num = 1, dem = 4 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "walrein")
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult, card.ability.extra.Xmult_mod, card.ability.extra.Xmult, num, dem } }
   end,

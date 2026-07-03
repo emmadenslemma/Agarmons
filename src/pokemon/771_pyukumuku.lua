@@ -37,7 +37,6 @@ local pyukumuku = {
   name = "pyukumuku",
   config = { extra = { stored = { chips = 0, mult = 0, Xmult = 0, money = 0 }, volatile = "left" } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = "Other", key = "poke_volatile_" .. card.ability.extra.volatile }
     end

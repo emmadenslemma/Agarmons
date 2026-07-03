@@ -3,7 +3,6 @@ local toxel = {
   name = "toxel",
   config = { extra = { Xmult_minus = 0.75, rounds = 2 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
       info_queue[#info_queue+1] = { set = 'Other', key = 'baby' }
       info_queue[#info_queue+1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
@@ -39,7 +38,6 @@ local toxtricity = {
   pos = { x = 6, y = 0, },
   config = { extra = { form = "amped", money = 2, money_mod = 1, threshold = 0.5 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_CENTERS['m_stall_toxic']
     local ret = { vars = { card.ability.extra.money, card.ability.extra.money_mod, card.ability.extra.threshold } }
     if card.ability.extra.form == "lowkey" then
@@ -108,7 +106,6 @@ local gmax_toxtricity = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_CENTERS['m_stall_toxic']
     return { vars = { card.ability.extra.money1 } }
   end,

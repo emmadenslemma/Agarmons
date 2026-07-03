@@ -3,7 +3,6 @@ local alolan_rattata = {
   name = "alolan_rattata",
   config = { extra = { retriggers = 1, rounds = 5 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.retriggers, card.ability.extra.rounds } }
   end,
   rarity = 1,
@@ -28,7 +27,6 @@ local alolan_raticate = {
   name = "alolan_raticate",
   config = { extra = { retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.retriggers } }
   end,
   rarity = "poke_safari",

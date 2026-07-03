@@ -9,7 +9,6 @@ local dondozo = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,
@@ -29,7 +28,6 @@ local tatsugiri = {
   pos = { x = 0, y = 3 },
   config = { extra = { form = nil, chips = 25, chip_mod = 5, mult = 5, mult_mod = 1, money = 1, money_mod = 0.2 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
     local key = self.key .. '_' .. form
     return {
@@ -117,7 +115,6 @@ local mega_tatsugiri = {
   soul_pos = { x = 5, y = 3 },
   config = { extra = { form = nil, chips1 = 25, mult1 = 5, money1 = 1, num = 1, dem = 3, money2 = 3, retriggers = 1, Xmult_multi = 1.2, chips = 25, mult = 5, money = 1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
     local key = self.key .. '_' .. form
     local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, 'curly_megagiri')
@@ -196,7 +193,6 @@ local dondozo_commander = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 3,

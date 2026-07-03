@@ -6,7 +6,6 @@ local mega_clefable = {
   soul_pos = { x = 7, y = 2 },
   config = { extra = { Xmult_multi = 0.1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
   end,
   rarity = "poke_mega",

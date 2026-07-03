@@ -9,7 +9,6 @@ local zekrom = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = 4,

@@ -4,7 +4,6 @@ local gmax_centiskorch = {
   agar_inject_prefix = "Gem",
   config = { extra = { mult = 0, mult_mod = 4 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod } }
   end,
   rarity = "agar_gmax",

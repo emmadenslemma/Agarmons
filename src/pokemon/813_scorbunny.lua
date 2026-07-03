@@ -3,7 +3,6 @@ local scorbunny = {
   name = "scorbunny",
   config = { extra = { d_size = 1, mult = 0, mult_mod = 1, mult_loss = 1, discarded_cards = 0 }, evo_rqmt = 75 },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.d_size, card.ability.extra.mult_mod, card.ability.extra.mult_loss, card.ability.extra.mult, card.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = 2,
@@ -61,7 +60,6 @@ local raboot = {
   name = "raboot",
   config = { extra = { d_size = 1, mult = 0, mult_mod = 2, mult_loss = 2, discarded_cards = 0 }, evo_rqmt = 75 },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.d_size, card.ability.extra.mult_mod, card.ability.extra.mult_loss, card.ability.extra.mult, card.ability.extra.discarded_cards, self.config.evo_rqmt } }
   end,
   rarity = "poke_safari",
@@ -118,7 +116,6 @@ local cinderace = {
   name = "cinderace",
   config = { extra = { d_size = 1, mult = 0, mult_mod = 2, Xmult = 0, Xmult_mod = 0.3 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.d_size, card.ability.extra.mult_mod, card.ability.extra.Xmult_mod, card.ability.extra.mult, 1 + card.ability.extra.Xmult } }
   end,
   rarity = "poke_safari",
@@ -178,7 +175,6 @@ local gmax_cinderace = {
     }
   },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = {} }
   end,
   rarity = "agar_gmax",

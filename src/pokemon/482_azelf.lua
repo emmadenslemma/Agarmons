@@ -3,7 +3,6 @@ local azelf = {
   name = "azelf",
   config = { extra = { scry = 3, Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.scry, card.ability.extra.Xmult_multi } }
   end,
   designer = "CBMX",

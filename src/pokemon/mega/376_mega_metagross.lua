@@ -2,9 +2,6 @@
 local mega_metagross = {
   name = "mega_metagross",
   agar_inject_prefix = "poke",
-  loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
-  end,
   rarity = "poke_mega",
   cost = 12,
   stage = "Mega",

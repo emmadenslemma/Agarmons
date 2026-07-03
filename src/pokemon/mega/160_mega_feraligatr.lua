@@ -6,7 +6,6 @@ local mega_feraligatr = {
   soul_pos = { x = 5, y = 2 },
   config = { extra = { Xmult = 1, Xmult1 = 0, Xmult_mod = 0.4 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_mod, card.ability.extra.Xmult + card.ability.extra.Xmult1 } }
   end,
   rarity = "poke_mega",

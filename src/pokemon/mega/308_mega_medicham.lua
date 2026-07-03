@@ -9,7 +9,6 @@ local mega_medicham = {
   agar_inject_prefix = "poke",
   config = { extra = { consumable_slots = 1, Xmult_mod = 2.5 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     local current_Xmult = self:get_current_Xmult(card)
     return { vars = { card.ability.extra.consumable_slots, card.ability.extra.Xmult_mod, current_Xmult } }
   end,

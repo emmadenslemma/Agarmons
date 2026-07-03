@@ -6,7 +6,6 @@ local gmax_kingler = {
   agar_inject_prefix = "poke",
   config = { extra = { card_chip_multi = 2 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_CENTERS.e_foil
   end,
   rarity = "agar_gmax",

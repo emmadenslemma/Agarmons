@@ -6,7 +6,6 @@ local mega_skarmory = {
   soul_pos = { x = 1, y = 3 },
   config = { extra = { hazard_level = 1, hazard_max = 1, Xmult_multi = 1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     -- Yes, these should be toggled with detailed_tooltips, but this is for consistency with Pokermon
     info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
     info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard

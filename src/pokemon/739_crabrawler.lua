@@ -12,7 +12,6 @@ end
 local crabrawler = {
   name = "crabrawler",
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_CENTERS.c_poke_icestone
   end,
   rarity = 1,
@@ -34,9 +33,6 @@ local crabrawler = {
 
 local crabominable = {
   name = "crabominable",
-  loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
-  end,
   rarity = "poke_safari",
   cost = 7,
   stage = "One",

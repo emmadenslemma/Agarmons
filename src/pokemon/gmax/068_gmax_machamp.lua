@@ -4,7 +4,6 @@ local gmax_machamp = {
   agar_inject_prefix = "poke",
   config = { extra = { Xmult_multi = 1.5, hands = 4, discards = 4 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.hands, card.ability.extra.Xmult_multi } }
   end,
   rarity = "agar_gmax",

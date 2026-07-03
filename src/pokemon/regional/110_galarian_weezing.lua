@@ -4,7 +4,6 @@ local galarian_weezing = {
   agar_inject_prefix = "poke",
   config = { extra = { mult_mod = 6, volatile = 'left' } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult_mod * G.GAME.skips } }
   end,
   rarity = "poke_safari",

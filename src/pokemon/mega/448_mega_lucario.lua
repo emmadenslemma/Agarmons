@@ -4,7 +4,6 @@ local mega_lucario = {
   agar_inject_prefix = "poke",
   config = { extra = { Xmult_multi = 1.3, Xmult_multi1 = 0.2 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi, card.ability.extra.Xmult_multi1 } }
   end,
   rarity = "poke_mega",

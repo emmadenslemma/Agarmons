@@ -2,7 +2,6 @@ local drampa = {
   name = "drampa",
   config = { extra = { boosters = 1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.boosters } }
   end,
   rarity = 3,
@@ -28,7 +27,6 @@ local mega_drampa = {
   soul_pos = { x = 9, y = 2 },
   config = { extra = { boosters = 1, booster_choice_mod = 1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     return { vars = { card.ability.extra.boosters, card.ability.extra.booster_choice_mod } }
   end,
   rarity = "poke_mega",

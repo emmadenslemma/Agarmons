@@ -4,7 +4,6 @@ local gmax_blastoise = {
   agar_inject_prefix = "poke",
   config = { extra = { Xmult_mod = 1, hands = 1 } },
   loc_vars = function(self, info_queue, card)
-    pokermon.type_tooltip(self, info_queue, card)
     local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.hands_left
     return { vars = { card.ability.extra.Xmult_mod, current_Xmult } }
   end,
