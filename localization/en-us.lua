@@ -551,19 +551,20 @@ return {
             j_agar_crabrawler = {
                 name = "Crabrawler",
                 text = {
-                    "Played cards give their",
-                    "rank as {C:chips}Chips{} when scored",
+                    "{C:attention}Lowest{} ranked card played",
+                    "gives its rank as {C:mult}Mult",
+                    "when scored",
                     "{C:inactive,s:0.8}(Evolves with an {C:attention,s:0.8}Ice Stone{C:inactive,s:0.8})"
                 },
             },
             j_agar_crabominable = {
                 name = "Crabominable",
                 text = {
-                    "Played cards give {C:attention}triple",
-                    "their rank as {C:chips}Chips{} when scored",
+                    "{C:attention}Lowest{} ranked card played",
+                    "gives {C:attention}triple{} its rank as",
+                    "{C:mult}Mult{} when scored",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "{C:attention}Glass{} cards are also",
-                    "{C:attention}Wild{} cards",
+                    "{C:attention}Glass{} cards are also {C:attention}Wild{} cards",
                 },
             },
             j_agar_dewpider = {
