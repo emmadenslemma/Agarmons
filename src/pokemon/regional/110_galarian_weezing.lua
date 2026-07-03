@@ -83,6 +83,7 @@ local init = function()
 end
 
 return {
+  can_load = false,
   config_key = 'galarian_weezing',
   init = init,
   list = { galarian_weezing }
