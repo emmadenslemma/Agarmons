@@ -36,7 +36,7 @@ local crabominable = {
   rarity = "poke_safari",
   cost = 7,
   stage = "One",
-  ptype = "Fighting",
+  ptype = "Water",
   gen = 7,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
