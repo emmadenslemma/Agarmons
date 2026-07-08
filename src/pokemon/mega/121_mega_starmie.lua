@@ -2,8 +2,6 @@
 local mega_starmie = {
   name = "mega_starmie",
   agar_inject_prefix = "poke",
-  pos = { x = 6, y = 1 },
-  soul_pos = { x = 7, y = 1 },
   config = { extra = { mult_mod = 1, money_mod = 1 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.money_mod } }
@@ -13,7 +11,6 @@ local mega_starmie = {
   stage = "Mega",
   ptype = "Water",
   gen = 1,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.before and context.cardarea == G.jokers

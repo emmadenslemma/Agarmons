@@ -2,8 +2,6 @@
 local mega_meganium = {
   name = "mega_meganium",
   agar_inject_prefix = "poke",
-  pos = { x = 2, y = 2 },
-  soul_pos = { x = 3, y = 2 },
   config = { extra = { money = 4 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.money } }
@@ -13,7 +11,6 @@ local mega_meganium = {
   stage = "Mega",
   ptype = "Grass",
   gen = 2,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand and not context.end_of_round then

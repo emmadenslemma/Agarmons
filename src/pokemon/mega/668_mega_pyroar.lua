@@ -2,8 +2,6 @@
 local mega_pyroar = {
   name = "mega_pyroar",
   agar_inject_prefix = "poke",
-  pos = { x = 8, y = 1 },
-  soul_pos = { x = 9, y = 1 },
   config = { extra = { create_energy_mod = 2 } },
   loc_vars = function(self, info_queue, card)
     if pokermon_config.detailed_tooltips then
@@ -17,7 +15,6 @@ local mega_pyroar = {
   stage = "Mega",
   ptype = "Fire",
   gen = 1,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and next(context.poker_hands['Flush']) and not G.GAME.modifiers.poke_no_energy then

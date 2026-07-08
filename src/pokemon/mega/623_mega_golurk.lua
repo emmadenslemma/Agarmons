@@ -2,8 +2,6 @@
 local mega_golurk = {
   name = "mega_golurk",
   agar_inject_prefix = "poke",
-  pos = { x = 0, y = 4 },
-  soul_pos = { x = 1, y = 4 },
   config = { extra = { hazard_level = 1, Xmult_multi = 1.75, dem = 6 } },
   loc_vars = function(self, info_queue, card)
     local num, dem = SMODS.get_probability_vars(card, 1, card.ability.extra.dem)
@@ -14,7 +12,6 @@ local mega_golurk = {
   stage = "Mega",
   ptype = "Psychic",
   gen = 5,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand and not context.end_of_round

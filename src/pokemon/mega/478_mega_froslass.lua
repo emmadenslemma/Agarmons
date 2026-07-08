@@ -6,8 +6,6 @@ end
 local mega_froslass = {
   name = "mega_froslass",
   agar_inject_prefix = "poke",
-  pos = { x = 4, y = 4 },
-  soul_pos = { x = 5, y = 4 },
   config = { extra = { debt = 25 } },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue+1] = G.P_TAGS.tag_poke_pocket_tag
@@ -27,7 +25,6 @@ local mega_froslass = {
   stage = "Mega",
   ptype = "Water",
   gen = 4,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.setting_blind and in_debt() then

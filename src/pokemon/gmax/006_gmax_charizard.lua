@@ -2,8 +2,6 @@
 local gmax_charizard = {
   name = "gmax_charizard",
   agar_inject_prefix = "poke",
-  pos = { x = 0, y = 7 },
-  soul_pos = { x = 1, y = 7 },
   config = { extra = { Xmult_mod = 1, d_size = 1 } },
   loc_vars = function(self, info_queue, card)
     local current_Xmult = card.ability.extra.Xmult_mod * G.GAME.current_round.discards_used
@@ -14,7 +12,6 @@ local gmax_charizard = {
   stage = "Gigantamax",
   ptype = "Fire",
   gen = 1,
-  atlas = "AtlasJokersBasicGen01",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then

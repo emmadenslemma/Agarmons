@@ -2,8 +2,6 @@
 local mega_skarmory = {
   name = "mega_skarmory",
   agar_inject_prefix = "poke",
-  pos = { x = 0, y = 3 },
-  soul_pos = { x = 1, y = 3 },
   config = { extra = { hazard_level = 1, hazard_max = 1, Xmult_multi = 1 } },
   loc_vars = function(self, info_queue, card)
     -- Yes, these should be toggled with detailed_tooltips, but this is for consistency with Pokermon
@@ -20,7 +18,6 @@ local mega_skarmory = {
   stage = "Mega",
   ptype = "Metal",
   gen = 1,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and

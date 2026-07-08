@@ -2,8 +2,6 @@
 local mega_chandelure = {
   name = "mega_chandelure",
   agar_inject_prefix = "poke",
-  pos = { x = 0, y = 2 },
-  soul_pos = { x = 1, y = 2 },
   config = { extra = { Xmult_multi = 1, Xmult_multi1 = 0.03 } },
   loc_vars = function(self, info_queue, card)
     local current_Xmult = card.ability.extra.Xmult_multi + card.ability.extra.Xmult_multi1 * card.sell_cost
@@ -15,7 +13,6 @@ local mega_chandelure = {
   ptype = "Fire",
   gen = 5,
   designer = "Gem",
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.other_joker and context.other_joker.sell_cost < 2 then

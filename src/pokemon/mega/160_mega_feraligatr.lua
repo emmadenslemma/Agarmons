@@ -2,8 +2,6 @@
 local mega_feraligatr = {
   name = "mega_feraligatr",
   agar_inject_prefix = "poke",
-  pos = { x = 4, y = 2 },
-  soul_pos = { x = 5, y = 2 },
   config = { extra = { Xmult = 1, Xmult1 = 0, Xmult_mod = 0.4 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_mod, card.ability.extra.Xmult + card.ability.extra.Xmult1 } }
@@ -13,7 +11,6 @@ local mega_feraligatr = {
   stage = "Mega",
   ptype = "Water",
   gen = 2,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then

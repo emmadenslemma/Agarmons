@@ -2,8 +2,6 @@
 local mega_dragonite = {
   name = "mega_dragonite",
   agar_inject_prefix = "poke",
-  pos = { x = 0, y = 1 },
-  soul_pos = { x = 1, y = 1 },
   config = { extra = { Xmult_multi = 2 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
@@ -13,7 +11,6 @@ local mega_dragonite = {
   stage = "Mega",
   ptype = "Dragon",
   gen = 1,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.modify_scoring_hand and not context.blueprint then

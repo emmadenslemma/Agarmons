@@ -2,8 +2,6 @@
 local mega_clefable = {
   name = "mega_clefable",
   agar_inject_prefix = "poke",
-  pos = { x = 6, y = 2 },
-  soul_pos = { x = 7, y = 2 },
   config = { extra = { Xmult_multi = 0.1 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
@@ -13,7 +11,6 @@ local mega_clefable = {
   stage = "Mega",
   ptype = "Fairy",
   gen = 1,
-  atlas = "AgarmonsJokers",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and not context.end_of_round
