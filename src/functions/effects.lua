@@ -104,35 +104,31 @@ AG.hookaroundfunc(SMODS, 'get_card_areas', function(orig, ...)
   return t
 end)
 
-function AG.effects.apply_sturdy_glass()
-  return next(SMODS.find_card('j_agar_glastrier'))
+function AG.effects.glass_is_sturdy(card)
+  return SMODS.has_enhancement(card, 'm_glass') and next(SMODS.find_card('j_agar_glastrier'))
 end
 
-function AG.effects.prevent_destruction(card)
-  return (SMODS.has_enhancement(card, 'm_glass') and AG.effects.apply_sturdy_glass())
+function AG.effects.try_scale_glastrier()
+  local glastrier = SMODS.find_card('j_agar_glastrier')[1]
+  if glastrier then
+    AG.defer(function()
+      SMODS.scale_card(glastrier, {
+        ref_value = 'Xmult',
+        scalar_value = 'Xmult_mod'
+      })
+    end)
+  end
 end
 
-AG.hookaroundfunc(pokermon, 'remove_card', function(orig, card, ...)
-  if not AG.effects.prevent_destruction(card) then
-    return orig(card, ...)
+function AG.effects.prevent_glass_shatter(card)
+  if AG.effects.glass_is_sturdy(card) then
+    AG.effects.try_scale_glastrier()
+    return true
   end
-end)
-
-AG.hookbeforefunc(SMODS, 'calculate_context', function(context)
-  if context.remove_playing_cards then
-    for i = #context.removed, 1, -1 do
-      if AG.effects.prevent_destruction(context.removed[i]) then
-        table.remove(context.removed, i)
-      end
-    end
-    if #context.removed == 0 then
-      return {}
-    end
-  end
-end)
+end
 
 AG.hookaroundfunc(Card, 'shatter', function(orig, card)
-  if AG.effects.prevent_destruction(card) then
+  if AG.effects.prevent_glass_shatter(card) then
     card.getting_sliced = false
     card.shattered = false
     return

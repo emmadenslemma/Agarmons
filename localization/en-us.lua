@@ -848,24 +848,20 @@ return {
             j_agar_glastrier = {
                 name = "Glastrier",
                 text = {
-                    "{C:attention}Glass{} cards",
-                    "can't be destroyed",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#1#{} Mult for",
-                    "every {C:attention}Glass Card",
-                    "in your full deck",
+                    "{C:attention}Holding {C:poke_item}Ice Stone",
+                    "If a {C:attention}Glass Card",
+                    "would shatter, this",
+                    "Joker gains {C:white,X:mult}X#1#{} instead",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
             j_agar_glastrier_aprilfools = {
                 name = "Snowjack Horseman",
                 text = {
-                    "{C:attention}Glass{} cards",
-                    "can't be destroyed",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "{C:white,X:mult}X#1#{} Mult for",
-                    "every {C:attention}Glass Card",
-                    "in your full deck",
+                    "{C:attention}Holding {C:poke_item}Ice Stone",
+                    "If a {C:attention}Glass Card",
+                    "would shatter, this",
+                    "Joker gains {C:white,X:mult}X#1#{} instead",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },

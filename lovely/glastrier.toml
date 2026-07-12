@@ -16,7 +16,7 @@ position = "after"
 match_indent = true
 pattern = '''-- TARGET: card destroyed'''
 payload = '''
-if destroyed and AG.effects.prevent_destruction(card) then
+if destroyed and AG.effects.prevent_glass_shatter(card) then
   destroyed = false
 end
 '''
@@ -28,4 +28,4 @@ target = 'functions/state_events.lua'
 position = "after"
 match_indent = true
 pattern = '''if key == 'remove' or (type(eval2) == 'table' and eval2.remove) then removed = true end'''
-payload = '''if removed and AG.effects.prevent_destruction(G.hand.highlighted[i]) then removed = false end'''
+payload = '''if removed and AG.effects.prevent_glass_shatter(G.hand.highlighted[i]) then removed = false end'''
