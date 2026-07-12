@@ -849,9 +849,9 @@ return {
                 name = "Glastrier",
                 text = {
                     "{C:attention}Holding {C:poke_item}Ice Stone",
-                    "If a {C:attention}Glass Card",
-                    "would shatter, this",
-                    "Joker gains {C:white,X:mult}X#1#{} instead",
+                    "If a {C:attention}Glass Card{} would",
+                    "shatter, this Joker",
+                    "gains {C:white,X:mult}X#1#{} Mult instead",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
@@ -859,9 +859,9 @@ return {
                 name = "Snowjack Horseman",
                 text = {
                     "{C:attention}Holding {C:poke_item}Ice Stone",
-                    "If a {C:attention}Glass Card",
-                    "would shatter, this",
-                    "Joker gains {C:white,X:mult}X#1#{} instead",
+                    "If a {C:attention}Glass Card{} would",
+                    "shatter, this Joker",
+                    "gains {C:white,X:mult}X#1#{} Mult instead",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
