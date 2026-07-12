@@ -1,7 +1,7 @@
 -- Spectrier 897
 local spectrier = {
   name = "spectrier",
-  config = { extra = { Xmult = 1, Xmult_mod = 0.4 } },
+  config = { extra = { Xmult = 1, Xmult_mod = 0.5 } },
   loc_vars = function(self, info_queue, card)
     local wraith_name_text = localize { type = 'name_text', set = 'Spectral', key = 'c_wraith' }
     if pokermon_config.detailed_tooltips then
