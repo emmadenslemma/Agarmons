@@ -309,10 +309,11 @@ return {
             j_agar_groudon = {
                 name = "Groudon",
                 text = {
-                    "{C:attention}Holding {C:dark_edition}Negative {C:tarot}#1#",
-                    "Played cards with {C:mult}#2#",
-                    "or more {C:mult}Mult{} give",
-                    "{X:mult,C:white}X#3#{} Mult when scored",
+                    "Played cards with {C:attention}no rank",
+                    "give {X:mult,C:white}X#1#{} Mult when",
+                    "scored for each {C:white,X:poke_fire}Fire",
+                    "or {C:white,X:poke_earth}Earth{} Joker you have",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 }
             },
             j_agar_primal_groudon = {

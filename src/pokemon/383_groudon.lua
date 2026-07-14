@@ -1,14 +1,23 @@
+local get_boosting_joker_count = function()
+  local count = 0
+  if not G.jokers then return count end
+  for _, v in ipairs(G.jokers.cards) do
+    if (pokermon.is_type(v, 'Fire') or pokermon.is_type(v, 'Earth')) then
+      count = count + 1
+    end
+  end
+  return count
+end
+
 -- Groudon 383
 local groudon = {
   name = "groudon",
-  config = { extra = { mult_req = 4, Xmult_multi = 1.75 } },
+  config = { extra = { Xmult_multi = 0.5, Xmult_multi2 = 1 } },
   loc_vars = function(self, info_queue, card)
-    local empress_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_empress' }
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { empress_name_text } }
-      info_queue[#info_queue+1] = G.P_CENTERS.c_empress
-    end
-    return { vars = { empress_name_text, card.ability.extra.mult_req, card.ability.extra.Xmult_multi } }
+    local ex = card.ability.extra
+    info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
+    info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
+    return { vars = { ex.Xmult_multi, ex.Xmult_multi * get_boosting_joker_count() + ex.Xmult_multi2 } }
   end,
   rarity = 4,
   cost = 20,
@@ -17,17 +26,10 @@ local groudon = {
   gen = 3,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play
-        and pokermon.total_mult(context.other_card) >= card.ability.extra.mult_req then
+    if context.individual and context.cardarea == G.play and SMODS.has_no_rank(context.other_card) then
       return {
-        Xmult = card.ability.extra.Xmult_multi
+        Xmult = card.ability.extra.Xmult_multi * get_boosting_joker_count() + card.ability.extra.Xmult_multi2
       }
-    end
-  end,
-  add_to_deck = function(self, card, from_debuff)
-    if not from_debuff and not G.GAME.banned_keys['c_empress'] then
-      local empress = SMODS.add_card { key = 'c_empress', edition = 'e_negative' }
-      SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.SECONDARY_SET.Tarot }, empress)
     end
   end,
 }
