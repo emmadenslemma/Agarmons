@@ -2,7 +2,7 @@
 local mega_dragonite = {
   name = "mega_dragonite",
   agar_inject_prefix = "poke",
-  config = { extra = { Xmult_multi = 2 } },
+  config = { extra = { Xmult_multi = 2.5 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.Xmult_multi } }
   end,
