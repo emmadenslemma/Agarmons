@@ -15,9 +15,8 @@ local groudon = {
   config = { extra = { Xmult_multi = 0.5, Xmult_multi2 = 1 } },
   loc_vars = function(self, info_queue, card)
     local ex = card.ability.extra
-    info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
-    info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-    return { vars = { ex.Xmult_multi, ex.Xmult_multi * get_boosting_joker_count() + ex.Xmult_multi2 } }
+    local total_xmult = ex.Xmult_multi * get_boosting_joker_count() + ex.Xmult_multi2
+    return { vars = { ex.Xmult_multi, total_xmult } }
   end,
   rarity = 4,
   cost = 20,
