@@ -1,3 +1,11 @@
+local function is_high_card(hand)
+  local results = evaluate_poker_hand(hand)
+  for _, v in ipairs(G.handlist) do
+    if v == 'High Card' then return true end
+    if next(results[v]) then return false end
+  end
+end
+
 -- Mega Dragonite 149-1
 local mega_dragonite = {
   name = "mega_dragonite",
@@ -13,13 +21,12 @@ local mega_dragonite = {
   gen = 1,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.modify_scoring_hand and context.scoring_name == "High Card" and not context.blueprint then
+    if context.modify_scoring_hand and not context.blueprint and is_high_card(context.full_hand) then
       return {
         add_to_hand = true
       }
     end
-    if context.individual and context.cardarea == G.play and not context.end_of_round
-        and context.scoring_hand and context.scoring_name == "High Card" then
+    if context.individual and context.cardarea == G.play and context.scoring_name == "High Card" then
       return {
         Xmult = card.ability.extra.Xmult_multi
       }
