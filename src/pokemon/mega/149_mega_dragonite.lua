@@ -1,8 +1,9 @@
 local function is_high_card(hand)
   local results = evaluate_poker_hand(hand)
   for _, v in ipairs(G.handlist) do
-    if v == 'High Card' then return true end
-    if next(results[v]) then return false end
+    if next(results[v]) then
+      return v == 'High Card'
+    end
   end
 end
 
