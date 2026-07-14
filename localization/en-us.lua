@@ -131,12 +131,10 @@ return {
             j_poke_mega_dragonite = {
                 name = "Mega Dragonite",
                 text = {
-                    "Applies {C:attention}Splash",
-                    "{br:2}ERROR - CONTACT STEAK",
-                    "If played hand is a",
-                    "{C:attention}High Card{}, played cards",
-                    "give {C:white,X:mult}X#1#{} Mult when",
-                    "scored",
+                    "If played hand is a {C:attention}High Card{},",
+                    "{C:attention}every{} played card counts",
+                    "in scoring and gives",
+                    "{C:white,X:mult}X#1#{} Mult when scored",
                 }
             },
             j_poke_mega_meganium = {
