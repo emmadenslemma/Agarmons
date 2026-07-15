@@ -290,10 +290,13 @@ return {
             j_agar_kyogre = {
                 name = "Kyogre",
                 text = {
-                    "{C:attention}Holding {C:dark_edition}Negative {C:tarot}#1#",
-                    "Played cards with {C:chips}#2#",
-                    "or more {C:chips}Chips{} give",
-                    "{X:mult,C:white}X#3#{} Mult when scored",
+                    "Retrigger all card",
+                    "{C:attention}held in hand{} abilities {C:attention}twice",
+                    "{br:2}ERROR - CONTACT STEAK",
+                    "Retriggers an additional",
+                    "time for every {C:attention}#1#",
+                    "{C:white,X:poke_water}Water{} Jokers you have",
+                    "{C:inactive}(Currently retriggers {C:attention}#2#{C:inactive} #3#)",
                 }
             },
             j_agar_primal_kyogre = {

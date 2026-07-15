@@ -1,14 +1,11 @@
 -- Kyogre 382
 local kyogre = {
   name = "kyogre",
-  config = { extra = { chip_req = 30, Xmult_multi = 1.75 } },
+  config = { extra = { retriggers = 2, type_req = 3, bonus_retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
-    local hierophant_name_text = localize { type = 'name_text', set = 'Tarot', key = 'c_heirophant' }
-    if pokermon_config.detailed_tooltips then
-      info_queue[#info_queue+1] = { set = 'Other', key = 'holding', vars = { hierophant_name_text } }
-      info_queue[#info_queue+1] = G.P_CENTERS.c_heirophant
-    end
-    return { vars = { hierophant_name_text, card.ability.extra.chip_req, card.ability.extra.Xmult_multi } }
+    local total_retriggers = self:get_retriggers(card)
+    local retrigger_loc_key = 'b_retrigger_' .. (total_retriggers == 1 and 'single' or 'plural')
+    return { vars = { card.ability.extra.type_req, self:get_retriggers(card), localize(retrigger_loc_key) } }
   end,
   rarity = 4,
   cost = 20,
@@ -16,18 +13,16 @@ local kyogre = {
   ptype = "Water",
   gen = 3,
   blueprint_compat = true,
-  calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play
-        and pokermon.total_chips(context.other_card) >= card.ability.extra.chip_req then
-      return {
-        Xmult = card.ability.extra.Xmult_multi
-      }
-    end
+  get_retriggers = function(self, card)
+    if not G.jokers then return 1 end
+    local bonus_joker_mod = math.floor(#pokermon.find_pokemon_type('Water') / card.ability.extra.type_req)
+    return card.ability.extra.retriggers + bonus_joker_mod * card.ability.extra.bonus_retriggers
   end,
-  add_to_deck = function(self, card, from_debuff)
-    if not from_debuff and not G.GAME.banned_keys['c_heirophant'] then
-      local hierophant = SMODS.add_card { key = 'c_heirophant', edition = 'e_negative' }
-      SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.SECONDARY_SET.Tarot }, hierophant)
+  calculate = function(self, card, context)
+    if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
+      return {
+        repetitions = self:get_retriggers(card)
+      }
     end
   end,
 }
