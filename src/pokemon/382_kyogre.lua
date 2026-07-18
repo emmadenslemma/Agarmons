@@ -78,6 +78,6 @@ end
 
 return {
   config_key = "kyogre",
-  init = init,
-  list = { kyogre, primal_kyogre }
+  -- init = init,
+  list = { kyogre } --, primal_kyogre }
 }

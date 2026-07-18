@@ -79,6 +79,6 @@ end
 
 return {
   config_key = "groudon",
-  init = init,
-  list = { groudon, primal_groudon }
+  -- init = init,
+  list = { groudon } --, primal_groudon }
 }
