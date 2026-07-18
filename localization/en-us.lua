@@ -48,8 +48,9 @@ return {
                 name = "Mega Clefable",
                 text = {
                     "Played {C:clubs}Club{} cards give",
-                    "{C:white,X:mult}X#1#{} Mult when scored for each",
-                    "{C:clubs}Club{} card in scoring hand",
+                    "{C:white,X:mult}X#1#{} Mult when scored for",
+                    "each {C:clubs}Club{} card drawn this blind",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
                 }
             },
             j_agar_alolan_diglett = {
