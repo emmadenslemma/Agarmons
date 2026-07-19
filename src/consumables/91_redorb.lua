@@ -17,6 +17,6 @@ local redorb = AG.legendary_orb {
 }
 
 return {
-  can_load = agarmons_config.groudon,
+  can_load = false, -- agarmons_config.groudon,
   list = { redorb }
 }

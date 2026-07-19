@@ -37,8 +37,8 @@ return {
     {
       title = function() return localize("agar_legendary_pokemon1") end,
       tiles = {
-        { list = { "j_agar_kyogre", "j_agar_primal_kyogre" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_kyogre" } end, config_key = "kyogre" },
-        { list = { "j_agar_groudon", "j_agar_primal_groudon" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_groudon" } end, config_key = "groudon" },
+        { list = { "j_agar_kyogre" --[[, "j_agar_primal_kyogre"]] }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_kyogre" } end, config_key = "kyogre" },
+        { list = { "j_agar_groudon" --[[, "j_agar_primal_groudon"]] }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_groudon" } end, config_key = "groudon" },
         { list = { "j_agar_rayquaza" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_rayquaza" } end, config_key = "rayquaza" },
         { list = { "j_agar_uxie", "j_agar_mesprit", "j_agar_azelf" }, label = function() return localize("agar_lake_trio") end, config_key = "lake_trio" },
         { list = { "j_agar_dialga", "j_agar_dialga_origin" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_dialga" } end, config_key = "dialga" },

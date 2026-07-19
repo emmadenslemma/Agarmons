@@ -17,6 +17,6 @@ local blueorb = AG.legendary_orb {
 }
 
 return {
-  can_load = agarmons_config.kyogre,
+  can_load = false, -- agarmons_config.kyogre,
   list = { blueorb }
 }
