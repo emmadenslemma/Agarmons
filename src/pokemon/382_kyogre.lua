@@ -1,11 +1,12 @@
 -- Kyogre 382
 local kyogre = {
   name = "kyogre",
-  config = { extra = { retriggers = 2, type_req = 3, bonus_retriggers = 1 } },
+  config = { extra = { retriggers = 1, type_req = 3, bonus_retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
-    local total_retriggers = self:get_retriggers(card)
+    local ex = card.ability.extra
+    local total_retriggers = self:get_total_retriggers(card)
     local retrigger_loc_key = 'b_retrigger_' .. (total_retriggers == 1 and 'single' or 'plural')
-    return { vars = { card.ability.extra.type_req, self:get_retriggers(card), localize(retrigger_loc_key) } }
+    return { vars = { ex.retriggers, ex.type_req, self:get_total_retriggers(card), localize(retrigger_loc_key) } }
   end,
   rarity = 4,
   cost = 20,
@@ -13,15 +14,23 @@ local kyogre = {
   ptype = "Water",
   gen = 3,
   blueprint_compat = true,
-  get_retriggers = function(self, card)
+  get_total_retriggers = function(self, card)
     if not G.jokers then return 1 end
-    local bonus_joker_mod = math.floor(#pokermon.find_pokemon_type('Water') / card.ability.extra.type_req)
-    return card.ability.extra.retriggers + bonus_joker_mod * card.ability.extra.bonus_retriggers
+    local ex = card.ability.extra
+    local bonus_joker_mod = math.floor(#pokermon.find_pokemon_type('Water') / ex.type_req)
+    return ex.retriggers + bonus_joker_mod * ex.bonus_retriggers
   end,
   calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.hand and not context.end_of_round
+        and not SMODS.has_no_rank(context.other_card) then
+      local rank = SMODS.Ranks[context.other_card.base.value]
+      return {
+        chips = rank.nominal
+      }
+    end
     if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
       return {
-        repetitions = self:get_retriggers(card)
+        repetitions = self:get_total_retriggers(card)
       }
     end
   end,
@@ -63,16 +72,7 @@ local primal_kyogre = {
   end,
 }
 
-local init = function()
-  AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if G.GAME.primordial_sea and not G.GAME.desolate_land and vals.mult and vals.mult ~= 0 then
-      vals.mult = 1
-    end
-  end)
-end
-
 return {
   config_key = "kyogre",
-  -- init = init,
-  list = { kyogre } --, primal_kyogre }
+  list = { kyogre }
 }

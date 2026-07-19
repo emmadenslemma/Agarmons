@@ -291,13 +291,13 @@ return {
             j_agar_kyogre = {
                 name = "Kyogre",
                 text = {
-                    "Retrigger all card",
-                    "{C:attention}held in hand{} abilities {C:attention}twice",
+                    "Each card held in hand",
+                    "gives {C:chips}chips{} equal to its {C:attention}rank",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Retriggers an additional",
-                    "time for every {C:attention}#1#",
-                    "{C:white,X:poke_water}Water{} Jokers you have",
-                    "{C:inactive}(Currently retriggers {C:attention}#2#{C:inactive} #3#)",
+                    "Retrigger all card {C:attention}held in hand{}",
+                    "effects {C:attention}#1#{} time, increased for",
+                    "every {C:attention}#2# {C:white,X:poke_water}Water{} Jokers you have",
+                    "{C:inactive}(Currently retriggers {C:attention}#3#{C:inactive} #4#)",
                 }
             },
             j_agar_primal_kyogre = {
@@ -313,11 +313,12 @@ return {
             j_agar_groudon = {
                 name = "Groudon",
                 text = {
+                    "{C:poke_hazard}+#1#{} hazard layer",
                     "Played cards with {C:attention}no rank",
-                    "give {X:mult,C:white}X#1#{} Mult when",
+                    "give {X:mult,C:white}X#2#{} Mult when",
                     "scored for each {C:white,X:poke_fire}Fire",
                     "or {C:white,X:poke_earth}Earth{} Joker you have",
-                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
                 }
             },
             j_agar_primal_groudon = {

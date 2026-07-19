@@ -12,11 +12,11 @@ end
 -- Groudon 383
 local groudon = {
   name = "groudon",
-  config = { extra = { Xmult_multi = 0.5, Xmult_multi2 = 1 } },
+  config = { extra = { hazard_level = 1, Xmult_multi = 0.5, Xmult_multi2 = 1 } },
   loc_vars = function(self, info_queue, card)
     local ex = card.ability.extra
     local total_xmult = ex.Xmult_multi * get_boosting_joker_count() + ex.Xmult_multi2
-    return { vars = { ex.Xmult_multi, total_xmult } }
+    return { vars = { ex.hazard_level, ex.Xmult_multi, total_xmult } }
   end,
   rarity = 4,
   cost = 20,
@@ -30,6 +30,12 @@ local groudon = {
         Xmult = card.ability.extra.Xmult_multi * get_boosting_joker_count() + card.ability.extra.Xmult_multi2
       }
     end
+  end,
+  add_to_deck = function(self, card, from_debuff)
+    pokermon.change_hazard_level(card.ability.extra.hazard_level)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
 }
 
@@ -70,16 +76,7 @@ local primal_groudon = {
   end,
 }
 
-local init = function()
-  AG.hookbeforefunc(_G, 'update_hand_text', function(config, vals)
-    if G.GAME.desolate_land and not G.GAME.primordial_sea and vals.chips and vals.chips ~= 0 then
-      vals.chips = 1
-    end
-  end)
-end
-
 return {
   config_key = "groudon",
-  -- init = init,
-  list = { groudon } --, primal_groudon }
+  list = { groudon }
 }
