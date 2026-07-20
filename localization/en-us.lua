@@ -44,15 +44,15 @@ return {
                     "is selected",
                 }
             },
-            j_poke_mega_clefable = {
-                name = "Mega Clefable",
-                text = {
-                    "Played {C:clubs}Club{} cards give",
-                    "{C:white,X:mult}X#1#{} Mult when scored for",
-                    "each {C:clubs}Club{} card drawn this blind",
-                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
-                }
-            },
+            -- j_poke_mega_clefable = {
+            --     name = "Mega Clefable",
+            --     text = {
+            --         "Played {C:clubs}Club{} cards give",
+            --         "{C:white,X:mult}X#1#{} Mult when scored for",
+            --         "each {C:clubs}Club{} card drawn this blind",
+            --         "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
+            --     }
+            -- },
             j_agar_alolan_diglett = {
                 name = "{s:0.6}Alolan{}Diglett",
                 text = {
@@ -104,14 +104,14 @@ return {
                     "{C:inactive,s:0.8}(Cannot skip {C:attention,s:0.8}2 Boss Blinds{C:inactive,s:0.8} in a row)",
                 }
             },
-            j_poke_mega_starmie = {
-                name = "Mega Starmie",
-                text = {
-                    "Scored {C:diamonds}Diamond{} cards",
-                    "permanently gain {C:mult}+#1#{} Mult and {C:money}$#2#{}",
-                    "when hand is played",
-                }
-            },
+            -- j_poke_mega_starmie = {
+            --     name = "Mega Starmie",
+            --     text = {
+            --         "Scored {C:diamonds}Diamond{} cards",
+            --         "permanently gain {C:mult}+#1#{} Mult and {C:money}$#2#{}",
+            --         "when hand is played",
+            --     }
+            -- },
             j_poke_galarian_mrmime = {
                 name = "{s:0.6}Galarian{}Mr. Mime",
                 text = {

@@ -31,7 +31,7 @@ return {
     {
       title = function() return localize("agar_regular_pokemon3") end,
       tiles = {
-        { list = { "j_poke_mega_dragonite", "j_poke_mega_victreebel", "j_poke_mega_starmie" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
+        { list = { "j_poke_mega_dragonite", "j_poke_mega_victreebel", "j_poke_mega_feraligatr" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
       }
     },
     {
