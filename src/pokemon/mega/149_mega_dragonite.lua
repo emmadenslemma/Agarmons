@@ -41,7 +41,7 @@ local function init()
 end
 
 return {
-  can_load = agarmons_config.new_megas,
+  can_load = false, -- agarmons_config.new_megas,
   init = init,
   list = { mega_dragonite }
 }

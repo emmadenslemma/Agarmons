@@ -74,13 +74,13 @@ return {
                     "contains a scoring {C:attention}8{}, {C:attention}9{}, or {C:attention}10",
                 }
             },
-            j_poke_mega_victreebel = {
-                name = "Mega Victreebel",
-                text = {
-                    "Played cards with {C:attention}Even{} rank",
-                    "retrigger {C:attention}#1#{} times",
-                }
-            },
+            -- j_poke_mega_victreebel = {
+            --     name = "Mega Victreebel",
+            --     text = {
+            --         "Played cards with {C:attention}Even{} rank",
+            --         "retrigger {C:attention}#1#{} times",
+            --     }
+            -- },
             j_poke_koffing_alt = {
                 name = 'Koffing',
                 text = {
@@ -129,15 +129,15 @@ return {
                     "they were played",
                 }
             },
-            j_poke_mega_dragonite = {
-                name = "Mega Dragonite",
-                text = {
-                    "If played hand is a {C:attention}High Card{},",
-                    "{C:attention}every{} played card counts",
-                    "in scoring and gives",
-                    "{C:white,X:mult}X#1#{} Mult when scored",
-                }
-            },
+            -- j_poke_mega_dragonite = {
+            --     name = "Mega Dragonite",
+            --     text = {
+            --         "If played hand is a {C:attention}High Card{},",
+            --         "{C:attention}every{} played card counts",
+            --         "in scoring and gives",
+            --         "{C:white,X:mult}X#1#{} Mult when scored",
+            --     }
+            -- },
             j_poke_mega_meganium = {
                 name = "Mega Meganium",
                 text = {
