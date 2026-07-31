@@ -10,6 +10,7 @@ local alolan_rattata = {
   stage = "Basic",
   ptype = "Dark",
   gen = 7,
+  weight = 10 / 3,
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1)
         and (context.other_card == G.hand.cards[1]
