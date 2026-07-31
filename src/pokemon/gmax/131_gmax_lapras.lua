@@ -6,13 +6,8 @@ local function has_first_unique_rank(card, scoring_hand)
   return false
 end
 
-local function has_first_unique_suit(card, scoring_hand, suit_indexes)
-  if not suit_indexes then return false end
-  local i = get_index(scoring_hand, card)
-  for _, j in ipairs(suit_indexes) do
-    if i == j then return true end
-  end
-  return false
+local function has_first_unique_suit(card, scoring_hand)
+  return pokermon.has(pokermon.get_first_of_each_suit(scoring_hand), card)
 end
 
 -- G-Max Lapras 131
@@ -31,12 +26,9 @@ local gmax_lapras = {
   blueprint_compat = true,
   poke_custom_values_to_keep = { "chips" },
   calculate = function(self, card, context)
-    if context.before then
-      card.suits = AG.n_rooks.solve_suits(context.scoring_hand)
-    end
     if context.cardarea == G.play and context.repetition then
       local unique_rank = has_first_unique_rank(context.other_card, context.scoring_hand)
-      local unique_suit = has_first_unique_suit(context.other_card, context.scoring_hand, card.suits)
+      local unique_suit = has_first_unique_suit(context.other_card, context.scoring_hand)
       local retriggers = (unique_rank and 1 or 0) + (unique_suit and 1 or 0)
       if retriggers > 0 then
         return {
