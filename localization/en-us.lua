@@ -138,31 +138,31 @@ return {
             --         "{C:white,X:mult}X#1#{} Mult when scored",
             --     }
             -- },
-            j_poke_mega_meganium = {
-                name = "Mega Meganium",
-                text = {
-                    "First card of each suit",
-                    "held in hand gives {C:money}$#1#",
-                }
-            },
-            j_poke_mega_feraligatr = {
-                name = "Mega Feraligatr",
-                text = {
-                    "{C:white,X:mult}X#1#{} Mult for each scoring",
-                    "card played this round",
-                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
-                }
-            },
-            j_poke_mega_skarmory = {
-                name = "Mega Skarmory",
-                text = {
-                    "{C:poke_hazard}+#1#{} hazard layer and limit",
-                    "Played {C:attention}Hazard{} cards",
-                    "give {X:mult,C:white}X#3#{} Mult for each",
-                    "{C:attention}Gold{} or {C:attention}Steel{} card",
-                    "held in hand when scored",
-                }
-            },
+            -- j_poke_mega_meganium = {
+            --     name = "Mega Meganium",
+            --     text = {
+            --         "First card of each suit",
+            --         "held in hand gives {C:money}$#1#",
+            --     }
+            -- },
+            -- j_poke_mega_feraligatr = {
+            --     name = "Mega Feraligatr",
+            --     text = {
+            --         "{C:white,X:mult}X#1#{} Mult for each scoring",
+            --         "card played this round",
+            --         "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)",
+            --     }
+            -- },
+            -- j_poke_mega_skarmory = {
+            --     name = "Mega Skarmory",
+            --     text = {
+            --         "{C:poke_hazard}+#1#{} hazard layer and limit",
+            --         "Played {C:attention}Hazard{} cards",
+            --         "give {X:mult,C:white}X#3#{} Mult for each",
+            --         "{C:attention}Gold{} or {C:attention}Steel{} card",
+            --         "held in hand when scored",
+            --     }
+            -- },
             j_poke_mega_aggron = {
                 name = "Mega Aggron",
                 text = {
