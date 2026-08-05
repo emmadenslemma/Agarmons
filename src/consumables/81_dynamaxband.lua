@@ -66,12 +66,16 @@ local dynamaxband = {
   end,
   use = function(self, card)
     local target = pokermon.find_leftmost_or_highlighted(AG.gmax.get_gmax_key)
-    card.ability.extra.usable = false
     if G.GAME.blind.in_blind then
+      card.ability.extra.usable = false
       AG.gmax.evolve(target)
+    elseif card.ability.extra.target == target.unique_val then
+      card.ability.extra.target = nil
+    else
+      card.ability.extra.usable = false
+      card.ability.extra.target = target.unique_val
+      card.ability.extra.target__ID = target.unique_val__saved_ID or target.ID
     end
-    card.ability.extra.target = target.unique_val
-    card.ability.extra.target__ID = target.unique_val__saved_ID or target.ID
   end,
   can_use = function(self, card)
     return (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit or card.area ~= G.pack_cards)
