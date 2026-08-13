@@ -358,7 +358,7 @@ return {
                     "{br:2}ERROR - CONTACT THE HIVE",
                     "Retrigger all played",
                     "cards if poker hand",
-                    "contains a {C:attention}Queen"
+                    "contains a {C:attention}Queen{} of {C:spades}S{C:diamonds}pa{C:spades}de{C:diamonds}s"
                 }
             },
             -- j_poke_mega_lucario = {

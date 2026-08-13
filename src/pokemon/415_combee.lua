@@ -1,5 +1,5 @@
 local any = AG.list_utils.any
-local is_queen = function(c) return c:get_id() == 12 end
+local is_queen_of_spades = function(c) return c:get_id() == 12 and c:is_suit('Spades') end
 
 local combee = {
   name = "combee",
@@ -29,7 +29,7 @@ local vespiquen = {
   gen = 4,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.repetition and context.cardarea == G.play and any(context.scoring_hand, is_queen) then
+    if context.repetition and context.cardarea == G.play and any(context.scoring_hand, is_queen_of_spades) then
       return {
         repetitions = card.ability.extra.retriggers
       }
