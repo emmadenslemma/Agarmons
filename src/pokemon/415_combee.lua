@@ -32,7 +32,7 @@ local vespiquen = {
     if context.repetition and context.cardarea == G.play
         and any(context.scoring_hand, is_queen)
         and (context.other_card:is_suit('Diamonds')
-          or context.other_card:is_suit('Spades')) then
+          or context.other_card:is_suit('Spades')) then -- Wait why are we checking both?
       return {
         repetitions = card.ability.extra.retriggers
       }
