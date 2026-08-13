@@ -10,6 +10,7 @@ return {
   kyogre = true,
   groudon = true,
   rayquaza = false,
+  combee = true,
   lake_trio = true,
   dialga = true,
   palkia = true,
