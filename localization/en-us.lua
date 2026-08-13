@@ -346,6 +346,26 @@ return {
                     "{C:inactive}Does nothing (yet!)",
                 }
             },
+            j_agar_combee = {
+                name = "Combee",
+                text = {
+                    "{C:diamonds}Diamonds{} and {C:spades}Spades",
+                    "count as the same suit",
+                    "{C:inactive,s:0.8}(Evolves after converting a",
+                    "{C:attention,s:0.8}Jack{C:inactive,s:0.8} or {C:attention,s:0.8}King{C:inactive,s:0.8} into a {C:attention,s:0.8}Queen{C:inactive,s:0.8})"
+                }
+            },
+            j_agar_vespiquen = {
+                name = "Vespiquen",
+                text = {
+                    "{C:diamonds}Diamonds{} and {C:spades}Spades",
+                    "count as the same suit",
+                    "{br:2}ERROR - CONTACT THE HIVE",
+                    "Retrigger all played",
+                    "cards if poker hand",
+                    "contains a {C:attention}Queen"
+                }
+            },
             -- j_poke_mega_lucario = {
             --     name = "Mega Lucario",
             --     text = {
