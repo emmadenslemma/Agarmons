@@ -1451,12 +1451,16 @@ return {
             agar_legendary_pokemon2 = "Legendary Pokémon 2/3",
             agar_legendary_pokemon3 = "Legendary Pokémon 3/3",
             agar_consumables1 = "Items",
-        },
-        poker_hands = {
-            ["Six of a Kind"] = "Six of a Kind",
-            ["Seven of a Kind"] = "Seven of a Kind",
-            ["Flush Six"] = "Flush Six",
-            ["Flush Seven"] = "Flush Seven",
+
+            -- Poker Hands (For G-MAX Snorlax)
+            agar_six_of_a_kind = "Six of a Kind",
+            agar_seven_of_a_kind = "Seven of a Kind",
+            agar_eight_of_a_kind = "Eight of a Kind",
+            agar_nine_of_a_kind = "Nine of a Kind", -- Surely no one would obtain a third snorlax...
+            agar_flush_six = "Flush Six",
+            agar_flush_seven = "Flush Seven",
+            agar_flush_eight = "Flush Eight",
+            agar_flush_nine = "Flush Nine",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },

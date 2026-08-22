@@ -14,8 +14,25 @@ local gmax_snorlax = {
   blueprint_compat = true,
   poke_custom_values_to_keep = { "Xmult" },
   calculate = function(self, card, context)
+    -- Add new Poker Hand names
+    if context.evaluate_poker_hand then
+      if context.scoring_name == 'Flush Five' then
+        local count = #context.poker_hands['Flush Five'][1]
+        if count == 6 then return { replace_display_name = localize('agar_flush_six') } end
+        if count == 7 then return { replace_display_name = localize('agar_flush_seven') } end
+        if count == 8 then return { replace_display_name = localize('agar_flush_eight') } end
+        if count == 9 then return { replace_display_name = localize('agar_flush_nine') } end
+      end
+      if context.scoring_name == 'Five of a Kind' then
+        local count = #context.poker_hands['Five of a Kind'][1]
+        if count == 6 then return { replace_display_name = localize('agar_six_of_a_kind') } end
+        if count == 7 then return { replace_display_name = localize('agar_seven_of_a_kind') } end
+        if count == 8 then return { replace_display_name = localize('agar_eight_of_a_kind') } end
+        if count == 9 then return { replace_display_name = localize('agar_nine_of_a_kind') } end
+      end
+    end
     -- Add Regular Snorlax's scoring effect
-    return G.P_CENTERS.j_poke_snorlax.calculate(self, card, context)
+    return G.P_CENTERS['j_poke_snorlax']:calculate(card, context)
   end,
   add_to_deck = function(self, card, from_debuff)
     SMODS.change_play_limit(card.ability.extra.selection_limit_mod)
@@ -35,27 +52,6 @@ local init = function()
   AG.gmax.disable_method_during_evolve("j_poke_snorlax", "add_to_deck")
 
   SMODS.Joker:take_ownership("poke_snorlax", { gmax = "gmax_snorlax", poke_custom_values_to_keep = { "Xmult" } }, true)
-
-  if not next(SMODS.find_mod("PokermonMaelmc")) then
-    SMODS.PokerHand:take_ownership("Five of a Kind", {
-      modify_display_text = function(self, cards, scoring_hand)
-        if #scoring_hand == 6 then
-          return "Six of a Kind"
-        elseif #scoring_hand == 7 then
-          return "Seven of a Kind"
-        end
-      end
-    }, true)
-    SMODS.PokerHand:take_ownership("Flush Five", {
-      modify_display_text = function(self, cards, scoring_hand)
-        if #scoring_hand == 6 then
-          return "Flush Six"
-        elseif #scoring_hand == 7 then
-          return "Flush Seven"
-        end
-      end
-    }, true)
-  end
 end
 
 return {
