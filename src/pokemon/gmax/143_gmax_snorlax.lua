@@ -18,6 +18,7 @@ local poker_hand_loc_keys = {
     [6] = 'agar_flusher_house',
     [7] = 'agar_flushest_house',
     [8] = 'agar_flushester_house',
+    [9] = 'agar_flushester_house',
   }
 }
 
