@@ -1,3 +1,26 @@
+local poker_hand_loc_keys = {
+  ['Flush Five'] = {
+    [6] = 'agar_flush_six',
+    [7] = 'agar_flush_seven',
+    [8] = 'agar_flush_eight',
+    [9] = 'agar_flush_nine',
+  },
+  ['Five of a Kind'] = {
+    [6] = 'agar_six_of_a_kind',
+    [7] = 'agar_seven_of_a_kind',
+    [8] = 'agar_eight_of_a_kind',
+    [9] = 'agar_nine_of_a_kind',
+  },
+  ['Full House'] = {
+    [6] = 'agar_fuller_house',
+  },
+  ['Flush House'] = {
+    [6] = 'agar_flusher_house',
+    [7] = 'agar_flushest_house',
+    [8] = 'agar_flushester_house',
+  }
+}
+
 -- G-Max Snorlax 143
 local gmax_snorlax = {
   name = "gmax_snorlax",
@@ -15,20 +38,11 @@ local gmax_snorlax = {
   poke_custom_values_to_keep = { "Xmult" },
   calculate = function(self, card, context)
     -- Add new Poker Hand names
-    if context.evaluate_poker_hand then
-      if context.scoring_name == 'Flush Five' then
-        local count = #context.poker_hands['Flush Five'][1]
-        if count == 6 then return { replace_display_name = localize('agar_flush_six') } end
-        if count == 7 then return { replace_display_name = localize('agar_flush_seven') } end
-        if count == 8 then return { replace_display_name = localize('agar_flush_eight') } end
-        if count == 9 then return { replace_display_name = localize('agar_flush_nine') } end
-      end
-      if context.scoring_name == 'Five of a Kind' then
-        local count = #context.poker_hands['Five of a Kind'][1]
-        if count == 6 then return { replace_display_name = localize('agar_six_of_a_kind') } end
-        if count == 7 then return { replace_display_name = localize('agar_seven_of_a_kind') } end
-        if count == 8 then return { replace_display_name = localize('agar_eight_of_a_kind') } end
-        if count == 9 then return { replace_display_name = localize('agar_nine_of_a_kind') } end
+    if context.evaluate_poker_hand and poker_hand_loc_keys[context.scoring_name] then
+      local count = #context.poker_hands[context.scoring_name][1]
+      local loc_key = poker_hand_loc_keys[context.scoring_name][count]
+      if loc_key then
+        return { replace_display_name = localize(loc_key) }
       end
     end
     -- Add Regular Snorlax's scoring effect

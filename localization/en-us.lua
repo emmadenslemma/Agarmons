@@ -1461,6 +1461,10 @@ return {
             agar_flush_seven = "Flush Seven",
             agar_flush_eight = "Flush Eight",
             agar_flush_nine = "Flush Nine",
+            agar_fuller_house = "Fuller House",
+            agar_flusher_house = "Flusher House",
+            agar_flushest_house = "Flushest House",
+            agar_flushester_house = "Flushester House",
         },
         v_text = {
             ch_c_lunadon = { "Introducing LunaDon, Lunala and Groudon" },
