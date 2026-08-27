@@ -6,8 +6,8 @@ AG.gmax = {
 }
 
 -- Add "Can Dynamax" tooltip to existing Pokemon
-AG.hookafterfunc(pokermon, 'type_tooltip', function(self, info_queue, center)
-  if agarmons_config.gmax and pokermon_config.detailed_tooltips and AG.gmax.get_gmax_key(center) then
+AG.hookafterfunc(pokermon, 'add_joker_tooltips', function(self, info_queue, card)
+  if self.stage and agarmons_config.gmax and pokermon_config.detailed_tooltips and AG.gmax.get_gmax_key(card) then
     info_queue[#info_queue+1] = { set = 'Other', key = 'gmax_poke' }
   end
 end, true)
