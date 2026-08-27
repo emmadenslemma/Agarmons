@@ -60,7 +60,7 @@ local pyukumuku = {
         card.ability.extra.stored.money = card.ability.extra.stored.money + total_money(context.other_card)
       end
       if context.cardarea == G.jokers and context.scoring_hand
-          and context.joker_main and volatile_active(self, card, card.ability.extra.volatile) then
+          and context.joker_main and pokermon.volatile_active(self, card, card.ability.extra.volatile) then
         G.E_MANAGER:add_event(Event({
           func = function()
             card.ability.extra.stored.chips = 0

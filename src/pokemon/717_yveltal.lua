@@ -16,11 +16,11 @@ local yveltal = {
     if context.pre_discard and not context.hook and #context.full_hand == 2 then
       local left = context.full_hand[1]
       local right = context.full_hand[2]
-      juice_flip_table(card, context.full_hand, false, 2)
+      pokermon.juice_flip_table(card, context.full_hand, false, 2)
       AG.defer(function()
         copy_card(right, left)
       end)
-      juice_flip_table(card, context.full_hand, true, 2)
+      pokermon.juice_flip_table(card, context.full_hand, true, 2)
     end
   end,
   add_to_deck = function(self, card, from_debuff)

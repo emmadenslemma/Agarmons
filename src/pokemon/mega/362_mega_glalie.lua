@@ -21,7 +21,7 @@ local mega_glalie = {
     return math.max(1, 1 + card.ability.extra.Xmult_mod * (-money))
   end,
   calculate = function(self, card, context)
-    if context.joker_main and volatile_active(self, card, card.ability.extra.volatile) then
+    if context.joker_main and pokermon.volatile_active(self, card, card.ability.extra.volatile) then
       if not context.blueprint then
         AG.defer(function()
           card.ability.fainted = G.GAME.round

@@ -21,7 +21,7 @@ local gmax_eevee = {
               Xmult = card.ability.extra.Xmult,
             }
           end
-          if is_type(joker, get_type(context.other_joker)) then return end
+          if pokermon.is_type(joker, pokermon.get_type(context.other_joker)) then return end
         end
       end
     end

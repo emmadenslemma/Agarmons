@@ -50,7 +50,7 @@ local palossand = {
     if context.discard and not context.blueprint and not context.other_card.debuff
         and context.other_card:is_suit(G.GAME.current_round.sandygast_suit) then
       card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod +
-          #find_pokemon_type("Water") * card.ability.extra.chip_mod2
+          #pokermon.find_pokemon_type("Water") * card.ability.extra.chip_mod2
       return {
         message = localize('k_upgrade_ex'),
         colour = G.C.CHIPS

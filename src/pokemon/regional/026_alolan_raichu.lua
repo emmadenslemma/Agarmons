@@ -14,7 +14,7 @@ local alolan_raichu = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.setting_blind then
-      local lightning_jokers = #find_pokemon_type("Lightning")
+      local lightning_jokers = #pokermon.find_pokemon_type("Lightning")
       local amount = card.ability.extra.money + lightning_jokers * card.ability.extra.money_mod
       card:juice_up()
       pokermon.ease_poke_dollars(card, "alolan_raichu", amount)

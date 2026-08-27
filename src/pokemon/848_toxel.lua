@@ -20,7 +20,7 @@ local toxel = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
-      faint_baby_poke(self, card, context)
+      pokermon.faint_baby_poke(self, card, context)
       return {
         Xmult = card.ability.extra.Xmult_minus
       }
