@@ -32,7 +32,8 @@ local diancie = {
     if money > 0 then
       return money
     end
-  end
+  end,
+  attributes = { 'hazards' }
 }
 
 AG.hookafterfunc(Card, 'is_suit', function(self, suit, bypass_debuff, flush_calc)

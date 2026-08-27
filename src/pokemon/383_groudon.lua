@@ -37,6 +37,7 @@ local groudon = {
   remove_from_deck = function(self, card, from_debuff)
     pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
+  attributes = { 'hazards' }
 }
 
 -- Primal Groudon 383-1

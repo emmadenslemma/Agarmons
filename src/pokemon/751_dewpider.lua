@@ -29,6 +29,7 @@ local dewpider = {
   remove_from_deck = function(self, card, from_debuff)
     pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
+  attributes = { 'hazards' }
 }
 
 -- Araquanid 752
@@ -75,6 +76,7 @@ local araquanid = {
   remove_from_deck = function(self, card, from_debuff)
     pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
+  attributes = { 'hazards' }
 }
 
 return {

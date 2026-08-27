@@ -46,6 +46,7 @@ local mega_skarmory = {
     pokermon.change_hazard_max(-card.ability.extra.hazard_max)
     pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
+  attributes = { 'hazards' }
 }
 
 local function init()

@@ -43,6 +43,7 @@ local mega_golurk = {
     pokermon.change_hazard_level(-card.ability.extra.hazard_level)
   end,
   designer = "Gem",
+  attributes = { 'hazards' }
 }
 
 local function init()
