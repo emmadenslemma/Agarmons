@@ -25,7 +25,8 @@ local groudon = {
   gen = 3,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and SMODS.has_no_rank(context.other_card) then
+    if context.individual and context.cardarea == G.play
+        and (SMODS.has_no_rank(context.other_card) or SMODS.has_enhancement(context.other_card, 'm_stone')) then -- Temporary fix for Hisuian Arcanine
       return {
         Xmult = card.ability.extra.Xmult_multi * get_boosting_joker_count() + card.ability.extra.Xmult_multi2
       }
