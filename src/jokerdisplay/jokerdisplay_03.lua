@@ -66,7 +66,7 @@ def_list["shelgon"] = {
 
 def_list["salamence"] = {
   text = {
-    { text = "+", colour = G.C.CHIPS },
+    { text = "+",                       colour = G.C.CHIPS },
     { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult", colour = G.C.CHIPS },
     { text = " " },
     {
@@ -90,7 +90,7 @@ def_list["salamence"] = {
 
 def_list["mega_salamence"] = {
   text = {
-    { text = "+", colour = G.C.CHIPS },
+    { text = "+",                       colour = G.C.CHIPS },
     { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult", colour = G.C.CHIPS },
     { text = " " },
     {
@@ -112,74 +112,16 @@ def_list["mega_salamence"] = {
   end,
 }
 
-def_list["regirock"] = {}
-
-def_list["regice"] = {}
-
-def_list["registeel"] = {}
-
-def_list["groudon"] = {
-  text = {
-    {
-      border_nodes = {
-        { text = "X" },
-        { ref_table = "card.joker_display_values", ref_value = "Xmult", retrigger_type = "exp" }
-      },
-    },
-  },
-  reminder_text = {
-    { text = "(" },
-    { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
-    { text = ")" },
-  },
-  calc_function = function(card)
-    local count = 0
-    local text, _, scoring_hand = JokerDisplay.evaluate_hand()
-
-    if text ~= "Unknown" then
-      for _, scoring_card in pairs(scoring_hand) do
-        if SMODS.has_enhancement(scoring_card, "m_mult") then
-          count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
-        end
-      end
-    end
-
-    card.joker_display_values.Xmult = card.ability.extra.Xmult_multi ^ count
-    card.joker_display_values.localized_text = localize { type = "name_text", set = "Enhanced", key = "m_mult" }
-  end
-}
+def_list["groudon"] = {}
 
 def_list["primal_groudon"] = {}
 
 def_list["kyogre"] = {
-  text = {
-    {
-      border_nodes = {
-        { text = "X" },
-        { ref_table = "card.joker_display_values", ref_value = "Xmult", retrigger_type = "exp" }
-      },
-    },
-  },
-  reminder_text = {
-    { text = "(" },
-    { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
-    { text = ")" },
-  },
-  calc_function = function(card)
-    local count = 0
-    local text, _, scoring_hand = JokerDisplay.evaluate_hand()
-
-    if text ~= "Unknown" then
-      for _, scoring_card in pairs(scoring_hand) do
-        if SMODS.has_enhancement(scoring_card, "m_bonus") then
-          count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
-        end
-      end
-    end
-
-    card.joker_display_values.Xmult = card.ability.extra.Xmult_multi ^ count
-    card.joker_display_values.localized_text = localize { type = "name_text", set = "Enhanced", key = "m_bonus" }
-  end
+  retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+    if not held_in_hand then return 0 end
+    return joker_card.config.center:get_total_retriggers(joker_card) *
+        (JokerDisplay.calculate_joker_triggers(joker_card) or 0)
+  end,
 }
 
 def_list["primal_kyogre"] = {}
