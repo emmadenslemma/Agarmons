@@ -291,12 +291,12 @@ return {
             j_agar_kyogre = {
                 name = "Kyogre",
                 text = {
-                    "Each card held in hand",
-                    "gives its total {C:chips}chips",
+                    "Adds total {C:chips}Chips{} of",
+                    "each card held in hand to Chips",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Retrigger all card {C:attention}held in hand",
-                    "effects {C:attention}#1#{} time for every {C:attention}#2#",
-                    "{C:white,X:poke_water}Water{} Jokers you have",
+                    "Retrigger all card {C:attention}held in hand{}",
+                    "abilities {C:attention}#1#{} time, increased for",
+                    "every {C:attention}#2# {C:white,X:poke_water}Water{} Jokers you have",
                     "{C:inactive}(Currently retriggers {C:attention}#3#{C:inactive} #4#)",
                 }
             },

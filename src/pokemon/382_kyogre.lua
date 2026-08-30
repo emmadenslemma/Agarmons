@@ -1,12 +1,12 @@
 -- Kyogre 382
 local kyogre = {
   name = "kyogre",
-  config = { extra = { retriggers = 0, type_req = 3, bonus_retriggers = 1 } },
+  config = { extra = { retriggers = 1, type_req = 3, bonus_retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
     local ex = card.ability.extra
     local total_retriggers = self:get_total_retriggers(card)
     local retrigger_loc_key = 'b_retrigger_' .. (total_retriggers == 1 and 'single' or 'plural')
-    return { vars = { ex.retriggers, ex.type_req, self:get_total_retriggers(card), localize(retrigger_loc_key) } }
+    return { vars = { ex.bonus_retriggers, ex.type_req, self:get_total_retriggers(card), localize(retrigger_loc_key) } }
   end,
   rarity = 4,
   cost = 20,
@@ -27,9 +27,12 @@ local kyogre = {
       }
     end
     if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
-      return {
-        repetitions = self:get_total_retriggers(card)
-      }
+      local retriggers = self:get_total_retriggers(card)
+      if retriggers > 0 then
+        return {
+          repetitions = retriggers
+        }
+      end
     end
   end,
 }
