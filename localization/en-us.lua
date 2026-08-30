@@ -292,11 +292,11 @@ return {
                 name = "Kyogre",
                 text = {
                     "Each card held in hand",
-                    "gives {C:chips}chips{} equal to its {C:attention}rank",
+                    "gives its total {C:chips}chips",
                     "{br:2}ERROR - CONTACT STEAK",
-                    "Retrigger all card {C:attention}held in hand{}",
-                    "effects {C:attention}#1#{} time, increased for",
-                    "every {C:attention}#2# {C:white,X:poke_water}Water{} Jokers you have",
+                    "Retrigger all card {C:attention}held in hand",
+                    "effects {C:attention}#1#{} time for every {C:attention}#2#",
+                    "{C:white,X:poke_water}Water{} Jokers you have",
                     "{C:inactive}(Currently retriggers {C:attention}#3#{C:inactive} #4#)",
                 }
             },

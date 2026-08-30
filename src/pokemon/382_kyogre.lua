@@ -1,7 +1,7 @@
 -- Kyogre 382
 local kyogre = {
   name = "kyogre",
-  config = { extra = { retriggers = 1, type_req = 3, bonus_retriggers = 1 } },
+  config = { extra = { retriggers = 0, type_req = 3, bonus_retriggers = 1 } },
   loc_vars = function(self, info_queue, card)
     local ex = card.ability.extra
     local total_retriggers = self:get_total_retriggers(card)
@@ -21,11 +21,9 @@ local kyogre = {
     return ex.retriggers + bonus_joker_mod * ex.bonus_retriggers
   end,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.hand and not context.end_of_round
-        and not SMODS.has_no_rank(context.other_card) then
-      local rank = SMODS.Ranks[context.other_card.base.value]
+    if context.individual and context.cardarea == G.hand and not context.end_of_round then
       return {
-        chips = rank.nominal
+        chips = pokermon.total_chips(context.other_card)
       }
     end
     if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
