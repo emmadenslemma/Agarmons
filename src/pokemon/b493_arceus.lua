@@ -36,7 +36,7 @@ local init = function()
 end
 
 return {
-  can_load = pokermon_config.pokemon_aprilfools and next(SMODS.find_mod('Talisman')),
+  can_load = pokermon_config.pokemon_aprilfools and next(SMODS.find_mod('Talisman')) or false,
   init = init,
   list = { beta_arceus },
 }
