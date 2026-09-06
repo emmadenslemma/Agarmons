@@ -45,7 +45,7 @@ local crabominable = {
         mult = context.other_card.base.nominal * 3
       }
     end
-    if context.check_enhancement and SMODS.has_enhancement(context.other_card, 'm_glass') then
+    if context.check_enhancement and pokermon.has_enhancement(context.other_card, 'm_glass') then
       return {
         m_wild = true
       }
