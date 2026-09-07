@@ -89,9 +89,14 @@ AG.gmax.disable_method_during_evolve = function(key, method_name)
   end)
 end
 
+local get_gmax_name = function(base_card)
+  local gmax_name = base_card.config.center.gmax
+  return type(gmax_name) == 'table' and gmax_name[1] or gmax_name
+end
+
 AG.gmax.get_gmax_key = function(base_card)
   if base_card and base_card.config and base_card.config.center and base_card.config.center.gmax then
-    local gmax_name = base_card.config.center.gmax
+    local gmax_name = get_gmax_name(base_card)
     local prefix = base_card.config.center.poke_custom_prefix or "poke"
     return "j_" .. prefix .. "_" .. gmax_name
   end
