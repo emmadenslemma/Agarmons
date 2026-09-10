@@ -42,22 +42,17 @@ local alolan_raichu = {
 local init = function()
   pokermon.add_to_family("raichu", "alolan_raichu")
 
-  local orig_calculate = assert(SMODS.Centers.j_poke_pikachu.calculate)
-  local orig_loc_vars = assert(SMODS.Centers.j_poke_pikachu.loc_vars)
+  AG.hookafterfunc(SMODS.Centers.j_poke_pikachu, 'calculate', function(self, card, context)
+    return pokermon.type_evo(self, card, context, 'j_poke_alolan_raichu', 'psychic')
+  end)
 
-  SMODS.Joker:take_ownership('poke_pikachu', {
-    calculate = function(self, card, context)
-      return orig_calculate(self, card, context)
-          or pokermon.type_evo(self, card, context, 'j_poke_alolan_raichu', 'psychic')
-    end,
-    loc_vars = function(self, info_queue, card)
-      local ret = orig_loc_vars(self, info_queue, card)
-      if agarmons_config.alolan_raichu then
-        ret.key = self.key .. '_alt'
-      end
-      return ret
-    end,
-  }, true)
+  AG.hookaroundfunc(SMODS.Centers.j_poke_pikachu, 'loc_vars', function(orig, self, info_queue, card)
+    local ret = orig(self, info_queue, card) or {}
+    if agarmons_config.alolan_raichu then
+      ret.key = self.key .. '_alt'
+    end
+    return ret
+  end)
 
   -- Fixes Transformation
   AG.hookaroundfunc(pokermon, 'evolve', function(orig, card, to_key, ...)
