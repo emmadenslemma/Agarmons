@@ -42,28 +42,21 @@ local alolan_raichu = {
 local init = function()
   pokermon.add_to_family("raichu", "alolan_raichu")
 
+  local orig_calculate = assert(SMODS.Centers.j_poke_pikachu.calculate)
   local orig_loc_vars = assert(SMODS.Centers.j_poke_pikachu.loc_vars)
 
   SMODS.Joker:take_ownership('poke_pikachu', {
-    item_req = { 'thunderstone', 'sunstone' }, -- This is going to have some weird side effects but it's *fine*
-    evo_list = { thunderstone = 'j_poke_raichu', sunstone = 'j_poke_alolan_raichu' },
+    calculate = function(self, card, context)
+      return orig_calculate(self, card, context)
+          or pokermon.type_evo(self, card, context, 'j_poke_alolan_raichu', 'psychic')
+    end,
     loc_vars = function(self, info_queue, card)
       local ret = orig_loc_vars(self, info_queue, card)
       if agarmons_config.alolan_raichu then
-        if pokermon_config.detailed_tooltips then
-          info_queue[#info_queue+1] = G.P_CENTERS.c_poke_sunstone
-        end
         ret.key = self.key .. '_alt'
       end
       return ret
     end,
-    add_to_deck = function(self, card, from_debuff)
-      if agarmons_config.alolan_raichu and not from_debuff then
-        -- Since the evolution code checks `ability.extra.item_req` and not `config.center.item_req` we have to do extra work.
-        card.ability.extra.item_req = copy_table(card.config.center.item_req)
-        card.ability.extra.evo_list = copy_table(card.config.center.evo_list)
-      end
-    end
   }, true)
 
   -- Fixes Transformation

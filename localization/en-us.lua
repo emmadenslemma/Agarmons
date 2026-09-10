@@ -28,7 +28,7 @@ return {
                     "is selected if you have",
                     "less than {C:money}$#3#",
                     "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Thunder Stone{C:inactive,s:0.8})",
-                    "{C:inactive,s:0.8}(Evolves with a {C:attention,s:0.8}Sun Stone{C:inactive,s:0.8})",
+                    "{C:inactive,s:0.8}(Evolves with a {C:poke_psychic,s:0.8}Psychic{C:inactive,s:0.8} sticker)",
                 }
             },
             j_poke_alolan_raichu = {
