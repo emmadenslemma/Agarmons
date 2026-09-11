@@ -43,7 +43,8 @@ local init = function()
   pokermon.add_to_family("raichu", "alolan_raichu")
 
   AG.hookafterfunc(SMODS.Centers.j_poke_pikachu, 'calculate', function(self, card, context)
-    return pokermon.type_evo(self, card, context, 'j_poke_alolan_raichu', 'psychic')
+    return agarmons_config.alolan_raichu
+        and pokermon.type_evo(self, card, context, 'j_poke_alolan_raichu', 'psychic')
   end)
 
   AG.hookaroundfunc(SMODS.Centers.j_poke_pikachu, 'loc_vars', function(orig, self, info_queue, card)
