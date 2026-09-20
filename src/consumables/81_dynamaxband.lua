@@ -4,6 +4,11 @@ if agarmons_config.gmax then
     if context.first_hand_drawn then
       for _, card in pairs(SMODS.find_card("c_agar_dynamaxband")) do
         local target = card.config.center:get_target(card)
+        if target and not AG.gmax.get_gmax_key(target) then
+          card.ability.extra.target = nil
+          card.ability.extra.target__ID = nil
+          target = nil
+        end
         if target and not target.getting_sliced and not target.agar_gmax_evolving then
           target.agar_gmax_evolving = true
           AG.gmax.evolve(target)
