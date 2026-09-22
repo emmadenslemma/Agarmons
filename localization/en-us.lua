@@ -4,18 +4,18 @@ return {
             j_agar_alolan_rattata = {
                 name = "{s:0.6}Alolan{}Rattata",
                 text = {
-                    "Retrigger {C:attention}first 2",
-                    "cards held in hand",
-                    "{C:attention}#1#{} additional time",
-                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)"
+                    "Retrigger {C:attention}first{} played",
+                    "card used in scoring",
+                    "{C:attention}#1#{} or {C:attention}#2#{} additional times",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#3#{C:inactive,s:0.8} rounds)"
                 }
             },
             j_agar_alolan_raticate = {
                 name = "{s:0.6}Alolan{}Raticate",
                 text = {
-                    "Retrigger {C:attention}first 3",
-                    "cards held in hand",
-                    "{C:attention}#1#{} additional time",
+                    "Retrigger {C:attention}first{} played",
+                    "card used in scoring",
+                    "{C:attention}#1#{} or {C:attention}#2#{} additional times",
                 }
             },
             j_poke_pikachu_alt = {
