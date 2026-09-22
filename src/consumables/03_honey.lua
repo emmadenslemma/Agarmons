@@ -35,7 +35,7 @@ local honey = {
     pokermon.unhighlight_cards()
   end,
   in_pool = function(self)
-    return true
+    return false
   end
 }
 
