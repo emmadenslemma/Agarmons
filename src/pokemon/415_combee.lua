@@ -4,6 +4,9 @@ local is_queen = function(c) return c:get_id() == 12 end
 local combee = {
   name = "combee",
   config = { extra = { queens_promoted = 0 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = G.P_CENTERS.c_agar_honey
+  end,
   rarity = 2,
   cost = 5,
   stage = "Basic",
@@ -11,17 +14,26 @@ local combee = {
   gen = 4,
   blueprint_compat = false,
   calculate = function(self, card, context)
-    if context.change_rank and context.new_rank == 12
-        and (context.old_rank == 11 or context.old_rank == 13) then
+    if context.individual and context.cardarea == G.play
+        and context.other_card:get_id() == 12
+        and SMODS.has_enhancement(context.other_card, 'm_poke_flower') then
       card.ability.extra.queens_promoted = card.ability.extra.queens_promoted + 1
     end
     return pokermon.scaling_evo(self, card, context, 'j_agar_vespiquen', card.ability.extra.queens_promoted, 1)
-  end
+  end,
+  add_to_deck = function(self, card, from_debuff)
+    if not from_debuff then
+      pokermon.create_consumeable('c_agar_honey')
+    end
+  end,
 }
 
 local vespiquen = {
   name = "vespiquen",
   config = { extra = { retriggers = 1 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = G.P_CENTERS.m_poke_flower
+  end,
   rarity = "poke_safari",
   cost = 7,
   stage = "One",
@@ -31,8 +43,7 @@ local vespiquen = {
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play
         and any(context.scoring_hand, is_queen)
-        and (context.other_card:is_suit('Diamonds')
-          or context.other_card:is_suit('Spades')) then -- Wait why are we checking both?
+        and SMODS.has_enhancement(context.other_card, 'm_poke_flower') then
       return {
         repetitions = card.ability.extra.retriggers
       }

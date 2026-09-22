@@ -349,10 +349,10 @@ return {
             j_agar_combee = {
                 name = "Combee",
                 text = {
+                    "{C:attention}Holding {C:poke_item}Honey",
                     "{C:diamonds}Diamonds{} and {C:spades}Spades",
                     "count as the same suit",
-                    "{C:inactive,s:0.8}(Evolves after converting a",
-                    "{C:attention,s:0.8}Jack{C:inactive,s:0.8} or {C:attention,s:0.8}King{C:inactive,s:0.8} into a {C:attention,s:0.8}Queen{C:inactive,s:0.8})"
+                    "{C:inactive,s:0.8}(Evolves after scoring a {C:attention,s:0.8}Flower Queen{C:inactive,s:0.8})",
                 }
             },
             j_agar_vespiquen = {
@@ -362,9 +362,8 @@ return {
                     "count as the same suit",
                     "{br:2}ERROR - CONTACT THE HIVE",
                     "Retrigger each played",
-                    "{C:diamonds}Diamond{} and {C:spades}Spade{} card",
-                    "if poker hand",
-                    "contains a {C:attention}Queen",
+                    "{C:attention}Flower Card{} if poker",
+                    "hand contains a {C:attention}Queen",
                 }
             },
             -- j_poke_mega_lucario = {
@@ -1155,6 +1154,17 @@ return {
                     "When drawn, {C:attention}3{} random",
                     "{C:attention}unenhanced{} cards in hand",
                     "become {C:attention}Steel{} cards",
+                },
+            },
+        },
+        poke_item = {
+            c_agar_honey = {
+                name = "Honey",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a {C:attention}Seed Card,",
+                    "or grow {C:attention}#1#{} selected",
+                    "{C:attention}Seed Card #2#{} times"
                 },
             },
         },
