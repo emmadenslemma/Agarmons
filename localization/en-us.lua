@@ -1163,7 +1163,7 @@ return {
                 name = "Honey",
                 text = {
                     "Enhances {C:attention}#1#{} selected",
-                    "card into a {C:attention}Seed Card,",
+                    "card into a {C:attention}Seed Card{},",
                     "or grows {C:attention}#1#{} selected",
                     "{C:attention}Seed Card #2#{} times"
                 },
