@@ -40,6 +40,8 @@ local flamigo = {
   gen = 9,
   calculate = function(self, card, context)
     if context.scaling_card and not context.blueprint
+        and context.operation ~= '-'
+        and context.scalar > 0
         and ref_value_map[context.ref_value]
         and not context.card:has_attribute('reset') then
       local args = SMODS.shallow_copy(context)
