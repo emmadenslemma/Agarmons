@@ -24,7 +24,7 @@ local glastrier = {
   end,
   add_to_deck = function(self, card, from_debuff)
     if not from_debuff then
-      pokermon.create_held_item("c_poke_icestone")
+      pokermon.create_consumeable("c_poke_icestone")
     end
   end,
   designer = 'Eternalnacho'
