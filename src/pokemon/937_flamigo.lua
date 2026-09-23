@@ -50,7 +50,13 @@ local flamigo = {
       args.ref_value = ref_value_map[args.ref_value]
 
       if args.ref_value then
-        SMODS.scale_card(card, args)
+        return {
+          post = {
+            func = function()
+              SMODS.scale_card(card, args)
+            end
+          }
+        }
       end
     end
 
