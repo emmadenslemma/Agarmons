@@ -910,10 +910,9 @@ return {
             j_agar_flamigo = {
                 name = "Flamigo",
                 text = {
-                    "Whenever a Joker",
-                    "permanently gains",
-                    "{C:chips}Chips{}, {C:mult}Mult{}, or {C:white,X:mult}X{} Mult,",
-                    "gain the same amount",
+                    "Whenever a Joker permanently",
+                    "gains {C:chips}Chips{}, {C:mult}Mult{}, or {C:white,X:mult}X{} Mult,",
+                    "this Joker gains the same amount",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive}, {C:mult}+#2#{C:inactive}, {C:white,X:mult}X#3#{C:inactive})"
                 }
             },
