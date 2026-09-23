@@ -237,14 +237,15 @@ local init = function()
 end
 
 return {
+  can_load = false,
   config_key = "dondozo",
   init = init,
   list = { --[[dondozo, dondozo_commander,]] tatsugiri, mega_tatsugiri },
   family = {
     -- 'dondozo',
-    { key = 'tatsugiri', form = 'curly' },
-    { key = 'tatsugiri', form = 'droopy' },
-    { key = 'tatsugiri', form = 'stretchy' },
+    { key = 'tatsugiri',      form = 'curly' },
+    { key = 'tatsugiri',      form = 'droopy' },
+    { key = 'tatsugiri',      form = 'stretchy' },
     { key = 'mega_tatsugiri', form = 'curly' },
     { key = 'mega_tatsugiri', form = 'droopy' },
     { key = 'mega_tatsugiri', form = 'stretchy' },

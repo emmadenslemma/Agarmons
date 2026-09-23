@@ -31,7 +31,7 @@ return {
     {
       title = function() return localize("agar_regular_pokemon3") end,
       tiles = {
-        { list = { "j_agar_tatsugiri" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_tatsugiri" } end, config_key = "dondozo" },
+        -- { list = { "j_agar_tatsugiri" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_tatsugiri" } end, config_key = "dondozo" },
         { list = { "j_poke_gmax_charizard", "j_poke_gmax_butterfree", "j_poke_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
         { list = { "j_poke_mega_golurk", "j_poke_mega_pyroar", "j_poke_mega_froslass" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
       }
