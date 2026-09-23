@@ -907,6 +907,16 @@ return {
                     "when scored",
                 }
             },
+            j_agar_flamigo = {
+                name = "Flamigo",
+                text = {
+                    "Whenever a Joker",
+                    "permanently gains",
+                    "{C:chips}Chips{}, {C:mult}Mult{}, or {C:white,X:mult}X{} Mult,",
+                    "gain the same amount",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive}, {C:mult}+#2#{C:inactive}, {C:white,X:mult}X#3#{C:inactive})"
+                }
+            },
             j_agar_toedscool = {
                 name = "Toedscool",
                 text = {

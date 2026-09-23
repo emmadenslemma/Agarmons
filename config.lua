@@ -40,6 +40,7 @@ return {
   glastrier = true,
   spectrier = true,
   calyrex = true,
+  flamigo = true,
   toedscool = true,
   dondozo = true,
   gmax = true,
