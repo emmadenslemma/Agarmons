@@ -14,7 +14,7 @@ local gmax_eevee = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.other_joker then
-      for _, area in ipairs(SMODS.get_card_areas('jokers')) do
+      for _, area in ipairs(SMODS.get_card_areas('jokers', nil)) do
         for _, joker in ipairs(area.cards) do
           if joker == context.other_joker then
             return {
