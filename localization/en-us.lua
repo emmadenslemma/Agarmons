@@ -362,8 +362,9 @@ return {
                     "count as the same suit",
                     "{br:2}ERROR - CONTACT THE HIVE",
                     "Retrigger each played",
-                    "{C:attention}Flower Card{} if poker",
-                    "hand contains a {C:attention}Queen",
+                    "{C:diamonds}Diamond{} and {C:spades}Spade{} card",
+                    "if poker hand",
+                    "contains a {C:attention}Queen",
                 }
             },
             -- j_poke_mega_lucario = {

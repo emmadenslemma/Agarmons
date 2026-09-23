@@ -31,9 +31,6 @@ local combee = {
 local vespiquen = {
   name = "vespiquen",
   config = { extra = { retriggers = 1 } },
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue+1] = G.P_CENTERS.m_poke_flower
-  end,
   rarity = "poke_safari",
   cost = 7,
   stage = "One",
@@ -43,7 +40,8 @@ local vespiquen = {
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play
         and any(context.scoring_hand, is_queen)
-        and SMODS.has_enhancement(context.other_card, 'm_poke_flower') then
+        and (context.other_card:is_suit('Diamonds')
+          or context.other_card:is_suit('Spades')) then -- Wait why are we checking both?
       return {
         repetitions = card.ability.extra.retriggers
       }
