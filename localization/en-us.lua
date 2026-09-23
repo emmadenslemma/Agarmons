@@ -1164,7 +1164,7 @@ return {
                 text = {
                     "Enhances {C:attention}#1#{} selected",
                     "card into a {C:attention}Seed Card,",
-                    "or grow {C:attention}#1#{} selected",
+                    "or grows {C:attention}#1#{} selected",
                     "{C:attention}Seed Card #2#{} times"
                 },
             },
