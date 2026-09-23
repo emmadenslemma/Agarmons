@@ -34,7 +34,7 @@ local flamigo = {
     return { vars = { card.ability.extra._chips, card.ability.extra._mult, card.ability.extra._Xmult } }
   end,
   rarity = 3,
-  cost = 10,
+  cost = 8,
   stage = "Basic",
   ptype = "Fighting",
   gen = 9,
