@@ -6,7 +6,7 @@ SMODS.Attribute({
     'j_poke_jirachi',
     'j_poke_deoxys',
     -- phione
-    -- manaphy
+    'j_Gem_manaphy',
     'j_sonfive_darkrai',
     'j_poke_shaymin',
     -- arceus
