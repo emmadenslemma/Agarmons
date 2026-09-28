@@ -592,6 +592,14 @@ return {
                     "and {C:attention}Wild{} cards",
                 },
             },
+            j_agar_mega_crabominable = {
+                name = "Mega Crabominable",
+                text = {
+                    "First {C:attention}2{} played {C:attention}Glass{} or {C:attention}Wild",
+                    "cards give {C:white,X:mult}X#1#{} Mult times",
+                    "their rank when scored",
+                },
+            },
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {

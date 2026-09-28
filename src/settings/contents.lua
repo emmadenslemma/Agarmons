@@ -17,7 +17,7 @@ return {
     {
       title = function() return localize("agar_regular_pokemon2") end,
       tiles = {
-        { list = { "j_agar_crabrawler", "j_agar_crabominable" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_crabrawler" } end, config_key = "crabrawler" },
+        { list = { "j_agar_crabrawler", "j_agar_crabominable", "j_agar_mega_crabominable" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_crabrawler" } end, config_key = "crabrawler" },
         { list = { "j_agar_sandygast", "j_agar_palossand" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_sandygast" } end, config_key = "sandygast" },
         { list = { "j_agar_pyukumuku" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_pyukumuku" } end, config_key = "pyukumuku" },
         { list = { "j_agar_toxel", "j_agar_toxtricity" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toxtricity" } end, config_key = "toxel" },
