@@ -1,13 +1,3 @@
-local lowest_ranked_card = function(cards)
-  local lowest
-  for _, card in ipairs(cards) do
-    if not SMODS.has_no_rank(card) and (not lowest or card.base.nominal <= lowest.base.nominal) then
-      lowest = card
-    end
-  end
-  return lowest
-end
-
 -- Crabrawler 719
 local crabrawler = {
   name = "crabrawler",
@@ -21,8 +11,7 @@ local crabrawler = {
   gen = 7,
   item_req = 'icestone',
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and
-        lowest_ranked_card(context.scoring_hand) == context.other_card then
+    if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
       return {
         mult = context.other_card.base.nominal
       }
@@ -39,15 +28,11 @@ local crabominable = {
   ptype = "Water",
   gen = 7,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and
-        lowest_ranked_card(context.scoring_hand) == context.other_card then
+    if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+      local enhancements = SMODS.get_enhancements(context.other_card) or {}
+      local factor = (enhancements['m_glass'] or enhancements['m_wild']) and 3 or 1
       return {
-        mult = context.other_card.base.nominal * 3
-      }
-    end
-    if context.check_enhancement and pokermon.has_enhancement(context.other_card, 'm_glass') then
-      return {
-        m_wild = true
+        mult = context.other_card.base.nominal * factor
       }
     end
   end,
