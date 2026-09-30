@@ -26,16 +26,16 @@ local dondozo = {
 local tatsugiri = {
   name = "tatsugiri",
   pos = { x = 0, y = 3 },
-  config = { extra = { form = nil, chips = 25, chip_mod = 5, mult = 5, mult_mod = 1, money = 1, money_mod = 0.2 } },
+  config = { extra = { form = nil, chips = 70, chip_loss = 10, mult = 14, mult_loss = 2, money = 7, money_loss = 1 } },
   loc_vars = function(self, info_queue, card)
     local form = card.ability.extra.form or "curly"
     local key = self.key .. '_' .. form
     return {
       key = key,
       vars = ({
-        ["curly"] = { card.ability.extra.chips, card.ability.extra.chip_mod },
-        ["droopy"] = { card.ability.extra.mult, card.ability.extra.mult_mod },
-        ["stretchy"] = { card.ability.extra.money, card.ability.extra.money_mod },
+        ["curly"] = { card.ability.extra.chips, card.ability.extra.chip_loss },
+        ["droopy"] = { card.ability.extra.mult, card.ability.extra.mult_loss },
+        ["stretchy"] = { card.ability.extra.money, card.ability.extra.money_loss },
       })[form]
     }
   end,
@@ -48,42 +48,56 @@ local tatsugiri = {
   eternal_compat = false,
   blueprint_compat = true,
   poke_custom_values_to_keep = { "chips", "mult", "money" },
-  calculate = function(self, card, context)
+  get_form_vars = function(self, card)
     local form = card.ability.extra.form or "curly"
-    local values = ({
-      ["curly"] = { "chips", "chip_mod", G.C.CHIPS },
-      ["droopy"] = { "mult", "mult_mod", G.C.MULT },
-      ["stretchy"] = { "money", "money_mod", G.C.MONEY },
+    local vars = ({
+      ["curly"] = { "chips", "chip_loss", G.C.CHIPS },
+      ["droopy"] = { "mult", "mult_loss", G.C.MULT },
+      ["stretchy"] = { "money", "money_loss", G.C.MONEY },
     })[form]
+    return table.unpack(vars)
+  end,
+  eat_sushi = function(self, card)
+    local ref_value, scalar_value, message_colour = self:get_form_vars(card)
+    SMODS.scale_card(card, {
+      ref_value = ref_value,
+      scalar_value = scalar_value,
+      operation = '-',
+      no_message = true
+    })
 
-    local value, value_mod, ret_colour = values[1], values[2], values[3]
+    local message
 
-    if context.individual and context.cardarea == G.play then
-      return form == "stretchy" and {
-        dollars = pokermon.ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
-      } or {
+    if card.ability.extra[ref_value] < 0.01 then
+      SMODS.destroy_cards(card, nil, nil, true)
+      message = localize('k_eaten_ex')
+    else
+      message = localize({ type = 'variable', key = 'a_' .. ref_value .. '_minus', vars = { card.ability.extra[scalar_value] } })
+    end
+
+    SMODS.calculate_effect({ message = message, colour = message_colour }, card)
+  end,
+  calculate = function(self, card, context)
+    local form = card.ability.extra.form
+
+    if context.joker_main and form ~= 'stretchy' then
+      local value = self:get_form_vars(card)
+      return {
         [value] = card.ability.extra[value]
       }
     end
 
-    if context.after and not context.blueprint then
-      card.ability.extra[value] = card.ability.extra[value] - card.ability.extra[value_mod]
-      if card.ability.extra[value] < 0.01 then
-        SMODS.destroy_cards(card, nil, nil, true)
-        return {
-          message = localize('k_eaten_ex'),
-          colour = ret_colour,
-        }
-      else
-        local message = form == "stretchy"
-            and ('-' .. localize('$') .. card.ability.extra.money_mod)
-            or localize { type = 'variable', key = 'a_' .. value .. '_minus', vars = { card.ability.extra[value_mod] } }
-        return {
-          message = message,
-          colour = ret_colour,
-        }
-      end
+    if context.end_of_round and context.game_over == false and context.main_eval
+        and form ~= 'stretchy' and not context.blueprint then
+      self:eat_sushi(card)
     end
+  end,
+  calc_dollar_bonus = function(self, card)
+    if card.ability.extra.form ~= "stretchy" then return end
+    AG.defer(function()
+      self:eat_sushi(card)
+    end)
+    return pokermon.ease_poke_dollars(card, "tatsugiri_stretchy", card.ability.extra.money, true)
   end,
   set_ability = function(self, card, initial, delay_sprites)
     if initial then
@@ -237,7 +251,6 @@ local init = function()
 end
 
 return {
-  can_load = false,
   config_key = "dondozo",
   init = init,
   list = { --[[dondozo, dondozo_commander,]] tatsugiri, mega_tatsugiri },

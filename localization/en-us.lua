@@ -954,28 +954,25 @@ return {
             j_agar_tatsugiri_curly = {
                 name = "Tatsugiri (Curly)",
                 text = {
-                    "Played cards give",
-                    "{C:chips}+#1#{} Chips when scored",
-                    "{C:chips}-#2#{} Chips for every",
-                    "hand played",
+                    "{C:chips}+#1#{} Chips",
+                    "{C:chips}-#2#{} Chips per",
+                    "round played",
                 }
             },
             j_agar_tatsugiri_droopy = {
                 name = "Tatsugiri (Droopy)",
                 text = {
-                    "Played cards give",
-                    "{C:mult}+#1#{} Mult when scored",
-                    "{C:mult}-#2#{} Mult for every",
-                    "hand played",
+                    "{C:mult}+#1#{} Mult",
+                    "{C:mult}-#2#{} Mult per",
+                    "round played",
                 }
             },
             j_agar_tatsugiri_stretchy = {
                 name = "Tatsugiri (Stretchy)",
                 text = {
-                    "Played cards give",
-                    "{C:money}$#1#{} when scored",
-                    "{C:money}-$#2#{} for every",
-                    "hand played",
+                    "Earn {C:money}$#1#{} at",
+                    "end of round",
+                    "{C:money}-$#2#{} per round played",
                 }
             },
             j_agar_mega_tatsugiri = {
@@ -1500,6 +1497,7 @@ return {
         },
         v_dictionary = {
             a_discards = "+#1# Discards", -- Why isn't this in the base game ;_;
+            a_money_minus = "-$#1#",
             a_joker_slot = "+#1# Joker Slot",
             a_poke_plus_energy = "+#1# Energy",
 
