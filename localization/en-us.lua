@@ -978,35 +978,30 @@ return {
             j_agar_mega_tatsugiri = {
                 name = "Mega Tatsugiri",
                 text = {
-                    "Played cards give",
-                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, and {C:money}$#3#",
-                    "when scored, and have a",
-                    "{C:green}#4# in #5#{} chance to retrigger",
+                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult,",
+                    "earn {C:money}$#3#{} at end of round",
                 }
             },
             j_agar_mega_tatsugiri_curly = {
                 name = "Mega Tatsugiri (Curly)",
                 text = {
-                    "Played cards give",
-                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, and {C:money}$#3#",
-                    "when scored, and have a",
-                    "{C:green}#4# in #5#{} chance to retrigger",
+                    "{C:attention}+#4#{} hand size,",
+                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult,",
+                    "earn {C:money}$#3#{} at end of round",
                 }
             },
             j_agar_mega_tatsugiri_droopy = {
                 name = "Mega Tatsugiri (Droopy)",
                 text = {
-                    "Played cards give",
-                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, {C:money}$#3#{} and",
-                    "{C:white,X:mult}X#4#{} Mult when scored",
+                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, {C:white,X:mult}X#4#{} Mult",
+                    "earn {C:money}$#3#{} at end of round",
                 }
             },
             j_agar_mega_tatsugiri_stretchy = {
                 name = "Mega Tatsugiri (Stretchy)",
                 text = {
-                    "Played cards give",
                     "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult,",
-                    "and {C:money}$#3#{} when scored",
+                    "earn {C:money}$#3#{} at end of round",
                 }
             },
             j_poke_gmax_venusaur = {

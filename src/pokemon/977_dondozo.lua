@@ -28,7 +28,7 @@ local tatsugiri = {
   pos = { x = 0, y = 3 },
   config = { extra = { form = nil, chips = 70, chip_loss = 10, mult = 14, mult_loss = 2, money = 7, money_loss = 1 } },
   loc_vars = function(self, info_queue, card)
-    local form = card.ability.extra.form or "curly"
+    local form = self:get_form(card)
     local key = self.key .. '_' .. form
     return {
       key = key,
@@ -46,19 +46,17 @@ local tatsugiri = {
   gen = 9,
   atlas = "AtlasJokersBasicGen09",
   eternal_compat = false,
-  blueprint_compat = true,
-  poke_custom_values_to_keep = { "chips", "mult", "money" },
-  get_form_vars = function(self, card)
-    local form = card.ability.extra.form or "curly"
-    local vars = ({
+  get_form = function(self, card)
+    return card.ability.extra.form or "curly"
+  end,
+  eat_sushi = function(self, card)
+    local form = self:get_form(card)
+    local ref_value, scalar_value, message_colour = table.unpack(({
       ["curly"] = { "chips", "chip_loss", G.C.CHIPS },
       ["droopy"] = { "mult", "mult_loss", G.C.MULT },
       ["stretchy"] = { "money", "money_loss", G.C.MONEY },
-    })[form]
-    return table.unpack(vars)
-  end,
-  eat_sushi = function(self, card)
-    local ref_value, scalar_value, message_colour = self:get_form_vars(card)
+    })[form])
+
     SMODS.scale_card(card, {
       ref_value = ref_value,
       scalar_value = scalar_value,
@@ -78,12 +76,12 @@ local tatsugiri = {
     SMODS.calculate_effect({ message = message, colour = message_colour }, card)
   end,
   calculate = function(self, card, context)
-    local form = card.ability.extra.form
+    local form = self:get_form(card)
 
-    if context.joker_main and form ~= 'stretchy' then
-      local value = self:get_form_vars(card)
+    if context.joker_main then
       return {
-        [value] = card.ability.extra[value]
+        chips = form == 'curly' and card.ability.extra.chips or nil,
+        mult = form == 'droopy' and card.ability.extra.mult or nil,
       }
     end
 
@@ -93,7 +91,7 @@ local tatsugiri = {
     end
   end,
   calc_dollar_bonus = function(self, card)
-    if card.ability.extra.form ~= "stretchy" then return end
+    if self:get_form(card) ~= "stretchy" then return end
     AG.defer(function()
       self:eat_sushi(card)
     end)
@@ -127,15 +125,14 @@ local mega_tatsugiri = {
   name = "mega_tatsugiri",
   pos = { x = 4, y = 3 },
   soul_pos = { x = 5, y = 3 },
-  config = { extra = { form = nil, chips1 = 25, mult1 = 5, money1 = 1, num = 1, dem = 3, money2 = 3, retriggers = 1, Xmult_multi = 1.2, chips = 25, mult = 5, money = 1 } },
+  config = { extra = { chips1 = 70, mult1 = 14, money1 = 4, money2 = 8, Xmult1 = 1.5, h_size = 1, applied_h_size = 0 } },
   loc_vars = function(self, info_queue, card)
-    local form = card.ability.extra.form or "curly"
+    local form = self:get_form(card)
     local key = self.key .. '_' .. form
-    local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, 'curly_megagiri')
 
     local vars = ({
-      ["curly"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money1, num, dem },
-      ["droopy"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money1, card.ability.extra.Xmult_multi },
+      ["curly"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money1, card.ability.extra.h_size },
+      ["droopy"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money1, card.ability.extra.Xmult1 },
       ["stretchy"] = { card.ability.extra.chips1, card.ability.extra.mult1, card.ability.extra.money2 },
     })[form]
 
@@ -147,34 +144,35 @@ local mega_tatsugiri = {
   ptype = "Dragon",
   gen = 9,
   atlas = "AgarmonsJokers",
-  blueprint_compat = true,
-  poke_custom_values_to_keep = { "chips", "mult", "money" },
+  eternal_compat = false,
+  get_form = function(self, card)
+    return card.ability.extra.form or "curly"
+  end,
   calculate = function(self, card, context)
-    if context.repetition and context.cardarea == G.play
-        and card.ability.extra.form == "curly"
-        and SMODS.pseudorandom_probability(card, 'curly_megagiri', card.ability.extra.num, card.ability.extra.dem, 'curly_megagiri') then
-      return {
-        repetitions = card.ability.extra.retriggers
-      }
-    end
-    if context.individual and context.cardarea == G.play then
-      local Xmult = card.ability.extra.form == "droopy" and card.ability.extra.Xmult_multi
-      local dollars = card.ability.extra.form == "stretchy"
-          and card.ability.extra.money2
-          or card.ability.extra.money1
+    local form = self:get_form(card)
 
+    if context.joker_main then
       return {
         chips = card.ability.extra.chips1,
         mult = card.ability.extra.mult1,
-        dollars = pokermon.ease_poke_dollars(card, "mega_tatsugiri", dollars, true),
-        Xmult = Xmult,
+        Xmult = form == "droopy" and card.ability.extra.Xmult1 or nil,
       }
     end
+  end,
+  calc_dollar_bonus = function(self, card)
+    local money = card.ability.extra.form == "stretchy"
+        and card.ability.extra.money2
+        or card.ability.extra.money1
+
+    return pokermon.ease_poke_dollars(card, "mega_tatsugiri", money, true)
   end,
   set_ability = function(self, card, initial, delay_sprites)
     if initial then
       card.ability.extra.form = card.ability.extra.form
           or pseudorandom_element({ "curly", "droopy", "stretchy" }, pseudoseed("tatsugiri"))
+    end
+    if self:get_form(card) == "curly" and not card.debuff then
+      self:add_to_deck(card)
     end
     self:set_sprites(card)
   end,
@@ -191,6 +189,19 @@ local mega_tatsugiri = {
 
       card.children.center:set_sprite_pos(pos)
       card.children.floating_sprite:set_sprite_pos(soul_pos)
+    end
+  end,
+  -- Forms are weird so we take our precautions
+  add_to_deck = function(self, card, from_debuff)
+    if self:get_form(card) == "curly" and card.ability.extra.applied_h_size < card.ability.extra.h_size then
+      G.hand:change_size(card.ability.extra.h_size)
+      card.ability.extra.applied_h_size = card.ability.extra.applied_h_size + card.ability.extra.h_size
+    end
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    if self:get_form(card) == "curly" and card.ability.extra.applied_h_size > 0 then
+      G.hand:change_size(-card.ability.extra.h_size)
+      card.ability.extra.applied_h_size = card.ability.extra.applied_h_size - card.ability.extra.h_size
     end
   end,
 }
