@@ -171,7 +171,7 @@ local mega_tatsugiri = {
       card.ability.extra.form = card.ability.extra.form
           or pseudorandom_element({ "curly", "droopy", "stretchy" }, pseudoseed("tatsugiri"))
     end
-    if self:get_form(card) == "curly" and not card.debuff then
+    if self:get_form(card) == "curly" and card.added_to_deck and not card.debuff then
       self:add_to_deck(card)
     end
     self:set_sprites(card)
