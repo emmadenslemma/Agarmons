@@ -993,7 +993,7 @@ return {
             j_agar_mega_tatsugiri_droopy = {
                 name = "Mega Tatsugiri (Droopy)",
                 text = {
-                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, {C:white,X:mult}X#4#{} Mult",
+                    "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, {C:white,X:mult}X#4#{} Mult,",
                     "earn {C:money}$#3#{} at end of round",
                 }
             },
