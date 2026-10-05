@@ -36,8 +36,8 @@ local gmax_charizard = {
 
 local init = function()
   pokermon.add_family { "charizard", "gmax_charizard" }
-  AG.gmax.disable_method_during_evolve("j_poke_blastoise", "add_to_deck")
-  AG.gmax.disable_method_during_evolve("j_poke_blastoise", "remove_from_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_charizard", "add_to_deck")
+  AG.gmax.disable_method_during_evolve("j_poke_charizard", "remove_from_deck")
 
   SMODS.Joker:take_ownership("poke_charizard", { gmax = "gmax_charizard" }, true)
 end
