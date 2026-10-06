@@ -25,6 +25,7 @@ return {
   yveltal = true,
   diancie = true,
   crabrawler = true,
+  mudbray = true,
   dewpider = true,
   sandygast = true,
   pyukumuku = true,

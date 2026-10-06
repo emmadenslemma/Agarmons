@@ -600,6 +600,25 @@ return {
                     "their rank when scored",
                 },
             },
+            j_agar_mudbray = {
+                name = "Mudbray",
+                text = {
+                    "Every played {C:attention}card",
+                    "permanently gains",
+                    "{C:mult}+#1#{} Mult when scored",
+                    "{C:inactive,s:0.8}(Evolves after {C:attention,s:0.8}#2#{C:inactive,s:0.8} rounds)",
+                }
+            },
+            j_agar_mudsdale = {
+                name = "Mudsdale",
+                text = {
+                    "Every played {C:attention}card",
+                    "permanently gains {C:mult}+#1#{} Mult",
+                    "for each {C:white,X:poke_earth}Earth{} Joker",
+                    "you have when scored",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                }
+            },
             j_agar_dewpider = {
                 name = "Dewpider",
                 text = {
