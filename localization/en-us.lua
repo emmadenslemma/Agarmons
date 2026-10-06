@@ -942,6 +942,15 @@ return {
                     "always score last",
                 }
             },
+            j_agar_veluza = {
+                name = "Veluza",
+                text = {
+                    "When {C:attention}Blind{} is selected, {C:attention}lose",
+                    "{C:attention}half your hands{} rounded",
+                    "down and gain {C:red}+#1#{} discards",
+                    "for each hand lost",
+                }
+            },
             j_agar_tatsugiri = {
                 name = "Tatsugiri",
                 text = {

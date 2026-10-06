@@ -42,6 +42,7 @@ return {
   calyrex = true,
   flamigo = true,
   toedscool = true,
+  veluza = true,
   dondozo = true,
   gmax = true,
   new_megas = true,
