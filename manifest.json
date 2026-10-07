@@ -1,0 +1,11 @@
+{
+    "name": "Agarmons",
+    "version_number": "0.20.7",
+    "website_url": "https://github.com/emmadenslemma/Agarmons",
+    "description": "Pokermon addon featuring new Legendaries, Megas, and Gigantamax forms",
+    "dependencies": [
+        "Steamodded-Steamodded-26.829.0",
+        "Thunderstore-lovely-0.9.0",
+        "Pokermon-Pokermon-3.9.1"
+    ]
+}
