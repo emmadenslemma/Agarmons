@@ -12,9 +12,9 @@
 	"display_name": "Agarmons",
 	"version": "0.20.7b",
 	"dependencies": [
-		"Steamodded (>=1.0.0~BETA-1606b)",
-		"Lovely (>=0.7)",
-		"Pokermon (>=3.8.1-0731b)"
+		"Steamodded (>=26.829.0)",
+		"Lovely (>=0.9)",
+		"Pokermon (>=3.9.1-1004a)"
 	],
 	"conflicts": [
 		"Talisman (<=2.7)"
