@@ -845,6 +845,22 @@ return {
                     "{C:blue}+#1#{} hands",
                 }
             },
+            j_agar_wooloo = {
+                name = "Wooloo",
+                text = {
+                    "Rerolls cost {C:money}$#1#{} less",
+                    "{C:inactive,s:0.8}(Evolves after rerolling {C:attention,s:0.8}#2#{C:inactive,s:0.8} times)",
+                }
+            },
+            j_agar_dubwool = {
+                name = "Dubwool",
+                text = {
+                    "Rerolls cost {C:money}$#1#{} less,",
+                    "plus {C:money}$#2#{} less for each",
+                    "{C:white,X:poke_colorless}Colorless{} Joker you have",
+                    "{C:inactive}(Currently {C:money}$#3#{C:inactive} less)"
+                }
+            },
             j_agar_toxel = {
                 name = "Toxel",
                 text = {
@@ -1502,9 +1518,10 @@ return {
             agar_gigantamaxing = "Gigantamaxing",
             agar_new_megas = "Z-A Megas",
 
-            agar_regular_pokemon1 = "Regular Pokémon 1/3",
-            agar_regular_pokemon2 = "Regular Pokémon 2/3",
-            agar_regular_pokemon3 = "Regular Pokémon 3/3",
+            agar_regular_pokemon1 = "Regular Pokémon 1/4",
+            agar_regular_pokemon2 = "Regular Pokémon 2/4",
+            agar_regular_pokemon3 = "Regular Pokémon 3/4",
+            agar_regular_pokemon4 = "Regular Pokémon 4/4",
             agar_legendary_pokemon1 = "Legendary Pokémon 1/3",
             agar_legendary_pokemon2 = "Legendary Pokémon 2/3",
             agar_legendary_pokemon3 = "Legendary Pokémon 3/3",

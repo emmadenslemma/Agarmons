@@ -36,6 +36,7 @@ return {
   grookey = true,
   scorbunny = true,
   sobble = true,
+  wooloo = true,
   toxel = true,
   eternatus = true,
   glastrier = true,
