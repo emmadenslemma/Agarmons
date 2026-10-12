@@ -6,7 +6,7 @@ local bombirdier = {
     return { vars = { card.ability.extra.draw_req, card.ability.extra.cards_drawn } }
   end,
   rarity = 2,
-  cost = 6,
+  cost = 7,
   stage = "Basic",
   ptype = "Dark",
   gen = 9,
