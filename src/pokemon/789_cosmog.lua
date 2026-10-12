@@ -1,4 +1,4 @@
-local get_suit_percent = function(suit, changed_cards, to_be_removed)
+local get_suit_percent = function(suit)
   local suit_count = 0
   local total_deck = #G.playing_cards
   for _, v in pairs(G.playing_cards) do
@@ -6,17 +6,27 @@ local get_suit_percent = function(suit, changed_cards, to_be_removed)
       suit_count = suit_count + 1
     end
   end
-  -- This doesn't account for cards immediately getting destroyed with no event, but we're just gonna assume they don't exist
-  if changed_cards then
-    for _, v in pairs(changed_cards) do
-      local deck_mod = to_be_removed and -1 or 1
-      total_deck = total_deck + deck_mod
-      if type(v) == 'table' and type(v.is) == 'function' and v:is(Card) and v:is_suit(suit, true) then
-        suit_count = suit_count + deck_mod
-      end
+  return suit_count / total_deck
+end
+
+local update_eclipse_state = function(card)
+  if type(card.ability.extra) ~= 'table' or not card.ability.extra.suit then return end
+  local suit_percent = get_suit_percent(card.ability.extra.suit)
+  local half_active = suit_percent >= 0.5
+  local full_active = suit_percent == 1
+
+  -- Lunala Scry effect
+  if card.ability.extra.scry then
+    if full_active and not card.ability.extra.full_active then
+      G.GAME.poke_scry_amount = (G.GAME.poke_scry_amount or 0) + card.ability.extra.scry
+    end
+    if not full_active and card.ability.extra.full_active then
+      G.GAME.poke_scry_amount = math.max(0, (G.GAME.poke_scry_amount or 0) - card.ability.extra.scry)
     end
   end
-  return suit_count / total_deck
+
+  card.ability.extra.half_active = half_active
+  card.ability.extra.full_active = full_active
 end
 
 -- Cosmog 789
@@ -96,6 +106,7 @@ local solgaleo = {
   name = "solgaleo",
   config = { extra = { Xmult_multi = 1.5, suit = "Hearts", half_active = false, full_active = false } },
   loc_vars = function(self, info_queue, card)
+    update_eclipse_state(card)
     local ret = {
       vars = {
         localize(card.ability.extra.suit, "suits_plural"),
@@ -128,7 +139,8 @@ local solgaleo = {
       local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
       juice_card_until(card, eval, true)
     end
-    if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint then -- Add Hearts requirement later
+    if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint
+        and AG.list_utils.all(context.full_hand, function(c) return c:is_suit(suit) end) then
       local hand_cards = {}
       local conv_cards = {}
       for _, v in pairs(G.hand.cards) do
@@ -144,59 +156,39 @@ local solgaleo = {
         conv_cards[i]:juice_up()
       end
     end
-    -- Update Suit counts
-    if not context.blueprint then
-      local suit_percent
-      if context.setting_blind then
-        suit_percent = get_suit_percent(suit)
-      end
-      if context.before then
-        suit_percent = get_suit_percent(suit)
-      end
-      if context.remove_playing_cards then
-        suit_percent = get_suit_percent(suit, context.removed, true)
-      end
-      if context.playing_card_added then
-        suit_percent = get_suit_percent(suit, context.cards, false)
-      end
-      if suit_percent then
-        card.ability.extra.half_active = suit_percent >= 0.5
-        card.ability.extra.full_active = suit_percent == 1
-      end
+    -- Update Eclipse state
+    if (context.setting_blind or context.before or context.after) and not context.blueprint then
+      update_eclipse_state(card)
+    end
+    if (context.change_suit or context.remove_playing_cards or context.playing_cards_added) and not context.blueprint then
+      AG.defer(function()
+        AG.defer(function()
+          update_eclipse_state(card)
+        end)
+      end)
     end
     -- Apply reliable Bloodstone effect at 50% Hearts
-    if context.individual and context.cardarea == G.play
-        and card.ability.extra.half_active and context.other_card:is_suit(suit) then
-      return {
-        Xmult = card.ability.extra.Xmult_multi
-      }
-    end
-    -- Do something at 100% Hearts
-    if card.ability.extra.full_active then
-      -- Stolen from Vanilla Remade (and Mega Gyarados)
-      if context.setting_blind and not context.blueprint and context.blind.boss and not card.getting_sliced then -- I don't know what getting sliced is and I'm too scared to ask
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            G.E_MANAGER:add_event(Event({
-              func = function()
-                G.GAME.blind:disable()
-                play_sound('timpani')
-                delay(0.4)
-                return true
-              end
-            }))
-            SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
-            return true
-          end
-        }))
-        return nil, true -- This is for Joker retrigger purposes
+    if context.individual and context.cardarea == G.play then
+      if card.ability.extra.half_active and context.other_card:is_suit(suit) then
+        return {
+          Xmult = card.ability.extra.Xmult_multi
+        }
       end
     end
-  end,
-  add_to_deck = function(self, card, from_debuff)
-    local suit_percent = get_suit_percent(card.ability.extra.suit)
-    card.ability.extra.half_active = suit_percent >= 0.5
-    card.ability.extra.full_active = suit_percent == 1
+    -- Do something at 100% Hearts
+    if context.setting_blind and not context.blueprint and context.blind.boss and not card.getting_sliced then
+      if card.ability.extra.full_active then
+        AG.defer(function()
+          AG.defer(function()
+            G.GAME.blind:disable()
+            play_sound('timpani')
+            delay(0.4)
+          end)
+          SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
+        end)
+        return nil, true -- This is for Joker retrigger purposes (not that we have any yet)
+      end
+    end
   end,
 }
 
@@ -205,6 +197,7 @@ local lunala = {
   name = "lunala",
   config = { extra = { Xmult_multi = 1.5, suit = "Clubs", half_active = false, full_active = false, scry = 5 } },
   loc_vars = function(self, info_queue, card)
+    update_eclipse_state(card)
     local ret = {
       vars = {
         localize(card.ability.extra.suit, "suits_plural"),
@@ -239,50 +232,33 @@ local lunala = {
       local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
       juice_card_until(card, eval, true)
     end
-    if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint then
-      local all_suits = true
-      for _, v in pairs(context.full_hand) do
-        if not v:is_suit(suit) then
-          all_suits = false
-          break
-        end
+    if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint
+        and AG.list_utils.all(context.full_hand, function(c) return c:is_suit(suit) end) then
+      local hand_cards = {}
+      local conv_cards = {}
+      for _, v in pairs(G.hand.cards) do
+        hand_cards[#hand_cards+1] = v
       end
-
-      if all_suits then
-        -- Code stolen from Raikou
-        local hand_cards = {}
-        local conv_cards = {}
-        for _, v in pairs(G.hand.cards) do
-          hand_cards[#hand_cards+1] = v
-        end
-        pseudoshuffle(hand_cards, pseudoseed("lunala"))
-        local limit = math.min(3, #hand_cards)
-        for i = 1, limit do
-          conv_cards[#conv_cards+1] = hand_cards[i]
-        end
-        for i = 1, limit do
-          assert(SMODS.change_base(conv_cards[i], suit))
-          conv_cards[i]:juice_up()
-        end
+      pseudoshuffle(hand_cards, pseudoseed("lunala"))
+      local limit = math.min(3, #hand_cards)
+      for i = 1, limit do
+        conv_cards[#conv_cards+1] = hand_cards[i]
+      end
+      for i = 1, limit do
+        assert(SMODS.change_base(conv_cards[i], suit))
+        conv_cards[i]:juice_up()
       end
     end
-    -- Update Suit counts
-    local was_full_active = card.ability.extra.full_active
-    if not context.blueprint then
-      local suit_percent
-      if context.before then
-        suit_percent = get_suit_percent(suit)
-      end
-      if context.remove_playing_cards then
-        suit_percent = get_suit_percent(suit, context.removed, true)
-      end
-      if context.playing_card_added then
-        suit_percent = get_suit_percent(suit, context.cards, false)
-      end
-      if suit_percent then
-        card.ability.extra.half_active = suit_percent >= 0.5
-        card.ability.extra.full_active = suit_percent == 1
-      end
+    -- Update Eclipse state
+    if (context.setting_blind or context.before or context.after) and not context.blueprint then
+      update_eclipse_state(card)
+    end
+    if (context.change_suit or context.remove_playing_cards or context.playing_cards_added) and not context.blueprint then
+      AG.defer(function()
+        AG.defer(function()
+          update_eclipse_state(card)
+        end)
+      end)
     end
     -- Apply Baron effect at 50% Clubs
     if context.individual and context.cardarea == G.hand and not context.end_of_round
@@ -298,26 +274,12 @@ local lunala = {
         }
       end
     end
-    -- Apply Scry at 100% Clubs
-    if card.ability.extra.full_active then
-      if not was_full_active then
-        G.GAME.poke_scry_amount = (G.GAME.poke_scry_amount or 0) + card.ability.extra.scry
-      end
-    else
-      if was_full_active then
-        G.GAME.poke_scry_amount = math.max(0, (G.GAME.poke_scry_amount or 0) - card.ability.extra.scry)
-      end
-    end
   end,
   add_to_deck = function(self, card, from_debuff)
-    local suit_percent = get_suit_percent(card.ability.extra.suit)
-    card.ability.extra.half_active = suit_percent >= 0.5
-    card.ability.extra.full_active = suit_percent == 1
-    if card.ability.extra.full_active then
-      G.GAME.poke_scry_amount = (G.GAME.poke_scry_amount or 0) + card.ability.extra.scry
-    end
+    update_eclipse_state(card)
   end,
   remove_from_deck = function(self, card, from_debuff)
+    update_eclipse_state(card)
     if card.ability.extra.full_active then
       G.GAME.poke_scry_amount = math.max(0, (G.GAME.poke_scry_amount or 0) - card.ability.extra.scry)
     end
