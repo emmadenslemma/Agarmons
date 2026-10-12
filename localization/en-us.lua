@@ -970,6 +970,16 @@ return {
                     "for each hand lost",
                 }
             },
+            j_agar_bombirdier = {
+                name = "Bombirdier",
+                text = {
+                    "Create an {C:poke_item}Item{} card at",
+                    "end of round for every",
+                    "{C:attention}#1#{} cards drawn this {C:attention}Blind",
+                    "{C:inactive}({C:attention}#2#{C:inactive} cards drawn)",
+                    "{C:inactive}(Must have room)",
+                }
+            },
             j_agar_tatsugiri = {
                 name = "Tatsugiri",
                 text = {
