@@ -10,36 +10,23 @@ local bombirdier = {
   stage = "Basic",
   ptype = "Dark",
   gen = 9,
+  blueprint_compat = false,
   calculate = function(self, card, context)
     local ex = card.ability.extra
 
-    if context.hand_drawn and not context.blueprint then
+    if context.hand_drawn then
       ex.cards_drawn = ex.cards_drawn + #context.hand_drawn
     end
 
     if context.end_of_round and context.game_over == false and context.main_eval then
       local item_count = math.floor(ex.cards_drawn / ex.draw_req)
+      ex.cards_drawn = 0
+
       if item_count > 0 then
+        card:juice_up()
         for _ = 1, item_count do
-          if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-            SMODS.add_card({ set = 'poke_item' })
-            AG.defer(function()
-              G.GAME.consumeable_buffer = 0
-            end)
-          end
+          pokermon.create_consumeable({ set = 'poke_item' })
         end
-
-        if not context.blueprint then
-          AG.defer(function()
-            ex.cards_drawn = 0
-          end)
-        end
-
-        return {
-          message = localize('poke_plus_pokeitem'),
-          colour = G.C.SECONDARY_SET.poke_item
-        }
       end
     end
   end,
