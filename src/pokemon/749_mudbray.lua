@@ -32,7 +32,7 @@ local mudsdale = {
   end,
   rarity = "poke_safari",
   cost = 7,
-  stage = "Basic",
+  stage = "One",
   ptype = "Earth",
   gen = 7,
   calculate = function(self, card, context)
