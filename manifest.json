@@ -1,6 +1,6 @@
 {
     "name": "Agarmons",
-    "version_number": "0.20.7",
+    "version_number": "0.20.8",
     "website_url": "https://github.com/emmadenslemma/Agarmons",
     "description": "Pokermon addon featuring new Legendaries, Megas, and Gigantamax forms",
     "dependencies": [
