@@ -34,7 +34,7 @@ local dubwool = {
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.money_mod, card.ability.extra.money_mod1, card.ability.extra.money_mod + card.ability.extra.money_mod1 * #pokermon.find_pokemon_type('Colorless') } }
   end,
-  rarity = 2,
+  rarity = "poke_safari",
   cost = 7,
   stage = "One",
   ptype = "Colorless",
