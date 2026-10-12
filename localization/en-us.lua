@@ -613,10 +613,9 @@ return {
                 name = "Mudsdale",
                 text = {
                     "Every played {C:attention}card",
-                    "permanently gains {C:mult}+#1#{} Mult",
-                    "for each {C:white,X:poke_earth}Earth{} Joker",
-                    "you have when scored",
-                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                    "permanently gains",
+                    "{C:mult}+#1#{} Mult when scored,",
+                    "{C:attention}doubled{} for {C:attention}Stone{} cards"
                 }
             },
             j_agar_dewpider = {

@@ -1,7 +1,7 @@
 -- Mudbray 749
 local mudbray = {
   name = "mudbray",
-  config = { extra = { mult_mod = 1, rounds = 5 } },
+  config = { extra = { mult_mod = 1, rounds = 4 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.rounds } }
   end,
@@ -28,7 +28,7 @@ local mudsdale = {
   name = "mudsdale",
   config = { extra = { mult_mod = 1 } },
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult_mod * #pokermon.find_pokemon_type('Earth') } }
+    return { vars = { card.ability.extra.mult_mod } }
   end,
   rarity = "poke_safari",
   cost = 7,
@@ -37,14 +37,13 @@ local mudsdale = {
   gen = 7,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
-      local mult_gain = card.ability.extra.mult_mod * #pokermon.find_pokemon_type('Earth')
-      if mult_gain > 0 then
-        context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + mult_gain
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.MULT,
-        }
-      end
+      local mult_mod = card.ability.extra.mult_mod
+      if SMODS.has_enhancement(context.other_card, 'm_stone') then mult_mod = mult_mod * 2 end
+      context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + mult_mod
+      return {
+        message = localize('k_upgrade_ex'),
+        colour = G.C.MULT,
+      }
     end
   end,
 }
