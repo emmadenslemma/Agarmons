@@ -33,15 +33,16 @@ return {
       tiles = {
         { list = { "j_agar_flamigo" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_flamigo" } end, config_key = "flamigo" },
         { list = { "j_agar_toedscool", "j_agar_toedscruel" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_toedscool" } end, config_key = "toedscool" },
+        { list = { "j_agar_klawf" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_klawf" } end, config_key = "klawf" },
         { list = { "j_agar_bombirdier" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_bombirdier" } end, config_key = "bombirdier" },
         { list = { "j_agar_veluza" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_veluza" } end, config_key = "veluza" },
         { list = { "j_agar_tatsugiri", "j_agar_mega_tatsugiri" }, label = function() return localize { type = "name_text", set = "Joker", key = "j_agar_tatsugiri" } end, config_key = "dondozo" },
-        { list = { "j_poke_gmax_charizard", "j_poke_gmax_butterfree", "j_poke_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
       }
     },
     {
       title = function() return localize("agar_regular_pokemon4") end,
       tiles = {
+        { list = { "j_poke_gmax_charizard", "j_poke_gmax_butterfree", "j_poke_gmax_machamp" }, label = function() return localize("agar_gigantamaxing") end, config_key = "gmax" },
         { list = { "j_poke_mega_golurk", "j_poke_mega_pyroar", "j_poke_mega_froslass" }, label = function() return localize("agar_new_megas") end, config_key = "new_megas" },
       }
     },

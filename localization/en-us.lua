@@ -984,6 +984,14 @@ return {
                     "for each hand lost",
                 }
             },
+            j_agar_klawf = {
+                name = "Klawf",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult if poker",
+                    "hand contains",
+                    "a {C:attention}7{} and a {C:attention}Jack"
+                }
+            },
             j_agar_bombirdier = {
                 name = "Bombirdier",
                 text = {

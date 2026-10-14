@@ -44,6 +44,7 @@ return {
   calyrex = true,
   flamigo = true,
   toedscool = true,
+  klawf = true,
   bombirdier = true,
   veluza = true,
   dondozo = true,
