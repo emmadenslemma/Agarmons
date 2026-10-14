@@ -1,4 +1,5 @@
 local get_suit_percent = function(suit)
+  if not G.playing_cards then return 0 end
   local suit_count = 0
   local total_deck = #G.playing_cards
   for _, v in pairs(G.playing_cards) do
