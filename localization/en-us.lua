@@ -313,7 +313,6 @@ return {
             j_agar_groudon = {
                 name = "Groudon",
                 text = {
-                    "{C:poke_hazard}+#1#{} hazard layer",
                     "Played cards with {C:attention}no rank",
                     "give {X:mult,C:white}X#2#{} Mult when",
                     "scored for each {C:white,X:poke_fire}Fire",

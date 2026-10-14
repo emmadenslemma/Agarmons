@@ -12,11 +12,8 @@ end
 -- Groudon 383
 local groudon = {
   name = "groudon",
-  config = { extra = { hazard_level = 1, Xmult_multi = 0.5, Xmult_multi2 = 1 } },
+  config = { extra = { Xmult_multi = 0.5, Xmult_multi2 = 1 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue+1] = { set = 'Other', key = 'hazard_level', vars = pokermon.get_hazard_level_vars() }
-    info_queue[#info_queue+1] = G.P_CENTERS.m_poke_hazard
-
     local ex = card.ability.extra
     local total_xmult = ex.Xmult_multi * get_boosting_joker_count() + ex.Xmult_multi2
     return { vars = { ex.hazard_level, ex.Xmult_multi, total_xmult } }
@@ -35,13 +32,6 @@ local groudon = {
       }
     end
   end,
-  add_to_deck = function(self, card, from_debuff)
-    pokermon.change_hazard_level(card.ability.extra.hazard_level)
-  end,
-  remove_from_deck = function(self, card, from_debuff)
-    pokermon.change_hazard_level(-card.ability.extra.hazard_level)
-  end,
-  attributes = { 'hazards' }
 }
 
 -- Primal Groudon 383-1
