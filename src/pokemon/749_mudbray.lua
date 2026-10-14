@@ -1,7 +1,7 @@
 -- Mudbray 749
 local mudbray = {
   name = "mudbray",
-  config = { extra = { mult_mod = 1, rounds = 4 } },
+  config = { extra = { mult_mod = 1, rounds = 5 } },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult_mod, card.ability.extra.rounds } }
   end,
