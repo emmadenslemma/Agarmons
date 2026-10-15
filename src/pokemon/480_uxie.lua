@@ -27,8 +27,11 @@ local uxie = {
       card.ability.extra.gold_cards_triggered = card.ability.extra.gold_cards_triggered + 1
       if card.ability.extra.gold_cards_triggered == self.config.trigger_rqmt then
         card.ability.extra.gold_cards_triggered = 0
-        card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
-        SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.MULT }, card)
+        SMODS.scale_card(card, {
+          ref_value = 'Xmult',
+          scalar_value = 'Xmult_mod',
+          message_colour = G.C.MULT,
+        })
       end
     end
     if context.joker_main then
