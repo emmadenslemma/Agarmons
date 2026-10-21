@@ -28,12 +28,18 @@ local alolan_raichu = {
       local amount_spent = context.amount
       if next(SMODS.find_mod("Talisman")) then amount_spent = to_number(amount_spent) end
       if amount_spent < 0 then
-        card.ability.extra.chips = card.ability.extra.chips +
-            card.ability.extra.chip_mod / card.ability.extra.per_money * (-amount_spent)
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.CHIPS,
-        }
+        AG.defer(function()
+          SMODS.scale_card(card, {
+            ref_value      = 'chips',
+            scalar_value   = 'chip_mod',
+            operation      = function(ref_table, ref_value, initial, change)
+              ref_table[ref_value] = initial + change / card.ability.extra.per_money * (-amount_spent)
+            end,
+            message_colour = G.C.CHIPS
+          })
+        end)
+
+        return nil, true
       end
     end
   end,
