@@ -11,7 +11,7 @@ local veluza = {
   ptype = "Water",
   gen = 9,
   calculate = function(self, card, context)
-    if context.setting_blind and not context.blueprint then
+    if context.setting_blind then
       local hands_left = G.GAME.current_round.hands_left + (G.poke_hands_buffer or 0)
       local hands_lost = math.floor(hands_left / 2)
       if hands_lost > 0 then
