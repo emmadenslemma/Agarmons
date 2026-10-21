@@ -16,11 +16,13 @@ local sandygast = {
   calculate = function(self, card, context)
     if context.discard and not context.blueprint and not context.other_card.debuff
         and context.other_card:is_suit(G.GAME.current_round.sandygast_suit) then
-      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-      return {
-        message = localize('k_upgrade_ex'),
-        colour = G.C.CHIPS
-      }
+      SMODS.scale_card(card, {
+        ref_value = 'chips',
+        scalar_value = 'chip_mod',
+        message_colour = G.C.CHIPS
+      })
+
+      return nil, true
     end
     if context.joker_main then
       return {
@@ -49,12 +51,16 @@ local palossand = {
   calculate = function(self, card, context)
     if context.discard and not context.blueprint and not context.other_card.debuff
         and context.other_card:is_suit(G.GAME.current_round.sandygast_suit) then
-      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod +
-          #pokermon.find_pokemon_type("Water") * card.ability.extra.chip_mod2
-      return {
-        message = localize('k_upgrade_ex'),
-        colour = G.C.CHIPS
-      }
+      SMODS.scale_card(card, {
+        ref_value = 'chips',
+        scalar_value = 'chip_mod',
+        operation = function(ref_table, ref_value, initial, change)
+          ref_table[ref_value] = initial + change + #pokermon.find_pokemon_type("Water") * card.ability.extra.chip_mod2
+        end,
+        message_colour = G.C.CHIPS,
+      })
+
+      return nil, true
     end
     if context.joker_main then
       return {
