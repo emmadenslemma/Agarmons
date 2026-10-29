@@ -82,6 +82,7 @@ local init = function()
 end
 
 return {
+  can_load = false,
   config_key = "sandygast",
   init = init,
   list = { sandygast, palossand }
