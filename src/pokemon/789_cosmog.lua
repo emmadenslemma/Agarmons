@@ -3,7 +3,7 @@ local get_suit_percent = function(suit)
   local suit_count = 0
   local total_deck = #G.playing_cards
   for _, v in pairs(G.playing_cards) do
-    if v:is_suit(suit, true) then
+    if not (v.base and v.base.suit) or v:is_suit(suit, true) then
       suit_count = suit_count + 1
     end
   end
@@ -145,7 +145,9 @@ local solgaleo = {
       local hand_cards = {}
       local conv_cards = {}
       for _, v in pairs(G.hand.cards) do
-        hand_cards[#hand_cards+1] = v
+        if card.base and card.base.value then -- Dhelmise check
+          hand_cards[#hand_cards+1] = v
+        end
       end
       pseudoshuffle(hand_cards, pseudoseed("solgaleo"))
       local limit = math.min(3, #hand_cards)
@@ -238,7 +240,9 @@ local lunala = {
       local hand_cards = {}
       local conv_cards = {}
       for _, v in pairs(G.hand.cards) do
-        hand_cards[#hand_cards+1] = v
+        if card.base and card.base.value then -- Dhelmise check
+          hand_cards[#hand_cards+1] = v
+        end
       end
       pseudoshuffle(hand_cards, pseudoseed("lunala"))
       local limit = math.min(3, #hand_cards)
