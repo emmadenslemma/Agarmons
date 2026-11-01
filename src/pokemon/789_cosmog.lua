@@ -145,7 +145,7 @@ local solgaleo = {
       local hand_cards = {}
       local conv_cards = {}
       for _, v in pairs(G.hand.cards) do
-        if card.base and card.base.value then -- Dhelmise check
+        if v.base and v.base.value then -- Dhelmise check
           hand_cards[#hand_cards+1] = v
         end
       end
@@ -240,7 +240,7 @@ local lunala = {
       local hand_cards = {}
       local conv_cards = {}
       for _, v in pairs(G.hand.cards) do
-        if card.base and card.base.value then -- Dhelmise check
+        if v.base and v.base.value then -- Dhelmise check
           hand_cards[#hand_cards+1] = v
         end
       end
